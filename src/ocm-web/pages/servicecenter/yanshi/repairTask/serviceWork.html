@@ -1,0 +1,817 @@
+<!--main-->
+<div class="ui-list-panel ui-panel">
+    <div>
+      <div class="page-title">
+        <span>维修工单</span>
+      </div>
+    </div>
+    <div>
+      <div>
+        <div class="oc-breadcrumb">
+        </div>
+      </div>
+    </div>
+    <div class="title-seperator"></div>
+  
+    <div class="ui-searchbox">
+      <div id="PromoActivity-searchcontent" class="ui-searchbox-content clearfix"></div>
+      <div class="ui-searchbox-footer clearfix">
+        <div class="ui-search-more hidden">
+          <a>更多
+            <i class="uifont icon-down"></i>
+          </a>
+        </div>
+  
+        <div class="ui-search-btn">
+          <a class="ui-btn ui-btn-green margin-right-5" data-bind="click:search.bind($data,true)">搜索
+          </a>
+          <a class="ui-btn ui-btn-primary" data-bind="click:cleanSearch">清空
+          </a>
+        </div>
+      </div>
+    </div>
+  
+    <div class="ui-panel-body">
+      <!--ui-panel-body-head-->
+      <!-- <div class="ui-panel-body-head">
+        <div class="ui-panel-body-head-left">
+          <a class="ui-btn ui-btn-orange margin-right-5" id="user-action-add" data-bind="click: beforeEdit.bind($data,-1)">
+            <i class="uifont icon-plus margin-right-5"></i>新增
+          </a>
+          <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del" data-bind="click: del">
+            <i class="uifont icon-shanchu1 margin-right-5"></i>
+            删除
+          </a>
+            <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click: complete.bind($data)">
+                 确认完成
+            </a>
+        </div>
+  
+      </div> -->
+      <!--ui-panel-body-head end-->
+      <div class="ui-table-container">
+        <div id="mainListData" u-meta='{"id":"grid_main_list","data":"mainListData","type":"grid","editable":false,"multiSelect":false,"showNumCol":true}'>
+          <div options='{"field":"code","dataType":"String","title":"维修工单号","renderType":"detailRender" }'></div>
+          <div options='{"field":"reqType","dataType":"integer","title":"请求类型","renderType":"comboRender","editOptions":{"type":"combo","datasource":"ApplicationTypeEnum"}}'></div>
+          <div options='{"field":"creationTime","dataType":"Date","title":"受理日期"}'></div>
+          <div options='{"field":"repairDate","dataType":"Date","title":"维修日期"}'></div>
+          <div options='{"field":"customerName","dataType":"String","title":"客户"}'></div>
+          <div options='{"field":"phone","dataType":"String","title":"联系电话"}'></div>
+          <!--<div options='{"field":"servicePersonName","dataType":"String","title":"维修人员"}'></div> -->
+          <div options='{"field":"successDate","dataType":"Datetime","title":"完工时间"}'></div>
+          <div options='{"field":"billStatus","dataType":"integer","title":"单据状态","renderType":"comboRender","editOptions":{"type":"combo","datasource":"billStatusSrc"}}'></div>
+          <div options='{"field":"isOrder","dataType":"integer","title":"预约状态","renderType":"comboRender","editOptions":{"type":"combo","datasource":"enumerateSrc"}}'></div>
+          
+          <div options='{"field":"creator","dataType":"String","title":"创建人","visible":false}'></div>
+          <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":false}'></div>
+          <div options='{"field":"creationTime","dataType":"Datetime","title":"创建时间","visible":false}'></div>
+          <div options='{"field":"modifiedTime","dataType":"Datetime","title":"修改时间","visible":false}'></div>
+          <!-- <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation","fixed":true,"width":"170px"}'></div> -->
+  
+        </div>
+        <div class="ui-statistics margin-top-10">
+          <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择
+          <span class="font-c-blue" data-bind="text:mainListData.selectedIndices().length"></span>项数据
+        </div>
+        <div class="pagination-right">
+          <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"mainListData","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+        </div>
+      </div>
+    </div>
+</div>
+<!--main end-->
+<!-- 新增/编辑 -->
+<div class="ui-bill-panel ui-panel" style="display: none;" id="validate">
+    <div class="page-title">
+    </div>
+    <div class="ui-panel-btn-bg">
+        <div class="ui-operate-btn">
+        <a class="ui-btn ui-btn-primary" data-bind="click: cancelBill.bind($data)">取消
+        </a>
+        <a class="ui-btn ui-btn-green" data-bind="click: saveBill.bind($data)">保存
+        </a>
+        </div>
+    </div>
+    <!--head-->
+    <div class="margin-top-10">
+        <div class="ui-bill-body">
+        <div class="ui-collapse-group border orderCenter">
+            <!--基本信息-->
+            <h3 class="ui-collapse-title orderCenter clearfix open margin-top-10">
+                <a href="javascript:;" class="click-btn inline-block">
+                <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                基本信息
+                </a>
+            </h3>
+            <div class="ui-collapse-content  clearfix">
+                <div class="ui-item">
+                    <div class="ui-name">
+                        工单编号：
+                    </div>
+                    <div class="ui-inputarea">
+                        <div class="ui-textonly" data-bind="text:mainListData.ref('code')"></div>                        
+                    </div>
+                </div>
+                <div class="ui-item">
+                        <div class="ui-name">
+                            制单人：
+                        </div>
+                        <div class="ui-inputarea">
+                            <div class="ui-textonly" data-bind="text:mainListData.ref('creator')"></div>                        
+                        </div>
+                </div>
+                <div class="ui-item">
+                        <div class="ui-name">
+                         受理日期：</div>
+                         <div class="ui-inputarea" u-meta='{"type":"u-date","data":"mainListData","field":"creationTime"}' >
+                                <input class="u-input" />
+                        </div>
+                </div>
+                <div class="ui-item">
+                        <div class="ui-name">
+                         单据状态：</div>
+                         <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"mainListData",
+                                        "field":"billStatus","datasource":"billStatusSrc","enable":"false"}'>
+                                            <input class="ui-no-border" />
+                          </div>
+                </div>
+                <div class="ui-item">
+                        <div class="ui-name">
+                         请求类型：</div>
+                        <div class="ui-inputarea is-upgraded" u-meta='{"id":"billSource1",
+                            "type":"u-combobox","data":"mainListData","field":"reqType",
+                            "showFix":true,"datasource":"ApplicationTypeEnum"}'>
+                                <input class="" />
+                                <span class="ui-icon uf uf-arrow-down"></span>
+                        </div>
+                </div>
+                <div class="ui-item">
+                        <div class="ui-name">
+                         请求来源：</div>
+                        <div class="ui-inputarea is-upgraded" u-meta='{"id":"billSource1",
+                            "type":"u-combobox","data":"mainListData","field":"billSource",
+                            "showFix":true,"datasource":"billSourceEnum"}'>
+                                <input class="" />
+                                <span class="ui-icon uf uf-arrow-down"></span>
+                        </div>
+                </div>
+                <div class="ui-item">
+                        <div class="ui-name">
+                         优先级：</div>
+                            <div class="ui-inputarea is-upgraded" u-meta='{"id":"priorityLevel",
+                            "type":"u-combobox","data":"mainListData","field":"priorityLevel",
+                            "showFix":true,"datasource":"priorityLevelEnum"}'>
+                                <input class="" />
+                                <span class="ui-icon uf uf-arrow-down"></span>
+                            </div>
+                </div>
+               
+                <div class="ui-item">
+                    <div class="ui-name">
+                            <span class='ui-redstar'>*</span> 客户：</div>
+                    <div class="ui-inputarea" u-meta='{"type":"uiRefer","data":"mainListData","field":"customerId","showField":"customerName","rel":{"refpk":"customerId","refcode":"customerCode","refname":"customerName",
+                    "cityName":"cityName","districtName":"districtName","provinceName":"provinceName","countryName":"countryName","townName":"townName",
+                    "cityId":"cityId","districtId":"districtId","provinceId":"provinceId","countryId":"countryId","townId":"townId",
+                    "cityCode":"cityCode","districtCode":"districtCode","provinceCode":"provinceCode","countryCode":"countryCode","townCode":"townCode",
+                    "address":"address","phone":"phone"}}'>
+                        <input readonly="readonly" autocomplete="off" />
+                        <span class="ui-icon uifont icon-bar refer"></span>
+                    </div>
+                </div>
+                <div class="ui-item">
+                    <div class="ui-name">
+                            <span class='ui-redstar'>*</span> 国家：</div>
+                    <div class="ui-inputarea" u-meta='{"type":"uiRefer","data":"mainListData",
+                    "field":"countryId","showField":"countryName","rel":{"refpk":"countryId",
+                    "refname":"countryName"}}'>
+                            <input readonly="readonly" autocomplete="off" />
+                            <span class="ui-icon uifont icon-bar refer"></span>
+                    </div>
+                </div>
+                <div class="ui-item">
+                    <div class="ui-name">
+                            <span class='ui-redstar'>*</span> 省份：</div>
+                    <div class="ui-inputarea" u-meta='{"type":"uiRefer","data":"mainListData",
+                    "field":"provinceId","showField":"provinceName","rel":{"refpk":"provinceId",
+                    "refname":"provinceName"}}'>
+                            <input readonly="readonly" autocomplete="off" />
+                            <span class="ui-icon uifont icon-bar refer"></span>
+                    </div>
+                </div>
+                <div class="ui-item">
+                    <div class="ui-name">
+                            <span class='ui-redstar'>*</span> 城市：</div>
+                    <div class="ui-inputarea" u-meta='{"type":"uiRefer","data":"mainListData",
+                    "field":"cityId","showField":"cityName","rel":{"refpk":"cityId",
+                    "refname":"cityName"}}'>
+                            <input readonly="readonly" autocomplete="off" />
+                            <span class="ui-icon uifont icon-bar refer"></span>
+                    </div>
+                </div>
+                <div class="ui-item">
+                    <div class="ui-name">
+                            <span class='ui-redstar'>*</span> 区县：</div>
+                    <div class="ui-inputarea" u-meta='{"type":"uiRefer","data":"mainListData",
+                    "field":"districtId","showField":"districtName","rel":{"refpk":"districtId",
+                    "refname":"districtName"}}'>
+                            <input readonly="readonly" autocomplete="off" />
+                            <span class="ui-icon uifont icon-bar refer"></span>
+                    </div>
+                </div>
+                <div class="ui-item">
+                    <div class="ui-name">乡镇：</div>
+                    <div class="ui-inputarea" u-meta='{"type":"uiRefer","data":"mainListData",
+                    "field":"townId","showField":"townName","rel":{"refpk":"townId",
+                    "refname":"townName"}}'>
+                            <input readonly="readonly" autocomplete="off" />
+                            <span class="ui-icon uifont icon-bar refer"></span>
+                    </div>
+                </div>
+                <div class="ui-item">
+                    <div class="ui-name">
+                     地址：</div>
+                    <div class="ui-inputarea" u-meta='{"type":"u-text",
+                    "data":"mainListData","field":"address"}'>
+                            <input class="u-input" />
+                    </div>
+                </div>
+                <div class="ui-item">
+                        <div class="ui-name">
+                         联系电话：</div>
+                        <div class="ui-inputarea" u-meta='{"type":"u-text","data":"mainListData","field":"phone"}'>
+                                <input class="u-input" />
+                        </div>
+                </div>
+                <div class="ui-item">
+                        <div class="ui-name">
+                         保修类型：</div>
+                            <div class="ui-inputarea is-upgraded" u-meta='{"id":"protectType1",
+                            "type":"u-combobox","data":"mainListData","field":"protectType",
+                            "showFix":true,"datasource":"warrantyTypeEnum"}'>
+                                <input class="" />
+                                <span class="ui-icon uf uf-arrow-down"></span>
+                            </div>
+                </div>
+                <div class="ui-item">
+                        <div class="ui-name">
+                         维修日期：</div>
+                        <div class="ui-inputarea" u-meta='{"type":"u-date","data":"mainListData","field":"repairDate"}'>
+                                <input class="u-input" />
+                        </div>
+                </div>
+               <!-- <div class="ui-item">
+                        <div class="ui-name" >
+                                维修人员：</div>
+                        <div class="ui-inputarea" u-meta='{"type":"uiRefer","data":"mainListData","field":"servicePersonId","showField":"servicePersonName","rel":{"refpk":"servicePersonId","refcode":"servicePersonCode","refname":"servicePersonId"}}'>
+                            <input readonly="readonly" autocomplete="off" />
+                            <span class="ui-icon uifont icon-bar refer"></span>
+                        </div>
+                </div> -->
+                <div class="ui-item">
+                        <div class="ui-name"  >
+                                处理服务商：</div>
+                        <div class="ui-inputarea" u-meta='{"type":"uiRefer","data":"mainListData","field":"serviceProviderId","showField":"serviceProviderName","rel":{"refpk":"serviceProviderId","refcode":"serviceProviderCode","refname":"serviceProviderName"}}'>
+                            <input readonly="readonly" autocomplete="off" />
+                            <span class="ui-icon uifont icon-bar refer"></span>
+                        </div>
+                </div>
+                <div class="ui-item">
+                        <div class="ui-name">
+                         结算状态：</div>
+                            <div class="ui-inputarea is-upgraded" u-meta='{"id":"protectType1",
+                            "type":"u-combobox","data":"mainListData","field":"protectType",
+                            "showFix":true,"datasource":"PayStatusEnum"}'>
+                                <input class="" />
+                                <span class="ui-icon uf uf-arrow-down"></span>
+                            </div>
+                </div>
+                
+                <div class="ui-item">
+                        <div class="ui-name">
+                         完成时间：</div>
+                        <div class="ui-inputarea" data-bind="text:mainListData.ref('successDate')">
+                             
+                        </div>
+                </div>
+               
+            </div>
+            <!--服务商-->
+            <h3 class="ui-collapse-title orderCenter clearfix open margin-top-10">
+                <a href="javascript:;" class="click-btn inline-block">
+                <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                服务商品
+                </a>
+                <a class="ui-btn ui-btn-primary margin-left-10" style="margin-top:-3px;" 
+                data-bind="click: customerEquityFun.bind($data)">查看客户资产</a>
+                <div class="ui-inputarea"  style="display:none;" id="customerEquityRef" 
+                        u-meta='{"type":"uiRefer","data":"mainListData","field":"customerEquityId","showField":"customerEquityName",
+                        "rel":{"refpk":"customerEquityId","refcode":"customerEquityCode","refname":"customerEquityName",
+                        "goodsId":"goodsId","goodsCode":"goodsCode","goodsName":"goodsName",
+                        "goodsCategoryId":"goodsCategoryId","goodsCategoryCode":"goodsCategoryCode","goodsCategoryName":"goodsCategoryName"}}'>
+                        <!-- -->
+                    <input readonly="readonly" autocomplete="off" />
+                    <span class="ui-icon uifont icon-bar refer"></span>
+                </div> 
+            </h3>
+            <div class="ui-collapse-content  clearfix">
+               
+                <div class="ui-item">
+                        <div class="ui-name">
+                        <!-- <span class='ui-redstar'>*</span> -->
+                        商品分类：
+                        </div>
+                        <div class="ui-inputarea" u-meta='{"type":"uiRefer","data":"mainListData","field":"goodsCategoryId","showField":"goodsCategoryName"}'>
+                        <input readonly="readonly" autocomplete="off" />
+                        <span class="ui-icon uifont icon-bar refer"></span>
+                        </div>
+                </div>
+               
+                <div class="ui-item">
+                        <div class="ui-name">
+                            商品名称：</div>
+                        <div class="ui-inputarea" u-meta='{"type":"uiRefer","data":"mainListData","field":"goodsId","showField":"goodsName",
+                        "rel":{"refcode":"goodsCode"}}'>
+                            <input readonly="readonly" autocomplete="off" />
+                            <span class="ui-icon uifont icon-bar refer"></span>
+                        </div>
+                </div>
+                <div class="ui-item">
+                    <div class="ui-name">
+                        商品编码：</div>
+                    <div class="ui-inputarea" u-meta='{"type":"u-text","data":"mainListData","field":"goodsCode","enable":"false"}'>
+                            <input class="u-input ui-no-border" />
+                    </div>
+                </div>
+                <div class="ui-item">
+                        <div class="ui-name">
+                            故障类型：</div>
+                        <div class="ui-inputarea" u-meta='{"type":"uiRefer","data":"mainListData","field":"faultId","showField":"faultName","rel":{"refpk":"faultId","refcode":"faultCode","refname":"faultName","faultMainName":"faultMainName","faultSubName":"faultSubName"}}'>
+                            <input readonly="readonly" autocomplete="off" />
+                            <span class="ui-icon uifont icon-bar refer"></span>
+                        </div>
+                </div>
+                <div class="ui-item">
+                        <div class="ui-name">
+                            故障大类：</div>
+                        <div class="ui-inputarea">
+                            <div class="ui-textonly" data-bind="text:mainListData.ref('faultMainName')"></div>
+                        </div>
+                    </div>
+                    <div class="ui-item">
+                        <div class="ui-name">
+                            故障小类：</div>
+                        <div class="ui-inputarea">
+                            <div class="ui-textonly" data-bind="text:mainListData.ref('faultSubName')"></div>
+                        </div>
+                    </div>
+                <div class="ui-item">
+                    <div class="ui-name">
+                        解决方法：
+                    </div>
+                    <div class="ui-inputarea">
+                        <div class="ui-textonly" u-meta='{"type":"u-text","data":"mainListData","field":"resolvent"}'>
+                            <input class="u-input" />
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix" ></div>
+                <div class="ui-item ui-textarea-item">
+                            <div class="ui-name" style="vertical-align:top;">处理建议：</div>
+                            <div class="ui-inputarea">
+                                <textarea class="" u-meta='{"data":"mainListData","field":"dealSuggestion","type":"textarea"}'></textarea>
+                            </div> 
+                </div>
+               
+            </div>
+        
+           
+        </div>
+        </div>
+    </div>
+</div>
+
+<!-- 查看详情 -->
+<div class="ui-panel ui-bill-detail" style="display: none;">
+    <div class="page-title">
+        <span>查看详情</span>
+     </div>
+    <div class="ui-panel-btn-bg">
+        <div class="ui-operate-btn">
+        <a class="ui-btn ui-btn-primary" data-bind="click:retListPanel">返回</a>
+        </div>
+    </div>
+    <!--head-->
+    <div class="margin-top-10">
+        <div class="ui-bill-body">
+            <div class="ui-collapse-group border orderCenter">
+                <div id="default-example" data-collapse>
+                    <!--基本信息-->
+                    <h3 class="ui-collapse-title orderCenter clearfix open margin-top-10">
+                        <a href="javascript:;" class="click-btn inline-block">
+                        <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                        <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                        基本信息
+                        </a>
+                    </h3>
+                    <div class="ui-collapse-content  clearfix">
+                        <div class="ui-item">
+                            <div class="ui-name">
+                                    工单编号：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainListData.ref('code')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">
+                                    制单人：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainListData.ref('creator')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                                <div class="ui-name">
+                                    受理日期：</div>
+                                <div class="ui-inputarea"  data-bind="text:mainListData.ref('creationTime')" ></div>
+                        </div>
+                        <div class="ui-item">
+                                <div class="ui-name">
+                                        单据状态：</div>
+                                <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"mainListData",
+                                "field":"billStatus","datasource":"billStatusSrc","enable":"false"}'>
+                                    <input class="ui-no-border" />
+                                </div>
+                         </div>
+                         <div class="ui-item">
+                                <div class="ui-name">
+                                        请求类型：</div>
+                                <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"mainListData",
+                                "field":"reqType","datasource":"ApplicationTypeEnum","enable":"false"}'>
+                                    <input class="ui-no-border" />
+                                </div>
+                         </div>
+                         <div class="ui-item">
+                                <div class="ui-name">
+                                        请求来源：</div>
+                                <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"mainListData",
+                                "field":"billStatus","datasource":"billSourceEnum","enable":"false"}'>
+                                    <input class="ui-no-border" />
+                                </div>
+                         </div>
+                        <div class="ui-item">
+                            <div class="ui-name">客户：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainListData.ref('customerName')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                                <div class="ui-name">
+                                    优先级：</div>
+                                <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"mainListData",
+                                "field":"priorityLevel","datasource":"priorityLevelEnum","enable":"false"}'>
+                                    <input class="ui-no-border" />
+                                </div>
+                        </div> 
+                        <div class="ui-item">
+                            <div class="ui-name">国家：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainListData.ref('countryName'),attr:{title:mainListData.ref('countryName')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">省份：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainListData.ref('provinceName'),attr:{title:mainListData.ref('provinceName')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">城市：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainListData.ref('cityName'),attr:{title:mainListData.ref('cityName')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">区县：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainListData.ref('districtName'),attr:{title:mainListData.ref('districtName')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">乡镇：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainListData.ref('townName'),attr:{title:mainListData.ref('townName')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">地址：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainListData.ref('address'),attr:{title:mainListData.ref('address')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">联系电话：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainListData.ref('phone')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                                <div class="ui-name">
+                                    保修类型：</div>
+                                <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"mainListData",
+                                "field":"protectType","datasource":"warrantyTypeEnum","enable":"false"}'>
+                                    <input class="ui-no-border" />
+                                </div>
+                        </div> 
+                        <div class="ui-item">
+                            <div class="ui-name">
+                                    维修日期：</div>
+                            <div class="ui-inputarea"  data-bind="text:mainListData.ref('repairDate')" ></div>
+                        </div>
+                        <!--<div class="ui-item">
+                            <div class="ui-name">
+                                    维修人员：</div>
+                            <div class="ui-inputarea"  data-bind="text:mainListData.ref('servicePersonName')" ></div>
+                        </div> -->
+                        <div class="ui-item">
+                                <div class="ui-name">
+                                        处理服务商：</div>
+                                <div class="ui-inputarea"  data-bind="text:mainListData.ref('serviceProviderName')" ></div>
+                            </div>
+                       
+                        <div class="ui-item">
+                                <div class="ui-name">
+                                    服务费：
+                                </div>
+                                <div class="ui-inputarea">
+                                    <div class="ui-textonly" data-bind="text:mainListData.ref('serviceFee')"></div>                        
+                                </div>
+                        </div>
+                        <div class="ui-item">
+                                <div class="ui-name">
+                                 完成时间：</div>
+                                <div class="ui-inputarea" data-bind="text:mainListData.ref('successDate')">      
+                                </div>
+                        </div>
+                        <div class="ui-item">
+                                <div class="ui-name">
+                                 工时：</div>
+                                <div class="ui-inputarea" data-bind="text:mainListData.ref('manHours')">      
+                                </div>
+                        </div>
+                    </div>
+                    <!--基本信息结束-->
+                    <!--服务商开始-->
+                    <h3 class="ui-collapse-title orderCenter clearfix open margin-top-10">
+                        <a href="javascript:;" class="click-btn inline-block">
+                            <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                            <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                            服务商品
+                        </a>
+                </h3>
+                    <div class="ui-collapse-content  clearfix">
+                        <div class="ui-item">
+                            <div class="ui-name">
+                                商品分类：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainListData.ref('goodsCategoryName')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">
+                                商品编码：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainListData.ref('goodsCode')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">
+                                商品名称：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainListData.ref('goodsName')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">
+                                故障类型：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainListData.ref('faultName')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">
+                                故障大类：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainListData.ref('faultMainName')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">
+                                故障小类：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainListData.ref('faultSubName')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">
+                                解决方法：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainListData.ref('resolvent')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">处理建议：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainListData.ref('dealSuggestion')"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 服务商 end-->
+                </div>
+            </div>
+            <div class="ui-bill-footer">
+            </div>
+         </div>
+        
+    </div> 
+    
+</div> 
+
+<!--预约派工 弹窗-->
+<div id="dispatching-popup" style="display:none;">
+        <div class="u-msg-title">
+            <h4>预约派工</h4>
+        </div>
+        <div class="u-msg-content  clearfix margin-bottom-20" id="validate">
+                <div class=" clearfix margin-top-20 margin-bottom-10">
+                        <div class="ui-item">
+                                <div class="ui-name" style="width:70px;">
+                                        维修人员：</div>
+                                <div class="ui-inputarea" u-meta='{"type":"uiRefer","data":"mainListData","field":"servicePersonId","showField":"servicePersonName","rel":{"refpk":"servicePersonId","refcode":"servicePersonCode","refname":"servicePersonId"}}'>
+                                    <input readonly="readonly" autocomplete="off" />
+                                    <span class="ui-icon uifont icon-bar refer"></span>
+                                </div>
+                        </div>
+                        <div class="ui-item">
+                                <div class="ui-name" >
+                                        维修日期：</div>
+                                <div class="ui-inputarea" u-meta='{"type":"u-date","data":"mainListData","field":"repairDate"}' >
+                                        <input class="u-input" />
+                                </div>
+                        </div>
+                </div>
+                <div class="ui-collapse-group border orderCenter">
+                        <div id="default-example" data-collapse>
+                            <!--基本信息-->
+                            <h3 class="ui-collapse-title orderCenter clearfix open margin-top-10">
+                                <a href="javascript:;" class="click-btn inline-block">
+                                <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                                <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                                基本信息
+                                </a>
+                            </h3>
+                            <div class="ui-collapse-content  clearfix">
+                                <div class="ui-item">
+                                    <div class="ui-name">
+                                        工单编号：</div>
+                                    <div class="ui-inputarea">
+                                        <div class="ui-textonly" data-bind="text:mainListData.ref('code')"></div>
+                                    </div>
+                                </div>
+                                <div class="ui-item">
+                                    <div class="ui-name">
+                                        制单人：</div>
+                                    <div class="ui-inputarea">
+                                        <div class="ui-textonly" data-bind="text:mainListData.ref('creator')"></div>
+                                    </div>
+                                </div>
+                                <div class="ui-item">
+                                        <div class="ui-name">
+                                            单据状态：</div>
+                                        <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"mainListData",
+                                        "field":"billSource","datasource":"billStatusSrc","enable":"false"}'>
+                                            <input class="ui-no-border" />
+                                        </div>
+                                </div>
+                                <div class="ui-item">
+                                        <div class="ui-name">
+                                            请求类型：</div>
+                                        <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"mainListData",
+                                        "field":"reqType","datasource":"ApplicationTypeEnum","enable":"false"}'>
+                                            <input class="ui-no-border" />
+                                        </div>
+                                </div>
+                                <div class="ui-item">
+                                        <div class="ui-name">
+                                            请求来源：</div>
+                                        <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"mainListData",
+                                        "field":"billSource","datasource":"billSourceEnum","enable":"false"}'>
+                                            <input class="ui-no-border" />
+                                        </div>
+                                </div>
+                                <div class="ui-item">
+                                    <div class="ui-name">客户：</div>
+                                    <div class="ui-inputarea">
+                                        <div class="ui-textonly" data-bind="text:mainListData.ref('customerName')"></div>
+                                    </div>
+                                </div>
+                                <div class="ui-item">
+                                    <div class="ui-name">地址：</div>
+                                    <div class="ui-inputarea">
+                                        <div class="ui-textonly" data-bind="text:mainListData.ref('address'),attr:{title:mainListData.ref('address')"></div>
+                                    </div>
+                                </div>
+                                <div class="ui-item">
+                                    <div class="ui-name">联系电话：</div>
+                                    <div class="ui-inputarea">
+                                        <div class="ui-textonly" data-bind="text:mainListData.ref('phone')"></div>
+                                    </div>
+                                </div>
+                                <div class="ui-item">
+                                        <div class="ui-name">
+                                            保修类型：</div>
+                                        <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"mainListData",
+                                        "field":"protectType","datasource":"warrantyTypeEnum","enable":"false"}'>
+                                            <input class="ui-no-border" />
+                                        </div>
+                                </div>
+                                <div class="ui-item">
+                                        <div class="ui-name">
+                                            处理服务商：</div>
+                                        <div class="ui-inputarea">
+                                            <div class="ui-textonly" data-bind="text:mainListData.ref('serviceProviderName')"></div>
+                                        </div>
+                                </div>
+                                <div class="ui-item">
+                                        <div class="ui-name">
+                                            预约状态：</div>
+                                        <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"mainListData",
+                                        "field":"isOrder","datasource":"enumerateSrc","enable":"false"}'>
+                                            <input class="ui-no-border" />
+                                        </div>
+                                </div>
+                            </div>
+                            <!--基本信息结束-->
+                            <!--服务商开始-->
+                            <h3 class="ui-collapse-title orderCenter clearfix open margin-top-10">
+                                <a href="javascript:;" class="click-btn inline-block">
+                                    <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                                    <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                                    服务商品
+                                </a>
+                            </h3>
+                            <div class="ui-collapse-content  clearfix">
+                                <div class="ui-item">
+                                    <div class="ui-name">
+                                        商品分类：</div>
+                                    <div class="ui-inputarea">
+                                        <div class="ui-textonly" data-bind="text:mainListData.ref('goodsCategoryName')"></div>
+                                    </div>
+                                </div>
+                                <div class="ui-item">
+                                    <div class="ui-name">
+                                        商品编码：</div>
+                                    <div class="ui-inputarea">
+                                        <div class="ui-textonly" data-bind="text:mainListData.ref('goodsCode')"></div>
+                                    </div>
+                                </div>
+                                <div class="ui-item">
+                                    <div class="ui-name">
+                                        商品名称：</div>
+                                    <div class="ui-inputarea">
+                                        <div class="ui-textonly" data-bind="text:mainListData.ref('goodsName')"></div>
+                                    </div>
+                                </div>
+                                <div class="ui-item">
+                                    <div class="ui-name">
+                                        故障类型：</div>
+                                    <div class="ui-inputarea">
+                                        <div class="ui-textonly" data-bind="text:mainListData.ref('faultName')"></div>
+                                    </div>
+                                </div>
+                                <div class="ui-item">
+                                    <div class="ui-name">
+                                        解决方法：</div>
+                                    <div class="ui-inputarea">
+                                        <div class="ui-textonly" data-bind="text:mainListData.ref('resolvent')"></div>
+                                    </div>
+                                </div>
+                                <div class="ui-item">
+                                    <div class="ui-name">处理建议：</div>
+                                    <div class="ui-inputarea">
+                                        <div class="ui-textonly" data-bind="text:mainListData.ref('dealSuggestion')"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 服务商 end-->
+                        </div>
+                </div>
+        </div>
+        <div class="u-msg-footer">
+            <a class="ui-btn ui-btn-primary u-msg-cancel margin-right-5">取消</a>
+            <a class="ui-btn ui-btn-green  u-msg-ok">保存</a>
+        </div>
+</div>
+
+  
+  

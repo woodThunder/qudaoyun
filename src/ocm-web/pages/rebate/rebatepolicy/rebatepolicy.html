@@ -1,0 +1,888 @@
+<style type="text/css">
+  .grid-flex-box .grid-flex-table {
+    width: 90%;
+    margin-left: 5%;
+  }
+
+  .grid-flex-box .grid-flex-table .table-box {
+    border: 1px solid #D9D9D9;
+  }
+
+  .grid-flex-box .grid-flex-table .table-head,
+  .table-body {
+    display: flex;
+    border-bottom: 1px solid #D9D9D9;
+  }
+
+  .grid-flex-box .grid-flex-table .table-body .ui-inputarea {
+    width: 100px;
+  }
+
+  .grid-flex-box .grid-flex-table .table-body .ui-inputarea input {
+    width: 100px;
+  }
+
+  .table-body .item-second {
+    display: flex;
+  }
+
+  .grid-flex-box .grid-flex-table .table-head {
+    background: #FAFAFA;
+  }
+
+  .grid-flex-box .grid-flex-table .table-title,
+  .table-item {
+    text-align: left;
+    line-height: 40px;
+    margin-left: 10px;
+  }
+
+  .grid-flex-box .grid-flex-table .table-item {
+    border-right: 1px solid #D9D9D9;
+  }
+
+  .grid-flex-box .grid-flex-table .table-head .flex1 {
+    flex: 1;
+  }
+
+  .grid-flex-box .grid-flex-table .table-head .flex2 {
+    flex: 2;
+  }
+
+  .grid-flex-box .grid-flex-table .table-head .flex3 {
+    flex: 3;
+  }
+
+  .grid-flex-box .grid-flex-table .table-head .flex6 {
+    flex: 6;
+  }
+
+  .grid-flex-box .grid-flex-table .table-body .flex1 {
+    flex: 1;
+  }
+
+  .grid-flex-box .grid-flex-table .table-body .flex2 {
+    flex: 2;
+  }
+
+  .grid-flex-box .grid-flex-table .table-body .flex3 {
+    flex: 3;
+  }
+
+  .grid-flex-box .grid-flex-table .table-body .flex6 {
+    flex: 6;
+  }
+</style>
+<div class="ui-panel ui-list-panel">
+  <div>
+    <div class="page-title">
+      <span>销售返利政策</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+
+  <ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+  </ui-searchbox>
+
+  <div class="ui-panel-body">
+    <div class="ui-table-container">
+      <div class="ui-panel-body-head">
+        <div class="ui-panel-body-head-left">
+          <ui-buttons params='datasource:$root.button1Source'>
+          </ui-buttons>
+        </div>
+      </div>
+
+      <ui-grid params='options:$root.grid1Option,vm:$root'>
+      </ui-grid>
+      <div class="ui-statistics margin-top-10">
+        已选择
+        <span class="font-c-blue" data-bind="text:SalePolicyList.selectedIndices().length"></span>项数据
+      </div>
+      <div class="pagination-right">
+        <div id='pagination' class='pagination u-pagination pagination-sm'
+          u-meta='{"type":"pagination","data":"SalePolicyList","pageChange":"pageChange","sizeChange":"sizeChange"}'>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ui-panel  ui-bill-panel ui-name-140" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span>销售返利政策</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <ui-buttons params='datasource:$root.button2Source'>
+      </ui-buttons>
+    </div>
+  </div>
+  <div class="ui-panel-head ui-bill-head">
+    <div class="ui-bill-body" id="policyBase">
+      <div style="margin-bottom: 10px;">
+      </div>
+      <ui-card params='datasource:$root.card1Source,vm:$root,dt:$root.SalePolicyCard,billstatus:$root.billPanelStatus'>
+      </ui-card>
+      <div class="clearfix"></div>
+    </div>
+    <!--保存后开始-->
+    <div style="display: none;" id="policyBase_show">
+      <ui-detail params='datasource:$root.detail1Source,dt:$root.SalePolicyDetail,vm:$root'>
+      </ui-detail>
+    </div>
+    <!--保存后结束-->
+  </div>
+  <div class="margin-top-50"></div>
+  <div class="ui-panel-body">
+    <div class="u-tabs  ui-tabs margin-top-10">
+      <div class="u-tabs__tab-bar">
+        <a href="#tab-panel-1" class="u-tabs__tab">客户范围</a>
+        <a href="#tab-panel-2" class="u-tabs__tab">返利依据</a>
+        <a href="#tab-panel-3" class="u-tabs__tab" data-bind="click: valueTabClickHandle">返利值</a>
+        <a href="#tab-panel-4" class="u-tabs__tab">返利计算规则</a>
+      </div>
+      <!-- 客户范围开始-->
+      <div class="u-tabs__panel" id="tab-panel-1">
+        <div class="ui-panel-body-head">
+          <div class="ui-panel-body-head-left">
+            <ui-buttons params='datasource:$root.button3Source'>
+            </ui-buttons>
+          </div>
+        </div>
+        <div class="ui-table-container" id="customerScopeInfo">
+          <ui-grid params='options:$root.grid2Option,vm:$root'>
+          </ui-grid>
+        </div>
+      </div>
+      <!-- 客户范围结束-->
+      <!-- 返利依据开始-->
+      <div class="u-tabs__panel" id="tab-panel-2">
+        <div class="ui-panel-body-head">
+          <div class="ui-panel-body-head-left">
+            <ui-buttons params='datasource:$root.button4Source'>
+            </ui-buttons>
+          </div>
+        </div>
+        <div class="ui-table-container">
+          <ui-grid params='options:$root.grid3Option,vm:$root'>
+          </ui-grid>
+        </div>
+      </div>
+      <!-- 返利依据结束-->
+      <!-- 返利值开始-->
+      <div class="u-tabs__panel" id="tab-panel-3">
+        <div class="ui-panel-body-head">
+          <div class="ui-panel-body-head-left">
+            <ui-buttons params='datasource:$root.button5Source'>
+            </ui-buttons>
+          </div>
+        </div>
+        <div id="valueBaseInfo">
+          <ui-card params='datasource:$root.card3Source,vm:$root,dt:$root.ValueCard'>
+          </ui-card>
+        </div>
+        <div class="margin-top-20"></div>
+        <div class="ui-table-container grid-flex-box" id="valueConditionDetailInfo">
+          <div class="grid-flex-table">
+            <div class="table-box">
+              <!-- title -->
+              <div class="table-head">
+                <div class="table-title flex2"><span>过滤条件名称</span></div>
+                <div class="table-title flex3"><span>比较符</span></div>
+                <div class="table-title flex3"><span>取值范围</span></div>
+              </div>
+              <!-- title end -->
+
+              <!-- con -->
+              <div class=""
+                data-bind="foreach: {data: ValueConditionDetailList.rows(), as:'row'},visible: ValueConditionDetailList.rows().length > 0">
+                <div class="table-body">
+                  <div class="table-item flex2">
+                    <div class="content-box">
+                      <div class="content">
+                        <p class="txt" data-bind="text: row.ref('conditionName')"></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="table-item flex3">
+                    <div
+                      data-bind="if: row.ref('conditionCode')() == 'orderType' || row.ref('conditionCode')() == 'billTranType'">
+                      <div class="ui-item " style="margin-top: 0 !important;">
+                        <div class="ui-inputarea "
+                          u-meta='{"type":"u-combobox","data":"ValueConditionDetailCard","field":"comparison1","datasource":"comparisonSource","id":"valueComparison1"}'>
+                          <input class="u-combobox-input" />
+                          <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div data-bind="if: row.ref('conditionCode')() == 'activity'">
+                      <div class="ui-item " style="margin-top: 0 !important;">
+                        <div class="ui-inputarea "
+                          u-meta='{"type":"u-combobox","data":"ValueConditionDetailCard","field":"comparison2","datasource":"comparisonSource","id":"valueComparison2"}'>
+                          <input class="u-combobox-input" />
+                          <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div data-bind="if: row.ref('conditionCode')() == 'goodsRange'">
+                      <div class="ui-item " style="margin-top: 0 !important;">
+                        <div class="ui-inputarea "
+                          u-meta='{"type":"u-combobox","data":"ValueConditionDetailCard","field":"comparison3","datasource":"comparisonSource","id":"valueComparison3"}'>
+                          <input class="u-combobox-input" />
+                          <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div data-bind="if: row.ref('conditionCode')() == 'project'">
+                      <div class="ui-item " style="margin-top: 0 !important;">
+                        <div class="ui-inputarea "
+                          u-meta='{"type":"u-combobox","data":"ValueConditionDetailCard","field":"comparison4","datasource":"comparisonSource","id":"valueComparison4"}'>
+                          <input class="u-combobox-input" />
+                          <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      data-bind="if: row.ref('conditionCode')() == 'goodsSupplement' || row.ref('conditionCode')() == 'isGift'">
+                      <span>等于</span>
+                    </div>
+                  </div>
+                  <div class="table-item flex3">
+                    <div
+                      data-bind="if: row.ref('conditionCode')() == 'orderType' || row.ref('conditionCode')() == 'billTranType'">
+                      <div class="ui-item " style="margin-top: 0 !important;">
+                        <div class="ui-inputarea" id="valueRerferTrantypeId"
+                          u-meta='{"type":"uiRefer","data":"ValueConditionDetailCard","field":"trantypeId","id":"valueTrantypeId"}'>
+                          <input id="valueBaseTrantypeId" readonly="readonly" autocomplete="off" />
+                          <span class="ui-icon uifont icon-bar refer"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div data-bind="if: row.ref('conditionCode')() == 'activity'">
+                      <div class="ui-item " style="margin-top: 0 !important;">
+                        <div class="ui-inputarea "
+                          u-meta='{"type":"uiRefer","data":"ValueConditionDetailCard","field":"promActivityId","id":"valuePromActivityId"}'>
+                          <input id="valueBasePromActivityId" readonly="readonly" autocomplete="off" />
+                          <span class="ui-icon uifont icon-bar refer"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div data-bind="if: row.ref('conditionCode')() == 'goodsRange'">
+                      <div class="ui-item " style="margin-top: 0 !important;">
+                        <div class="ui-inputarea "
+                          u-meta='{"type":"uiRefer","data":"ValueConditionDetailCard","field":"goodsRangeId","id":"valueGoodsRangeId"}'>
+                          <input id="valueBaseGoodsRangeId" readonly="readonly" autocomplete="off" />
+                          <span class="ui-icon uifont icon-bar refer"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div data-bind="if: row.ref('conditionCode')() == 'project'">
+                      <div class="ui-item " style="margin-top: 0 !important;">
+                        <div class="ui-inputarea "
+                          u-meta='{"type":"uiRefer","data":"ValueConditionDetailCard","field":"projectId","id":"valueProjectId"}'>
+                          <input id="valueBaseProjectId" readonly="readonly" autocomplete="off" />
+                          <span class="ui-icon uifont icon-bar refer"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div data-bind="if: row.ref('conditionCode')() == 'goodsSupplement'">
+                      <div class="ui-item " style="margin-top: 0 !important;">
+                        <div class="ui-inputarea "
+                          u-meta='{"type":"u-radio","data":"ValueConditionDetailCard","field":"goodsSupplement","id":"valueGoodsSupplement","datasource":"whetherSrc"}'>
+                          <label class="u-radio margin-right-15">
+                            <input type="radio" class="u-radio-button" name="goodsSupplement" />
+                            <span class="u-radio-label"></span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div data-bind="if: row.ref('conditionCode')() == 'isGift'">
+                      <div class="ui-item " style="margin-top: 0 !important;">
+                        <div class="ui-inputarea "
+                          u-meta='{"type":"u-radio","data":"ValueConditionDetailCard","field":"isGift","id":"valueIsGift","datasource":"whetherSrc"}'>
+                          <label class="u-radio margin-right-15">
+                            <input type="radio" class="u-radio-button" name="isGift" />
+                            <span class="u-radio-label"></span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="no-data" data-bind="visible: ValueConditionDetailList.rows().length == 0">无数据</div>
+              <!-- con end -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 返利值结束-->
+      <!-- 返利计算规则开始-->
+      <div class="u-tabs__panel" id="tab-panel-4">
+        <div class="ui-panel-body-head">
+          <div class="ui-panel-body-head-left">
+            <ui-buttons params='datasource:$root.button6Source'>
+            </ui-buttons>
+          </div>
+        </div>
+        <div class="ui-table-container calculation-grid-table" id="calculationBaseInfo">
+          <div class="grid-flex-box">
+            <div class="grid-flex-table" data-bind="visible: CalculationRuleList.rows().length > 0">
+              <div class="table-box">
+                <!-- title -->
+                <div class="table-head">
+                  <!--<div class="table-title flex2"><span>分财务组织</span></div>-->
+                  <div class="table-title flex2"><span>累进方式</span></div>
+                  <div class="table-title flex2"><span>定价指标项</span></div>
+                  <div class="table-title flex2"><span>指标下限</span></div>
+                  <div class="table-title flex2"><span>指标上限</span></div>
+                  <div class="table-title flex2"><span>返利价格</span></div>
+                </div>
+                <!-- title end -->
+                <!-- con -->
+                <div class="" data-bind="foreach: {data: CalculationRuleList.rows(), as:'row'}">
+                  <div class="table-body">
+                    <!--<div class="table-item flex2">
+                      <div class="content-box">
+                        <div class="ui-item " style="margin-top: 0 !important;">
+                          <div class="ui-inputarea ">
+                            <label class="u-checkbox h28 labelhidden"
+                              u-meta='{"type":"u-checkbox","data":"CalculationRuleList","field":"isFinanceOrg","checkedValue":1,"unCheckedValue":0}'>
+                              <input type="checkbox" class="u-checkbox-input">
+                              <span class="u-checkbox-label" data-role="name"></span>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>-->
+                    <div class="table-item flex2">
+                      <div class="content-box">
+                        <div class="ui-item " style="margin-top: 0 !important;">
+                          <div class="ui-inputarea "
+                            u-meta='{"type":"u-combobox","data":"CalculationRuleList","field":"progressiveWay","datasource":"progressiveWaySource"}'>
+                            <input class="u-combobox-input" />
+                            <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="table-item flex2">
+                      <div class="content-box">
+                        <div class="ui-item " style="margin-top: 0 !important;">
+                          <div class="ui-inputarea "
+                            u-meta='{"type":"u-combobox","data":"CalculationRuleList","field":"pricingIndexItem","datasource":"pricingIndexItemSource"}'>
+                            <input class="u-combobox-input" />
+                            <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="table-item flex6 J-calculationRuleItem-body"
+                      data-bind="foreach: {data: $root.CalculationRuleitemList.rows(), as:'childRow'},visible: $root.CalculationRuleitemList.rows().length > 0">
+                      <div class="item-second">
+                        <div class="flex2">
+                          <div class="content-box">
+                            <div class="ui-inputarea">
+                              <div>
+                                <input class="u-input J-number" data-bind="value:childRow.ref('lowerLimit')" />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="flex2">
+                          <div class="content-box">
+                            <div class="ui-inputarea">
+                              <div>
+                                <input class="u-input J-number" data-bind="value:childRow.ref('upperLimit')" />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="flex2">
+                          <div class="content-box">
+                            <div class="ui-inputarea">
+                              <div>
+                                <input class="u-input J-number" data-bind="value:childRow.ref('rebatePrice')" />
+                              </div>
+                            </div>
+                            <i class="addicon uifont icon-plus icon"
+                              data-bind="click: $root.addCalculationRuleitemRow.bind($data, row)"></i>
+                            <i class="delicon uifont icon-tubiao-shibai icon" style="margin-left: 15px;"
+                              data-bind="click: $root.delCalculationRuleitemRow.bind($data, row, childRow)"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 返利计算规则结束-->
+    </div>
+  </div>
+</div>
+
+</div>
+<!--详情开始-->
+<div class="ui-panel ui-bill-detail ui-name-140" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span>销售返利政策</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <ui-buttons params='datasource:$root.button7Source'>
+      </ui-buttons>
+    </div>
+  </div>
+  <div id="bpmhead"></div>
+  <div id="bpmfoot"></div>
+  <div class="ui-panel-head ui-bill-head">
+    <div class="ui-bill-body">
+      <ui-detail params='datasource:$root.detail1Source,dt:$root.SalePolicyDetail,vm:$root'>
+      </ui-detail>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <div class="ui-panel-body">
+    <div class="u-tabs ui-tabs">
+      <div class="u-tabs__tab-bar">
+        <a href="#tab-panel-5" class="u-tabs__tab">客户范围</a>
+        <a href="#tab-panel-6" class="u-tabs__tab">返利依据</a>
+        <a href="#tab-panel-7" class="u-tabs__tab">返利值</a>
+        <a href="#tab-panel-8" class="u-tabs__tab">返利计算规则</a>
+      </div>
+      <div class="u-tabs__panel" id="tab-panel-5">
+        <div class="ui-table-container  margin-top-20">
+          <ui-grid params='options:$root.grid5Option,vm:$root'>
+          </ui-grid>
+        </div>
+      </div>
+      <div class="u-tabs__panel" id="tab-panel-6">
+        <div class="ui-table-container margin-top-20">
+          <ui-grid params='options:$root.grid6Option,vm:$root'>
+          </ui-grid>
+        </div>
+      </div>
+      <div class="u-tabs__panel" id="tab-panel-7">
+        <ui-detail params='datasource:$root.detail2Source,dt:$root.ValueCard,vm:$root'>
+        </ui-detail>
+        <div class="ui-table-container margin-top-20">
+          <div class="ui-table-container grid-flex-box" id="valueConditionDetailInfo">
+            <div class="grid-flex-table">
+              <div class="table-box">
+                <!-- title -->
+                <div class="table-head">
+                  <div class="table-title flex2"><span>过滤条件名称</span></div>
+                  <div class="table-title flex3"><span>比较符</span></div>
+                  <div class="table-title flex3"><span>取值范围</span></div>
+                </div>
+                <!-- title end -->
+
+                <!-- con -->
+                <div class=""
+                  data-bind="foreach: {data: ValueConditionDetailList.rows(), as:'row'},visible: ValueConditionDetailList.rows().length > 0">
+                  <div class="table-body">
+                    <div class="table-item flex2">
+                      <div class="content-box">
+                        <div class="content">
+                          <p class="txt" data-bind="text: row.ref('conditionName')"></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="table-item flex3">
+                      <div data-bind="if: row.ref('comparison')() == 'NOTEQ'">
+                        <span>不等于</span>
+                      </div>
+                      <div data-bind="if: row.ref('comparison')() == 'EQ'">
+                        <span>等于</span>
+                      </div>
+                    </div>
+                    <div class="table-item flex3">
+                      <div
+                        data-bind="if: row.ref('conditionCode')() == 'orderType' || row.ref('conditionCode')() == 'billTranType'">
+                        <div class="content">
+                          <p class="txt" data-bind="text: row.ref('trantypeName')"></p>
+                        </div>
+                      </div>
+                      <div data-bind="if: row.ref('conditionCode')() == 'activity'">
+                        <div class="content">
+                          <p class="txt" data-bind="text: row.ref('promActivityName')"></p>
+                        </div>
+                      </div>
+                      <div data-bind="if: row.ref('conditionCode')() == 'goodsRange'">
+                        <div class="content">
+                          <p class="txt" data-bind="text: row.ref('goodsRangeName')"></p>
+                        </div>
+                      </div>
+                      <div data-bind="if: row.ref('conditionCode')() == 'project'">
+                        <div class="content">
+                          <p class="txt" data-bind="text: row.ref('projectName')"></p>
+                        </div>
+                      </div>
+                      <div data-bind="if: row.ref('conditionCode')() == 'goodsSupplement'">
+                        <div class="content">
+                          <p class="txt" data-bind="text: $root.whetherComputed(row)"></p>
+                        </div>
+                      </div>
+                      <div data-bind="if: row.ref('conditionCode')() == 'isGift'">
+                        <div class="content">
+                          <p class="txt" data-bind="text: $root.whetherComputed(row)"></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="u-tabs__panel" id="tab-panel-8">
+        <div class="ui-table-container margin-top-20">
+          <div class="grid-flex-box">
+            <div class="grid-flex-table" data-bind="visible: CalculationRuleList.rows().length > 0">
+              <div class="table-box">
+                <!-- title -->
+                <div class="table-head">
+                  <!--<div class="table-title flex2"><span>分财务组织</span></div>-->
+                  <div class="table-title flex2"><span>累进方式</span></div>
+                  <div class="table-title flex2"><span>定价指标项</span></div>
+                  <div class="table-title flex2"><span>指标下限</span></div>
+                  <div class="table-title flex2"><span>指标上限</span></div>
+                  <div class="table-title flex2"><span>返利价格</span></div>
+                </div>
+                <!-- title end -->
+                <!-- con -->
+                <div class="" data-bind="foreach: {data: CalculationRuleList.rows(), as:'row'}">
+                  <div class="table-body">
+                    <!--<div class="table-item flex2">
+                      <div class="content-box">
+                        <div class="ui-item " style="margin-top: 0 !important;">
+                          <div class="content">
+                            <p class="txt" data-bind="text: $root.isFinanceOrgComputed"></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>-->
+                    <div class="table-item flex2">
+                      <div class="content-box">
+                        <div class="content">
+                          <p class="txt" data-bind="text: $root.progressiveWayComputed"></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="table-item flex2">
+                      <div class="content-box">
+                        <div class="content">
+                          <p class="txt" data-bind="text: $root.pricingIndexItemComputed"></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="table-item flex6"
+                      data-bind="foreach: {data: $root.CalculationRuleitemList.rows(), as:'childRow'},visible: $root.CalculationRuleitemList.rows().length > 0">
+                      <div class="item-second">
+                        <div class="flex2">
+                          <div class="content-box">
+                            <div class="ui-inputarea">
+                              <div>
+                                <!-- <input class="u-input" data-bind="value:childRow.ref('lowerLimit')" /> -->
+                                <p class="txt" data-bind="text: childRow.ref('lowerLimit')"></p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="flex2">
+                          <div class="content-box">
+                            <div class="ui-inputarea">
+                              <div>
+                                <!-- <input class="u-input" data-bind="value:childRow.ref('upperLimit')" /> -->
+                                <p class="txt" data-bind="text: childRow.ref('upperLimit')"></p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="flex2">
+                          <div class="content-box">
+                            <div class="ui-inputarea">
+                              <div>
+                                <!-- <input class="u-input" data-bind="value:childRow.ref('rebatePrice')" /> -->
+                                <p class="txt" data-bind="text: childRow.ref('rebatePrice')"></p>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!--详情结束-->
+
+<!-- 新增返利依据弹框 start -->
+<div id="dialog_rebate_basis" style="display:none;">
+  <div class="u-msg-title">
+    <h4>新增返利依据</h4>
+  </div>
+  <div class="u-tabs ui-tabs u-msg-content" id="basisBaseInfo">
+    <ui-card params='datasource:$root.card2Source,vm:$root,dt:$root.BasisCard'>
+    </ui-card>
+    <div class="margin-top-20"></div>
+    <div class="ui-table-container grid-flex-box" id="basisConditionDetailInfo">
+      <div class="grid-flex-table" data-bind="visible: BasisConditionDetailList.rows().length > 0">
+        <div class="table-box">
+          <!-- title -->
+          <div class="table-head">
+            <div class="table-title flex2"><span>过滤条件名称</span></div>
+            <div class="table-title flex3"><span>比较符</span></div>
+            <div class="table-title flex3"><span>取值范围</span></div>
+          </div>
+          <!-- title end -->
+
+          <!-- con -->
+          <div class="" data-bind="foreach: {data: BasisConditionDetailList.rows(), as:'row'}">
+            <div class="table-body">
+              <div class="table-item flex2">
+                <div class="content-box">
+                  <div class="content">
+                    <p class="txt" data-bind="text: row.ref('conditionName')"></p>
+                  </div>
+                </div>
+              </div>
+              <div class="table-item flex3">
+                <div
+                  data-bind="if: row.ref('conditionCode')() == 'orderType' || row.ref('conditionCode')() == 'billTranType'">
+                  <div class="ui-item " style="margin-top: 0 !important;">
+                    <div class="ui-inputarea "
+                      u-meta='{"type":"u-combobox","data":"BasisConditionDetailCard","field":"comparison1","datasource":"comparisonSource","id":"basisComparison1"}'>
+                      <input class="u-combobox-input" />
+                      <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+                    </div>
+                  </div>
+                </div>
+                <div data-bind="if: row.ref('conditionCode')() == 'activity'">
+                  <div class="ui-item " style="margin-top: 0 !important;">
+                    <div class="ui-inputarea "
+                      u-meta='{"type":"u-combobox","data":"BasisConditionDetailCard","field":"comparison2","datasource":"comparisonSource","id":"basisComparison2"}'>
+                      <input class="u-combobox-input" />
+                      <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+                    </div>
+                  </div>
+                </div>
+                <div data-bind="if: row.ref('conditionCode')() == 'goodsRange'">
+                  <div class="ui-item " style="margin-top: 0 !important;">
+                    <div class="ui-inputarea "
+                      u-meta='{"type":"u-combobox","data":"BasisConditionDetailCard","field":"comparison3","datasource":"comparisonSource","id":"basisComparison3"}'>
+                      <input class="u-combobox-input" />
+                      <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+                    </div>
+                  </div>
+                </div>
+                <div data-bind="if: row.ref('conditionCode')() == 'project'">
+                  <div class="ui-item " style="margin-top: 0 !important;">
+                    <div class="ui-inputarea "
+                      u-meta='{"type":"u-combobox","data":"BasisConditionDetailCard","field":"comparison4","datasource":"comparisonSource","id":"basisComparison4"}'>
+                      <input class="u-combobox-input" />
+                      <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  data-bind="if: row.ref('conditionCode')() == 'goodsSupplement' || row.ref('conditionCode')() == 'isGift'">
+                  <span>等于</span>
+                </div>
+              </div>
+              <div class="table-item flex3">
+                <div
+                  data-bind="if: row.ref('conditionCode')() == 'orderType' || row.ref('conditionCode')() == 'billTranType'">
+                  <div class="ui-item " style="margin-top: 0 !important;">
+                    <div class="ui-inputarea" id="basisRerferTrantypeId"
+                      u-meta='{"type":"uiRefer","data":"BasisConditionDetailCard","field":"trantypeId","id":"basisTrantypeId"}'>
+                      <input id="basisBaseTrantypeId" readonly="readonly" autocomplete="off" />
+                      <span class="ui-icon uifont icon-bar refer"></span>
+                    </div>
+                  </div>
+                </div>
+                <div data-bind="if: row.ref('conditionCode')() == 'activity'">
+                  <div class="ui-item " style="margin-top: 0 !important;">
+                    <div class="ui-inputarea "
+                      u-meta='{"type":"uiRefer","data":"BasisConditionDetailCard","field":"promActivityId","id":"basisPromActivityId"}'>
+                      <input id="basisBasePromActivityId" readonly="readonly" autocomplete="off" />
+                      <span class="ui-icon uifont icon-bar refer"></span>
+                    </div>
+                  </div>
+                </div>
+                <div data-bind="if: row.ref('conditionCode')() == 'goodsRange'">
+                  <div class="ui-item " style="margin-top: 0 !important;">
+                    <div class="ui-inputarea "
+                      u-meta='{"type":"uiRefer","data":"BasisConditionDetailCard","field":"goodsRangeId","id":"basisGoodsRangeId"}'>
+                      <input id="basisBaseGoodsRangeId" readonly="readonly" autocomplete="off" />
+                      <span class="ui-icon uifont icon-bar refer"></span>
+                    </div>
+                  </div>
+                </div>
+                <div data-bind="if: row.ref('conditionCode')() == 'project'">
+                  <div class="ui-item " style="margin-top: 0 !important;">
+                    <div class="ui-inputarea "
+                      u-meta='{"type":"uiRefer","data":"BasisConditionDetailCard","field":"projectId","id":"basisProjectId"}'>
+                      <input id="basisBaseProjectId" readonly="readonly" autocomplete="off" />
+                      <span class="ui-icon uifont icon-bar refer"></span>
+                    </div>
+                  </div>
+                </div>
+                <div data-bind="if: row.ref('conditionCode')() == 'goodsSupplement'">
+                  <div class="ui-item " style="margin-top: 0 !important;">
+                    <div class="ui-inputarea "
+                      u-meta='{"type":"u-radio","data":"BasisConditionDetailCard","field":"goodsSupplement","id":"basisGoodsSupplement","datasource":"whetherSrc"}'>
+                      <label class="u-radio margin-right-15">
+                        <input type="radio" class="u-radio-button" name="goodsSupplement" />
+                        <span class="u-radio-label"></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div data-bind="if: row.ref('conditionCode')() == 'isGift'">
+                  <div class="ui-item " style="margin-top: 0 !important;">
+                    <div class="ui-inputarea "
+                      u-meta='{"type":"u-radio","data":"BasisConditionDetailCard","field":"isGift","id":"basisIsGift","datasource":"whetherSrc"}'>
+                      <label class="u-radio margin-right-15">
+                        <input type="radio" class="u-radio-button" name="isGift" />
+                        <span class="u-radio-label"></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="no-data" data-bind="visible: BasisConditionDetailList.rows().length == 0">无数据</div>
+          <!-- con end -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="u-msg-footer">
+    <a class="ui-btn ui-btn-primary J-cancel margin-right-5">取消</a>
+    <a class="ui-btn ui-btn-green J-ok">保存</a>
+  </div>
+</div>
+<!-- 新增返利依据弹框 end -->
+<!-- 返利依据详情弹框 start -->
+<div id="dialog_rebate_basis_detail" style="display:none;">
+  <div class="u-msg-title">
+    <h4>返利依据详情</h4>
+  </div>
+  <div class="u-tabs ui-tabs u-msg-content">
+    <ui-detail params='datasource:$root.detail3Source,dt:$root.BasisCard,vm:$root'>
+    </ui-detail>
+    <div class="margin-top-20"></div>
+    <div class="ui-table-container grid-flex-box">
+      <div class="grid-flex-table" data-bind="visible: BasisConditionDetailList.rows().length > 0">
+        <div class="table-box">
+          <!-- title -->
+          <div class="table-head">
+            <div class="table-title flex2"><span>过滤条件名称</span></div>
+            <div class="table-title flex3"><span>比较符</span></div>
+            <div class="table-title flex3"><span>取值范围</span></div>
+          </div>
+          <!-- title end -->
+
+          <!-- con -->
+          <div class=""
+            data-bind="foreach: {data: BasisConditionDetailList.rows(), as:'row'},visible: BasisConditionDetailList.rows().length > 0">
+            <div class="table-body">
+              <div class="table-item flex2">
+                <div class="content-box">
+                  <div class="content">
+                    <p class="txt" data-bind="text: row.ref('conditionName')"></p>
+                  </div>
+                </div>
+              </div>
+              <div class="table-item flex3">
+                <div data-bind="if: row.ref('comparison')() == 'NOTEQ'">
+                  <span>不等于</span>
+                </div>
+                <div data-bind="if: row.ref('comparison')() == 'EQ'">
+                  <span>等于</span>
+                </div>
+              </div>
+              <div class="table-item flex3">
+                <div
+                  data-bind="if: row.ref('conditionCode')() == 'orderType' || row.ref('conditionCode')() == 'billTranType'">
+                  <div class="content">
+                    <p class="txt" data-bind="text: row.ref('trantypeName')"></p>
+                  </div>
+                </div>
+                <div data-bind="if: row.ref('conditionCode')() == 'activity'">
+                  <div class="content">
+                    <p class="txt" data-bind="text: row.ref('promActivityName')"></p>
+                  </div>
+                </div>
+                <div data-bind="if: row.ref('conditionCode')() == 'goodsRange'">
+                  <div class="content">
+                    <p class="txt" data-bind="text: row.ref('goodsRangeName')"></p>
+                  </div>
+                </div>
+                <div data-bind="if: row.ref('conditionCode')() == 'project'">
+                  <div class="content">
+                    <p class="txt" data-bind="text: row.ref('projectName')"></p>
+                  </div>
+                </div>
+                <div data-bind="if: row.ref('conditionCode')() == 'goodsSupplement'">
+                  <div class="content">
+                    <p class="txt" data-bind="text: $root.whetherComputed(row)"></p>
+                  </div>
+                </div>
+                <div data-bind="if: row.ref('conditionCode')() == 'isGift'">
+                  <div class="content">
+                    <p class="txt" data-bind="text: $root.whetherComputed(row)"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- con end -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 返利依据详情弹框 end -->
+<!--导入弹框 end-->
+<div id="exportFiel"></div>
+<div id="importFiel"></div>

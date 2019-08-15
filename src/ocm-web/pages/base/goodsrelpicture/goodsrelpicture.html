@@ -1,0 +1,55 @@
+<div class="ui-panel ui-list-panel ui-name-140">
+    <div>
+        <div class="page-title">图片维护</div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="title-seperator"></div>
+    <ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+    </ui-searchbox>
+    <div class="ui-panel-body">
+        <div class="ui-panel-body-head">
+            <div class="ui-panel-body-head-left">
+
+                <ui-buttons params='datasource:$root.buttonSource'>
+                </ui-buttons>
+            </div>
+        </div>
+        <div class="ui-table-container">
+            <ui-grid params='options:$root.gridOption,vm:$root'>
+            </ui-grid>
+            <div class="ui-statistics margin-top-10">
+                <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择
+                <span class="font-c-blue" data-bind="text:GoodsRelPictureList.selectedIndices().length"></span>项数据
+            </div>
+            <div class="pagination-right">
+                <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"GoodsRelPictureList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+            </div>
+        </div>
+    </div>
+</div>
+<ui-dialogcard params='datasource:$root.dialogcardSource,ref:$root.dialogcardcomp,dt:$root.GoodsRelPictureList'>
+</ui-dialogcard>
+<!--大图浏览模态框开始-->
+<div id="picBig-dialog" style="display:none;">
+    <div class="u-msg-title">
+        <h4>图片预览</h4>
+    </div>
+    <div class="u-msg-content text-center">
+        <img src="" id="picBig" style="max-width: 860px;" />
+        <ui-buttons params='datasource:$root.button10Source'>
+        </ui-buttons>
+        <div class="btn-img-tip" id="imgTip"></div>
+    </div>
+    <div class="u-msg-footer">
+    </div>
+</div>
+<!--大图浏览模态框结束-->
+<!-- 图片上传-->
+<div id="fileiptwrap">
+    <input class="u-input" type="file" name="addfile" id="uploadbatch_id" multiple="multiple" style="display:none;" />
+</div>

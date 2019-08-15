@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="utf-8">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <!--360 使用Google Chrome Frame-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <!--优先使用 IE 最新版本和 Chrome-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="bootstrap admin template">
+    <meta name="author" content="">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="iuap应用平台"/>
+    <link rel="shortcut icon" href="../../images/favicon.ico" type="images/x-icon"/>
+    <link rel="Bookmark" href="../../images/favicon.ico">
+    <link rel="icon" href="../../images/favicon.png" type="images/png"/>
+
+    <title>iuap应用平台</title>
+
+    <link rel="stylesheet" href="../../apworkbench/trd/uui/css/u.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="../../apworkbench/trd/uui/css/tree.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="../../apworkbench/trd/uui/css/grid.css" media="screen" title="no title" charset="utf-8">
+
+    <link rel="stylesheet" href="../../apworkbench/font/localfont/iconfont.css"/>
+    <link rel="stylesheet" href="login.css"/>
+</head>
+<body class="page">
+<div class="u-container-fluid " style="height: 100%">
+    <div class="u-row" style="height: 100%">
+        <div class="u-col-12" style="position: relative;height: 100%">
+            <div class="u-panel pull-right" id="loginBox"  >
+                <div class="u-panel-body">
+                    <div class="u-row" >
+                        <div class="u-col-12">
+                            <div class="u-form-group u-has-feedback">
+                                        <span class="u-form-control-feedback u-input-icon-left rightborder">
+                                            <i class=" iconfont icon-accounticon"></i>
+                                        </span>
+                                <input type="text" class="u-form-control"
+                                       u-meta='{"id":"account","type":"string","data":"DataTables.login","field":"account"}'
+                                       placeholder="用户名 /邮箱  /手机号" name="account"
+                                        >
+                            </div>
+                        </div>
+                        <div class="u-col-12">
+                            <div class="u-form-group u-has-feedback">
+                                        <span class="u-form-control-feedback u-input-icon-left rightborder iconfont icon-password-icon">
+                                            <i class="icon iconfont icon-passwordicon"></i>
+                                        </span>
+                                <input  class="u-form-control"
+                                        u-meta='{"id":"password","type":"password","data":"DataTables.login","field":"password"}'
+                                        placeholder="密码" name="password" type="text"   onfocus="this.type='password'"
+                                        >
+                            </div>
+                        </div>
+                        <div class="u-col-12">
+                            <div class="u-form-group ">
+                               <!-- <label class="u-checkbox w-64" style="width: 150px">
+                                    <input type="checkbox" name="remeberAccount" class="u-checkbox-input" checked>
+                                    <span class="u-checkbox-label">记住登录账号</span>
+                                </label>-->
+
+                                <a href="../forgetpassword/index.html" target="_blank" class="f-password pull-right">忘记密码?</a>
+                            </div>
+                        </div>
+                        <div class="u-col-12">
+                            <div class="u-form-group text-center">
+                                <button
+                                        data-bind="click:Events.login"
+                                        class="u-button raised primary u-button-block u-button-danger" id="loginBtn">登录
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="dialog_content" style="display:none;">
+    <div class="u-msg-title u-border-bottom">
+        <h4 class="text-center">修改默认密码</h4>
+    </div>
+    <div class="u-msg-content">
+        <div class="u-row">
+            <div class="u-col-12 " >
+                <div class="u-form-group">
+                    <label class="u-col-4 u-form-label text-right">新密码:</label>
+                    <div class="u-col-8">
+                        <input type="text" class="u-form-control"
+                               u-meta='{"id":"modifyPassword","type":"string","data":"DataTables.modifyPassword","field":"newpassword"}'
+                               name='modifyPassword'    onfocus="this.type='password'"
+                               placeholder="请输入新密码">
+                        <!--<p style="position: absolute;top: 22px">asasasdsdaasd</p>-->
+                    </div>
+                </div>
+            </div>
+            <div class="u-col-12  " >
+                <div class="u-form-group">
+                    <label class="u-col-4 u-form-label text-right">确认密码:</label>
+                    <div class="u-col-8">
+                        <input type="text" class="u-form-control"
+                               u-meta='{"id":"confirmPassword","type":"string","data":"DataTables.modifyPassword","field":"confirmPassword"}'
+                               name="confirmPassword"   onfocus="this.type='password'"
+                               placeholder="请再确认新密码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="u-msg-footer" style="padding-right: 120px;">
+        <button class="u-msg-cancel u-button " data-bind="click:Events.cancel">取消<span class="u-button-container"><span class="u-ripple"></span></span>
+        </button>
+        <button class="u-msg-ok u-button u-button-info " data-bind="click:Events.confirm">确定<span class="u-button-container"><span class="u-ripple"></span></span>
+        </button>
+    </div>
+</div>
+<script src="../../trd/jquery/jquery-1.11.2.min.js"></script>
+<!--[if lt IE 9]>
+<script type="text/javascript" charset="utf-8" src="../../../vendor/html5shiv.min.js"></script>
+<script src="../../../vendor/es5-shim.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../apworkbench/trd/uui/js/u-polyfill.js"></script>
+<script src="../../../vendor/es5-sham.min.js"></script>
+<![endif]-->
+<script type="text/javascript">
+    $.ajaxSetup({
+        contentType : "application/x-www-form-urlencoded; charset=utf-8"
+    });
+</script>
+<script src="../../trd/knockout/knockout-3.2.0.debug.js"></script>
+<!-- 静态资源链接 -->
+<script src="../../apworkbench/trd/uui/js/u.js"></script>
+<script type="text/javascript" src="jqeury.cookie.js"></script>
+<script type="text/javascript" src="login.js"></script>
+</body>
+</html>

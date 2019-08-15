@@ -1,0 +1,19 @@
+.ztree li a.ui-circle-opr {
+    padding: 0 5px;
+    margin-right: 5px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    line-height: 20px;
+}
+
+.ztree li a.ui-circle-opr .uifont {
+    font-size: 12px;
+}
+
+.ztree li span.button.switch.level0 {
+    visibility: hidden;
+    width: 1px;
+}
+.ztree li.focusNode>span.button.switch {
+    color: inherit !important;
+}

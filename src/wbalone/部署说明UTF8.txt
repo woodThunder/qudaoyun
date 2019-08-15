@@ -1,0 +1,29 @@
+1：拷贝portal_20160303.rar到tomcat webapps目录下，解压即可。
+
+2：配置数据库信息，找到文件tomcat\webapps\portal\WEB-INF\classes\application.properties修改如下信息可。
+jdbc.url=jdbc:mysql://172.20.14.97:3306/wb_integration?useUnicode=true&characterEncoding=utf-8
+jdbc.username=root
+jdbc.password=root
+
+3：修改密钥文件目录，在步骤2文件中 
+   client.credential.path=D:/authfile.txt
+   其中authfile.txt文件在portal\WEB-INF\classes下
+   
+4： 修改单点信息，即用户中心回调地址ip， 文件web.xml
+
+        如：
+		<init-param>
+	        <param-name>service</param-name>
+	        <param-value>http://10.1.244.3:8080/workbench/home/index</param-value>
+	    </init-param>
+		
+		
+		修改为：
+		init-param>
+	        <param-name>service</param-name>
+	        <param-value>http://当前环境机器ip:端口/应用名/home/index</param-value>
+	    </init-param>
+		
+	或者通过编辑工具，editplus,notepad++等替换功能直接替换即可
+	
+5：上述文件修改保存后即可启动portal服务。		

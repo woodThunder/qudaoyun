@@ -1,0 +1,330 @@
+#sideMenu {
+    background-color: initial;
+    padding-bottom: 40px;
+    font: 14px/18px "Microsoft YaHei"
+}
+
+#sideMenu .padlft60 {
+    padding-left: 60px
+}
+
+#sideMenu .tooltip.active .tooltip-inner {
+    background-color: #e33c37 !important
+}
+
+#sideMenu .tooltip.top .tooltip-arrow {
+    border-top-color: #e33c37 !important
+}
+
+#sideMenu .u-form-group {
+    margin-left: 10px;
+    margin-right: 10px
+}
+
+#sideMenu .u-form-group .u-form-control {
+    border: 1px solid #d7d7d7;
+    border-radius: initial
+}
+
+#sideMenu .queren {
+    height:30px;
+    line-height: 30px;
+    padding: 0 5px;
+    font-size: 12px;
+    background-color: #039BE5;
+    min-width: 65px;
+    border-radius: 4px;
+}
+
+#sideMenu .apptitle,
+#sideMenu .ecmi-input {
+    background-color: transparent;
+    color: #333;
+    font-family: "Microsoft YaHei"
+}
+
+#sideMenu .quxiao {
+    line-height: 30px;
+    height: 30px;
+    padding: 0 5px;
+    border: 1px solid #039BE5;
+    color: #039BE5;
+    font-size: 12px;
+    border-radius: 4px;
+    background: #fff;
+    margin-right: 15px;
+    min-width: 65px;
+}
+
+#sideMenu .margin-top-8 {
+    margin-top: 8px
+}
+
+#sideMenu input {
+    outline: 0
+}
+
+#sideMenu .ecmi-input {
+    font-size: 13px;
+    width: 170px;
+    height: 29px;
+    line-height: 29px;
+    border: 1px solid #d7d7d7;
+    outline: 0;
+    margin: 0;
+    padding: 0 0 0 5px;
+    border-radius: initial
+}
+
+#sideMenu .ecmi-input:focus {
+    border: 1px solid #6bcaea
+}
+
+#sideMenu .apptitle {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+    margin-bottom: 20px;
+    z-index: 5;
+}
+
+#sideMenu #iconpicker .icon-show {
+    margin-top: 15px;
+    height: 50px
+}
+
+#sideMenu #iconpicker .icon-show i {
+    font-size: 50px
+}
+
+#sideMenu #iconpicker>p {
+    margin: 10px 0
+}
+
+#sideMenu #iconpicker .colors .primaries>div {
+    cursor: pointer;
+    display: inline-block;
+    width: 30px;
+    height: 25px;
+    margin-left: 10px;
+    margin-top: 10px;
+    line-height: 25px;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 12px !important;
+    overflow: hidden
+}
+
+#sideMenu .menu .sub-head .head-btn,
+#sideMenu .menu-content .sub-head .head-btn {
+    float: right;
+    margin-top: 8px
+}
+
+#sideMenu #iconpicker #sIcon {
+    border: 1px solid #eee
+}
+
+#sideMenu #iconpicker #sIcon .tab {
+    background-color: #eee
+}
+
+#sideMenu #iconpicker #sIcon .tab li {
+    cursor: pointer;
+    min-width: 70px;
+    display: inline-block;
+    text-align: center;
+    padding: 3px 5px;
+    background: #eee
+}
+
+#sideMenu #iconpicker #sIcon .tab li.cur {
+    background-color: #fff;
+    color: #039BE5
+}
+
+#sideMenu #iconpicker #sIcon .icon-list {
+    padding: 10px;
+    height: 180px;
+    overflow-y: auto
+}
+
+#sideMenu #iconpicker #sIcon .icon-list span {
+    cursor: pointer;
+    line-height: 24px;
+    width: 24px;
+    font-size: 22px;
+    display: inline-block;
+    overflow: hidden
+}
+
+#sideMenu #iconpicker #sIcon .icon-list span:hover {
+    color: #039BE5
+}
+
+#sideMenu .menu {
+    width: 100%;
+    min-width: 270px;
+    overflow: hidden;
+    background-color: #fff
+}
+
+#sideMenu .menu .sub-head .u-button,
+#sideMenu .menu-content .sub-head .u-button {
+    min-width: initial
+}
+
+#sideMenu .menu .sub-head {
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    border-bottom: 1px solid #d7d7d7;
+    height: 45px;
+    line-height: 45px;
+    overflow: hidden;
+    padding-left: 20px
+}
+
+#sideMenu .menu .sub-head .iconfont {
+    color: #039BE5;
+    padding: 0;
+    font-size: 16px
+}
+
+#sideMenu .menu .sub-head .u-button:hover {
+    background-color: transparent
+}
+
+#sideMenu .menu .menu-body dl {
+    margin-bottom: 0
+}
+
+#sideMenu .menu .menu-body dl.cur dt,
+#sideMenu .menu .menu-body dl.cur dt:hover {
+    position: relative;
+    background-color: #c4eaf6
+}
+
+#sideMenu .menu .menu-body dl dd:hover,
+#sideMenu .menu .menu-body dl dt:hover,
+#sideMenu .menu .menu-body dl.cur dd.cur,
+#sideMenu .menu .menu-body dl.cur dd:hover {
+    background-color: #e9f7fc
+}
+
+#sideMenu .menu .menu-body dl.cur dt i,
+#sideMenu .menu .menu-body dl.cur dt:hover i {
+    position: absolute;
+    left: 10px;
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
+    -moz-transform: rotate(0);
+    -o-transform: rotate(0);
+    -webkit-transform: rotate(0);
+    transform: rotate(0)
+}
+
+#sideMenu .menu .menu-body dl.cur dd {
+    display: block;
+    height: 40px;
+    -webkit-transition: 1s height ease;
+    -moz-transition: 1s height ease;
+    -o-transition: 1s height ease;
+    transition: 1s height ease
+}
+
+#sideMenu .menu .menu-body dl dt {
+    position: relative
+}
+
+#sideMenu .menu .menu-body dl dt span.ext-truncate {
+    display: inline-block;
+    width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+#sideMenu .menu .menu-body dl dt span.pull-right {
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 18px;
+    color: #039BE5
+}
+
+#sideMenu .menu .menu-body dl dt i {
+    font-weight: 100;
+    font-size: 12px;
+    color: #7A7777;
+    position: absolute;
+    left: 9px;
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=-1);
+    -moz-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg)
+}
+
+#sideMenu .menu .menu-body dl dd,
+#sideMenu .menu .menu-body dl dt {
+    height: 40px;
+    line-height: 40px;
+    padding-left: 25px;
+    font-weight: 500;
+    border-bottom: 1px solid #eee
+}
+
+#sideMenu .menu .menu-body dl dd {
+    height: 0;
+    display: none;
+    padding-left: 35px
+}
+
+#sideMenu .menu .menu-body dl dd:hover {
+    background-color: #c4eaf6
+}
+
+#sideMenu .u-form-control:focus,
+#sideMenu .u-form-control:hover {
+    border-color: #6bcaea
+}
+
+#sideMenu .menu-content {
+    width: 100%;
+    overflow: hidden;
+    background-color: #fff;
+    padding-bottom: 20px;
+    min-height: 540px
+}
+
+#sideMenu .menu-content .sub-head {
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    border-bottom: 1px solid #d7d7d7;
+    height: 45px;
+    line-height: 45px;
+    overflow: hidden;
+    padding-left: 20px
+}
+
+#sideMenu .menu-content .sub-head .iconfont {
+    color: #039BE5;
+    padding: 0;
+    font-size: 16px
+}
+
+#sideMenu .menu-content .sub-head .u-button:hover {
+    background-color: transparent
+}
+
+#sideMenu .menu-content .medit {
+    padding-top: 10px
+}
+
+#sideMenu .multi-form input {
+    border: 1px solid #cecece;
+}
+.qy-gridtree-div .ztree >li:first-child{
+    margin-bottom: 20px;
+}

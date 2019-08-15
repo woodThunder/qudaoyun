@@ -1,0 +1,299 @@
+<!-- start  流程历史图 层---->
+<div class="imgHistory_list">
+    <div class='modal fade' id='imgHistory_list' tabindex='-1' role='dialog'>
+        <div class='modal-content' style='width:100%;height:100% '>
+            <div class='u-mdlayout-page-header'>
+                <span class='content-title'>流程历史</span>
+            </div>
+            <div class='u-mdlayout-page-section'>
+                <div class=''>
+                    <div class=''>
+                        <button type='button' class='u-button raised accent u-button-pa' data-bind='click: bpmImgBack'>
+                            返回
+                        </button>
+                    </div>
+                    <div class='' style=''>
+                        <iframe id='img_His' width='99%' style='border: 0px;height: 100%;min-height:300px;'></iframe>
+                        <div class='table-container'>
+                            <table class='u-table' style='width:99%'>
+                                <thead>
+                                <tr>
+                                    <th>任务ID</th>
+                                    <th>任务名称</th>
+                                    <th>任务类型</th>
+                                    <th>执行者</th>
+                                    <th>开始时间</th>
+                                    <th>结束时间</th>
+                                    <th>审批意见</th>
+                                    <th>超时时间</th>
+                                </tr>
+                                </thead>
+                                <tbody data-bind="foreach:{data:flowHisDa.rows(), as: 'row', afterAdd: afterAdd}">
+                                <tr data-bind="css: { 'is-selected' : row.selected() } ,attr:{'rowindex': $index},click: $parent.rowClick">
+                                    <td style='display: none;'><label class='u-checkbox only-style'
+                                                                      data-bind="click: row.multiSelect, css:{'is-checked': row.selected()}">
+                                        <input type='checkbox' class='u-checkbox-input'>
+                                        <span class='u-checkbox-label'></span> </label></td>
+                                    <td data-bind="text: row.ref('id')"></td>
+                                    <td data-bind="text: row.ref('name')"></td>
+                                    <td data-bind="text: row.ref('state')"></td>
+                                    <td data-bind="text: row.ref('executionId')"></td>
+                                    <td data-bind="text: row.ref('startTime')"></td>
+                                    <td data-bind="text: row.ref('endTime')"></td>
+                                    <td data-bind="text: row.ref('deleteReason')"></td>
+                                    <td data-bind="text: row.ref('claimTime')"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div id='pagination_img' class=''></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+<!-- end  流程历史图 层------>
+
+<!-- start 单据上部分按钮-->
+<!--增加单据进来的按钮 --->
+<div class="approveTypeRadio_bill">
+    <div id='approveTypeRadio'>
+        <label>
+            <input name='approvetype' type='radio' value='agree' checked='true'/>
+            <span class='text'></span></label>&nbsp;&nbsp;同意&nbsp;&nbsp;&nbsp;&nbsp; <label>
+        <input name='approvetype' type='radio' value='unagree'/>
+        &nbsp;&nbsp;<span class='text'>不同意</span></label>&nbsp;&nbsp; <textarea id='approve_text'
+                                                                                style='width:100%;height:100px;'></textarea>
+    </div>
+    <button id='billSubmitBpm' type='button' class='u-button raised accent u-button-pa' data-bind='click: bpmApprove'>
+        提交
+    </button>
+    &nbsp;&nbsp;&nbsp;
+    <button id='billImgBpm' type='button' class='u-button raised accent u-button-pa' data-bind='click: bpmImgAddClick'>
+        流程图
+    </button>
+    &nbsp;&nbsp;&nbsp;
+</div>
+<!--增加单据进来的按钮 --->
+<div class="approveTypeRadio1">
+    <div id='approveTypeRadio'>
+        <label>
+            <input name='approvetype' type='radio' value='agree' checked='true'/>
+            <span class='text'></span></label>&nbsp;&nbsp;同意&nbsp;&nbsp;&nbsp;&nbsp; <label>
+        <input name='approvetype' type='radio' value='unagree'/>
+        &nbsp;&nbsp;<span class='text'>不同意</span></label>&nbsp;&nbsp; <label>
+        <input name='approvetype' type='radio' value='rejectToActivity'/>
+        &nbsp;&nbsp;<span class='text'>驳回到环节</span></label>&nbsp;&nbsp;&nbsp; <label>
+        <input name='approvetype' type='radio' value='rejectToBillMaker'/>
+        &nbsp;&nbsp;<span class='text'>驳回到制单人</span></label>&nbsp;&nbsp;&nbsp; <label>
+        <input name='approvetype' type='radio' value='signAdd'/>
+        &nbsp;&nbsp;<span class='text'>加签</span></label>&nbsp;&nbsp;&nbsp; <label>
+        <input name='approvetype' type='radio' value='delegate'/>
+        &nbsp;&nbsp;<span class='text'>改派</span></label>
+        <!--<label><input name='approvetype' type='radio' value='termination'/>&nbsp;&nbsp;<span class='text'>终止</span></label>-->
+        <textarea id='approve_text' style='width:100%;height:100px;'></textarea>
+    </div>
+    <button type='button' class='u-button raised accent u-button-pa' id='billSubmitBpm' data-bind='click: bpmApprove'>
+        提交
+    </button>
+    &nbsp;&nbsp;&nbsp;
+    <button type='button' class='u-button raised accent u-button-pa' data-bind='click: bpmImgApproveClick'
+            id="billImgBpm">
+        流程图
+    </button>
+    &nbsp;&nbsp;&nbsp;
+</div>
+<div class="approveTypeRadio2">
+    <div id='approveTypeRadio'>
+        <label>
+            <input name='approvetype' type='radio' value='withdraw' checked='true'/>
+            <span class='text'></span></label>&nbsp;&nbsp;弃审&nbsp;&nbsp;&nbsp;&nbsp; <textarea id='approve_text'
+                                                                                               style='width:100%;height:100px;'></textarea>
+    </div>
+    <button type='button' class='u-button raised accent u-button-pa' id='approveButton' data-bind='click: bpmApprove'>
+        提交
+    </button>
+    &nbsp;&nbsp;&nbsp;
+    <button type='button' class='u-button raised accent u-button-pa' data-bind='click: bpmImgApproveClick'>
+        流程图
+    </button>
+    &nbsp;&nbsp;&nbsp;
+    <button type='button' class='u-button raised accent u-button-pa' data-bind='click: bpmBack'>
+        返回
+    </button>
+</div>
+
+<div class="approveTypeRadio3">
+    <button type='button' class='u-button raised accent u-button-pa' data-bind='click: bpmImgApproveClick'>
+        流程图
+    </button>
+    &nbsp;&nbsp;&nbsp;
+    <button type='button' class='u-button raised accent u-button-pa' data-bind='click: bpmBack'>
+        返回
+    </button>
+</div>
+<!--end  单据上部分按钮-->
+
+<!--审批单据下半部分 start-->
+<!-- start  流程历史图 层---->
+<div class="bpmApproveFoot">
+    <div class='modal fade' id='imgHistory_list' tabindex='-1' role='dialog'>
+        <div class='u-mdlayout-page-header'>
+            <span class='content-title'>流程历史</span>
+        </div>
+        <div class='u-mdlayout-page-section'>
+            <div class='panel-heading'></div>
+            <div class='u-mdlayout-page-section'>
+                <div class=''>
+                    <div class=''>
+                        <button type='button' class='u-button raised accent u-button-pa' data-bind='click: bpmImgBack'>
+                            返回
+                        </button>
+                    </div>
+                    <div class='' style=''>
+                        <iframe id='img_His' width='99%' style='border: 0px;height: 100%;min-height:300px;'></iframe>
+                        <div class='table-container'>
+                            <table class='u-table' style='width:99%'>
+                                <thead>
+                                <tr>
+                                    <th>任务ID</th>
+                                    <th>任务名称</th>
+                                    <th>任务类型</th>
+                                    <th>执行者</th>
+                                    <th>开始时间</th>
+                                    <th>结束时间</th>
+                                    <th>审批意见</th>
+                                    <th>超时时间</th>
+                                </tr>
+                                </thead>
+                                <tbody data-bind="foreach:{data:flowHisDa.rows(), as: 'row', afterAdd: afterAdd}">
+                                <tr data-bind="css: { 'is-selected' : row.selected() } ,attr:{'rowindex': $index},click: $parent.rowClick">
+                                    <td style='display: none;'><label class='u-checkbox only-style'
+                                                                      data-bind="click: row.multiSelect, css:{'is-checked': row.selected()}">
+                                        <input type='checkbox' class='u-checkbox-input'>
+                                        <span class='u-checkbox-label'></span> </label></td>
+                                    <td data-bind="text: row.ref('id')"></td>
+                                    <td data-bind="text: row.ref('name')"></td>
+                                    <td data-bind="text: bpmApproveTypeShowHandler(row.ref('description')())"></td>
+                                    <td data-bind="text: row.ref('executionId')"></td>
+                                    <td data-bind="text: row.ref('startTime')"></td>
+                                    <td data-bind="text: row.ref('endTime')"></td>
+                                    <td data-bind="text: row.ref('deleteReason')"></td>
+                                    <td data-bind="text: row.ref('claimTime')"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div id='pagination_img' class=''></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end  流程历史图 层------>
+
+    <!-- start 驳回/指派列表-->
+    <div class='modal fade' id='rejectDiv' tabindex='-1' role='dialog'>
+        <div class='modal-dialog' style='width:80%'>
+            <div class='modal-content' style=' '>
+                <div class='modal-header'>
+                    <h4 class='modal-title'>活动列表</h4>
+                </div>
+                <div class='modal-body' style='height:600px'>
+                    <div type='text' style='margin-left:5px'
+                         u-meta='{"id":"gridreject","data":"rejectDa","type":"grid","editable":false,"multiSelect":false,"editType":"default"}'>
+                        "
+                        <div options='{"field":"activityId","dataType":"String","title":"活动编码","width":"350px","editType":"string","editable":false}'></div>
+                        <div options='{"field":"activityName","dataType":"String","title":"活动名称","editType":"string","editable":false}'></div>
+                    </div>
+                </div>
+                <div class='modal-footer'>
+                    <button class='u-button raised accent u-button-pa' id='selectRejectOk' data-bind='click: rejectOk'>
+                        确定
+                    </button>
+                    &nbsp;&nbsp;&nbsp;"
+                    <button class='u-button raised accent u-button-pa' data-bind='click: bpmRejectBack'>
+                        取消
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end 驳回列表-->
+
+    <!-- start 改派人员列表-->
+    <div class='modal fade' id='personDiv' tabindex='-1' role='dialog'>
+        <div class='modal-dialog' style='width:80%'>
+            <div class='modal-content' style=' '>
+                <div class='modal-header'>
+                    <h4 class='modal-title'>人员列表</h4>
+                </div>
+                <div style='padding-left:20px'>
+                    名称：
+                    <input id='txtDelegateSearth100' class='u-form-control' style='width:200px'/>
+                    <button class='u-button raised  accent u-button-pa' data-bind='click: bpmDelegateSearchHandler'>
+                        搜索
+                    </button>
+                </div>
+                <div class='modal-body' style='height:400px;overflow: auto'>
+                    <div type='text' style='margin-left:5px;'
+                         u-meta='{"id":"gridperson","data":"personDa","type":"grid","editable":false,"multiSelect":false,"editType":"default"}'>
+                        <div options='{"field":"name","dataType":"String","title":"名称","width":"350px","editType":"string","editable":false}'></div>
+                        <div options='{"field":"loginName","dataType":"String","title":"编码","editType":"string","editable":false}'></div>
+                    </div>
+                </div>
+                <div class='modal-footer'>
+                    <button class='u-button raised accent u-button-pa' id='selectPersonOk'
+                            data-bind='click: delegateOk'>
+                        确定
+                    </button>
+                    &nbsp;&nbsp;&nbsp;"
+                    <button class='u-button raised accent u-button-pa' data-bind='click: bpmDelegateBack'>
+                        取消
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end 改派人员列表-->
+
+    <!-- start 加签人员列表-->
+    <div class='modal fade' id='addsignDiv' tabindex='-1' role='dialog'>
+        <div class='modal-dialog' style='width:80%'>
+            <div class='modal-content' style=' '>
+                <div class='modal-header'>
+                    <h4 class='modal-title'>加签人员列表</h4>
+                </div>
+                <div style='padding-left:20px'>
+                    名称：
+                    <input id='txtsignAddSearth100' class='u-form-control' style='width:200px'/>
+                    <button class='u-button raised  accent u-button-pa' data-bind='click: bpmAddSignSearchHandler'>
+                        搜索
+                    </button>
+                </div>
+                <div class='modal-body' style='height:400px;overflow: auto'>
+                    <div type='text' style='margin-left:5px;'
+                         u-meta='{"id":"gridAddperson","data":"personAddDa","type":"grid","editable":false,"multiSelect":true,"editType":"default"}'>
+                        <div options='{"field":"name","dataType":"String","title":"名称","width":"350px","editType":"string","editable":false}'></div>
+                        <div options='{"field":"loginName","dataType":"String","title":"编码","editType":"string","editable":false}'></div>
+                    </div>
+                </div>
+                <div class='modal-footer'>
+                    <button class='u-button raised accent u-button-pa' id='selectPersonAddOk'
+                            data-bind='click: bpmAddSignOk'>
+                        确定
+                    </button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button class='u-button raised accent u-button-pa' data-bind='click: bpmAddSignBack'>
+                        取消
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end 加签人员列表-->
+</div>
+<!--审批单据下半部分 end-->

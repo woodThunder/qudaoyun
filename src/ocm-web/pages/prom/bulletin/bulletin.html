@@ -1,0 +1,203 @@
+<div class="ui-panel ui-list-panel">
+  <div>
+    <div class="page-title">
+      <span>公告管理</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+
+  <div class="ui-searchbox ui-panel-head">
+    <div id="Bulletin-searchcontent" class="ui-searchbox-content">
+
+    </div>
+    <div class="clearfix">
+
+    </div>
+    <div class="ui-searchbox-footer">
+      <div class="ui-search-more hidden">
+        <a>更多<i class="uifont icon-down"></i></a>
+      </div>
+
+      <div class="ui-search-btn">
+        <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:cleanSearch">清空
+        </a>
+        <a class="ui-btn ui-btn-green" data-bind="click:search.bind($data,true)">搜索
+          </a>
+      </div>
+      <div class="clearfix">
+
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-body">
+    <div class="ui-panel-body-head">
+      <div class="ui-panel-body-head-left">
+        <a class="ui-btn ui-btn-orange margin-right-5" id="user-action-add"
+           data-bind="click: showAddDialog, visible: buttonShowGroup['add']"><i class="uifont icon-plus margin-right-5"></i>新增
+        </a>
+        <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+           data-bind="click: del, visible: buttonShowGroup['del']"><i class="uifont icon-shanchu1 margin-right-5"></i>删除
+        </a>
+        <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+          <a class="ui-button-item" data-bind="click: enable, visible: buttonShowGroup['enable']"><i class="uifont icon-qiyong margin-right-5"></i>启用</a>
+          <a class="ui-button-item" data-bind="click: disable, visible: buttonShowGroup['disable']"><i class="uifont icon-tingyong margin-right-5"></i>停用</a>
+        </div>
+      </div>
+    </div>
+    <div class="ui-table-container">
+      <div u-meta='{"id":"grid_BulletinList","data":"BulletinList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+        <div options='{"field":"noticeStyleName","dataType":"String","title":"类型"}'></div>
+        <div options='{"field":"title","dataType":"String","title":"标题","renderType":"detailRender"}'></div>
+        <div options='{"field":"isEnable","dataType":"String","title":"启用状态","renderType":"enableRender"}'></div>
+        <div options='{"field":"creator","dataType":"String","title":"创建人"}'></div>
+        <div options='{"field":"creationTime","dataType":"Datetime","title":"创建时间"}'></div>
+        <div options='{"field":"modifier","dataType":"String","title":"修改人"}'></div>
+        <div options='{"field":"modifiedTime","dataType":"Datetime","title":"修改时间"}'></div>
+        <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation","fixed":true,"width":"150px"}'></div>
+      </div>
+      <div class="ui-statistics margin-top-10">
+        已选择<span class="font-c-blue" data-bind="text:BulletinList.selectedIndices().length"></span>项数据
+      </div>
+      <div class="pagination-right">
+        <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"BulletinList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 新增、编辑、查看公告对话框 -->
+<div id="dialog_bulletin" style="display:none;">
+  <div class="u-msg-title">
+    <h4>公告</h4>
+  </div>
+  <div class="u-msg-content">
+    <div class="ui-item">
+        <div class="ui-name" style="width:60px;"><span class='ui-redstar'>*</span>类型：</div>
+        <div class="ui-inputarea margin-right-10">
+          <div class="u-combo" u-meta='{"type":"u-combobox","data":"BulletinList","field":"noticeStyleId","datasource":"bulletinTypeSrc","onlySelect":true,"showFix":true}'>
+            <input data-bind="attr: {disabled: billStatus()=='detail'}" />
+            <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+          </div>
+        </div>
+        <!--<a class="ui-btn ui-btn-primary margin-right-5" id="user-action-add"-->
+          <!--data-bind="click: showFileDialog"><i class="uifont icon-tubiao-fujian margin-right-5"></i>附件-->
+        <!--</a>-->
+    </div>
+    <div class="clearfix"></div>
+    <div class="ui-item">
+        <div class="ui-name" style="width:60px;"><span class='ui-redstar'>*</span>标题：</div>
+        <div class="ui-inputarea" style="width: 500px;">
+          <div class="u-text" u-meta='{"type":"u-text","data":"BulletinList","field":"title"}'>
+            <input class="u-input" style="width:500px;" data-bind="attr: {disabled: billStatus()=='detail'}" />
+          </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div style="margin-top:16px;">
+      <div class="ui-name" style="width:60px;vertical-align:top;"><span class='ui-redstar'>*</span>内容：</div>
+      <div style="display:inline-block;width:600px;" id="rich-text-container"></div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="u-msg-footer">
+		<a data-bind="click: cancelBulletin" class="u-msg-ok ui-btn ui-btn-primary">取消</a>
+		<a data-bind="click: saveBulletin, visible: billStatus()!=='detail'" class="u-msg-ok ui-btn ui-btn-green">保存</a>
+  </div>
+</div>
+<!-- 附件管理对话框 -->
+<div id="fileiptwrap">
+  <input class="u-input" type="file" name="addfile" id = "uploadbatch_id" multiple="multiple" style="display:none;"/>
+</div>
+<div id="file-dialog" style="display:none;">
+  <div class="u-msg-title">
+    <h4>附件</h4>
+  </div>
+  <div class="u-msg-content">
+    <div class="ui-file-btns">
+      <a data-bind="click: onOpenUploadWin ,visible: buttonShowGroup['fileUpload']" class="ui-btn ui-btn-primary margin-right-5" id="user-action-del">
+      <i class="uifont icon-tubiao-shangchuan margin-right-5"></i>上传
+      </a>
+      <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+        data-bind="click: fileDownload ,visible: buttonShowGroup['fileDownload']"><i class="uifont icon-tubiao-xiazai margin-right-5"></i>下载
+      </a>
+      <a data-bind="click: fileDelete,visible: buttonShowGroup['fileDelete']" class="ui-btn ui-btn-primary margin-right-5" id="user-action-del">
+        <i class="uifont icon-shanchu1 margin-right-5"></i>删除
+      </a>
+      <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+        data-bind="click: fileView,visible: buttonShowGroup['fileView']"><i class="uifont icon-tubiao-chakan margin-right-5"></i>查看
+      </a>
+    </div>
+    <div class="ui-file-list">
+      <div class="ui-table-container">
+          <div u-meta='{"id":"grid_attach","data":"FileList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true,"columnMenu":false}'>
+              <div options='{"field":"filename","dataType":"String","title":"文件名称"}'></div>
+              <div options='{"field":"filesize","dataType":"String","title":"文件大小"}'></div>
+              <div options='{"field":"uploaderName","dataType":"String","title":"上传人"}'></div>
+              <div options='{"field":"uploadtime","dataType":"Datetime","title":"上传时间"}'></div>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="u-msg-footer">
+  </div>
+</div>
+<!-- 发布范围对话框 -->
+<div id="dialog_customer" style="display:none;">
+  <div class="u-msg-title">
+    <h4>发布范围</h4>
+  </div>
+  <div class="u-msg-content">
+    <div class="ui-btn-group margin-bottom-10">
+      <a class="ui-btn ui-btn-orange margin-right-5" id="user-action-add"
+        data-bind="click: batchAddCustomer"><i class="uifont icon-plus margin-right-5"></i>批量添加
+      </a>
+      <div id="agencyRefer" u-meta='{"type":"uiRefer","data":"MultiRefer","field":"agencyId"}' style="display:none;">
+        <input readonly="readonly"/>
+        <span class="ui-icon uifont icon-bar refer"></span>
+      </div>
+      <a class="ui-btn ui-btn-orange margin-right-5" id="user-action-add"
+        data-bind="click: addCustomer"><i class="uifont icon-plus margin-right-5"></i>添加
+      </a>
+      <div id="customerRefer" u-meta='{"type":"uiRefer","data":"MultiRefer","field":"customerId"}' style="display:none;">
+        <input readonly="readonly"/>
+        <span class="ui-icon uifont icon-bar refer"></span>
+      </div>
+      <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+        data-bind="click: delCustomer"><i class="uifont icon-shanchu1 margin-right-5"></i>移除
+      </a>
+      <div class="grid-head-right-search" style="float:right;">
+        <div class="ui-inputarea margin-right-5">
+          <input data-bind="value: customerSearch" placeholder="请输入办事处或客户的编码或名称" />
+        </div>
+        <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:cleanCustomerSearch">清空</a>
+        <a class="ui-btn ui-btn-green" data-bind="click:beforeSearchCustomer.bind($data,true)">搜索</a>
+      </div>
+    </div>
+    <div class="ui-table-container">
+        <div u-meta='{"id":"grid_CustomerItem","data":"CustomerItem","type":"grid","editable":false,"multiSelect":true,"showNumCol":true,"columnMenu":false}'>
+            <div options='{"field":"officeCode","dataType":"String","title":"办事处编码"}'></div>
+            <div options='{"field":"officeName","dataType":"String","title":"办事处名称"}'></div>
+            <div options='{"field":"officePhone","dataType":"String","title":"办事处电话"}'></div>
+            <div options='{"field":"customerCode","dataType":"String","title":"客户编码"}'></div>
+            <div options='{"field":"customerName","dataType":"String","title":"客户名称"}'></div>
+        </div>
+    </div>
+    <div class="ui-statistics margin-top-10">
+      已选择<span class="font-c-blue" data-bind="text:CustomerItem.selectedIndices().length"></span>项数据
+    </div>
+    <div class="pagination-right">
+      <div id='pagination-customer' style="margin-top: -11px;" class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"CustomerItem","beforePageChange":"customerBeforePageChange","sizeChange":"customerSizeChange"}'></div>
+    </div>
+  </div>
+  <div class="u-msg-footer">
+    <a data-bind="click: cancelCustomer" class="u-msg-ok ui-btn ui-btn-primary">取消</a>
+		<a data-bind="click: saveCustomer.bind($data, false)" class="u-msg-ok ui-btn ui-btn-green">保存</a>
+  </div>
+</div>

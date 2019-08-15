@@ -1,0 +1,11 @@
+
+<!-- 新增模板start -->
+<div class="u-tabs ui-tabs">
+	<div class="tab-content" style="margin-bottom: 20px">
+		{{#each head.comps}}
+		<ui-dialogcard params='{{stringifyObject uicomp.params}}'>
+		</ui-dialogcard>
+		{{/each}}
+	</div>
+</div>
+<!-- 新增模板end -->

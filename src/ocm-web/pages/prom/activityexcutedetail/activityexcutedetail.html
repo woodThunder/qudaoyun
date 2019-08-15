@@ -1,0 +1,111 @@
+<div class="ui-list-panel ui-panel">
+  <div>
+    <div class="page-title">
+      <span>活动执行完成明细</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+
+  <div class="ui-searchbox">
+    <div id="PromoActivity-searchcontent" class="ui-searchbox-content">
+
+    </div>
+    <div class="clearfix">
+
+    </div>
+    <div class="ui-searchbox-footer">
+      <div class="ui-search-more hidden">
+          <a>更多<i class="uifont icon-down"></i></a>
+      </div>
+
+      <div class="ui-search-btn">
+        <a class="ui-btn ui-btn-primary margin-right-5"
+        data-bind="click:cleanSearch">清空
+        </a>
+        <a class="ui-btn ui-btn-green margin-right-5"
+        data-bind="click:search.bind($data,true)">搜索
+        </a>
+      </div>
+      <div class="clearfix">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-panel-body">
+    <div class="ui-panel-body-head">
+      <div class="ui-panel-body-head-left">
+      </div>
+    </div>
+      <div class="ui-table-container">
+          <div u-meta='{"id":"grid_ActivityCustomerExcuteList","data":"ActivityCustomerExcuteList","type":"grid","editable":false,"showNumCol":true}'>
+            <div options='{"field":"activityCode","dataType":"String","title":"活动编码"}'></div>
+            <div options='{"field":"activityName","dataType":"String","title":"活动名称"}'></div>
+            <div options='{"field":"customerCode","dataType":"String","title":"经销商编码"}'></div>
+            <div options='{"field":"customerName","dataType":"String","title":"经销商名称"}'></div>
+            <div options='{"field":"officeName","dataType":"String","title":"所属办事处"}'></div>
+            <div options='{"field":"orderStartDate","dataType":"Date","title":"订货开始日期"}'></div>
+            <div options='{"field":"orderEndDate","dataType":"Date","title":"订货截至日期"}'></div>
+            <div options='{"field":"commitDeliveryMny","dataType":"String","title":"承诺提货总额"}'></div>
+            <div options='{"field":"actualDeliveryMny","dataType":"String","title":"实际提货总额"}'></div>
+            <div options='{"field":"completionRate","dataType":"Float","title":"提货完成率","renderType":"percentRender"}'></div>
+            <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"customerOperation","fixed":true,"width":"110px"}'></div>
+          </div>
+          <div class="ui-statistics margin-top-10 line-height-27">
+          </div>
+          <div class="pagination-right">
+            <div id='pagination' class='pagination u-pagination pagination-sm'
+            u-meta='{"type":"pagination","data":"ActivityCustomerExcuteList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+          </div>
+      </div>
+    </div>
+</div>
+<div class="ui-bill-panel ui-panel" style="display:none;">
+  <div>
+    <div class="page-title">
+      <span>活动执行完成明细</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-green" data-bind="click: product2customer">返回
+      </a>
+    </div>
+  </div>
+  <div class="ui-panel-head ui-bill-head">
+
+  </div>
+  <div class="ui-bill-body">
+    <div class="ui-table-container">
+        <div u-meta='{"id":"grid_ActivityProductExcuteList","data":"ActivityProductExcuteList","type":"grid","editable":false,"showNumCol":true}'>
+          <div options='{"field":"showCode","dataType":"String","title":"产品编码"}'></div>
+          <div options='{"field":"showName","dataType":"String","title":"产品名称"}'></div>
+          <div options='{"field":"productCategoryName","dataType":"String","title":"产品品类"}'></div>
+          <div options='{"field":"seriesName","dataType":"String","title":"产品系列"}'></div>
+          <div options='{"field":"productModelName","dataType":"String","title":"产品型号"}'></div>
+          <div options='{"field":"commitDeliveryNum","dataType":"String","title":"承诺提货数量"}'></div>
+          <div options='{"field":"actualTakeNum","dataType":"String","title":"实际提货数量"}'></div>
+          <div options='{"field":"commitDeliveryMny","dataType":"String","title":"承诺提货金额"}'></div>
+          <div options='{"field":"actualTakeMny","dataType":"String","title":"实际提货金额"}'></div>
+        </div>
+        <div class="ui-statistics margin-top-10 line-height-27">
+        </div>
+        <div class="pagination-right">
+          <div id='pagination2' class='pagination u-pagination pagination-sm'
+          u-meta='{"type":"pagination","data":"ActivityProductExcuteList","pageChange":"prodPageChange","sizeChange":"prodSizeChange"}'></div>
+        </div>
+    </div>
+  </div>
+</div>

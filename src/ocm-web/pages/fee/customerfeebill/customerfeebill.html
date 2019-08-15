@@ -1,0 +1,146 @@
+<!-- 列表页 -->
+<div class="ui-list-panel ui-panel">
+  <div>
+    <div class="page-title">
+      <span>产品组合</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+  <ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+  </ui-searchbox>
+
+  <div class="ui-panel-body">
+    <div class="ui-panel-body-head">
+      <div class="ui-panel-body-head-left">
+        <ui-buttons params='datasource:$root.button1Source'>
+        </ui-buttons>
+      </div>
+    </div>
+    <div class="ui-table-container">
+      <ui-grid params='options:$root.grid1Option,vm:$root'>
+      </ui-grid>
+      <div class="ui-statistics margin-top-10">
+        已选择
+        <span class="font-c-blue" data-bind="text:complexList.selectedIndices().length"></span>项数据
+      </div>
+      <div class="pagination-right">
+        <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"complexList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 单据页 -->
+<div class="ui-bill-panel ui-panel" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span>申请单</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <ui-buttons params='datasource:$root.button2Source'>
+      </ui-buttons>
+    </div>
+  </div>
+  <div class="ui-panel-head ui-bill-head">
+    <ui-card params='datasource:$root.card1Source,vm:$root,dt:$root.complexList,billstatus:$root.billPanelStatus'>
+    </ui-card>
+  </div>
+  <div class="ui-bill-body">
+    <div class="margin-bottom-10">
+      <ui-buttons params='datasource:$root.button3Source'>
+      </ui-buttons>
+      <!-- <div id="addItemsRef" u-meta='{"type":"uiRefer","data":"ItemRefList","field":"productref"}' style="display:none;">
+        <input readonly="readonly" />
+        <span class="ui-icon uifont icon-bar refer"></span>
+      </div> -->
+    </div>
+    <div class="ui-table-container margin-bottom-30">
+      <ui-grid params='options:$root.grid2Option,vm:$root'>
+      </ui-grid>
+    </div>
+  </div>
+  <div class="ui-bill-footer">
+    <!--附件开始-->
+      <h3 class="ui-collapse-title  clearfix goods-choose-result9 open margin-top-20">
+          <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+          <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+      附件
+    </h3>
+    <div class="ui-collapse-content goods-choose-content9 clearfix">
+      <div id="file-form"></div>
+      <div id="goods-card-attach"></div>
+      <ui-buttons params='datasource:$root.button6Source'>
+      </ui-buttons>
+    </div>
+    <!--附件结束-->
+  </div>
+</div>
+<!-- 详情页 -->
+<div class="ui-bill-detail ui-panel" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span>产品组合</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <ui-buttons params='datasource:$root.button4Source'>
+        </ui-buttons>
+    </div>
+  </div>
+  <div id="bpmhead"></div>
+  <div id="bpmfoot"></div>
+  <div class="ui-panel-head">
+    <ui-detail params='datasource:$root.detail11Source,dt:$root.complexList,vm:$root'>
+
+    </ui-detail>
+  </div>
+  <ui-buttons params='datasource:$root.button5Source'>
+        </ui-buttons>
+  <div class="ui-bill-body">
+    <div class="ui-table-container margin-bottom-30">
+      <ui-grid params='options:$root.grid3Option,vm:$root'>
+      </ui-grid>
+    </div>
+  </div>
+  <div class="ui-bill-footer">
+    <!--附件开始-->
+      <h3 class="ui-collapse-title  clearfix goods-choose-result9 open margin-top-20">
+        <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+        <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+        附件
+      </h3>
+      <div class="ui-collapse-content goods-choose-content9 clearfix">
+        <div id="file-form"></div>
+        <div id="goods-detail-attach"></div>
+        <!-- <ui-buttons params='datasource:$root.button4Source'>
+      </ui-buttons> -->
+      </div>
+      <!--附件结束-->
+
+  </div>
+</div>
+<!-- 附件上传-->
+    <div id="fileiptwrap">
+      <input class="u-input" type="file" name="addfile" id="attachuploadbatch_id" multiple="multiple" style="display:none;" />
+    </div>
+

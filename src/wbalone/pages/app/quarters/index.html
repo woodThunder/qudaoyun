@@ -1,0 +1,163 @@
+<div id="quarters">
+    <div id="quartersList">
+        <div class="po-title">
+            岗位管理
+            <button class="u-button backbutton" id="backBtn" data-bind="click:backClick">
+                <i class="uf uf-arrow-left" style="position:relative;top:-1px"></i> 返回
+            </button>
+        </div>
+        <div class="search">
+            <div class="search-title">
+                <span style="float: left;">筛选
+                    <i class="uf uf-arrow-c-o-down"></i>
+                </span>
+                <span style="float: right;cursor: pointer;color:#1E7BE2" data-bind="html:openTitle,click:openClick"></span>
+            </div>
+            <div class="search-panel" id="searchPanel">
+                <div class="u-form-group">
+                    <label for="code">编号:</label>
+                    <input type="text" class="u-form-control" id="code" placeholder="请输入编号">
+                </div>
+                <div class="u-form-group">
+                    <label for="name">名称:</label>
+                    <input type="text" class="u-form-control" id="name" placeholder="请输入名称">
+                </div>
+                <div class="search-btn-group u-form-group">
+                    <button data-bind="click:searchClick" class="u-button search-btn" style="margin-left:10px">查询</button>
+                    <button data-bind="click:clearClick" class="u-button clear-btn">清空</button>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="other-btn">
+                <button class="u-button search-btn" data-bind="click:addClick">新增</button>
+            </div>
+            <div class="po-tabel">
+                <table class="u-table-base u-table-striped">
+                    <thead>
+                        <tr>
+                            <td style="padding-left:30px">岗位编号</td>
+                            <td>岗位名称</td>
+                            <td>所属部门</td>
+                            <td>所属组织</td>
+                            <td>操作</td>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: {data:tableData,as:'item'} ">
+                        <tr>
+                            <td data-bind="text:code" style="padding-left:30px"></td>
+                            <td data-bind="text:name"></td>
+                            <td data-bind="text:dept_name">部门名称</td>
+                            <td data-bind="text:org_name">组织名称</td>
+                            <td>
+                                <i data-bind="click:function(){$parent.editClick(item)}" class="uf uf-pencil" title="编辑"></i>
+                                <i data-bind="click:function(){$parent.delClick(item)}" class="uf uf-del" title="删除"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody class="no-data" style="display:none">
+                        <tr>
+                            <td colspan="5" style="text-align:center">暂无数据</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+                <div style="text-align:center">
+                    <div id='pagination' class='u-pagination'>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div id="tipContent" style="display:none;">
+            <div class="u-msg-title">
+                <h4>温馨提示</h4>
+            </div>
+            <div class="u-msg-content" style="text-align:center" data-bind="text:tipContent">
+
+            </div>
+            <div class="u-msg-footer">
+                <button class="u-msg-cancel u-button " style="border: 1px solid #039BE5;color: #039BE5;background:#fff;border-radius: 4px;"
+                    data-bind="click:tipClose">关闭
+                    <span class="u-button-container">
+                        <span class="u-ripple"></span>
+                    </span>
+                </button>
+            </div>
+        </div>
+        <div id="delModal" style="display:none;">
+            <div class="u-msg-title">
+                <h4>温馨提示</h4>
+            </div>
+            <div class="u-msg-content">
+                <p>
+                    确定要删除么?
+                </p>
+            </div>
+            <div class="u-msg-footer">
+                <button class="u-msg-cancel u-button" style="height:30px;border: 1px solid rgb(3,155,229);color: rgb(3,155,229);background:#fff;border-radius: 4px;"
+                    data-bind="click:delCancel">取消
+                    <span class="u-button-container">
+                        <span class="u-ripple"></span>
+                    </span>
+                </button>
+                <button class="u-msg-ok u-button" style="background:rgb(3,155,229);color:#fff;border-radius: 4px;height:30px;" data-bind="click:delOk">确定
+                    <span class="u-button-container">
+                        <span class="u-ripple"></span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="quartersEdit" style="display:none">
+        <div class="u-msg-title">
+            <h4 data-bind="text:editTitle">温馨提示</h4>
+        </div>
+        <div class="u-msg-content" style="text-align:center">
+            <div class="u-form-group">
+                <label for="group" class="edit-label">组织:</label>
+                <div style="display:inline-block">
+                    <div class="u-input-group u-has-feedback">
+                        <input type="text" class="u-form-control" id="group" placeholder="请输入组织" data-bind="click:function(e){operation('org',e)}">
+                        <span class="u-form-control-feedback uf uf-symlist" data-bind="click:function(e){operation('org',e)}"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="u-form-group">
+                <label for="deptInput" class="edit-label">部门:</label>
+                <div style="display:inline-block">
+                    <div class="u-input-group u-has-feedback">
+                        <input type="text" class="u-form-control" id="deptInput" placeholder="请输入部门" data-bind="click:function(e){operation('dept',e)}">
+                        <span class="u-form-control-feedback uf uf-symlist" data-bind="click:function(e){operation('dept',e)}"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="u-form-group">
+                <label for="code" style="margin-right:10px;">编号:</label>
+                <input type="text" class="u-form-control" id="saveCode" placeholder="请输入编号">
+            </div>
+            <div class="u-form-group">
+                <label for="name" style="margin-right:10px;">名称:</label>
+                <input type="text" class="u-form-control" id="saveName" placeholder="请输入名称">
+            </div>
+        </div>
+        <div class="u-msg-footer" style="text-align:center">
+
+            <button class="u-msg-cancel u-button" style="height:30px;border: 1px solid rgb(3,155,229);color: rgb(3,155,229);background:#fff;border-radius: 4px;"
+                data-bind="click:backList">取消
+                <span class="u-button-container">
+                    <span class="u-ripple"></span>
+                </span>
+            </button>
+            <button class="u-msg-ok u-button" style="background:rgb(3,155,229);color:#fff;border-radius: 4px;height:30px;" data-bind="click:saveClick">确定
+                <span class="u-button-container">
+                    <span class="u-ripple"></span>
+                </span>
+            </button>
+        </div>
+    </div>
+
+</div>

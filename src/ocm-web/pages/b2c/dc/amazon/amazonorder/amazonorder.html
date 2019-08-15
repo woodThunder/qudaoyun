@@ -1,0 +1,784 @@
+<!--main-->
+<div class="ui-list-panel ui-panel">
+  <div>
+    <div class="page-title">
+      <span>亚马逊订单</span> 
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+
+  <div class="ui-searchbox">
+    <div id="amazon-searchcontent" class="ui-searchbox-content clearfix"></div>
+    <div class="ui-searchbox-footer clearfix">
+      <div class="ui-search-more hidden">
+        <a>更多<i class="uifont icon-down"></i></a>
+      </div>
+
+      <div class="ui-search-btn">
+        <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:cleanSearch">清空
+        </a>
+        <a class="ui-btn ui-btn-green" data-bind="click:search.bind($data,true)">搜索
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-panel-body">
+    <!--ui-panel-body-head-->
+    <div class="margin-bottom-10">
+			<a class="ui-btn ui-btn-orange margin-right-5" data-bind="click:pushOrder">
+				<i class="uifont icon-tubiao-zhuanhua margin-right-5"></i>推单
+			</a>
+			<a class="ui-btn ui-btn-orange margin-right-5" data-bind="click:catchOne">
+				<i class="uifont icon-import margin-right-5"></i>按单号抓单
+			</a>
+		</div>
+    <div class="ui-panel-body-head">
+    </div>
+    <!--ui-panel-body-head end-->
+    <div class="ui-table-container">
+      <div u-meta='{"id":"grid_jdOrder","data":"OrderList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true,"onBeforeClickFun": "detail"}'>
+        <div options='{"field":"amazonorderid","dataType":"String","title":"平台订单号"}'></div>
+        <div options='{"field":"sellerorderid","dataType":"String","title":"卖家订单编码"}'></div>
+        <div options='{"field":"purchasedate","dataType":"Datetime","title":"下单时间"}'></div>
+        <div options='{"field":"lastupdatedate","dataType":"Datetime","title":"更新日期"}'></div>
+        <div options='{"field":"orderstatus","dataType":"String","title":"订单状态","editOptions":{"type":"combo","datasource":"orderStatusSrc"},"renderType":"comboRender"}'></div>
+        <div options='{"field":"fulfillmentchannel","dataType":"String","title":"配送方式","editOptions":{"type":"combo","datasource":"fulfillmentchannelSrc"},"renderType":"comboRender"}'></div>
+        <div options='{"field":"saleschannel","dataType":"String","title":"销售渠道"}'></div>
+        <div options='{"field":"orderchannel","dataType":"String","title":"订购渠道"}'></div>
+        <!-- <div options='{"field":"shipservicelevel","dataType":"String","title":"服务水平"}'></div> -->
+        <div options='{"field":"deliverytype","dataType":"String","title":"收货人"}'></div>
+        <div options='{"field":"countrycode","dataType":"String","title":"国家代码"}'></div>
+        <div options='{"field":"stateorregion","dataType":"String","title":"省份"}'></div>
+        <div options='{"field":"city","dataType":"String","title":"城市"}'></div>
+        <div options='{"field":"county","dataType":"String","title":"区县"}'></div>
+        <div options='{"field":"district","dataType":"String","title":"地址"}'></div>
+        <div options='{"field":"postalcode","dataType":"String","title":"邮编"}'></div>
+        <div options='{"field":"phone","dataType":"String","title":"电话"}'></div>
+        <div options='{"field":"ordertotal","dataType":"String","title":"总费用"}'></div>
+        <div options='{"field":"shippednum","dataType":"Float","title":"已配送商品数量"}'></div>
+        <div options='{"field":"unshippednum","dataType":"Float","title":"未配送商品数量"}'></div>
+        <div options='{"field":"paymentmethod","dataType":"String","title":"付款方式", "renderType":"payTypeRender"}'></div>
+        <div options='{"field":"marketplaceid","dataType":"String","title":"商城编码"}'></div>
+        <div options='{"field":"buyername","dataType":"String","title":"买家姓名"}'></div>
+        <div options='{"field":"buyeremail","dataType":"String","title":"买家邮件地址"}'></div>
+        <!-- <div options='{"field":"servicelevelcategory","dataType":"String","title":"配送服务级别"}'></div> -->
+        <div options='{"field":"shippinglabel","dataType":"String","title":"卖家配送方式"}'></div>
+        <div options='{"field":"shippedbyamazontfm","dataType":"String","title":"是否亚马逊配送"}'></div>
+        <div options='{"field":"tfmshipmentstatus","dataType":"String","title":"TFM订单状态"}'></div>
+        <div options='{"field":"ordertype","dataType":"String","title":"订单类型","editOptions":{"type":"combo","datasource":"ordertypeSrc"},"renderType":"comboRender"}'></div>
+        <div options='{"field":"earliestshipdate","dataType":"Date","title":"发货第一天"}'></div>
+        <div options='{"field":"latestshipdate","dataType":"Date","title":"发货最后一天"}'></div>
+        <div options='{"field":"earliestdeliverydate","dataType":"Date","title":"送达第一天"}'></div>
+        <div options='{"field":"latestdeliverydate","dataType":"Date","title":"送达最后一天"}'></div>
+        <!--<div options='{"field":"pin","pkOrgName":"String","title":"组织"}'></div>-->
+        <div options='{"field":"issync","dataType":"String","title":"同步标志位","editOptions":{"type":"combo","datasource":"issyncCombo"},"renderType":"comboRender"}'></div>
+        <div options='{"field":"isexception","dataType":"String","title":"异常标志位","editOptions":{"type":"combo","datasource":"isexceptionCombo"},"renderType":"comboRender"}'></div>
+        <div options='{"field":"exceptiondesc","dataType":"String","title":"异常原因"}'></div>
+        <div options='{"field":"shopsourceName","dataType":"String","title":"来源店铺"}'></div>
+        <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation","width":"110px","fixed":true}'></div>
+      </div>
+      <div class="pagination-right margin-top-20">
+        <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"OrderList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+      </div>
+    </div>
+  </div>
+   <!-- 详情-start -->
+	<div class="u-tabs ui-tabs">
+	    <div class="u-tabs__tab-bar margin-top-10 margin-bottom-10">
+	      <a href="#tab-panel-1" class="u-tabs__tab">订单信息</a>
+	      <a href="#tab-panel-2" class="u-tabs__tab is-active">商品</a>
+	  </div>
+	  <div class="u-tabs__panel" id="tab-panel-1">
+			<div class="ui-collapse-content clearfix">
+			    <div class="ui-item">
+			      <div class="ui-name">平台订单号：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text:OrderList.ref("amazonorderid")'></div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">卖家订单编码：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: OrderList.ref("sellerorderid")'></div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">下单时间：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: OrderList.ref("purchasedate")'></div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">更新日期：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: OrderList.ref("lastupdatedate")'></div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">订单状态：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" u-meta='{"type":"u-combobox","data":"OrderList","field":"orderstatus","datasource":"orderStatusSrc","enable":"false"}'>
+			          <input class="ui-no-border" />
+			        </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">配送方式：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" u-meta='{"type":"u-combobox","data":"OrderList","field":"fulfillmentchannel","datasource":"fulfillmentchannelSrc","enable":"false"}'>
+			          <input class="ui-no-border" />
+			        </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">销售渠道：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: OrderList.ref("saleschannel")'></div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">订购渠道：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: OrderList.ref("orderchannel")'></div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">服务水平：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: OrderList.ref("shipservicelevel")'></div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">国家代码：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: OrderList.ref("countrycode")'></div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">省份：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: OrderList.ref("stateorregion")'></div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">城市：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: OrderList.ref("city")'></div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">区县：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: OrderList.ref("county")'></div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">地址：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: OrderList.ref("district"), attr:{title:OrderList.ref("district")}'></div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">邮编：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: OrderList.ref("postalcode")'></div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">电话：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: OrderList.ref("phone")'></div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">电话：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: OrderList.ref("phone")'></div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">总费用：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: OrderList.ref("ordertotal")'></div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">已配送商品数量：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: OrderList.ref("shippednum")'></div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">未配送商品数量：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: OrderList.ref("unshippednum")'></div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">付款方式：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: OrderList.ref("paymentmethod")'></div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">商城编码：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: OrderList.ref("marketplaceid")'></div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">买家姓名：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: OrderList.ref("buyername"),attr:{title:OrderList.ref("buyername")}'></div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">买家邮件地址：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: OrderList.ref("buyeremail"),attr:{title:OrderList.ref("buyeremail")}'></div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">配送服务级别：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: OrderList.ref("servicelevelcategory")'></div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">卖家配送方式：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: OrderList.ref("shippinglabel")'></div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">是否亚马逊配送：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: OrderList.ref("shippedbyamazontfm")'></div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">TFM订单状态：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: OrderList.ref("tfmshipmentstatus")'></div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">订单类型：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" u-meta='{"type":"u-combobox","data":"OrderList","field":"ordertype","datasource":"ordertypeSrc","enable":"false"}'>
+			          <input class="ui-no-border" />
+			        </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">发货第一天：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: OrderList.ref("earliestshipdate")'></div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">发货最后一天：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: OrderList.ref("latestshipdate")'></div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">送达第一天：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: OrderList.ref("earliestdeliverydate")'></div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">送达最后一天：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: OrderList.ref("latestdeliverydate")'></div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">同步标志位：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: OrderList.ref("issync")'></div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">异常标识位：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: OrderList.ref("isexception")'></div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">异常原因：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: OrderList.ref("exceptiondesc")'></div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">来源店铺：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: OrderList.ref("shopsourceName")'></div>
+			      </div>
+			    </div>
+			  </div>
+	  </div>
+	  <div class="u-tabs__panel is-active" id="tab-panel-2">
+		<div class="ui-table-container">
+            <div u-meta='{"id":"grid_Goodss_detail","data":"Goodss","type":"grid","editable":false,"multiSelect":false,"showNumCol":true}'>
+              <!-- <div options='{"field":"asin","dataType":"String","title":"ASIN"}'></div> -->
+              <div options='{"field":"sellersku","dataType":"String","title":"SKU"}'></div>
+              <div options='{"field":"orderitemid","dataType":"String","title":"订单商品编码"}'></div>
+              <div options='{"field":"title","dataType":"String","title":"商品名称"}'></div>
+              <div options='{"field":"quantityordered","dataType":"Float","title":"商品数量"}'></div>
+              <div options='{"field":"quantityshipped","dataType":"Float","title":"配送商品数量"}'></div>
+              <div options='{"field":"giftmessagetext","dataType":"String","title":"礼品消息"}'></div>
+              <div options='{"field":"giftwrapleve","dataType":"String","title":"礼品包装等级"}'></div>
+              <div options='{"field":"itemprice","dataType":"Float","title":"商品售价"}'></div>
+              <div options='{"field":"shippingprice","dataType":"Float","title":"配送费用"}'></div>
+              <div options='{"field":"giftwrapprice","dataType":"Float","title":"包装费用"}'></div>
+              <div options='{"field":"itemtax","dataType":"Float","title":"价格税费"}'></div>
+              <div options='{"field":"shippingtax","dataType":"Float","title":"配送费税费"}'></div>
+              <div options='{"field":"giftwraptax","dataType":"Float","title":"包装费税费"}'></div>
+              <div options='{"field":"shippingdiscount","dataType":"Float","title":"配送费用折扣"}'></div>
+              <div options='{"field":"promotiondiscount","dataType":"Float","title":"促销折扣"}'></div>
+              <div options='{"field":"promotionid","dataType":"String","title":"促销编码"}'></div>
+              <div options='{"field":"codfee","dataType":"Float","title":"服务费用"}'></div>
+              <div options='{"field":"codfeediscount","dataType":"Float","title":"货到付款费用折扣"}'></div>
+              <div options='{"field":"invoicerequirement","dataType":"String","title":"发票要求","editOptions":{"type":"combo","datasource":"invoicerequirementSrc"},"renderType":"comboRender"}'></div>
+              <div options='{"field":"conditionid","dataType":"String","title":"商品状况"}'></div>
+              <div options='{"field":"conditionsubtypeid","dataType":"String","title":"商品子状况"}'></div>
+              <div options='{"field":"conditionnote","dataType":"String","title":"商品状况描述"}'></div>
+              <div options='{"field":"startdate","dataType":"Date","title":"开始日期"}'></div>
+              <div options='{"field":"enddate","dataType":"Date","title":"终止日期"}'></div>
+              <div options='{"field":"serialnum","dataType":"String","title":"行号"}'></div>
+              <div options='{"field":"invoicecategory","dataType":"String","title":"发票类目"}'></div>
+              <div options='{"field":"invoicetitle","dataType":"String","title":"发票抬头"}'></div>
+              <div options='{"field":"invoiceinformation","dataType":"String","title":"发票类目要求","editOptions":{"type":"combo","datasource":"invoiceinformationSrc"},"renderType":"comboRender"}'></div>
+            </div>
+          </div>
+	  </div>
+	</div>
+</div>
+<!--main end-->
+
+<!--编辑/修改详情-->
+<div class="ui-bill-panel ui-panel" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span>亚马逊订单</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-primary" data-bind="click: retListPanel">返回
+      </a>
+      <a class="ui-btn ui-btn-primary" data-bind="click: cancelBill.bind($data)">取消
+      </a>
+      <a class="ui-btn ui-btn-green" data-bind="click: saveBill.bind($data)">保存
+      </a>
+    </div>
+  </div>
+  <div class="ui-bill-body">
+    <div class="ui-collapse-group border orderCenter">
+      <div id="default-example" data-collapse>
+			  <!--head-->
+		  	<h3 class="ui-collapse-title orderCenter open margin-top-10">
+				  	<a href="javascript:;" class="click-btn inline-block">
+              <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+              <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                          订单信息
+            </a>
+			  </h3>
+			  <div class="ui-collapse-content clearfix" >
+			    <div class="ui-item">
+			      <div class="ui-name">平台订单号：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" u-meta='{"type":"u-text","data":"OrderList","field":"amazonorderid"}'>
+			          <input class="u-input" />
+			        </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">卖家订单编码：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" u-meta='{"type":"u-text","data":"OrderList","field":"sellerorderid"}'>
+			          <input class="u-input" />
+			        </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">下单时间：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" u-meta='{"type":"u-datetime","data":"OrderList","field":"purchasedate"}'>
+			          <input class="u-input" />
+			        </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">更新日期：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" u-meta='{"type":"u-datetime","data":"OrderList","field":"lastupdatedate"}'>
+			          <input class="u-input" />
+			        </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">订单状态：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"OrderList","field":"orderstatus","datasource":"orderStatusSrc"}'>
+			          <input />
+			          <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+			        </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">配送方式：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"OrderList","field":"fulfillmentchannel","datasource":"fulfillmentchannelSrc"}'>
+			          <input />
+			          <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+			        </div>
+			      </div>
+			    </div>
+			
+			    <div class="ui-item">
+			      <div class="ui-name">销售渠道：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" u-meta='{"type":"u-text","data":"OrderList","field":"saleschannel"}'>
+			          <input class="u-input" />
+			        </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">订购渠道：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" u-meta='{"type":"u-text","data":"OrderList","field":"orderchannel"}'>
+			          <input class="u-input" />
+			        </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">服务水平：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" u-meta='{"type":"u-text","data":"OrderList","field":"shipservicelevel"}'>
+			          <input class="u-input" />
+			        </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">国家代码：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" u-meta='{"type":"u-text","data":"OrderList","field":"countrycode"}'>
+			          <input class="u-input" />
+			        </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">省份：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" u-meta='{"type":"u-text","data":"OrderList","field":"stateorregion"}'>
+			          <input class="u-input" />
+			        </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">城市：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" u-meta='{"type":"u-text","data":"OrderList","field":"city"}'>
+			          <input class="u-input" />
+			        </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">区县：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" u-meta='{"type":"u-text","data":"OrderList","field":"county"}'>
+			          <input class="u-input" />
+			        </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">地址：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" u-meta='{"type":"u-text","data":"OrderList","field":"district"}'>
+			          <input class="u-input" />
+			        </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">邮编：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" u-meta='{"type":"u-text","data":"OrderList","field":"postalcode"}'>
+			          <input class="u-input" />
+			        </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">电话：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" u-meta='{"type":"u-text","data":"OrderList","field":"phone"}'>
+			          <input class="u-input" />
+			        </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">总费用：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" u-meta='{"type":"u-text","data":"OrderList","field":"ordertotal"}'>
+			          <input class="u-input" />
+			        </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">已配送商品数量：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" u-meta='{"type":"u-text","data":"OrderList","field":"shippednum"}'>
+			          <input class="u-input" />
+			        </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">未配送商品数量：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" u-meta='{"type":"u-text","data":"OrderList","field":"unshippednum"}'>
+			          <input class="u-input" />
+			        </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">付款方式：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" u-meta='{"type":"u-text","data":"OrderList","field":"paymentmethod"}'>
+			          <input class="u-input" />
+			        </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">商城编码：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" u-meta='{"type":"u-text","data":"OrderList","field":"marketplaceid"}'>
+			          <input class="u-input" />
+			        </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">买家姓名：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" u-meta='{"type":"u-text","data":"OrderList","field":"buyername"}'>
+			          <input class="u-input" />
+			        </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">买家邮件地址：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" u-meta='{"type":"u-text","data":"OrderList","field":"buyeremail"}'>
+			          <input class="u-input" />
+			        </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">配送服务级别：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"OrderList","field":"servicelevelcategory"}'>
+			          <input />
+			          <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+			        </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">卖家配送方式：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" u-meta='{"type":"u-text","data":"OrderList","field":"shippinglabel"}'>
+			          <input class="u-input" />
+			        </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">是否亚马逊配送：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" u-meta='{"type":"u-text","data":"OrderList","field":"shippedbyamazontfm"}'>
+			          <input class="u-input" />
+			        </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">TFM订单状态：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" u-meta='{"type":"u-text","data":"OrderList","field":"tfmshipmentstatus"}'>
+			          <input class="u-input" />
+			        </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">订单类型：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"OrderList","field":"ordertype","datasource":"ordertypeSrc"}'>
+			          <input />
+			          <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+			        </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">发货第一天：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" u-meta='{"type":"u-datetime","data":"OrderList","field":"earliestshipdate"}'>
+			          <input class="u-input" />
+			        </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">发货最后一天：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" u-meta='{"type":"u-datetime","data":"OrderList","field":"latestshipdate"}'>
+			          <input class="u-input" />
+			        </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">送达第一天：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" u-meta='{"type":"u-datetime","data":"OrderList","field":"earliestdeliverydate"}'>
+			          <input class="u-input" />
+			        </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">送达最后一天：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" u-meta='{"type":"u-datetime","data":"OrderList","field":"latestdeliverydate"}'>
+			          <input class="u-input" />
+			        </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">同步标志位：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"OrderList","field":"issync","datasource":"issyncCombo"}'>
+			          <input />
+			           <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+			         </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">异常标识位：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"OrderList","field":"isexception","datasource":"isexceptionCombo"}'>
+			          <input />
+			           <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+			         </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">异常原因：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" u-meta='{"type":"u-text","data":"OrderList","field":"exceptiondesc"}'>
+			          <input class="u-input" />
+			        </div>
+			      </div>
+			    </div>
+			    <div class="ui-item">
+			      <div class="ui-name">来源店铺：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-inputarea" u-meta='{"type":"uiRefer","data":"OrderList","field":"shopsource","showField":"shopsourceName","rel":{"refpk":"shopsource","refname":"shopsourceName","refcode":"shopsourceCode"}}'>
+			          <input readonly="readonly" autocomplete="off"/>
+			          <span class="ui-icon uifont icon-bar refer"></span>
+			        </div>
+			      </div>
+			    </div>
+			    <!--<div class="ui-item">
+			      <div class="ui-name">销售组织：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" u-meta='{"type":"u-text","data":"OrderList","field":"pkOrgName"}'>
+			          <input class="u-input"/>
+			        </div>
+			      </div>
+			    </div>-->
+			  </div>
+			  <!--head end-->
+		  	<h3 class="ui-collapse-title orderCenter open margin-top-10">
+				  	<a href="javascript:;" class="click-btn inline-block">
+              <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+              <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                          商品
+            </a>
+			  </h3>
+        <div class="ui-collapse-content" style="border: none;">
+          <div class="ui-table-container">
+            <div u-meta='{"id":"grid_Goodss_detail1","data":"Goodss","type":"grid","editable":true,"multiSelect":true,"showNumCol":false}'>
+              <div options='{"field":"serialnum","dataType":"String","title":"行号"}'></div>
+              <!-- <div options='{"field":"asin","dataType":"String","title":"ASIN"}'></div> -->
+              <div options='{"field":"sellersku","dataType":"String","title":"SKU"}'></div>
+              <div options='{"field":"orderitemid","dataType":"String","title":"订单商品编码"}'></div>
+              <div options='{"field":"title","dataType":"String","title":"商品名称"}'></div>
+              <div options='{"field":"quantityordered","dataType":"Float","title":"商品数量"}'></div>
+              <div options='{"field":"quantityshipped","dataType":"Float","title":"配送商品数量"}'></div>
+              <div options='{"field":"giftmessagetext","dataType":"String","title":"礼品消息"}'></div>
+              <div options='{"field":"giftwrapleve","dataType":"String","title":"礼品包装等级"}'></div>
+              <div options='{"field":"itemprice","dataType":"Float","title":"商品售价"}'></div>
+              <div options='{"field":"shippingprice","dataType":"Float","title":"配送费用"}'></div>
+              <div options='{"field":"giftwrapprice","dataType":"Float","title":"包装费用"}'></div>
+              <div options='{"field":"itemtax","dataType":"Float","title":"价格税费"}'></div>
+              <div options='{"field":"shippingtax","dataType":"Float","title":"配送费税费"}'></div>
+              <div options='{"field":"giftwraptax","dataType":"Float","title":"包装费税费"}'></div>
+              <div options='{"field":"shippingdiscount","dataType":"Float","title":"配送费用折扣"}'></div>
+              <div options='{"field":"promotiondiscount","dataType":"Float","title":"促销折扣"}'></div>
+              <div options='{"field":"promotionid","dataType":"String","title":"促销编码"}'></div>
+              <div options='{"field":"codfee","dataType":"Float","title":"服务费用"}'></div>
+              <div options='{"field":"codfeediscount","dataType":"Float","title":"货到付款费用折扣"}'></div>
+              <div options='{"field":"invoicerequirement","dataType":"String","title":"发票要求","editOptions":{"type":"combo","datasource":"invoicerequirementSrc"},"renderType":"comboRender"}'></div>
+              <div options='{"field":"conditionid","dataType":"String","title":"商品状况"}'></div>
+              <div options='{"field":"conditionsubtypeid","dataType":"String","title":"商品子状况"}'></div>
+              <div options='{"field":"conditionnote","dataType":"String","title":"商品状况描述"}'></div>
+              <div options='{"field":"startdate","dataType":"Date","title":"开始日期"}'></div>
+              <div options='{"field":"enddate","dataType":"Date","title":"终止日期"}'></div>
+              <div options='{"field":"invoicecategory","dataType":"String","title":"发票类目"}'></div>
+              <div options='{"field":"invoicetitle","dataType":"String","title":"发票抬头"}'></div>
+              <div options='{"field":"invoiceinformation","dataType":"String","title":"发票类目要求","editOptions":{"type":"combo","datasource":"invoiceinformationSrc"},"renderType":"comboRender"}'></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ui-bill-footer">
+  </div>
+</div>
+<!--编辑/修改详情 end-->
+	
+	
+<!--按单号抓单 begin-->
+<div id="dialog_content_catchOneDialog" style="display:none;">
+	<div class="u-msg-title">
+		<h4>按单号抓单</h4>
+	</div>
+	<div class="u-msg-content clearfix" style="padding-bottom: 13px;">
+		<div class="ui-searchbox-content clearfix ui-collapse"> 
+			<span class="ui-name">店铺</span>
+			<div class="ui-inputarea" id="storeRef" u-meta='{"type":"uiRefer","data":"catchOneList","field":"storeRef"}'>
+				<input readonly="readonly" />
+				<span class="ui-icon uifont icon-bar refer"></span>						
+			</div>
+			<span class="ui-name">单号</span> 
+			<div class="ui-inputarea" id="tid" u-meta='{"type":"string","data":"catchOneList","field":"tid"}'>
+					<input autocomplete="off" />               
+			</div>
+		</div>
+	</div>
+	<div class="u-msg-footer">
+		<a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+		<a class="u-msg-ok ui-btn ui-btn-green">确定</a>
+	</div>
+</div>
+<!--按单号抓单 end-->

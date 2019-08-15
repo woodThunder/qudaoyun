@@ -1,0 +1,157 @@
+<!--main-->
+<div class="ui-list-panel ui-panel">
+		<div>
+			<div class="page-title">
+				<span>退货单</span>
+			</div>
+		</div>
+		<div>
+			<div>
+				<div class="oc-breadcrumb">
+				</div>
+			</div>
+		</div>
+		<div class="title-seperator"></div>
+		<div class="ui-searchbox">
+			<div id="PromoActivity-searchcontent" class="ui-searchbox-content clearfix"></div>
+			<div class="ui-searchbox-footer clearfix">
+				<div class="ui-search-more hidden">
+					<a>更多<i class="uifont icon-down"></i></a>
+				</div>
+	
+				<div class="ui-search-btn">
+					<a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:cleanSearch">清空
+					</a>
+					<a class="ui-btn ui-btn-green " data-bind="click:search.bind($data,true)">搜索
+					</a>
+	
+				</div>
+			</div>
+		</div>
+	
+		<div class="ui-panel-body">
+			<!--ui-panel-body-head -->
+			<div class="ui-panel-body-head">
+				<div class="ui-panel-body-head-left">
+					<a class="ui-btn ui-btn-primary margin-right-5" id="user-action-remark" data-bind="click: remarkEvt">备注
+					</a>
+					<!--<a class="ui-btn ui-btn-primary margin-right-5" id="user-action-sendsreturn" data-bind="click: sendsreturn">推销售退货入库-->
+					<!--</a>-->
+					<a class="ui-btn ui-btn-primary margin-right-5" id="user-action-intercept-return" data-bind="click: interceptreturn">取消退货
+					</a>
+					<!--<a class="ui-btn ui-btn-primary margin-right-5" id="user-action-fill-logistic" data-bind="click: filllogistic">填充物流信息-->
+					<!--</a>-->
+					
+				</div>
+				
+			
+		  </div>
+		</div>
+		<!--ui-panel-body-head end-->
+		<div class="ui-table-container">
+			<div u-meta='{"id":"grid_orderList","data":"OrderList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true,"onBeforeClickFun": "detailClick"}'>
+				<div options='{"field":"code","dataType":"String","title":"退货单号"}'></div>
+				<!-- ,"renderType":"detailRender" -->
+				<div options='{"field":"orderCode","dataType":"String","title":"电商单号"}'></div>
+				<div options='{"field":"pcode","dataType":"String","title":"平台单号"}'></div>
+				<div options='{"field":"platformName","dataType":"String","title":"平台名称"}'></div>
+				<div options='{"field":"storeName","dataType":"String","title":"店铺名称"}'></div>
+				<div options='{"field":"buyerId","dataType":"String","title":"买家账户"}'></div>
+				<div options='{"field":"buyerName","dataType":"String","title":"收货人"}'></div>
+				<div options='{"field":"contactInfo1","dataType":"String","title":"收货人手机"}'></div>
+				<div options='{"field":"contactInfo2","dataType":"String","title":"收货人电话"}'></div>
+				<div options='{"field":"deliveryReceiverProvinceName","dataType":"String","title":"收货省"}'></div>
+				<div options='{"field":"deliveryReceiverCityName","dataType":"String","title":"收货市"}'></div>
+				<div options='{"field":"deliveryReceiverDistrictName","dataType":"String","title":"收货区/县"}'></div>
+				<div options='{"field":"deliveryReceiverTownName","dataType":"String","title":"收货街道/镇"}'></div>
+				<div options='{"field":"deliveryReceiverAddress","dataType":"String","title":"收货地址"}'></div>
+	
+				<div options='{"field":"logisticsMode","dataType":"String","title":"物流方式","editOptions":{"type":"combo","datasource":"logisticsModeSrc"},"renderType":"comboRender"}'></div>
+				
+	
+				<div options='{"field":"serviceMode","dataType":"String","title":"配送方式","editOptions":{"type":"combo","datasource":"deliveryModes"},"renderType":"comboRender"}'></div>
+				<div options='{"field":"isLock","dataType":"String","title":"冻结标识","defaultvalue":"0","editOptions":{"type":"combo","datasource":"frozenFlags"},"renderType":"comboRender"}'></div>
+				<div options='{"field":"lockType","dataType":"String","title":"冻结原因"}'></div>
+				<div options='{"field":"isSplit","dataType":"String","title":"是否拆单发货","editOptions":{"type":"combo","datasource":"splitDispatchSrc"},"renderType":"comboRender"}'></div>
+				<div options='{"field":"isUrgent","dataType":"String","title":"是否加急","editOptions":{"type":"combo","datasource":"urgentSrc"},"renderType":"comboRender"}'></div>
+	
+				<div options='{"field":"logisticsName","dataType":"String","title":"快递公司名称"}'></div>
+				<div options='{"field":"waybillNo","dataType":"String","title":"快递编号"}'></div>
+				<div options='{"field":"deliverTime","dataType":"Datetime","title":"发货时间"}'></div>
+				<div options='{"field":"bookTime","dataType":"Datetime","title":"下单时间"}'></div>
+				<!-- <div options='{"field":"deliveryTime","dataType":"Datetime","title":"要求送货时间"}'></div> -->
+	
+				<div options='{"field":"wareHouseName","dataType":"String","title":"仓库名称"}'></div>
+				<div options='{"field":"isReturn","dataType":"String","title":"是否退货","editOptions":{"type":"combo","datasource":"returnSrc"},"renderType":"comboRender"}'></div>
+				<div options='{"field":"vnote","dataType":"String","title":"备注"}'></div>
+				
+				
+				<div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation","width":"110px","fixed":true}'></div>
+			</div>
+			<div class="pagination-right margin-top-20">
+				<div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"OrderList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+			</div>
+		</div>
+		<!-- 查看详情-start -->
+		<div class="delivery u-tabs ui-tabs">
+			<div class="u-tabs__tab-bar margin-top-10 margin-bottom-10">
+				<a href="#tab-panel-5" class="u-tabs__tab">商品信息</a>
+				<a href="#tab-panel-6" class="u-tabs__tab">操作日志</a>
+			</div>
+			
+			<!-- 所有产品信息-start -->
+			<div class="u-tabs__panel" id="tab-panel-5">
+					<div u-meta='{"id":"orderProducts","data":"OrderProducts","type":"grid","editable":false,"multiSelect":false,"showNumCol":false}'>
+						<div options='{"field":"serialnum","dataType":"String","title":"行号"}'></div>
+						<div options='{"field":"srcBillCode","dataType":"String","title":"电商订单号"}'></div>
+						<div options='{"field":"productCode","dataType":"String","title":"商品编码"}'></div>
+							<div options='{"field":"productName","dataType":"String","title":"商品名称"}'></div>
+							<div options='{"field":"deliveryNumber","dataType":"String","title":"退货数量"}'></div>
+							<div options='{"field":"outboundsNumber","dataType":"String","title":"入库数量"}'></div>
+						   <div options='{"field":"price","dataType":"String","title":"退货单价"}'></div>
+						   <div options='{"field":"receivableFee","dataType":"String","title":"退货金额"}'></div>
+<!--							<div options='{"field":"price","dataType":"String","title":" 退货单价"}'></div> -->							<div options='{"field":"isGift","dataType":"String","title":"是否赠品","editOptions": {"type": "combo","datasource": "isGiftSrc"},"renderType": "comboRender"}'></div>
+							<!--<div options='{"field":"needNum","dataType":"String","title":"任务数量"}'></div>-->
+						</div>
+			</div>
+			<!-- 所有产品信息-end -->
+			
+			<!-- 操作日志-start -->
+			<div class="u-tabs__panel" id="tab-panel-6">
+					<div u-meta='{"id":"orderLogs","data":"OrderLogs","type":"grid","editable":false,"multiSelect":false,"showNumCol":false}'>
+							<div options='{"field":"operator","dataType":"String","title":"操作人"}'></div>
+							<div options='{"field":"operationTime","dataType":"Datetime","title":"操作时间"}'></div>
+							<div options='{"field":"operateType","dataType":"String","title":"操作"}'></div>
+							<div options='{"field":"operateContent","dataType":"String","title":"操作事项"}'></div>
+						</div>
+				<div class="pagination-right margin-top-20">
+					<div id='pagination_log' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"OrderLogs","pageChange":"pageChangeLog","sizeChange":"sizeChangeLog"}'></div>
+				</div>
+			</div>
+			<!-- 操作日志-end -->
+			
+		</div>
+		<!-- 查看详情-end -->
+	</div>
+	<!--main end-->
+
+<!--添加备注-->
+<div id="complimentary-popup" style="display: none;">
+		<div class="u-msg-title">
+			<h4>添加备注</h4>
+		</div>
+		<div class="ui-item ui-textarea-item" style="float:none;">
+			<div class="ui-name">
+				<i class="strong">*</i>卖家备注：</div>
+			<div class="ui-inputarea ui-inputarea ">
+				<textarea u-meta='{"id":"remarkserviceData-textarea","data":"remarkserviceData","field":"vnote","type":"textarea"}'></textarea>
+			</div>
+		</div>
+		<div class="u-msg-footer">
+			<a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+			<a class="u-msg-ok ui-btn ui-btn-green">保存</a>
+		</div>
+	</div>
+	<!--添加备注 end-->
+
+	

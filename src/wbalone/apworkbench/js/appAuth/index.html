@@ -1,0 +1,91 @@
+<div class="main-wrap list-panel" id="roleConUser">
+    <div class="wrapper">
+        <div class="wrap-body">
+            <!--页面功能名字-->
+            <!-- <div class="apptitle">
+                小应用授权
+                <span class="btn btn-default btn-sm backbutton" data-bind="click:goback">返回</span>
+            </div> -->
+            <!--tale列表展现区域-->
+            <div class="u-row">
+                <div class="u-col-xs-12 u-col-md-6">
+                    <!--角色列表 -->
+                    <div class="table-list table-responsive">
+                        <div class="table-body">
+                            <h5 class="t-head-title">角色
+                                <div class="input-group pull-right search">
+                                    <input type="search"   class="nc-search" name="searchRole" placeholder="输入角色名称或编码">
+                                    <button type="button" class="nc-searchbtn" id="searchRole" data-bind="click:clickHandle.searchRole"><i
+                                            class="iconfont icon-search"></i></button>
+                                </div>
+                            </h5>
+                            <table class="u-table u-table-striped u-table-hover tabOne" id="rolesTable">
+                                <thead>
+                                <tr>
+                                    <th>角色名称</th>
+                                    <th>角色编码</th>
+                                    <th>角色类型</th>
+                                     <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody data-bind="foreach:{data:listData.rows(), as: 'row',afterAdd: afterAdd}">
+                                <tr data-bind="click:$parent.clickHandle.showConUsers">
+                                    <td data-bind="text: row.ref('roleName')"></td>
+                                    <td data-bind="text: row.ref('roleCode')"><a href="#"> </a></td>
+                                    <td data-bind="text: row.ref('labelName')"></td>
+                                    <td>
+                                        <div class="pro_oper">
+                                            <span class="btn" data-bind="click:$parent.clickHandle.conUser">应用授权</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="emptyImage" data-bind="visible:listData.rows()<1">
+                            <img src="./images/empty.png"/>
+                            <span>暂时没有数据~!~</span>
+                        </div>
+                        <!--分页区域-->
+                        <div class="paginate-box" data-bind="visible: pagination.count() > 10">
+                            <div id="paginationt1" class="u-pagination pagination-center "></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="u-col-xs-12 u-col-md-6">
+                    <!--已分配用户列表 -->
+                    <div class="table-list table-responsive">
+                        <div class="table-body">
+                            <h5 class="t-head-title">已分配小应用
+                            </h5>
+                            <table class="u-table u-table-striped u-table-hover tabOne" id="ConUsers">
+                                <thead>
+                                <tr>
+                                    <th>应用名称</th>
+                                    <th>应用编码</th>
+                                    <!--<th>操作</th>-->
+                                </tr>
+                                </thead>
+                                <tbody data-bind="foreach:{data:CurRole.ConUsersData.rows(), as: 'row',afterAdd: afterAdd}">
+                                <tr>
+                                    <td data-bind="text: row.ref('appName')"> </td>
+                                    <td data-bind="text: row.ref('appCode')"><a href="#"></a></td>
+                                    <!--<td>-->
+                                        <!--<div class="pro_oper">-->
+                                            <!--<span class="btn cancel-btn" data-bind="click:$parent.clickHandle.unConUserOne">取消分配</span>-->
+                                        <!--</div>-->
+                                    <!--</td>-->
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="emptyImage" data-bind="visible:CurRole.ConUsersData.rows()<1">
+                            <span>当前角色尚未分配小应用</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

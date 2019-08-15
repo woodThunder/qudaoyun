@@ -1,0 +1,320 @@
+<div class="ui-list-panel ui-panel">
+    <div>
+        <div class="page-title">
+            <span>送装工单</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="title-seperator"></div>
+
+    <div class="ui-searchbox" >
+        <div id="mainList-searchcontent" class="ui-searchbox-content clearfix"></div>
+        <!--searchbox-btn-->
+        <div class="ui-searchbox-footer">
+            <div class="ui-search-more hidden">
+                <a>更多
+                    <i class="uifont icon-down"></i>
+                </a>
+            </div>
+
+            <div class="ui-search-btn">
+
+                <a class="ui-btn ui-btn-primary" data-bind="click:cleanSearch">清空
+                </a>
+                <a class="ui-btn ui-btn-green margin-right-5" data-bind="click:search.bind($data,true)">搜索
+                </a>
+            </div>
+            <div class="clearfix">
+
+            </div>
+        </div>
+        <!--searchbox-btn end-->
+    </div>
+
+    <div class="ui-panel-body">
+        <div class="margin-bottom-10">
+            <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click: complete.bind($data)">
+                <i class="uifont icon-plus margin-right-5"></i>任务完成
+            </a>
+        </div>
+        <div class="ui-table-container">
+            <div id="orderList" u-meta='{"id":"grid_PromoActivity","data":"mainList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+                <div options='{"field":"code","dataType":"String","title":"送装工单号","renderType":"detailRender"}'></div>
+                <div options='{"field":"deliAppCode","dataType":"String","title":"送装请求号"}'></div>
+                <div options='{"field":"deliveryPersonName","dataType":"String","title":"配送人员"}'></div>
+                <div options='{"field":"installPersonName","dataType":"String","title":"安装人员"}'></div>
+                <div options='{"field":"planDeliveryDate","dataType":"String","title":"计划配送日期"}'></div>
+                <div options='{"field":"customer","dataType":"String","title":"顾客"}'></div>
+                <div options='{"field":"phone","dataType":"String","title":"联系电话"}'></div>
+                <div options='{"field":"billStatus","dataType":"integer","title":"单据状态","renderType":"comboRender","editOptions":{"type":"combo","datasource":"billStatusEnum"}}'></div>
+                <div options='{"field":"creator","dataType":"String","title":"创建人","visible":false}'></div>
+                <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":false}'></div>
+                <div options='{"field":"creationTime","dataType":"Datetime","title":"创建时间","visible":false}'></div>
+                <div options='{"field":"modifiedTime","dataType":"Datetime","title":"修改时间","visible":false}'></div>
+                <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation","fixed":true}'></div>
+            </div>
+
+            <div class="ui-statistics margin-top-10">
+                <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择
+                <span class="font-c-blue" data-bind="text:mainList.selectedIndices().length"></span>项数据
+            </div>
+
+            <div class="pagination-right">
+                <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"mainList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--详情-->
+<div class="ui-panel ui-bill-detail" style="display: none;">
+    <div>
+        <div class="page-title">
+        <span>送装工单</span>
+        </div>
+    </div>
+    <div>
+        <div>
+        <div class="oc-breadcrumb">
+        </div>
+        </div>
+    </div>
+    <div class="ui-panel-btn-bg">
+        <div class="ui-operate-btn">
+        <a class="ui-btn ui-btn-primary" data-bind="click:retListPanel">返回</a>
+        </div>
+    </div>
+    <!--head-->
+    <div class="margin-top-10">
+        <div class="ui-bill-body">
+            <div class="ui-collapse-group border orderCenter">
+                <div id="default-example" data-collapse>
+                    <!--基本信息开始-->
+                    <h3 class="ui-collapse-title orderCenter clearfix open margin-top-10">
+                        <a href="javascript:;" class="click-btn inline-block">
+                        <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                        <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                        基本信息
+                        </a>
+                    </h3>
+                    <div class="ui-collapse-content  clearfix">
+                        <div class="ui-item">
+                            <div class="ui-name">工单号：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('code')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">请求单号：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('deliAppCode')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">顾客：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('customer')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">国家：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('country'),attr:{title:mainList.ref('country')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">省份：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('province'),attr:{title:mainList.ref('province')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">城市：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('city'),attr:{title:mainList.ref('city')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">区县：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('district'),attr:{title:mainList.ref('district')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">乡镇：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('town'),attr:{title:mainList.ref('town')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">地址：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('address'),attr:{title:mainList.ref('address')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">联系电话：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('phone')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">服务商：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('serviceProvider')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">配送人员：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('deliveryPersonName')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">安装人员：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('installPersonName')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">派工日期：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('deliveryDate')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">计划配送日期：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('planDeliveryDate')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">配送日期：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('sendDeliveryDate')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">安装日期：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('installDate')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">单据状态：</div>
+                            
+                            <div  class="ui-inputarea" u-meta='{"type":"u-combobox","data":"mainList","field":"billStatus","datasource":"billStatusEnum","enable":"false"}'>
+                                <input class="ui-no-border" />
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">运费：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('freight')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">尾款：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('tailFee')"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--基本信息结束-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui-serviceCenter-box">
+        <div class="ui-title" >
+            <span class="s-b">商品清单</span>
+         </div>
+         <div class="">
+            <!-- 商品信息-start -->
+            <div class="ui-table-container" >
+                <div u-meta='{"id":"grid_goods","data":"goodsList","type":"grid","editable":false,"multiSelect":"false","showNumCol":true}'>
+                    <div options='{"field":"goodsInfoCode","dataType":"String","title":"商品编码"}'></div>
+                    <div options='{"field":"goodsInfoName","dataType":"String","title":"商品名称"}'></div>
+                    <div options='{"field":"num","dataType":"Float","title":"数量"}'></div>
+                    <div options='{"field":"conpany","dataType":"String","title":"单位"}'></div>
+                </div>
+            </div>
+            <!-- 商品信息-end -->   
+         </div>
+    </div> 
+
+    <div class="ui-serviceCenter-box">
+            <div class="ui-title" >
+                <span class="s-b">配送信息</span>
+             </div>
+             <div class="ui-content" >
+                 <ul>
+                     <li class="ui-li">
+                         <span  class="s-t">配送完成日期：</span>
+                         <span class="s-b"　 data-bind="text:mainList.ref('deliverySuccessDate')"></span>
+                     </li>
+                     <li class="ui-li">
+                            <span  class="s-t" >配送记录：</span>
+                            <span class="s-b"　 data-bind="text:mainList.ref('deliveryInfo')"></span>
+                     </li>
+                     <li class="ui-li">
+                            <span  class="s-t" >配送照片：</span>
+                            <div class="imgs-b"    data-bind="foreach:deliveryImgsDataArr">
+                                    <a class="a-img" href="javacript:void(0);" 
+                                        data-bind="click:$parent.imgsMagnifyFun.bind($data)" >
+                                        <img  data-bind="attr:{src:$data}"/>
+                                    </a>
+                            </div>   
+                     </li>
+                 </ul>
+           
+             </div>
+    </div> 
+
+    <div class="ui-serviceCenter-box">
+            <div class="ui-title" >
+                <span class="s-b">安装信息</span>
+             </div>
+             <div class="ui-content" >
+                 <ul>
+                     <li class="ui-li">
+                         <span  class="s-t">安装完成日期：</span>
+                         <span class="s-b"　 data-bind="text:mainList.ref('installSuccessDate')"></span>
+                     </li>
+                     <li class="ui-li">
+                            <span  class="s-t">安装记录：</span>
+                            <span class="s-b"　 data-bind="text:mainList.ref('installInfo')"></span>
+                     </li>
+                     <li class="ui-li">
+                            <span  class="s-t">安装照片：</span>
+                            <div class="imgs-b" data-bind="foreach:installImgsDataArr">
+                                    <a class="a-img" href="javacript:void(0);"  
+                                       data-bind="click:$parent.imgsMagnifyFun.bind($data)">
+                                            <img  data-bind="attr:{src:$data}"/>
+                                    </a>
+                            </div>   
+                     </li>
+                 </ul>
+           
+             </div>
+    </div> 
+
+</div> 
+
+<!-- 图片放大弹出 -->
+<div id="imgMagnifyBox" style="display: none;">
+    <div class="u-msg-title">
+        <h4>查看图片</h4>
+    </div>
+    <div class="u-msg-content imgDiv" style="text-align: center;">
+        <img class="img"/>
+    </div>
+    <div class="u-msg-footer">
+		<a class="ui-btn ui-btn-primary u-msg-cancel margin-right-5">关闭</a>
+	</div>
+</div>

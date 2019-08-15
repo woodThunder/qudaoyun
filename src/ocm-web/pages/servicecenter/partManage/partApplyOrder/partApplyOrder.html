@@ -1,0 +1,393 @@
+<div class="ui-list-panel ui-panel">
+    <div>
+        <div class="page-title">
+            <span>领料申请</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="title-seperator"></div>
+
+    <div class="ui-searchbox" >
+        <div id="mainList-searchcontent" class="ui-searchbox-content clearfix"></div>
+        <!--searchbox-btn-->
+        <div class="ui-searchbox-footer">
+            <div class="ui-search-more hidden">
+                <a>更多
+                    <i class="uifont icon-down"></i>
+                </a>
+            </div>
+
+            <div class="ui-search-btn">
+
+                <a class="ui-btn ui-btn-primary" data-bind="click:cleanSearch">清空
+                </a>
+                <a class="ui-btn ui-btn-green margin-right-5" data-bind="click:search.bind($data,true)">搜索
+                </a>
+            </div>
+            <div class="clearfix">
+
+            </div>
+        </div>
+        <!--searchbox-btn end-->
+    </div>
+
+    <div class="ui-panel-body">
+        <div class="margin-bottom-10">
+            <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click: audit">
+                <i class="uifont icon-plus margin-right-5"></i>审批通过
+            </a>
+            <!--<a class="ui-btn ui-btn-primary margin-right-5" data-bind="click: beforeEdit.bind($data)">
+                <i class="uifont icon-plus margin-right-5"></i>新增
+            </a>
+            -->
+            <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click: del">
+                <i class="uifont icon-shanchu1 margin-right-5"></i>删除
+            </a>
+        </div>
+        <div class="ui-table-container">
+            <div id="orderList" u-meta='{"id":"grid_PromoActivity","data":"mainList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+                <div options='{"field":"orderSn","dataType":"String","title":"申请单号","renderType":"detailRender"}'></div>
+                <div options='{"field":"organization","dataType":"String","title":"所属组织"}'></div>
+                <div options='{"field":"orderType","dataType":"Datetime","title":"申请单类型"}'></div>
+                <div options='{"field":"server","dataType":"String","title":"服务商", "renderType":"serverRender"}'></div>
+                <div options='{"field":"orderTotalNum","dataType":"String","title":"订单总金额"}'></div>
+                <div options='{"field":"thType","dataType":"String","title":"提货方式"}'></div>
+                <div options='{"field":"dhType","dataType":"String","title":"订货方式", "renderType":"dhTypeRender"}'></div>
+                <div options='{"field":"sqDate","dataType":"datetime","title":"申请日期"}'></div>
+                <div options='{"field":"qhAddress","dataType":"string","title":"取货地址"}'></div>
+                <div options='{"field":"shAddress","dataType":"string","title":"收货地址"}'></div>
+                <div options='{"field":"beizhu","dataType":"string","title":"备注"}'></div>
+                <div options='{"field":"creator","dataType":"String","title":"创建人","visible":false}'></div>
+                <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":false}'></div>
+                <div options='{"field":"creationTime","dataType":"Datetime","title":"创建时间","visible":false}'></div>
+                <div options='{"field":"modifiedTime","dataType":"Datetime","title":"修改时间","visible":false}'></div>
+                <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation","fixed":true}'></div>
+            </div>
+
+            <div class="ui-statistics margin-top-10">
+                <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择
+                <span class="font-c-blue" data-bind="text:mainList.selectedIndices().length"></span>项数据
+            </div>
+
+            <div class="pagination-right">
+                <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"mainList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!--详情表单-->
+<div class="ui-panel ui-bill-detail" style="display: none;">
+    <div>
+        <div class="page-title">
+        <span>物料申请</span>
+        </div>
+    </div>
+    <div>
+        <div>
+        <div class="oc-breadcrumb">
+        </div>
+        </div>
+    </div>
+    <div class="ui-panel-btn-bg">
+        <div class="ui-operate-btn">
+        <a class="ui-btn ui-btn-primary" data-bind="click:retListPanel">返回</a>
+        </div>
+    </div>
+    <!--head-->
+    <div class="margin-top-10">
+        <div class="ui-bill-body">
+            <div class="ui-collapse-group orderCenter">
+                <div id="default-example" data-collapse>
+                    <!--基本信息开始-->
+                    <h3 class="ui-collapse-title orderCenter clearfix open margin-top-10">
+                        <a href="javascript:;" class="click-btn inline-block">
+                        <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                        <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                        基本信息
+                        </a>
+                    </h3>
+                    <div class="ui-collapse-content  clearfix">
+                        <div class="ui-item">
+                            <div class="ui-name">所属组织：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" u-meta='{"type":"u-combobox","data":"mainList",
+                                    "field":"organization","datasource":"organizationDataSource","enable":"false"}'>
+                                    <input class="ui-no-border"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                                <div class="ui-name">申请单类型：</div>
+                                <div class="ui-inputarea">
+                                    <div class="ui-textonly" data-bind="text:mainList.ref('orderType')"></div>
+                                </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">申请单号：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('orderSn')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">服务商：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" u-meta='{"type":"u-combobox","data":"mainList",
+                                        "field":"server","datasource":"serverDatasource","enable":"false"}'>
+                                        <input class="ui-no-border"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">项目：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('project')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">订单总金额：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('orderTotalNum')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">提货方式：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('thType')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">订货方式：</div>
+                            <div class="ui-inputarea">
+                                    <div class="ui-textonly" u-meta='{"type":"u-combobox","data":"mainList",
+                                        "field":"dhType","datasource":"dhTypeDatasource","enable":"false"}'>
+                                        <input class="ui-no-border"/>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">申请日期：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('sqDate')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">取货地址：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('qhAddress')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">收货地址：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('shAddress')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">备注：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('beizhu')"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--基本信息结束-->
+                </div>
+            </div>
+            <div class="ui-bill-footer">
+            </div>
+        </div>
+    </div>
+    <div class="u-tabs ui-tabs">  
+        <!-- 备件信息-start -->
+        <div class="u-tabs__panel is-active" id="tab-panel-2" >
+            <div u-meta='{"id":"grid_goods","data":"partsList","type":"grid","editable":false,"multiSelect":false,"showNumCol":true}'>
+                <div options='{"field":"bjCode","dataType":"String","title":"备件编码"}'></div>
+                <div options='{"field":"bjName","dataType":"string","title":"备件名称"}'></div>
+                <div options='{"field":"mainUnit","dataType":"string","title":"主单位"}'></div>
+                <div options='{"field":"unit","dataType":"String","title":"单位"}'></div>
+                <div options='{"field":"rate","dataType":"float","title":"换算率"}'></div>
+                <div options='{"field":"dhNumber","dataType":"integer","title":"订货数量"}'></div>
+                <div options='{"field":"sqzNumber","dataType":"integer","title":"申请主数量"}'></div>
+                <div options='{"field":"price","dataType":"float","title":"单价"}'></div>
+                <div options='{"field":"dhje","dataType":"float","title":"订货金额"}'></div>
+                <div options='{"field":"beizhu","dataType":"string","title":"备注"}'></div>
+            </div>
+        </div>
+        <!-- 备件信息-end -->   
+    </div>  
+</div>
+
+<!--详情表单-->
+<div class="ui-panel ui-bill-panel" style="display: none;">
+    <div>
+        <div class="page-title">
+        <span>物料申请</span>
+        </div>
+    </div>
+    <div>
+        <div>
+        <div class="oc-breadcrumb">
+        </div>
+        </div>
+    </div>
+    <div class="ui-panel-btn-bg">
+        <div class="ui-operate-btn">
+            <a class="ui-btn ui-btn-primary" data-bind="click: cancelBill.bind($data)">取消
+            </a>
+            <a class="ui-btn ui-btn-green" data-bind="click: saveBill.bind($data)">保存
+            </a>
+            </div>
+    </div>
+    <!--head-->
+    <div class="margin-top-10">
+        <div class="ui-bill-body">
+            <div class="ui-collapse-group orderCenter">
+                <div id="default-example" data-collapse>
+                    <!--基本信息开始-->
+                    <h3 class="ui-collapse-title orderCenter clearfix open margin-top-10">
+                        <a href="javascript:;" class="click-btn inline-block">
+                        <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                        <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                        基本信息
+                        </a>
+                    </h3>
+                    <div class="ui-collapse-content  clearfix">
+                            <div class="ui-item">
+                                    <div class="ui-name">所属组织：</div>
+                                    <div class="ui-inputarea">
+                                            <div class="ui-textonly" data-bind="text:mainList.ref('organization')"></div>
+                                        </div>
+                                </div>
+                                <div class="ui-item">
+                                        <div class="ui-name">申请单类型：</div>
+                                        <div class="ui-inputarea">
+                                            <div class="ui-textonly" data-bind="text:mainList.ref('orderType')"></div>
+                                        </div>
+                                </div>
+                                <div class="ui-item">
+                                    <div class="ui-name">申请单号：</div>
+                                    <div class="ui-inputarea">
+                                            <div class="ui-textonly" u-meta='{"type":"string","data":"mainList","field":"orderSn"}'>
+                                                <input class="u-input" />
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="ui-item">
+                                    <div class="ui-name">服务商：</div>
+                                    <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"mainList",
+                                        "field":"server","datasource":"serverDatasource","enable":"true"}'>
+                                        <input />
+                                        <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+                                    </div>
+                                </div>
+                                <div class="ui-item">
+                                    <div class="ui-name">项目：</div>
+                                    <div class="ui-inputarea">
+                                        <div class="ui-textonly" u-meta='{"type":"string","data":"mainList","field":"project"}'>
+                                            <input class="u-input" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ui-item">
+                                    <div class="ui-name">订单总金额：</div>
+                                    <div class="ui-inputarea">
+                                            <div class="ui-textonly" u-meta='{"type":"float","data":"mainList","field":"orderTotalNum"}'>
+                                                <input class="u-input" />
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="ui-item">
+                                    <div class="ui-name">提货方式：</div>
+                                    <div class="ui-inputarea">
+                                            <div class="ui-textonly" data-bind="text:mainList.ref('thType')"></div>
+                                        </div>
+                                </div>
+                                <div class="ui-item">
+                                    <div class="ui-name">订货方式：</div>
+                                    <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"mainList",
+                                     "field":"dhType","datasource":"dhTypeDatasource","enable":"ture"}'>
+                                                <input />
+                                                <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+                                    </div>
+                                </div>
+                                <div class="ui-item">
+                                    <div class="ui-name">申请日期：</div>
+                                    <div class="ui-inputarea">
+                                        <div class="ui-textonly" u-meta='{"type":"u-datetime","data":"mainList",
+                                            "field":"sqDate"}'>
+                                            <input class="ui-no-border"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ui-item">
+                                    <div class="ui-name">取货地址：</div>
+                                    <div class="ui-inputarea">
+                                            <div class="ui-textonly" u-meta='{"type":"string","data":"mainList","field":"qhAddress"}'>
+                                                <input class="u-input" />
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="ui-item">
+                                    <div class="ui-name">收货地址：</div>
+                                    <div class="ui-inputarea">
+                                            <div class="ui-textonly" u-meta='{"type":"string","data":"mainList","field":"shAddress"}'>
+                                                <input class="u-input" />
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="ui-item">
+                                    <div class="ui-name">备注：</div>
+                                    <div class="ui-inputarea">
+                                            <div class="ui-textonly" u-meta='{"type":"string","data":"mainList","field":"beizhu"}'>
+                                                <input class="u-input" />
+                                            </div>
+                                        </div>
+                                </div>
+                    </div>
+                    <!--基本信息结束-->
+                </div>
+            </div>
+            <div class="ui-bill-footer">
+            </div>
+        </div>
+    </div>
+    <div class="u-tabs ui-tabs">  
+            <div class="ui-panel-body-head">
+                    <div class="ui-panel-body-head-left">
+                        <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-additems" data-bind="click: addRow">
+                            <i class="uifont icon-bar margin-right-5"></i>增行
+                        </a>
+                        <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del" data-bind="click: delRow">
+                            <i class="uifont icon-shanchu1 margin-right-5"></i>删行
+                        </a>
+                    </div>
+                </div>
+        <!-- 备件信息-start -->
+        <div class="u-tabs__panel is-active" id="tab-panel-1" >
+            <div u-meta='{"id":"grid_goods1","data":"partsList","type":"grid","editable":true,"multiSelect":true,"showNumCol":true}'>
+                    <div options='{"field":"bjCode","dataType":"String","title":"备件编码"}'></div>
+                    <div options='{"field":"bjName","dataType":"string","title":"备件名称"}'></div>
+                    <div options='{"field":"mainUnit","dataType":"string","title":"主单位"}'></div>
+                    <div options='{"field":"unit","dataType":"String","title":"单位"}'></div>
+                    <div options='{"field":"rate","dataType":"float","title":"换算率"}'></div>
+                    <div options='{"field":"dhNumber","dataType":"integer","title":"订货数量"}'></div>
+                    <div options='{"field":"sqzNumber","dataType":"integer","title":"申请主数量"}'></div>
+                    <div options='{"field":"price","dataType":"float","title":"单价"}'></div>
+                    <div options='{"field":"dhje","dataType":"float","title":"订货金额"}'></div>
+                    <div options='{"field":"beizhu","dataType":"string","title":"备注"}'></div>
+            </div>
+        </div>
+        <!-- 备件信息-end -->   
+    </div>  
+</div>
+
+
+
+  

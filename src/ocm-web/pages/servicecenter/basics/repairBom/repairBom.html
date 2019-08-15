@@ -1,0 +1,309 @@
+<div class="ui-list-panel ui-panel">
+    <div>
+        <div class="page-title">
+            <span>维修BOM</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="title-seperator"></div>
+
+    <div class="ui-searchbox" >
+        <div id="mainList-searchcontent" class="ui-searchbox-content clearfix"></div>
+        <!--searchbox-btn-->
+        <div class="ui-searchbox-footer">
+            <div class="ui-search-more hidden">
+                <a>更多
+                    <i class="uifont icon-down"></i>
+                </a>
+            </div>
+
+            <div class="ui-search-btn">
+
+                <a class="ui-btn ui-btn-primary" data-bind="click:cleanSearch">清空
+                </a>
+                <a class="ui-btn ui-btn-green margin-right-5" data-bind="click:search.bind($data,true)">搜索
+                </a>
+            </div>
+            <div class="clearfix">
+
+            </div>
+        </div>
+        <!--searchbox-btn end-->
+    </div>
+
+    <div class="ui-panel-body">
+        <div class="margin-bottom-10">
+            <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click: beforeEdit.bind($data)">
+                <i class="uifont icon-plus margin-right-5"></i>新增
+            </a>
+            <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click: del">
+                <i class="uifont icon-shanchu1 margin-right-5"></i>删除
+            </a>
+            <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:checkBomFun">
+                    <i class="uifont margin-right-5"></i>查看Bom结构
+            </a>
+        </div>
+        <div class="ui-table-container">
+            <div id="orderList" u-meta='{"id":"grid_PromoActivity","data":"mainList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+                <div options='{"field":"code","dataType":"String","title":"编码","renderType":"detailRender"}'></div>
+                <div options='{"field":"name","dataType":"String","title":"名称"}'></div>
+                <div options='{"field":"goodsCode","dataType":"String","title":"商品编码"}'></div>
+                <div options='{"field":"goodsName","dataType":"String","title":"商品名称"}'></div>
+                <div options='{"field":"version","dataType":"String","title":"版本"}'></div>
+                <div options='{"field":"creator","dataType":"String","title":"创建人","visible":false}'></div>
+                <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":false}'></div>
+                <div options='{"field":"creationTime","dataType":"Datetime","title":"创建时间","visible":false}'></div>
+                <div options='{"field":"modifiedTime","dataType":"Datetime","title":"修改时间","visible":false}'></div>
+                <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation","fixed":true}'></div>
+            </div>
+
+            <div class="ui-statistics margin-top-10">
+                <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择
+                <span class="font-c-blue" data-bind="text:mainList.selectedIndices().length"></span>项数据
+            </div>
+
+            <div class="pagination-right">
+                <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"mainList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- 新增维修BOM信息 -->
+<div class="ui-panel ui-bill-panel" style="display: none;" id="validate">
+    <div>
+        <div class="page-title">
+            <span>维修BOM</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="ui-panel-btn-bg">
+        <div class="ui-operate-btn">
+            <a class="ui-btn ui-btn-primary" data-bind="click: cancelBill.bind($data)">取消
+            </a>
+            <a class="ui-btn ui-btn-green" data-bind="click: saveBill.bind($data)">保存
+            </a>
+        </div>
+    </div>
+    <div class="ui-panel-head ui-bill-head">
+
+        <div class="ui-item">
+            <div class="ui-name">
+                    <span class='ui-redstar'>*</span> 编码：
+                </div>
+                <div class="ui-inputarea">
+                    <div class="ui-textonly" u-meta='{"type":"u-text","data":"repairBomAdd","field":"code"}'>
+                        <input class="u-input" />
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">
+                <span class='ui-redstar'>*</span> 名称：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" u-meta='{"type":"u-text","data":"repairBomAdd","field":"name"}'>
+                        <input class="u-input" />
+                </div>
+            </div>    
+        </div>
+
+        <div class="ui-item">
+            <div class="ui-name">
+                <span class='ui-redstar'>*</span> 版本：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" u-meta='{"type":"u-text","data":"repairBomAdd","field":"version"}'>
+                        <input class="u-input" />
+                </div>
+            </div>    
+        </div>
+    
+        <div class="ui-item">
+            <div class="ui-name">
+                <span class='ui-redstar'>*</span> 商品名称：
+            </div>
+            <div class="ui-inputarea" u-meta='{"type":"uiRefer","data":"repairBomAdd","field":"goodsId","rel":{"refpk":"goodsId","refcode":"goodsCode","refname":"goodsName"}}'>
+                <input readonly="readonly" autocomplete="off" id="goods"/>
+                <span class="ui-icon uifont icon-bar refer"></span>
+            </div>
+        </div>  
+        <div class="clearfix"></div>
+    </div>
+    <div class="ui-bill-body">
+        <div class="ui-panel-body-head">
+            <div class="ui-panel-body-head-left">
+                <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-additems" data-bind="click: addRow">
+                    <i class="uifont icon-bar margin-right-5"></i>备件参照
+                </a>
+                <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del" data-bind="click: delRow">
+                    <i class="uifont icon-shanchu1 margin-right-5"></i>删行
+                </a>
+            </div>
+        </div>
+        <div id="partsRefer" u-meta='{"type":"uiRefer","data":"partsRef","field":"partsRefer"}' style="display:none;">
+            <input readonly="readonly" />
+            <span class="ui-icon uifont icon-bar refer"></span>
+        </div>
+        <div class="ui-table-container margin-bottom-30">
+            <div u-meta='{"id":"grid_parts_list_add","data":"mainListChildParts","type":"grid","editable":true,"multiSelect":true,"showNumCol":true}'>
+                <div options='{"field":"partsCode","dataType":"String","title":"备件编码","editable":false,"required":true,"renderType":"ncReferRender","editType":"ncReferEditType","showField":"partsCode","editOptions":{"validType":"string","rel":{"refpk":"id","refcode":"partsCode","refname":"partsName","model":"model","description":"description"}}}'></div>
+                <div options='{"field":"partsName","dataType":"String","title":"备件名称","editable":false}'></div>
+                <div options='{"field":"model","dataType":"String","title":"型号","editable":false}'></div>
+                <div options='{"field":"unit","dataType":"String","title":"单位","editable":false}'></div>
+                <div options='{"field":"description","dataType":"String","title":"描述","editable":false}'></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--详情表单-->
+<div class="ui-panel ui-bill-detail" style="display: none;">
+    <div>
+        <div class="page-title">
+        <span>维修BOM</span>
+        </div>
+    </div>
+    <div>
+        <div>
+        <div class="oc-breadcrumb">
+        </div>
+        </div>
+    </div>
+    <div class="ui-panel-btn-bg">
+        <div class="ui-operate-btn">
+        <a class="ui-btn ui-btn-primary" data-bind="click:retListPanel">返回</a>
+        </div>
+    </div>
+    <!--head-->
+    <div class="margin-top-10">
+        <div class="ui-bill-body">
+            <div class="ui-collapse-group orderCenter">
+                <div id="default-example" data-collapse>
+                    <!--基本信息开始-->
+                    <h3 class="ui-collapse-title orderCenter clearfix open margin-top-10">
+                        <a href="javascript:;" class="click-btn inline-block">
+                        <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                        <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                        基本信息
+                        </a>
+                    </h3>
+                    <div class="ui-collapse-content  clearfix">
+                        <div class="ui-item">
+                            <div class="ui-name">
+                                <span class='ui-redstar'>*</span> 编码：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('code')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">
+                                <span class='ui-redstar'>*</span> 名称</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('name')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">
+                                <span class='ui-redstar'>*</span>商品编码：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('goodsCode')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">
+                                <span class='ui-redstar'>*</span> 商品名称：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('goodsName')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">版本：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('version')"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--基本信息结束-->
+                </div>
+            </div>
+            <div class="ui-bill-footer">
+            </div>
+        </div>
+    </div>
+    <div class="u-tabs ui-tabs">  
+        <!-- 备件信息-start -->
+        <div class="u-tabs__panel is-active" id="tab-panel-2" >
+            <div u-meta='{"id":"grid_goods","data":"mainListChildParts","type":"grid","editable":false,"multiSelect":"false","showNumCol":true}'>
+                <div options='{"field":"partsCode","dataType":"String","title":"备件编码"}'></div>
+                <div options='{"field":"partsName","dataType":"String","title":"备件名称"}'></div>
+                <div options='{"field":"unit","dataType":"String","title":"单位"}'></div>
+                <div options='{"field":"model","dataType":"String","title":"型号"}'></div>
+                <div options='{"field":"description","dataType":"String","title":"描述"}'></div>
+            </div>
+        </div>
+        <!-- 备件信息-end -->   
+    </div>  
+</div>
+
+
+<!-- 查看Bom结构 -->
+<div id="checkBom-popup" style="display:none;">
+        <div class="u-msg-title">
+            <h4>查看Bom结构</h4>
+        </div>
+        <div class="u-msg-content  clearfix margin-bottom-20" id="validate">
+                <!-- <img src="/ocm-web/pages/servicecenter/basics/repairBom/bomtype.jpg" style="width: 950px;" /> -->
+            
+                <div class="u-container-fluid">
+                        <div class="u-row">
+                            <div class="u-col-3">
+                            <div id="treeTest" class="ztree" style="overflow:unset" data-bind="click:clickTree"   u-meta='{"id":"tree1",
+                            "data":"simpleListTree","type":"tree","idField":"id","pidField":"parentId","nameField":"partsName","setting":"treeSetting"}'>
+                            </div>
+                            </div>
+                            <div class="u-col-9">
+                                    <div class="ui-table-container">
+                                            <div id="orderList" u-meta='{"id":"grid_mainListChildParts1","data":"mainListChildParts","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+                                                <div options='{"field":"partsCode","dataType":"String","title":"备件编码"}'></div>
+                                                <div options='{"field":"partsName","dataType":"String","title":"备件名称"}'></div>
+                                                <div options='{"field":"unit","dataType":"String","title":"单位"}'></div>
+                                                <div options='{"field":"model","dataType":"String","title":"型号"}'></div>
+                                                <div options='{"field":"description","dataType":"String","title":"描述"}'></div>
+
+                                                <div options='{"field":"creator","dataType":"String","title":"创建人","visible":false}'></div>
+                                                <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":false}'></div>
+                                                <div options='{"field":"creationTime","dataType":"Datetime","title":"创建时间","visible":false}'></div>
+                                                <div options='{"field":"modifiedTime","dataType":"Datetime","title":"修改时间","visible":false}'></div>
+                                                <!-- <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation","fixed":true}'></div> -->
+                                            </div>
+                                
+                                            <!-- <div class="ui-statistics margin-top-10">
+                                                <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择
+                                                <span class="font-c-blue" data-bind="text:mainListChildParts.selectedIndices().length"></span>项数据
+                                            </div> -->
+                            
+                                            <div class="pagination-right">
+                                                <div id='pagination2' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"mainListChildParts","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+                                            </div>
+
+                                        </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+        </div>
+        <div class="u-msg-footer">
+            <a class="ui-btn ui-btn-primary u-msg-cancel margin-right-5">关闭</a>
+            <!-- <a class="ui-btn ui-btn-green  u-msg-ok">保存</a> -->
+        </div>
+</div>

@@ -1,0 +1,102 @@
+<div class="ui-panel ui-list-panel">
+    <div>
+        <div class="page-title">
+            <span data-bind="text:title"></span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+
+    <div class="title-seperator"></div>
+    <div class="ui-searchbox">
+        <div>
+            <div class="ui-item">
+                <span class="ui-name">库存组织:
+                </span>
+                <div class="ui-inputarea">
+                    <div u-meta='{"type":"uiRefer","data":"goodsSlotGlobal","field":"pkOrgId"}'>
+                        <input readonly="readonly" autocomplete="off"/>
+                        <span class="ui-icon uifont icon-bar refer"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-item">
+                <span class="ui-name">仓库:
+                </span>
+                <div class="ui-inputarea">
+                    <div u-meta='{"id":"wareHouseComp","type":"uiRefer","data":"goodsSlotGlobal","field":"wareHouseId","rel":{"refname":"wareHouseName"}}'>
+                        <input id="wareHouseId" readonly="readonly" autocomplete="off"/>
+                        <span class="ui-icon uifont icon-bar refer"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-item">
+                <span class="ui-name">
+                </span>
+                <div class="ui-inputarea ui-top2">
+                    <ui-buttons params='datasource:$root.button1Source'>
+                    </ui-buttons>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+    </div>
+    <div class="u-overlay" style="top:55px;z-index:1000" data-bind="visible:overlayVisible"></div>
+    <div class="ui-panel-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="ui-panel-body-head margin-top-10">
+                        <div class="ui-panel-body-head-left">
+                            <!-- <div>当前选择仓库：
+                                <span data-bind="text:goodsSlotGlobal.ref('wareHouseName')"></span>
+                            </div> -->
+                        </div>
+                        <!-- <div class="ui-inputarea">
+                            <div u-meta='{"type":"u-text","data":"queryParam","field":"params"}'>
+                                <input class="u-input" placeholder="请输入编码或名称" />
+                                <span class="ui-icon uifont icon-bar refer"></span>
+                            </div>
+                        </div> -->
+                        <!-- <div class="margin-top-10">
+                            <i class="uifont icon-plus red margin-right-5"></i>
+                        </div> -->
+                    </div>
+                    <div style="max-height: 600px" id="goodsSlotTree" class="ztree" u-meta='{
+                                                    "id":"goodsSlotTree",
+                                                    "data":"goodsSlotTree",
+                                                    "type":"tree",
+                                                    "idField":"id",
+                                                    "pidField":"parentId",
+                                                    "nameField":"fullName",
+                                                    "setting":"treeSetting"
+                                                }'>
+                    </div>
+                </div>
+                <div class="u-col-md-9">
+                    <div class="ui-panel-body-head margin-top-10">
+                        <div class="ui-panel-body-head-left">
+                            <ui-buttons params='datasource:$root.button2Source'>
+                            </ui-buttons>
+                        </div>
+                    </div>
+                    <div class="ui-table-container margin-top-10">
+                        <ui-grid params='options:$root.gridOption,vm:$root'>
+                        </ui-grid>
+                    </div>
+                    <div class="ui-statistics">
+                        共
+                        <span class="font-c-blue" data-bind="text:goodsSlotList.rows().length"></span>条记录
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ui-dialogcard params='datasource:$root.dialogcardSource,ref:$root.dialogcardcomp'>
+</ui-dialogcard>

@@ -1,0 +1,256 @@
+<div class="ui-panel ui-list-panel">
+    <div>
+        <div class="page-title">
+            <span>平台店铺管理</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="title-seperator"></div>
+    <div class="ui-searchbox ui-panel-head">
+        <div id="storeList-searchcontent" class="ui-searchbox-content">
+
+        </div>
+        <div class="clearfix">
+
+        </div>
+        <div class="ui-searchbox-footer">
+            <div class="ui-search-more hidden">
+                <a>更多
+                    <i class="uifont icon-down"></i>
+                </a>
+            </div>
+
+            <div class="ui-search-btn">
+                <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:cleanSearch">清空
+                </a>
+                <a class="ui-btn ui-btn-green" data-bind="click:search.bind($data,true)">搜索
+                </a>
+            </div>
+            <div class="clearfix">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="ui-panel-body">
+        <div class="ui-panel-body-head">
+            <div class="ui-panel-body-head-left">
+                <a class="ui-btn ui-btn-orange margin-right-5" data-bind="click: showAddBillPanel">
+                    <i class="uifont icon-plus margin-right-5"></i>新增
+                </a>
+                <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click: del">
+                    <i class="uifont icon-shanchu1 margin-right-5"></i>删除
+                </a>
+                <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:synchronousData"><i class="uifont icon-tubiao-zhuanhua margin-right-5"></i>同步数据通
+                </a>
+            </div>
+            <!--<div class="ui-panel-body-head-right">
+                <i class="uifont icon-i font-c-blue margin-right-5"></i>共搜索到<span data-bind="text:storeList.totalRow"></span>条数据
+            </div>-->
+        </div>
+        <div class="ui-table-container">
+            <div id="platstorelist" u-meta='{"id":"grid_platstorelist","data":"storeList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true,"onBeforeClickFun": "detail"}'>
+                <div options='{"field":"platformName","dataType":"String","title":"所属平台"}'></div>
+                <div options='{"field":"code","dataType":"String","title":"店铺编码"}'></div>
+                <div options='{"field":"name","dataType":"String","title":"店铺名称"}'></div>
+                <div options='{"field":"shopTime","dataType":"Datetime","title":"开店时间"}'></div>
+                <div options='{"field":"remark","dataType":"String","title":"备注"}'></div>
+                <div options='{"field":"creator","dataType":"String","title":"创建人","visible":false}'></div>
+                <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":false}'></div>
+                <div options='{"field":"creationTime","dataType":"Datetime","title":"创建时间","visible":false}'></div>
+                <div options='{"field":"modifiedTime","dataType":"Datetime","title":"修改时间","visible":false}'></div>
+                <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation","width":"110px","fixed":true}'></div>
+            </div>
+            <div class="ui-statistics margin-top-10">
+                <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择
+                <span class="font-c-blue" data-bind="text:storeList.selectedIndices().length"></span>项数据
+            </div>
+            <div class="pagination-right">
+                <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"storeList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+            </div>
+        </div>
+    </div>
+    
+     <div class="u-tabs ui-tabs">
+    <div class="u-tabs__tab-bar margin-top-10 margin-bottom-10">
+      <a href="#tab-panel-1" class="u-tabs__tab is-active">详细信息</a>
+    </div>
+    <!-- 订单信息-start -->
+    <div class="u-tabs__panel  is-active" id="tab-panel-1">
+        <div class="ui-panel-head ui-bill-head">
+        <div class="ui-item">
+            <div class="ui-name">所属平台：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("platformName")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">店铺编码：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("code")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">店铺名称：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("name")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">店铺类型：</div>
+            <div class="ui-inputarea">
+                <div u-meta='{"type":"u-combobox","data":"storeList","field":"storetype","datasource":"storeTypeSrc","enable":"false"}'>
+                    <input class="ui-no-border" />
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">认证方式：</div>
+            <div class="ui-inputarea">
+                <div u-meta='{"type":"u-combobox","data":"storeList","field":"authentication","datasource":"authenticationSrc","enable":"false"}'>
+                    <input class="ui-no-border" />
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">开店时间：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("shopTime")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">备注：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("remark")'></div>
+            </div>
+        </div>
+
+
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="ui-panel-body">
+
+        <div class="ui-table-container">
+            <div u-meta='{"id":"grid_storeListParam_list_change","data":"storeParamList","type":"grid","editable":false,"multiSelect":false,"showNumCol":true}'>
+                <div options='{"field":"param","dataType":"String","title":"参数名"}'></div>
+                <div options='{"field":"value","dataType":"String","title":"参数值"}'></div>
+                <div options='{"field":"remark","dataType":"String","title":"备注"}'></div>
+            </div>
+        </div>
+    </div>
+      <!--head end-->
+    </div>
+    <!-- 订单信息-end -->
+  </div>
+</div>
+
+
+
+<div class="ui-panel ui-bill-panel" style="display: none;" id="validate">
+    <div>
+        <div class="page-title">
+            <span>平台店铺管理</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="ui-panel-btn-bg">
+        <div class="ui-operate-btn">
+            <a class="ui-btn ui-btn-primary" data-bind="click:cancelHandle">取消
+            </a>
+            <a class="ui-btn ui-btn-green" data-bind="click:saveBill">保存
+            </a>
+        </div>
+    </div>
+    <div class="ui-panel-head ui-bill-head">
+        <div class="ui-item">
+            <div class="ui-name">
+                <i class="strong">*</i>所属平台：</div>
+            <div class="ui-inputarea" u-meta='{"type":"uiRefer","data":"storeList","field":"platformId"}'>
+                <input id="platformId" readonly="readonly" autocomplete="off" />
+                <span class="ui-icon uifont icon-bar refer"></span>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">
+                <i class="strong">*</i>店铺编码：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" u-meta='{"type":"u-text","data":"storeList","field":"code"}'>
+                    <input class="u-input" id="code-input" />
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">
+                <i class="strong">*</i>店铺名称：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" u-meta='{"type":"u-text","data":"storeList","field":"name"}'>
+                    <input class="u-input"/>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">店铺类型：</div>
+                <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"storeList","field":"storetype","datasource":"storeTypeSrc"}'>
+                    <input class="u-input" />
+                    <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+                </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">
+                <i class="strong">*</i>认证方式：</div>
+                <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"storeList","field":"authentication","datasource":"authenticationSrc"}'>
+                    <input class="u-input" />
+                    <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+                </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">开店时间：</div>
+            <div class="ui-inputarea">
+                <div u-meta='{"type":"u-datetime","data":"storeList","field":"shopTime"}'>
+                    <input />
+                    <span class="ui-icon uf uf-calendar"></span>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">备注：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" u-meta='{"type":"u-text","data":"storeList","field":"remark"}'>
+                    <input class="u-input" />
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="ui-panel-body">
+
+        <!-- <div class="margin-bottom-10  margin-top-10">
+          <a class="ui-btn ui-btn-orange margin-right-5"
+            data-bind="click: addRow"><i class="uifont icon-plus margin-right-5"></i>增行
+          </a>
+          <a class="ui-btn ui-btn-primary margin-right-5"
+            data-bind="click: delChild"><i class="uifont icon-shanchu1 margin-right-5"></i>删除
+          </a>
+        </div> -->
+        <div class="ui-table-container">
+            <div u-meta='{"id":"grid_storeParamList","data":"storeParamList","type":"grid","editable":true,"multiSelect":false,"showNumCol":true}'>
+                <div options='{"field":"param","dataType":"String","title":"参数名","editable":false}'></div>
+                <div options='{"field":"value","dataType":"String","title":"参数值","required":true}'></div>
+                <div options='{"field":"remark","dataType":"String","title":"备注"}'></div>
+                <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"clearRender","width":"110px","fixed":true,"editable":false}'></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,335 @@
+<div class="ui-list-panel ui-panel">
+    <div>
+        <div class="page-title">
+            <span>派单规则</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="title-seperator"></div>
+
+    <div class="ui-searchbox" >
+        <div id="mainList-searchcontent" class="ui-searchbox-content clearfix"></div>
+        <!--searchbox-btn-->
+        <div class="ui-searchbox-footer">
+            <div class="ui-search-more hidden">
+                <a>更多
+                    <i class="uifont icon-down"></i>
+                </a>
+            </div>
+
+            <div class="ui-search-btn">
+
+                <a class="ui-btn ui-btn-primary" data-bind="click:cleanSearch">清空
+                </a>
+                <a class="ui-btn ui-btn-green margin-right-5" data-bind="click:search.bind($data,true)">搜索
+                </a>
+            </div>
+            <div class="clearfix">
+
+            </div>
+        </div>
+        <!--searchbox-btn end-->
+    </div>
+
+    <div class="ui-panel-body">
+        <div class="margin-bottom-10">
+            <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click: beforeEdit.bind($data)">
+                <i class="uifont icon-plus margin-right-5"></i>新增
+            </a>
+            <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click: del">
+                <i class="uifont icon-shanchu1 margin-right-5"></i>删除
+            </a>
+        </div>
+        <div class="ui-table-container">
+            <div id="orderList" u-meta='{"id":"grid_PromoActivity","data":"mainList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+                <div options='{"field":"code","dataType":"String","title":"规则编码","renderType":"detailRender"}'></div>
+                <div options='{"field":"name","dataType":"String","title":"规则名称"}'></div>
+                <div options='{"field":"priorityLevel","dataType":"string","title":"优先级","renderType":"comboRender","editOptions":{"type":"combo","datasource":"priorityLevelEnum"}}'></div>
+                <div options='{"field":"serviceProviderName","dataType":"String","title":"服务商"}'></div>
+                <div options='{"field":"creator","dataType":"String","title":"创建人","visible":true}'></div>
+                <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":true}'></div>
+                <div options='{"field":"creationTime","dataType":"Datetime","title":"创建时间","visible":true}'></div>
+                <div options='{"field":"modifiedTime","dataType":"Datetime","title":"修改时间","visible":true}'></div>
+                <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation","fixed":true}'></div>
+            </div>
+
+            <div class="ui-statistics margin-top-10">
+                <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择
+                <span class="font-c-blue" data-bind="text:mainList.selectedIndices().length"></span>项数据
+            </div>
+
+            <div class="pagination-right">
+                <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"mainList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ui-panel ui-bill-detail" style="display: none;">
+    <div>
+        <div class="page-title">
+        <span>派单规则</span>
+        </div>
+    </div>
+    <div>
+        <div>
+        <div class="oc-breadcrumb">
+        </div>
+        </div>
+    </div>
+    <div class="ui-panel-btn-bg">
+        <div class="ui-operate-btn">
+        <a class="ui-btn ui-btn-primary" data-bind="click:retListPanel">返回</a>
+        </div>
+    </div>
+    <!--head-->
+    <div class="margin-top-10">
+        <div class="ui-bill-body">
+            <div class="ui-collapse-group border orderCenter">
+                <div id="default-example" data-collapse>
+                    <!--基本信息开始-->
+                    <h3 class="ui-collapse-title orderCenter clearfix open margin-top-10">
+                        <a href="javascript:;" class="click-btn inline-block">
+                        <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                        <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                        基本信息
+                        </a>
+                    </h3>
+                    <div class="ui-collapse-content  clearfix">
+                        <div class="ui-item">
+                            <div class="ui-name">规则编码：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('code')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">规则名称：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('name')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">服务类型：</div>
+                            <div class="ui-inputarea ">
+                                <div u-meta='{"id":"remarkserviceData-checkbox","type":"u-checkbox","data":"mainList","required":true,"field":"serviceType","datasource":"serviceTypeSrc","enable":"flase"}'>
+                                    <label class="u-checkbox" style="margin-right:15px;" >
+                                        <input type="checkbox" class="u-checkbox-input">
+                                        <span class="u-checkbox-label" data-role="name"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">优先级：</div>
+                            <div  class="ui-inputarea" u-meta='{"type":"u-combobox","data":"mainList","field":"priorityLevel","datasource":"priorityLevelEnum","enable":"false"}'>
+                                <input class="ui-no-border" />
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">服务商：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('serviceProviderName')"></div>
+                            </div>
+                        </div>
+                        <!-- <div class="ui-item">
+                            <div class="ui-name">单据类型：</div>
+                            <div  class="ui-inputarea" u-meta='{"type":"u-combobox","data":"mainList","field":"billType","datasource":"billTypeEnum","enable":"false"}'>
+                                <input class="ui-no-border" />
+                            </div>
+                        </div> -->
+                    </div>
+                    <!--基本信息结束-->
+                </div>
+            </div>
+            <div class="ui-bill-footer">
+            </div>
+        </div>
+    </div>
+    <div class="u-tabs ui-tabs">
+        <div class="u-tabs__tab-bar margin-top-10 margin-bottom-10">
+            <a href="#tab-panel-1" class="u-tabs__tab is-active">产品范围</a>
+            <a href="#tab-panel-2" class="u-tabs__tab">服务区域</a>
+            <a href="#tab-panel-3" class="u-tabs__tab">故障分类</a>
+        </div>
+         <!-- 产品范围-start -->
+        <div class="u-tabs__panel is-active" id="tab-panel-1" >
+            <div u-meta='{"id":"grid_range","data":"rangeList","type":"grid","editable":false,"multiSelect":"false","showNumCol":true}'>
+                <div options='{"field":"goodsCategoryCode","dataType":"String","title":"商品分类编码"}'></div>
+                <div options='{"field":"goodsCategoryName","dataType":"String","title":"商品分类名称"}'></div>
+                <div options='{"field":"goodsCode","dataType":"String","title":"商品编码"}'></div>
+                <div options='{"field":"goodsName","dataType":"String","title":"商品名称"}'></div>
+                <div options='{"field":"remark","dataType":"String","title":"备注"}'></div>
+            </div>
+        </div>
+        <!-- 产品范围-end -->    
+        <!-- 服务区域-start -->
+        <div class="u-tabs__panel" id="tab-panel-2" >
+            <div u-meta='{"id":"grid_area","data":"areaList","type":"grid","editable":false,"multiSelect":"false","showNumCol":true}'>
+                <div options='{"field":"provinceName","dataType":"String","title":"省份"}'></div>
+                <div options='{"field":"cityName","dataType":"String","title":"城市"}'></div>
+                <div options='{"field":"districtName","dataType":"String","title":"区县"}'></div>
+                <div options='{"field":"townName","dataType":"String","title":"乡镇"}'></div>
+                <div options='{"field":"remark","dataType":"String","title":"备注"}'></div>
+            </div>
+        </div>
+        <!-- 服务区域-end -->
+         <!-- 故障分类-start -->
+         <div class="u-tabs__panel" id="tab-panel-3" >
+            <div u-meta='{"id":"grid_fault","data":"faultList","type":"grid","editable":false,"multiSelect":"false","showNumCol":true}'>
+                <div options='{"field":"faultTypeCode","dataType":"String","title":"故障分类编码"}'></div>
+                <div options='{"field":"faultTypeName","dataType":"String","title":"故障分类名称"}'></div>
+            </div>
+        </div>
+        <!-- 故障分类-end -->         
+    </div> 
+</div>
+
+<!-- 新增派单规则信息 -->
+<div class="ui-panel ui-bill-panel" style="display: none;" id="validate">
+    <div>
+        <div class="page-title">
+            <span>派单规则</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="ui-panel-btn-bg">
+        <div class="ui-operate-btn">
+            <a class="ui-btn ui-btn-primary" data-bind="click: cancelBill.bind($data)">取消
+            </a>
+            <a class="ui-btn ui-btn-green" data-bind="click: saveBill.bind($data)">保存
+            </a>
+        </div>
+    </div>
+    <div class="ui-panel-head ui-bill-head">
+        <div class="ui-item">
+            <div class="ui-name">
+                    <span class='ui-redstar'>*</span> 编码：
+                </div>
+                <div class="ui-inputarea">
+                    <div class="ui-textonly" u-meta='{"type":"u-text","data":"ruleAdd","field":"code"}'>
+                        <input class="u-input" />
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">
+                <span class='ui-redstar'>*</span> 名称：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" u-meta='{"type":"u-text","data":"ruleAdd","field":"name"}'>
+                        <input class="u-input" />
+                </div>
+            </div>    
+        </div>
+        <div class="ui-item">
+            <div class="ui-name"><span class='ui-redstar'>*</span> 服务类型：</div>
+            <div class="ui-inputarea ">
+                <div u-meta='{"id":"remarkserviceData-checkbox","type":"u-checkbox","data":"ruleAdd","required":true,"field":"serviceType","datasource":"serviceTypeSrc"}'>
+                    <label class="u-checkbox" style="margin-right:15px;" >
+                        <input type="checkbox" class="u-checkbox-input">
+                        <span class="u-checkbox-label" data-role="name"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">
+                <span class='ui-redstar'>*</span>优先级：</div>
+                <div class="ui-inputarea is-upgraded" u-meta='{"id":"priorityLevel",
+                "type":"u-combobox","data":"ruleAdd","field":"priorityLevel",
+                "showFix":true,"datasource":"priorityLevelEnum"}'>
+                    <input class="" />
+                    <span class="ui-icon uf uf-arrow-down"></span>
+            </div>
+        </div>
+    
+        <div class="ui-item">
+            <div class="ui-name">
+                <span class='ui-redstar'>*</span> 服务商：
+            </div>
+            <div class="ui-inputarea" u-meta='{"type":"uiRefer","data":"ruleAdd","field":"serviceProviderId","rel":{"refpk":"serviceProviderId","refcode":"serviceProviderCode","refname":"serviceProviderName"}}'>
+                <input readonly="readonly" autocomplete="off" id="goods"/>
+                <span class="ui-icon uifont icon-bar refer"></span>
+            </div>
+        </div>
+        <div class="ui-item ui-textarea-item ">
+            <div class="ui-name">备注：</div>
+            <div class="ui-inputarea">
+                <textarea class="" u-meta='{"data":"ruleAdd",
+                "field":"remark","type":"textarea"}'></textarea>
+            </div> 
+        </div>  
+        <div class="clearfix"></div>
+    </div>
+    
+    <div class="u-tabs ui-tabs">
+        <div class="u-tabs__tab-bar margin-top-10 margin-bottom-10">
+            <a href="#tab-panel-4" class="u-tabs__tab is-active">产品范围</a>
+            <a href="#tab-panel-5" class="u-tabs__tab">服务区域</a>
+            <a href="#tab-panel-6" class="u-tabs__tab">故障分类</a>
+        </div>
+         <!-- 产品范围-start -->
+        <div class="u-tabs__panel is-active" id="tab-panel-4" >
+            <div class="margin-bottom-10">
+                    <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:addChild.bind($data,'range')">
+                        <i class="uifont icon-plus margin-right-5"></i>增行
+                    </a>
+                    <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:delChild.bind($data,'range')">
+                        <i class="uifont icon-shanchu1 margin-right-5"></i>删行
+                    </a>
+            </div>
+            <div u-meta='{"id":"grid_range1","data":"rangeList4Add","type":"grid","editable":true,"multiSelect":true,"showNumCol":true}'>
+                <div options='{"field":"goodsCategoryCode","dataType":"String","title":"商品分类编码"}'></div>
+                <div options='{"field":"goodsCategoryName","dataType":"String","title":"商品分类名称"}'></div>
+                <div options='{"field":"goodsCode","dataType":"String","title":"商品编码"}'></div>
+                <div options='{"field":"goodsName","dataType":"String","title":"商品名称"}'></div>
+                <div options='{"field":"remark","dataType":"String","title":"备注"}'></div>
+            </div>
+        </div>
+        <!-- 产品范围-end -->    
+        <!-- 服务区域-start -->
+        <div class="u-tabs__panel" id="tab-panel-5" >
+                <div class="margin-bottom-10">
+                        <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:addChild.bind($data,'area')">
+                                <i class="uifont icon-plus margin-right-5"></i>增行
+                            </a>
+                            <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:delChild.bind($data,'area')">
+                                <i class="uifont icon-shanchu1 margin-right-5"></i>删行
+                            </a>
+                </div>
+            <div u-meta='{"id":"grid_area1","data":"areaList4Add","type":"grid","editable":true,"multiSelect":true,"showNumCol":true}'>
+                <div options='{"field":"provinceName","dataType":"String","title":"省份"}'></div>
+                <div options='{"field":"cityName","dataType":"String","title":"城市"}'></div>
+                <div options='{"field":"districtName","dataType":"String","title":"区县"}'></div>
+                <div options='{"field":"townName","dataType":"String","title":"乡镇"}'></div>
+                <div options='{"field":"remark","dataType":"String","title":"备注"}'></div>
+            </div>
+        </div>
+        <!-- 服务区域-end -->
+        <!-- 故障分类-start -->
+         <div class="u-tabs__panel" id="tab-panel-6" >
+                <div class="margin-bottom-10">
+                        <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:addChild.bind($data,'fault')">
+                                <i class="uifont icon-plus margin-right-5"></i>增行
+                            </a>
+                            <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:delChild.bind($data,'fault')">
+                                <i class="uifont icon-shanchu1 margin-right-5"></i>删行
+                            </a>
+                </div>
+            <div u-meta='{"id":"grid_fault1","data":"faultList4Add","type":"grid","editable":true,"multiSelect":true,"showNumCol":true}'>
+                <div options='{"field":"faultTypeCode","dataType":"String","title":"故障分类编码"}'></div>
+                <div options='{"field":"faultTypeName","dataType":"String","title":"故障分类名称"}'></div>
+            </div>
+        </div>
+        <!-- 故障分类-end -->      
+    </div> 
+</div>

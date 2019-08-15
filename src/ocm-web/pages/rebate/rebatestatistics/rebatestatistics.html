@@ -1,0 +1,214 @@
+<style type="text/css">
+  .panel-title-bg {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #d9d9d9;
+  }
+
+  .panel-title {
+    float: left;
+    margin-top: 16px;
+    margin-bottom: 8px;
+    font-size: 20px;
+    color: #333333;
+    line-height: 21px;
+  }
+</style>
+<div class="ui-panel ui-list-panel">
+  <div>
+    <div class="page-title">
+      <span>返利数据统计</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+
+  <ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+  </ui-searchbox>
+
+  <div class="ui-panel-body">
+    <div class="ui-table-container">
+      <div class="ui-panel-body-head">
+        <div class="ui-panel-body-head-left">
+          <ui-buttons params='datasource:$root.button1Source'>
+          </ui-buttons>
+        </div>
+      </div>
+
+      <ui-grid params='options:$root.grid1Option,vm:$root'>
+      </ui-grid>
+      <div class="ui-statistics margin-top-10">
+        已选择
+        <span class="font-c-blue" data-bind="text:SalesPolicyList.selectedIndices().length"></span>项数据
+      </div>
+      <div class="pagination-right">
+        <div id='pagination' class='pagination u-pagination pagination-sm'
+          u-meta='{"type":"pagination","data":"SalesPolicyList","pageChange":"pageChange","sizeChange":"sizeChange"}'>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 统计记录列表 -->
+<div class="ui-panel  ui-bill-panel ui-name-140" style="display: none;">
+  <div class="panel-title-bg">
+    <div class="panel-title">
+      <span>统计记录</span>
+    </div>
+    <div class="ui-panel-btn-bg">
+      <div class="ui-operate-btn">
+        <ui-buttons params='datasource:$root.button2Source'>
+        </ui-buttons>
+      </div>
+    </div>
+  </div>
+  <div class="margin-top-20"></div>
+  <div class="ui-panel-body">
+    <div class="ui-table-container" id="customerScopeInfo">
+      <ui-grid params='options:$root.grid2Option,vm:$root'>
+      </ui-grid>
+    </div>
+    <div class="pagination-right margin-top-20">
+      <div id='pagination' class='pagination u-pagination pagination-sm'
+        u-meta='{"type":"pagination","data":"StatisticsNoteDetailList","pageChange":"pageNoteChange","sizeChange":"sizeNoteChange"}'>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 统计记录列表 -->
+<!--统计记录详情开始-->
+<div class="ui-panel ui-bill-detail ui-name-140" style="display: none;">
+  <div class="panel-title-bg">
+    <div class="panel-title">
+      <span>统计记录明细</span>
+    </div>
+    <div class="ui-panel-btn-bg">
+      <div class="ui-operate-btn">
+        <ui-buttons params='datasource:$root.button3Source'>
+        </ui-buttons>
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-head ui-bill-head">
+    <div class="ui-bill-body">
+      <ui-detail params='datasource:$root.detail1Source,dt:$root.StatisticsNoteDetail,vm:$root'>
+      </ui-detail>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <div class="ui-panel-body">
+    <div class="ui-table-container margin-top-20">
+      <ui-grid params='options:$root.grid3Option,vm:$root'>
+      </ui-grid>
+    </div>
+  </div>
+</div>
+<!--统计记录详情详情结束-->
+<!-- 统计记录明细（客户返利）列表 开始-->
+<div class="ui-panel ui-bill-panel-customer-detail ui-name-140" style="display: none;">
+  <div class="ui-panel-body-head">
+    <div class="ui-panel-body-head-left">
+      <ui-buttons params='datasource:$root.button4Source'>
+      </ui-buttons>
+    </div>
+  </div>
+  <div class="ui-table-container">
+    <ui-grid params='options:$root.grid4Option,vm:$root'>
+    </ui-grid>
+  </div>
+</div>
+<!-- 统计记录明细（客户返利）列表 结束 -->
+<!--（客户返利）详情开始-->
+<div style="display: none;" id="dialog_statistics_detail">
+  <div class="u-msg-title">
+    <h4><span data-bind='text: StatisticsDetail.ref("billCode")()'></span></h4>
+  </div>
+  <div class="ui-panel-head ui-bill-head">
+    <div class="ui-bill-body">
+      <ui-detail params='datasource:$root.detail2Source,dt:$root.StatisticsDetail,vm:$root'>
+      </ui-detail>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <div class="ui-panel-body" style="width: 95%;margin-left: 2%;">
+    <div class="u-tabs ui-tabs">
+      <div class="u-tabs__tab-bar">
+        <a href="#tab-panel-1" class="u-tabs__tab">返利依据</a>
+        <a href="#tab-panel-2" class="u-tabs__tab">返利值</a>
+      </div>
+      <div class="u-tabs__panel" id="tab-panel-1">
+        <div class="ui-table-container  margin-top-20">
+          <ui-grid params='options:$root.grid5Option,vm:$root'>
+          </ui-grid>
+        </div>
+      </div>
+      <div class="u-tabs__panel" id="tab-panel-2">
+        <div class="ui-table-container margin-top-20">
+          <ui-grid params='options:$root.grid6Option,vm:$root'>
+          </ui-grid>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="u-msg-footer">
+    <a class="ui-btn ui-btn-primary J-cancel margin-right-5">关闭</a>
+  </div>
+</div>
+<!--（客户返利）详情结束-->
+<!-- 统计进度 开始-->
+<div style="display: none;" id="dialog_statistics_process">
+  <div class="u-msg-title">
+    <h4>统计进度</h4>
+  </div>
+  <div class="ui-panel-body import-box" style="width: 95%;margin-left: 2%;">
+    <div class="ui-item begin" style="display:none;">
+      <div class="progress-box">
+        <div class="progress-bar" id="progress-bar" style="width: 0%;">
+        </div>
+        <span class="tip-txt" id="tip-txt" style="display: inline;">
+        </span>
+      </div>
+      <span class="progress-percent margin-left-15">
+        <i class="num" id="progress-num">0%</i>已统计
+      </span>
+    </div>
+    <div class="info-area" id="info-area" style="display: block;">
+      <div class="import-info">
+        <span class="progress-percent">
+          总客户数:<i class="num" id="total-num">0</i>
+        </span>
+        <span class="progress-percent">
+          已统计客户数:<i class="num" id="already-num">0</i>
+        </span>
+        <span class="progress-percent">
+          统计失败客户数:<i class="num" id="error-num">0</i>
+        </span>
+      </div>
+      <div class="import-info margin-top-15">执行信息:</div>
+      <ul class="error-list margin-top-10" id="error-list">
+        <li class="error-item" style="color: red; font-size: 14px;"></li>
+      </ul>
+    </div>
+  </div>
+  <div class="u-msg-footer">
+    <a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+    <a class="u-msg-ok ui-btn ui-btn-green">完成</a>
+  </div>
+</div>
+<!-- 统计进度 结束-->
+<div style="display: none;" id="dialog_statistics_basis_detail">
+  <div class="u-msg-title">
+    <h4><span>返利依据统计明细</span></h4>
+  </div>
+  <div class="ui-panel-body" style="width: 95%;margin-left: 2%;">
+    <ui-grid params='options:$root.grid7Option,vm:$root'>
+    </ui-grid>
+  </div>
+  <div class="u-msg-footer">
+    <a class="ui-btn ui-btn-primary J-cancel margin-right-5">关闭</a>
+  </div>
+</div>

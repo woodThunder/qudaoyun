@@ -1,0 +1,298 @@
+<div class="ui-panel ui-list-panel">
+    <div>
+        <div class="page-title">
+            <span>平台配送区域对照</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="title-seperator"></div>
+
+    <div class="ui-searchbox ui-panel-head clearfix">
+        <div id="searchcontent1" class="ui-searchbox-content clearfix">
+
+        </div>
+        <div class="ui-searchbox-footer clearfix">
+            <div class="ui-search-more hidden">
+                <a>更多<i class="uifont icon-down"></i></a>
+            </div>
+            <div class="ui-search-btn clearfix">
+                <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:cleanSearch">清空</a>
+                <a class="ui-btn ui-btn-green" data-bind="click:search.bind($data,true)">搜索</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui-panel-body">
+        <div class="ui-panel-body-head">
+            <div class="ui-panel-body-head-left">
+                <a class="ui-btn ui-btn-orange margin-right-5" data-bind="click: beforeEdit"><i class="uifont icon-plus margin-right-5"></i>新增</a>
+                <a class="ui-btn ui-btn-orange margin-right-5" data-bind="click: del"><i class="uifont icon-shanchu1 margin-right-5"></i>删除</a>
+                <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+                    <a class="ui-button-item" data-bind="click:importHandle">
+                    <i class="uifont icon-import  margin-right-5"></i>
+                    导入
+                    </a>
+                    <a class="ui-button-item" data-bind="click:exportHandle">
+                    <i class="uifont icon-export  margin-right-5"></i>
+                    导出
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="ui-table-container">
+            <div id="mainDataList" u-meta='{"id":"grid_mainDataList","data":"mainDataList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+                <div options='{"field":"platformName","dataType":"String","title":"平台名称","renderType":"detailRender"}'></div>
+                
+                <div options='{"field":"pProvince","dataType":"String","title":"平台省"}'></div>
+                <div options='{"field":"pCity","dataType":"String","title":"平台市"}'></div>
+                <div options='{"field":"pDistrict","dataType":"String","title":"平台区（县）"}'></div>
+                <div options='{"field":"pTown","dataType":"String","title":"平台镇（街）"}'></div>
+
+                <div options='{"field":"provinceName","dataType":"String","title":"所属省"}'></div>
+                <div options='{"field":"cityName","dataType":"String","title":"所属市"}'></div>
+                <div options='{"field":"districtName","dataType":"String","title":"所属区（县）"}'></div>
+                <div options='{"field":"townName","dataType":"String","title":"所属镇（街）"}'></div>
+
+
+                <div options='{"field":"creator","dataType":"String","title":"创建人","visible":false}'></div>
+                <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":false}'></div>
+                <div options='{"field":"creationTime","dataType":"Date","title":"创建时间","visible":false}'></div>
+                <div options='{"field":"modifiedTime","dataType":"Date","title":"修改时间","visible":false}'></div>
+                <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation","width":"110px","fixed":true}'></div>
+            </div>
+            <div class="ui-statistics margin-top-10">
+                <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择<span class="font-c-blue" data-bind="text:mainDataList.selectedIndices().length"></span>项数据
+            </div>
+            <div class="pagination-right">
+                <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"mainDataList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--新增 弹框 end-->
+<div id="dialog_content_addListFun" style="display:none;">
+    <div class="u-msg-title">
+        <h4>新增</h4>
+    </div>
+    <div class="u-msg-content ui-editbox" id="addContent">        
+        <div class="clearfix margin-bottom-10" style="padding: 10px 0 0 16px;">
+            <a class="ui-btn ui-btn-orange margin-right-5" data-bind="click:addDelChild.bind($data,-1) "><i class="uifont icon-plus margin-right-5"></i>增行</a>
+            <a class="ui-btn ui-btn-orange margin-right-5" data-bind="click:addDelChild.bind($data,0)"><i class="uifont icon-shanchu1 margin-right-5"></i>删行</a>
+        </div>  
+                    
+        <div u-meta='{"id":"grid_demoproductCombineItem_list_change2","data":"addList","type":"grid","editable":true,"multiSelect":true,"showNumCol":true,"columnMenu":false }'>    
+               
+                <div options='{"required":true,"field":"platformId","dataType":"String","title":"平台名称","renderType":"ncReferRender",
+                    "editType":"ncReferEditType","showField":"platformName","editOptions":{"validType":"string",
+                    "rel":{"refpk":"platformId","refname":"platformName"}}}'></div>
+
+                <div options='{"required":true,"field":"pProvince","dataType":"String","title":"平台省"}'></div>
+                <div options='{"required":true,"field":"pCity","dataType":"String","title":"平台市"}'></div>
+                <div options='{"required":true,"field":"pDistrict","dataType":"String","title":"平台区（县）"}'></div>
+                <div options='{"field":"pTown","dataType":"String","title":"平台镇（街）"}'></div>
+                    
+                <div options='{"required":true,"field":"provinceId","dataType":"String","title":"所属省","renderType":"ncReferRender",
+                    "editType":"ncReferEditType","showField":"provinceName","editOptions":{"validType":"string",
+                    "rel":{"refpk":"provinceId","refname":"provinceName"}} }'></div>
+                    
+                <div options='{"required":true,"field":"cityId","dataType":"String","title":"所属市","renderType":"ncReferRender",
+                    "editType":"ncReferEditType","showField":"cityName","editOptions":{"validType":"string",
+                    "rel":{"refpk":"cityId","refname":"cityName"}}}'></div>
+                    
+                <div options='{"required":true,"field":"districtId","dataType":"String","title":"所属区（县）","renderType":"ncReferRender",
+                    "editType":"ncReferEditType","showField":"districtName","editOptions":{"validType":"string",
+                    "rel":{"refpk":"districtId","refname":"districtName"}}}'></div>
+                    
+                <div options='{"field":"townId","dataType":"String","title":"所属镇（街）","renderType":"ncReferRender",
+                    "editType":"ncReferEditType","showField":"townName","editOptions":{"validType":"string",
+                    "rel":{"refpk":"townId","refname":"townName"}}}'></div>
+                
+              
+             
+        </div>
+       
+          
+         
+    </div>
+    <div class="u-msg-footer">
+        <a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+        <a class="u-msg-ok ui-btn ui-btn-green">保存</a>
+    </div>
+</div>
+<!--新增 弹框 end-->
+
+
+<!-- 编辑-start -->
+<div id="dialog_content_list_editListFun"  class="" style="display: none;">
+    <div class="u-msg-title">
+        <h4>编辑</h4>
+    </div>
+    <div id="validate" class="u-msg-content">
+         <!--head-->
+        <div class="ui-panel-head clearfix"  style="margin:0 20px 0 60px;">
+            
+            <div class="ui-item margin-bottom-20" style="clear:both;display:block;width:100%;">
+                <div class="ui-name"><i class="strong">*</i>平台名称：</div>
+                <div id="platformId"  class="ui-inputarea" u-meta='{"type":"uiRefer","data":"mainDataList","field":"platformId"}'>
+                    <input readonly="readonly" autocomplete="off"/>
+                    <span class="ui-icon uifont icon-bar refer"></span>
+                </div>
+            </div>
+            
+            <div class="ui-item">
+                <div class="ui-name"><i class="strong">*</i>所属省：</div>
+                <div id="provinceId" class="ui-inputarea" u-meta='{"type":"uiRefer","data":"mainDataList","field":"provinceId"}'>
+                    <input  readonly="readonly" autocomplete="off"/>
+                    <span class="ui-icon uifont icon-bar refer"></span>
+                </div>
+            </div>
+            <div class="ui-item">
+                    <div class="ui-name"><i class="strong">*</i>平台省：</div>
+                    <div class="ui-inputarea" u-meta='{"type":"u-text","data":"mainDataList","field":"pProvince"}'>
+                        <input   />                                      
+                    </div>
+           </div>
+                
+           <div class="ui-item">
+                <div class="ui-name"><i class="strong">*</i>所属市：</div>
+                <div id="cityId" class="ui-inputarea" u-meta='{"type":"uiRefer","data":"mainDataList","field":"cityId"}'>
+                    <input  readonly="readonly" autocomplete="off"/>
+                    <span class="ui-icon uifont icon-bar refer"></span>
+                </div>
+            </div>
+            <div class="ui-item">
+                    <div class="ui-name"><i class="strong">*</i>平台市：</div>
+                    <div class="ui-inputarea" u-meta='{"type":"u-text","data":"mainDataList","field":"pCity"}'>
+                        <input  />                
+                    </div>
+            </div>
+            
+            <div class="ui-item">
+                    <div class="ui-name"><i class="strong">*</i>所属区（县）：</div>
+                    <div  id="districtId" class="ui-inputarea" u-meta='{"type":"uiRefer","data":"mainDataList","field":"districtId"}'>
+                        <input readonly="readonly" autocomplete="off"/>
+                        <span class="ui-icon uifont icon-bar refer"></span>
+                    </div>
+            </div>
+            <div class="ui-item">
+                    <div class="ui-name"><i class="strong">*</i>平台区（县）：</div>
+                    <div class="ui-inputarea" u-meta='{"type":"u-text","data":"mainDataList","field":"pDistrict"}'>
+                        <input   />              
+                    </div>
+            </div>
+            
+            <div class="ui-item">
+                    <div class="ui-name">所属镇（街）：</div>
+                    <div id="townId" class="ui-inputarea" u-meta='{"type":"uiRefer","data":"mainDataList","field":"townId"}'>
+                        <input  readonly="readonly" autocomplete="off"/>
+                        <span class="ui-icon uifont icon-bar refer"></span>
+                    </div>
+            </div>
+            <div class="ui-item">
+                    <div class="ui-name">平台镇（街）：</div>
+                    <div class="ui-inputarea" u-meta='{"type":"u-text","data":"mainDataList","field":"pTown"}'>
+                        <input   />              
+                    </div>
+            </div>
+            
+        </div>
+        <!--head end--> 
+        <div class="ui-container clearfix">
+            
+        </div> 
+        
+        
+    </div>
+    <div class="u-msg-footer">
+        <a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+        <a class="u-msg-ok ui-btn ui-btn-green">保存</a>
+    </div>
+</div>
+<!-- 编辑-end -->
+
+
+<!-- 查看详情-start -->
+<div id="dialog_content_listFun" class="" style="display: none;">
+    <div class="u-msg-title">
+        <h4>详情</h4>
+    </div>
+      <!--head-->
+      <div class="ui-panel-head clearfix" style="margin:10px 20px 20px 100px;">
+            
+            <div class="ui-item margin-bottom-10" style="clear:both;display:block;width:100%;">
+                    <div class="ui-name">平台名称：</div>
+                    <div class="ui-inputarea" >                    
+                        <label class="J-editcard-text" data-bind="text:mainDataList.ref('platformName')"></label>                
+                    </div>
+            </div>
+            
+            <div class="ui-item">
+                <div class="ui-name">所属省：</div>
+                <div class="ui-inputarea" >
+                    <label class="J-editcard-text" data-bind="text:mainDataList.ref('provinceName')"></label>               
+                </div>
+            </div>
+            <div class="ui-item">
+                    <div class="ui-name">平台省：</div>
+                    <div class="ui-inputarea" >
+                        <label class="J-editcard-text" data-bind="text:mainDataList.ref('pProvince')"></label>               
+                    </div>
+            </div>
+            <div class="ui-item">
+                    <div class="ui-name">所属市：</div>
+                    <div class="ui-inputarea">
+                        <label class="J-editcard-text" data-bind="text:mainDataList.ref('cityName')"></label>                
+                    </div>
+            </div>
+            <div class="ui-item">
+                    <div class="ui-name">平台市：</div>
+                    <div class="ui-inputarea">
+                        <label class="J-editcard-text" data-bind="text:mainDataList.ref('pCity')"></label>                
+                    </div>
+            </div>
+            <div class="ui-item">
+                    <div class="ui-name">所属区（县）：</div>
+                    <div class="ui-inputarea">
+                            <label class="J-editcard-text" data-bind="text:mainDataList.ref('districtName')"></label>                  
+                    </div>
+            </div>
+            <div class="ui-item">
+                    <div class="ui-name">平台区（县）：</div>
+                    <div class="ui-inputarea">
+                            <label class="J-editcard-text" data-bind="text:mainDataList.ref('pDistrict')"></label>                  
+                    </div>
+            </div>
+            <div class="ui-item">
+                    <div class="ui-name">所属镇（街）：</div>
+                    <div class="ui-inputarea">
+                            <label class="J-editcard-text" data-bind="text:mainDataList.ref('townName')"></label>              
+                    </div>
+            </div>
+            <div class="ui-item">
+                    <div class="ui-name">平台镇（街）：</div>
+                    <div class="ui-inputarea">
+                            <label class="J-editcard-text" data-bind="text:mainDataList.ref('pTown')"></label>              
+                    </div>
+            </div>
+            
+        </div>
+        <!--head end--> 
+  
+    <div class="u-msg-footer">
+            <a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">关闭</a>          
+     </div>
+</div>
+<!-- 查看详情-end -->
+<!-- 地址弹出框 -->
+<ui-dialogcard params='datasource:$root.dialog1Source,ref:$root.addresscardcomp,dt:$root.mainDataList'>
+</ui-dialogcard>
+<!--导入弹框 end-->
+<div id="exportFiel"></div>
+<div id="importFiel"></div>

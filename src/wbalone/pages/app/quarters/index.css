@@ -1,0 +1,167 @@
+#quarters .u-button{
+    height: 30px;
+    line-height: 30px;
+    padding-top: 0;
+    padding-bottom: 0;
+    font-size: 12px;
+}
+
+#quarters .u-form-control{
+    border-radius: 0;
+    min-width: 200px;
+    height: 32px;
+    width: auto;
+}
+#quartersEditModal .u-form-control{
+    border-radius: 0;
+    min-width: 300px;
+    height: 32px;
+    width: auto;
+}
+#quartersEditModal .u-form-control:focus,#quarters .u-form-control:focus{
+    border-color:#039BE5;
+}
+#quarters #searchPanel{
+    height: 0px;
+    transition: all;
+    overflow: hidden;
+}
+#quarters .po-title,#quarters .search{
+    width:100%;
+}
+#quarters .po-title{
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    background: #fff;
+    text-align: center;
+    font-size: 16px;
+}
+#quarters #backBtn{
+    float: left;
+    height: 30px;
+    color: #039BE5;
+    padding: 0;
+    border: none;
+    position: absolute;
+    left:22px;
+    top: 6px;
+    margin: 0;
+    line-height: 30px;
+    background:#fff;
+    font-size: 14px;
+}
+#quarters .search{
+    background: #f5f5f5;
+    padding: 0 30px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+#quarters .search-title{
+    height: 40px;
+    line-height: 40px;
+    box-sizing: border-box;
+    border-bottom: 1px dashed #979797;
+    display: inline-block;
+    width: 100%;
+}
+#quarters .search-panel .search-btn-group{
+    float: right;
+    display: inline-block;
+    margin-right: 0;
+}
+#quarters .clear-btn{
+    background: #fff;
+    border: 1px solid #039BE5;
+    color: #039BE5;
+}
+#quarters .search-btn{
+    background: #039BE5;
+    color: #fff;
+}
+#quarters .other-btn{
+    padding: 0 30px;
+    box-sizing: border-box;
+    height: 40px;
+    line-height: 40px;
+    background:#fff;
+}
+#quarters .u-table-base{
+    width: 100%;
+}
+#quarters .u-table-base tbody{
+    background: #fff;
+}
+#quarters .u-table-base thead{
+    background: #eeeeee;
+}
+#quarters .u-table-base td i{
+    color: #039BE5;
+    cursor: pointer;
+}
+#quarters .u-table-hover>tbody>tr:hover,#quarters .u-table-striped>tbody>tr:nth-of-type(odd){
+    background-color: #fafafa;
+}
+#quarters .po-tabel{
+    margin-top: 10px;
+}
+#quarters .search .u-form-group{
+    display:inline-block;
+    margin-top: 10px;
+}
+#quarters #pagination{
+    display: inline-block!important;
+}
+#quarters .u-pagination>.active>a, 
+#quarters .u-pagination>.active>a:focus, 
+#quarters .u-pagination>.active>a:hover, 
+#quarters .u-pagination>.active>span, 
+#quarters .u-pagination>.active>span:focus, 
+#quarters .u-pagination>.active>span:hover{
+    color: #fff;
+    background: #039BE5;
+    border-color: #039BE5;
+
+}
+#quartersEdit .u-form-control{
+    border-radius: 0;
+    min-width: 300px;
+    height: 32px;
+    width: auto;
+}
+#quartersEdit .edit-label{
+    position: relative;
+    top: -23px;
+    margin-right: 10px;
+}
+#quartersEdit .uf-symlist{
+    font-weight: bold;
+}
+#quartersEdit .u-form-group{
+    margin-bottom: 0;
+    height: 40px;
+}
+.u-overlay{
+    z-index: 1000!important;
+}
+#printObjEdit_top{
+    z-index: 1001!important;
+}
+.yyuap-ref .Ref-Button .u-button,.yyuap-ref .Ref-Button .u-button:hover{
+    border-radius: 4px;
+    background: #039BE5;
+    font-size: 12px;
+    color: #fff;
+    border: 1px solid #039BE5;
+}
+.yyuap-ref .Ref-Button .cancelButton,.yyuap-ref .Ref-Button .cancelButton:hover{
+    border-radius: 4px;
+    background: #fff;
+    font-size: 12px;
+    color: #039BE5;
+    border: 1px solid #039BE5;
+    height: 30px;
+    line-height: 30px;
+    padding: 0;
+    margin-left: 15px;
+}

@@ -1,0 +1,1192 @@
+@import "./core.less";
+/*布局开始*/
+
+.ui-panel {
+  position: relative;
+  min-height: 100%;
+  width: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.15);
+  background-color: @color-font-f;
+  padding: 0 16px 40px;
+  &.ui-name-140 {
+    .ui-name {
+      width: 140px !important;
+    }
+  }
+}
+
+.page-title {
+  margin-top: 16px;
+  margin-bottom: 8px;
+  font-size: 20px;
+  color: #333333;
+  line-height: 21px;
+}
+
+.ui-item {
+  float: left;
+  margin-top: 16px;
+  height: 28px;
+  &.ui-item-text {
+    // line-height: 24px;
+    .text-value {
+      color: @color-font-9;
+    }
+  }
+}
+
+.ui-item.ui-w100-item {
+  width: 100%;
+}
+
+.ui-item.ui-w100-item .ui-inputarea {
+  width: auto;
+}
+
+.ui-item.ui-checkboxes-item {
+  width: 100%;
+}
+
+.ui-item.ui-checkboxes-item .ui-inputarea {
+  width: auto;
+}
+
+.ui-item.ui-textarea-item {
+  width: 100%;
+  height: 58px;
+}
+
+.ui-item.ui-textarea-item.another {
+  width: 100%;
+  height: 100%;
+  .ui-name {
+    float: left;
+  }
+  .ui-inputarea {
+    vertical-align: auto;
+    float: left;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    padding: 5px;
+    &.focus {
+      border: 1px solid @color-base-border;
+      box-shadow: 0 0 0 2px @color-base-light;
+    }
+    textarea {
+      display: block;
+      //        overflow: hidden;
+      height: 60px;
+      border: none;
+      padding: 0;
+      line-height: 1.2;
+      &.no-border-bottom {
+        border-bottom: 0px;
+        border-radius: 4px 4px 0 0;
+      }
+      &.no-border-top {
+        border-top: 0px;
+        border-radius: 0 0 4px 4px;
+      }
+      &:focus {
+        box-shadow: none;
+        border: none;
+      }
+    }
+  }
+}
+
+.ui-item.ui-textarea-detail {
+  width: 100%;
+  .ui-name {
+    float: left;
+  }
+  .ui-inputarea {
+    margin-left: 122px;
+    width: 80%;
+    display: block;
+  }
+}
+
+.ui-item.ui-textarea-item .ui-inputarea {
+  vertical-align: top;
+  width: calc(~"100% - 300px");
+}
+
+.ui-item.ui-textarea-item .ui-inputarea textarea {
+  height: 58px;
+  width: 100%;
+  border: 1px solid #DDDDDD;
+  border-radius: 4px;
+  padding: 5px;
+  resize: none;
+}
+
+.ui-item.ui-textarea-item .ui-inputarea textarea:focus {
+  border: 1px solid @color-base-border;
+  outline: 0;
+  box-shadow: 0 0 0 2px @color-base-light;
+}
+
+.ui-item .ui-daterange-part {
+  width: 90px;
+  display: inline-block;
+}
+
+.ui-item .ui-daterange-seperate {
+  margin: 0 8px;
+  vertical-align: top;
+}
+
+.ui-name {
+  vertical-align: middle;
+  display: inline-block;
+  width: 120px;
+  text-align: right;
+  color: #333333;
+  white-space: nowrap;
+  .strong {
+    color: red;
+    padding-right: 5px;
+    vertical-align: middle;
+  }
+}
+
+.ui-bill-panel {
+  .ui-name {
+    vertical-align: middle;
+  }
+}
+
+.ui-name.w220 {
+  width: 220px;
+}
+
+.ui-redstar {
+  color: red;
+}
+
+.ui-inputarea {
+  vertical-align: middle;
+  position: relative;
+  display: inline-block;
+  width: 200px;
+  white-space: nowrap;
+  .ui-icon {
+    position: absolute;
+    top: 5px;
+    right: 6px;
+    font-size: 12px;
+    color: #ccc;
+  }
+  input {
+    width: 200px;
+    height: 28px;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    text-indent: 8px;
+    padding-right: 20px;
+    &.ui-no-border {
+      border: none;
+      text-indent: 0;
+    }
+  }
+  input::-moz-placeholder {
+    color: #ccc;
+    opacity: 1;
+  }
+  input:-ms-input-placeholder {
+    color: #ccc;
+  }
+  input::-webkit-input-placeholder {
+    color: #ccc;
+  }
+  input.ant-calendar-range-picker-input {
+    background-color: transparent;
+    border: 0;
+    height: 100%;
+    outline: 0;
+    width: 43%;
+    text-align: center;
+    text-indent: -3px;
+  }
+  span.ant-calendar-range-picker-separator {
+    margin-left: -8px;
+    margin-right: 11px;
+  }
+  .ant-input {
+    color: @color-font-3;
+  }
+  input:focus {
+    border: 1px solid @color-base-border;
+    outline: 0;
+    box-shadow: 0 0 0 2px @color-base-light;
+    &.ui-no-border {
+      border: none;
+      box-shadow: none;
+    }
+  }
+  label {
+    line-height: 24px;
+    margin-bottom: 0px;
+  }
+  .u-checkbox {
+    width: auto;
+  }
+  .u-checkbox.h28 {
+    height: 28px;
+  }
+  .u-switch.h28 {
+    height: 28px;
+  }
+  .u-checkbox-outline {
+    top: 4px;
+  }
+  .u-checkbox.is-upgraded {
+    padding-left: 20px;
+  }
+  .u-checkbox.labelhidden .u-checkbox-label {
+    visibility: hidden;
+  }
+}
+
+.ui-panel-head {
+  margin: 0 -16px 8px;
+  padding: 8px 0 16px;
+  &.ui-w145 {
+    .ui-name {
+      width: 145px;
+    }
+  }
+}
+
+.ui-panel-btn-bg {
+  height: 36px;
+  margin: 8px -16px 0;
+  // background: @color-base-light;
+  // box-shadow: inset 0 -1px 0 0 #EEEEEE, inset 0 1px 0 0 #EEEEEE;
+}
+
+.ui-panel-pagination {
+  height: 36px;
+  margin: 8px -16px 6px;
+  label{
+    margin-left: 20px;
+    line-height: 36px;
+    font-size: 15px;
+    font-weight: 800;
+  }
+}
+
+.ui-panel-body {
+  margin-top: 16px;
+}
+
+.ui-panel-body-head {
+  margin-bottom: 8px;
+  position: relative;
+  .ui-item{
+    margin-top:2px;
+    position: relative;
+    left: -40px;
+  }
+}
+
+.ui-panel-body-head-left.h28 {
+  height: 28px;
+}
+
+.ui-panel-body-head-right {
+  float: right;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  color: #666666;
+  .ui-inputarea {
+    width: 120px;
+    input {
+      width: 120px;
+    }
+  }
+}
+.ui-panel-label-right{
+  float: right;
+  right: 0;
+  bottom: 0;
+  color: #666666;
+}
+
+.ui-bill-footer-item {
+  margin-right: 20px;
+  display: inline-block;
+  .ui-bill-footer-name {
+    color: @color-font-3;
+  }
+  .ui-bill-footer-val {
+    color: @color-font-9;
+  }
+}
+
+.ui-childpanel {
+  background: #FFFFFF;
+  border: 1px solid #EEEEEE;
+  color: #333;
+}
+
+.ui-childpanel-head {
+  height: 35px;
+  background: #F2F2F2;
+  .ui-operate-word {
+    line-height: 35px;
+  }
+  .ui-item {
+    margin-left: 0;
+    margin-top: 4px;
+    .ui-name {
+      width: auto;
+    }
+    .ui-inputarea {
+      width: 150px;
+      input {
+        width: 150px;
+      }
+    }
+  }
+}
+
+.ui-childpanel-content {
+  padding: 8px 0 24px;
+  .ui-item {
+    height: 20px;
+    margin-left: 50px;
+    margin-top: 10px;
+    .ui-name {
+      width: 80px;
+    }
+    &.ui-w100-item .ui-inputarea {
+      width: auto;
+    }
+    .ui-inputarea {
+      width: 180px;
+      .u-checkbox-outline {
+        top: 3px;
+      }
+      label {
+        line-height: 20px;
+        margin-bottom: 0;
+      }
+      input {
+        height: 20px;
+      }
+      .ant-input {
+        height: 20px !important;
+        padding: 0 7px;
+      }
+      &.w180 {
+        width: 180px;
+        input {
+          width: 180px;
+        }
+        .ui-icon {
+          top: 2px;
+        }
+      }
+      &.w80 {
+        width: 80px;
+        input {
+          width: 80px;
+          text-align: center;
+          padding-right: 0;
+          text-indent: 0;
+        }
+      }
+      input.w60 {
+        width: 60px;
+        text-align: center;
+        padding-right: 0;
+        text-indent: 0;
+      }
+    }
+  }
+}
+
+.ui-editbox.u-msg-content {
+  padding: 6px 0 24px 0;
+  padding-bottom: 24px;
+}
+
+.ui-editbox {
+  .ui-item {
+    margin-left: 50px;
+  }
+}
+
+.ui-searchbox {
+  margin-top: 8px;
+  &.ui-collapse {
+    position: relative;
+    .ui-searchbox-content {
+      height: 50px;
+      width: 340px;
+      overflow: hidden;
+    }
+    .ui-searchbox-footer {
+      position: absolute;
+      top: 15px;
+      left: 380px;
+    }
+  }
+  a {
+    text-decoration: none;
+  }
+  .ui-searchbox-content {
+    width: calc(~"100% - 170px");
+    background: white;
+    margin-bottom: 16px;
+  }
+  .ui-searchbox-content.ui-collapse {
+    height: 50px;
+    overflow: hidden;
+  }
+  .ui-searchbox-footer {
+    text-align: right; // padding-right: 5%;
+  }
+  .ui-search-btn {
+    display: inline-block;
+  }
+  .ui-search-more {
+    float: right;
+    cursor: pointer;
+    margin-left: 8px;
+    line-height: 28px;
+  }
+  .ui-search-more a {
+    vertical-align: middle;
+    color: @color-a;
+  }
+  .ui-search-more a:hover {
+    color: @color-a-hover;
+  }
+  .ui-search-more .icon-down {
+    font-size: 12px;
+  }
+  .ui-search-more .icon-down:before {
+    content: "\e6bc";
+  }
+  .ui-search-more.expand .icon-down:before {
+    content: "\e6c1";
+  }
+}
+
+.ui-textonly {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ui-wordbreak {
+  white-space: normal;
+  word-spacing: normal;
+}
+
+.oc-breadcrumb {
+  color: #666666;
+}
+
+.ui-a-detail:hover {
+  cursor: pointer;
+  color: @color-a-hover;
+}
+
+.ui-a-detail.ui-a-nounderline {
+  text-decoration: none;
+}
+
+.ui-operate-btn {
+  float: right;
+  margin: 4px 16px 0;
+}
+
+.ui-bill-body-btns {
+  margin-bottom: 8px;
+}
+
+.title-seperator {
+  height: 1px;
+  background: #DDDDDD;
+  margin: 8px -16px 0;
+}
+
+.ui-statistics {
+  margin-top: 8px !important;
+  color: #333333;
+  font-size: 13px;
+}
+
+.ui-list-panel .pagination {
+  margin-top: -11px;
+}
+
+.ui-panel .ui-searchbox:after {
+  content: "";
+  display: block; // width: 110%;
+  height: 8px;
+  background: #ededed;
+  margin: 6px -16px 0;
+}
+
+.ui-bill-detail .ui-item .ui-inputarea {
+  color: #999999;
+}
+
+.ui-daterange {
+  display: inline-block;
+  width: 102px;
+  position: relative;
+  input {
+    width: 102px;
+  }
+}
+
+.ui-tabs.u-tabs {
+  .u-tabs__tab-bar {
+    margin: 16px 0;
+    justify-content: flex-start;
+    font-size: 13px;
+    color: #999999;
+    height: 30px;
+    a {
+      text-decoration: none;
+    }
+    a:focus,
+    a:hover {
+      color: @color-base;
+    }
+  }
+  .u-tabs__tab {
+    height: 30px;
+    line-height: 30px;
+  }
+}
+
+.u-tabs.is-upgraded.u-tabs {
+  .u-tabs__tab-bar {
+    border-bottom: none;
+  }
+  .u-tabs__tab:after {
+    height: 2px;
+    width: 100%;
+    display: block;
+    content: " ";
+    bottom: 0px;
+    left: 0px;
+    position: absolute;
+    background: #DDDDDD;
+  }
+  .u-tabs__tab.is-active {
+    color: @color-base;
+  }
+  .u-tabs__tab.is-active:after {
+    background: @color-base;
+  }
+}
+
+/*折叠面板*/
+
+.ui-collapse-title {
+  height: 30px;
+  line-height: 30px;
+  background: #F2F2F2;
+  font-size: 12px;
+  color: @color-font-3;
+  padding-left: 8px;
+  &.orderCenter {
+    height: 36px;
+    line-height: 36px;
+    .ui-operate-btn {
+      margin: 0;
+      .ui-btn {
+        padding-top: 0;
+        padding-bottom: 0;
+        height: 24px;
+        line-height: 24px;
+        &.ui-btn-green {
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+.ui-collapse-title a {
+  font-size: 12px;
+  color: #333333;
+  text-decoration: none;
+}
+
+.ui-collapse-title i {
+  position: relative;
+  top: 2px;
+  padding-right: 2px;
+  color: @color-font-9;
+}
+
+.ui-collapse-title.open .icon-tubiao-xiaosanjiao-you {
+  display: none;
+}
+
+.ui-collapse-title .icon-tubiao-xiaosanjiao-xia {
+  display: none;
+}
+
+.ui-collapse-title.open .icon-tubiao-xiaosanjiao-xia {
+  display: inline;
+}
+
+.ui-collapse-content {
+  padding-top: 8px;
+  padding-bottom: 24px;
+}
+
+.ui-collapse-group.border .ui-collapse-content {
+  border: 1px solid #eee;
+}
+
+.line-height-27 {
+  height: 27px;
+}
+
+/*附件控件*/
+
+.ui-file-btns {
+  margin-bottom: 8px;
+}
+
+.u-msg-content .ui-panel-head {
+  margin-top: -20px;
+}
+
+.u-msg-content.img-big-content {
+  position: relative;
+  min-width: 230px;
+}
+
+/*服务费计算公式-结算参数*/
+
+.ui-formulaservicecharge-parameter {
+  a {
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .ui-parameter-jg {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 35px 30px 35px;
+    .p-b {
+      min-height: 40px;
+      line-height: 40px;
+      text-align: center;
+    }
+    .s-txt {
+      color: @color-base;
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 16px;
+    }
+    .i-fh {
+      color: #666;
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 20px;
+      margin: 0 2px;
+      font-style: normal;
+    }
+  }
+  .ui-parameter-b {
+    padding: 25px 0 25px 35px;
+    .ui-ul01 {
+      .ui-li01 {
+        float: left;
+        width: 100px;
+        height: 42px;
+        line-height: 42px;
+        border: 1px solid #eee;
+        margin-right: 10px;
+        &:hover {
+          border: 1px solid @color-base;
+        }
+      }
+    }
+    .ui-a {
+      display: block;
+      color: #666;
+      text-align: center;
+      font-size: 12px;
+    }
+  }
+  .ui-parameter-btn {
+    padding: 0 0 0 35px;
+    .i-fh {
+      display: inline-block;
+      float: left;
+      width: 100px;
+      height: 42px;
+      line-height: 42px;
+      border: 1px solid #eee;
+      margin: 10px;
+      margin-left: 0;
+      color: #666;
+      text-align: center;
+      font-size: 18px;
+      &.i-txt {
+        font-size: 12px;
+      }
+      &:hover {
+        border: 1px solid @color-base;
+      }
+    }
+  }
+}
+
+/*服务费计算公式-结算参数 end*/
+
+//导入导出
+.import-box {
+  .ui-item {
+    float: none;
+    margin-left: 15px;
+    .fileName {
+      color: #666;
+      padding-left: 10px;
+    }
+    .progress-box {
+      display: inline-block;
+      width: 260px;
+      margin-left: 15px;
+      height: 10px;
+      background-color: white;
+      border-radius: 5px;
+      border: 1px solid @color-base-border;
+      box-shadow: 0 0 3px 3px @color-base-light;
+      overflow: hidden;
+      position: relative;
+      .progress-bar {
+        width: 0%;
+        height: 10px;
+        background: @color-base;
+        position: absolute;
+        top: -1px;
+        left: 0;
+        border-radius: 5px;
+      }
+      .tip-txt {
+        position: absolute;
+        bottom: -5px;
+        left: 100px;
+        color: #666;
+        font-size: 12px;
+        transform: scale(0.8);
+        display: none;
+      }
+    }
+  }
+  .progress-percent {
+    display: inline-block;
+    font-size: 12px;
+    color: #666;
+    padding-right: 20px;
+    .num {
+      color: #999;
+    }
+  }
+  form {
+    display: inline-block;
+  }
+  .importBtn {
+    position: relative;
+    .importFile {
+      width: 94px;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+  .info-area {
+    margin-left: 15px;
+    margin-top: 15px;
+    display: none;
+    .error-list {
+      max-height: 200px;
+      overflow-y: scroll;
+    }
+  }
+}
+
+//自定义模板
+.template-table-box {
+  width: 100%;
+  height: 380px;
+  .template-name-list {
+    width: 100px;
+    float: left;
+    height: 380px;
+    padding-top: 42px;
+    .template-name-item {
+      width: 100%;
+      .template-btn {
+        display: block;
+        color: #666;
+        border-bottom: 1px dashed #ddd;
+        text-align: center;
+        line-height: 30px;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 14px;
+        &:nth-last-of-type {}
+        &.active {
+          color: @color-base;
+        }
+      }
+    }
+  }
+  .tab-box {
+    margin-left: 120px;
+    height: 30px;
+    .checkbox-item {
+      float: left;
+      width: 200px;
+      margin-bottom: 15px;
+    }
+  }
+}
+
+//b2c-订单查询-top
+.ui-searchbox-order {
+  .ui-searchbox-b-l {
+    float: left;
+    width: 680px;
+    .ui-item {
+      margin: 10px 10px 10px 0;
+      display: block;
+      float: left;
+      .ui-name {
+        width: 80px;
+      }
+      .ui-inputarea {
+        width: 120px;
+        .u-input {
+          width: inherit;
+        }
+      }
+    }
+    #pay-time-b {
+      .ui-inputarea {
+        width: 300px;
+        .u-input {
+          width: inherit;
+        }
+      }
+    }
+  }
+  .ui-searchbox-b-r {
+    float: left;
+    width: 680px;
+    .ui-search-item {
+      float: left;
+      width: 150px;
+      .ui-name-b {
+        display: block;
+        text-align: left;
+        font-size: 12px;
+        height: 40px;
+        line-height: 40px;
+      }
+      .ui-inputarea {
+        width: 100%;
+        text-align: left;
+        .u-checkbox {
+          margin-right: 10px;
+          width: 90px;
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+}
+
+//b2c-订单查询-top end
+//表格项-标题
+.ui-complimentary-list-bt {
+  font-size: 13px;
+  height: 30px;
+  line-height: 30px;
+  color: @color-base-border;
+  background: #fff;
+  border-bottom: 2px solid #DDDDDD;
+  margin-top: '8px';
+  text-indent: 5px;
+  padding: 0 20px;
+  display: inline-block;
+  text-align: center;
+  outline: 0;
+  &.ui-green {
+    border-color: @color-base-border;
+  }
+}
+
+//表格项-标题 end
+//tab--zx
+.tab-box-z {
+  height: 30px;
+  .tab-item {
+    float: left;
+    height: 30px;
+    list-style-type: none;
+    a {
+      display: block;
+      padding: 0 24px;
+      line-height: 30px;
+      font-size: 13px;
+      color: #999999;
+      border-bottom: 2px solid #ddd;
+      text-decoration: none;
+    }
+    &.active-z {
+      a {
+        color: @color-base;
+        ;
+        border-bottom: 2px solid @color-base;
+      }
+    }
+  }
+}
+
+/*ui-table*/
+
+.table-td-checkbox-wrap {
+  width: 40px;
+  height: 28px;
+  position: relative;
+}
+
+.ui-table thead {
+  border-top: 1px solid #CCCCCC;
+}
+
+.ui-table thead th,
+.ui-table thead tr {
+  background: #f2f2f2;
+  vertical-align: bottom;
+  /* height: 2.75em; */
+  font-weight: normal;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: left;
+  border-style: solid;
+  border-color: #cecece;
+  border-width: 0px;
+  padding: 0px !important; // width: 200px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #666666;
+}
+
+.ui-table .checkbox-wrap {
+  position: relative;
+  height: 30px;
+  text-align: center;
+  margin-right: 8px;
+  top: 2px;
+}
+
+.ui-table tbody tr:hover {
+  background-color: #F2F9F7;
+}
+
+.ui-table tbody tr {
+  border-bottom: 1px solid #EEEEEE;
+  height: 40px;
+  line-height: 40px;
+}
+
+.ui-table .index-wrap {
+  padding-left: 8px;
+}
+
+.ui-table.ui-table-multihead thead tr {
+  height: 28px;
+  line-height: 28px;
+  background: transparent
+}
+
+.ui-table.ui-table-multihead td {
+  border: 1px solid #CCCCCC;
+  padding: 0 10px;
+}
+
+.ui-table.ui-table-multihead tbody tr {
+  height: 26px;
+  line-height: 26px;
+}
+
+/* 弹出确认框 */
+
+.ui-msgdialog-box {
+  text-align: center;
+  margin: 20px 0;
+  &.left{
+    text-align: left
+  }
+}
+
+.ui-msgdialog-innerbox {
+  display: inline-block;
+}
+
+.ui-msgdialog-innerbox>p {
+  margin: 0;
+  text-align: left;
+}
+
+.ui-msgdialog-icon {
+  position: relative;
+  top: -6px;
+  margin-right: 10px;
+  font-size: 24px !important;
+  line-height: 2;
+}
+
+.ui-msgdialog-msg-main {
+  font-size: 14px;
+  color: #333333;
+}
+
+.ui-msgdialog-msg-assist {
+  font-size: 12px;
+  color: #999999;
+}
+
+/*整体页面紧凑调整*/
+
+.ui-panel-body {
+  margin-top: 6px;
+}
+
+.page-title {
+  display: none;
+}
+
+.oc-breadcrumb {
+  display: none;
+}
+
+.title-seperator {
+  display: none;
+}
+
+// a.ui-btn {
+//     height: 24px;
+//     padding: 1px 16px;
+// }
+.ui-item {
+  height: 24px;
+}
+
+.ant-input {
+  height: 24px !important;
+  padding: 3px 7px;
+}
+
+.ui-inputarea {
+  width: 200px;
+}
+
+.ui-inputarea input {
+  width: 200px;
+  height: 24px;
+}
+
+.ui-inputarea .ui-icon {
+  top: 2px;
+}
+
+/*searchbox*/
+
+.ui-searchbox {
+  position: relative;
+}
+
+// .ui-searchbox .ui-search-more {
+//     line-height: 24px;
+// }
+.ui-searchbox .ui-searchbox-content.ui-collapse {
+  height: 35px;
+}
+
+.ui-searchbox .ui-searchbox-content {
+  margin-bottom: 4px;
+}
+
+.ui-searchbox .ui-searchbox-footer {
+  position: absolute;
+  bottom: 18px;
+  right: -5px;
+}
+
+.ui-searchbox .ui-item-placeholder {
+  display: none;
+  float: left;
+  margin-top: 16px;
+  height: 28px;
+}
+
+.ui-searchbox .ui-collapse .ui-item-placeholder {
+  display: block;
+}
+
+.ui-list-panel .pagination {
+  margin-top: -24px;
+}
+
+.ui-item {
+  margin-top: 10px;
+}
+
+// .pagination-right{
+//   height: 0px !important;
+// }
+.ui-list-panel .u-tabs__panel .pagination {
+  margin-top: -14px;
+}
+
+/*整体页面紧凑调整end*/
+
+.u-grid-content-td-div {
+  padding: 0 0.5em 0 0.5em;
+}
+
+.u-form-control-feedback {
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+}
+
+.ui-list-panel .ui-searchbox.ui-panel-head {
+  padding: 0;
+  margin-top: 8px;
+  margin-right: 0;
+}
+
+@media screen and (min-width: 1340px) and (max-width: 1441px) {
+  .ui-searchbox .ui-searchbox-content {
+    max-width: 1000px;
+  }
+}
+
+// 紧凑版特有样式
+.ui-top2{
+  top: -2px;
+}

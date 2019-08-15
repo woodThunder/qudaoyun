@@ -1,0 +1,38 @@
+<div class="ui-panel">
+  <div>
+    <div class="page-title">
+      <span>仓库区域优先级</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+      <ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch,willSearch:false'>
+      </ui-searchbox>
+  <div class="ui-panel-body">
+    <div class="ui-panel-body-head">
+      <div class="ui-panel-body-head-left" id="page-view">
+        <ui-buttons params='datasource:$root.button1Source'>
+        </ui-buttons>
+      </div>
+      <div class="ui-panel-body-head-left" id="page-edit" style="display:none">
+        <ui-buttons params='datasource:$root.button2Source'>
+        </ui-buttons>
+      <div id="addItemsRef" u-meta='{"type":"uiRefer","data":"ItemRefList","field":"storref"}' style="display:none;">
+        <input readonly="readonly" />
+        <span class="ui-icon uifont icon-bar refer"></span>
+      </div>
+      </div>
+    </div>
+    <div class="ui-table-container">
+      <ui-grid params='options:$root.gridOption,vm:$root'>
+      </ui-grid>
+    </div>
+  </div>
+</div>
+<ui-dialogcard params='datasource:$root.dialogcardSource,ref:$root.dialogcardcomp,dt:$root.depotrangpriList'>
+</ui-dialogcard>

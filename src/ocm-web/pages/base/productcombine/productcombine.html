@@ -1,0 +1,445 @@
+<!-- 列表页 -->
+<div class="ui-list-panel ui-panel">
+  <div>
+    <div class="page-title">
+      <span>产品组合</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+  <div class="ui-searchbox">
+    <div id="ProductCombine-searchcontent" class="ui-searchbox-content">
+
+    </div>
+    <div class="clearfix">
+
+    </div>
+    <div class="ui-searchbox-footer">
+      <div class="ui-search-more hidden">
+          <a>更多<i class="uifont icon-down"></i></a>
+      </div>
+
+      <div class="ui-search-btn">
+        <a class="ui-btn ui-btn-primary margin-right-5"
+        data-bind="click:cleanSearch">清空
+        </a>
+        <a class="ui-btn ui-btn-green margin-right-5"
+        data-bind="click:search.bind($data,true)">搜索
+        </a>
+      </div>
+      <div class="clearfix">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-panel-body">
+    <div class="ui-panel-body-head">
+      <div class="ui-panel-body-head-left">
+        <a class="ui-btn ui-btn-orange margin-right-5" id="user-action-add"
+          data-bind="click: showAddBillPanel.bind($data)"><i class="uifont icon-plus margin-right-5"></i>新增
+        </a>
+        <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+          data-bind="click: del"><i class="uifont icon-shanchu1 margin-right-5"></i>删除
+        </a>
+        <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+          <a class="ui-button-item" data-bind="click: enable"><i class="uifont icon-qiyong margin-right-5"></i>启用</a>
+          <a class="ui-button-item" data-bind="click: disable"><i class="uifont icon-tingyong margin-right-5"></i>停用</a>
+        </div>
+        <div class="ui-button-group clearfix vertical-align-middle">
+          <a class="ui-button-item" data-bind="click: importHandle"><i class="uifont icon-import margin-right-5"></i>导入</a>
+          <a class="ui-button-item" data-bind="click: exportHandle"><i class="uifont icon-export margin-right-5"></i>导出</a>
+        </div>
+        <div class="ui-button-group clearfix vertical-align-middle">
+          <a class="ui-button-item" data-bind="click: onshelf"><i class="uifont icon-export margin-right-5"></i>上架</a>
+          <a class="ui-button-item" data-bind="click: unonshelf"><i class="uifont icon-import margin-right-5"></i>下架</a>
+        </div>
+      </div>
+      <!-- <div class="ui-panel-body-head-right">
+        <i class="uifont icon-i font-c-blue margin-right-5"></i>共搜索到<span data-bind="text:ProductCombineList.totalRow"></span>条数据
+      </div> -->
+    </div>
+    <div class="ui-table-container">
+        <div u-meta='{"id":"grid_productCombine","data":"ProductCombineList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+                    <!-- <div options='{"field":"pkOrgName","dataType":"String","title":"所属组织"}'></div> -->
+                    <div options='{"field":"code","dataType":"String","title":"产品组合编码","renderType":"detailRender"}'></div>
+                    <div options='{"field":"name","dataType":"String","title":"产品组合名称"}'></div>
+                    <div options='{"field":"combinationType","dataType":"String","title":"组合类型","renderType":"combinationTypeRender"}'></div>
+                    <div options='{"field":"isEnable","dataType":"String","title":"启用状态","renderType":"enableStatusRender"}'></div>
+                    <div options='{"field":"isOnShelf","dataType":"String","title":"上架","renderType":"onShelfStatusRender"}'></div>
+                    <div options='{"field":"description","dataType":"String","title":"描述"}'></div>
+                    <div options='{"field":"creator","dataType":"String","title":"创建人"}'></div>
+                    <div options='{"field":"creationTime","dataType":"Datetime","title":"创建时间"}'></div>
+                    <div options='{"field":"modifier","dataType":"String","title":"修改人"}'></div>
+                    <div options='{"field":"modifiedTime","dataType":"Datetime","title":"修改时间"}'></div>
+                    <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation","fixed":true,"width":"100px"}'></div>
+        </div>
+        <div class="ui-statistics margin-top-10">
+          已选择<span class="font-c-blue" data-bind="text:ProductCombineList.selectedIndices().length"></span>项数据
+        </div>
+        <div class="pagination-right">
+          <div id='pagination' class='pagination u-pagination pagination-sm'
+          u-meta='{"type":"pagination","data":"ProductCombineList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+        </div>
+    </div>
+    </div>
+</div>
+
+<!-- 单据页 -->
+<div class="ui-bill-panel ui-panel" style="display: none;" id="prodCombineDetail">
+  <div>
+    <div class="page-title">
+      <span>产品组合</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-head ui-bill-head margin-top-20">
+    <div class="ui-item margin-bottom-20" style="float: none;">
+      <div class="ui-name">
+        <i class="strong">*</i>组合编码： </div>
+      <div class="ui-inputarea">
+        <div u-meta='{"type":"u-text","data":"ProductCombineList","field":"code"}'>
+          <input class="u-input" />
+        </div>
+      </div>
+    </div>
+    <div class="ui-item margin-bottom-20" style="float: none;">
+      <div class="ui-name">
+        <i class="strong">*</i>组合名称： </div>
+      <div class="ui-inputarea">
+        <div u-meta='{"type":"u-text","data":"ProductCombineList","field":"name"}'>
+          <input class="u-input" />
+        </div>
+      </div>
+    </div>
+    <div class="ui-item margin-bottom-20" style="float: none;">
+      <div class="ui-name">
+        <i class="strong">*</i>组合类型： </div>
+        <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"ProductCombineList","field":"combinationType","datasource":"combineTypeData"}'>
+          <input class="u-input"/>
+          <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+        </div>
+    </div>
+    <div class="ui-item margin-bottom-20" style="float: none;" data-bind="visible: ProductCombineList.ref('combinationType')() == '2'">
+      <div class="ui-name">
+        <i class="strong"></i>主数量： </div>
+      <div class="ui-inputarea">
+        <div u-meta='{"type":"u-text","data":"ProductCombineList","field":"amount"}'>
+          <input class="u-input" />
+        </div>
+      </div>
+    </div>
+    <div class="ui-item margin-bottom-20" style="float: none;" data-bind="visible: ProductCombineList.ref('combinationType')() == '0'">
+      <div class="ui-inputarea "  style="margin-left: 50px">
+        <div u-meta='{"type":"u-checkbox","data":"ProductCombineList","field":"isProduct","datasource":"checkData"}'>
+          <label class="u-checkbox">
+            <input type="checkbox" class="u-checkbox-input">
+            <span class="u-checkbox-label" data-role="name"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="ui-bill-body" style="padding: 0 20px 0 125px;">
+      <div class="margin-bottom-10" >
+        <a class="ui-btn ui-btn-orange margin-right-5"
+          data-bind="click: addItems.bind($data)"><i class="uifont icon-plus margin-right-5"></i>增行
+        </a>
+      </div>
+      <div class="ui-table-container margin-bottom-30">
+        <div data-bind="visible: ProductCombineList.ref('combinationType')() == '1'">
+          <div u-meta='{"id":"grid_ProductCombineItems","data":"ProductCombineItems","type":"grid","editable":true,"multiSelect":false,"showNumCol":true}'>
+            <!--<div u-meta='{"id":"grid_ProductCombineItems","data":"ProductCombineItems","type":"grid","editable":true,"multiSelect":false,"showNumCol":true, "onBeforeEditFun":"beforeEditFun2"}'>-->
+
+            <div options='{"field":"commodityId","dataType":"String","title":"商品编码","renderType":"ncReferRender","editType":"ncReferEditType","showField":"commodityCode","editOptions":{"validType":"string","rel":{"refpk":"commodityId","refcode":"commodityCode","refname":"commodityName"}}}'></div>
+            <!-- <div options='{"field":"commodityCode","dataType":"String","title":"商品编码"}'></div> -->
+            <div options='{"field":"commodityName","dataType":"String","title":"商品名称","editable":"false"}'></div>
+            <div options='{"field":"productId","dataType":"String","title":"产品编码","renderType":"ncReferRender","editType":"ncReferEditType","showField":"productCode","editOptions":{"validType":"string","rel":{"refpk":"productId","refcode":"productCode","refname":"productName"}}}'></div>
+            <div options='{"field":"productName","dataType":"String","title":"产品名称","editable":"false"}'></div>
+            <div options='{"field":"productCategoryId","dataType":"String","title":"商品分类编码","renderType":"ncReferRender","editType":"ncReferEditType","showField":"productCategoryCode","editOptions":{"validType":"string","rel":{"refpk":"productCategoryId","refcode":"productCategoryCode","refname":"productCategoryName"}}}'></div>
+            <div options='{"field":"productCategoryName","dataType":"String","title":"商品分类名称","editable":"false"}'></div>
+            <div options='{"field":"weight","dataType":"String","title":"金额权重", "visible": "false"}'></div>
+            <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"delRender","fixed":true,"width":"100px","editable":"false"}'></div>
+          </div>
+        </div>
+        <div data-bind="visible: ProductCombineList.ref('combinationType')() == '0'">
+          <div u-meta='{"id":"grid_ProductCombineItems2","data":"ProductCombineItems","type":"grid","editable":true,"multiSelect":false,"showNumCol":true}'>
+            <!--<div u-meta='{"id":"grid_ProductCombineItems2","data":"ProductCombineItems","type":"grid","editable":true,"multiSelect":false,"showNumCol":true, "onBeforeEditFun":"beforeEditFun"}'>-->
+
+            <div options='{"field":"commodityId","dataType":"String","title":"商品编码","renderType":"ncReferRender","editType":"ncReferEditType","showField":"commodityCode","editOptions":{"validType":"string","rel":{"refpk":"commodityId","refcode":"commodityCode","refname":"commodityName"}}}'></div>
+            <!-- <div options='{"field":"commodityCode","dataType":"String","title":"商品编码"}'></div> -->
+            <div options='{"field":"commodityName","dataType":"String","title":"商品名称","editable":"false"}'></div>
+            <div options='{"field":"productId","dataType":"String","title":"产品编码","renderType":"ncReferRender","editType":"ncReferEditType","showField":"productCode","editOptions":{"validType":"string","rel":{"refpk":"productId","refcode":"productCode","refname":"productName"}}}'></div>
+            <div options='{"field":"productName","dataType":"String","title":"产品名称","editable":"false"}'></div>
+            <div options='{"field":"productCategoryId","dataType":"String","title":"商品分类编码","renderType":"ncReferRender","editType":"ncReferEditType","showField":"productCategoryCode","editOptions":{"validType":"string","rel":{"refpk":"productCategoryId","refcode":"productCategoryCode","refname":"productCategoryName"}}}'></div>
+            <div options='{"field":"productCategoryName","dataType":"String","title":"商品分类名称","editable":"false"}'></div>
+            <div options='{"field":"amount","dataType":"String","title":"主数量"}'></div>
+            <div options='{"field":"weight","dataType":"String","title":"金额权重", "visible": "false"}'></div>
+            <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"delRender","fixed":true,"width":"100px","editable":"false"}'></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div data-bind="visible: ProductCombineList.ref('isProduct')() == '1'">
+      <div id="fileiptwrap">
+        <input class="u-input" type="file" name="addfile" id = "uploadbatch_id"  style="display:none;"/>
+      </div>
+      <div class="ui-item" style="float: none;">
+        <div class="ui-name"> </div>
+        <div class="ui-inputarea">
+          上传商品组合图片：格式JPG,PNG,GIF；大小不超过5M，最多10张。
+        </div>
+      </div>
+      <div style="padding-left: 125px;">
+        <div class="upload-pictures">
+          <i class="uifont icon-plus addIcon" data-bind='click: onOpenUploadWin'></i>
+          <img src="" class="pic" />
+          <p  class="delBtn">
+            <a>删除</a>
+          </p>
+        </div>
+        <div class="upload-pictures">
+          <i class="uifont icon-plus addIcon" data-bind='click: onOpenUploadWin'></i>
+          <img src="" class="pic" />
+          <p  class="delBtn">
+            <a>删除</a>
+          </p>
+        </div>
+        <div class="upload-pictures">
+          <i class="uifont icon-plus addIcon" data-bind='click: onOpenUploadWin'></i>
+          <img src="" class="pic" />
+          <p  class="delBtn">
+            <a>删除</a>
+          </p>
+        </div>
+        <div class="upload-pictures">
+          <i class="uifont icon-plus addIcon" data-bind='click: onOpenUploadWin'></i>
+          <img src="" class="pic" />
+          <p  class="delBtn">
+            <a>删除</a>
+          </p>
+        </div>
+        <div class="upload-pictures">
+          <i class="uifont icon-plus addIcon" data-bind='click: onOpenUploadWin'></i>
+          <img src="" class="pic" />
+          <p  class="delBtn">
+            <a>删除</a>
+          </p>
+        </div>
+        <div class="upload-pictures">
+          <i class="uifont icon-plus addIcon" data-bind='click: onOpenUploadWin'></i>
+          <img src="" class="pic" />
+          <p  class="delBtn">
+            <a>删除</a>
+          </p>
+        </div>
+        <div class="upload-pictures">
+          <i class="uifont icon-plus addIcon" data-bind='click: onOpenUploadWin'></i>
+          <img src="" class="pic" />
+          <p  class="delBtn">
+            <a>删除</a>
+          </p>
+        </div>
+        <div class="upload-pictures">
+          <i class="uifont icon-plus addIcon" data-bind='click: onOpenUploadWin'></i>
+          <img src="" class="pic" />
+          <p  class="delBtn">
+            <a>删除</a>
+          </p>
+        </div>
+        <div class="upload-pictures">
+          <i class="uifont icon-plus addIcon" data-bind='click: onOpenUploadWin'></i>
+          <img src="" class="pic" />
+          <p  class="delBtn">
+            <a>删除</a>
+          </p>
+        </div>
+        <div class="upload-pictures">
+          <i class="uifont icon-plus addIcon" data-bind='click: onOpenUploadWin'></i>
+          <img src="" class="pic" />
+          <p  class="delBtn">
+            <a>删除</a>
+          </p>
+        </div>
+      </div>
+      <div class="ui-item margin-bottom-20" style="float: none;">
+        <!-- <div class="ui-name" style="width:60px;vertical-align:top;"><span class='ui-redstar'>*</span>内容：</div>
+        <div style="display:inline-block;width:600px;" id="rich-text-container"></div>
+        <div class="clearfix"></div> -->
+        <!-- <div class="ui-item  ui-textarea-item" style="height: 200px;">
+          <div class="ui-name">内容：</div>
+          <div class="ui-inputarea">
+            <div name="rich-text-container" id="rich-text-container" rows="40" cols="80">
+            </div>
+          </div>
+        </div> -->
+        <div class="ui-item  ui-textarea-item" style="height: 200px;">
+          <div class="ui-name">内容：</div>
+          <div class="ui-inputarea">
+            <div name="editEditor" id="editEditor" style="width:95%" rows="40" cols="80">
+            </div>
+          </div>
+           <p style="padding-left: 120px;"><span class="word_surplus"></span>(字数统计包含HTML代码)</p>
+        </div>
+
+        <!-- <div class="ui-name">
+          <i class="strong">*</i>内容： </div>
+        <div class="ui-inputarea">
+          <div u-meta='{"type":"u-text","data":"ProductCombineList","field":"description"}'>
+            <input id="description-input" class="u-input" />
+          </div>
+        </div>
+        <div class="clearfix"></div> -->
+      </div>
+      <div style="clear: both;"></div>
+    </div>
+    <div style="margin-top:16px;padding-left: 125px;">
+      <a class="ui-btn ui-btn-green margin-right-5" data-bind="click: saveBill.bind($data)">保存
+      </a>
+      <a class="ui-btn ui-btn-primary" data-bind="click: cancelBill.bind($data)">取消
+      </a>
+    </div>
+  </div>
+
+</div>
+<!-- 详情页end-->
+<div class="ui-bill-detail ui-panel" style="display: none" >
+    <div>
+    <div class="page-title">
+      <span>商品组合设置</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+    <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-primary" data-bind="click: retListPanel">返回
+      </a>
+    </div>
+  </div>
+    <div class="ui-panel-head ui-bill-head">
+    <div class="ui-item margin-bottom-20" style="float: none;">
+      <div class="ui-name">
+        <i class="strong">*</i>编码：</div>
+      <div class="ui-inputarea">
+       <div class="ui-textonly" data-bind='text: ProductCombineList.ref("code")'></div>
+      </div>
+    </div>
+    <div class="ui-item margin-bottom-20" style="float: none;">
+      <div class="ui-name">
+        <i class="strong">*</i>名称：</div>
+      <div class="ui-inputarea">   
+       <div class="ui-textonly" data-bind='text: ProductCombineList.ref("name")'></div>
+      </div>
+    </div>
+    <div class="ui-item margin-bottom-20" style="float: none;">
+      <div class="ui-name"><i class="strong">*</i>组合类型：</div>
+      <div class="ui-inputarea">
+        <div class="ui-textonly" data-bind='text: comTypeFormat("ProductCombineList", "combinationType")'></div>
+      </div>
+    </div> 
+    <div class="ui-item margin-bottom-20" style="float: none;" >
+      <div class="ui-name"><i class="strong">*</i>是否固定组合：</div>
+      <div class="ui-inputarea">
+        <div class="ui-textonly" data-bind='text: isProductFormat("ProductCombineList", "isProduct")'></div>
+      </div>
+    </div> 
+  </div>
+<!-- 子表信息end-->
+
+
+          <div class="ui-table-container margin-bottom-30">
+        <div data-bind="visible: ProductCombineList.ref('combinationType')() == '1'">
+          <!--<div u-meta='{"id":"grid_ProductCombineItems11","data":"ProductCombineItems","type":"grid","editable":false,"multiSelect":false,"showNumCol":true, "onBeforeEditFun":"beforeEditFun2"}'>-->
+          <div u-meta='{"id":"grid_ProductCombineItems11","data":"ProductCombineItems","type":"grid","editable":false,"multiSelect":false,"showNumCol":true}'>
+
+          <div options='{"field":"commodityId","dataType":"String","title":"商品编码","renderType":"ncReferRender","editType":"ncReferEditType","showField":"commodityCode","editOptions":{"validType":"string","rel":{"refpk":"commodityId","refname":"commodityName"}}}'></div>
+            <!-- <div options='{"field":"commodityCode","dataType":"String","title":"商品编码"}'></div> -->
+            <div options='{"field":"commodityName","dataType":"String","title":"商品名称","editable":"false"}'></div>
+            <div options='{"field":"productId","dataType":"String","title":"产品编码","renderType":"ncReferRender","editType":"ncReferEditType","showField":"productCode","editOptions":{"validType":"string","rel":{"refpk":"productId","refcode":"productCode","refname":"productName"}}}'></div>
+            <div options='{"field":"productName","dataType":"String","title":"产品名称","editable":"false"}'></div>
+            <div options='{"field":"productCategoryId","dataType":"String","title":"商品分类编码","renderType":"ncReferRender","editType":"ncReferEditType","showField":"productCategoryCode","editOptions":{"validType":"string","rel":{"refpk":"productCategoryId","refcode":"productCategoryCode","refname":"productCategoryName"}}}'></div>
+            <div options='{"field":"productCategoryName","dataType":"String","title":"商品分类名称","editable":"false"}'></div>
+            <div options='{"field":"weight","dataType":"String","title":"金额权重"}'></div>
+          </div>
+        </div>
+        <div data-bind="visible: ProductCombineList.ref('combinationType')() == '0'">
+          <div u-meta='{"id":"grid_ProductCombineItems22","data":"ProductCombineItems","type":"grid","editable":false,"multiSelect":false,"showNumCol":true}'>
+            <!--<div u-meta='{"id":"grid_ProductCombineItems22","data":"ProductCombineItems","type":"grid","editable":false,"multiSelect":false,"showNumCol":true, "onBeforeEditFun":"beforeEditFun"}'>-->
+
+            <div options='{"field":"commodityId","dataType":"String","title":"商品编码","renderType":"ncReferRender","editType":"ncReferEditType","showField":"commodityCode","editOptions":{"validType":"string","rel":{"refpk":"commodityId","refname":"commodityName"}}}'></div>
+            <!-- <div options='{"field":"commodityCode","dataType":"String","title":"商品编码"}'></div> -->
+            <div options='{"field":"commodityName","dataType":"String","title":"商品名称","editable":"false"}'></div>
+            <div options='{"field":"productId","dataType":"String","title":"产品编码","renderType":"ncReferRender","editType":"ncReferEditType","showField":"productCode","editOptions":{"validType":"string","rel":{"refpk":"productId","refcode":"productCode","refname":"productName"}}}'></div>
+            <div options='{"field":"productName","dataType":"String","title":"产品名称","editable":"false"}'></div>
+            <div options='{"field":"productCategoryId","dataType":"String","title":"商品分类编码","renderType":"ncReferRender","editType":"ncReferEditType","showField":"productCategoryCode","editOptions":{"validType":"string","rel":{"refpk":"productCategoryId","refcode":"productCategoryCode","refname":"productCategoryName"}}}'></div>
+            <div options='{"field":"productCategoryName","dataType":"String","title":"商品分类名称","editable":"false"}'></div>
+            <div options='{"field":"amount","dataType":"String","title":"主数量"}'></div>
+            <div options='{"field":"weight","dataType":"String","title":"金额权重"}'></div>
+
+          </div>
+        </div>
+      </div>
+
+
+    <div data-bind="visible: ProductCombineList.ref('isProduct')() == '1'">
+    
+      <div style="padding-left: 125px;">
+        <div class="upload-pictures">
+         
+          <img src="" class="pic" />
+         
+        </div>
+         <div class="upload-pictures">
+         
+          <img src="" class="pic" />
+         
+        </div>
+         <div class="upload-pictures">
+         
+          <img src="" class="pic" />
+         
+        </div>
+         <div class="upload-pictures">
+         
+          <img src="" class="pic" />
+         
+        </div>
+         <div class="upload-pictures">
+         
+          <img src="" class="pic" />
+         
+        </div>
+      
+      </div>
+      <div style="margin-top:16px;padding-left: 62px;">
+        <div class="ui-name" style="width:60px;vertical-align:top;"><span class='ui-redstar'>*</span>内容：</div>
+        <div style="display:inline-block;width:600px;" id="rich-text-container"></div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+</div>
+<!-- 单据页 end-->
+
+<div id="exportFiel"></div>
+<div id="importFiel"></div>

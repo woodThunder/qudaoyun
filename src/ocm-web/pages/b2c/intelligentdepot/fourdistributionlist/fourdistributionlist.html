@@ -1,0 +1,140 @@
+<div class="ui-panel">
+  <div>
+    <div class="page-title">
+      <span>服务商区域范围设置</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+
+
+  <div class="ui-searchbox">
+    <div id="batchdoc-searchcontent" class="ui-searchbox-content">
+
+    </div>
+    <div class="clearfix">
+
+    </div>
+    <div class="ui-searchbox-footer">
+      <div class="ui-search-more hidden">
+        <a>更多<i class="uifont icon-down"></i></a>
+      </div>
+
+      <div class="ui-search-btn">
+        <a class="ui-btn ui-btn-primary" data-bind="click:cleanSearch">清空
+        </a>
+        <a class="ui-btn ui-btn-green margin-right-5" data-bind="click:search.bind($data,true)">搜索
+        </a>
+      </div>
+      <div class="clearfix">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-panel-body">
+    <div class="ui-panel-body-head">
+      <div class="ui-panel-body-head-left" id="page-edit" style="display:none">
+        <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+          <a class="ui-button-item" data-bind="click: addRow">
+              <i class="uifont icon-plus margin-right-5"></i>
+              增行
+            </a>
+          <a class="ui-button-item" data-bind="click: delRow">
+              <i class="uifont icon-shanchu1 margin-right-5"></i>
+              删行
+            </a>
+        </div>
+        <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+          <a class="ui-button-item" data-bind="click:save">
+            <i class="uifont icon-tubiao-baocun margin-right-5"></i>
+               保存
+             </a>
+          <a class="ui-button-item" data-bind="click: cancle">
+            <i class="uifont icon-tubiao-guanbi-xianxing margin-right-5"></i>
+               取消
+             </a>
+        </div>
+      </div>
+      <div class="ui-panel-body-head-left" id="page-view">
+        <a class="ui-btn ui-btn-orange margin-right-5" data-bind="click: edit"><i class="uifont icon-edit margin-right-5"></i>编辑
+          </a>
+        <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+          <a class="ui-button-item"  data-bind="click: importHandle">
+              <i class="uifont icon-import  margin-right-5"></i>
+              导入
+              </a>
+          <a class="ui-button-item"  data-bind="click: exportHandle">
+              <i class="uifont icon-export  margin-right-5"></i>
+              导出
+              </a>
+        </div>
+      </div>
+      <!-- <div class="ui-panel-body-head-right">
+        <i class="uifont icon-i font-c-blue"></i> 共搜索到
+        <span data-bind="text:batchdocList.totalRow"></span>条数据
+      </div> -->
+    </div>
+    <div class="ui-table-container">
+      <div u-meta='{"id":"grid_batchdoc","data":"batchdocList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true,"columnMenu":false,"onBeforeEditFun":"afterRowFocus","overWidthHiddenColumn":false,"canSwap":false}'>
+        <div options='{"required":true,"field":"provinceId","width":90,"dataType":"String","title":"所属省","renderType":"ncReferRender",
+        "editType":"ncReferEditType","showField":"provinceName","editOptions":{"validType":"string",
+        "rel":{"refpk":"provinceId","refname":"provinceName"}}}'></div>
+
+        <div options='{"required":true,"field":"cityId","width":90,"dataType":"String","title":"所属市","renderType":"ncReferRender",
+        "editType":"ncReferEditType","showField":"cityName","editOptions":{"validType":"string",
+        "rel":{"refpk":"cityId","refname":"cityName"}}}'></div>
+
+        <div options='{"required":true,"field":"districtId","width":120,"dataType":"String","title":"所属区（县）","renderType":"ncReferRender",
+        "editType":"ncReferEditType","showField":"districtName","editOptions":{"validType":"string",
+        "rel":{"refpk":"districtId","refname":"districtName"}}}'></div>
+
+        <div options='{"field":"townId","width":120,"dataType":"String","title":"所属镇（街）","renderType":"ncReferRender",
+        "editType":"ncReferEditType","showField":"townName","editOptions":{"validType":"string",
+        "rel":{"refpk":"townId","refname":"townName"}}}'></div>
+
+        <div options='{"required":true,"field":"agencyId","width":120,"dataType":"String","title":"服务商所属组织","renderType":"ncReferRender",
+        "editType":"ncReferEditType","showField":"agencyName","editOptions":{"validType":"string",
+        "rel":{"refpk":"agencyId","refname":"agencyName","refcode":"agencyCode"}}}'></div>
+
+        <div options='{"required":true,"field":"serviceProvider1","width":110,"dataType":"String","title":"第一服务商","renderType":"ncReferRender",
+        "editType":"ncReferEditType","showField":"serviceProvider1Name","editOptions":{"validType":"string",
+        "rel":{"refpk":"serviceProvider1","refname":"serviceProvider1Name","refcode":"serviceProvider1Code"}}}'></div>
+
+        <div options='{"field":"serviceProvider2","width":110,"dataType":"String","title":"第二服务商","renderType":"ncReferRender",
+        "editType":"ncReferEditType","showField":"serviceProvider2Name","editOptions":{"validType":"string",
+        "rel":{"refpk":"serviceProvider2","refname":"serviceProvider2Name","refcode":"serviceProvider2Code"}}}'></div>
+
+        
+        
+        <div options='{"required":true,"field":"senderCode1Id","width":150,"dataType":"String","title":"第一服务商地址","renderType":"ncReferRender",
+        "editType":"fwsAddr1","showField":"senderCode1Name","editOptions":{"validType":"string",
+        "rel":{"refpk":"senderCode1Id","refname":"senderCode1Name","refcode":"senderCode1"}}}'></div>
+        
+
+        <div options='{"field":"senderCode2Id","width":150,"dataType":"String","title":"第二服务商地址","renderType":"ncReferRender",
+        "editType":"fwsAddr2","showField":"senderCode2Name","editOptions":{"validType":"string",
+        "rel":{"refpk":"senderCode2Id","refname":"senderCode2Name","refcode":"senderCode2"}}}'></div>
+        <div options='{"field":"freight","width":90,"dataType":"float","title":"标准运费","renderType":"currencyRender","editType":"float","editOptions":{"validType":"float","precision":"3","max":10000}}'></div>
+        <div options='{"field":"operate","width":90,"dataType":"String","title":"操作","renderType":"optFun","editable":false,"autoExpand":true}'></div>
+      </div>
+      <div class="ui-statistics margin-top-10">
+        已选择<span class="font-c-blue" data-bind="text:batchdocList.selectedIndices().length"></span>项数据
+      </div>
+      <div class="pagination-right">
+        <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"batchdocList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="dialog_layer" style="display:none;">
+
+</div>
+<!--导入导出弹框 end-->
+<div id="exportFiel"></div>
+<div id="importFiel"></div>

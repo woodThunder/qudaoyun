@@ -1,0 +1,59 @@
+.header-fixed aside.sidebar{
+	position: static;
+	min-height: 768px;
+	margin-top: 0;
+}
+.header-fixed aside.sidebar.sidebar-puding{
+	margin: 54px 0 0 -32px;
+    position: fixed;
+}
+.sidebar-left .sidebar-wrapper .user-container {
+	border: 0 none;
+	padding-top: 20px;
+	    background: #eee;
+}
+.sidebar-left .sidebar-wrapper .user-container a {
+	display: block;
+}
+.sidebar-left .sidebar-wrapper .user-container .avatar {
+	border-radius: 5px;
+	border:0;
+}
+.pull-left img {    border-radius: 50%!important;
+    border: 1px solid #ccc!important;}
+.sidebar-nav {
+	margin:0;
+	padding:0 0 13px;
+}
+.sidebar-nav .nav-list {
+	
+	padding-top: 7px;
+}
+.sidebar-left .sidebar-wrapper .sidebar-nav li {
+	border:none;
+}
+.sidebar-left .sidebar-wrapper .sidebar-nav li a {
+	color: #4d6595;
+	line-height: 28px;
+	display: block;
+	font-size: 13px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	vertical-align: middle;
+	text-decoration: none;
+	outline: none; 
+	padding: 0 20px;
+}
+.skin-blue .sidebar .sidebar-wrapper .sidebar-nav li.cur {
+	background:#fbfbfb;
+}
+.skin-blue .sidebar .sidebar-wrapper .sidebar-nav li:hover > a,
+.skin-blue .sidebar .sidebar-wrapper .sidebar-nav li.cur > a {
+	text-decoration: none;
+	color: #fc923f;
+	background: none;
+}
+.skin-blue .sidebar .sidebar-wrapper .sidebar-nav li.cur > a {
+	font-weight: bold;
+}

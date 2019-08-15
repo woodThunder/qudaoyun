@@ -1,0 +1,201 @@
+<div class="main-wrap list-panel" id="roleConUser">
+    <div class="wrapper">
+        <div class="wrap-body">
+            <!--页面功能名字-->
+            <!-- iuap 前端升级同步更改 wt 20190123
+            <div class="apptitle">
+                <span class="i18n" id="ht.wor.rol2.0001" name="ht.wor.rol2.0001"></span>
+                <span class="btn btn-default btn-sm backbutton" data-bind="click:goback"><span class="i18n" id="ht.wor.rol2.0002" name="ht.wor.rol2.0002"></span></span>
+            </div> -->
+            <!--tale列表展现区域-->
+            <div class="u-row" style="margin-left: 0;margin-right: 0">
+                <div class="u-col-xs-12 u-col-md-6">
+                    <!--<span class="i18n" id="ht.wor.rol2.0003" name="ht.wor.rol2.0003"></span>列表 -->
+                    <div class="table-list table-responsive">
+                        <div class="table-body">
+                            <h5 class="t-head-title"><span class="i18n" id="ht.wor.rol2.0003" name="ht.wor.rol2.0003"></span>
+                                <div class="input-group pull-right search">
+                                    <input type="search"   class="nc-search" name="searchRole" placeholder="ht.wor.rol2.0004">
+                                    <button type="button" class="nc-searchbtn" id="searchRole" data-bind="click:clickHandle.searchRole"><i
+                                            class="iconfont icon-search"></i></button>
+                                </div>
+                            </h5>
+                            <table class="u-table u-table-striped u-table-hover tabOne" id="rolesTable">
+                                <thead>
+                                <tr>
+                                    <th><span class="i18n" id="ht.wor.rol2.0005" name="ht.wor.rol2.0005"></span></th>
+                                    <th><span class="i18n" id="ht.wor.rol2.0006" name="ht.wor.rol2.0006"></span></th>
+                                    <th><span class="i18n" id="ht.wor.rol2.0007" name="ht.wor.rol2.0007"></span></th>
+                                    <th><span class="i18n" id="ht.wor.rol2.0008" name="ht.wor.rol2.0008"></span></th>
+                                    <th>备注</th>
+                                </tr>
+                                </thead>
+                                <tbody data-bind="foreach:{data:listData.rows(), as: 'row',afterAdd: afterAdd}">
+                                <tr data-bind="click:$parent.clickHandle.showConUsers">
+                                    <td data-bind="text: row.ref('roleName'+getPropSerial())"></td>
+                                    <td data-bind="text: row.ref('roleCode')"><a href="#"> </a></td>
+                                    <td data-bind="text: row.ref('labelName')"></td>
+                                    <td data-bind="text: row.ref('remark')"><a href="#">js9999999</a></td>
+                                    <td>
+                                        <div class="pro_oper">
+                                            <span class="btn" data-bind="click:$parent.clickHandle.conUser"><span class="i18n" id="ht.wor.rol2.0009" name="ht.wor.rol2.0009"></span></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="emptyImage" data-bind="visible:listData.rows()<1">
+                            <img src="./images/empty.png"/>
+                            <span><span class="i18n" id="ht.wor.rol2.0010" name="ht.wor.rol2.0010"></span></span>
+                        </div>
+                        <!--分页区域-->
+                        <div class="paginate-box" data-bind="visible: pagination.count() > 10">
+                            <div id="paginationt1" class="u-pagination pagination-center "></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="u-col-xs-12 u-col-md-6">
+                    <!--<span class="i18n" id="ht.wor.rol2.0011" name="ht.wor.rol2.0011"></span>列表 -->
+                    <div class="table-list table-responsive">
+                        <div class="table-body">
+                            <h5 class="t-head-title"><span class="i18n" id="ht.wor.rol2.0011" name="ht.wor.rol2.0011"></span>
+                                <div class="input-group pull-right search">
+                                    <span class="btn" data-bind="click:clickHandle.unConUsers"><span class="i18n" id="ht.wor.rol2.0012" name="ht.wor.rol2.0012"></span></span>
+                                    <input type="search"   class="nc-search" name="searchConUser" placeholder="ht.wor.rol2.0013">
+                                    <button type="button" class="nc-searchbtn" id="searchUser" data-bind="click:clickHandle.searchConUser"><i
+                                            class="iconfont icon-search"></i></button>
+                                </div>
+                            </h5>
+                            <table class="u-table u-table-striped u-table-hover tabOne" id="ConUsers">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        <label class="u-checkbox  only-style u-checkbox-info"  style="height: 28px;"
+                                               data-bind="click: CurRole.ConUsersData.toggleAllSelect.bind(CurRole.ConUsersData), css:{'is-checked': CurRole.ConUsersData.allSelected()}">
+                                            <input id="checkInput2" type="checkbox" class="u-checkbox-input">
+                                            <span class="u-checkbox-label"></span>
+                                        </label>
+                                    </th>
+                                    <th><span class="i18n" id="ht.wor.rol2.0014" name="ht.wor.rol2.0014"></span></th>
+                                    <th><span class="i18n" id="ht.wor.rol2.0015" name="ht.wor.rol2.0015"></span></th>
+                                    <th><span class="i18n" id="ht.wor.rol2.0008" name="ht.wor.rol2.0008"></span></th>
+                                </tr>
+                                </thead>
+                                <tbody data-bind="foreach:{data:CurRole.ConUsersData.rows(), as: 'row',afterAdd: afterAdd}">
+                                <tr>
+                                    <td data-bind="css: { 'is-selected' : row.selected() }, attr: {'rowindex': $index}">
+                                        <label class="u-checkbox  only-style u-checkbox-info"
+                                               data-bind="click: row.multiSelect, css:{'is-checked': row.selected()}">
+                                            <input type="checkbox" class="u-checkbox-input">
+                                            <span class="u-checkbox-label"></span>
+                                        </label>
+                                    </td>
+                                    <td >
+                                        <span data-bind="text: row.ref('name'+ getPropSerial()),attr:{'title':row.ref('name')}" style="max-width: 70%;display: inline-block;text-overflow: ellipsis;white-space: nowrap;height: 20px;line-height: 25px;overflow: hidden;">
+
+                                        </span>
+                                    </td>
+                                    <td data-bind="text: row.ref('loginName')"><a href="#">js9999999</a></td>
+                                    <td>
+                                        <div class="pro_oper">
+                                            <span class="btn cancel-btn" data-bind="click:$parent.clickHandle.unConUserOne"><span class="i18n" id="ht.wor.rol2.0016" name="ht.wor.rol2.0016"></span></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="emptyImage" data-bind="visible:CurRole.ConUsersData.rows()<1">
+                            <span><span class="i18n" id="ht.wor.rol2.0017" name="ht.wor.rol2.0017"></span></span>
+                        </div>
+                        <!--分页区域-->
+                        <div class="paginate-box" data-bind="visible: paginationt2.count() > 10">
+                            <div id="paginationt2" class="u-pagination pagination-center "></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--分配用户窗口-->
+    <div id="conUserModal" style="display: none">
+        <div class="u-msg-title">
+            <h4><span class="i18n" id="ht.wor.rol2.0009" name="ht.wor.rol2.0009"></span></h4>
+        </div>
+        <div class="u-msg-content">
+            <!--户列表 -->
+            <div class="table-list table-responsive" style="min-height: 320px;">
+                <div class="table-body">
+                    <h5 class="t-head-title pull-right">
+                        <div class="input-group search">
+                            <input type="search"   class="nc-search" name="searchUnConUser" placeholder="ht.wor.rol2.0013">
+                            <button type="button" class="nc-searchbtn" data-bind="click:clickHandle.searchUnConUser"><i
+                                    class="iconfont icon-search"></i></button>
+                        </div>
+                    </h5>
+                    <table class="u-table u-table-striped u-table-hover tabOne" id="unConUsers" >
+                        <thead>
+                        <tr>
+                            <th id="tableHeader">
+                                <label class="u-checkbox u-checkbox-info"    style="height: 28px;"
+                                       data-bind="click: listUsersData.toggleAllSelect.bind(listUsersData), css:{'is-checked': listUsersData.allSelected()}">
+                                    <input id="checkInput1" type="checkbox" class="u-checkbox-input">
+                                    <span class="u-checkbox-label"></span>
+                                </label>
+                            </th>
+                            <th><span class="i18n" id="ht.wor.rol2.0014" name="ht.wor.rol2.0014"></span></th>
+                            <th><span class="i18n" id="ht.wor.rol2.0015" name="ht.wor.rol2.0015"></span></th>
+                            <th><span class="i18n" id="ht.wor.rol2.0021" name="ht.wor.rol2.0021"></span></th>
+                        </tr>
+                        </thead>
+                        <tbody id="tableBody" data-bind="foreach:{data:listUsersData.rows(), as: 'row',afterAdd: afterAdd}">
+                        <tr>
+                            <td data-bind="css: { 'is-selected' : row.selected() }, attr: {'rowindex': $index}">
+                                <label class="u-checkbox  only-style u-checkbox-info"
+                                       data-bind="click: row.multiSelect, css:{'is-checked': row.selected()}">
+                                    <input type="checkbox" class="u-checkbox-input">
+                                    <span class="u-checkbox-label"></span>
+                                </label>
+                            </td>
+                            <td data-bind="text: row.ref('name'+getPropSerial())">guoyuyang</td>
+                            <td data-bind="text: row.ref('loginName')"><a href="#">js9999999</a></td>
+                            <td data-bind="text: row.ref('remark')"><a href="#">js9999999</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="emptyImage" data-bind="visible:listUsersData.rows()<1">
+                    <span><span class="i18n" id="ht.wor.rol2.0018" name="ht.wor.rol2.0018"></span></span>
+                </div>
+                <!--分页区域-->
+                <div class="paginate-box" data-bind="visible: paginationt3.count() > 10">
+                    <div id="paginationt3" class="u-pagination pagination-center pagination-sm"></div>
+                </div>
+            </div>
+        </div>
+        <div class="u-msg-footer">
+            <button class="u-msg-cancel u-button u-button-squared" style="line-height: 30px;
+            height: 30px;
+            padding: 0 5px;
+            border: 1px solid #039BE5;
+            color: #039BE5;
+            font-size: 12px;
+            border-radius: 4px;
+            background: #fff;
+            " data-bind="click:CurRole.CancelAction"><span class="i18n" id="ht.wor.rol2.0019" name="ht.wor.rol2.0019"></span><span class="u-button-container"><span class="u-ripple"></span></span>
+            </button>
+            <button class="u-msg-ok u-button u-button-info u-button-squared" style="height:30px;
+            line-height: 30px;
+            padding: 0 5px;
+            font-size: 12px;
+            color: #fff;
+            background-color: #039BE5;
+            border-radius: 4px;" data-bind="click:CurRole.ConfirmConUsers"><span class="i18n" id="ht.wor.rol2.0020" name="ht.wor.rol2.0020"></span><span class="u-button-container"><span class="u-ripple"></span></span>
+            </button>
+        </div>
+    </div>
+</div>

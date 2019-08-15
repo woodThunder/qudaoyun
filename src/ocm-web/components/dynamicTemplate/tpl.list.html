@@ -1,0 +1,20 @@
+<!-- 列表页模板 start -->
+<div>
+	{{#each comps}}
+		<div class="ui-table-container">
+			<ui-grid params='{{stringifyObject uicomp.params}}'>
+			</ui-grid>
+			<div class="ui-statistics margin-top-10">
+                已选择
+                <span class="font-c-blue" data-bind='{{uicomp.dataBind}}'></span>项数据
+			</div>
+			<div class="pagination-right">
+                <div id='pagination' class='pagination u-pagination pagination-sm'
+                    u-meta='{{uicomp.pagination}}'>
+                </div>
+            </div>
+		</div>
+		
+	{{/each}}
+</div>
+<!-- 列表页模板 end -->

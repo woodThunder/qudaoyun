@@ -1,0 +1,79 @@
+<div class="main-wrap list-panel" id="dept">
+    <link href="/uui/libs/uui/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/uitemplate_web/static/css/ref/ref.css" rel="stylesheet">
+    <link href="/uitemplate_web/static/css/ref/jquery.scrollbar.css" rel="stylesheet">
+    <div class="wrapper">
+        <div class="wrap-body">
+            <!--页面功能名字-->
+            <div class="apptitle">
+                部门
+                <span class="btn btn-default btn-sm backbutton" data-bind="click:events.goback">返回</span>
+            </div>
+            <div class="u-row">
+                <div class="u-col-xs-12 u-col-md-4" style="min-height: 200px">
+                    <div id="orgTree">
+                        <div class="sub-head">
+                            <span class="head-title">部门</span>
+                            <button class="u-button  head-btn" id="org_add" data-bind="click:events.add,disable:(!addflag)">
+                                <i class="iconfont icon-plus"></i>
+                            </button>
+                        </div>
+                        <div class="orgref" style="position:relative;">
+                            <lable>组织：</lable>
+                            <!--<div id="template-deptref"></div>-->
+                            <div class="u-input-group col-md-5 u-has-feedback" id="dataSourceId"	u-meta='{"type":"uiRefer", "data":"headform2", "field":"dataSourceId"}'>
+                                <input class="u-form-control" type="text" >
+                                <span class="u-form-control-feedback fa fa-list-ul refer"></span>
+                            </div>
+                            <div class="overflow_div" data-bind="visible:footflag" style="position:absolute;width:100%;height:100%;z-index: 999">
+
+                            </div>
+
+                        </div>
+                       <!-- <div id="no_dept" data-bind="visible:nodeptflag">该组织暂无相关部门！</div>-->
+                        <div id="tree3" class="ztree" u-meta='{"id":"tree3","data":"depttreeData","type":"tree","idField":"id","pidField":"pid","nameField":"name","setting":"treeSetting"}'></div>
+                    </div>
+                </div>
+                <div class="u-col-xs-12 u-col-md-8" style="min-height: 200px">
+                    <!--组织内容列表-->
+                    <div id="orgCont">
+                        <div class="sub-head ">
+                            <span class="head-title" data-bind="">部门详细</span>
+                            <button class="u-button  head-btn" data-bind="click:events.delete,disable:buttonflag(),css:{disable:buttonflag()}">
+                                <i class="iconfont icon-delete"></i>
+                            </button>
+                            <button class="u-button  head-btn" id="org_editor" data-bind="click:events.edit,disable:buttonflag(),css:{disable:buttonflag()}">
+                                <i class="iconfont icon-pencil"></i>
+                            </button>
+                        </div>
+                        <div id="no_dept_dtl" data-bind="visible:nodeptflag">该组织暂无部门详情！</div>
+                        <div id="template-dept"></div>
+                        <div class="sub-footer" data-bind="visible:footflag">
+                            <div class="u-form-group">
+                                <button class="savebtn" id="savebtn" data-bind="click:events.save">保存</button>
+                            </div>
+                            <div class="u-form-group">
+                                <button class="cancelbtn" id="cancelbtn" data-bind="click:events.cancel">取消</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="delete-dialog" style="display:none;">
+            <div class="u-msg-title">
+                <h4>提示</h4>
+            </div>
+            <div class="u-msg-content">
+                <p>确定删除选中项？</p>
+            </div>
+            <div class="u-msg-footer">
+                <button type="button" class="u-msg-cancel u-button">取消<span class="u-button-container"><span class="u-ripple"></span></span></button>
+                <button type="button" class="u-msg-ok u-button">确定<span class="u-button-container"><span class="u-ripple"></span></span></button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,45 @@
+.skin-purple header {
+    background-color: rgba(155, 89, 182, 0.8);
+    border-color: #9b59b6;
+    color: white;
+}
+.skin-purple header .logo {
+    color: white;
+    border-color: #9b59b6;
+}
+.skin-purple header .navbar-main .button-container > .item > a {
+    color: white;
+}
+.skin-purple header .navbar-main .button-container > .item.chat-search {
+    border-color: #9b59b6;
+}
+.skin-purple header .navbar-main .button-container > .item.chat-search.collapse.in {
+    border-color: #9b59b6;
+}
+.skin-purple header .navbar-main .nav-content .page-title {
+    color: white;
+}
+.skin-purple header .logo {
+    border-bottom-color: #9b59b6;
+}
+.skin-purple header .navbar-main {
+    background: rgba(155, 89, 182, 0.8);
+    border-bottom-color: #9b59b6;
+}
+.skin-purple .sidebar .sidebar-wrapper .sidebar-nav li:hover > a {
+    background-color: #8e44ad;
+    color: white;
+}
+.skin-purple .sidebar .sidebar-wrapper .sidebar-nav li.active > a {
+    background-color: #9b59b6;
+}
+.skin-purple .sidebar .sidebar-wrapper .sidebar-nav li.active:hover > a {
+    background-color: #8e44ad;
+}
+.skin-purple .sidebar .sidebar-wrapper .sidebar-nav li > ul li:hover > a {
+    color: #8e44ad;
+    background-color: transparent;
+}
+.skin-purple .sidebar .sidebar-wrapper .sidebar-nav li > ul li.active:hover > a {
+    color: white;
+}

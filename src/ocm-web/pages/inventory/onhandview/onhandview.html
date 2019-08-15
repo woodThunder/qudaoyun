@@ -1,0 +1,76 @@
+<div class="ui-panel">
+    <div>
+        <div class="page-title">
+            <span>采购订单类型</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="title-seperator"></div>
+    <ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch,willSearch:false'>
+    </ui-searchbox>
+    <div class="ui-panel-body">
+        <div class="ui-panel-body-head">
+            <div class="ui-panel-body-head-left">
+                <ui-buttons params='datasource:$root.button1Source' style="float: left">
+                </ui-buttons>
+            </div>
+            <!--<div class="ui-item">-->
+                <!--<div class="ui-name">分组查询：</div>-->
+                <!--<div class="ui-inputarea">-->
+                    <!--<div u-meta='{"type":"u-combobox","data":"groupQuery","field":"group","datasource":"groupSrc"}'>-->
+                        <!--<input readonly="readonly"/>-->
+                        <!--<span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div class="ui-panel-body-head-right">
+                <label style="margin-bottom:-10px">
+                    <label class="margin-right-5">合计： </label>
+                    <!--</label>-->
+                    <!--<label class="margin-right-5">预计可用量：-->
+                        <!--<label data-bind="text:willavailablenum"></label>-->
+                    <!--</label>-->
+                    <!--<label class="margin-right-5">可用量：-->
+                        <!--<label data-bind="text:availablenum"></label>-->
+                    <!--</label>-->
+                    <label class="margin-right-5">现存量：
+                        <label data-bind="text:onhandnum"></label>
+                    </label>
+                    <label class="margin-right-5">冻结量：
+                    <label data-bind="text:frozennum"></label>
+                    </label>
+                </label>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="ui-table-container">
+            <ui-grid params='options:$root.gridOption,vm:$root'>
+            </ui-grid>
+            <div class="ui-statistics margin-top-10">
+                已选择
+                <span class="font-c-blue" data-bind="text:simpleList.selectedIndices().length"></span>项数据
+            </div>
+            <div class="pagination-right">
+                <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"simpleList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+            </div>
+        </div>
+    </div>
+</div>
+<ui-dialogcard params='datasource:$root.dialogcardSource,ref:$root.dialogcardcomp'>
+</ui-dialogcard>
+<!-- 选配 -->
+<div id="dialog_goodsOptional" style="display:none;"></div>
+<!-- 选配 -->
+<!-- 选配 -->
+<div id="dialog_goodsOptDetails" style="display:none;"></div>
+<!-- 选配 -->
+<div></div>
+
+<!--导出-->
+<div id="exportFiel"></div>

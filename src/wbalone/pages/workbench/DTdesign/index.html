@@ -1,0 +1,170 @@
+<script type="text/javascript" src="u-grid.js" async="false"></script>
+<div class="main-wrap list-panel" id="DTdesign">
+    <div class="wrapper">
+        <div class="wrap-body">
+            <!--页面功能名字-->
+            <!--iuap 前端升级同步更改 wt 20190123
+            <div class="apptitle">
+                <span class="i18n" id="ht.wor.DTd.0001" name="ht.wor.DTd.0001"></span>
+                <span class="btn btn-default btn-sm backbutton" data-bind="click:goback"><span class="i18n" id="ht.wor.DTd.0002" name="ht.wor.DTd.0002"></span></span>
+            </div>
+            -->
+            <!--页面头部功能条-->
+            <div class="app-funbar">
+                <button type="button" class="u-button u-button-info u-button-lg" data-bind="click:clickHandle.add"><span class="i18n" id="ht.wor.DTd.0003" name="ht.wor.DTd.0003"></span></button>
+                <!--<button class="u-button u-button-info u-button-lg" data-bind="click:clickHandle.sort">排序</button>-->
+            </div>
+            <!--tale列表展现区域-->
+            <div class="table-list table-responsive">
+
+                <div class="u-widget-body hide">
+                    <div class="grid-body">
+                        <div id="gridTest" u-meta='{"id":"grid","type":"grid","data":"listData","columnMenu":false,"canDrag":false,"sortable":false,"canRowDrag":true}'>
+                            <div options='{"field":"roleName","dataType":"String","title":"<span class=i18n id=ht.wor.DTd.0004 name=ht.wor.DTd.0004></span>"}'></div>
+                            <div options='{"field":"roleCode","dataType":"String","title":"<span class=i18n id=ht.wor.DTd.0005 name=ht.wor.DTd.0005></span>"}'></div>
+                            <div options='{"field":"roleName","dataType":"String","title":"<span class=i18n id=ht.wor.DTd.0004 name=ht.wor.DTd.0004></span>"}'></div>
+                            <div options='{"field":"roleCode","dataType":"String","title":"<span class=i18n id=ht.wor.DTd.0005 name=ht.wor.DTd.0005></span>"}'></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-body ">
+                    <table class="u-table u-table-striped u-table-hover tabOne">
+                        <thead>
+                        <tr>
+                            <th width="12%"><span class="i18n" id="ht.wor.DTd.0006" name="ht.wor.DTd.0006"></span></th>
+                            <th width="10%"><span class="i18n" id="ht.wor.DTd.0007" name="ht.wor.DTd.0007"></span></th>
+                            <th width="12%"><span class="i18n" id="ht.wor.DTd.0008" name="ht.wor.DTd.0008"></span></th>
+                        </tr>
+                        </thead>
+                        <tbody data-bind="foreach:{data:listData.rows(), as: 'row',afterAdd: afterAdd}">
+                        <tr>
+                            <td data-bind="text: row.ref('roleName')"></td>
+                            <td data-bind="text: row.ref('roleCode')"></td>
+                            <td>
+                                <div class="pro_oper">
+                                    <span class="uf uf-pencil font-size-20" title="ht.wor.DTd.0009" data-bind="click:$parent.edit.bind($data, $index())"></span>
+                                    <span class="uf uf-del" title="ht.wor.DTd.0010" data-bind="click:$parent.delete.bind($data, $index())"></span>
+
+                                    <span class="uf uf-arrow-up-2" title="ht.wor.DTd.0011" data-bind="click:$parent.moveup.bind($data, $index()),visible:$index()>0"></span>
+                                    <span class="uf uf-arrow-down-2" title="ht.wor.DTd.0012" data-bind="click:$parent.movedown.bind($data, $index()), visible: $index()==($parent.listData.rows().length-1)?false:true"></span>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="emptyImage" class="hide" data-bind="visible:( listData.rows().length < 1 )">
+                    <img src="./images/empty.png" />
+                    <span><span class="i18n" id="ht.wor.DTd.0013" name="ht.wor.DTd.0013"></span></span>
+                </div>
+                <!--分页区域-->
+                <div class="paginate-box" data-bind="visible: pagination.count() > 10">
+                    <div id="pagination" class="u-pagination pagination-gap "></div>
+                </div>
+            </div>
+        </div>
+        <!--分配用户窗口-->
+        <div id="selRoleModal" style="display: none">
+            <div class="u-msg-title">
+                <h4><span class="i18n" id="ht.wor.DTd.0014" name="ht.wor.DTd.0014"></span></h4>
+            </div>
+            <div class="u-msg-content">
+                <!--角色列表 -->
+                <div class="table-list table-responsive">
+                    <div class="table-body">
+                        <h5 class="t-head-title"><span class="i18n" id="ht.wor.DTd.0015" name="ht.wor.DTd.0015"></span></h5>
+                        <table class="u-table u-table-striped u-table-hover tabOne" id="rolesTable">
+                            <thead>
+                            <tr>
+                                <th><span class="i18n" id="ht.wor.DTd.0016" name="ht.wor.DTd.0016"></span></th>
+                                <th><span class="i18n"  name="ht.wor.DTd.0006"></span></th>
+                                <th><span class="i18n"  name="ht.wor.DTd.0007"></span></th>
+                            </tr>
+                            </thead>
+                            <tbody data-bind="foreach:{data:UndesignList.rows(), as: 'row',afterAdd: afterAdd}">
+                            <tr>
+                                <td>
+                                    <label class="u-radio" data-bind="attr:{for:row.ref('id')}">
+                                        <input type="radio" data-bind="attr:{value:row.ref('id'),id:row.ref('id')}, checked:$parent.checkRole($data.getSimpleData())"
+                                               class="u-radio-button" name="roleList">
+                                        <span class="u-radio-label">&nbsp;</span>
+                                    </label>
+                                </td>
+                                <td data-bind="text: row.ref('roleName'+getPropSerial())"></td>
+                                <td data-bind="text: row.ref('roleCode')"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="emptyImage" data-bind="visible:( UndesignList.rows().length < 1 )">
+                        <span><span class="i18n"  name="ht.wor.DTd.0013"></span></br><span class="i18n" id="ht.wor.DTd.0017" name="ht.wor.DTd.0017"></span></span>
+                    </div>
+                    <!--分页区域-->
+                    <div class="paginate-box" data-bind="visible: paginationUndesign.count() > 10">
+                        <div id="paginationUndesign" class="u-pagination pagination-center "></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="u-msg-footer">
+                <button type="button" class="u-msg-cancel u-button u-button-squared" data-bind="click:clickHandle.CancelAction">
+                    <span class="i18n"  name="ht.wor.DTd.0018"></span>
+                    <span class="u-button-container">
+                        <span class="u-ripple"></span>
+                    </span>
+                </button>
+                <button type="button" class="u-msg-ok u-button u-button-info u-button-squared" data-bind="click:clickHandle.ConfirmDesign"><span class="i18n"  name="ht.wor.DTd.0019"></span>
+                    <span class="u-button-container">
+                        <span class="u-ripple"></span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!--删除提示-->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="iconfont icon-cancel02"></span>
+                    </button>
+                    <h4 class="modal-title"><span class="i18n" id="ht.wor.DTd.0020" name="ht.wor.DTd.0020"></span></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="cc">
+                        <div class="error">
+                            <b></b>
+                            <span class="i18n" id="ht.wor.DTd.0021" name="ht.wor.DTd.0021"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="u-msg-ok u-button u-button-info" style="height: 30px;
+                    line-height: 30px;
+                    padding: 0 5px;
+                    font-size: 12px;
+                    background-color: #039BE5;
+                    border-radius: 4px;" data-bind="click:remove"><span class="i18n" id="ht.wor.DTd.0019" name="ht.wor.DTd.0019"></span>
+                        <span class="u-button-container">
+                            <span class="u-ripple"></span>
+                        </span>
+                    </button>
+                    <button class="u-msg-cancel u-button pap-cancel" style="line-height: 30px;
+                    height: 30px;
+                    padding: 0 5px;
+                    border: 1px solid #039BE5;
+                    color: #039BE5;
+                    font-size: 12px;
+                    border-radius: 4px;
+                    background: #fff;" data-dismiss="modal"><span class="i18n" id="ht.wor.DTd.0018" name="ht.wor.DTd.0018"></span>
+                        <span class="u-button-container">
+                            <span class="u-ripple"></span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

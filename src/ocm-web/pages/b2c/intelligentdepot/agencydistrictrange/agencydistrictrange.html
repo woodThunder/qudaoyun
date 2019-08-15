@@ -1,0 +1,118 @@
+<!-- 列表页 -->
+<div class="ui-list-panel ui-panel">
+  <div>
+    <div class="page-title">
+      <span>仓库产品组</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+  <ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+  </ui-searchbox>
+
+  <div class="ui-panel-body">
+    <div class="ui-panel-body-head">
+      <div class="ui-panel-body-head-left">
+        <ui-buttons params='datasource:$root.button1Source'>
+        </ui-buttons>
+      </div>
+    </div>
+    <div class="ui-table-container">
+      <ui-grid params='options:$root.grid1Option,vm:$root'>
+      </ui-grid>
+      <div class="ui-statistics margin-top-10">
+        已选择
+        <span class="font-c-blue" data-bind="text:depotDistrictList.selectedIndices().length"></span>项数据
+      </div>
+      <div class="pagination-right">
+        <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"depotDistrictList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+      </div>
+    </div>
+  </div>
+   <!-- 详情-start -->
+<div class="u-tabs ui-tabs">
+    <div class="u-tabs__tab-bar margin-top-10 margin-bottom-10">
+      <a href="#tab-panel-1" class="u-tabs__tab is-active">基本信息</a>
+    </div>
+    <div class="u-tabs__panel is-active" id="tab-panel-1">
+      <div class="ui-panel-head">
+    <ui-detail params='datasource:$root.detail11Source,dt:$root.depotDistrictList,vm:$root'>
+    </ui-detail>
+  </div>
+  <div class="ui-bill-body">
+    <div class="ui-table-container margin-bottom-30">
+      <ui-grid params='options:$root.grid3Option,vm:$root'>
+      </ui-grid>
+    </div>
+  </div>
+    </div>
+  </div>
+</div>
+<!-- 新增 -->
+<div class="ui-bill-panel ui-panel" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span>商品分类</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <ui-buttons params='datasource:$root.button2Source'>
+      </ui-buttons>
+    </div>
+  </div>
+  <div class="ui-panel-head ui-bill-head">
+     <ui-card params='datasource:$root.card1Source,vm:$root,dt:$root.depotDistrictList,billstatus:$root.billPanelStatus'>
+    </ui-card>
+  </div>
+  <div class="ui-bill-body">
+    <div class="margin-bottom-10">
+      <ui-buttons params='datasource:$root.button3Source'>
+      </ui-buttons>
+      <div id="addItemsRef" u-meta='{"type":"uiRefer","data":"ItemRefList","field":"productref"}' style="display:none;">
+        <input readonly="readonly" />
+        <span class="ui-icon uifont icon-bar refer"></span>
+      </div>
+    </div>
+    <div class="ui-table-container margin-bottom-30">
+      <ui-grid params='options:$root.grid2Option,vm:$root'>
+      </ui-grid>
+    </div>
+  </div>
+</div>
+<div id="exportFiel"></div>
+<div id="importFiel"></div>
+<div id="district-popup" style="display: none;">
+  <div class="u-msg-title">
+    <h4>四级地址</h4>
+  </div>
+  <div class="u-msg-content" style="margin-top:0;">
+    <div class=" margin-bottom-20 " style="margin-top:5px;">
+    </div>
+    <div id="markIcon">
+      <div id="treeTest" class="ztree" style="overflow:unset"  data-bind="click: clickTree" u-meta='{"id":"tree1","data":"simpleListTree","type":"tree","idField":"id","pidField":"parentId","nameField":"name","setting":"treeSetting"}'>
+      </div>
+    </div>
+
+  </div>
+  <div class="u-msg-footer">
+    <a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+    <a class="u-msg-ok ui-btn ui-btn-green">保存</a>
+  </div>
+</div>
+<style>
+#district-popup .u-msg-content{
+  overflow: auto;
+}
+</style>

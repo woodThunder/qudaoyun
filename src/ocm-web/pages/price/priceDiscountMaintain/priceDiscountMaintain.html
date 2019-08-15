@@ -1,0 +1,74 @@
+<div class="ui-panel ui-list-panel">
+  <div>
+    <div class="page-title">
+      <span data-bind="text:title"></span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+  <ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+  </ui-searchbox>
+  <div class="ui-panel-body">
+    <div class="ui-panel-body-head">
+      <div class="ui-panel-body-head-left">
+        <ui-buttons params='datasource:$root.button1Source'>
+        </ui-buttons>
+      </div>
+    </div>
+    <div class="ui-table-container">
+      <ui-grid params='options:$root.gridOption,vm:$root'>
+      </ui-grid>
+      <div class="ui-statistics margin-top-10">
+        已选择
+        <span class="font-c-blue" data-bind="text:discountMaintainList.selectedIndices().length"></span>项数据
+      </div>
+      <div class="pagination-right">
+        <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"discountMaintainList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+      </div>
+    </div>
+  </div>
+</div>
+<ui-dialogcard params='datasource:$root.dialogcardSource,ref:$root.dialogcardcomp,dt:$root.discountMaintainList'>
+</ui-dialogcard>
+<!-- 单据页 -->
+<div class="ui-bill-panel ui-panel" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span data-bind="text:title"></span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <ui-buttons params='datasource:$root.button2Source'>
+      </ui-buttons>
+    </div>
+  </div>
+  <ui-searchbox params='datasource:$root.subsearchSource,ref:$root.subsearchcomp,search:$root.searchMaintainDetail,clean:$root.subcleanSearch,willSearch:false'>
+  </ui-searchbox>
+  <div class="ui-bill-body margin-top-10">
+    <div class="margin-bottom-10">
+      <ui-buttons params='datasource:$root.button3Source'>
+      </ui-buttons>
+    </div>
+    <div class="ui-table-container margin-bottom-30">
+      <div id="detailgrid">
+      </div>
+      <div class="pagination-right margin-top-20">
+        <div id='pagination1' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"discountMaintainDetail","pageChange":"subPageChange","sizeChange":"subSizeChange","beforePageChange":"beforeSubPageChange"}'></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="exportFiel"></div>
+<div id="importFiel"></div> 

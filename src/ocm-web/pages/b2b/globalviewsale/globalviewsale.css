@@ -1,0 +1,673 @@
+body {
+    background: url("img/bg.png");
+    width: 100%;
+    height: 810px;
+    background-size: cover;
+}
+
+/*-------------header start-------------*/
+.header {
+    position: relative;
+}
+
+.header .header-title {
+    height: 70px;
+    background: url("img/headerTitleBg.png") no-repeat;
+    width: 577px;
+    margin: 0 auto;
+    background-size: 100% 100%;
+}
+
+.header .header-title span {
+    display: block;
+    position: relative;
+    height: 6px;
+    width: 290px;
+    top: 19px;
+    background: url("img/headerTitle.jpg") no-repeat;
+    margin: 0 auto;
+    background-size: 100% 100%;
+}
+
+.header .header-border {
+    position: absolute;
+    top: 49px;
+    left: 0;
+    height: 34px;
+    width: 100%;
+    background: url("img/headBorderBottom.png"), no-repeat;
+    background-size: 100% 100%;
+}
+
+.header .header-left {
+    position: absolute;
+    top: 0;
+    left: 222px;
+    height: 40px;
+    width: 229px;
+    background: url("img/header-left.png"), no-repeat;
+    background-size: 100% 100%;
+}
+
+.header .header-time {
+    position: absolute;
+    top: 15px;
+    color: rgba(255,255,255,0.6);
+    left: 70px;
+    height: 40px;
+    width: 229px;
+}
+.header .header-right {
+    position: absolute;
+    top: 0;
+    right: 221px;
+    height: 40px;
+    width: 229px;
+    background: url("img/header-right.png"), no-repeat;
+    background-size: 100% 100%;
+}
+.header .header-right-btn {
+    position: absolute;
+    top: 10px;
+    right: 0px;
+    height: 30px;
+    width: 100px;
+}
+.header .header-right-btn a{
+    width: 28px;
+    height: 28px;
+    display: inline-block;
+    line-height: 30px;
+    font-size: 14px;
+    background: url(img/no.png) no-repeat;
+    background-size: 100% 100%;
+}
+.header .header-right-btn img{
+    width: 28px;
+    margin-top: -4px;
+    display: inline-block;
+}
+#fullscreen {
+    display: none;
+}
+.header .header-right-btn a:hover{
+    background: url(img/isActiveHover.png) no-repeat;
+    background-size: 100% 100%;
+}
+.header span {
+    display: block;
+    position: relative;
+    font-size: 22px;
+    width: 250px;
+    padding-top: 20px;
+    margin: 0 auto;
+    color: #FFD100;
+    font-weight: bold;
+}
+
+/*-------------header end-------------*/
+/*------------- 整体销售情况 start-------------*/
+.sale-Content {
+    width: 100%;
+    margin: 0 20px 20px 0px;
+    box-sizing: border-box;
+    padding-left: 20px;
+}
+
+.left {
+    float: left;
+    height: 720px;
+    width: 30%;
+}
+
+.left .sales-status {
+    height: 293px;
+    width: 100%;
+}
+
+.left .sales-status .total-money {
+    position: relative;
+    float: left;
+    height: 120px;
+    width: 96%;
+    margin: 10px 0 0 0;
+    background: url("img/total-money.png"), no-repeat;
+    background-size: 100% 100%;
+    text-align: center;
+    text-decoration: none;
+}
+
+.left .sales-status .total-amount {
+    position: relative;
+    float: left;
+    height: 100px;
+    width: 47%;
+    margin: 10px 10px 0 0;
+    background: url("img/total-num.png"), no-repeat;
+    background-size: 100% 100%;
+    text-align: center;
+    text-decoration: none;
+}
+
+.left .sales-status .total-num {
+    position: relative;
+    float: left;
+    height: 100px;
+    width: 46%;
+    margin: 10px 0 20px 0;
+    background: url("img/total-num.png"), no-repeat;
+    background-size: 100% 100%;
+    text-align: center;
+    text-decoration: none;
+}
+
+.left .sales-status .total-money a,
+.left .sales-status .total-amount a,
+.left .sales-status .total-num a {
+    display: inline-block;
+    position: absolute;
+    left: 0;
+}
+
+.left .sales-status .total-money .num {
+    top: 30px;
+    color: #FFD100;
+    font-size: 45px;
+    height: 18px;
+    width: 100%;
+    line-height: 18px;
+}
+
+.left .sales-status .total-amount .num,
+.left .sales-status .total-num .num {
+    top: 24px;
+    color: #FFD100;
+    font-size: 24px;
+    height: 18px;
+    width: 100%;
+    line-height: 18px;
+}
+
+.left .sales-status .total-money .text {
+    top: 85px;
+    color: #ffffff;
+    font-size: 18px;
+    height: 18px;
+    width: 100%;
+    line-height: 18px;
+}
+
+.left .sales-status .total-amount .text,
+.left .sales-status .total-num .text {
+    bottom: 19px;
+    color: #ffffff;
+    font-size: 14px;
+    height: 14px;
+    width: 100%;
+    line-height: 14px;
+}
+
+/*------------- 整体销售情况 end-------------*/
+/*------------- 客户销售排行 start-------------*/
+.left .sales-rank {
+    display: block;
+    height: 427px;
+    width: 100%;
+}
+
+.left .sales-rank .rank-list {
+    display: block;
+    width: 96%;
+    height: 384px;
+    background: url("img/rank-list.png"), no-repeat;
+    background-size: 100% 100%;
+    margin-top: 10px;
+}
+
+.left .sales-rank .rank-list ul {
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 26px 20px 44px 15px;
+    /* margin: 26px 20px 44px 15px; */
+}
+
+.left .sales-rank .rank-list ul li {
+    position: relative;
+    display: inline-block;
+    height: 20px;
+    width: 100%;
+    margin-bottom: 12px;
+    font-size: 12px;
+    color: #fff;
+}
+
+.left .sales-rank .rank-list ul li a {
+    display: inline-block;
+    width: 17%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-decoration: none;
+    color: #fff;
+    position: relative;
+    top: -11px;
+    left: 6px;
+    vertical-align: bottom;
+}
+
+.left .sales-rank .rank-list ul li .list-num {
+    display: inline-block;
+    width: 30px;
+    height: 33px;
+    line-height: 33px;
+    text-align: center;
+}
+
+.left .sales-rank .rank-list ul li .list-num.icon {
+    display: inline-block;
+    width: 30px;
+    height: 33px;
+    line-height: 33px;
+}
+
+.left .sales-rank .rank-list ul li .sales-amount {
+    color: #FFD100;
+    position: absolute;
+    right: 0;
+    top: 11px;
+}
+
+.left .sales-rank .rank-list ul li .rank-bar {
+    position: absolute;
+    top: 8px;
+    right: 20%;
+    height: 20px;
+    width: 50%;
+}
+
+.left .sales-rank .rank-list ul li .rank-bar span {
+    display: inline-block;
+    height: 20px;
+    width: 100%;
+    border-radius: 10px;
+    background: radial-gradient(circle at left, #201A0D, #634C2F, #E4CB7E);
+}
+
+/*------------- 客户销售排行 end-------------*/
+.middle {
+    float: left;
+    width: 40%;
+}
+
+.middle #main {
+    height: 465px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.middle-bottom {
+    height: 247px;
+    width: 100%;
+}
+
+.middle .middle-bottom .sales-money {
+    display: block;
+    width: 100%;
+    height: 211px;
+    background: url("img/sales-money.png"), no-repeat;
+    background-size: 100% 100%;
+    margin-top: 10px;
+}
+
+#sales-money {
+    width: 100%;
+    height: 211px;
+}
+
+.right {
+    float: right;
+    width: 29%;
+    height: 720px;
+    margin-left: 1%;
+}
+
+.right .right-top {
+    height: 403px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.right .realTime-order {
+    display: block;
+    float: left;
+    width: 90%;
+    height: 360px;
+    margin-top: 10px;
+    background: url("img/realTime-order.png"), no-repeat;
+    background-size: 100% 100%;
+    color: #fff;
+}
+
+.right .realTime-order ul li {
+    list-style-type: none;
+    float: left;
+    width: 33%;
+    text-align: center;
+    margin-bottom: 2px;
+    line-height: 30px;
+    font-size: 12px;
+}
+
+.right .realTime-order ul.realTime-title li {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.right .realTime-order ul.realTime-value li {
+    width: 100%;
+    font-size: 12px;
+}
+
+.right .realTime-order ul.realTime-value li span {
+    display: inline-block;
+    width: 32%;
+    font-size: 12px;
+}
+
+.right .sales-person {
+    height: 297px;
+}
+
+.right .sales-person .child-list {
+    display: block;
+    float: left;
+    width: 90%;
+    height: 254px;
+    margin-top: 10px;
+    background: url("img/sales-person.png"), no-repeat;
+    background-size: 100% 100%;
+    color: #fff;
+}
+
+.right .sales-person .child-list {
+    display: block;
+    float: left;
+    width: 90%;
+    height: 263px;
+    margin-top: 10px;
+    background: url("img/sales-person.png"), no-repeat;
+    background-size: 100% 100%;
+    color: #fff;
+}
+
+.right .sales-person .child-list ul li {
+    position: relative;
+    display: inline-block;
+    height: 20px;
+    width: 100%;
+    margin-bottom: 12px;
+    font-size: 12px;
+    color: #fff;
+}
+
+.right .sales-person .child-list ul {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 15px 20px 0 15px;
+}
+
+.right .sales-person .child-list ul li a {
+    text-decoration: none;
+    color: #fff;
+    position: relative;
+    top: -11px;
+    left: 6px;
+    vertical-align: bottom;
+}
+
+.right .sales-person .child-list ul li .list-num {
+    display: inline-block;
+    width: 30px;
+    height: 33px;
+    line-height: 33px;
+    text-align: center;
+}
+
+.right .sales-person .child-list ul li .list-num.icon {
+    display: inline-block;
+    width: 30px;
+    height: 33px;
+    line-height: 33px;
+}
+
+.right .sales-person .child-list ul li .sales-amount {
+    color: #FFD100;
+    position: absolute;
+    right: 0;
+    top: 11px;
+}
+
+.right .sales-person .child-list ul li .rank-bar {
+    position: absolute;
+    top: 8px;
+    right: 20%;
+    display: inline-block;
+    height: 20px;
+    width: 50%;
+}
+
+.right .sales-person .child-list ul li .rank-bar span {
+    display: inline-block;
+    height: 20px;
+    width: 100%;
+    border-radius: 10px;
+    background: radial-gradient(circle at left, #201A0D, #634C2F, #E4CB7E);
+}
+
+/*------------ common -------------*/
+.child-title {
+    display: inline-block;
+    width: 50%;
+    height: 33px;
+    background: url("img/title-bg.png"), no-repeat;
+    background-size: 100% 100%;
+    text-align: center;
+}
+
+.child-title a {
+    display: block;
+    float: left;
+    margin: 8px 0 0 40px;
+    height: 17px;
+    width: 108px;
+    line-height: 34px;
+    color: #FFD100;
+    text-decoration: none;
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+.child-title .sales-status-bg {
+    background: url("img/sales-status-bg.jpg");
+    background-size: 100% 100%;
+}
+
+.child-title .sales-rank-bg {
+    width: 102px;
+    background: url("img/sales-rank-bg.jpg");
+    background-size: 100% 100%;
+}
+
+.child-title .middle-bottom-bg {
+    width: 72px;
+    background: url("img/middle-bottom-bg.jpg");
+    background-size: 100% 100%;
+}
+
+.child-title .right-top-bg {
+    width: 72px;
+    background: url("img/right-top-bg.jpg");
+    background-size: 100% 100%;
+}
+
+.child-title .sales-person-bg {
+    width: 90px;
+    background: url("img/sales-person-bg.jpg");
+    background-size: 100% 100%;
+}
+
+.color-golden {
+    color: #FFD100;
+}
+
+.list-num.icon.num1 {
+    background: url("img/num1.png"), no-repeat 0 0;
+    background-size: 100% 100%;
+}
+
+.list-num.icon.num2 {
+    background: url("img/num2.png"), no-repeat 0 0;
+    background-size: 100% 100%;
+}
+
+.list-num.icon.num3 {
+    background: url("img/num3.png"), no-repeat 0 0;
+    background-size: 100% 100%;
+}
+/* setting */
+.setting{
+    width: 290px;
+    height: 100%;
+    padding: 20px 0 0 10px;
+    background: #161616;
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: none;
+    transition: all .3s linear;
+}
+.setting .setting-title {
+    font-size: 14px;
+    color: #E70013;
+    line-height: 40px;
+}
+.setting .setting-name {
+    display: inline-block;
+    font-size: 12px;
+    height: 15px;
+    line-height: 15px;
+    color: #fff;
+    width: 75px;
+    overflow: hidden;
+    text-align: right;
+    vertical-align: middle;
+}
+.setting .setting-opt {
+    position: relative;
+}
+.setting .select-container {
+    display: none;
+    position: absolute;
+    width: 173px;
+    height: 200px;
+    background: #161616;
+    top: 38px;
+    left: 30%;
+    border: 1px solid rgba(255,255,255,0.5);
+    z-index: 9;
+    color: #fff;
+    box-sizing: border-box;
+}
+.setting .select-container ul{
+    height: 100%;
+    overflow: auto;
+}
+/*滚动条样式*/
+.setting .select-container ul::-webkit-scrollbar {/*滚动条整体样式*/
+    width: 4px;     /*高宽分别对应横竖滚动条的尺寸*/
+    height: 4px;
+}
+.setting .select-container ul::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    background: #46080D;
+}
+.setting .select-container ul::-webkit-scrollbar-track {/*滚动条里面轨道*/
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    border-radius: 0;
+    background: #fff
+}
+.setting .select-container li{
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.setting .select-container li:hover{
+    background: #46080D;
+}
+.setting .isSelecked .select-container {
+    display: block;
+}
+.setting .setting-select {
+    font-size: 12px;
+    color:  rgba(255,255,255,0.50);
+    width: 160px;
+    height: 24px;
+    padding-left: 8px;
+    margin-left: 5px;
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 4px;
+    vertical-align: middle;
+    background: #161616;
+    cursor: inherit;
+}
+.setting #startDate::before{
+    background: url(img/deta-pick.png) no-repeat;
+}
+.setting .setting-input {
+    font-size: 12px;
+    color:  rgba(255,255,255,0.50);
+    width: 130px;
+    height: 24px;
+    padding-left: 8px;
+    margin-left: 5px;
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 4px;
+    vertical-align: middle;
+    background: #161616;
+}
+.setting .setting-input-name{
+    display: inline-block;
+    font-size: 12px;
+    height: 14px;
+    margin-left: 5px;
+    color: #fff;
+    vertical-align: middle;
+}
+.setting .settingBtn{
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+}
+.setting .settingBtn .setting-btn{
+    width: 150px;
+    height: 40px;
+    line-height: 40px;
+    display: inline-block;
+    text-align: center;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+.setting .settingBtn .setting-btn:active{
+    border: none;
+}
+.cancel {
+    background: rgba(255,255,255,0.1);
+}
+.confirm {
+    background: #E70013;
+}
+.mt10{
+    margin-top: 10px;
+}

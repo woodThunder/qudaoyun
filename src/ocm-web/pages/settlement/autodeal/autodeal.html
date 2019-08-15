@@ -1,0 +1,72 @@
+<!-- 列表页 -->
+<div class="ui-list-panel ui-panel">
+  <div>
+    <div class="page-title">
+      <span>自动核销</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+  <div class="ui-panel-body">
+    <div class="u-tabs ui-tabs">
+    <div class="u-tabs__tab-bar margin-top-10 margin-bottom-10">
+      <a href="#tab-panel-1" class="u-tabs__tab is-active">核销匹配</a>
+      <a href="#tab-panel-2" class="u-tabs__tab">核销结果</a>
+    </div>
+    <div class="u-tabs__panel is-active" id="tab-panel-1">
+      <div class="ui-panel-head clearfix">
+      </div>
+      <div class="u-msg-content">
+        <div class="ui-collapse-group border orderCenter">
+          <div id="default-example" data-collapse>
+            <h3 class="ui-collapse-title orderCenter clearfix open margin-top-10">
+              <a href="javascript:;" class="click-btn inline-block">
+                <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                查询条件
+              </a>
+            </h3>
+            <div class="ui-collapse-content  clearfix">
+              <!-- <ui-searchbox params='datasource:$root.search1Source,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+        </ui-searchbox> -->
+                <ui-card params='datasource:$root.card1Source,vm:$root,dt:$root.salesorderList'></ui-card>
+            </div>
+            <h3 class="ui-collapse-title orderCenter clearfix open margin-top-10">
+              <a href="javascript:;" class="click-btn inline-block">
+                <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                匹配条件
+              </a>
+            </h3>
+            <div class="ui-collapse-content" style="border: none;">
+                <ui-card params='datasource:$root.card2Source,vm:$root,dt:$root.rulsItemList'></ui-card>
+            </div>
+          </div>
+      </div>        
+    </div>
+    <div class="u-msg-footer">
+      <div class="pagination-right">
+        <ui-buttons params='datasource:$root.button1Source'>
+        </ui-buttons>
+     </div>
+    </div>
+  </div>
+    <div class="u-tabs__panel" id="tab-panel-2">
+      <div class="ui-panel-head clearfix">
+        <ui-searchbox params='datasource:$root.search2Source,ref:$root.search2comp,search:$root.search2,clean:$root.cleanSearch2'>
+        </ui-searchbox>
+      </div>
+      <ui-grid params='options:$root.grid3Option,vm:$root'>
+      </ui-grid>
+      <div class="pagination-right bottombar">
+        <a class="ui-btn ui-btn-green margin-right-5" data-bind="click:rebackCancelVerification"><i class="uifont margin-right-5"></i>取消核销</a>
+      </div>
+    </div>
+  </div>  
+  </div>
+</div>

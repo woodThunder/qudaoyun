@@ -1,0 +1,353 @@
+<div class="ui-panel ui-list-panel">
+    <div>
+        <div class="page-title">
+            <span>网点管理</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="title-seperator"></div>
+    <div class="ui-searchbox ui-panel-head">
+        <div id="networkList-searchcontent" class="ui-searchbox-content">
+
+        </div>
+        <div class="clearfix">
+
+        </div>
+        <div class="ui-searchbox-footer">
+            <div class="ui-search-more hidden">
+                <a>更多
+                    <i class="uifont icon-down"></i>
+                </a>
+            </div>
+
+            <div class="ui-search-btn">
+                <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:cleanSearch">清空
+                </a>
+                <a class="ui-btn ui-btn-green" data-bind="click:search.bind($data,true)">搜索
+                </a>
+            </div>
+            <div class="clearfix">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="ui-panel-body">
+        <div class="ui-panel-body-head">
+            <div class="ui-panel-body-head-left">
+                <a class="ui-btn ui-btn-orange margin-right-5" data-bind="click: showAddBillPanel">
+                    <i class="uifont icon-plus margin-right-5"></i>新增
+                </a>
+                <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click: del">
+                    <i class="uifont icon-shanchu1 margin-right-5"></i>删除
+                </a>
+                <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+                    <a class="ui-button-item" data-bind="click:enable">
+                        <i class="uifont icon-qiyong margin-right-5"></i>启用
+                    </a>
+                    <a class="ui-button-item" data-bind="click:disable">
+                        <i class="uifont icon-tingyong margin-right-5"></i>停用
+                    </a>
+                </div>
+            </div>
+            <!--<div class="ui-panel-body-head-right">
+                <i class="uifont icon-i font-c-blue margin-right-5"></i>共搜索到<span data-bind="text:networkList.totalRow"></span>条数据
+            </div>-->
+        </div>
+        <div class="ui-table-container">
+            <div id="networkList" u-meta='{"id":"grid_networkList","data":"networkList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+                <div options='{"field":"code","dataType":"String","title":"网点编码","renderType":"detailRender"}'></div>
+                <div options='{"field":"name","dataType":"String","title":"网点名称"}'></div>
+                <div options='{"field":"tel1","dataType":"String","title":"电话1"}'></div>
+                <div options='{"field":"tel2","dataType":"String","title":"电话2"}'></div>
+                <div options='{"field":"serviceProviderName","dataType":"String","title":"服务商"}'></div>
+                <div options='{"field":"isEnable","dataType":"String","title":"启停状态","editOptions":{"type":"combo","datasource":"enableStatusSrc"},"renderType":"comboRender"}'></div>
+                <div options='{"field":"creator","dataType":"String","title":"创建人","visible":false}'></div>
+                <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":false}'></div>
+                <div options='{"field":"creationTime","dataType":"Datetime","title":"创建时间","visible":false}'></div>
+                <div options='{"field":"modifiedTime","dataType":"Datetime","title":"修改时间","visible":false}'></div>
+                <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation","width":"110px","fixed":true}'></div>
+            </div>
+            <div class="ui-statistics margin-top-10">
+                <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择
+                <span class="font-c-blue" data-bind="text:networkList.selectedIndices().length"></span>项数据
+            </div>
+            <div class="pagination-right">
+                <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"networkList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="ui-panel ui-bill-panel" style="display: none;" id="validate">
+    <div>
+        <div class="page-title">
+            <span>网点管理</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="ui-panel-btn-bg">
+        <div class="ui-operate-btn">
+            <a class="ui-btn ui-btn-primary" data-bind="click:cancelHandle">取消
+            </a>
+            <a class="ui-btn ui-btn-green" data-bind="click:saveBill">保存
+            </a>
+        </div>
+    </div>
+    <div class="ui-panel-head ui-bill-head">
+        <div class="ui-item">
+            <div class="ui-name">
+                <i class="strong">*</i>服务商：</div>
+            <div class="ui-inputarea" u-meta='{"type":"uiRefer","data":"networkList","field":"serviceProviderId"}'>
+                <input id="platformId" readonly="readonly" autocomplete="off" />
+                <span class="ui-icon uifont icon-bar refer"></span>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">
+                <i class="strong">*</i>网点编码：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" u-meta='{"type":"u-text","data":"networkList","field":"code"}'>
+                    <input class="u-input" id="code-input" />
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">
+                <i class="strong">*</i>网点名称：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" u-meta='{"type":"u-text","data":"networkList","field":"name"}'>
+                    <input class="u-input" />
+                </div>
+            </div>
+        </div>
+        <div class="ui-item ui-search-item ui-checkboxes-item" style="float:none;">
+			<span class="ui-name">
+				<i class="strong">*</i>职能：</span>
+			<div class="ui-inputarea ">
+				<div u-meta='{"id":"remarkserviceData-checkbox","type":"u-checkbox","data":"networkList","required":true,"field":"serviceType","datasource":"serviceTypeSrc"}'>
+					<label class="u-checkbox" style="margin-right:15px;">
+						<input type="checkbox" class="u-checkbox-input">
+						<span class="u-checkbox-label" data-role="name"></span>
+					</label>
+				</div>
+			</div>
+		</div>
+        <div class="ui-item">
+            <div class="ui-name">
+                <span class='ui-redstar'>*</span> 省：</div>
+            <div class="ui-inputarea">
+                <div class="ui-inputarea" u-meta='{"type":"uiRefer","data":"networkList","field":"provinceId"}' id="province">
+                    <input readonly="readonly" autocomplete="off" />
+                    <span class="ui-icon uifont icon-bar refer"></span>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">
+                <span class='ui-redstar'>*</span> 市：</div>
+            <div class="ui-inputarea">
+                <div class="ui-inputarea" u-meta='{"type":"uiRefer","data":"networkList","field":"cityId"}' id="city">
+                    <input readonly="readonly" autocomplete="off" />
+                    <span class="ui-icon uifont icon-bar refer"></span>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">
+                <span class='ui-redstar'>*</span> 区县：</div>
+            <div class="ui-inputarea">
+                <div class="ui-inputarea" u-meta='{"type":"uiRefer","data":"networkList","field":"districtId"}' id="district">
+                    <input readonly="readonly" autocomplete="off" />
+                    <span class="ui-icon uifont icon-bar refer"></span>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">
+                乡镇：</div>
+            <div class="ui-inputarea">
+                <div class="ui-inputarea" u-meta='{"type":"uiRefer","data":"networkList","field":"townId"}' id="town">
+                    <input readonly="readonly" autocomplete="off" />
+                    <span class="ui-icon uifont icon-bar refer"></span>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">详细地址：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" u-meta='{"type":"u-text","data":"networkList","field":"address"}'>
+                    <input class="u-input" />
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">邮政编码：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" u-meta='{"type":"u-text","data":"networkList","field":"zipcode"}'>
+                    <input class="u-input" />
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">电话1：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" u-meta='{"type":"u-text","data":"networkList","field":"tel1"}'>
+                    <input class="u-input" />
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">电话2：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" u-meta='{"type":"u-text","data":"networkList","field":"tel2"}'>
+                    <input class="u-input" />
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">备注：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" u-meta='{"type":"u-text","data":"networkList","field":"remark"}'>
+                    <input class="u-input" />
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">启用状态：</div>
+            <div class="ui-inputarea">
+                <div>
+                    <span class="text-value" data-bind="text:status()"></span>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+<div class="ui-panel ui-bill-detail" style="display: none;">
+    <div>
+        <div class="page-title">
+            <span>网点管理</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="ui-panel-btn-bg">
+        <div class="ui-operate-btn">
+            <a class="ui-btn ui-btn-primary" data-bind="click:retListPanel">返回
+            </a>
+        </div>
+    </div>
+    <div class="ui-panel-head ui-bill-head">
+        <div class="ui-item">
+            <div class="ui-name">服务商：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: networkList.ref("serviceProviderName")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">网点编码：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: networkList.ref("code")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">网点名称：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: networkList.ref("name")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">职能：</div>
+            <div class="ui-inputarea ">
+                <div u-meta='{"id":"remarkserviceData-checkbox","type":"u-checkbox","data":"networkList","required":true,"field":"serviceType","datasource":"serviceTypeSrc","enable":"flase"}'>
+                    <label class="u-checkbox" style="margin-right:15px;" >
+                        <input type="checkbox" class="u-checkbox-input">
+                        <span class="u-checkbox-label" data-role="name"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">省：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: networkList.ref("provinceName")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">市：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: networkList.ref("cityName")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">区县：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: networkList.ref("districtName")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">乡镇：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: networkList.ref("townName")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">详细地址：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: networkList.ref("address")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">邮政编码：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: networkList.ref("zipcode")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">电话1：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: networkList.ref("tel1")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">电话2：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: networkList.ref("tel2")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">备注：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: networkList.ref("remark")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">启用状态：</div>
+            <div class="ui-inputarea">
+                <div>
+                    <span class="text-value" data-bind="text:status()"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+    </div>
+</div>

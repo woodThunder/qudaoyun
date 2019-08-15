@@ -1,0 +1,480 @@
+<div class="ui-panel ui-list-panel">
+  <div>
+    <div class="page-title">
+      <span>上样标准设置</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+
+  <div class="ui-searchbox ui-panel-head">
+    <div id="promoActivity-searchcontent" class="ui-searchbox-content">
+
+    </div>
+    <div class="clearfix">
+
+    </div>
+    <div class="ui-searchbox-footer">
+      <div class="ui-search-more hidden">
+          <a>更多<i class="uifont icon-down"></i></a>
+      </div>
+
+      <div class="ui-search-btn">
+        <a class="ui-btn ui-btn-primary margin-right-5"
+        data-bind="click:cleanSearch">清空
+        </a>
+          <a class="ui-btn ui-btn-green"
+             data-bind="click:search.bind($data,true)">搜索
+          </a>
+      </div>
+      <div class="clearfix">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-panel-body">
+      <div class="ui-panel-body-head">
+        <div class="ui-panel-body-head-left">
+          <a class="ui-btn ui-btn-primary"
+            data-bind="click: setProductSample.bind($data)"><i class="uifont icon-plus margin-right-5"></i>上样标准设置
+          </a>
+        </div>
+        <!--<div class="ui-panel-body-head-right">
+          <i class="uifont icon-i font-c-blue margin-right-5"></i>共搜索到<span data-bind="text:PromoActivityList.totalRow"></span>条数据
+        </div>-->
+      </div>
+      <div class="ui-table-container">
+          <div u-meta='{"id":"grid_promoActivity","data":"PromoActivityList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+                      <div options='{"field":"code","dataType":"String","title":"活动编码","renderType":"detailRender"}'></div>
+                      <div options='{"field":"name","dataType":"String","title":"活动名称"}'></div>
+                      <div options='{"field":"activeTypeName","dataType":"String","title":"活动类型名称"}'></div>
+                      <div options='{"field":"activeNodeName","dataType":"String","title":"活动节点名称"}'></div>
+                      <div options='{"field":"orderStartDate","dataType":"Date","title":"订货开始日期"}'></div>
+                      <div options='{"field":"orderEndDate","dataType":"Date","title":"订货截至日期"}'></div>
+                      <div options='{"field":"terminalStartDate","dataType":"Date","title":"终端活动开始日期"}'></div>
+                      <div options='{"field":"terminalEndDate","dataType":"Date","title":"终端活动截至日期"}'></div>
+                      <div options='{"field":"description","dataType":"String","title":"活动描述"}'></div>
+                      <div options='{"field":"enableStatus","dataType":"String","title":"启用状态","renderType":"enableRender"}'></div>
+                      <div options='{"field":"approveStatus","dataType":"String","title":"审核状态","renderType":"approveFormat"}'></div>
+                      <div options='{"field":"creator","dataType":"String","title":"审核人"}'></div>
+                      <div options='{"field":"creationTime","dataType":"Datetime","title":"审核时间"}'></div>
+                      <div options='{"field":"creator","dataType":"String","title":"创建人","visible":"false","editable":false}'></div>
+                      <div options='{"field":"creationTime","dataType":"Datetime","title":"创建时间","visible":"false","editable":false}'></div>
+                      <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":"false","editable":false}'></div>
+                      <div options='{"field":"modifiedTime","dataType":"Datetime","title":"修改时间","visible":"false","editable":false}'></div>
+                      <!--<div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation"}'></div>-->
+          </div>
+          <div class="ui-statistics margin-top-10">
+            已选择<span class="font-c-blue" data-bind="text:PromoActivityList.selectedIndices().length"></span>项数据
+          </div>
+          <div class="pagination-right">
+            <div id='pagination' class='pagination u-pagination pagination-sm'
+            u-meta='{"type":"pagination","data":"PromoActivityList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+          </div>
+      </div>
+    </div>
+</div>
+<div id="dialog_layer" class="ui-searchbox" style="display:none;padding:20px">
+
+</div>
+
+<div class="ui-panel ui-bill-panel" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span>上样标准设置</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-primary" data-bind="click: cancelBill.bind($data)">取消
+      </a>
+      <!-- <a class="ui-btn ui-btn-primary ui-btn-disabled">编辑
+      </a> -->
+      <a class="ui-btn ui-btn-green" data-bind="click: saveBill.bind($data)">保存
+      </a>
+    </div>
+  </div>
+  <div class="ui-panel-head ui-bill-head">
+    <div class="ui-item">
+      <div class="ui-name">活动编码：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: PromoActivityList.ref("code")'></div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">活动名称：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: PromoActivityList.ref("name")'></div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">订货开始日期：</div>
+      <div class="ui-inputarea">
+      	<div data-bind='text: dateFormat("PromoActivityList","orderStartDate")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">订货截至日期：</div>
+      <div class="ui-inputarea">
+      	<div data-bind='text: dateFormat("PromoActivityList","orderEndDate")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">上级活动编码：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: PromoActivityList.ref("higherActiveCode")'></div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">上级活动名称：</div>
+      <div class="ui-inputarea">
+         <div data-bind='text: PromoActivityList.ref("higherActiveName")'></div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">活动描述：</div>
+      <div class="ui-inputarea">
+        <div class="ui-textonly" data-bind='text: PromoActivityList.ref("description")'></div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="ui-bill-body">
+    <div class="ui-bill-body-btns">
+      <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-additem"
+        data-bind="click: showAddItemsRef"><i class="uifont icon-plus margin-right-5"></i>增行
+      </a>
+      <div id="addItemsRef" u-meta='{"type":"uiRefer","data":"DesignProductRefer","field":"designProductId"}' style="display:none;">
+        <input readonly="readonly"/>
+        <span class="ui-icon uifont icon-bar refer"></span>
+      </div>
+      <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+        data-bind="click: delItems.bind($data)">
+        <i class="uifont icon-shanchu1 margin-right-5"></i>删行
+      </a>
+      <!-- <a class="ui-btn ui-btn-primary margin-right-5"
+        data-bind="click: allot.bind($data)">
+        <i class="uifont icon-tubiao-chanpinfenpei margin-right-5"></i>分配
+      </a> -->
+	    <div class="ui-button-group clearfix  margin-right-5 vertical-align-middle">
+				<a class="ui-button-item" data-bind="click: allot"><i class="uifont icon-tubiao-chanpinfenpei margin-right-5"></i>分配</a>
+				<a class="ui-button-item" data-bind="click: deleteAllot"><i class="uifont icon-shanchu1 margin-right-5"></i>删除分配</a>
+			</div>
+    </div>
+    <div class="ui-table-container margin-bottom-30">
+      <div u-meta='{"id":"grid_SampleSettingItems","data":"SampleSettingItems","type":"grid","editable":true,"multiSelect":true,"showNumCol":true,"nullField":"sampleSettingSubstis"}'>
+        <div options='{"field":"productCode","dataType":"String","title":"设计产品编码","editable":false,"width":"150px"}'></div>
+        <div options='{"field":"productName","dataType":"String","title":"设计产品名称","editable":false,"width":"200px"}'></div>
+        <div options='{"field":"productCategory","dataType":"String","title":"产品品类","editable":false,"width":"150px"}'></div>
+        <div options='{"field":"productSaleSerie","dataType":"String","title":"产品系列","editable":false,"width":"150px"}'></div>
+        <div options='{"field":"productModel","dataType":"String","title":"产品型号","editable":false,"width":"150px"}'></div>
+        <div options='{"field":"isDistribution","dataType":"String","title":"分配状态","editable":false,"renderType":"isDistributionRender","width":"100px"}'></div>
+        <div options='{"field":"num","dataType":"integer","title":"数量","editType":"integer","required":true,"width":"100px"}'></div>
+        <div options='{"field":"operation","dataType":"String","title":"操作","editable":false,"renderType":"itemOperation","width":"150px"}'></div>
+      </div>
+    </div>
+  </div>
+  <div class="ui-bill-footer">
+  </div>
+</div>
+
+<!--详情页-->
+<div class="ui-panel ui-bill-detail" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span>上样标准设置</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-primary" data-bind="click: cancelBill.bind($data)">取消
+      </a>
+      <a class="ui-btn ui-btn-green" data-bind="click: detail2bill.bind($data)">编辑
+      </a>
+      <!-- <a class="ui-btn ui-btn-green ui-btn-disabled">保存
+      </a> -->
+    </div>
+  </div>
+  <div class="ui-panel-head ui-bill-head">
+    <div class="ui-item">
+      <div class="ui-name">活动编码：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: PromoActivityList.ref("code")'></div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">活动名称：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: PromoActivityList.ref("name")'></div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">订货开始日期：</div>
+      <div class="ui-inputarea">
+      	<div data-bind='text: dateFormat("PromoActivityList","orderStartDate")'>
+        </div>
+
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">订货截至日期：</div>
+      <div class="ui-inputarea">
+      	<div data-bind='text: dateFormat("PromoActivityList","orderEndDate")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">上级活动编码：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: PromoActivityList.ref("higherActiveCode")'></div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">上级活动名称：</div>
+      <div class="ui-inputarea">
+         <div data-bind='text: PromoActivityList.ref("higherActiveName")'></div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">活动描述：</div>
+      <div class="ui-inputarea">
+        <div class="ui-textonly" data-bind='text: PromoActivityList.ref("description")'></div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="ui-bill-body">
+    <div class="ui-bill-body-btns">
+      <!-- <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-additem"
+        data-bind="click: detailDisable"><i class="uifont icon-tingyong margin-right-5"></i>停用
+      </a> -->
+    </div>
+    <div class="ui-table-container margin-bottom-30">
+        <div u-meta='{"id":"grid_SampleSettingItems_detail","data":"SampleSettingItems","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+          <div options='{"field":"productCode","dataType":"String","title":"设计产品编码","editable":false,"width":"150px"}'></div>
+          <div options='{"field":"productName","dataType":"String","title":"设计产品名称","editable":false,"width":"200px"}'></div>
+          <div options='{"field":"productCategory","dataType":"String","title":"产品品类","editable":false,"width":"150px"}'></div>
+          <div options='{"field":"productSaleSerie","dataType":"String","title":"产品系列","editable":false,"width":"150px"}'></div>
+          <div options='{"field":"productModel","dataType":"String","title":"产品型号","editable":false,"width":"150px"}'></div>
+          <div options='{"field":"isDistribution","dataType":"String","title":"分配状态","editable":false,"renderType":"isDistributionRender","width":"100px"}'></div>
+          <div options='{"field":"num","dataType":"String","title":"数量","editable":false,"width":"100px"}'></div>
+          <div options='{"field":"operation","dataType":"String","title":"操作","editable":false,"renderType":"itemOperation","width":"150px"}'></div>
+        </div>
+    </div>
+  </div>
+  <div class="ui-bill-footer">
+  </div>
+</div>
+<!--详情页 end-->
+
+<!-- 正在分配的设计产品对话框 -->
+<div id="dialog_dealeringProduct" style="display:none;">
+	<div class="u-msg-title">
+		<h4>待分配设计产品</h4>
+	</div>
+	<div class="u-msg-content">
+		<div u-meta='{"data":"DealeringProduct","type":"grid","editable":false,"multiSelect":false,"showNumCol":true}'>
+        <div options='{"field":"productCode","dataType":"String","title":"设计产品编码","editable":false}'></div>
+        <div options='{"field":"productName","dataType":"String","title":"设计产品名称","editable":false}'></div>
+    </div>
+	</div>
+	<div class="u-msg-footer">
+		<a data-bind="click: dealeringProductCancel" class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+		<a data-bind="click: dealeringProductNext" class="u-msg-next ui-btn ui-btn-green">下一步</a>
+	</div>
+</div>
+<!-- 正在分配的门店对话框 -->
+<div id="dialog_dealeringShop" style="display:none;">
+	<div class="u-msg-title">
+		<h4>输入过滤数据条件</h4>
+	</div>
+	<div class="u-msg-content">
+    <div class="ui-searchbox margin-bottom-10">
+      <div id="shop-searchcontent" class="ui-searchbox-content">
+
+      </div>
+      <!-- <div style="position:absolute;right:35px;top:24px">
+        <a class="ui-btn ui-btn-green"
+           data-bind="click:searchShop">搜索
+        </a>
+      </div> -->
+      <div class="clearfix">
+
+      </div>
+      <div class="ui-searchbox-footer">
+        <div class="ui-search-more hidden">
+            <a>更多<i class="uifont icon-down"></i></a>
+        </div>
+
+        <div class="ui-search-btn">
+          <a class="ui-btn ui-btn-primary margin-right-5"
+          data-bind="click:clearShopSearcher">清空
+          </a>
+            <a class="ui-btn ui-btn-green"
+               data-bind="click:searchShop">搜索
+            </a>
+        </div>
+        <div class="clearfix">
+
+        </div>
+      </div>
+    </div>
+    <table id="dealeringShopTable" class="ui-table" style="width:100%;">
+      <thead>
+        <tr>
+          <th width="40">
+            <div class="checkbox-wrap">
+              <span data-bind='click: toggleAllShop' class="u-grid-checkbox-outline" value="1"><span class="u-grid-checkbox-tick-outline"></span></span>
+            </div>
+          </th>
+          <th width="40">序号</th>
+          <th>经销商编码</th>
+          <th>经销商名称</th>
+          <th>门店编码</th>
+          <th>门店名称</th>
+          <th>门店面积</th>
+          <th>所属办事处编码</th>
+          <th>所属办事处名称</th>
+        </tr>
+      </thead>
+      <tbody data-bind="foreach: {data: DealeringShop.rows, as: 'shop'}">
+        <tr>
+          <td>
+            <div class="checkbox-wrap">
+              <span data-bind='click: $root.toggleOneShop.bind($root, shop)' class="u-grid-checkbox-outline" value="1"><span class="u-grid-checkbox-tick-outline"></span></span>
+            </div>
+          </td>
+          <td><span class="index-wrap" data-bind="text: $index() + 1"></span></td>
+          <td data-bind="text: shop.ref('customerCode')"></td>
+          <td data-bind="text: shop.ref('customerName')"></td>
+          <td data-bind="text: shop.ref('shopCode')"></td>
+          <td data-bind="text: shop.ref('shopName')"></td>
+          <td data-bind="text: shop.ref('operateArea')"></td>
+          <td data-bind="text: shop.ref('agencyCode')"></td>
+          <td data-bind="text: shop.ref('agencyName')"></td>
+        </tr>
+      </tbody>
+    </table>
+	</div>
+	<div class="u-msg-footer">
+		<a data-bind="click: dealeringShopPrev" class="u-msg-prev ui-btn ui-btn-primary margin-right-5">上一步</a>
+		<a data-bind="click: dealeringShopCancel" class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+		<a data-bind="click: dealeringShopAllot" class="u-msg-ok ui-btn ui-btn-green">分配</a>
+	</div>
+</div>
+<!--删除分配对话框-->
+<div id="dialog_deleteAllot" style="display:none;">
+	<div class="u-msg-title">
+		<h4>待删除分配设计产品</h4>
+	</div>
+	<div class="u-msg-content">
+    <div u-meta='{"data":"DeleteDealerProduct","type":"grid","editable":false,"multiSelect":false,"showNumCol":true}'>
+        <div options='{"field":"productCode","dataType":"String","title":"设计产品编码","editable":false}'></div>
+        <div options='{"field":"productName","dataType":"String","title":"设计产品名称","editable":false}'></div>
+    </div>
+	</div>
+	<div class="u-msg-footer">
+		<a data-bind="click: deleteAllotCancel" class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+		<a data-bind="click: deleteAllotConfirm" class="u-msg-ok ui-btn ui-btn-green">删除分配</a>
+	</div>
+</div>
+<!--查看分配结果弹框-->
+<div id="dialog_dealerResult" style="display:none;">
+	<div class="u-msg-title">
+		<h4>分配结果</h4>
+	</div>
+	<div class="u-msg-content">
+    <table class="ui-table" style="width:100%;">
+      <thead>
+        <tr>
+          <th width="40">
+            <div class="checkbox-wrap">
+              <span data-bind='click: toggleAllShop' class="u-grid-checkbox-outline" value="1"><span class="u-grid-checkbox-tick-outline"></span></span>
+            </div>
+          </th>
+          <th width="40">序号</th>
+          <th>经销商编码</th>
+          <th>经销商名称</th>
+          <th>门店编码</th>
+          <th>门店名称</th>
+          <th>门店面积</th>
+          <th>所属办事处编码</th>
+          <th>所属办事处名称</th>
+        </tr>
+      </thead>
+      <tbody data-bind="foreach: {data: DealeringShop.rows, as: 'shop'}">
+        <tr>
+          <td>
+            <div class="checkbox-wrap">
+              <span data-bind='click: $root.toggleOneShop.bind($root, shop)' class="u-grid-checkbox-outline" value="1"><span class="u-grid-checkbox-tick-outline"></span></span>
+            </div>
+          </td>
+          <td><span class="index-wrap" data-bind="text: $index() + 1"></span></td>
+          <td data-bind="text: shop.ref('customerCode')"></td>
+          <td data-bind="text: shop.ref('customerName')"></td>
+          <td data-bind="text: shop.ref('shopCode')"></td>
+          <td data-bind="text: shop.ref('shopName')"></td>
+          <td data-bind="text: shop.ref('operateArea')"></td>
+          <td data-bind="text: shop.ref('agencyCode')"></td>
+          <td data-bind="text: shop.ref('agencyName')"></td>
+        </tr>
+      </tbody>
+    </table>
+	</div>
+	<div class="u-msg-footer">
+		<a class="u-msg-delete ui-btn ui-btn-primary margin-right-5" data-bind="visible: billPanelStatus() == 'edit',click: deleteOneProductAllot ">删除分配</a>
+	</div>
+</div>
+<!-- 替代品对话框 -->
+<div id="dialog_substi" style="display:none;">
+  <div class="u-msg-title">
+    <h4>替代品</h4>
+  </div>
+  <div class="u-msg-content">
+    <div class="ui-btn-group margin-bottom-10" data-bind="visible: billPanelStatus() == 'edit'">
+      <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-add"
+        data-bind="click: addSubsti"><i class="uifont icon-plus margin-right-5"></i>增行
+      </a>
+      <div id="substiReferDiv" u-meta='{"type":"uiRefer","data":"SubstiRefer","field":"designProductId"}' style="display:none;">
+        <input id="substiRefer" readonly="readonly"/>
+        <span class="ui-icon uifont icon-bar refer"></span>
+      </div>
+      <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+        data-bind="click: deleteSubsti"><i class="uifont icon-shanchu1 margin-right-5"></i>删行
+      </a>
+    </div>
+    <div class="ui-table-container">
+        <div u-meta='{"id":"grid_SubstiGrands","data":"SubstiGrands","type":"grid","editable":true,"multiSelect":true,"showNumCol":true,"columnMenu":false}'>
+            <div options='{"field":"productCode","dataType":"String","title":"设计产品编码","editable":false}'></div>
+            <div options='{"field":"productName","dataType":"String","title":"设计产品名称","editable":false}'></div>
+            <div options='{"field":"productCategory","dataType":"String","title":"产品品类","editable":false}'></div>
+            <div options='{"field":"productSaleSerie","dataType":"String","title":"产品系列","editable":false}'></div>
+            <div options='{"field":"productModel","dataType":"String","title":"产品型号","editable":false}'></div>
+        </div>
+    </div>
+  </div>
+  <div class="u-msg-footer">
+    <a data-bind="click: substiCancel" class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+		<a data-bind="click: substiConfirm" class="u-msg-ok ui-btn ui-btn-green">确定</a>
+  </div>
+</div>

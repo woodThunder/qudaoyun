@@ -1,0 +1,377 @@
+<!--main-->
+<div class="ui-list-panel ui-panel">
+    <div>
+      <div class="page-title">
+        <span>回访单</span>
+      </div>
+    </div>
+    <div>
+      <div>
+        <div class="oc-breadcrumb">
+        </div>
+      </div>
+    </div>
+    <div class="title-seperator"></div>
+  
+    <div class="ui-searchbox">
+      <div id="PromoActivity-searchcontent" class="ui-searchbox-content clearfix"></div>
+      <div class="ui-searchbox-footer clearfix">
+        <div class="ui-search-more hidden">
+          <a>更多
+            <i class="uifont icon-down"></i>
+          </a>
+        </div>
+  
+        <div class="ui-search-btn">
+          <a class="ui-btn ui-btn-green margin-right-5" data-bind="click:search.bind($data,true)">搜索
+          </a>
+          <a class="ui-btn ui-btn-primary" data-bind="click:cleanSearch">清空
+          </a>
+        </div>
+      </div>
+    </div>
+  
+    <div class="ui-panel-body">
+      <!--ui-panel-body-head-->
+      <div class="ui-panel-body-head">
+        <div class="ui-panel-body-head-left">
+          <a class="ui-btn ui-btn-orange margin-right-5" id="user-action-add" data-bind="click: beforeEdit.bind($data,-1)">
+            <i class="uifont icon-plus margin-right-5"></i>新增
+          </a>
+          <!-- <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del" data-bind="click: del">
+            <i class="uifont icon-shanchu1 margin-right-5"></i>
+            删除
+          </a> -->
+           
+        </div>
+  
+      </div>
+      <!--ui-panel-body-head end-->
+      <div class="ui-table-container">
+        <div id="mainListData" u-meta='{"id":"grid_main_list","data":"mainListData","type":"grid","editable":false,"multiSelect":false,"showNumCol":true}'>
+          <div options='{"field":"code","dataType":"String","title":"回访单编码","renderType":"detailRender" }'></div>
+          <div options='{"field":"visitDate","dataType":"Date","title":"回访日期"}'></div>
+          <div options='{"field":"visitPerson","dataType":"String","title":"回访人"}'></div>
+          <div options='{"field":"parentDealers","dataType":"String","title":"所属经销商"}'></div>
+          <div options='{"field":"customerName","dataType":"String","title":"顾客姓名"}'></div>
+          <div options='{"field":"phone","dataType":"String","title":"联系电话"}'></div>
+          <div options='{"field":"serviceType","dataType":"integer","title":"服务类型","renderType":"comboRender","editOptions":{"type":"combo","datasource":"serviceTypeSrc"}}'></div>
+          <div options='{"field":"serviceDate","dataType":"Datetime","title":"服务完成时间"}'></div>
+          <div options='{"field":"serviceCode","dataType":"String","title":"服务工单号"}'></div>
+          <div options='{"field":"satisfiedLevel","dataType":"integer","title":"满意度评分","renderType":"comboRender","editOptions":{"type":"combo","datasource":"satisfiedLevelSrc"}}'></div>
+          <div options='{"field":"notSatisfied","dataType":"String","title":"不满原因"}'></div>
+          <div options='{"field":"whetherHome","dataType":"integer","title":"是否按时上门","renderType":"comboRender","editOptions":{"type":"combo","datasource":"enumerateSrc"}}'></div>
+          <div options='{"field":"whetherIntroduce","dataType":"integer","title":"是否有产品知识介绍","renderType":"comboRender","editOptions":{"type":"combo","datasource":"enumerateSrc"}}'></div>
+          <div options='{"field":"whetherCollectFree","dataType":"integer","title":"是否有其他收费","renderType":"comboRender","editOptions":{"type":"combo","datasource":"enumerateSrc"}}'></div>
+          <div options='{"field":"whetherVisit","dataType":"integer","title":"专卖店是否回访","renderType":"comboRender","editOptions":{"type":"combo","datasource":"enumerateSrc"}}'></div>
+          <div options='{"field":"whetherSuggest","dataType":"integer","title":"是否有产品建议","renderType":"comboRender","editOptions":{"type":"combo","datasource":"enumerateSrc"}}'></div>
+          <div options='{"field":"productSuggest","dataType":"String","title":"产品意见或建议"}'></div>
+          <div options='{"field":"remark","dataType":"String","title":"备注"}'></div>
+          
+          <div options='{"field":"creator","dataType":"String","title":"创建人","visible":false}'></div>
+          <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":false}'></div>
+          <div options='{"field":"creationTime","dataType":"Datetime","title":"创建时间","visible":false}'></div>
+          <div options='{"field":"modifiedTime","dataType":"Datetime","title":"修改时间","visible":false}'></div>
+          <!-- <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation","fixed":true,"width":"170px"}'></div> -->
+  
+        </div>
+        <div class="ui-statistics margin-top-10">
+          <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择
+          <span class="font-c-blue" data-bind="text:mainListData.selectedIndices().length"></span>项数据
+        </div>
+        <div class="pagination-right">
+          <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"mainListData","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+        </div>
+      </div>
+    </div>
+</div>
+<!--main end-->
+
+<!-- 查看详情 -->
+<div id="popup02" style="display:none;">
+    <div class="u-msg-title">
+        <h4>查看详情</h4>
+    </div>
+    <div class="u-msg-content  clearfix margin-bottom-20"  >
+            <div class=" clearfix margin-top-20 margin-bottom-10">
+                    <div class="ui-item">
+                        <div class="ui-name" >
+                                回访日期：</div>
+                        <div class="ui-inputarea" data-bind="text:mainListData.ref('visitDate')" > </div>
+                    </div>
+                    <div class="ui-item">
+                        <div class="ui-name" >
+                            回访人：</div>
+                        <div class="ui-inputarea" data-bind="text:mainListData.ref('visitPerson')" > </div>
+                    </div>
+                    <div class="ui-item">
+                        <div class="ui-name" >
+                            所属经销商：</div>
+                        <div class="ui-inputarea" data-bind="text:mainListData.ref('parentDealers')" > </div>
+                    </div>
+                    <div class="ui-item">
+                        <div class="ui-name" >
+                            顾客姓名：</div>
+                        <div class="ui-inputarea" data-bind="text:mainListData.ref('customerName')" > </div>
+                    </div>
+                    <div class="ui-item">
+                        <div class="ui-name" >
+                            电话：</div>
+                        <div class="ui-inputarea" data-bind="text:mainListData.ref('phone')" > </div>
+                    </div>
+                    <div class="ui-item">
+                        <div class="ui-name" >
+                            服务类型：</div>
+                        <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"mainListData",
+                        "field":"serviceType","datasource":"serviceTypeSrc","enable":"false"}'>
+                                 <input class="ui-no-border" />
+                        </div>
+                    </div>
+                    <div class="ui-item">
+                        <div class="ui-name" >
+                            服务完成时间：</div>
+                        <div class="ui-inputarea" data-bind="text:mainListData.ref('serviceDate')" > </div>
+                    </div>
+                    <div class="ui-item">
+                        <div class="ui-name" >
+                            服务工单号：</div>
+                        <div class="ui-inputarea" data-bind="text:mainListData.ref('serviceCode')" > </div>
+                    </div>
+                    <div class="ui-item">
+                        <div class="ui-name" >
+                            满意度评分：</div>
+                        <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"mainListData",
+                        "field":"satisfiedLevel","datasource":"satisfiedLevelSrc","enable":"false"}'>
+                            <input class="ui-no-border" />
+                        </div>
+                    </div>
+                    <div class="ui-item">
+                        <div class="ui-name" >
+                            不满原因：</div>
+                        <div class="ui-inputarea" data-bind="text:mainListData.ref('notSatisfied')" > </div>
+                    </div>
+                    <div class="ui-item">
+                        <div class="ui-name" >
+                            是否按时上门：</div>
+                        <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"mainListData",
+                        "field":"whetherHome","datasource":"radioSrc","enable":"false"}'>
+                            <input class="ui-no-border" />
+                        </div>
+                    </div>
+                    <div class="ui-item">
+                        <div class="ui-name" >
+                            是否有产品知识介绍：</div>
+                        <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"mainListData",
+                        "field":"whetherIntroduce","datasource":"radioSrc","enable":"false"}'>
+                            <input class="ui-no-border" />
+                        </div>
+                    </div>
+                    <div class="ui-item">
+                        <div class="ui-name" >
+                            是否有其他收费：</div>
+                        <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"mainListData",
+                        "field":"whetherCollectFree","datasource":"radioSrc","enable":"false"}'>
+                            <input class="ui-no-border" />
+                        </div>
+                    </div>
+                    <div class="ui-item">
+                        <div class="ui-name" >
+                            专卖店是否回访：</div>
+                        <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"mainListData",
+                        "field":"whetherVisit","datasource":"radioSrc","enable":"false"}'>
+                            <input class="ui-no-border" />
+                        </div>
+                    </div>
+                    <div class="ui-item">
+                        <div class="ui-name" >
+                            是否有产品建议：</div>
+                        <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"mainListData",
+                        "field":"whetherSuggest","datasource":"radioSrc","enable":"false"}'>
+                            <input class="ui-no-border" />
+                        </div>
+                    </div>
+                    <div class="ui-item">
+                        <div class="ui-name" >
+                            产品意见或建议：</div>
+                        <div class="ui-inputarea" data-bind="text:mainListData.ref('productSuggest')" > </div>
+                    </div>
+                    <div class="ui-item">
+                        <div class="ui-name" >
+                            备注：</div>
+                        <div class="ui-inputarea" data-bind="text:mainListData.ref('remark')" > </div>
+                    </div>
+
+            </div>
+    </div>
+    <div class="u-msg-footer">
+        <a class="ui-btn ui-btn-primary u-msg-cancel margin-right-5">关闭</a>
+    </div>
+</div>
+
+
+<!-- 新增 弹窗-->
+<div id="popup01" style="display:none;">
+        <div class="u-msg-title">
+            <h4>新增</h4>
+        </div>
+        <div class="u-msg-content  clearfix margin-bottom-20"  id="validate">
+                <div class=" clearfix margin-top-20 margin-bottom-10">
+                        <div class="ui-item">
+                            <div class="ui-name" >
+                                    回访日期：</div>
+                            <div class="ui-inputarea" u-meta='{"type":"u-date","data":"addMainListData","field":"visitDate"}' >
+                                    <input class="u-input" />
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name" >
+                                回访人：</div>
+                            <div class="ui-inputarea" u-meta='{"type":"u-text","data":"addMainListData","field":"visitPerson"}' >
+                                    <input class="u-input" />
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                                <div class="ui-name" >
+                                        <span class='ui-redstar'>*</span>
+                                        服务工单号：</div>
+                                <div class="ui-inputarea" u-meta='{"type":"u-text","data":"addMainListData","field":"serviceCode"}' >
+                                        <input class="u-input" />
+                                </div>
+                            </div>
+                        <div class="ui-item">
+                            <div class="ui-name" >
+                                所属经销商：</div>
+                            <div class="ui-inputarea" u-meta='{"type":"u-text","data":"addMainListData","field":"parentDealers"}' >
+                                    <input class="u-input" />
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name" >
+                                顾客姓名：</div>
+                            <div class="ui-inputarea" u-meta='{"type":"u-text","data":"addMainListData","field":"customerName"}' >
+                                    <input class="u-input" />
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name" >
+                                    <span class='ui-redstar'>*</span>
+                                电话：</div>
+                            <div class="ui-inputarea" u-meta='{"type":"u-text","data":"addMainListData","field":"phone"}' >
+                                    <input class="u-input" />
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name" >
+                                服务类型：</div>
+                            <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"addMainListData",
+                            "field":"serviceType","datasource":"serviceTypeSrc"}'>
+                                <input class="" />
+                                <span class="ui-icon uf uf-arrow-down"></span>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name" >
+                                满意度评分：</div>
+                            <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"addMainListData",
+                            "field":"satisfiedLevel","datasource":"satisfiedLevelSrc"}'>
+                                <input class="" />
+                                <span class="ui-icon uf uf-arrow-down"></span>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name" >
+                                不满原因：</div>
+                            <div class="ui-inputarea" u-meta='{"type":"u-text","data":"addMainListData","field":"notSatisfied"}' >
+                                    <input class="u-input" />
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <span class="ui-name">
+                                  <span class='ui-redstar'>*</span>
+                                是否按时上门：</span>
+                            <div class="ui-inputarea">
+                                    <div class="ui-textonly" u-meta='{"type":"u-radio","data":"addMainListData","field":"whetherHome","datasource":"radioSrc"}'>
+                                        <label class="u-radio">
+                                            <input type="radio" class="u-radio-button" name="options1">
+                                            <span class="u-radio-label"></span>
+                                        </label>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <span class="ui-name">
+                                    <span class='ui-redstar'>*</span>
+                                是否有产品知识介绍：</span>
+                            <div class="ui-inputarea">
+                                    <div class="ui-textonly" u-meta='{"type":"u-radio","data":"addMainListData","field":"whetherIntroduce","datasource":"radioSrc"}'>
+                                        <label class="u-radio">
+                                            <input type="radio" class="u-radio-button" name="options2">
+                                            <span class="u-radio-label"></span>
+                                        </label>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <span class="ui-name">
+                                    <span class='ui-redstar'>*</span>
+                                是否有其他收费：</span>
+                            <div class="ui-inputarea">
+                                    <div class="ui-textonly" u-meta='{"type":"u-radio","data":"addMainListData","field":"whetherCollectFree","datasource":"radioSrc"}'>
+                                        <label class="u-radio">
+                                            <input type="radio" class="u-radio-button" name="options3">
+                                            <span class="u-radio-label"></span>
+                                        </label>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <span class="ui-name">
+                                    <span class='ui-redstar'>*</span>
+                                专卖店是否回访：</span>
+                            <div class="ui-inputarea">
+                                    <div class="ui-textonly" u-meta='{"type":"u-radio","data":"addMainListData","field":"whetherVisit","datasource":"radioSrc"}'>
+                                        <label class="u-radio">
+                                            <input type="radio" class="u-radio-button" name="options4">
+                                            <span class="u-radio-label"></span>
+                                        </label>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <span class="ui-name">
+                                    <span class='ui-redstar'>*</span>
+                                是否有产品建议：</span>
+                            <div class="ui-inputarea">
+                                    <div class="ui-textonly" u-meta='{"type":"u-radio","data":"addMainListData","field":"whetherSuggest","datasource":"radioSrc"}'>
+                                        <label class="u-radio">
+                                            <input type="radio" class="u-radio-button" name="options5">
+                                            <span class="u-radio-label"></span>
+                                        </label>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name" >
+                                产品意见或建议：</div>
+                            <div class="ui-inputarea" u-meta='{"type":"u-text","data":"addMainListData","field":"productSuggest"}' >
+                                    <input class="u-input" />
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name" >
+                                备注：</div>
+                            <div class="ui-inputarea" u-meta='{"type":"u-text","data":"addMainListData","field":"remark"}' >
+                                    <input class="u-input" />
+                            </div>
+                        </div>
+                        
+                </div>
+        </div>
+        <div class="u-msg-footer">
+            <a class="ui-btn ui-btn-primary u-msg-cancel margin-right-5">取消</a>
+            <a class="ui-btn ui-btn-green  u-msg-ok">保存</a>
+        </div>
+</div>
+
+  
+  

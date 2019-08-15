@@ -1,0 +1,349 @@
+<style type="text/css">
+  .target-grid-box td {
+    height: 25px !important;
+    line-height: 24px !important;
+  }
+  .target-grid-box .rowspan9 {
+    height: 225px;
+    line-height: 225px;
+  }
+
+  .target-grid-box .rowspan7 {
+    height: 175px;
+    line-height: 175px;
+  }
+
+  .target-grid-box .rowspan4 {
+    height: 100px;
+    line-height: 100px;
+  }
+
+  .target-grid-box .rowspan3 {
+    height: 75px;
+    line-height: 75px;
+  }
+  .target-grid-box .rowspan3,
+  .rowspan4,
+  .rowspan7,
+  .rowspan9,
+  .rowspan1,
+  .colspan1,
+  .colspan2,
+  .colspan3 {
+    border-bottom: 1px solid #d9d9d9;
+  }
+  .table-title {
+    height: 40px;
+    line-height: 40px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #666;
+    text-align: center;
+  }
+  .target-grid-table td {
+    border-color: #EEEEEE;
+    border-width: 0;
+    border: 1px solid #d9d9d9;
+    border-right: none;
+    border-top: none;
+    padding-left: 10px;
+  }
+
+  .target-grid-box .content,
+  .rowspan1,
+  .colspan1,
+  .colspan2,
+  .colspan3 {
+    height: 25px;
+    line-height: 25px;
+  }
+  .target-grid-table tbody tr:last-child td {
+    border-bottom-width: 1px !important;
+    
+  }
+  .target-grid-table tbody td:last-child {
+    border-right: 1px solid #d9d9d9;
+  }
+  .customerName {
+    float:left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 180px;
+  }
+</style>
+<div class="ui-panel ui-list-panel">
+  <div>
+    <div class="page-title">
+      <span>销售指标维护</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+
+  <ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+  </ui-searchbox>
+
+  <div class="ui-panel-body">
+    <div class="ui-table-container">
+      <div class="ui-panel-body-head">
+        <div class="ui-panel-body-head-left">
+          <ui-buttons params='datasource:$root.buttonListSource'>
+          </ui-buttons>
+        </div>
+      </div>
+
+      <ui-grid params='options:$root.gridListOption,vm:$root'>
+      </ui-grid>
+      <div class="ui-statistics margin-top-10">
+        已选择
+        <span class="font-c-blue" data-bind="text:complexList.selectedIndices().length"></span>项数据
+      </div>
+      <div class="pagination-right">
+        <div id='pagination' class='pagination u-pagination pagination-sm'
+          u-meta='{"type":"pagination","data":"complexList","pageChange":"pageChange","sizeChange":"sizeChange","pageList":[5, 10, 20, 50, 100]}'>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 单据详情页 -->
+<div class="ui-bill-detail ui-panel" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span>销售指标</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-primary" data-bind="click: retListPanel">返回
+      </a>
+    </div>
+  </div>
+  <div id="bpmhead"></div>
+  <div id="bpmfoot"></div>
+  <div class="ui-panel-head ui-bill-head">
+    <ui-detail params='datasource:$root.cardDetailOption,dt:$root.complexDetailCard,vm:$root'>
+    </ui-detail>
+  </div>
+  <div class="ui-bill-body">
+    <div class="ui-table-container margin-bottom-30">
+        <div class="target-grid-box u-grid">
+          <!-- title -->
+          <table class="target-grid-table">
+            <thead class="u-grid-header">
+              <tr>
+                <th class="table-title u-grid-header-th"><span>客户</span></th>
+                <th class="table-title u-grid-header-th"
+                  data-bind="visible: complexDetailCard.ref('cycleType')() && complexDetailCard.ref('cycleType')().indexOf('CUSTOM') > -1">
+                  <span>自定义</span>
+                </th>
+                <th class="table-title u-grid-header-th"
+                  data-bind="visible: complexDetailCard.ref('cycleType')() && complexDetailCard.ref('cycleType')().indexOf('YEAR') > -1">
+                  <span>年</span></th>
+                <th class="table-title u-grid-header-th"
+                  data-bind="visible: complexDetailCard.ref('cycleType')() && complexDetailCard.ref('cycleType')().indexOf('HYEAR') > -1">
+                  <span>半年</span></th>
+                <th class="table-title u-grid-header-th"
+                  data-bind="visible: complexDetailCard.ref('cycleType')() && complexDetailCard.ref('cycleType')().indexOf('SEASON') > -1">
+                  <span>季</span></th>
+                <th class="table-title u-grid-header-th"
+                  data-bind="visible: complexDetailCard.ref('cycleType')() && complexDetailCard.ref('cycleType')().indexOf('MONTH') > -1">
+                  <span>月</span></th>
+                <th class="table-title u-grid-header-th"><span>指标</span></th>
+              </tr>
+            </thead>
+            <tbody data-bind="foreach: {data: complexItems.rows(), as:'row'}">
+              <tr>
+                <td>
+                  <div class="">
+                    <span class="txt" data-bind="text: row.ref('customerName')"></span>
+                  </div>
+                </td>
+                <td
+                  data-bind="foreach: {data: row.ref('customDetail'), as: 'custRow'}, visible: row.ref('cycleType')() && row.ref('cycleType')().indexOf('CUSTOM') > -1">
+                  <div class="">
+                    <span class="txt" data-bind="text: custRow.ref('label')"></span>
+                  </div>
+                </td>
+                <td
+                  data-bind="foreach: {data: row.ref('yearDetails'), as: 'yearRow'}, visible: row.ref('cycleType')() && row.ref('cycleType')().indexOf('YEAR') > -1">
+                  <div class="">
+                    <span class="txt" data-bind="text: yearRow.ref('label')() || yearRow.ref('year')"></span>
+                  </div>
+                </td>
+                <td
+                  data-bind="foreach: {data: row.ref('hyearDetails'), as: 'hyearRow'}, visible: row.ref('cycleType')() && row.ref('cycleType')().indexOf('HYEAR') > -1">
+                  <div data-bind="attr : {class : hyearRow.ref('rowspan')() || hyearRow.ref('colspan')}">
+                    <span class="txt" data-bind="text: hyearRow.ref('label')() || hyearRow.ref('hyear')"></span>
+                  </div>
+                </td>
+                <td
+                  data-bind="foreach: {data: row.ref('seasonDetails')(), as: 'seasonRow'}, visible: row.ref('cycleType')() && row.ref('cycleType')().indexOf('SEASON') > -1">
+                  <div data-bind="attr : {class : seasonRow.ref('rowspan')() || seasonRow.ref('colspan')}">
+                    <span class="txt" data-bind="text: seasonRow.ref('label')() || seasonRow.ref('season')"></span>
+                  </div>
+                </td>
+                <td
+                  data-bind="foreach: {data: row.ref('monthDetails')(), as: 'monthRow'}, visible: row.ref('cycleType')() && row.ref('cycleType')().indexOf('MONTH') > -1">
+                  <div data-bind="attr : {class : monthRow.ref('rowspan')() || monthRow.ref('colspan')}">
+                    <span class="txt" data-bind="text: monthRow.ref('label')() || monthRow.ref('month')"></span>
+                  </div>
+                </td>
+                <td data-bind="foreach: {data: row.ref('details')(), as: 'detailRow'}, attr: {'data-rowid' : row.rowId}">
+                  <div class="content rowspan1">
+                    <span class="txt" data-bind="text: detailRow.ref('target')"></span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- title end -->
+        </div>
+    </div>
+  </div>
+</div>
+<div class="ui-bill-footer">
+</div>
+</div>
+
+
+<!-- 单据新增页 -->
+<div class="ui-bill-panel ui-panel" style="display: none;" id="saleTarget-operatepanel">
+  <div>
+    <div class="page-title">
+      <span>销售指标</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-primary" data-bind="click: cancelBill">取消
+      </a>
+      <span class="J-bill-audited">
+        <a class="ui-btn ui-btn-green" data-bind="click: saveBill">保存
+        </a>
+      </span>
+    </div>
+  </div>
+
+  <div class="ui-panel-head ui-bill-head">
+    <ui-card params='datasource:$root.cardEditOption,vm:$root,dt:$root.complexCard'>
+    </ui-card>
+  </div>
+  <div class="ui-panel-body-head-left">
+    <ui-buttons params='datasource:$root.buttonEditSource'>
+    </ui-buttons>
+    <div style="height: 8px;"></div>
+    <div id="addItemsRef" u-meta='{"type":"uiRefer","data":"ItemRefList","field":"customerref"}' style="display:none;">
+      <input readonly="readonly" />
+      <span class="ui-icon uifont icon-bar refer"></span>
+    </div>
+  </div>
+  <div class="ui-bill-body">
+    <div class="ui-table-container margin-bottom-30">
+      <div class="target-grid-box u-grid">
+        <!-- title -->
+        <table class="target-grid-table">
+          <thead class="u-grid-header">
+            <tr>
+              <th class="table-title u-grid-header-th"><span>客户</span></th>
+              <th class="table-title u-grid-header-th"
+                data-bind="visible: complexCard.ref('cycleType')() && complexCard.ref('cycleType')().indexOf('CUSTOM') > -1">
+                <span>自定义</span>
+              </th>
+              <th class="table-title u-grid-header-th"
+                data-bind="visible: complexCard.ref('cycleType')() && complexCard.ref('cycleType')().indexOf('YEAR') > -1">
+                <span>年</span></th>
+              <th class="table-title u-grid-header-th"
+                data-bind="visible: complexCard.ref('cycleType')() && complexCard.ref('cycleType')().indexOf('HYEAR') > -1">
+                <span>半年</span></th>
+              <th class="table-title u-grid-header-th"
+                data-bind="visible: complexCard.ref('cycleType')() && complexCard.ref('cycleType')().indexOf('SEASON') > -1">
+                <span>季</span></th>
+              <th class="table-title u-grid-header-th"
+                data-bind="visible: complexCard.ref('cycleType')() && complexCard.ref('cycleType')().indexOf('MONTH') > -1">
+                <span>月</span></th>
+              <th class="table-title u-grid-header-th"><span>指标</span></th>
+            </tr>
+          </thead>
+          <tbody data-bind="foreach: {data: complexItems.rows(), as:'row'}">
+            <tr>
+              <td>
+                <div class="">
+                  <div class="customerName">
+                      <span class="txt" data-bind="text: row.ref('customerName'), attr: {title: row.ref('customerName')}"></span>
+                  </div>
+                  <i class="delicon uifont icon-tubiao-shibai icon"
+                    data-bind="click: $root.delcomplexItemsRow.bind($data, row)"></i>
+                </div>
+              </td>
+              <td
+                data-bind="foreach: {data: row.ref('customDetail'), as: 'custRow'}, visible: row.ref('cycleType')() && row.ref('cycleType')().indexOf('CUSTOM') > -1">
+                <div class="">
+                  <span class="txt" data-bind="text: custRow.ref('label')"></span>
+                </div>
+              </td>
+              <td
+                data-bind="foreach: {data: row.ref('yearDetails'), as: 'yearRow'}, visible: row.ref('cycleType')() && row.ref('cycleType')().indexOf('YEAR') > -1">
+                <div class="">
+                  <span class="txt" data-bind="text: yearRow.ref('label')() || yearRow.ref('year')"></span>
+                </div>
+              </td>
+              <td
+                data-bind="foreach: {data: row.ref('hyearDetails'), as: 'hyearRow'}, visible: row.ref('cycleType')() && row.ref('cycleType')().indexOf('HYEAR') > -1">
+                <div data-bind="attr : {class : hyearRow.ref('rowspan')() || hyearRow.ref('colspan')}">
+                  <span class="txt" data-bind="text: hyearRow.ref('label')() || hyearRow.ref('hyear')"></span>
+                </div>
+              </td>
+              <td
+                data-bind="foreach: {data: row.ref('seasonDetails')(), as: 'seasonRow'}, visible: row.ref('cycleType')() && row.ref('cycleType')().indexOf('SEASON') > -1">
+                <div data-bind="attr : {class : seasonRow.ref('rowspan')() || seasonRow.ref('colspan')}">
+                  <span class="txt" data-bind="text: seasonRow.ref('label')() || seasonRow.ref('season')"></span>
+                </div>
+              </td>
+              <td
+                data-bind="foreach: {data: row.ref('monthDetails')(), as: 'monthRow'}, visible: row.ref('cycleType')() && row.ref('cycleType')().indexOf('MONTH') > -1">
+                <div data-bind="attr : {class : monthRow.ref('rowspan')() || monthRow.ref('colspan')}">
+                  <span class="txt" data-bind="text: monthRow.ref('label')() || monthRow.ref('month')"></span>
+                </div>
+              </td>
+              <td data-bind="foreach: {data: row.ref('details')(), as: 'detailRow'}, attr: {'data-rowid' : row.rowId}">
+                <div class="content">
+                  <input class="u-input"
+                    data-bind="value: detailRow.ref('target'), attr: {readonly: detailRow.ref('label')().indexOf('合计') > -1 ? true : false}" />
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="height: 8px;"></div>
+        <!-- title end -->
+      </div>
+    </div>
+  </div>
+  <div class="ui-bill-footer">
+  </div>
+</div>
+
+<!--导出弹窗-->
+<div id="exportFiel"></div>
+<!--导入弹窗-->
+<div id="importFiel"></div>

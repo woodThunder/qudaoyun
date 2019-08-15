@@ -1,0 +1,134 @@
+<div class="ui-list-panel ui-panel">
+  <div>
+    <div class="page-title">
+      <span>换货申请单</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+      <ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+      </ui-searchbox>
+  <div class="ui-panel-body">
+    <div class="ui-panel-body-head">
+      <div class="ui-panel-body-head-left">
+      	<div class="ui-panel-body-head-left">
+            <ui-buttons-menu params='datasource:$root.button1Source,vm:$root'>
+              </ui-buttons-menu>
+      </div>
+      </div>
+    </div>
+    <div class="ui-table-container">
+      <ui-grid params='options:$root.grid1Option,vm:$root'>
+          </ui-grid>
+      <div class="ui-statistics margin-top-10">
+        <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择
+        <span class="font-c-blue" data-bind="text:exchangeList.selectedIndices().length"></span>项数据
+      </div>
+      <div class="pagination-right">
+        <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"exchangeList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 查看详情-start -->
+  <div class="u-tabs ui-tabs">
+    <div class="u-tabs__tab-bar margin-top-10 margin-bottom-10">
+      <a href="#tab-panel-1" class="u-tabs__tab  is-active">退货商品</a>
+      <!--<a href="#tab-panel-2" class="u-tabs__tab">退货商品信息</a>-->
+      <a href="#tab-panel-3" class="u-tabs__tab">换货商品</a>
+      <!--<a href="#tab-panel-4" class="u-tabs__tab">发货商品信息</a>-->
+      <a href="#tab-panel-5" class="u-tabs__tab">操作日志</a>
+    </div>
+    <!-- 商品产品信息-start -->
+    <div class="u-tabs__panel is-active" id="tab-panel-1">
+      <ui-grid params='options:$root.grid2Option,vm:$root'>
+          </ui-grid>
+    </div>
+    <!--<div class="u-tabs__panel" id="tab-panel-2">
+      <ui-grid params='options:$root.grid3Option,vm:$root'>
+          </ui-grid>
+    </div>-->
+    <div class="u-tabs__panel" id="tab-panel-3">
+      <ui-grid params='options:$root.grid4Option,vm:$root'>
+          </ui-grid>
+    </div>
+    <!--<div class="u-tabs__panel" id="tab-panel-4">
+      <ui-grid params='options:$root.grid5Option,vm:$root'>
+          </ui-grid>
+    </div>-->
+    <!-- 所有产品信息-end -->
+    <!-- 操作日志-start -->
+    <div class="u-tabs__panel" id="tab-panel-5">
+      <ui-grid params='options:$root.grid6Option,vm:$root'>
+          </ui-grid>
+      <div class="pagination-right margin-top-20">
+        <div id='pagination_log' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"exchangeLogsList","pageChange":"pageChangeLog","sizeChange":"sizeChangeLog"}'></div>
+      </div>
+    </div>
+    <!-- 操作日志-end -->
+  </div>
+  <!-- 查看详情-end -->
+
+</div>
+
+<!-- 商品信息-end -->
+
+<!--导入导出弹窗-->
+<div id="exportFiel"></div>
+<!--导入导出弹窗-->
+
+<div id="dialog_content_assignReturnWarehouse" style="display:none;">
+	<div class="u-msg-title">
+		<h4>指定退货仓库</h4>
+	</div>
+	<div class="u-msg-content clearfix" style="padding-bottom: 13px;">
+		<div class="ui-searchbox-content"> 
+      <div class="ui-item ui-search-item ">
+				<span class="ui-name">退货仓库</span>
+        <div class="ui-inputarea" id="warehouseId" u-meta='{"type":"uiRefer","data":"returnWarehouseList","field":"warehouseId"}'>
+          <input readonly="readonly" />
+          <span class="ui-icon uifont icon-bar refer"></span>						
+        </div>
+      </div>
+      <!--
+        
+      <div class="ui-item ui-search-item " u-meta='{"type":"u-text","data":"returnWarehouseList","field":"placeholder1"}'>
+          <span class="ui-name">备用字段1</span>
+          <div class="ui-inputarea" >
+              <input readonly="readonly" />          
+          </div>
+      </div>
+      <div class="ui-item ui-search-item " u-meta='{"type":"u-text","data":"returnWarehouseList","field":"placeholder2"}'>
+          <span class="ui-name">备用字段2</span>
+          <div class="ui-inputarea" >
+              <input readonly="readonly" />          
+          </div>
+      </div>
+
+      -->
+		</div>
+	</div>
+	<div class="u-msg-footer">
+		<a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+		<a class="u-msg-ok ui-btn ui-btn-green">确定</a>
+	</div>
+</div>
+
+<div id="dialog_content_assignReturnWarehouse2" style="display:none;">
+    <div class="u-msg-title">
+      <h4>指定退货仓库</h4>
+    </div>
+    <div class="u-msg-content clearfix" style="padding-bottom: 13px;">
+        <ui-grid params='options:$root.grid7Option,vm:$root'>
+          </ui-grid>
+    </div>
+    <div class="u-msg-footer">
+      <a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+      <a class="u-msg-ok ui-btn ui-btn-green">确定</a>
+    </div>
+  </div>

@@ -1,0 +1,27 @@
+<div id="cus" class="ui-panel" style="display:block">
+  <div class="ui-btn-group">
+    <a class="ui-btn ui-btn-primary" data-bind="click:showAddTemplate.bind($data,-1)">
+      <i class="uifont icon-plus margin-right-5"></i>新增编辑模板
+    </a>
+    <a class="ui-btn ui-btn-primary" data-bind="click:showEditTemplate.bind($data,-1)">
+      <i class="uifont icon-plus margin-right-5"></i>修改编辑模板
+    </a>
+    <a class="ui-btn ui-btn-primary" data-bind="click:showDetailTemplate.bind($data,-1)">
+      <i class="uifont icon-plus margin-right-5"></i>主子孙详情模板
+    </a>
+  </div>
+  <div id="templateWrap"></div>
+
+  <div id="child1DetailDialog" style="display:none;">
+  	<div class="u-msg-title">
+  		<h4>子表1详情</h4>
+  	</div>
+  	<div class="u-msg-content">
+  		<div id="child1DetailTemplateWrap">
+
+      </div>
+  	</div>
+  	<div class="u-msg-footer">
+  	</div>
+  </div>
+</div>

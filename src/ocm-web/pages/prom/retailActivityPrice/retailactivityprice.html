@@ -1,0 +1,446 @@
+<div class="ui-panel ui-list-panel">
+    <div>
+        <div class="page-title">
+            <span>零售活动调价单</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="title-seperator"></div>
+
+    <div class="ui-searchbox">
+        <div id="RetailActivityPrice-searchcontent" class="ui-searchbox-content">
+
+        </div>
+        <div class="clearfix">
+
+        </div>
+        <div class="ui-searchbox-footer">
+            <div class="ui-search-more hidden">
+                <a>更多<i class="uifont icon-down"></i></a>
+            </div>
+
+            <div class="ui-search-btn">
+                <a class="ui-btn ui-btn-primary margin-right-5"
+                   data-bind="click:cleanSearch">清空
+                </a>
+                <a class="ui-btn ui-btn-green"
+                   data-bind="click:search.bind($data,true)">搜索
+                </a>
+            </div>
+            <div class="clearfix">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="ui-panel-body">
+        <div class="ui-panel-body-head">
+            <div class="ui-panel-body-head-left">
+                <a class="ui-btn ui-btn-orange margin-right-5"
+                   data-bind="click: showAddBillPanel.bind($data), visible: buttonShowGroup['add']"><i class="uifont icon-plus margin-right-5"></i>新增
+                </a>
+                <a class="ui-btn ui-btn-primary margin-right-5"
+                   data-bind="click: del, visible: buttonShowGroup['del']"><i class="uifont icon-shanchu1 margin-right-5"></i>删除
+                </a>
+                <a class="ui-btn ui-btn-primary margin-right-5"
+                   data-bind="click: auditHandle, visible: buttonShowGroup['approve']"><i class="uifont icon-tubiao-shenhe margin-right-5"></i>审核
+                </a>
+                <a class="ui-btn ui-btn-primary margin-right-5"
+                   data-bind="click: showCopyBillPanel, visible: buttonShowGroup['copy']"><i class="uifont icon-copy margin-right-5"></i>复制
+                </a>
+                <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+                    <a class="ui-button-item" data-bind="click: submit, visible: buttonShowGroup['submit']"><i class="uifont icon-tubiao-shenhe margin-right-5"></i>提交</a>
+                    <a class="ui-button-item" data-bind="click: unsubmit, visible: buttonShowGroup['unsubmit']"><i class="uifont icon-tubiao-quxiaoshenhe margin-right-5"></i>收回</a>
+                </div>
+                <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+                    <a class="ui-button-item" data-bind="click: importHandle, visible: buttonShowGroup['import']"><i class="uifont  icon-import margin-right-5"></i>导入</a>
+                    <a class="ui-button-item" data-bind="click: exportHandle, visible: buttonShowGroup['export']"><i class="uifont icon-export margin-right-5"></i>导出</a>
+                </div>
+                <!--<div id="addItemsRef" u-meta='{"type":"uiRefer","data":"DemoItemRefList","field":"productref"}' style="display:none;">
+                   <input readonly="readonly"/>
+                   <span class="ui-icon uifont icon-bar refer"></span>
+                 </div>-->
+            </div>
+            <!--<div class="ui-panel-body-head-right">
+              <i class="uifont icon-i font-c-blue margin-right-5"></i>共搜索到<span data-bind="text:RetailActivityPriceList.totalRow"></span>条数据
+            </div>-->
+        </div>
+        <div class="ui-table-container">
+            <div u-meta='{"id":"grid_RetailActivityPrice","data":"RetailActivityPriceList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+                <div options='{"field":"code","dataType":"String","title":"调价单号","renderType":"detailRender"}'></div>
+                <div options='{"field":"name","dataType":"String","title":"调价单名称"}'></div>
+                <div options='{"field":"activityCode","dataType":"String","title":"活动编码"}'></div>
+                <div options='{"field":"activityName","dataType":"String","title":"活动名称"}'></div>
+                <div options='{"field":"terminalStartDate","dataType":"Date","title":"开始日期"}'></div>
+                <div options='{"field":"terminalEndDate","dataType":"Date","title":"结束日期"}'></div>
+                <div options='{"field":"activityTypeName","dataType":"String","title":"活动类型"}'></div>
+                <div options='{"field":"agencyName","dataType":"String","title":"所属办事处"}'></div>
+                <!--<div options='{"field":"auditor","dataType":"String","title":"审核人"}'></div>-->
+                <div options='{"field":"auditStatus","dataType":"String","title":"审核状态","renderType":"approveFormat"}'></div>
+                <!--<div options='{"field":"auditTime","dataType":"Date","title":"审核时间"}'></div>-->
+                <div options='{"field":"vnote","dataType":"String","title":"备注"}'></div>
+                <div options='{"field":"creator","dataType":"String","title":"创建人","visible":"false"}'></div>
+                <div options='{"field":"creationTime","dataType":"Datetime","title":"创建时间","visible":"false"}'></div>
+                <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":"false"}'></div>
+                <div options='{"field":"modifiedTime","dataType":"Datetime","title":"修改时间","visible":"false"}'></div>
+                <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation","fixed":"true","width":"100px"}'></div>
+            </div>
+            <div class="ui-statistics margin-top-10">
+                已选择<span class="font-c-blue" data-bind="text:RetailActivityPriceList.selectedIndices().length"></span>项数据
+            </div>
+            <div class="pagination-right">
+                <div id='pagination' class='pagination u-pagination pagination-sm'
+                     u-meta='{"type":"pagination","data":"RetailActivityPriceList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="dialog_layer" class="ui-searchbox" style="display:none;padding:20px">
+
+</div>
+
+<div class="ui-panel ui-bill-panel" style="display: none;" id="validate">
+    <div>
+        <div class="page-title">
+            <span>零售活动调价单</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="ui-panel-btn-bg">
+        <div class="ui-operate-btn">
+            <a class="ui-btn ui-btn-primary" data-bind="click: cancelBill.bind($data)">取消
+            </a>
+            <a class="ui-btn ui-btn-green" data-bind="click: saveBill.bind($data)">保存
+            </a>
+        </div>
+    </div>
+    <div class="ui-panel-head ui-bill-head ui-w145">
+        <div class="ui-item">
+            <div class="ui-name"> <span class='ui-redstar'>*</span>调价单编码：</div>
+            <div class="ui-inputarea">
+                <div u-meta='{"type":"u-text","data":"RetailActivityPriceList","field":"code","enable":"false"}'>
+                    <input readonly="readonly" placeholder="根据编码规则自动生成"/>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name"> <span class='ui-redstar'>*</span>调价单名称：</div>
+            <div class="ui-inputarea">
+                <div u-meta='{"type":"u-text","data":"RetailActivityPriceList","field":"name"}'>
+                    <input class="u-input"/>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item-text ui-item">
+            <span class="item-name ui-name">审核状态：</span>
+            <div class="ui-inputarea">
+                <span class="text-value" data-bind="text: auditStatus()"></span>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name"> <span class='ui-redstar'>*</span>活动编码：</div>
+            <div class="ui-inputarea">
+                <div u-meta='{"type":"uiRefer","data":"RetailActivityPriceList","field":"activityId","rel":{"refpk":"activityId","refcode":"activityCode","refname":"activityName","agencyName":"agencyName","terminalEndDate":"terminalEndDate","terminalStartDate":"terminalStartDate","description":"activityDescription"}}'>
+                    <input readonly="readonly"/>
+                    <span class="ui-icon uifont icon-bar refer"></span>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name"> <span class='ui-redstar'>*</span>活动名称：</div>
+            <div class="ui-inputarea">
+                <div u-meta='{"type":"u-text","data":"RetailActivityPriceList","field":"activityName","enable":"false"}'>
+                    <input class="u-input"/>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">所属办事处：</div>
+            <div class="ui-inputarea">
+
+                <div data-bind='text: RetailActivityPriceList.ref("agencyName")'>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">开始日期：</div>
+            <div class="ui-inputarea">
+
+                <div data-bind='text: dateFormat("RetailActivityPriceList","terminalStartDate")'>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">截至日期：</div>
+            <div class="ui-inputarea">
+
+                <div data-bind='text: dateFormat("RetailActivityPriceList","terminalEndDate")'>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">活动描述：</div>
+            <div class="ui-inputarea">
+                <div data-bind='text: RetailActivityPriceList.ref("activityDescription")'>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name"> <span class='ui-redstar'>*</span>调价生效日期：</div>
+            <div class="ui-inputarea">
+                <!--<div data-bind='text: dateFormat("RetailActivityPriceList","effectiveDate")'>-->
+                <!--</div>-->
+                <div u-meta='{"type":"u-date","data":"RetailActivityPriceList","field":"effectiveDate"}'>
+                    <input />
+                    <span class="ui-icon uf uf-calendar"></span>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">执行结果：</div>
+            <div class="ui-inputarea">
+                <div data-bind='text: RetailActivityPriceList.ref("result")'>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="ui-bill-body">
+        <div class="ui-bill-body-btns">
+            <a class="ui-btn ui-btn-orange margin-right-5"
+               data-bind="click: showProductRef"><i class="uifont icon-plus margin-right-5"></i>增行
+            </a>
+            <div id="productRefer" u-meta='{"type":"uiRefer","data":"ProductRef","field":"productRefer"}' style="display:none;">
+                <input readonly="readonly"/>
+                <span class="ui-icon uifont icon-bar refer"></span>
+            </div>
+            <a class="ui-btn ui-btn-primary margin-right-5"
+               data-bind="click: delItems.bind($data)"><i class="uifont icon-shanchu1 margin-right-5"></i>删行
+            </a>
+            <a class="ui-btn ui-btn-primary margin-right-5"
+               data-bind="click: referClick"><i class="uifont icon-bar margin-right-5"></i>参照
+            </a>
+
+        </div>
+        <div class="ui-table-container margin-bottom-30">
+            <div u-meta='{"id":"grid_RetailActivityPriceItem","data":"RetailActivityPriceItems","type":"grid","editable":true,"multiSelect":true,"showNumCol":true}'>
+                <div options='{"field":"showCode","dataType":"String","title":"产品编码","editable":false}'></div>
+                <div options='{"field":"showName","dataType":"String","title":"产品名称","editable":false}'></div>
+                <div options='{"field":"productSaleSeriesName","dataType":"String","title":"产品系列","editable":false}'></div>
+                <div options='{"field":"customerId","dataType":"String","title":"经销商","renderType":"ncReferRender","editType":"ncReferEditType","showField":"customerName","editOptions":{"validType":"string","rel":{"refpk":"customerId","refcode":"customerCode","refname":"customerName"}}}'></div>
+                <div options='{"field":"shopId","dataType":"String","title":"门店","renderType":"ncReferRender","editType":"ncReferEditType","showField":"shopName","editOptions":{"validType":"string","rel":{"refpk":"shopId","refname":"shopName"}}}'></div>
+                <div options='{"field":"price","dataType":"Float","title":"价格","editType":"float","editOptions":{"validType":"float","min":0}}'></div>
+                <div options='{"field":"vnote","dataType":"String","title":"备注"}'></div>
+                <!--<div options='{"field":"auditor","dataType":"String","title":"审核人"}'></div>
+                <div options='{"field":"auditStatus","dataType":"String","title":"审核状态","renderType":"approveFormat"}'></div>
+                <div options='{"field":"auditTime","dataType":"Date","title":"审核时间"}'></div>
+                <div options='{"field":"creator","dataType":"String","title":"创建人","visible":"false"}'></div>
+                <div options='{"field":"creationTime","dataType":"Datetime","title":"创建时间","visible":"false"}'></div>
+                <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":"false"}'></div>
+                <div options='{"field":"modifiedTime","dataType":"Datetime","title":"修改时间","visible":"false"}'></div>
+                <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation"}'></div>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 单据详情页 -->
+<div class="ui-bill-detail ui-panel" style="display: none;">
+    <div>
+        <div class="page-title">
+            <span>零售活动调价单</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="ui-panel-btn-bg">
+        <div class="ui-operate-btn">
+            <a class="ui-btn ui-btn-primary" data-bind="click: retListPanel">返回
+            </a>
+            <a class="ui-btn ui-btn-green" data-bind="click: editHandle.bind($data)">编辑
+            </a>
+        </div>
+    </div>
+    <div id="bpmhead"></div>
+    <div id="bpmfoot"></div>
+    <div class="ui-panel-head ui-w145">
+        <div class="ui-item">
+            <div class="ui-name">调价单编码：</div>
+            <div class="ui-inputarea">
+                <div data-bind='text: RetailActivityPriceList.ref("code")'>
+                </div>
+
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">调价单名称：</div>
+            <div class="ui-inputarea">
+                <div data-bind='text: RetailActivityPriceList.ref("name")'>
+                </div>
+
+            </div>
+        </div>
+        <div class="ui-item-text ui-item">
+            <span class="item-name ui-name">审核状态：</span>
+            <div class="ui-inputarea">
+                <span class="text-value" data-bind="text: auditStatus()"></span>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">活动编码：</div>
+            <div class="ui-inputarea">
+                <div data-bind='text: RetailActivityPriceList.ref("activityCode")'>
+                </div>
+                <!--<div u-meta='{"type":"uiRefer","data":"RetailActivityPriceList","field":"activityId","rel":{"refpk":"activityId","refcode":"activityCode","refname":"activityName"}}'>
+                  <input readonly="readonly"/>
+                  <span class="ui-icon uifont icon-bar refer"></span>
+                </div>-->
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">活动名称：</div>
+            <div class="ui-inputarea">
+                <div data-bind='text: RetailActivityPriceList.ref("activityName")'>
+                </div>
+                <!--<div u-meta='{"type":"u-text","data":"RetailActivityPriceList","field":"activityName","enable":"false"}'>
+                  <input class="u-input"/>
+                </div>-->
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">所属办事处：</div>
+            <div class="ui-inputarea">
+                <div data-bind='text: RetailActivityPriceList.ref("agencyName")'>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">开始日期：</div>
+            <div class="ui-inputarea">
+                <div data-bind='text: dateFormat("RetailActivityPriceList","terminalStartDate")'>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">截至日期：</div>
+            <div class="ui-inputarea">
+                <div data-bind='text: dateFormat("RetailActivityPriceList","terminalStartDate")'>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">活动描述：</div>
+            <div class="ui-inputarea">
+                <div data-bind='text: RetailActivityPriceList.ref("activityDescription")'>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">调价生效日期：</div>
+            <div class="ui-inputarea">
+                <div data-bind='text: dateFormat("RetailActivityPriceList","effectiveDate")'>
+                </div>
+
+                <!--<div u-meta='{"type":"u-date","data":"RetailActivityPriceList","field":"effectiveDate","rangeFlag":true}'>
+                  <span class="ant-calendar-picker-input ant-input">
+                      <input readonly="" value="" placeholder="开始日期" class="ant-calendar-range-picker-input">
+                      <span class="ant-calendar-range-picker-separator"> ~ </span>
+                      <input readonly="" value="" placeholder="结束日期" class="ant-calendar-range-picker-input">
+                      <span class="ant-calendar-picker-icon"></span>
+                  </span>
+                </div>-->
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">执行结果：</div>
+            <div class="ui-inputarea">
+                <div data-bind='text: RetailActivityPriceList.ref("result")'>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="ui-bill-body">
+        <div class="ui-table-container margin-bottom-30">
+            <div u-meta='{"id":"grid_RetailActivityPriceItem2","data":"RetailActivityPriceItems","type":"grid","editable":false,"multiSelect":false,"showNumCol":true}'>
+                <div options='{"field":"showCode","dataType":"String","title":"产品编码","editable":false}'></div>
+                <div options='{"field":"showName","dataType":"String","title":"产品名称","editable":false}'></div>
+                <div options='{"field":"productSaleSeriesName","dataType":"String","title":"产品系列","editable":false}'></div>
+                <div options='{"field":"customerId","dataType":"String","title":"经销商","renderType":"ncReferRender","editType":"ncReferEditType","showField":"customerName","editOptions":{"validType":"string"}}'></div>
+                <div options='{"field":"shopId","dataType":"String","title":"门店","renderType":"ncReferRender","editType":"ncReferEditType","showField":"shopName","editOptions":{"validType":"string"}}'></div>
+                <div options='{"field":"price","dataType":"String","title":"价格"}'></div>
+                <div options='{"field":"vnote","dataType":"String","title":"备注"}'></div>
+            </div>
+        </div>
+    </div>
+    <div class="ui-bill-footer">
+    </div>
+</div>
+<!-- 单据详情页 end -->
+
+<!--参照-->
+<div id="dialog_content_wholesalebaseprice" style="display:none;">
+    <div class="u-msg-title">
+        <h4>输入过滤数据条件</h4>
+    </div>
+    <div class="u-msg-content">
+        <div class="ui-panel-head ui-bill-head">
+            <div id="wholesalebaseprice-searchcontent" class="ui-searchbox-content">
+
+            </div>
+            <div class="clearfix"></div>
+            <div class="ui-searchbox-footer">
+                <div class="ui-search-btn u-text-align-right margin-top-10 margin-right-20">
+                    <a class="ui-btn ui-btn-primary"
+                       data-bind="click:cleanSingledocSearch">清空
+                    </a>
+                    <a class="ui-btn ui-btn-green margin-right-5"
+                       data-bind="click:singledocSearch.bind($data,true)">搜索
+                    </a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div u-meta='{"id":"grid_wholesalebaseprice","data":"WholeSaleBasePrice","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+            <div options='{"field":"showCode","dataType":"String","title":"产品编码"}'></div>
+            <div options='{"field":"showName","dataType":"String","title":"产品名称"}'></div>
+            <div options='{"field":"productSaleSeriesName","dataType":"string","title":"产品系列"}'></div>
+            <div options='{"field":"customerName","dataType":"String","title":"经销商"}'></div>
+            <div options='{"field":"shopName","dataType":"String","title":"门店"}'></div>
+            <div options='{"field":"price","dataType":"Float","title":"价格"}'></div>
+            <!--<div options='{"field":"beginTime","dataType":"Date","title":"开始时间","editType":"date"}'></div>
+            <div options='{"field":"endTime","dataType":"Date","title":"结束时间","editType":"date"}'></div>-->
+            <div options='{"field":"isEnable","dataType":"String","title":"启用状态","renderType":"enabledGrid","enable":"false"}'></div>
+        </div>
+        <!--<div class="ui-statistics margin-top-10">
+            <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择<span class="font-c-blue" data-bind="text:WholeSaleBasePrice.selectedIndex().length"></span>项数据
+          </div>-->
+        <div class="pagination-right">
+            <div id='paginationPrice' class='pagination u-pagination pagination-sm'
+                 u-meta='{"type":"pagination","data":"WholeSaleBasePrice","pageChange":"pageChangePrice","sizeChange":"sizeChangePrice"}'></div>
+        </div>
+    </div>
+    <div class="u-msg-footer">
+        <a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+        <a class="u-msg-ok ui-btn ui-btn-green">确定</a>
+    </div>
+</div>
+<!--参照 end-->
+
+<!--导入弹框 end-->
+<div id="exportFiel"></div>
+<div id="importFiel"></div>

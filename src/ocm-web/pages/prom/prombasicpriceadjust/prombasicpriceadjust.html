@@ -1,0 +1,341 @@
+<div class="ui-panel ui-list-panel">
+  <div>
+    <div class="page-title">
+      <span>促销基础价调价单</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+
+
+  <div class="ui-searchbox">
+    <div id="searcher-searchcontent" class="ui-searchbox-content">
+
+    </div>
+    <div class="clearfix">
+
+    </div>
+    <div class="ui-searchbox-footer">
+      <div class="ui-search-more hidden">
+          <a>更多<i class="uifont icon-down"></i></a>
+      </div>
+
+      <div class="ui-search-btn">
+        <a class="ui-btn ui-btn-primary margin-right-5"
+        data-bind="click:cleanSearch">清空
+        </a>
+        <a class="ui-btn ui-btn-green margin-right-5"
+        data-bind="click:search.bind($data,true)">搜索
+        </a>
+      </div>
+      <div class="clearfix">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-panel-body">
+    <div class="ui-panel-body-head">
+        <div class="ui-panel-body-head-left">
+          <a class="ui-btn ui-btn-orange margin-right-5" id="user-action-add"
+            data-bind="click: showAddBillPanel.bind($data), visible: buttonShowGroup['add']"><i class="uifont icon-plus margin-right-5"></i>新增
+          </a>
+          <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+            data-bind="click: del, visible: buttonShowGroup['del']"><i class="uifont icon-shanchu1 margin-right-5"></i>删除
+          </a>
+          <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+            data-bind="click: submit, visible: buttonShowGroup['submit']"><i class="uifont icon-tubiao-shenhe margin-right-5"></i>提交
+          </a>
+          <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+            data-bind="click: approve, visible: buttonShowGroup['approve']"><i class="uifont icon-tubiao-shenhe margin-right-5"></i>审核
+          </a>
+          <!-- <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+            <a class="ui-button-item" data-bind='click: approve'><i class="uifont icon-tubiao-shenhe margin-right-5"></i>审核</a>
+            <a class="ui-button-item" data-bind='click: unapprove'><i class="uifont icon-tubiao-quxiaoshenhe margin-right-5"></i>弃审</a>
+          </div> -->
+        </div>
+        <div class="ui-panel-body-head-right">
+        </div>
+      </div>
+      <div class="ui-table-container">
+          <div u-meta='{"id":"grid_PriceAdjustList","data":"PriceAdjustList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+                      <div options='{"field":"code","dataType":"String","title":"调价单编码","renderType":"detailRender"}'></div>
+                      <div options='{"field":"name","dataType":"String","title":"调价单名称","editable":false}'></div>
+                      <div options='{"field":"note","dataType":"String","title":"备注","editable":false}'></div>
+                      <div options='{"field":"auditStatus","dataType":"String","title":"审核状态","renderType":"approveRender"}'></div>
+                      <div options='{"field":"auditor","dataType":"String","title":"审核人"}'></div>
+                      <div options='{"field":"auditTime","dataType":"Datetime","title":"审核时间"}'></div>
+                      <div options='{"field":"creator","dataType":"String","title":"创建人","editable":false,"visible":false}'></div>
+                      <div options='{"field":"creationTime","dataType":"Datetime","title":"创建时间","editable":false,"visible":false}'></div>
+                      <div options='{"field":"modifier","dataType":"String","title":"最后修改人","editable":false,"visible":false}'></div>
+                      <div options='{"field":"modifiedTime","dataType":"Datetime","title":"最后修改时间","editable":false,"visible":false}'></div>
+                      <div options='{"field":"operation","dataType":"String","title":"操作","editable":false,"renderType":"operation","fixed":true,"width":"110px"}'></div>
+
+          </div>
+          <div class="ui-statistics margin-top-10">
+            已选择<span class="font-c-blue" data-bind="text:PriceAdjustList.selectedIndices().length"></span>项数据
+          </div>
+          <div class="pagination-right">
+            <div id='pagination' class='pagination u-pagination pagination-sm'
+            u-meta='{"type":"pagination","data":"PriceAdjustList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+          </div>
+      </div>
+    </div>
+</div>
+<!-- 单据页 -->
+<div class="ui-bill-panel ui-panel" style="display:none;">
+  <div>
+    <div class="page-title">
+      <span>促销基础价调价单</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-primary" data-bind="click: cancelBill.bind($data)">取消
+      </a>
+      <a class="ui-btn ui-btn-green" data-bind="click: saveBill.bind($data)">保存
+      </a>
+    </div>
+  </div>
+  <div class="ui-panel-head ui-bill-head">
+    <div data-bind='visible: billPanelStatus()=="add"' class="ui-item">
+      <div class="ui-name">
+        <span class='ui-redstar'>*</span>
+        调价单编码：
+      </div>
+      <div class="ui-inputarea">
+        <input readonly="readonly" placeholder="根据编码规则自动生成"/>
+      </div>
+    </div>
+    <div data-bind='visible: billPanelStatus()=="edit"' class="ui-item">
+      <div class="ui-name">调价单编码：</div>
+      <div class="ui-inputarea">
+        <div class="ui-textonly" data-bind='text: PriceAdjustList.ref("code")'></div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">
+        <span class='ui-redstar'>*</span>
+        调价单名称：
+      </div>
+      <div class="ui-inputarea">
+        <div class="u-text"  u-meta='{"id":"f1","type":"u-text","data":"PriceAdjustList","field":"name"}'>
+          <input class="u-input"/>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">审核状态：</div>
+      <div class="ui-inputarea">
+        <div class="ui-textonly" data-bind='text: approveFormat("PriceAdjustList", "auditStatus")'></div>
+      </div>
+    </div>
+    <div class="ui-item ui-textarea-item">
+      <div class="ui-name">备注：</div>
+      <div class="ui-inputarea">
+        <textarea u-meta='{"type":"textarea","data":"PriceAdjustList","field":"note"}'></textarea>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="ui-bill-body">
+    <div class="margin-bottom-10">
+      <a class="ui-btn ui-btn-orange margin-right-5" id="user-action-additem"
+        data-bind="click: showProductRef"><i class="uifont icon-plus margin-right-5"></i>增行
+      </a>
+      <div id="productRefer" u-meta='{"type":"uiRefer","data":"ProductRef","field":"productRefer"}' style="display:none;">
+        <input readonly="readonly"/>
+        <span class="ui-icon uifont icon-bar refer"></span>
+      </div>
+      <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+        data-bind="click: delItems"><i class="uifont icon-shanchu1 margin-right-5"></i>删行
+      </a>
+      <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+        data-bind="click: showPriceRefDialog"><i class="uifont icon-bar margin-right-5"></i>参照
+      </a>
+      <div class="ui-button-group clearfix vertical-align-middle">
+        <a class="ui-button-item" data-bind='click: importHandle'><i class="uifont icon-import margin-right-5"></i>导入</a>
+        <a class="ui-button-item" data-bind='click: exportHandle'><i class="uifont icon-export margin-right-5"></i>导出</a>
+      </div>
+    </div>
+    <div id="packRefer" u-meta='{"type":"uiRefer","data":"PackRef","field":"packRefer"}' style="display:none;">
+      <input readonly="readonly"/>
+      <span class="ui-icon uifont icon-bar refer"></span>
+    </div>
+    <div class="ui-table-container margin-bottom-30">
+      <style>
+        /*#grid_PriceAdjustDetailItems_grid .u-grid-header-link[field=price] {
+          text-align: center !important;
+        }*/
+      </style>
+        <div u-meta='{"id":"grid_PriceAdjustDetailItems","data":"PriceAdjustDetailItems","type":"grid","editable":true,"multiSelect":true,"showNumCol":true}'>
+                    <div options='{"field":"productShowCode","dataType":"String","title":"产品编码","editable":false,"required":true}'></div>
+                    <div options='{"field":"productShowName","dataType":"String","title":"产品名称","editable":false}'></div>
+                    <div options='{"field":"packProCode","dataType":"String","title":"包件编码","editType":"packRefRender","required":true}'></div>
+                    <div options='{"field":"packProName","dataType":"String","title":"包件名称","editable":false}'></div>
+                    <!-- <div options='{"field":"productGroup","dataType":"String","title":"产品组","editable":false}'></div>
+                    <div options='{"field":"productSeriousName","dataType":"String","title":"产品系列","editable":false}'></div> -->
+                    <!-- <div options='{"field":"channelId","dataType":"String","title":"渠道类型","renderType":"ncReferRender","editType":"ncReferEditType","showField":"channelName","editOptions":{"validType":"string","rel":{"refpk":"channelId","refname":"channelName","refcode":"channelCode"}}}'></div> -->
+                    <div options='{"field":"channelCode","dataType":"String","title":"渠道类型","editOptions":{"type":"combo","datasource":"channeltypeSrc","onlySelect":true},"editType":"combo","renderType":"comboRender"}'></div>
+                    <div options='{"field":"agencypartitionId","dataType":"String","title":"办事处分区","renderType":"ncReferRender","editType":"ncReferEditType","showField":"agencypartitionName","editOptions":{"validType":"string","rel":{"refpk":"agencypartitionId","refname":"agencypartitionName","refcode":"agencypartitionCode"}}}'></div>
+                    <div options='{"field":"officeId","dataType":"String","title":"办事处","renderType":"ncReferRender","editType":"ncReferEditType","showField":"officeName","editOptions":{"validType":"string","rel":{"refpk":"officeId","refname":"officeName"}}}'></div>
+                    <div options='{"field":"customerId","dataType":"String","title":"客户","renderType":"ncReferRender","editType":"ncReferEditType","showField":"customerName","editOptions":{"validType":"string","rel":{"refpk":"customerId","refname":"customerName"}}}'></div>
+                    <div options='{"field":"price","dataType":"Float","title":"价格","editType":"float","required":true,"editOptions":{"validType":"float","minNotEq":"0"}}'></div>
+                    <!-- <div options='{"field":"price","dataType":"Float","title":"价格","editType":"float"}'></div> -->
+                    <div options='{"field":"creator","dataType":"String","title":"创建人","editable":false,"visible":false}'></div>
+                    <div options='{"field":"creationTime","dataType":"Datetime","title":"创建时间","editable":false,"visible":false}'></div>
+                    <div options='{"field":"modifier","dataType":"String","title":"最后修改人","editable":false,"visible":false}'></div>
+                    <div options='{"field":"modifiedTime","dataType":"Datetime","title":"最后修改时间","editable":false,"visible":false}'></div>
+                    <div options='{"field":"note","dataType":"String","title":"备注"}'></div>
+        </div>
+    </div>
+  </div>
+  </div>
+</div>
+<!-- 单据详情页 -->
+<div class="ui-bill-detail ui-panel" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span>促销基础价调价单</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-primary" data-bind="click: retListPanel">返回
+      </a>
+      <a class="ui-btn ui-btn-green" data-bind="click: detail2bill">编辑
+      </a>
+    </div>
+  </div>
+  <div id="bpmhead"></div>
+  <div id="bpmfoot"></div>
+  <div class="ui-panel-head">
+    <div class="ui-item">
+      <div class="ui-name">调价单编码：</div>
+      <div class="ui-inputarea">
+        <div class="ui-textonly" data-bind='text: PriceAdjustList.ref("code")'></div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">调价单编码：</div>
+      <div class="ui-inputarea">
+        <div class="ui-textonly" data-bind='text: PriceAdjustList.ref("name")'></div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">审核状态：</div>
+      <div class="ui-inputarea">
+        <div class="ui-textonly" data-bind='text: approveFormat("PriceAdjustList", "auditStatus")'></div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">备注：</div>
+      <div class="ui-inputarea">
+        <div class="ui-textonly" data-bind='text: PriceAdjustList.ref("note")'></div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="ui-bill-body">
+    <div class="margin-bottom-10">
+    </div>
+    <div class="ui-table-container margin-bottom-30">
+        <div u-meta='{"id":"grid_PriceAdjustDetailItems2","data":"PriceAdjustDetailItems","type":"grid","editable":false,"multiSelect":false,"showNumCol":true}'>
+                    <div options='{"field":"productShowCode","dataType":"String","title":"产品编码","editable":false}'></div>
+                    <div options='{"field":"productShowName","dataType":"String","title":"产品名称","editable":false}'></div>
+                    <div options='{"field":"packProId","dataType":"String","title":"包件编码","editable":false,"renderType":"ncReferRender","editType":"ncReferEditType","showField":"packProCode","editOptions":{"validType":"string","rel":{"refpk":"packProId","refcode":"packProCode","refname":"packProName","productGroupName":"productGroup","saleSeriesId":"productSeriousId","saleSeriesName":"productSeriousName"}}}'></div>
+                    <div options='{"field":"packProName","dataType":"String","title":"包件名称","editable":false}'></div>
+                    <!-- <div options='{"field":"productGroup","dataType":"String","title":"产品组","editable":false}'></div>
+                    <div options='{"field":"productSeriousName","dataType":"String","title":"产品系列","editable":false}'></div> -->
+                    <!-- <div options='{"field":"channelId","dataType":"String","title":"渠道类型","renderType":"ncReferRender","editType":"ncReferEditType","showField":"channelName","editOptions":{"validType":"string","rel":{"refpk":"channelId","refname":"channelName"}}}'></div> -->
+                    <div options='{"field":"channelCode","dataType":"String","title":"渠道类型","editOptions":{"type":"combo","datasource":"channeltypeSrc","onlySelect":true},"editType":"combo","renderType":"comboRender"}'></div>
+                    <div options='{"field":"agencypartitionName","dataType":"String","title":"办事处分区"}'></div>
+                    <div options='{"field":"officeId","dataType":"String","title":"办事处","renderType":"ncReferRender","editType":"ncReferEditType","showField":"officeName","editOptions":{"validType":"string","rel":{"refpk":"officeId","refname":"officeName"}}}'></div>
+                    <div options='{"field":"customerId","dataType":"String","title":"客户","renderType":"ncReferRender","editType":"ncReferEditType","showField":"customerName","editOptions":{"validType":"string","rel":{"refpk":"customerId","refname":"customerName"}}}'></div>
+                    <div options='{"field":"price","dataType":"String","title":"价格","editType":"Float"}'></div>
+                    <div options='{"field":"note","dataType":"String","title":"备注"}'></div>
+                    <div options='{"field":"creator","dataType":"String","title":"创建人","editable":false,"visible":false}'></div>
+                    <div options='{"field":"creationTime","dataType":"Datetime","title":"创建时间","editable":false,"visible":false}'></div>
+                    <div options='{"field":"modifier","dataType":"String","title":"最后修改人","editable":false,"visible":false}'></div>
+                    <div options='{"field":"modifiedTime","dataType":"Datetime","title":"最后修改时间","editable":false,"visible":false}'></div>
+        </div>
+    </div>
+  </div>
+  <div class="ui-bill-footer">
+  </div>
+</div>
+<!-- 促销基础价参照对话框 -->
+<div id="dialog_detailrefer" style="display:none;">
+	<div class="u-msg-title">
+		<h4>请选择</h4>
+	</div>
+	<div class="u-msg-content">
+		<div class="ui-panel-head ui-bill-head">
+			<div id="pricerefer-searchcontent" class="ui-searchbox-content">
+
+	    </div>
+	    <div class="clearfix"></div>
+	    <div class="ui-searchbox-footer">
+	      <!--<div class="ui-search-more hidden">
+	          <a>更多<i class="uifont icon-down"></i></a>
+	      </div>-->
+
+	      <div class="ui-search-btn u-text-align-right margin-top-10 margin-right-20">
+          <a class="ui-btn ui-btn-primary"
+	        data-bind="click:cleanDetailReferSearch">清空
+	        </a>
+	        <a class="ui-btn ui-btn-green margin-right-5"
+	        data-bind="click: searchDetailRefer">搜索
+	        </a>
+	      </div>
+	      <div class="clearfix"></div>
+	    </div>
+		</div>
+		<div u-meta='{"id":"grid_PriceAdjustDetailRefer","data":"PriceAdjustDetailRefer","type":"grid","editable":false,"multiSelect":true,"showNumCol":true,"columnMenu":false}'>
+      <div options='{"field":"productShowCode","dataType":"String","title":"产品编码","editable":false}'></div>
+      <div options='{"field":"productShowName","dataType":"String","title":"产品名称","editable":false}'></div>
+      <div options='{"field":"packProId","dataType":"String","title":"包件编码","editable":false,"renderType":"ncReferRender","editType":"ncReferEditType","showField":"packProCode","editOptions":{"validType":"string","rel":{"refpk":"packProId","refcode":"packProCode","refname":"packProName","productGroupName":"productGroup","saleSeriesId":"productSeriousId","saleSeriesName":"productSeriousName"}}}'></div>
+      <div options='{"field":"packProName","dataType":"String","title":"包件名称","editable":false}'></div>
+      <!-- <div options='{"field":"productGroup","dataType":"String","title":"产品组","editable":false}'></div>
+      <div options='{"field":"productSeriousName","dataType":"String","title":"产品系列","editable":false}'></div> -->
+      <div options='{"field":"channelId","dataType":"String","title":"渠道类型","renderType":"ncReferRender","editType":"ncReferEditType","showField":"channelName","editOptions":{"validType":"string","rel":{"refpk":"channelId","refname":"channelName"}}}'></div>
+      <div options='{"field":"agencypartitionName","dataType":"String","title":"办事处分区"}'></div>
+      <div options='{"field":"officeId","dataType":"String","title":"办事处","renderType":"ncReferRender","editType":"ncReferEditType","showField":"officeName","editOptions":{"validType":"string","rel":{"refpk":"officeId","refname":"officeName"}}}'></div>
+      <div options='{"field":"customerId","dataType":"String","title":"客户","renderType":"ncReferRender","editType":"ncReferEditType","showField":"customerName","editOptions":{"validType":"string","rel":{"refpk":"customerId","refname":"customerName"}}}'></div>
+      <div options='{"field":"price","dataType":"String","title":"价格","editType":"Float"}'></div>
+      <div options='{"field":"creator","dataType":"String","title":"创建人","editable":false,"visible":false}'></div>
+      <div options='{"field":"creationTime","dataType":"Datetime","title":"创建时间","editable":false,"visible":false}'></div>
+      <div options='{"field":"modifier","dataType":"String","title":"最后修改人","editable":false,"visible":false}'></div>
+      <div options='{"field":"modifiedTime","dataType":"Datetime","title":"最后修改时间","editable":false,"visible":false}'></div>
+      <div options='{"field":"note","dataType":"String","title":"备注"}'></div>
+   </div>
+	  <div class="pagination-right">
+	    <div id='paginationDetailRefer' class='pagination u-pagination pagination-sm'
+	    u-meta='{"type":"pagination","data":"PriceAdjustDetailRefer","pageChange":"pageChangeDetailRefer","sizeChange":"sizeChangeDetailRefer"}'></div>
+	  </div>
+	</div>
+	<div class="u-msg-footer">
+    <a class="ui-btn ui-btn-primary J-cancel margin-right-5" data-bind="click: cancelDetailRefer">取消</a>
+    <a class="ui-btn ui-btn-green J-ok" data-bind="click:confirmDetailRefer">确定</a>
+	</div>
+</div>
+<div id="exportFiel"></div>
+<div id="exportAddTpl"></div>
+<div id="importFiel"></div>

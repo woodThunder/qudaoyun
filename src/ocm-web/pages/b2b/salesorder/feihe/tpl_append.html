@@ -1,0 +1,115 @@
+<!-- 审批日志 -->
+<div class="" style="display: none;" id="orderApprovalLogDtos">
+    <div class="">
+        <div class="u-tabs  ui-tabs">
+            <div class="u-tabs__tab-bar" style="margin: 0;">
+                <a id="tab1" href="#tab-panel-1" class="u-tabs__tab is-active">审批日志</a>
+            </div>
+            <!-- 审批日志 -->
+            <div class="u-tabs__panel is-active" id="tab-panel-1">
+                <div class="ui-table-container margin-bottom-30">
+                    <ui-grid params='options:$root.gridlogsSource,vm:$root'></ui-grid>
+                </div>
+            </div>
+            <!-- 审批日志结束 -->
+        </div>
+    </div>
+</div>
+<!-- 查看经销商库存弹窗 -->
+<div style="display:none">
+    <div id="dialog_check_inventory">
+        <div class="u-msg-title">
+            <h4>经销商库存</h4>
+        </div>
+        <div class="u-msg-content">
+            <ui-grid params='options:$root.gridinventorysSource,vm:$root'></ui-grid>
+            <div class="clearfix"></div>
+        </div>
+        <div class="u-msg-footer">
+            <a class="u-msg-ok ui-btn ui-btn-green">关闭</a></div>
+    </div>
+</div>
+<!-- 修改收货地址弹窗 -->
+<div  id="dialogEditAddress">
+    <!-- <ui-dialogcard params='datasource:$root.dialogeditaddressSource,ref:$root.dialogeditaddresscomp,dt:$root.salesorderAddress'>
+    </ui-dialogcard> -->
+    <ui-dialogcard params='datasource:$root.dialogeditaddressSource,ref:$root.dialogeditaddresscomp,dt:$root.salesorderAddress'>
+    </ui-dialogcard>
+</div>
+
+<!-- <div style="display:none">
+    <div id="dialog_edit_address">
+        <div class="u-msg-title">
+            <h4>修订收获地址</h4>
+        </div>
+        <div class="u-msg-content">
+            <ui-card params='datasource:$root.cardeditaddressSource,vm:$root,dt:$root.salesorderCard'></ui-card>
+            <div class="clearfix"></div>
+        </div>
+        <div class="u-msg-footer">
+            <a class="u-msg-ok ui-btn ui-btn-green">保存</a></div>
+    </div>
+</div> -->
+
+<!-- 订单拆分 -->
+<div class="ui-bill-split ui-panel" style="display: none;" id="salesorder-operatepanel">
+        <div>
+            <div class="page-title">
+                <span>销售订单拆分</span>
+            </div>
+        </div>
+        <div>
+            <div>
+                <div class="oc-breadcrumb">
+                </div>
+            </div>
+        </div>
+        <div class="ui-panel-btn-bg">
+            <div class="ui-operate-btn">
+                <a class="ui-btn ui-btn-primary" data-bind="click: retListPanel">取消
+                </a>
+                <span class="J-bill-audited">
+                    <a class="ui-btn ui-btn-green" data-bind="click: saveBillSplite">保存
+                    </a>
+                </span>
+            </div>
+        </div>
+        <div id="splitorderaddItemsRef" u-meta='{"type":"uiRefer","data":"ItemRefList","field":"productref"}'
+        style="display:none;">
+            <input readonly="readonly" id="splitorderaddItemsIn" />
+            <span class="ui-icon uifont icon-bar refer"></span>
+        </div>
+        <div id="splitorderaddSupplementItemsRef"
+            u-meta='{"type":"uiRefer","data":"ItemRefList","field":"supplementproductref"}'
+            style="display:none;">
+            <input readonly="readonly" id="splitorderaddSupplementItemsIn" />
+            <span class="ui-icon uifont icon-bar refer"></span>
+        </div>
+        <div class="ui-panel-head ui-bill-head ">
+                <div style="margin-top: 20px">
+                        <ui-detail params='datasource:$root.splitCardOption,vm:$root,dt:$root.splitCardMeta'></ui-detail>
+                </div>
+        </div>
+        <ui-buttons params='datasource:$root.buttonSplitSource,vm:$root'></ui-buttons>
+        <div class="u-tabs  ui-tabs">
+            <div class="u-tabs__tab-bar">
+                <a id="tab1" href="#tab-panel-1" class="u-tabs__tab is-active" data-bind="click:splitCheckGoods">商品信息</a>
+                <a id="tab2" href="#tab-panel-2" class="u-tabs__tab" data-bind="click:splitCheckBom">BOM结构信息</a>
+            </div>
+            <div class="u-tabs__panel is-active" id="tab-split-panel-1">
+                <div class="ui-table-container margin-bottom-30">
+                    <ui-grid params='options:$root.splitGrid1Option,vm:$root'>
+                    </ui-grid>
+                </div>
+            </div>
+            <div class="u-tabs__panel" id="tab-split-panel-2">
+                <div class="ui-table-container margin-bottom-30">
+                    <ui-grid params='options:$root.splitGrid2Option,vm:$root'>
+                    </ui-grid>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui-bill-footer">
+    </div>
+</div>

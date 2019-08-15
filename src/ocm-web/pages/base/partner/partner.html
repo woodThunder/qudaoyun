@@ -1,0 +1,139 @@
+<div class="ui-panel">
+  <div class="u-row">
+    <div class="u-col-4  page-title">
+      <span>合伙人</span>
+    </div>
+  </div>
+  <div class="u-row">
+    <div class="u-col-4">
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="u-row margin-top-20" style="background:#fafdfc;height:60px">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-green margin-right-5">导出
+      </a>
+      <a class="ui-btn ui-btn-primary">导入
+      </a>
+    </div>
+  </div>
+
+  <div class="ui-searchbox">
+    <div id="partner-searchcontent" class="ui-searchbox-content">
+
+    </div>
+    <div class="clearfix">
+
+    </div>
+    <div class="ui-searchbox-footer">
+      <div class="ui-search-more hidden">
+          <a>更多<i class="uifont icon-down"></i></a>
+      </div>
+
+      <div class="ui-search-btn">
+        <a class="ui-btn ui-btn-green margin-right-5"
+        data-bind="click: event.search">搜索
+        </a>
+        <a class="ui-btn ui-btn-primary"
+        data-bind="click: event.cleanSearch">清空
+        </a>
+      </div>
+      <div class="clearfix">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-panel-body">
+      <div class="margin-top-20">
+        共搜索到<span data-bind="text:partnerList.totalRow"></span>条数据
+      </div>
+      <div class="margin-bottom-10">
+          <a class="ui-btn ui-btn-orange margin-right-5" id="user-action-add"
+          data-bind="click: event.beforeEdit.bind($data,-1)"><i class="uifont icon-plus margin-right-5"></i>新增
+        </a>
+        <a class="ui-btn ui-btn-primary" id="user-action-del"
+          data-bind="click: event.delRow">批量删除
+        </a>
+      </div>
+      <div class="ui-table-container">
+          <div id="partner"
+               u-meta='{"id":"grid_partner","data":"partnerList","type":"grid","editable":false,"multiSelect":true,"showNumCol":false}'>
+                      <div options='{"field":"name","dataType":"String","title":"姓名"}'></div>
+                      <div options='{"field":"tel","dataType":"String","title":"电话"}'></div>
+                      <div options='{"field":"credentialNo","dataType":"String","title":"身份证号"}'></div>
+                      <div options='{"field":"status","dataType":"integer","title":"状态"}'></div>
+                      <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"rendertype.operation"}'></div>
+          </div>
+          <div class="ui-statistics margin-top-10">
+            <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择<span class="font-c-blue" data-bind="text:partnerList.selectedIndices().length"></span>项数据
+          </div>
+          <div class="pagination-right">
+            <div id='pagination' class='pagination u-pagination pagination-sm'
+            u-meta='{"type":"pagination","data":"partnerList","pageChange":"event.pageChange","sizeChange":"event.sizeChange"}'></div>
+          </div>
+      </div>
+    </div>
+</div>
+<div id="dialog_content" style="display:none;">
+    <div class="u-msg-title">
+        <h4>基本信息</h4>
+    </div>
+    <div class="u-msg-content">
+      <div class=" u-row">
+        <div class="u-col-4 ">
+          <label for="code" class="u-input-label right">姓名:</label>
+        </div>
+        <div class="u-col-6 ">
+          <div class="u-input-group-before padding-left-10 " style="color: red;">*
+          </div>
+          <div u-meta='{"id":"name","type":"u-text","data":"partnerCard","field":"name"}'>
+            <input type="text" class="u-form-control padding-left-20" placeholder="姓名不能为空">
+          </div>
+        </div>
+      </div>
+      <div class=" u-row margin-top-20">
+        <div class="u-col-4 ">
+          <label for="text" class="u-input-label right">电话:</label>
+        </div>
+        <div class="u-col-6 ">
+          <div class="u-input-group-before padding-left-10 ">
+          </div>
+          <div u-meta='{"id":"tel","type":"u-text","data":"partnerCard","field":"tel"}'>
+            <input type="text" class="u-form-control padding-left-20" placeholder="">
+          </div>
+        </div>
+      </div>
+      <div class=" u-row margin-top-20">
+        <div class="u-col-4 ">
+          <label for="tel" class="u-input-label right">身份证号:</label>
+        </div>
+        <div class="u-col-6 ">
+          <div class="u-input-group-before padding-left-10 ">
+          </div>
+          <div u-meta='{"id":"credentialNo","type":"u-text","data":"partnerCard","field":"credentialNo"}'>
+            <input type="text" class="u-form-control padding-left-20" placeholder="">
+          </div>
+        </div>
+      </div>
+     <!-- 一个属性开始-->
+     <div class=" u-row margin-top-20">
+        <div class="u-col-4 ">
+          <label for="code" class="u-input-label right">状态:</label>
+        </div>
+        <div class="u-col-6 ">
+           <div u-meta='{"id":"status","type":"u-text","data":"partnerCard","field":"status"}'>
+               <input type="text" class="u-form-control padding-left-20" placeholder="">
+            </div>
+        </div>
+      </div>
+      <!-- 一个属性结束-->
+    </div>
+    <div class="u-msg-footer">
+      <a class="ui-btn ui-btn-green margin-right-5 J-ok">保存
+      </a>
+      <a class="ui-btn ui-btn-primary J-cancel">取消
+      </a>
+    </div>
+</div>

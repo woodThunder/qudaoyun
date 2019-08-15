@@ -1,0 +1,36 @@
+<div class="ui-panel">
+  <div>
+    <div class="page-title">
+      <span>订单标记</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+  <div class="ui-panel-body">
+    <div class="ui-panel-body-head">
+      <div class="ui-panel-body-head-left">
+        <ui-buttons-menu params='datasource:$root.buttonSource,vm:$root'>
+        </ui-buttons-menu>
+      </div>
+    </div>
+    <div class="ui-table-container">
+      <ui-grid params='options:$root.gridOption,vm:$root'>
+      </ui-grid>
+      <div class="ui-statistics margin-top-10">
+        已选择
+        <span class="font-c-blue" data-bind="text:ordermarkList.selectedIndices().length"></span>项数据
+      </div>
+      <div class="pagination-right">
+        <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"ordermarkList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+      </div>
+    </div>
+  </div>
+</div>
+<ui-dialogcard params='datasource:$root.dialogcardSource,ref:$root.dialogcardcomp'>
+</ui-dialogcard>
+

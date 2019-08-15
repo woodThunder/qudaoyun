@@ -1,0 +1,639 @@
+@charset "utf-8";
+/* CSS Document */
+p{ margin: 0}
+.registerbody { position: absolute; height: 100%; width:100%}
+.usertitle { float: left; width: 100%;}
+.usertitle span {     float: left;
+    width: 50%;
+    text-align: center;
+    background-color: #eee;
+    padding: 10px 0;
+    border-left: 1px solid #ccc;
+    cursor: pointer;}
+.usertitle span:first-child{border-left: none}
+.usertitle span.active,.usertitle span:hover { background: #e3e3e3}
+/***********************登录*******************************/
+.main_box {
+    position: absolute; top:35%; left:35%;  width:30%;
+    background:#fff;box-shadow:  0 1px 3px  rgba(0,0,0,.12),0 1px 2px  rgba(0,0,0,.24);
+    font: 13px/1.5 tahoma,arial,\5b8b\4f53}
+.main_box .setting {position: absolute; top: 5px; right: 10px; width: 10px; height: 10px;}
+.main_box .setting a {color: #FF6600;}
+.main_box .setting a:hover {color: #555;}
+.login_logo {margin-bottom: 20px; height: 45px; text-align: center;}
+.login_logo img {height: 45px;}
+.login_msg {text-align: center; font-size: 16px;}
+.login_form {padding-top: 30px; font-size: 16px;float: left;
+    width: 100%;}
+.login_form input[type='text'],.login_form input[type='password'] {width: 80%;
+    margin-left: 10%;
+    border-radius: 0;
+    background: #fff; padding:10px 0; text-indent:15px; border: 0;
+    outline: none;
+    border-bottom: 1px solid #ccc;}
+.login_form input:-webkit-autofill{
+    -webkit-box-shadow:0 0 0px 1000px white inset;
+}
+.login_box .form-control {display: inline-block; *display: inline; zoom: 1; width: auto; font-size: 18px;}
+.login_box .form-control.x319 {width: 319px;}
+.login_box .form-control.x164 {width: 164px;}
+.login_box .form-group {margin-bottom: 15px;}
+.login_box .form-group label.t {width: 120px; text-align: right; cursor: pointer;}
+.login_box .form-group.space {}
+.login_box .form-group img {margin-top: 1px; height: 32px; vertical-align: top;}
+.login_box .m {cursor: pointer; margin-left:10%;font-weight:normal; font-size:13px}
+.bottom {text-align: center; font-size: 12px;}
+.login_box button { border: none; cursor: pointer}
+#registerBtn {width: 35%;
+    padding: 10px 0;
+    border-radius: 0;
+    background: #f77823; margin-left:10%;float: left;
+    margin-bottom: 5%; color: #fff}
+#registerBtn:hover { background:#d96314}
+#loginBtn {width: 35%;
+    padding: 10px 0;
+    border-radius: 0;
+    background: #39f; margin-left:10%;float: left;
+    margin-bottom: 5%; color: #fff}
+#loginBtn:hover { background:#1976d2}
+#j_remember{display: inline-block;
+    vertical-align: text-bottom; }
+.login_bg {
+    background: -ms-linear-gradient(top, #1976d2,  #f6f6f8);        /* IE 10 */
+    background:-moz-linear-gradient(top,#1976d2,#f6f6f8);/*火狐*/
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#1976d2), to(#f6f6f8));      /* Safari 4-5, Chrome 1-9*/
+    background: -webkit-linear-gradient(top, #1976d2, #f6f6f8);   /*Safari5.1 Chrome 10+*/
+    background: -o-linear-gradient(top, #1976d2, #f6f6f8);  /*Opera 11.10+*/
+    background-size:cover; position:absolute; width:100%; height:100%;top:0;}
+.login_bg .logo2 {position: absolute;
+    top: 13%;
+    left: 50%;
+    width: 316px;
+    height: auto;
+    margin-left:-166px;
+}
+.loginnav { float:left; width:100%;border-bottom:1px solid #ccc}
+.loginnav div { float:left; width:50%; text-align:center; color:#000; background:#f5f5f5; padding: 15px 0; cursor:pointer}
+.loginnav div.navactive { background:#fff}
+@media only screen and (max-width:900px){
+    .login_bg .logo2 img { width:100%}
+    .login_bg .logo2{left:30%;width:30%;margin:0}
+    .main_box {left:24%;width:46%}
+}
+/***********注册*****************/
+.header {margin-bottom: 0px;
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    z-index: 999;
+    background: #232a34;
+    border-radius: 0;
+    border: none;
+    height: 60px;;}
+.header .logo {
+    color: #f7f7f7;
+    top: 15px;
+    padding: 0;
+    position: absolute;
+    line-height: normal;
+}
+.header .logo i {font-size: 32px!important;}
+.tenantName img { height: 35px}
+.re_con{    float: left;
+    width: 100%;}
+
+.re_con .mic {float: left;  margin: 0 0 0 20%; width: 70%; padding: 5% 0;}
+.tenantInfo .mic {padding: 2% 0;}
+.re_con .mic .rowm { float: left; width: 100%;    padding: 10px 0; position: relative}
+.tenantInfo.re_con .mic .rowm { padding: 0 0}
+.re_con .mic .rowm .m_left { float: left;  text-align: right; font-size: 14px;margin-top: 13px; width: 15%}
+
+.re_con.tenantInfo .mic .rowm .m_left,.re_con.tenantMo .mic .rowm .m_left{width:auto; text-align: right;    height: 36px;
+    line-height: 36px; margin-top: 0;color: #666;}
+.tenantInfo .tenantInfo_headimg {float: left;margin: 5% 0 0 10%;width: 8%}
+.tenantMo .tenantInfo_headimg {float: left;margin: 5% 0 0 10%; width: 8%}
+.tenantMo .tenantInfo_headimg .glyphicon { font-size: 12px}
+.tenantInfo_headimg img { width: 100%; max-width: 100px}
+.tenantMo .mic ,.tenantInfo .mic { margin: 0 0 0 10%;padding: 2% 0;}
+.tenantInfo .mic .rowm p{ height: auto!important; word-break: break-all;padding-left: 10px; text-indent: 0!important;}
+
+.re_con.tenantMo .mic .rowm input, .re_con.tenantMo .mic .rowm select { font-size: 14px; margin: 0 0 0 10px}
+.re_con.tenantMo .mic .rowm i.must { top: 33%}
+.re_con.passwordInfo .mic .rowm .m_left,.re_con.passwordMo .mic .rowm .m_left{width: 150px; text-align: right;    height: 36px;
+    line-height: 36px; margin-top: 0;color: #666;}
+.re_con .com_right .mic{margin: 0 0 0 5%;}
+.re_con .com_right .mic .rowm .m_left { width: 20%}
+.re_con .register_right .mic .rowm .m_left { width: 22%}
+.re_con .register3 .mic .rowm .m_left {text-align: right;}
+.re_con .com_right .mic .rowm .yanzhengma{    float: left;
+    background-color: #39b588;
+    margin: 9px 0 0 5%; padding: 0 1%}
+.re_con .mic .rowm input,.re_con .mic .rowm select{ float: left;
+    height: 36px;
+    width: 60%;
+    margin: 6px 0 0 10px;
+    text-indent: 15px;
+    font-size: 12px;
+    color: #191919; border: 1px solid #d7d7d7;}
+.re_con .mic .rowm input[disabled]{ color: #999}
+.re_con .mic .rowm input:focus,.re_con .mic .rowm select:focus {border: 1px solid #6bcaea;}
+.re_con .com_right .mic .rowm input,.re_con .com_right .mic .rowm select{width: 50%;}
+.re_con .mic .rowm p {float: left;
+    height: 36px;
+    width: 60%;
+    margin: 0;
+    text-indent: 10px;
+    font-size: 14px;
+    color: #333;line-height: 36px;}
+.re_con .mic .rowmp p {line-height: 36px;}
+
+.re_con .mic .rowm select { float: left; margin-left: 10px;height: 36px;    width: 60%; text-indent: 15px; }
+.re_con .mic .rowm #piccode { margin-top: 9px; height: 36px; width: 100px; float: left;    margin-left: 10px; cursor: pointer}
+#register1 .mic .rowm input { width: 60%}
+#register1 .mic .rowm input.piccode { width: 103px;margin:8px 0 0 10px;}
+
+.re_con .mic .rowm i #yanzheng,.re_con .mic .rowm i .latertry{cursor: pointer;    width: 100%;
+    text-indent: inherit;
+    margin: 0 auto; color: #fff}
+.re_con .nextbtn { float: left; clear: both; background: #1baede; height: 35px;    text-align: center;
+    color: #fff;
+    line-height: 35px;
+    margin: 15px 0 0 22%;cursor: pointer; padding: 0 20px;border-radius: 2px;}
+.re_con .nextbtn:hover{ background: #189cc7}
+.re_con .mic .rowm .tips { float: left; margin:15px 0 0 22%; color: #f67823; display: none; font-size: 12px}
+.re_con .mic .rowm .tipsp { float: left; margin:15px 0 0 1%; color: #f67823; display: none}
+.re_con .register3 .mic .rowm .tips { margin:15px 0 0 2px }
+.re_con .mic .rowm i.must {     color: #f33d4a;
+    top: 33%;
+    position: absolute;
+    font-style: normal;
+    right: 33%;
+    left: inherit;font-size: 14px;width: 13px;}
+.re_con .register3 { margin: 3% 0 0 5%}
+
+.register2 .nextbtn { margin-bottom: 30px;border-radius: 2px;}
+.re_con .spaceline { float: left; clear: both; height: 1px; background: #ccc; margin: 15px 0 5px 0; width: 80%}
+.re_con .mic .rowm.address select{ width: 15%; text-indent: 0}
+.re_con.tenantMo .mic .rowm.address select{width: 100%;padding-left: 15px;}
+.register3 .re3con h3,.register3 .re3con p { font-size: 20px; text-align: center; margin-top: 5%; float: left; width: 100%}
+.register3 .re3con p { color: #eb4047; font-size: 14px}
+.errorinput {box-shadow: 0 0 4px #f00;border: 1px solid #f00;}
+
+.re_con .userInfo_text {width: 90%;
+    margin: 0 0 0 5%;}
+.re_con  .userInfo_Cbtn{    background: none;
+    color: #333;
+    margin-left: 5%;
+    clear: none;
+    border: 1px solid #ccc;}
+/***********************首页**********************************************/
+
+.main_con .mic .rowm { margin-top: 10px}
+.main_con .mic { margin:30px 0 0 26%}
+.main_con .mianbaoxie{    float: left;
+    width: 100%;
+    text-indent: 5%;
+    font-size: 2rem;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;}
+.main_con .nextbtn {margin: 20px 0 0 37%;}
+.content .navlist.fix { position: fixed; top: 0}
+.main_con .um_add { float: left; width: 100%}
+.main_con .um_add .add_btn {float: right; width: 100px; background: #f77823; color: #fff;    text-align: center; margin: 10px 0 0 0; padding: 5px 0; cursor: pointer;}
+.main_con table { float: left; width: 100%; margin: 10px 0 0 0}
+.main_con table tr td { border: 1px solid #ccc;    text-align: center;padding: 10px 0;}
+.main_con table tr:first-child { background: #eee}
+.main_con .userlisttable tr td a { cursor: pointer}
+
+.main_con .applisttable { width: 55%}
+
+.main_con .appchild{width: 35%; margin-left: 10%;}
+
+/*************************应用管理****************************/
+.appbuy {    padding-left: 40px;
+    font-size: 16px;
+    position: relative;
+    width: 95%; float: left}
+.weigou { margin-top: 1%}
+.appmanlist .brief { height: 66px; overflow: hidden}
+.appbuy i {position: absolute;
+    width: 92%;
+    height: 1px;
+    background-color: #ccc;
+    top: 50%;
+    right: 0;}
+.appmanlist { width: 95%; float: left; padding-bottom: 10px;}
+.appmanlist ul li {float: left; list-style: none; width: 30%; background: #fff;/*box-shadow:  0 1px 3px  rgba(0,0,0,.12),0 1px 2px  rgba(0,0,0,.24);*/ position: relative; margin-top: 2%; font-size: 12px; margin-left: 5%}
+.appmanlist ul li:first-child{margin-left: 0}
+.appmanlist ul li:nth-child(3n+1) { margin-left: 0;clear: both;}
+.appmanlist .app_logo i{ font-size: 50px; color: #0bc0ad}
+.appmanlist li:nth-child(2) .app_logo i{ color: #ffa644}
+.appmanlist li:nth-child(3) .app_logo i{  color: #71d1f1}
+.appmanlist li:nth-child(4) .app_logo i{  color: #f81010}
+.appmanlist li:nth-child(5) .app_logo i{  color: #6ace28}
+.appmanlist .app_logo{ padding: 2% 0 0 7%; display: inline-block;vertical-align: top;width: 22%;}
+.appmanlist .app_logo .app_logoicon {    position: absolute;
+    width: 18%;
+    top: 12px;}
+.appmanlist .app_logo .app_logoicon img { width: 100%}
+.appmanlist .app_text { display: inline-block; margin: 3% 0 0 2%;; width: 65%}
+.appmanlist .app_text p { color: #949494; margin: 5% 0 0 0; float: right; width: 100%;padding-left: 10%;}
+
+.appmanlist .app_text p.remainDays { margin-top: 0%;    padding-bottom: 10px;}
+.appmanlist .app_text .tit{    font-size: 15px;
+    margin-top: 10%;
+    float: left;
+    width: 100%;margin-left: 10%;}
+.appmanlist .app_text p span{ float: right; height: 25px; line-height: 25px}
+.appmanlist .app_text p span em { font-weight: normal; color: #333; font-style: normal}
+.appmanlist .app_text p.remainDays span em { color: #f33d4a; font-size: 18px}
+.appmanlist .app_text p.remainDays span em.renew{color: #333;font-size: 14px;}
+.appmanlist .app_text p span:first-child{ margin-left: 0}
+.appmanlist .app_bottom { float: left; width: 100%; border-top: 1px solid #d7d7d7}
+.appmanlist .app_bottom span{ float: left; width: 49.5%; border-left: 1px solid #d7d7d7; text-align: center; color: #2788cc; padding: 3% 0; cursor: pointer}
+.appmanlist .app_bottom span:first-child{ border-left: 0; }
+.appmanlist .app_bottom p{text-align: center; color: #2788cc; padding: 3% 0; cursor: pointer; margin: 0}
+.appmanlist .right_top { position: absolute; right: 2%; top: 10%;}
+.appmanlist .right_top i { color: #ffb66c; font-size: 12px}
+.appmanlist .app_bott {width: 100%; border-top: 1px solid #ccc;     padding: 2% 0 4% 0;margin-top: 2%;}
+.appmanlist .app_bott a { color: #fb3e4c; float: right;margin-right: 3%; cursor: pointer}
+.appmanlist .right_top .disbuy{ color: #6daafc}
+.appwidth100 { width: 50%!important;}
+.arrow_up { position: fixed; width: 44px; height: 44px; background: #a6a8b1; right: 3%; bottom: 6%;
+    font-size: 25px;text-align: center; color: #fff; cursor: pointer; display: none}
+.arrow_up:hover{ background: #bcbcbc}
+
+.user_tit { float: left; width: 100%; background: #fff;/*box-shadow: 0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);*/}
+.user_tit .checkAll { float: left; height: 35px; line-height: 35px;color: #666; margin-left: 15px; cursor: pointer}
+.check_box i {    font-size: 10px;line-height: normal;}
+.user_tit .checkAll .check_box {     margin-top: 11px;float: left;}
+.user_tit .checkAll .check_box i{float: left;    margin: 2px 0 0 2px}
+.check_box {width: 16px; height: 16px; border: 1px solid #999; border-radius: 50%;display: inline-block;}
+.user_tit .checkAll span { margin-left: 6px}
+.u_sort,.u_filter { float: left; margin-left: 20px; display: none}
+.list_top{float: left;
+    width: 98%;
+    padding-bottom: 10px;
+    border-top: 1px solid #ebebeb;
+    margin-left: 1%;}
+.user_list { float: left; width: 100%;font-size: 12px;}
+.user_list ul { float: left; width: 100%; margin: 0; padding: 0}
+.user_list ul li{ position:relative;float: left; width: 100%;background: #fff;/*box-shadow: 0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);*/ list-style: none; height: 124px;}
+.user_list ul li .list_left { float: left;margin: 17px 0 0 3%; width: 12%; font-size: 14px}
+.user_list ul li input { border: 1px solid #fff;outline: none; overflow: hidden; width: 100%}
+.user_list ul li input.editthis{border: 1px solid #ccc;}
+.user_list ul li .list_right { float: left;width: 60%; color: #333}
+.user_list ul li .list_right span { float: left; margin-top: 17px;width: 40%}
+.user_list ul li .list_right span.u_app,.user_list ul li .list_right span.u_mail{ clear: both;}
+.user_list ul li .list_right span.u_app{ width: 80%}
+.user_list ul li .list_right span.u_time{ width: 50%}
+.user_list ul li .list_right span.u_come{ width: 20%}
+.user_list ul li .list_right span.u_mail input{ width: 75% }
+.user_list ul li .list_right span.u_tel input{ width: 65% }
+.user_list ul li em{ font-style: normal; color: #999;/*width: 33%;text-align: right;float: left;*/}
+.user_list ul li p { display: inline-block; padding: 0; margin: 0}
+.user_list ul li .check_box{    float: left;
+    margin: 20px 15px; cursor: pointer;text-align: center;}
+.check_box.ischoose { background: #1baede; color: #fff; border: none}
+.user_list ul li .list_bot { float: left; width: 100%;  height: 40px;position: relative}
+.user_list ul li .list_bot .u_setting { width: 100%; float: left; display: none;border-top: 1px solid #ebebeb;}
+.user_list ul li .list_bot i { position: absolute; font-size: 22px; color: #bfbfbf; top: 5px; right: 5%; cursor: pointer}
+.user_list ul li .list_bot i:hover{ color: #999999}
+.user_list ul li .list_bot .u_setting span{ float: right; width: 10%; text-align: center; color: #2788cc; border-left: 1px solid #ebebeb; height: 23px; margin-top: 9px; line-height: 23px; cursor: pointer}
+.user_list ul li .u_status { position: absolute; right: 3%; top: 6%}
+.user_list ul li .u_status i.openi{ width: 8px; height: 8px; background: #1baede; display: inline-block}
+.user_list ul li .u_status i.closei{ width: 8px; height: 8px; background: #f1b606; display: inline-block}
+.loadMore { float: left; width: 100%; text-align: center; color: #666; cursor: pointer; margin-top: 5px}
+.loadMore i { font-size: 16px; color: #bfbfbf}
+.user_list ul li .list_bot .u_setting2 { display: none}
+.user_list ul li .list_bot .u_setting span.dismodify { color: #999}
+/*************************应用管理详情****************************/
+
+.appmandetail { list-style: none; width: 100%; background: #fff;/*box-shadow:  0 1px 3px  rgba(0,0,0,.12),0 1px 2px  rgba(0,0,0,.24); */position: relative; font-size: 12px}
+.appmandetail .app_logo i{ font-size: 50px; color: #0bc0ad}
+.appmandetail .app_logo{ padding: 2% 0 0 4%; display: inline-block;vertical-align: top; width: 11%}
+.appmandetail .app_logo .app_logoicon {    position: absolute;
+    width: 7%;
+    top: 17px;;}
+.appmandetail .app_logo .app_logoicon img { width: 100%}
+.appmandetail .app_text { display: inline-block; margin: 4% 0 0 2%;; width: 80%}
+.appmandetail .app_text p { color: #949494; margin-top: 1%}
+.appmandetail .app_text .usedate { margin-top: 3%}
+.appmandetail .app_text .tit{ font-size: 16px}
+.appmandetail .app_text p span{ margin-left: 2%}
+.appmandetail .app_text p span em { font-weight: normal; color: #333; font-style: normal}
+.appmandetail .app_text p span:first-child{ margin-left: 0}
+.appmandetail .app_text  .xz { background: #fb3e4c; color: #fff; padding: 2px 5px;font-style: normal;margin-left: 3%; cursor: pointer}
+.appmandetail .right_top { position: absolute;
+    right: 14%;
+    top: 7%;
+    border: 1px solid #2788cc;
+    color: #2788cc;
+    padding: 5px 2%; cursor: pointer}
+.appmandetail .right_top i { color: #ffb66c; font-size: 12px}
+.appmandetail .app_text p.brief{ color: #333; margin-top: 3%}
+.appmandetail .app_bott {width: 100%; border-top: 1px solid #ccc;     padding: 2% 0 4% 0;margin-top: 2%;}
+.appmandetail .app_bott a { color: #fb3e4c; float: right;margin-right: 3%; cursor: pointer}
+.appdeatilpic { border-top: 1px solid #bfbfbf;  width: 90%; margin-left: 5%; padding-bottom: 2%}
+.appdeatilpic img { width: 80%;
+    margin: 3% 0 0 10%;}
+.goback {position: absolute;
+    right: 6%;
+    top: 7%;
+    border: 1px solid #cecece;
+    color: #333;
+    padding: 5px 2%; cursor: pointer; border-radius: 2px}
+.goback:hover { background: #f1f1f1}
+/*************************应用授权管理****************************/
+.appauthlist { width: 90%}
+.appauthlist ul li {width: 29.5%;list-style: none;background: #fff;/*box-shadow:  0 1px 3px  rgba(0,0,0,.12),0 1px 2px  rgba(0,0,0,.24); */position: relative; margin: 2% 0 0 3%; display: inline-block;padding: 1.5% 0; font-size: 12px}
+.appauthlist li .app_logo i{ font-size: 50px; color: #0bc0ad}
+.appauthlist li:nth-child(2) .app_logo i{ color: #ffa644}
+.appauthlist li:nth-child(3) .app_logo i{  color: #71d1f1}
+.appauthlist li:nth-child(4) .app_logo i{ color: #f81010}
+.appauthlist li:nth-child(5) .app_logo i{ color: #6ace28}
+.appauthlist .app_logo{ padding: 4% 0 0 10%; display: inline-block;vertical-align: top; width: 30%}
+.appauthlist .app_text { display: inline-block;margin: 5% 0 0 6%; width: 62%}
+.appauthlist .app_text p { color: #666; margin-top: 1%}
+.appauthlist .app_text p.peonum{color: #fb3e4c; font-size: 26px}
+.appauthlist .right_top{    position: absolute;
+    right: 10%;
+    top: 10%;
+    background: #1baede;
+    color: #fff;
+    padding: 2px 5px; cursor: pointer}
+.appauthlist .app_logo .app_logoicon {    position: absolute;
+    width: 20%;
+    top: 27px;}
+.appauthlist .app_logo .app_logoicon img { width: 100%}
+.tmpauth .app_logo i{ font-size: 30px; }
+.tmpauth .tmpauthbtn { width: 100%; text-align: center}
+.tmpauth .tmpcheck {width: 100%; text-align: center; cursor: pointer}
+.tmpauth .app_text p.peonum { font-size: 16px}
+.authlistbtn {cursor: pointer;
+    background: #1baede;
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+    padding: 0 7px;
+   margin:  0 auto;
+    height: 27px;
+    line-height: 27px;
+    width: 55px;}
+.authlistbtn:hover { background: #189cc7}
+#userlisttb tr:hover { background: none}
+@media only screen and (max-width: 1200px) {
+    .appmanlist li .app_logo i{ font-size: 30px;}
+    .appauthlist li .app_logo i{ font-size: 30px;}
+}
+
+
+/*************************企业信息管理****************************/
+
+
+.dialogmin {z-index:9999; position: fixed; width: 15%; top:30%; background: rgba(0,0,0,.5);
+    color: #fff; padding: 10px 5px; left:40%; text-align: center; border-radius: 10px}
+#header,#navlist { display: none}
+.iframeouter .main_con{ width: 96%; left: 0; padding: 0; margin: 2%}
+#passStrength{height:6px;width:120px;border:1px solid #ccc;}
+.strengthLv1{background:red;height:6px;width:40px;}
+.strengthLv2{background:orange;height:6px;width:80px;}
+.strengthLv3{background:green;height:6px;width:120px;}
+
+.search {position: absolute;
+    right: 0;
+    top: 0;    width: 25%;
+    height: 28px;}
+.search input { float: left; width: 70%;    font-size: 14px;
+    height: 100%;}
+.search .search_btn {float: left;
+    cursor: pointer;
+    background: #f77823;
+    color: #fff;
+    height: 100%;
+    text-align: center;
+    width: 30%;    text-indent: initial;}
+/********************弹窗************************************/
+
+.Upview_con {    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,.8);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4c000000,endColorstr=#4c000000);    /*IE8支持*/
+  }
+.Uprightview .Upview_con {
+    top: 60px;
+    left: 56px;
+    transition: all .5s;
+    -webkit-transiton:all .5s;
+    -ms-transiton:all .5s;
+    -moz-transiton:all .5s;
+    -o-transiton:all .5s;
+}
+.Uprightview-min .Upview_con {
+    top: 60px;
+    left: 4px;
+}
+.Upview_con .Upview_mid { position: absolute; top: 10%; width: 50%; left: 25%; background: #fff; border:1px solid #ccc;padding: 1% 0 2% 0;}
+.Upview_con .Upview_mid .mianbaoxie { float: left;
+    width: 100%;
+    text-indent: 5%;
+    font-size:14px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+   }
+.Upview_con .Upview_mid .mianbaoxie i{right: 5%;
+    position: absolute;
+    font-size: 16px; cursor: pointer}
+
+.ischoose { background:#e3e3e3 }
+
+.useradd .mic .rowm .m_left{ width: 50px}
+#register2,#register3{ display: none}
+.webuploader-pick-hover { background: none!important;}
+.downuserlist {position: absolute;
+    left: 62%;
+    color: #fff;
+    width: 65%;
+    text-align: center;
+    top: 30px; display: none}
+.downuserlist span { cursor: pointer; padding: 3px 0; float: left; width: 100%; background: #39B588; font-size: 12px}
+.downuserlist span:hover{ background: #33a37a}
+.tenantMo .mic .rowm i.must { left: 11%; }
+.passwordMo .mic .rowm i.must { right: 36%; left: inherit}
+.passwordMo .mic .rowm input {width: 45%;}
+.passwordMo .mic .rowm select {width: 45%;}
+.tmpauth { width: 100%}
+.tmpauth ul { margin: 0; padding: 0}
+.tmpauth ul li { border: 1px solid #ccc}
+.tmpauth ul li .app_logo i { font-size: 30px!important;}
+.tmpauth .tmpauthbtn .useraddbtn { float: none; margin-top: 10px}
+.tmpauth .tmpauthbtn .useraddbtn:first-child{ background: #1baede; color: #fff}
+/**********************************注册***********************************************/
+.regiscon {    width: 90%;
+    margin: 125px 0 20px 5%;
+    background: #fff; }
+.re_con .register_tit { position: absolute; top: 60px;
+    left: 46%;
+    font-size: 18px;color: #333;}
+.re_con .top .tip span{    float: left;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    color: #fff;
+    text-align: center;
+    border: 1px solid #b2b2b2;}
+.re_con .top .tip{ width: auto;float: left; margin-left: 10%;padding-bottom: 10px;}
+.re_con .top .tip.active{ border-bottom: 1px solid #eb4047}
+.re_con .top .tip span i {float: left;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%; background:#b2b2b2;margin: 2.5px 0 0 2.5px;
+    line-height: 25px;}
+.re_con .top .line{float: left;
+    height: 30px;
+    width: 2px;
+    background: #b2b2b2;
+    margin-left: 15px;}
+.re_con .top .line.active{height: 65px;background:#eb4047}
+.re_con .top .tip  p {    float: left;margin: 9px; color:#bcbcbc }
+.re_con .top .tip.active  p { color: #eb4047}
+.re_con .com_right { float: left;margin: 30px 0 0 25%;width: 60%;}
+.re_con .com_right#register1{padding-bottom: 15%}
+.re_con .com_right#register2 { margin: 10px 0 0 25%}
+.re_con .com_right#register3 { margin: 10px 0 0 25%}
+.re_con .top .tip.active span{border: 1px solid #ea4047;}
+.re_con .top .tip.active span i {background:#ea4047 }
+.re_con .top { float: left; width:100%;  border-bottom: 1px solid #ccc;padding: 3% 0 0 0; }
+.re_con .register_right .mic .rowm i.must { right: 20%}
+.re_content {background: #e8e9ee;}
+.re_content #register4 { display: none;padding: 5% 0 15% 5%;}
+.re_content .r4_left { float: left; }
+.re_content .r4_left i{ font-size: 80px; color: #5bc81f}
+.re_content .r4_right{ float: left; margin-left: 20px;}
+.re_content .r4_right p {font-size: 18px; color: #333}
+.re_content .r4_right p.text1 { font-size: 24px;}
+.re_content .r4_right #linkurl{ color: #3baeda}
+.re_content .re_con .mic { padding: 2% 0 0 0}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover{background: none!important;}
+@media only screen and (max-width: 1300px) {
+    .re_content .r4_right p {font-size: 14px; color: #333}
+    .re_content .r4_right p.text1 { font-size: 18px;}
+}
+
+.swiper-container { height: 450px}
+.swiper-slide span{ float: left; width: 100%}
+@media only screen and (max-width: 1024px) {
+    .swiper-container { height: 300px}
+}
+.swiper-button-next{background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E");
+    right: 10px;
+    left: auto;}
+.swiper-button-prev{
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E");
+    left: 10px;
+    right: auto;
+}
+.swiper-button-next,.swiper-button-prev{
+    position: absolute;
+    top: 50%;
+    width: 27px;
+    height: 44px;
+    margin-top: -22px;
+    z-index: 10;
+    cursor: pointer;
+    -moz-background-size: 27px 44px;
+    -webkit-background-size: 27px 44px;
+    background-size: 27px 44px;
+    background-position: center;
+    background-repeat: no-repeat;}
+/***************************密码找回************************************************/
+/*.re_con .getpw { margin: 3% 0 0 20%; width: 60%; font-size: 12px}
+.getpwmain { background: #fff;*//*box-shadow:  0 1px 3px  rgba(0,0,0,.12),0 1px 2px  rgba(0,0,0,.24);*//* width: 86%; margin: 8% 0 0 7%; position: absolute; height: 60%}
+.pwnav { float: left;width: 50%; margin-left: 25%;}
+.pwnav span { float: left;  color: #333;text-align: center; width: 50%; padding: 10px 0; cursor: pointer; font-size: 12px}
+.pwnav span input{vertical-align: middle;}
+.pwnav span label { cursor: pointer}
+.re_con .getpw .mic {margin: 2% 0 0 15%;}
+.re_con .getpw .m2{ display: none}
+.re_con .getpw .mic .rowm .tips { clear: both; margin: 3% 0 0 23%;}
+.re_con .getpw .mic .rowm p { width: 100%;    margin: 0;text-indent: 0; cursor: pointer}
+.pwmsg{text-align: center;
+    font-size: 20px;
+    color: #EB4047;
+    margin-top: 5%; cursor: pointer}
+.pw_tit { float: left; width: 90%; margin-left: 5%; padding: 10px 0; border-bottom: 1px solid #ccc; font-size: 14px}
+.re_con .getpw .user_name{float: left; margin: 13px 0 0 12px;}
+.re_con .userregister {width: 60%;
+    margin: 10% 0 0 20%;}
+.re_con .userregister .mic{ margin: 0 0 0 15%;}
+.re_con .userregister .nextbtn {margin: 15px 0 0 30.5%;}*/
+.getpwfirst { float: left; width: 50%; margin: 3% 0 0 20%}
+.getpwfirst  .nextbtn { margin: 15px 0 0 27%}
+.re_con .getpwfirst .mic .rowm .m_left { width: 25%}
+.re_con .getpw { margin: 3% 0 0 20%; width: 60%; font-size: 12px; display: none}
+.getpwmain { background: #fff;box-shadow:  0 1px 3px  rgba(0,0,0,.12),0 1px 2px  rgba(0,0,0,.24); width: 86%; margin: 8% 0 0 7%; position: absolute; height: 60%;    min-height: 390px;}
+.pwnav { float: left;width: 50%; margin-left: 25%;}
+.pwnav span { float: left;  color: #333;text-align: center; width: 50%; padding: 10px 0; cursor: pointer; font-size: 12px}
+.pwnav span input{vertical-align: middle;}
+.pwnav span label { cursor: pointer}
+.re_con .getpw .mic {margin: 2% 0 0 15%; padding: 0}
+.re_con .getpw .m2{ display: none}
+.re_con .getpw .mic .rowm .tips { clear: both; margin: 3% 0 0 23%;}
+.re_con .getpw .mic .rowm p { width: 100%;    margin: 0;text-indent: 0; cursor: pointer}
+.pwmsg{text-align: center;
+    font-size: 20px;
+    color: #EB4047;
+    margin-top: 5%; }
+.pw_tit { float: left; width: 90%; margin-left: 5%; padding: 10px 0; border-bottom: 1px solid #ccc; font-size: 14px}
+.re_con .getpw .user_name{float: left; margin: 13px 0 0 12px;}
+.re_con .userregister {width: 60%;
+    margin: 10% 0 0 20%;}
+.re_con .userregister .mic{ margin: 0 0 0 15%;}
+.re_con .userregister .nextbtn {margin: 15px 0 0 30.5%;}
+.re_con .getlast { display: block}
+.re_con .mic .rowm #piccode {margin-top: 3px;}
+.re_con .mic .rowm #inputCode { width: 100px}
+.re_con .userregister {    margin: 2% 0 0 20%;padding-bottom: 4%;}
+.btn-success { background-color: #1baede!important; border: 1px solid #1baede!important;}
+.btn-success:hover { background-color: #189cc7!important}
+.webuploader-pick { font-size: 12px}
+/*****************邀请**************************/
+.invite_email {    margin: 13px 0 0 10px;float: left;}
+.invitebody{    position: relative;}
+/*****************密码策略**************************/
+.unlocktime span{ float: left;}
+.unlocktime span input[type='radio']{ width: auto!important; cursor: pointer}
+.unlocktime span input[type='text']{ float: none!important;}
+.unlocktime span label {       line-height: 36px;
+    margin: 0px 0 0 5px; color: #666; }
+.unlocktime span.unlock_s3 { width: 48%}
+.unlocktime span.unlock_s3 .level_unlocktime{ width: 40%!important;}
+.passwordInfo.re_con .mic .rowm{ padding: 0}
+@media only screen and (max-width: 1100px) {
+    .re_con .com_right {     width: 72%;margin: 10px 0 0 26%}
+    .re_con .com_right#register3 {     width: 85%;margin: 10px 0 0 20%}
+    .re_con .getpw { margin: 3% 0 0 10%; width: 80%; font-size: 12px}
+}
+
+.registerOne .re_con .register_tit {top: 30px;
+    left: 45%;}
+.registerOne .regiscon{ margin: 25px 0 20px 5%}
+.registerOne .re_con .com_right#register1 {padding-bottom:0}
+.registerOne #registerTest_msgCode {width: 50%!important;}
+.registerOne #registerTest_r1btn{     margin: 7px 0 0 16px;
+    clear: none;
+    height: 30px;
+    width: 80px;
+    line-height: 30px;padding: 0; padding: 0 1%;float: right;margin-right: 3%;}
+.registerOne .re_con .com_right .mic .rowm .yanzhengma { float: right;margin: 9px 3% 0 0%;background: #3baeda}
+.registerOne .re_con .mic .rowm i #yanzheng { width: 80px;float: right; text-align: center}
+.registerOne #register1 .mic .rowm #registerTest_Tel{ width: 50%}
+.registerOne .re_con .register_right .mic .rowm i.must{right: 33%;}
+.registerOne #register1 .mic .rowm input.piccode {width: 28.5%;}
+.registerOne .re_con .com_right .mic .rowm .m_left { width: 22%}
+.registerOne .re_con .com_right#register2 {    margin: -15px 0 0 25%;}
+.registerOne .re_con .mic .rowm .tips{ margin: 15px 0 0 24%}

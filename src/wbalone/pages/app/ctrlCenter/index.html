@@ -1,0 +1,75 @@
+<div class="main-wrap list-panel" id="ctrlCenter">
+    <div class="wrapper">
+        <div class="wrap-body">
+            <!--页面功能名字-->
+            <div class="apptitle">
+                <span class="i18n" name="ht.app.ctr.0001"></span>
+                <span class="btn btn-default btn-sm backbutton hide" data-bind="click:goback"><span class="i18n" name="ht.app.ctr.0002"></span></span>
+            </div>
+            <!--页面头部功能条  -->
+            <div class="app-funbar">
+                <input type="text" id='ieHockInput'>
+                <div class=" u-col-lg-4 u-col-md-5 u-col-xs-6 ">
+                    <label class=" u-form-label"><span class="i18n" name="ht.app.ctr.0003"></span></label>
+                    <div class=" u-col-lg-8 u-col-md-8  u-col-sm-8" >
+                        <select id="s-area" class="area nc-sel u-col-12 u-col-sm-12 hide"  data-bind="
+                                     options: search.appAreas,
+                                      optionsText: function(data){ return  data.area.areaName},
+                                        optionsValue:function(data){ return  data.area.id},
+                                       optionsCaption: $.i18n.prop('ht.app.ctr.0004'),
+                                        value: search.area
+                                        ">
+                        </select>
+
+                        <button class="u-button  u-menu-button u-col-12 u-col-sm-12 " id="demo-menu-lower-right2">
+                            <span data-bind="text:areaName"></span><i class="uf uf-anglearrowdown"></i>
+                        </button>
+                        <ul class="u-menu " data-bind="foreach:search.appAreas" for="demo-menu-lower-right2">
+                            <li class="u-menu-item" data-bind="click: $parent.areaClick"> 
+                                <span data-bind="text:area.areaName"> </span> 
+                            </li> 
+                        </ul>
+                    </div>
+                </div>
+                <div class="u-col-lg-4  u-col-xs-6 u-col-md-5">
+                    <label class=" u-form-label"><span class="i18n" name="ht.app.ctr.0005"></span></label>
+                    <div class="u-col-lg-8 u-col-md-8  u-col-sm-8" >
+                        <select id="s-group"  class="group nc-sel u-col-12 hide"
+                                data-bind='options: search.groups,
+                                             optionsText: "name",
+                                              optionsValue:"id",
+                                             optionsCaption:$.i18n.prop("ht.app.ctr.0006"),
+                                             value: search.group'>
+                        </select>
+
+                        <button class="u-button  u-menu-button u-col-12 u-col-sm-12" id="demo-menu-lower-right1">
+                            <span data-bind="text:groupName"></span><i class="uf uf-anglearrowdown"></i>
+                        </button>
+                        <ul class="u-menu " data-bind="foreach:search.groups" for="demo-menu-lower-right1">
+                            <li class="u-menu-item" data-bind="click: $parent.groupClick"> 
+                                <span data-bind="text:name"> </span> 
+                            </li> 
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--列表展现区域-->
+            <div class=" container-fluid" data-bind="foreach:groups">
+                <h5 data-bind="text:groupName">title</h5>
+                <div class="u-row" data-bind="foreach:apps">
+                    <div class="u-col-2  u-col-xs-6 u-col-md-4">
+                        <div class="box" data-bind="click:$root.show,attr:{title:appName}">
+                            <h1 class="text-center app-icon">
+                                <i data-bind="attr:{class: appIcon}" class=" iconfont "
+                                   style="font-size: 50px"></i>
+                            </h1>
+                            <h3 class="text-center text-truncate">
+                                <small data-bind="text:appName,attr:{title:appName}"></small>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

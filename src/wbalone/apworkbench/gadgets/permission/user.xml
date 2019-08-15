@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+	<ModulePrefs title="Social Hello World"
+		description="The Social Hello World Application Displays multilingual hello messages"
+		thumbnail="http://localhost:8080/" icon="http://localhost:8080/images/icon.png">
+		<Require feature="osapi"></Require>
+		<Require feature="settitle" />
+		<Require feature="shindig-container" />
+		<Require feature="dynamic-height"></Require>
+	</ModulePrefs>
+	<Content type="html" inline="true">
+        <![CDATA[
+        <link href="${context}/apworkbench/css/userlist/style.css" rel="stylesheet">
+    	<link href="${context}/apworkbench/css/userlist/index.css" rel="stylesheet">
+		<style type="text/css">
+		#iframe_permission_user{
+		width:100%;
+		height:100%;
+		border:none;
+		}
+		</style>
+		<div class="W-title">    用户管理    <span class="iconfont icon-star "></span>    <a href="#sysmgr" role="button" class="btn btn-default btn-sm backbutton">返回</a></div>
+		<!--<iframe id="iframe_permission_user" src="https://uas.yyuap.com/tenantuser/ext/userlist?systemId=workbench" />-->
+		<div class="container-fixed">
+    <div class="userpage" id="userpageDomNode">
+    <div class="row " style="margin-bottom: 10px;">
+        <div class="ec-menu col-xs-8 col-md-8">
+            <div style="text-align: left;" class="Utopnav">
+                <div type="button" class="useraddbtn addb" data-bind="click:add" id="userTest_add">&nbsp;<i class="icon-plus iconfont"></i>&nbsp;新增&nbsp;&nbsp;</div>
+            </div>
+            <div style="text-align: left;" class="Utopnav">
+                <div type="button" class="useraddbtn" data-bind="click:close" id="userTest_stop">&nbsp;&nbsp;停用&nbsp;&nbsp;</div>
+                <div type="button" class="useraddbtn" data-bind="click:open" id="userTest_open">&nbsp;&nbsp;启用&nbsp;&nbsp;</div>
+
+            </div>
+            <!--<div style="text-align: left;" class="Utopnav">
+                <div type="button" class="useraddbtn up" id="userTest_Import">&nbsp;&nbsp;导入&nbsp;&nbsp;</div>
+                <div type="button" class="useraddbtn" data-bind="click:downlistshow" id="userTest_export">&nbsp;&nbsp;导出&nbsp;&nbsp;</div>
+                <div class="downuserlist">
+                    <span data-bind="click:downlistpage" id="userTest_export1">导出当前页</span>
+                    <span data-bind="click:downlistall" id="userTest_export2">导出全部</span>
+                </div>
+            </div>-->
+           <!-- <div style="text-align: left;" class="Utopnav">
+                <div type="button" class="useraddbtn" data-bind="click:auth" id="userTest_auth">&nbsp;&nbsp;应用授权&nbsp;&nbsp;</div>
+            </div>-->
+            <div style="text-align: left;" class="Utopnav">
+                <div type="button" class="useraddbtn" data-bind="click:deleteA" id="userTest_delete">&nbsp;&nbsp;删除&nbsp;&nbsp;</div>
+            </div>
+        </div>
+        <div class="ec-search col-xs-4 col-md-4">
+            <div style="text-align: right;">
+                <form class="form-search" action="#">
+                    <input type="text" name="search_LIKE_name" class="input_search input-medium" data-bind="value:searchText" />&nbsp;&nbsp;
+                    <button type="submit" class="search_btn" id="search_btn" data-bind="click: searchPage"><i class="iconfont icon-search"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="user_tit">
+        <div class="checkAll" >
+            <div class="check_box"><i class=" iconfont"></i></div>
+            <span>全选</span>
+        </div>
+        <div class="u_sort">排序<i></i></div>
+        <div class="u_filter">筛选<i></i></div>
+    </div>
+    <!-- 列表区域  -->
+    <div class="user_list">
+        <ul  data-bind="foreach: data.content" id="checkuser">
+            <li data-bind="attr:{'data-id':userId}">
+                <div class="list_top" >
+                    <div class="check_box"  data-bind="attr:{'data-id':userId}"><i class=" iconfont"></i></div>
+                    <div class="list_left"><input id="userEditTest_Name" type="text" data-bind="value:name" readonly/></div>
+                    <div class="list_right">
+                        <span class="u_code"><em>账号：</em><p data-bind="text:userCode"></p></span>
+                        <span class="u_time"><em>注册时间：</em><p data-bind="text:registerDate"></p></span>
+                        <span class="u_mail"><em>邮箱：</em><input id="userEditTest_Email" type="text" data-bind="value:userEmail" readonly/></span>
+                        <span class="u_tel"><em>手机号：</em><input id="userEditTest_Tel" type="text" data-bind="value:userMobile" readonly/></span>
+<!--                         <span class="u_come"><em>来源：</em><p data-bind="text:sourceId"></p></span> -->
+<!--                         <span class="u_app"><em>应用名称：</em><p data-bind="text:apps"></p></span> -->
+                    </div>
+                </div>
+                <div class="list_bot">
+                    <div class="u_setting u_setting2">
+                        <span class="dismodify" id="usersetTest_cancel">取消</span>
+                        <span data-bind="click: function($event){$parent.modifyuser($event)}" class="modifyuser" id="usersetTest_save">保存</span>
+                    </div>
+                    <div class="u_setting u_setting1">
+                        <span class="edituser" id="usersetTest_edit">编辑</span>
+                        <!-- <span data-bind="click: $parent.reset,clickBubble: false" id="usersetTest_reset">密码重置</span> -->
+                        <span data-bind="visible:userStates=='0',click:$parent.openOne,clickBubble: false" id="usersetTest_open">启用</span>
+                        <span data-bind="visible:userStates=='1',click:$parent.closeOne,clickBubble: false" id="usersetTest_stop">停用</span>
+                        <span data-bind="click: $parent.del,clickBubble: false" id="usersetTest_delete">删除</span>
+                    </div>
+
+                    <i class="iconfont icon-moreicon" ></i>
+                </div>
+                <div class="u_status">
+                    <span data-bind="visible:userStates=='1'"><i  class="openi"></i> 启用</span>
+                    <span data-bind="visible:userStates=='0'"><i  class="closei"></i> 停用</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--<div class="table-responsive ">
+        <table id="contentTable"
+               class="table table-bordered table-condensed table-hover usertable">
+            <thead>
+            <tr class="">
+                <th width="10%" align="center">账号</th>
+                <th width="10%" align="center">名称</th>
+                <th width="15%" align="center">邮箱</th>
+                <th width="15%" align="center">联系方式</th>
+                <th width="5%" align="center">状态</th>
+                <th width="10%" align="center">来源</th>
+                <th width="15%" align="center">注册时间</th>
+                <th width="10%" align="center">应用名称</th>
+                <th width="10%" align="center" style="text-align:center">操作</th>
+            </tr>
+            </thead>
+            <tbody data-bind="foreach: data.content" id="userlisttb">
+            <tr data-bind="attr:{'data-id':userId}">
+                <td data-bind="text:userCode"></td>
+                <td data-bind="text:name"></td>
+                <td data-bind="text:userEmail"></td>
+                <td data-bind="text:userMobile"></td>
+                <td data-bind="text:userStates"></td>
+                <td data-bind="text:sourceId"></td>
+                <td data-bind="text:registerDate"></td>
+                <td data-bind="text:apps"></td>
+                <td align="center">
+                    <strong>
+                        <a href="javascript:;" data-bind="click:function(){$parent.modify(userId)}" data-toggle="tooltip" data-placement="bottom"
+                           title="修改"><i class="icon-iconfontbianji2 iconfont"></i></a>
+                    </strong>
+                    <strong>
+                        <a href="#" data-bind="click: $parent.del" data-toggle="tooltip" data-placement="bottom"
+                           title="删除"><i class="icon-iconfontshanchu iconfont"></i></a>
+                    </strong>
+                    <strong>
+                        <a href="#" data-bind="click: $parent.reset" data-toggle="tooltip" data-placement="bottom"
+                           title="重置密码"><i class="icon-iconfontzhongzhimima iconfont"></i></a>
+                    </strong> 
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>-->
+    <div class="loadMore" data-bind="click:loadMore"><i class="iconfont icon-arrowicon"></i>加载更多…</div>
+    </div>
+    <div class="arrow_up " data-bind="click:arrowup"><i class="icon-arrowup iconfont"></i></div>
+
+</div>
+
+    <!--<script src="${context}/apworkbench/js/userlist/index.js"></script>-->
+    <script>
+    	var haskoapplyBindings = false;
+    </script>
+        <script src="${context}/apworkbench/js/userlist/user.js"></script>
+
+		<script>
+		//$('#iframe_permission_user').height($('#content').height());
+
+		$(function () {
+            var autodiv = $('#iframe_permission_user');
+
+            function autoH() {
+                var addh = $(window).height() - 163;
+                autodiv.height(addh);
+            }
+
+            autoH();
+            if (autodiv) {
+                autodiv.css({
+                    overflow: "auto"
+                });
+                $(window).resize(function () {
+                    autoH();
+                })
+            }
+
+        });
+		</script>
+		    ]]>
+	</Content>
+</Module>

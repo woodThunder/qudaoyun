@@ -1,0 +1,518 @@
+<style type="text/css">
+    #grid_offset_account_id .u-grid-header-multi-select {
+        display: none;
+    }
+
+    #dialog_save_bill3 .u-msg-content, #dialog_submit_bill .u-msg-content {
+        margin-top: 15px;
+    }
+    #dialog_save_bill3 .ui-collapse-content {
+        border-bottom: 1px solid #ccc;
+        padding-top: 0;
+    }
+    #dialog_submit_bill .ui-collapse-content {
+        padding-top: 0;
+    }
+    #dialog_save_bill3 .bill-title, #dialog_submit_bill .bill-title {
+        font-size: 14px;
+    }
+</style>
+<div class="ui-panel ui-list-panel">
+    <div>
+        <div class="page-title">
+            <span>销售订单处理</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="title-seperator"></div>
+
+    <ui-searchbox
+        params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+    </ui-searchbox>
+
+    <div class="ui-panel-body">
+        <div class="ui-table-container">
+            <div class="ui-panel-body-head">
+                <div class="ui-panel-body-head-left">
+                    <ui-buttons-menu params='datasource:$root.buttonListSource,vm:$root'>
+                    </ui-buttons-menu>
+                </div>
+                <!-- <div class="ui-panel-body-head-right">
+                    <label style="margin-bottom:-10px">
+                        <label class="margin-right-5">数量合计：
+                            <label data-bind="text:ordertotalnumber"></label>
+                        </label>
+                        <label class="margin-right-5">金额合计：
+                            <label data-bind="text:ordertotalamount"></label>
+                        </label>
+                        <label class="margin-right-5">重量合计：
+                            <label data-bind="text:ordertotalweight"></label>
+                        </label>
+                    </label>
+                </div> -->
+            </div>
+
+            <ui-grid params='options:$root.gridListOption,vm:$root'>
+            </ui-grid>
+            <div class="ui-statistics margin-top-10">
+                已选择
+                <span class="font-c-blue" data-bind="text:salesorderList.selectedIndices().length"></span>项数据
+            </div>
+            <div class="pagination-right">
+                <div id='pagination' class='pagination u-pagination pagination-sm'
+                    u-meta='{"type":"pagination","data":"salesorderList","pageChange":"pageChange","sizeChange":"sizeChange","pageList":[5, 10, 20, 50, 100]}'>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 单据详情页 -->
+<div class="ui-bill-detail ui-panel" style="display: none;">
+    <div>
+        <div class="page-title">
+            <span>销售订单处理</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="ui-panel-btn-bg">
+        <div class="ui-operate-btn">
+            <a class="ui-btn ui-btn-primary" data-bind="click: showFeeCustItem">查看费用兑付明细</a>
+            <a class="ui-btn ui-btn-primary" data-bind="click: showCopyBillPanel">复制</a>
+            <a class="ui-btn ui-btn-primary" data-bind="click: retListPanel">返回</a>
+            <span class="J-bill-committed" data-bind="visible: billPanelStatusEdit() == 'Saved'">
+                <a class="ui-btn ui-btn-green" data-bind="click: showEditBillPanel.bind($data,-1)">编辑</a>
+                <!-- <a class="ui-btn ui-btn-green" data-bind="click: approveBill">审核</a> -->
+            </span>
+            <!-- <span class="J-bill-audited" data-bind="visible:billstatusCheck() == 2">
+                <a class="ui-btn ui-btn-green" data-bind="click: unapproveBill">弃审</a>
+            </span> -->
+        </div>
+    </div>
+    <div id="bpmhead"></div>
+    <div id="bpmfoot"></div>
+    <div class="ui-panel-head ui-bill-head">
+        <ui-detail
+            params='datasource:$root.cardDetailOption,vm:$root,dt:$root.salesorderDetailCard,billstatus:$root.billPanelStatus'>
+        </ui-detail>
+        <!--用于附件展示 -->
+        <div id="saleorder-card-attachDetail"></div>
+        <div id="saleorder-card-attachDetail-web"></div>
+
+    </div>
+
+    <div class="ui-bill-body">
+        <div class="u-tabs  ui-tabs margin-top-10">
+            <div class="u-tabs__tab-bar">
+                <a id="tab3" href="#tab-panel-3" class="u-tabs__tab is-active" data-bind="click:checkGoods">商品信息</a>
+                <a id="tab4" href="#tab-panel-4" class="u-tabs__tab" data-bind="click:checkBom">BOM结构信息</a>
+            </div>
+            <!--商品信息开始-->
+            <div class="u-tabs__panel is-active" id="tab-panel-3">
+                <div class="ui-table-container margin-bottom-30">
+                    <ui-grid params='options:$root.gridDetailOption,vm:$root'></ui-grid>
+                </div>
+            </div>
+            <!--商品信息结束-->
+
+            <!-- BOM结构开始-->
+            <div class="u-tabs__panel" id="tab-panel-4">
+                <div class="ui-table-container margin-bottom-30">
+                    <ui-grid params='options:$root.grid5Option,vm:$root'></ui-grid>
+                </div>
+            </div>
+            <!-- BOM结构结束-->
+
+        </div>
+        <!-- <div class="ui-table-container margin-bottom-30">
+            <ui-grid params='options:$root.gridDetailOption,vm:$root'>
+            </ui-grid>
+        </div> -->
+        <div class="ui-statistics margin-top-10">
+            已选择
+            <span class="font-c-blue" data-bind="text:saleOrderItems.selectedIndices().length"></span>项数据
+        </div>
+        <div class="pagination-right">
+            <div id='pagination' class='pagination u-pagination pagination-sm'
+                u-meta='{"type":"pagination","data":"saleOrderItems","pageChange":"pageChange","sizeChange":"sizeChange","pageList":[5, 10, 20, 50, 100]}'>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="ui-bill-footer"></div>
+</div>
+
+
+<!-- 单据新增页 -->
+<div class="ui-bill-panel ui-panel" style="display: none;" id="salesorder-operatepanel">
+    <div>
+        <div class="page-title">
+            <span>销售订单处理</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="ui-panel-btn-bg">
+        <div class="ui-operate-btn">
+            <a class="ui-btn ui-btn-primary" data-bind="click: retListPanel">取消
+            </a>
+            <span class="J-bill-audited">
+                <a class="ui-btn ui-btn-green" data-bind="click: saveBill">保存
+                </a>
+            </span>
+            <span class="J-bill-audited">
+                <!-- <a class="ui-btn ui-btn-primary" data-bind="click: costflushing">费用冲抵
+                </a> -->
+                <a class="ui-btn ui-btn-primary" data-bind="click: showOffsetDialog">费用冲抵
+                </a>
+            </span>
+            <span class="J-bill-audited">
+                <a class="ui-btn ui-btn-primary" data-bind="click: cancelCostOffset">取消费用冲抵
+                </a>
+                <!-- <a class="ui-btn ui-btn-primary" data-bind="click: cancelSearchFee">取消费用冲抵
+                </a> -->
+            </span>
+            <span class="J-bill-audited">
+                <a class="ui-btn ui-btn-primary" data-bind="click: btnUploadAttach">
+                    <i class="uifont icon-tubiao-shangchuan margin-right-5" data-bind="ui-icon">上传</i>
+                </a>
+            </span>
+        </div>
+    </div>
+
+    <div class="ui-panel-head ui-bill-head ">
+        <ui-card params='datasource:$root.cardEditOption,vm:$root,dt:$root.salesorderCard'>
+        </ui-card>
+        <div style="margin-top: 20px">
+            <div id="file-form"></div>
+            <div id="saleorder-card-attach-web"></div>
+            <div id="saleorder-card-attach"></div>
+        </div>
+    </div>
+    <div class="ui-bill-body">
+        <div class="u-tabs  ui-tabs margin-top-10">
+
+            <div class="u-tabs__tab-bar">
+                <a id="tab1" href="#tab-panel-1" class="u-tabs__tab is-active" data-bind="click:checkGoods">商品信息</a>
+                <a id="tab2" href="#tab-panel-2" class="u-tabs__tab" data-bind="click:checkBom">BOM结构信息</a>
+            </div>
+            <div class="margin-bottom-10 isCpostFlushBtn">
+                <ui-buttons data-bind='visible:isBomPanel()' params='datasource:$root.buttonEditSource'></ui-buttons>
+                <div style="height: 8px;"></div>
+                <div id="saleorderaddItemsRef" u-meta='{"type":"uiRefer","data":"ItemRefList","field":"productref"}'
+                    style="display:none;">
+                    <input readonly="readonly" />
+                    <span class="ui-icon uifont icon-bar refer"></span>
+                </div>
+                <div id="saleorderaddSupplementItemsRef"
+                    u-meta='{"type":"uiRefer","data":"ItemRefList","field":"supplementproductref"}'
+                    style="display:none;">
+                    <input readonly="readonly" />
+                    <span class="ui-icon uifont icon-bar refer"></span>
+                </div>
+            </div>
+            <div class="u-tabs__panel is-active" id="tab-panel-1">
+                <div class="ui-table-container margin-bottom-30">
+                    <ui-grid params='options:$root.gridEditOption,vm:$root'>
+                    </ui-grid>
+                </div>
+            </div>
+            <div class="u-tabs__panel" id="tab-panel-2">
+                <div class="ui-table-container margin-bottom-30">
+                    <ui-grid params='options:$root.grid4Option,vm:$root'>
+                    </ui-grid>
+                </div>
+            </div>
+        </div>
+        <div class="ui-statistics margin-top-10">
+            已选择
+            <span class="font-c-blue" data-bind="text:saleOrderItems.selectedIndices().length"></span>项数据
+        </div>
+        <div class="pagination-right">
+            <div id='pagination' class='pagination u-pagination pagination-sm'
+                u-meta='{"type":"pagination","data":"saleOrderItems","pageChange":"pageChange","sizeChange":"sizeChange","pageList":[5, 10, 20, 50, 100]}'>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="ui-bill-footer">
+</div>
+</div>
+
+<!--导出弹窗-->
+<div id="exportFiel"></div>
+
+<!-- 查看费用兑付明细 -->
+<div id="dialog_showFeeCustItem" style="display:none;">
+    <div class="u-msg-title">
+        <h4>查看费用兑付明细</h4>
+    </div>
+    <div class="u-tabs ui-tabs u-msg-content">
+        <div class="special-product">
+            <div class="ui-collapse-content">
+                <ui-grid params='options:$root.gridFlushDetail,vm:$root'></ui-grid>
+            </div>
+        </div>
+    </div>
+    <div class="u-msg-footer">
+        <a class="ui-btn ui-btn-primary J-cancel margin-right-5">取消</a>
+    </div>
+</div>
+<!-- 查看费用兑付明细 -->
+<!-- 费用冲抵 -->
+<div id="dialog_showCostflushing" style="display:none;">
+    <div class="u-msg-title">
+        <h4>费用冲抵</h4>
+    </div>
+    <div class="u-tabs ui-tabs u-msg-content">
+        <div class="special-product">
+            <div class="ui-collapse-content">
+                <div class="margin-bottom-30">
+                    <ui-detail params='datasource:$root.costFlushDetailOption,vm:$root,dt:$root.costFlushDetailCard'>
+                    </ui-detail>
+                </div>
+                <ui-grid params='options:$root.gridCostFlushing,vm:$root'>
+                </ui-grid>
+            </div>
+        </div>
+    </div>
+    <div class="u-msg-footer">
+        <a class="ui-btn ui-btn-primary J-cancel margin-right-5">取消</a>
+        <a class="ui-btn ui-btn-green  J-ok">确认</a>
+    </div>
+</div>
+<!-- 费用冲抵 -->
+<!-- 内部采购订单编辑 -->
+<ui-dialogcard params='datasource:$root.purchaseDialog1Source,ref:$root.addresscardcomp,dt:$root.purchaseItems'>
+</ui-dialogcard>
+<!-- 内部采购订单编辑 -->
+<!-- 选配 -->
+<div id="dialog_goodsOptional" style="display:none;">
+
+</div>
+<!-- 选配 -->
+
+<!-- 保存时的提示 -->
+<div id="dialog_save_bill" style="display:none;">
+    <div class="u-msg-title">
+        <h4>账期校验</h4>
+    </div>
+    <div class="u-tabs ui-tabs u-msg-content">
+        <div class="special-product">
+            <div class="ui-collapse-content">
+                <ui-grid params='options:$root.saveCheckAccountDetailOption,vm:$root'></ui-grid>
+            </div>
+        </div>
+    </div>
+    <div class="u-msg-footer">
+        <a class="ui-btn ui-btn-primary J-cancel margin-right-5">取消</a>
+        <a id="checkOk1" class="ui-btn ui-btn-green J-ok">下一步</a>
+    </div>
+</div>
+<!-- 保存时的提示 -->
+<!-- 保存时的提示 -->
+<div id="dialog_save_bill2" style="display:none;">
+    <div class="u-msg-title">
+        <h4>信用校验</h4>
+    </div>
+    <div class="u-tabs ui-tabs u-msg-content">
+        <div class="special-product">
+            <div class="ui-collapse-content">
+                <ui-grid params='options:$root.saveCheckCreditDetailOption,vm:$root'></ui-grid>
+            </div>
+        </div>
+    </div>
+    <div class="u-msg-footer">
+        <a class="ui-btn ui-btn-primary J-cancel margin-right-5">取消</a>
+        <a id="checkOk2" class="ui-btn ui-btn-green J-ok">下一步</a>
+    </div>
+</div>
+<!-- 保存时的提示 -->
+<!-- 保存时的提示 -->
+<div id="dialog_save_bill3" style="display:none;">
+    <div class="u-msg-title">
+        <h4>保存校验</h4>
+    </div>
+    <div class="u-tabs ui-tabs u-msg-content" id="checkContent1">
+        <div class="special-product">
+            <div class="bill-title">起订量校验</div>
+            <div id="bill3_1" class="ui-collapse-content" style="padding-left: 20px; margin-top: 10px;">
+            </div>
+        </div>
+    </div>
+    <div class="u-tabs ui-tabs u-msg-content" id="checkContent_stock">
+        <div class="special-product">
+            <div class="bill-title">可用量校验</div>
+            <div id="bill_stock" class="ui-collapse-content">
+            </div>
+        </div>
+    </div>
+    <div class="u-tabs ui-tabs u-msg-content" id="checkContent2">
+        <div class="special-product">
+            <div class="ui-collapse-content">
+                <div class="bill-title">满车校验</div>
+                <div id="bill3_2" class="ui-collapse-content" style="padding-left: 20px; margin-top: 10px; border-bottom: none;">
+                </div>
+                <ui-grid params='options:$root.saveFilledCarDetailOption,vm:$root'></ui-grid>
+            </div>
+        </div>
+    </div>
+    <div class="u-tabs ui-tabs u-msg-content" id="checkContent3">
+        <div class="special-product">
+            <div class="bill-title">满托校验</div>
+            <div class="ui-collapse-content" style="margin-top: 10px; border-bottom: none">
+                <ui-grid params='options:$root.saveFilledTrayDetailOption,vm:$root'></ui-grid>
+            </div>
+        </div>
+    </div>
+
+    <div class="u-msg-footer">
+        <a class="ui-btn ui-btn-primary J-cancel margin-right-5">取消</a>
+        <a id="checkOk3" class="ui-btn ui-btn-green J-ok">保存</a>
+    </div>
+</div>
+<!-- 保存时的提示 -->
+
+<!-- 附件上传-->
+<div id="salefileiptwrapId">
+    <input class="u-input" type="file" name="saleaddfile" id="saleattachuploadbatch_id" multiple="multiple"
+        style="display:none;" />
+</div>
+
+<div id="fileDetailsdialog">
+
+</div>
+
+<!-- 选配查看 -->
+<div id="dialog_goodsOptDetails" style="display:none;">
+
+</div>
+<!-- 选配查看 -->
+<!-- 内部采购订单编辑 -->
+<div class="ui-purchaseorder-panel ui-panel" style="display: none;">
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="ui-panel-pagination">
+        <label class="billtitle" style="float: left">待处理订单：</label>
+        <div id='pagination2' style="float: left" class='u-pagination pagination-sm'
+            u-meta='{"type":"pagination","data":"pageModel","datasource":"pageAdd","pageChange":"pageChange2Add","sizeChange":"sizeChange","showState": false,"beforePageChange":"beforPageChangeFun"}'>
+        </div>
+        <div class="ui-operate-btn" style="float: right">
+            <a class="ui-btn ui-btn-primary" data-bind="click: retPurchaseListPanel">取消</a>
+            <span class="J-bill-audited">
+                <a class="ui-btn ui-btn-green" data-bind="click: savePurchaseBill">保存</a>
+            </span>
+        </div>
+    </div>
+    <div class="ui-panel-head ui-bill-head">
+        <ui-card
+            params='datasource:$root.purchaseCard1Source,vm:$root,dt:$root.purchaseList,billstatus:$root.purchaseBillPanelStatus'>
+        </ui-card>
+    </div>
+    <div class="ui-bill-body">
+        <div class="u-tabs  ui-tabs margin-top-10">
+            <div class="u-tabs__tab-bar">
+                <a id="tab5" href="#tab-purchase-panel-1" class="u-tabs__tab is-active"
+                    data-bind="click:purchaseCheckGoods">商品信息</a>
+                <a id="tab6" href="#tab-purchase-panel-2" class="u-tabs__tab"
+                    data-bind="click:purchaseCheckBom">BOM结构信息</a>
+            </div>
+            <div class="u-tabs__panel is-active" id="tab-purchase-panel-1">
+                <div class="ui-table-container margin-bottom-30">
+                    <ui-grid params='options:$root.purchaseGrid2Option,vm:$root'>
+                    </ui-grid>
+                </div>
+            </div>
+            <div class="u-tabs__panel is-active" id="tab-purchase-panel-2">
+                <div class="ui-table-container margin-bottom-30">
+                    <ui-grid params='options:$root.purchaseGrid4Option,vm:$root'>
+                    </ui-grid>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 内部采购订单编辑 -->
+<!-- 费用冲抵弹窗 -->
+<div id="dialog_costOffset" style="display:none;">
+    <div class="u-msg-title">
+        <h4>费用冲抵</h4>
+    </div>
+    <div class="u-tabs ui-tabs u-msg-content">
+        <div class="special-product">
+            <div class="product-content margin-top-10">
+                <div class="ui-table-container">
+                    <div class="ui-collapse-group">
+                        <div data-collapse>
+                            <h3 class="ui-collapse-title open" style="margin-bottom:0">
+                                <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                                <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                                已选冲抵账户
+                            </h3>
+                            <div class="ui-collapse-content">
+                                <div class="selectedAccountList">
+                                    <ui-grid params='options:$root.offsetGrid2Option,vm:$root'>
+                                    </ui-grid>
+                                </div>
+                            </div>
+                            <h3 class="ui-collapse-title open" style="margin-bottom:0">
+                                <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                                <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                                可选冲抵账户
+                            </h3>
+                            <div class="ui-collapse-content">
+                                <div class="accountList">
+                                    <ui-grid params='options:$root.offsetGrid1Option,vm:$root'>
+                                    </ui-grid>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="u-msg-footer">
+        <a class="ui-btn ui-btn-green  J-ok">确认
+        </a>
+    </div>
+</div>
+<!-- 费用冲抵弹窗 -->
+
+<div id="dialog_submit_bill" style="display:none;">
+    <div class="u-msg-title">
+        <h4>提交校验</h4>
+    </div>
+    <div class="u-tabs ui-tabs u-msg-content">
+        <div class="special-product">
+            <div class="bill-title">可用量校验</div>
+            <div id="submit_stock" class="ui-collapse-content">
+            </div>
+        </div>
+    </div>
+
+    <div class="u-msg-footer">
+        <a class="ui-btn ui-btn-primary J-cancel margin-right-5">取消</a>
+        <a class="ui-btn ui-btn-green J-ok">保存</a>
+    </div>
+</div>

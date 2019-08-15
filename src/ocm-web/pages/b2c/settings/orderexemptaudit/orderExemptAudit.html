@@ -1,0 +1,63 @@
+<!-- 列表页 -->
+<div class="ui-list-panel ui-panel">
+  <div>
+    <div class="page-title">
+      <span>订单免审</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+  <div>
+  <ui-card params='datasource:$root.card1Source,vm:$root,dt:$root.orderexauditList,billstatus:$root.billPanelStatus'>
+  </ui-card>
+</div>
+  <div id="formlistaudit" style="position: relative;">
+  <ui-card params='datasource:$root.card2Source,vm:$root,dt:$root.orderexauditList,billstatus:$root.billPanelStatus'>
+  </ui-card>
+
+  <div class="ui-panel-body">
+    <div class="ui-panel-body-head">
+      <div class="ui-panel-body-head-left">
+        <div class="margin-bottom-10">
+          <ui-buttons params='datasource:$root.button1Source'>
+          </ui-buttons>
+          <div id="addPlatsRef" u-meta='{"type":"uiRefer","data":"ItemRefList","field":"b2cStoreRef"}' style="display:none;">
+            <input readonly="readonly" />
+            <span class="ui-icon uifont icon-bar refer"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ui-table-container  margin-bottom-30">
+      <ui-grid params='options:$root.grid1Option,vm:$root'>
+      </ui-grid>
+    </div>
+    <div class="ui-panel-body-head">
+      <div class="ui-panel-body-head-left">
+        <div class="margin-bottom-10">
+          <ui-buttons params='datasource:$root.button3Source'>
+          </ui-buttons>
+          <div id="addItemsRef" u-meta='{"type":"uiRefer","data":"ItemRefList","field":"productref"}' style="display:none;">
+            <input readonly="readonly" />
+            <span class="ui-icon uifont icon-bar refer"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ui-table-container">
+      <ui-grid params='options:$root.grid2Option,vm:$root'>
+      </ui-grid>
+    </div>
+   </div>
+   <div id="maskin"></div>
+   </div>
+   <div class="pagination-right">
+        <ui-buttons params='datasource:$root.button2Source'>
+        </ui-buttons>
+     </div>
+</div>

@@ -1,0 +1,704 @@
+<link rel="stylesheet" href="./font/iconfont.css"/>
+
+<!-- 参照 第一步：引入参照的css和js-->
+<link href="/uitemplate_web/static/css/ref/ref.css" rel="stylesheet">
+<link href="/uitemplate_web/static/css/ref/jquery.scrollbar.css" rel="stylesheet">
+<link href="/uitemplate_web/static/trd/bootstrap-table/src/bootstrap-table.css" rel="stylesheet">
+<div class="main-wrap list-panel" id='userList'>
+    <div class="wrapper">
+        <!--页面功能名字-->
+        <div class="apptitle">
+            <span class="i18n" name="ht.app.use.0001"></span>
+            <span class="btn btn-default btn-sm backbutton" data-bind="click:goback"><span class="i18n" name="ht.app.use.0002"></span></span>
+        </div>
+        <div class="funbar">
+            <!--页面头部功能条-->
+            <div class="Y_sarch_style">
+                <!--   <div class="quickoper f-fr">
+                       <s class="bg_quickoper"></s>
+                       <span class="ecmifont icon-fangdajing1" id="condionSearch"></span>
+               <span class="ecmifont icon-iconfontadd2"
+                     data-bind="click:addUser"></span>
+                       <span class="ecmifont  icon-shangpinliebiaotubiao02 " data-bind="click:showModal.shopShow"></span>
+                       <span class="ecmifont icon-liebiao" data-bind="click:showModal.tableShow"></span>
+                   </div>-->
+                <div class="pull-right condsearch">
+                    <div class="u-input-group u-has-feedback" style="display: none;">
+                        <input type="text" class="nc-search" placeholder="ht.app.use.0003">
+                        <span class="u-form-control-feedback iconfont icon-search nc-searchbtn"></span>
+                    </div>
+                    <div  id="condionSearch">
+                        <span class="i18n" name="ht.app.use.0004"></span><span class="iconfont icon-arrow-down"></span><span class="iconfont icon-arrow-up"></span>
+                    </div>
+
+                </div>
+                <div class="guideTit">
+                    <div class="u-form-group">
+                        <button type="button" class="addbtn" data-bind="click:addUser"><span class="i18n" name="ht.app.use.0005"></span></button>
+                    </div>
+                </div>
+            </div>
+            <!--按条件查询区域-->
+            <div class="Y_selector" id="condition-row">
+                <dl class="sort">
+                    <dd class="u-row">
+                        <div class="outSel" data-bind="visible:yhtAdapter()">
+                            <label class="seLab"><span class="i18n" name="ht.app.use.0006"></span></label>
+                            <input type="text" id="s-loginName" class="ecmi-input u-form-control" placeholder="ht.app.use.0007">
+                            <button type="button" class="nc-searchbtn"><i class="iconfont icon-search"></i></button>
+                        </div>
+                        <div class="outSel" data-bind="visible:yhtAdapter()">
+                            <label class="seLab"><span class="i18n" name="ht.app.use.0008"></span></label>
+                            <input type="text" id="s-phone" class="ecmi-input u-form-control" placeholder="ht.app.use.0009">
+                            <button type="button" class="nc-searchbtn"><i class="iconfont icon-search"></i></button>
+                        </div>
+                        <div class="outSel">
+                            <label class="seLab"><span class="i18n" name="ht.app.use.0010"></span></label>
+                            <input type="text" id="s-name" class="ecmi-input u-form-control" placeholder="ht.app.use.0011">
+                            <button type="button" class="nc-searchbtn"><i class="iconfont icon-search"></i></button>
+                        </div>
+                        <div class="outSel">
+                            <label class="seLab"><span class="i18n" name="ht.app.use.0021"></span></label>
+                            <input type="text" id="s-remark" class="ecmi-input u-form-control" placeholder="ht.app.use.0021">
+                            <button type="button" class="nc-searchbtn"><i class="iconfont icon-search"></i></button>
+                        </div>
+                        <div class="outSel" data-bind="visible:yhtAdapter()">
+                            <label class="seLab"><span class="i18n" name="ht.app.use.0012"></span></label>
+                            <span class="styled-select">
+                                <select id="s-state">
+                                    <option value="1" class="i18n" name="ht.app.use.0013"></option>
+                                    <option value="0"  class="i18n" name="ht.app.use.0014"></option>
+                                    <option selected value="" class="i18n" name="ht.app.use.0015"></option>
+                                </select>
+                                <span class="iconfont icon-arrow-down"></span>
+                            </span>
+                        </div>
+                        <div class="clearfix"></div>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <!--tale列表展现区域-->
+        <div class="table-list table-responsive" data-bind="visible:showModal.showType()">
+            <div class="table-body">
+                <table class="u-table u-table-striped u-table-hover tabOne">
+                    <thead>
+                    <tr>
+                        <!--<th width="6%">序号</th>-->
+                        <th width="12%"><span class="i18n" name="ht.app.use.0016"></span></th>
+                        <th width="12%"><span class="i18n" name="ht.app.use.0017"></span></th>
+                        <!-- <th width="7%">用户组</th> -->
+                        <th width="10%"><span class="i18n" name="ht.app.use.0018"></span></th>
+                        <th width="12%"><span class="i18n" name="ht.app.use.0019"></span></th>
+                        <th width="7%" data-bind="visible:yhtAdapter()" ><span class="i18n" name="ht.app.use.0020"></span></th>
+                        <th width="15%"><span class="i18n" name="ht.app.use.0021"></span></th>
+                        <th width="18%" data-bind="visible:yhtAdapter()" ><span class="i18n" name="ht.app.use.0022"></span></th>
+                    </tr>
+                    </thead>
+                    <tbody data-bind="foreach:{data:listData.rows(), as: 'row',afterAdd: afterAdd}">
+                    <tr data-bind="css:{pause:(row.ref('islock')()=='true')}">
+                        <!--<td data-bind="text: $index()">1</td>-->
+                        <td >
+                            <span data-bind="text: row.ref('name'+ getPropSerial()),attr:{'title':row.ref('name'+ getPropSerial())}" style="width: 100%;display: inline-block;text-overflow: ellipsis;white-space: nowrap;height: 20px;line-height: 25px;overflow: hidden;">
+
+                            </span>
+                        </td>
+                        <td data-bind="text: row.ref('loginName')"><a href="#">js9999999</a></td>
+                        <!-- <td data-bind="text: row.ref('groupName')"><a href="#">js9999999</a></td> -->
+                        <td data-bind="text: row.ref('phone')">15901006306</td>
+                        <td data-bind="text: row.ref('email')">nirvana_guo@msn.com</td>
+                        <td data-bind="visible:$parent.yhtAdapter()">
+                            <label class="u-checkbox u-checkbox-info" data-bind="click: $parent.lockUser.bind($data, $index())">
+                                <input type="checkbox" data-bind="checked:(row.ref('islock')()=='true')" class="u-checkbox-input">
+                                <span class="u-checkbox-label"></span>
+                            </label>
+                        </td>
+                        <td data-bind="text: row.ref('remark')"><span class="i18n" name="ht.app.use.0021"></span></td>
+                        <td data-bind="visible:$parent.yhtAdapter()">
+                            <div class="pro_oper">
+                        <span class="iconfont icon-zhongzhi1 "    title="ht.app.use.0023"
+                              data-bind="click:$parent.resetPasword.bind($data, $index())">
+
+                              </span>
+                                <span data-bind="visible: !(row.ref('type')()=='2')">
+                                <span class="iconfont icon-jiaose"    title="ht.app.use.0024"
+                                      data-bind="click:$parent.asignRole.bind($data, $index())">
+                                      </span>
+                                <span class="iconfont icon-pencil"    title="ht.app.use.0025"
+                                      data-bind="click:$parent.useredit.bind($data, $index())"
+                                >
+                                        </span>
+                                <span class="iconfont icon-delete hide"    title="ht.app.use.0026"
+                                      data-bind="click:$parent.delete.bind($data, $index())">
+                                      </span>
+                                <span class="ecmifont "
+                                      data-bind="click:$parent.changeState.bind($data, $index()),attr:{title:(row.ref('states')()=='0'? $.i18n.prop('ht.app.use.0027'):$.i18n.prop('ht.app.use.0028'))},
+                                      css:{ ' icon-pause': (row.ref('states')()=='1'),
+                                      ' icon-zanting': (row.ref('states')()=='0') }">
+                                </span>
+                           </span>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div id="LoadingImage">
+                    <img src="./images/loading.gif"/>
+                    <span><span class="i18n" name="ht.app.use.0029"></span></span>
+                </div>
+                <div id="emptyImage">
+                    <img src="./images/empty.png"/>
+                    <span><span class="i18n" name="ht.app.use.0030"></span></span>
+                </div>
+                <!--分页区域-->
+                <div class="paginate-box" data-bind="visible: pagination.count() > 10">
+                    <div id="pagination" class="u-pagination"></div>
+                </div>
+            </div>
+        </div>
+        <!--橱窗列表展现区域-->
+        <div class="Y_userlist" id="Y_userlist" data-bind="visible:!(showModal.showType())">
+            <div class="u-row" data-bind="foreach:{data:listData.rows(), as: 'row',afterAdd: afterAdd}">
+                <div class="u-col-md-3 u-col-sm-6 u-col-xs-12 ulist">
+                    <div class="user_item">
+                        <div class="user_front u-row">
+                            <div class="userimg u-col-md-6 u-col-sm-6">
+                                <a href="javascript:void(0);">
+                                    <img src="./images/pic.jpg" data-bind="css{'img-gray':(row.ref('states')()=='0')}" alt=""/>
+                                </a>
+                            </div>
+                            <div class="userinfo u-col-md-6 u-col-sm-6">
+                                <div class="zx-box" data-bind="visible:(row.ref('islock')()=='true')">
+                                    <span class="zx-icon-box">
+                                        <i class="ecmifont icon-suo"></i>
+                                    </span>
+                                </div>
+                                <dl>
+                                    <dt>
+                                        <span data-bind="text: row.ref('name')"><span class="i18n" name="ht.app.use.0031"></span></span>
+                                    </dt>
+                                    <dd class="ucontact">
+                                        <p data-bind="text: row.ref('phone')">139313145454</p>
+
+                                        <p data-bind="text: row.ref('email')">sjlgjioen@yonyou.com</p>
+                                    </dd>
+                                    <dd class="uin">
+                                        <p data-bind="text: row.ref('loginName')">YH1234556</p>
+                                    </dd>
+                                    <!--<dd class="urole">
+                                        <p data-bind="text: row.ref('corole')"><span class="i18n" name="ht.app.use.0032"></span></p>
+
+                                        <p><span class="i18n" name="ht.app.use.0033"></span></p>
+                                    </dd>-->
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user_footer user">
+                        <s class="triangle-up"></s>
+
+                        <div class="SKU_oper">
+                            <div class="SKU_oper_o">
+                            <span data-bind="click:$parent.resetPasword.bind($data, $index())">
+                                <i class="ecmifont icon-morenmima"></i>
+                            </span>
+                                <a data-bind="visible: !(row.ref('type')()=='2')">
+                                    <span data-bind="click:$parent.asignRole.bind($data, $index())"><i class="iconfont icon-jiaose"></i></span>
+                                    <span data-bind="click:$parent.useredit.bind($data, $index())"><i class="ecmifont icon-bianji"></i></span>
+                                    <span data-bind="click:$parent.delete.bind($data, $index())"> <i
+                                            class="ecmifont icon-shanchu1"></i> </span>
+                                    <span data-bind="click:$parent.changeState.bind($data, $index())"> <i
+                                            data-bind="css:{ ' icon-pause': (row.ref('states')()=='0'),' icon-zanting': (row.ref('states')()=='1') }"
+                                            class="ecmifont"></i> </span>
+                                    <span data-bind="click:$parent.lockUser.bind($data, $index())">
+                                     <i  class="ecmifont "
+                                         data-bind="css:{ ' icon-suo': (row.ref('islock')()=='true'),' icon-suokai': (row.ref('islock')()=='false') }"
+                                         class="ecmifont "></i> </span>
+
+                                </a>
+
+                            </div>
+                            <div class="select_check">
+                                <span class="zx-name" data-bind="text: row.ref('name')"><span class="i18n" name="ht.app.use.0031"></span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- 编辑用户  模态框-->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true" class="iconfont icon-cancel02"></span></button>
+                    <h4 class="modal-title" id="myModalLabel1" data-bind="text:modal.title"><span class="i18n" name="ht.app.use.0034"></span></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="cc">
+                        <div id="editcardC" class="cardC">
+                            <div id="editcard00">
+                                <div class="ccTabForm">
+                                    <div class="msg-tb" >
+                                        <div class="u-row">
+                                            <div class="u-col-md-6 u-col-sm-6">
+                                                <div class="thbold w85"><span class="i18n" name="ht.app.use.0006"></span></div>
+                                                <div class="tdlight">
+                                                    <div class="u-input-group u-has-feedback must-in">
+                                                        <div class="u-input-group-before " style="color: red;">*</div>
+                                                        <input type="text" placeholder="ht.app.use.0035"
+                                                               class="  ecmi-input u-form-control"
+                                                               u-meta='{"id":"loginName","type":"string","data":"usereditData","field":"loginName"}'
+                                                        >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="u-col-md-6 u-col-sm-6">
+                                                <div class="thbold w110"><span class="i18n" name="ht.app.use.0010"></span></div>
+                                                <div class="tdlight">
+                                                    <div class="u-input-group u-has-feedback must-in">
+                                                        <div class="u-input-group-before " style="color: red;">*</div>
+                                                        <!--<input type="text" placeholder="ht.app.use.0036"-->
+                                                        <!--u-meta='{"id":"name","type":"string","data":"usereditData","field":"name"}'-->
+                                                        <!--class=" ecmi-input u-form-control"-->
+                                                        <!--&gt;-->
+                                                        <!-- 多语录入框 -->
+                                                        <div class="u-text multi-input" id='default-value' data-bind="attr:{default:$root.mutlilang.sysLocale}" >
+                                                            <input class="ecmi-input u-form-control" data-bind="value: $root.mutlilang.defaultLocaleValue,event: {blur: $root.mutlilang.changeDTValue }" type="text" placeholder="ht.app.use.0036"
+                                                                   u-meta='{"id":"name","type":"string","data":"usereditData","field":"showName"}' />
+                                                            <div class="input-icon" data-bind="click: $root.mutlilang.showMul" ></div>
+                                                        </div>
+                                                        <div class='multi-form' data-bind="css:{show:$root.mutlilang.show}">
+                                                            <div class='arrow'>
+                                                            </div>
+                                                            <div data-bind="foreach: $root.mutlilang.locale">
+                                                                <div class="item">
+                                                                    <span class="field" data-bind="style:{visibility:serial==$root.mutlilang.sysDefaultLanguageSerial()|| serial==$root.mutlilang.currentSerial || serial==''?'visible':'hidden'}">*</span>
+                                                                    <label data-bind="text:label" class="multi-label"></label>
+                                                                    <div class="u-text input-par" data-bind='attr:{"field":"name" + serial}'  u-meta='{"data":"usereditData","field":"name"}' >
+                                                                        <input class="" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class='btn-groups'>
+                                                                <button class="u-button u-button-border margin-left-10"  data-bind='click:mutlilang.closeMul' ><span class="i18n" name="ht.app.use.0048"></span></button>
+                                                                <button class="u-button u-button-primary btn-noborder" data-bind='click:mutlilang.saveValue'><span class="i18n" name="ht.app.use.0058"></span></button>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="u-row">
+                                            <div class="u-col-md-6 u-col-sm-6">
+                                                <div class="thbold w85"><span class="i18n" name="ht.app.use.0037"></span></div>
+                                                <div class="tdlight">
+                                                    <div class="u-input-group u-has-feedback must-in">
+                                                        <div class="u-input-group-before " style="color: red;">*</div>
+                                                        <input type="text"
+                                                               class="txtInput ecmi-input u-form-control" placeholder="ht.app.use.0038"
+                                                               u-meta='{"id":"email","type":"string","data":"usereditData","field":"email"}'
+                                                        >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="u-col-md-6 u-col-sm-6">
+                                                <div class="thbold w110"><span class="i18n" name="ht.app.use.0008"></span></div>
+                                                <div class="tdlight">
+                                                    <div class="u-input-group u-has-feedback must-in">
+                                                        <div class="u-input-group-before " style="color: red;">*</div>
+                                                        <input type="text" class=" ecmi-input u-form-control" placeholder="ht.app.use.0039"
+                                                               u-meta='{"id":"phone","type":"string","data":"usereditData","field":"phone"}'
+                                                        >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="u-row">
+                                            <!--<div class=" u-col-md-6 u-col-sm-6 orgref" data-bind="visible:yhtAdapter()">-->
+                                                <!--<div class="thbold w85"><span class="i18n" name="ht.app.use.0040"></span></div>-->
+                                                <!--&lt;!&ndash;<div id="template-deptref"></div>&ndash;&gt;-->
+                                                <!--<div class="tdlight">-->
+                                                    <!--<div class="u-input-group u-has-feedback must-in">-->
+                                                        <!--<div class="u-input-group col-md-5 u-has-feedback "  style="padding: 0;width: 100%;" id="orgRef"	u-meta='{"type":"uiNewRefer", "data":"headform2", "field":"orgdata"}'>-->
+
+                                                            <!--<input class="u-form-control ecmi-input" type="text" id="orgId">-->
+                                                            <!--<span class="u-form-control-feedback iconfont icon-mtext refer"></span>-->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                            <!--<div class=" u-col-md-6 u-col-sm-6 orgref hide">-->
+                                                <!--<div class="thbold w85"><span class="i18n" name="ht.app.use.0041"></span></div>-->
+                                                <!--<div class="tdlight">-->
+                                                    <!--<div class="u-input-group u-has-feedback must-in">-->
+                                                        <!--<div class="u-input-group col-md-5 u-has-feedback "  style="padding: 0;width: 100%;" id="groupRef"	u-meta='{"type":"uiRefer", "data":"roleRefDT", "field":"groupdata"}'>-->
+
+                                                            <!--<input class="u-form-control ecmi-input" type="text" >-->
+                                                            <!--<span class="u-form-control-feedback iconfont icon-mtext refer"></span>-->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                            <div class="u-col-md-6" data-bind="visible:yhtAdapter()">
+                                                <div class="thbold w85"><span class="i18n" name="ht.app.use.0042"></span></div>
+                                                <div class="tdlight">
+                                                    <input type="text" class=" ecmi-input u-form-control" u-meta='{"id":"remark","type":"string","data":"usereditData","field":"remark"}'></div>
+                                            </div>
+                                            <div class="u-col-md-6 u-col-sm-6">
+                                                <div class="thbold w85"><span class="i18n" name="ht.app.use.0043"></span></div>
+                                                <div class="tdlight headscu">
+                                                    <div class="t-img-box">
+                                                        <img data-bind="attr:{src:usereditData.ref('avator')}" class="tou-img" >
+                                                        <span style="display:none;" class="iconfont icon-plus" data-bind="visible:usereditData.ref('avator')().length<1"></span>
+                                                        <p class="sc" id="filePicker">
+                                                            <span class="i18n" name="ht.app.use.0044"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="upload-tip"  style="display: none">
+                                                        <span>
+                                                            <span class="i18n" name="ht.app.use.0045"></span>
+                                                        </span>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--<div class="u-row">-->
+                                            <!--&lt;!&ndash; <div class="u-col-md-6">-->
+                                                <!--<div class="thbold w85"><span class="i18n" name="ht.app.use.0042"></span></div>-->
+                                                <!--<div class="tdlight">-->
+                                                    <!--<input type="text" class=" ecmi-input u-form-control" u-meta='{"id":"remark","type":"string","data":"usereditData","field":"remark"}'></div>-->
+                                            <!--</div> &ndash;&gt;-->
+                                            <!--<div class="u-col-md-6 u-col-sm-6">-->
+                                                <!--<div class="thbold w85"><span class="i18n" name="ht.app.use.0043"></span></div>-->
+                                                <!--<div class="tdlight headscu">-->
+                                                    <!--<div class="t-img-box">-->
+                                                        <!--<img data-bind="attr:{src:usereditData.ref('avator')}" class="tou-img" >-->
+                                                        <!--<span style="display:none;" class="iconfont icon-plus" data-bind="visible:usereditData.ref('avator')().length<1"></span>-->
+                                                        <!--<p class="sc" id="filePicker">-->
+                                                            <!--<span class="i18n" name="ht.app.use.0044"></span>-->
+                                                        <!--</p>-->
+                                                    <!--</div>-->
+                                                    <!--<div class="upload-tip"  style="display: none">-->
+                                                        <!--<span>-->
+                                                            <!--<span class="i18n" name="ht.app.use.0045"></span>-->
+                                                        <!--</span>-->
+                                                    <!--</div>-->
+
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                            <!--&lt;!&ndash; <div class="u-col-md-6">-->
+                                                 <!--<div class="vam pd-lf10 checkh"><input type="checkbox" id="ee1" name="a" checked  /><label class="label" ><span class="i18n" name="ht.app.use.0046"></span></label></div>-->
+                                                 <!--<div class="vam pd-lf10 checkh"><input type="checkbox" id="ee11" name="a" data-bind="checked:usereditData.islock"><label class="label" ><span class="i18n" name="ht.app.use.0020"></span></label></div>-->
+                                             <!--</div>&ndash;&gt;-->
+                                        <!--</div>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="btnBox">
+                        <div class="u-form-group">
+                            <button type="button" class="savebtn" id="editUserForm" data-bind="click:modal.save"><span class="i18n" name="ht.app.use.0047"></span></button>
+                        </div>
+                        <div class="u-form-group">
+                            <button type="button" class="cancelbtn" id="editcancelUserForm" data-dismiss="modal" data-bind="click:modal.cancel"><span class="i18n" name="ht.app.use.0048"></span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--保存成功提示框-->
+    <div class="modal fade" id="saveModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true" class="iconfont icon-cancel02"></span></button>
+                    <h4 class="modal-title"><span class="i18n" name="ht.app.use.0049"></span></h4>
+                </div>
+                <div class="modal-body" style="height: 200px">
+                    <div class="cc">
+                        <div class="error">
+                            <div class="d-txt-box">
+                                <span class="iconfont icon-ok"></span>
+                                <p class="txt-p"><span class="i18n" name="ht.app.use.0050"></span></p>
+                                <p class="txt-p1"><span class="i18n" name="ht.app.use.0051"></span>!
+                                    <span class="i18n" name="ht.app.use.0052"></span><a href="#" data-dismiss="modal"  data-bind="click:asignRole"><span class="i18n" name="ht.app.use.0053"></span></a><span class="i18n" name="ht.app.use.0054"></span>
+                                </p>
+                            </div>
+                            <div class="cl"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--选择角色-->
+    <div class="modal fade" id="selectRoleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true" class="iconfont icon-cancel02"></span></button>
+                    <h4 class="modal-title"><span class="i18n" name="ht.app.use.0055"></span></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="main-box">
+                        <div class="main-left-box">
+                            <div class="con-box">
+                                <h2 class="hd"><span class="i18n" name="ht.app.use.0056"></span></h2>
+                                <div class="con overflow auto h350">
+                                    <div class="d-con ">
+                                        <div class="">
+                                            <div>
+                                                <ul data-bind="foreach: {data:srcListData.rows(), as: 'row', afterAdd: afterAdd}">
+                                                    <li>
+                                                        <label class="u-checkbox u-checkbox-info vam" data-bind="click: row.multiSelect">
+                                                            <input type="checkbox" class="u-checkbox-input">
+                                                            <label class="label" data-bind="text: row.ref('roleName')"></label>
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main-center-box">
+                            <div class="ipt-box">
+                                <div class="aBtn-box">
+                                    <a class="aBtn" data-bind="click: selToR">
+                                        <i class="uf uf-anglearrowpointingtoright"></i></a>
+                                    <a class="aBtn" data-bind="click: allToR">
+                                        <i class="uf uf-doubleanglepointingtoright uf-2arrow-right"></i></a>
+                                    <a class="aBtn" data-bind="click: selToL">
+                                        <i class="uf uf-anglepointingtoleft"></i></a>
+                                    <a class="aBtn" data-bind="click: allToL">
+                                        <i class="uf uf-doubleleftchevron uf-2arrow-left"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main-right-box">
+                            <div class="con-box">
+                                <h2 class="hd"><span class="i18n" name="ht.app.use.0057"></span></h2>
+                                <div class="con overflow auto h350">
+                                    <div class="d-con">
+                                        <div class="">
+                                            <div>
+                                                <ul data-bind="foreach: {data:destListData.rows(), as: 'row', afterAdd: afterAdd}">
+                                                    <li>
+                                                        <label class="u-checkbox u-checkbox-info vam" data-bind="click: row.multiSelect">
+                                                            <input type="checkbox"  class="u-checkbox-input">
+                                                            <label class="label" data-bind="text: row.ref('roleName')"></label>
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cl"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="btnBox">
+                        <div class="u-form-group">
+                            <button type="button" class="savebtn" data-bind="click:confirmRole"><span class="i18n" name="ht.app.use.0058"></span></button>
+                        </div>
+                        <div class="u-form-group">
+                            <button type="button" class="cancelbtn"  data-dismiss="modal"><span class="i18n" name="ht.app.use.0048"></span></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="btnBox">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--分配角色-->
+    <div class="modal" id="asignStoreModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true" class="iconfont icon-cancel02"></span></button>
+                    <h4 class="modal-title" ><span class="i18n" name="ht.app.use.0053"></span></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="u-input-group u-has-feedback hide" id="selRole">
+                        <input class="u-form-control"/>
+                        <span class="refer u-form-control-feedback uf uf uf-listwithdots"></span>
+                    </div>
+                    <div class="prt30-10 ta-rt"><a  data-bind="click:selRole" class="btn blue" style="width:70px;"><span class="i18n" name="ht.app.use.0055"></span></a>
+                        <a  data-bind="click:delroles" class=" cancelbtn" style="float: right"><span class="i18n" name="ht.app.use.0059"></span></a></div>
+                    <div class="cc">
+                        <div class="ccTab">
+                            <table class="lay_table u-table u-table-striped u-table-hover tabOne" cellpadding="0" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        <label class="u-checkbox  only-style u-checkbox-info" style="height: 28px;"
+                                               data-bind="click: destListData.toggleAllSelect.bind(destListData), css:{'is-checked': destListData.allSelected()}">
+                                            <input id="checkInput" type="checkbox" class="u-checkbox-input">
+                                            <span class="u-checkbox-label"></span>
+                                        </label>
+                                    </th>
+                                    <th ><span class="i18n" name="ht.app.use.0060"></span></th>
+                                    <th><span class="i18n" name="ht.app.use.0061"></span></th>
+                                    <th width="100"><span class="i18n" name="ht.app.use.0022"></span></th>
+                                </tr>
+                                </thead>
+                                <tbody data-bind="foreach:{data:destListData.rows(), as: 'row',afterAdd: afterAdd}">
+                                <tr data-bind="css: { 'is-selected' : row.selected() }, attr: {'rowindex': $index}">
+                                    <td >
+                                        <label class="u-checkbox only-style u-checkbox-info"
+                                               data-bind="click: row.multiSelect, css:{'is-checked': row.selected()}">
+                                            <input type="checkbox" class="u-checkbox-input">
+                                            <span class="u-checkbox-label"></span>
+                                        </label>
+                                    </td>
+                                    <td data-bind="text: row.ref('roleCode')"></td>
+                                    <td data-bind="text: row.ref('roleName')"></td>
+                                    <td>
+                                        <div class="pro_oper">
+                                    <span class="zx-icon-box">
+                                        <span class="iconfont icon-delete" data-bind="click:$parent.cancelLink.bind($data, $index())"></span>
+                                    </span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="btnBox">
+                        <div class="u-form-group hide">
+                            <button type="button" class="savebtn" id="asignUserForm" data-bind="click:linkSave"><span class="i18n" name="ht.app.use.0058"></span></button>
+                        </div>
+                        <div class="u-form-group">
+                            <button type="button" class="cancelbtn"  data-dismiss="modal"><span class="i18n" name="ht.app.use.0062"></span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--操作成功提示-->
+    <div class="modal fade" id="hintModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content" data-bind="css:{modalfail:hintModal.type}">
+                <div class="modal-body" >
+                    <div class="cc">
+                        <div class="error">
+                            <span class="iconfont icon-tishi icontishi" data-bind="css:{iconok:hintModal.type}"></span>
+                            <span data-bind="text:hintModal.msg,css:{fail:hintModal.type}"></span>
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true" class="iconfont icon-cancel02"></span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--重置密码确认提示-->
+    <div class="modal fade" id="resetPasswordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true" class="iconfont icon-cancel02"></span></button>
+                    <h4 class="modal-title"><span class="i18n" name="ht.app.use.0049"></span></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="cc">
+                        <div class="error">
+                            <span class="i18n" name="ht.app.use.0063"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="btnBox">
+                        <div class="u-form-group">
+                            <button type="button" class="savebtn"  ><span class="i18n" name="ht.app.use.0058"></span></button>
+                        </div>
+                        <div class="u-form-group">
+                            <button type="button" class="cancelbtn"  data-dismiss="modal"><span class="i18n" name="ht.app.use.0048"></span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--删除提示-->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true" class="iconfont icon-cancel02"></span></button>
+                    <h4 class="modal-title"><span class="i18n" name="ht.app.use.0049"></span></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="cc">
+                        <div class="error">
+                            <span class="i18n" name="ht.app.use.0064"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="btnBox">
+                        <div class="u-form-group">
+                            <button type="button" class="savebtn" id="delconfirm" data-bind="click:deleteconfirm"><span class="i18n" name="ht.app.use.0058"></span></button>
+                        </div>
+                        <div class="u-form-group">
+                            <button type="button" class="cancelbtn"  data-dismiss="modal"><span class="i18n" name="ht.app.use.0048"></span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--取消关联提示-->
+    <div class="modal fade" id="cancelLinkModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true" class="ecmifont icon-shangchu"></span></button>
+                    <h4 class="modal-title"><span class="i18n" name="ht.app.use.0049"></span></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="cc">
+                        <div class="error">
+                            <b></b>
+                            <span class="i18n" name="ht.app.use.0064"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="btnBox"><a id="confirmcancel" data-bind="click:confirmcancelLink" class="btn green"><span class="i18n" name="ht.app.use.0065"></span></a><a data-dismiss="modal" class="btn blue"><span class="i18n" name="ht.app.use.0048"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

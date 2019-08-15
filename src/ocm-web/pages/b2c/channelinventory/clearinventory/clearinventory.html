@@ -1,0 +1,804 @@
+<div class="ui-panel ui-list-panel">
+    <div>
+        <div class="page-title">
+            <span>渠道库存清理</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="title-seperator"></div>
+    <div class="ui-searchbox ui-panel-head">
+        <div id="storeList-searchcontent" class="ui-searchbox-content">
+
+        </div>
+        <div class="clearfix">
+
+        </div>
+        <div class="ui-searchbox-footer">
+            <div class="ui-search-more hidden">
+                <a>更多
+                    <i class="uifont icon-down"></i>
+                </a>
+            </div>
+
+            <div class="ui-search-btn">
+                <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:cleanSearch">清空
+                </a>
+                <a class="ui-btn ui-btn-green" data-bind="click:search.bind($data,true)">搜索
+                </a>
+            </div>
+            <div class="clearfix">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="ui-panel-body">
+        <div class="ui-panel-body-head">
+            <div class="ui-panel-body-head-left">
+                
+                <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:confirmClear">
+                    <i class="uifont icon-tubiao-duigou-xianxing margin-right-5"></i>确认清理
+                </a>
+                <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click: returnClear">
+                    <i class="uifont icon-tubiao-quxiaoshenhe margin-right-5"></i>退回
+                </a>
+
+            </div>
+            <!--<div class="ui-panel-body-head-right">
+                <i class="uifont icon-i font-c-blue margin-right-5"></i>共搜索到<span data-bind="text:storeList.totalRow"></span>条数据
+            </div>-->
+        </div>
+        <div class="ui-table-container">
+            <div id="platstorelist" u-meta='{"id":"grid_platstorelist","data":"storeList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+                <div options='{"field":"code","dataType":"String","title":"渠道库存号","renderType":"detailRender"}'></div>
+                <div options='{"field":"officeName","dataType":"String","title":"办事处"}'></div>
+                <div options='{"field":"serviceProviderTypeName","dataType":"String","title":"服务商类型"}'></div>
+                <div options='{"field":"serviceProviderName","dataType":"String","title":"服务商"}'></div>
+                <div options='{"field":"stockStatus","dataType":"integer","title":"库存状态","editOptions":{"type":"combo","datasource":"stockStatusSrc"},"renderType":"comboRender"}'></div>
+                <div options='{"field":"productCode","dataType":"String","title":"产品编码"}'></div>
+                <div options='{"field":"productName","dataType":"String","title":"产品名称"}'></div>
+                <div options='{"field":"accountName","dataType":"String","title":"账号名称"}'></div>
+                <div options='{"field":"platformName","dataType":"String","title":"平台名称"}'></div>
+                <div options='{"field":"storeName","dataType":"String","title":"店铺名称"}'></div>
+                <div options='{"field":"syscode","dataType":"String","title":"电商订单号"}'></div>
+                <div options='{"field":"soBillNo","dataType":"String","title":"销售单号"}'></div>
+                <div options='{"field":"purchaseBillCode","dataType":"String","title":"采购单号"}'></div>
+                <div options='{"field":"isCanSell","dataType":"integer","title":"二次销售","editOptions":{"type":"combo","datasource":"isCanSellSrc"},"renderType":"comboRender"}'></div>
+                <!-- <div options='{"field":"isInit","dataType":"integer","title":"是否初期库存","editOptions":{"type":"combo","datasource":"radio2Preserveinventory"},"renderType":"comboRender"}'></div> -->
+
+                <div options='{"field":"bookTime","dataType":"Datetime","title":"购买时间"}'></div>
+                <div options='{"field":"creationTime","dataType":"Datetime","title":"库存产生时间"}'></div>
+
+                <div options='{"field":"buyer","dataType":"String","title":"顾客ID"}'></div>
+                <div options='{"field":"receiverName","dataType":"String","title":"顾客姓名"}'></div>
+                <div options='{"field":"receiverPhone","dataType":"String","title":"顾客联系方式1"}'></div>
+                <div options='{"field":"receiverTel","dataType":"String","title":"顾客联系方式2"}'></div>
+                <div options='{"field":"addressDetail","dataType":"String","title":"顾客地址"}'></div>
+
+                <div options='{"field":"creator","dataType":"String","title":"创建人","visible":false}'></div>
+                <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":false}'></div>
+                <div options='{"field":"creationTime","dataType":"Datetime","title":"创建时间","visible":false}'></div>
+                <div options='{"field":"modifiedTime","dataType":"Datetime","title":"修改时间","visible":false}'></div>
+                <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation","width":"150px","fixed":true}'></div>
+            </div>
+            <div class="ui-statistics margin-top-10">
+                <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择
+                <span class="font-c-blue" data-bind="text:storeList.selectedIndices().length"></span>项数据
+            </div>
+            <div class="pagination-right">
+                <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"storeList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 编辑/新增 -->
+<div class="ui-panel ui-bill-panel" style="display: none;" id="validate">
+    <div>
+        <div class="page-title">
+            <span>渠道库存清理</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="ui-panel-btn-bg">
+        <div class="ui-operate-btn">
+            <a class="ui-btn ui-btn-primary" data-bind="click:cancelHandle.bind($data)">取消
+            </a>
+            <a class="ui-btn ui-btn-green" data-bind="click:saveBill.bind($data)">保存
+            </a>
+        </div>
+    </div>
+    <div class="ui-panel-head ui-bill-head clearfix">
+        <div class="ui-item" data-bind="visible: billPanelStatusB() == 'add'">
+            <div class="ui-name">
+                <i class="strong">*</i>是否初期库存：</div>
+            <div class="ui-inputarea">
+                <div u-meta='{"id":"radio2Preserveinventory1","type":"u-radio","data":"storeList","field":"isInit","datasource":"radio2Preserveinventory","hasOther":false}'>
+                    <label class="u-radio">
+                        <input type="radio" class="u-radio-button" name="options2">
+                        <span class="u-radio-label"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item" data-bind="visible: billPanelStatusB() == 'edit'">
+            <div class="ui-name">是否初期库存：</div>
+            <div class="ui-inputarea">
+                <div u-meta='{"type":"u-combobox","data":"storeList","field":"isInit","datasource":"radio2Preserveinventory","enable":"false"}'>
+                    <input class="ui-no-border" />
+                </div>
+            </div>
+        </div>
+
+        <div class="ui-item" id="newSyscode" data-bind="visible: billPanelStatusB() == 'add'">
+            <div class="ui-name">
+                <i class="strong">*</i>电商订单号：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" u-meta='{"id":"syscode","type":"u-text","data":"storeList","field":"syscode"}'>
+                    <input class="u-input"  />
+                </div>
+            </div>
+        </div>
+        <div class="ui-item" data-bind="visible: billPanelStatusB() == 'edit'">
+            <div class="ui-name">
+                电商订单号：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("syscode")'></div>
+            </div>
+        </div>
+
+        <div class="ui-item" data-bind="visible: billPanelStatusB() == 'edit'">
+            <div class="ui-name">渠道库存号：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("code")'></div>
+            </div>
+        </div>
+
+        <div class="ui-item" data-bind="visible: billPanelStatusB() == 'add'">
+            <div class="ui-name">办事处：</div>
+            <div id="officeId2" class="ui-inputarea" u-meta='{"type":"uiRefer","data":"storeList","field":"officeId"}'>
+                <input readonly="readonly" autocomplete="off" />
+                <span class="ui-icon uifont icon-bar refer"></span>
+            </div>
+        </div>
+        <div class="ui-item" data-bind="visible: billPanelStatusB() == 'edit'">
+            <div class="ui-name">办事处：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("officeName")'></div>
+            </div>
+        </div>
+
+        <div class="ui-item" data-bind="visible: billPanelStatusB() == 'add'">
+            <div class="ui-name">服务商类型：</div>
+            <div class="ui-inputarea">
+                <div id="serviceProviderTypeId" u-meta='{"type":"uiRefer","data":"storeList","field":"serviceProviderType"}'>
+                    <input readonly="readonly" />
+                    <span class="ui-icon uifont icon-bar refer"></span>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item" data-bind="visible: billPanelStatusB() == 'edit'">
+            <div class="ui-name">服务商类型：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("serviceProviderTypeName")'></div>
+            </div>
+        </div>
+
+        <div class="ui-item" id="newServiceProviderId" data-bind="visible: billPanelStatusB() == 'add'">
+            <div class="ui-name">
+                <i class="strong">*</i>服务商：</div>
+            <div class="ui-inputarea" id="serviceProviderId2" u-meta='{"type":"uiRefer","data":"storeList","field":"serviceProviderId"}'>
+                <input readonly="readonly" />
+                <span class="ui-icon uifont icon-bar refer"></span>
+
+            </div>
+        </div>
+        <div class="ui-item" data-bind="visible: billPanelStatusB() == 'edit'">
+            <div class="ui-name">服务商：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("serviceProviderName")'></div>
+            </div>
+        </div>
+
+        <div class="ui-item" id="newBusiAccount" data-bind="visible: billPanelStatusB() == 'add'">
+            <div class="ui-name">
+                <span class='ui-redstar'>*</span>账号名称：
+            </div>
+            <div class="ui-inputarea" id="busiAccountId" u-meta='{"type":"uiRefer","data":"storeList","field":"busiAccount"}'>
+                <input readonly="readonly" autocomplete="off" />
+                <span class="ui-icon uifont icon-bar refer"></span>
+            </div>
+        </div>
+        <div class="ui-item" data-bind="visible: billPanelStatusB() == 'edit'">
+            <div class="ui-name">账号名称：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("accountName")'></div>
+            </div>
+        </div>
+
+        <div class="ui-item" data-bind="visible: billPanelStatusB() == 'add'">
+            <div class="ui-name">所属平台：</div>
+            <div class="ui-inputarea" u-meta='{"type":"uiRefer","data":"storeList","field":"platformId"}'>
+                <input id="platformId" readonly="readonly" autocomplete="off" />
+                <span class="ui-icon uifont icon-bar refer"></span>
+            </div>
+        </div>
+        <div class="ui-item" data-bind="visible: billPanelStatusB() == 'edit'">
+            <div class="ui-name">平台名称：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("platformName")'></div>
+            </div>
+        </div>
+
+        <div class="ui-item" data-bind="visible: billPanelStatusB() == 'add'">
+            <div class="ui-name">
+                店铺名称：
+            </div>
+            <div class="ui-inputarea" id="storeId" u-meta='{"type":"uiRefer","data":"storeList","field":"storeId"}'>
+                <input readonly="readonly" autocomplete="off" />
+                <span class="ui-icon uifont icon-bar refer"></span>
+            </div>
+        </div>
+        <div class="ui-item" data-bind="visible: billPanelStatusB() == 'edit'">
+            <div class="ui-name">店铺名称：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("storeName")'></div>
+            </div>
+        </div>
+
+        <div class="ui-item" data-bind="visible: billPanelStatusB() == 'add'">
+            <div class="ui-name">购买时间：</div>
+            <div class="ui-inputarea">
+                <div u-meta='{"type":"u-datetime","data":"storeList","field":"bookTime","enable":true}'>
+                    <input class="noborder" />
+                    <span class="ui-icon uf uf-calendar"></span>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item" data-bind="visible: billPanelStatusB() == 'edit'">
+            <div class="ui-name">购买时间：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("bookTime")'></div>
+            </div>
+        </div>
+
+        <div class="ui-item" data-bind="visible: billPanelStatusB() == 'add'">
+            <div class="ui-name">顾客ID：</div>
+            <div class="ui-inputarea">
+                <!-- <div class="ui-textonly" data-bind='text: storeList.ref("buyer")'></div> -->
+                <div class="ui-textonly" u-meta='{"type":"u-text","data":"storeList","field":"buyer"}'>
+                    <input class="u-input" />
+                </div>
+            </div>
+        </div>
+        <div class="ui-item" data-bind="visible: billPanelStatusB() == 'edit'">
+            <div class="ui-name">顾客ID：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("buyer")'></div>
+            </div>
+        </div>
+
+        <div class="ui-item" data-bind="visible: billPanelStatusB() == 'add'">
+            <div class="ui-name">顾客姓名：</div>
+            <div class="ui-inputarea">
+                <!-- <div class="ui-textonly" data-bind='text: storeList.ref("receiverName")'></div> -->
+                <div class="ui-textonly" u-meta='{"type":"u-text","data":"storeList","field":"receiverName"}'>
+                    <input class="u-input" />
+                </div>
+            </div>
+        </div>
+        <div class="ui-item" data-bind="visible: billPanelStatusB() == 'edit'">
+            <div class="ui-name">顾客姓名：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("receiverName")'></div>
+            </div>
+        </div>
+
+        <div class="ui-item" data-bind="visible: billPanelStatusB() == 'add'">
+            <div class="ui-name">顾客联系方式1：</div>
+            <div class="ui-inputarea">
+                <!-- <div class="ui-textonly" data-bind='text: storeList.ref("receiverPhone")'></div> -->
+                <div class="ui-textonly" u-meta='{"type":"u-text","data":"storeList","field":"receiverPhone"}'>
+                    <input class="u-input" />
+                </div>
+            </div>
+        </div>
+        <div class="ui-item" data-bind="visible: billPanelStatusB() == 'edit'">
+            <div class="ui-name">顾客联系方式1：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("receiverPhone")'></div>
+            </div>
+        </div>
+
+        <div class="ui-item" data-bind="visible: billPanelStatusB() == 'add'">
+            <div class="ui-name">顾客联系方式2：</div>
+            <div class="ui-inputarea">
+                <!-- <div class="ui-textonly" data-bind='text: storeList.ref("receiverTel")'></div> -->
+                <div class="ui-textonly" u-meta='{"type":"u-text","data":"storeList","field":"receiverTel"}'>
+                    <input class="u-input" />
+                </div>
+            </div>
+        </div>
+        <div class="ui-item" data-bind="visible: billPanelStatusB() == 'edit'">
+            <div class="ui-name">顾客联系方式2：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("receiverTel")'></div>
+            </div>
+        </div>
+
+        <div class="ui-item" data-bind="visible: billPanelStatusB() == 'add'">
+            <div class="ui-name">顾客地址：</div>
+            <div class="ui-inputarea">
+
+                <div class="ui-textonly" u-meta='{"type":"u-text","data":"storeList","field":"addressDetail"}'>
+                    <input class="u-input" />
+                </div>
+            </div>
+        </div>
+        <div class="ui-item" data-bind="visible: billPanelStatusB() == 'edit'">
+            <div class="ui-name">顾客地址：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("addressDetail")'></div>
+            </div>
+        </div>
+    </div>
+    <!--22-->
+    <div class="ui-panel-head ui-bill-head clearfix" style="margin-top:10px;">
+        <div class="ui-item">
+            <div class="ui-name">
+                <i class="strong">*</i>产品编码：</div>
+
+            <div class="ui-inputarea" u-meta='{"id":"productIdRefer","type":"uiRefer","data":"storeList","field":"productId","rel":{"refname":"productName","proTypeName":"proTypeName"}}'>
+                <input readonly="readonly" />
+                <span class="ui-icon uifont icon-bar refer"></span>
+            </div>
+
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">产品名称：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("productName")'></div>
+                <!-- <div class="ui-textonly" u-meta='{"type":"u-text","data":"storeList","field":"productName","enable":false}'>
+                    <input class="u-input" />
+                </div> -->
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">物料类型：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("proTypeName")'></div>
+                <!-- <div class="ui-textonly" u-meta='{"type":"u-text","data":"storeList","field":"proTypeName","enable":false}'>
+                    <input class="u-input" />
+                </div> -->
+            </div>
+        </div>
+        <div class="ui-item" data-bind="visible: billPanelStatusB() == 'add'">
+            <div class="ui-name">
+                <i class="strong">*</i>数量：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" u-meta='{"type":"u-text","data":"storeList","field":"buyNum"}'>
+                    <input class="u-input" />
+                </div>
+            </div>
+        </div>
+        <div class="ui-item" data-bind="visible: billPanelStatusB() == 'edit'">
+            <div class="ui-name">
+                数量：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("buyNum")'></div>
+            </div>
+        </div>
+
+        <div class="ui-item">
+            <div class="ui-name">销售单号：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" u-meta='{"type":"u-text","data":"storeList","field":"soBillNo"}'>
+                    <input class="u-input" />
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">采购单号：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" u-meta='{"type":"u-text","data":"storeList","field":"purchaseCode"}'>
+                    <input class="u-input" />
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">
+                <i class="strong">*</i>库存产生时间：</div>
+            <div class="ui-inputarea">
+                <div u-meta='{"type":"u-datetime","data":"storeList","field":"creationTime","required":true}'>
+                    <input />
+                    <span class="ui-icon uf uf-calendar"></span>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item" data-bind="visible: billPanelStatusB() == 'add'">
+            <div class="ui-name">启运数量：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" u-meta='{"type":"u-text","data":"storeList","field":"stockNum"}'>
+                    <input class="u-input" />
+                </div>
+            </div>
+        </div>
+        <div class="ui-item" data-bind="visible: billPanelStatusB() == 'edit'">
+            <div class="ui-name">启运数量：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("stockNum")'></div>
+            </div>
+        </div>
+        <!-- <div class="ui-item">
+            <div class="ui-name">
+                <i class="strong">*</i>库存确认时间：</div>
+            <div class="ui-inputarea">
+                <div u-meta='{"type":"u-datetime","data":"storeList","field":"confirmTime"}'>
+                    <input />
+                    <span class="ui-icon uf uf-calendar"></span>
+                </div>
+            </div>
+        </div> -->
+        <div class="ui-item">
+            <div class="ui-name">
+                <i class="strong">*</i>库存产生原因：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" u-meta='{"type":"u-text","data":"storeList","field":"sellerRemark"}'>
+                    <input class="u-input" />
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">
+                <i class="strong">*</i>是否可二次销售：</div>
+            <div class="ui-inputarea">
+                <div u-meta='{"id":"radio2-preserveinventory2","type":"u-radio","data":"storeList","field":"isCanSell","datasource":"isCanSellSrc","hasOther":false}'>
+                    <label class="u-radio">
+                        <input type="radio" class="u-radio-button" name="options">
+                        <span class="u-radio-label"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="ui-item" data-bind="visible: billPanelStatusB() == 'add'">
+            <div class="ui-name">库存状态：</div>
+            <div class="ui-inputarea">
+                <div u-meta='{"type":"u-combobox","data":"storeList","field":"stockStatus","datasource":"stockStatusSrc"}'>
+                    <input class="u-input" />
+                    <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+                </div>
+            </div>
+        </div> -->
+        <div class="ui-item" >
+            <div class="ui-name">库存状态：</div>
+            <div class="ui-inputarea">
+                <div u-meta='{"type":"u-combobox","data":"storeList","field":"stockStatus","datasource":"stockStatusSrc","enable":false}'>
+                    <input class="u-input ui-no-border" />
+                </div>
+            </div>
+        </div>
+
+        <div class="ui-item">
+            <div class="ui-name">
+                <i class="strong">*</i>采购单价：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" u-meta='{"type":"float","data":"storeList","field":"price"}'>
+                    <input class="u-input" />
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">清理折扣：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" u-meta='{"type":"float","data":"storeList","field":"clearRate"}'>
+                    <input class="u-input" id="clearRateVal"/>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">折后金额：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" u-meta='{"type":"float","data":"storeList","field":"sellMny","enable":"false"}'>
+                    <input class="u-input" />
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">补贴金额：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" u-meta='{"type":"float","data":"storeList","field":"discountMny","enable":"false"}'>
+                    <input class="u-input" />
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">备注：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" u-meta='{"type":"u-text","data":"storeList","field":"remark"}'>
+                    <input class="u-input" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+<!-- 查看详情 -->
+<div class="ui-panel ui-bill-detail" style="display: none;">
+    <div>
+        <div class="page-title">
+            <span>渠道库存清理</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="ui-panel-btn-bg">
+        <div class="ui-operate-btn">
+            <a class="ui-btn ui-btn-primary" data-bind="click:retListPanel">返回
+            </a>
+        </div>
+    </div>
+    <div class="ui-panel-head ui-bill-head clearfix">
+        <div class="ui-item">
+            <div class="ui-name">是否初期库存：</div>
+            <div class="ui-inputarea">
+                <div u-meta='{"type":"u-combobox","data":"storeList","field":"isInit","datasource":"radio2Preserveinventory","enable":"false"}'>
+                    <input class="ui-no-border" />
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">电商订单号：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("syscode")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">渠道库存号：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("code")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">办事处：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("officeName")'></div>
+            </div>
+        </div>
+
+        <div class="ui-item">
+            <div class="ui-name">服务商类型：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("serviceProviderTypeName")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">服务商：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("serviceProviderName")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">账号名称：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("accountName")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">平台名称：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("platformName")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">店铺名称：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("storeName")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">购买时间：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("bookTime")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">顾客ID：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("buyer")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">顾客姓名：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("receiverName")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">顾客联系方式1：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("receiverPhone")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">顾客联系方式2：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("receiverTel")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">顾客地址：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("addressDetail")'></div>
+            </div>
+        </div>
+    </div>
+    <!--22-->
+    <div class="ui-panel-head ui-bill-head clearfix" style="margin-top:10px;">
+        <div class="ui-item">
+            <div class="ui-name">产品编码：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("productCode")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">产品名称：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("productName")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">物料类型：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("proTypeName")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">数量：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("buyNum")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">销售单号：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("soBillNo")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">采购单号：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("purchaseCode")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">库存产生时间：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("creationTime")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">启运数量：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("stockNum")'></div>
+            </div>
+        </div>
+
+        <div class="ui-item">
+            <div class="ui-name">库存确认时间：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("confirmTime")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">库存生产原因：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("sellerRemark")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">是否可二次销售：</div>
+            <div class="ui-inputarea">
+                <div u-meta='{"type":"u-combobox","data":"storeList","field":"isCanSell","datasource":"isCanSellSrc","enable":"false"}'>
+                    <input class="ui-no-border" />
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">库存状态：</div>
+            <div class="ui-inputarea">
+                <div u-meta='{"type":"u-combobox","data":"storeList","field":"stockStatus","datasource":"stockStatusSrc","enable":"false"}'>
+                    <input class="ui-no-border" />
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">采购单价：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("price")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">清理折扣：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("clearRate")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">折后金额：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("sellMny")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">补贴金额：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("discountMny")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">备注：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: storeList.ref("remark")'></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui-panel-body">
+        <div class="margin-top-10 margin-bottom-10 clearfix">
+            <span class="ui-complimentary-list-bt ui-green">操作日志</span>
+        </div>
+        <div class="ui-table-container">
+            <div u-meta='{"id":"grid_storeListParam_list_change","data":"storeParamList","type":"grid","editable":false,"multiSelect":false,"showNumCol":true,"columnMenu":false}'>
+                <div options='{"field":"operateType","dataType":"String","title":"操作类型","width":"20%"}'></div>
+                <div options='{"field":"operateContent","dataType":"String","title":"操作内容","width":"20%"}'></div>
+                <div options='{"field":"operateTime","dataType":"Datetime","title":"操作时间","width":"20%"}'></div>
+                <div options='{"field":"operator","dataType":"String","title":"操作人","width":"20%"}'></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--导入弹框 end-->
+<div id="exportFiel"></div>
+<div id="importFiel"></div>
+
+<!-- 退回弹框 -->
+<div id="return-dialog" style="display:none;">
+    <div class="u-msg-title">
+        <h4>退回原因</h4>
+    </div>
+    <div class="u-msg-content clearfix">
+        <div class="ui-item ui-textarea-item margin-top-10 margin-bottom-10"  style="height:80px;">
+            <div class="ui-inputarea" style="width:350px;margin-left:55px;">
+                <textarea style="resize: none;height:80px;" u-meta='{"type":"textarea","data":"returnReasonMeta","field":"returnReason"}'></textarea>
+            </div>
+        </div>
+        <div class="clearfix">
+        </div>
+    </div>
+    <div class="u-msg-footer">
+        <a class="ui-btn ui-btn-primary J-cancel margin-right-5">取消
+        </a>
+        <a class="ui-btn ui-btn-green  J-ok">确定
+        </a>
+    </div>
+</div>

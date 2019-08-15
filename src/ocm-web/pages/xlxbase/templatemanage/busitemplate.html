@@ -1,0 +1,650 @@
+<style>
+    /*模板设计*/
+.ui-template-head {
+border: 1px solid green;
+padding: 15px;
+box-sizing: border-box;
+position: relative;
+min-height: 120px;
+padding-top: 10px;
+}
+.ui-template-head.collapsed {
+height: 50px;
+min-height: 50px;
+overflow: hidden;
+}
+.ui-template-head .ui-template-head-expand {
+display: none;
+}
+.ui-template-head.collapsed .ui-template-head-expand {
+display: inline-block;
+}
+.ui-template-head.collapsed .ui-template-head-collapse {
+display: none;
+}
+.ui-template-head.ui-template-focus {
+box-shadow: 0 0 5px 0px green;
+}
+.ui-template-head .ui-item:hover {
+box-shadow: 0 0 5px 0 blue;
+}
+.ui-template-head .ui-item.ui-template-focus {
+box-shadow: 0 0 5px 0 blue;
+}
+.ui-template-head-title {
+font-size: 16px;
+margin-bottom: 10px;
+}
+.ui-template-property .ui-item {
+margin: 0;
+margin-top: 10px;
+}
+.ui-template-property .ui-item:first-child {
+margin-top: 10px;
+}
+.ui-template-property .ui-item .u-checkbox {
+top: -2px;
+}
+.ui-template-property .ui-name {
+width: 120px;
+}
+.ui-template-property {
+border: 1px solid #DDD;
+padding: 10px;
+}
+.ui-template-body {
+border: 1px solid green;
+padding: 15px;
+}
+.ui-template-body-title {
+font-size: 16px;
+margin-bottom: 10px;
+}
+.ui-template-property .ui-inputarea .u-input, .ui-template-property .ui-inputarea {
+width: 160px;
+}
+.ui-item.required .ui-name::before {
+content: '*';
+color: red;
+margin-right: 5px;
+font-weight: 800;
+}
+.ui-template-head .ui-item .ui-name::after {
+content: '：';
+}
+/* .ui-template-head-addbtn {
+position: absolute;
+right: 15px;
+top: 15px;
+} */
+.ui-table thead td {
+padding: 0 10px;
+border-right: 1px solid #E8E8E8;
+background: #F5F5F5;
+font-size: 13px;
+color: #333333;
+font-weight: normal;
+height: 46px;
+line-height: 46px;
+}
+.ui-template-table-container {
+position: relative;
+}
+
+.ui-template-table {
+display: flex;
+flex-wrap: wrap;
+}
+
+.ui-template-table-th {
+height: 46px;
+line-height: 46px;
+padding: 0 25px;
+background: #F5F5F5;
+border-right: 1px solid #D3D3D3;
+position: relative;
+}
+.ui-template-table-th:hover {
+border: 1px solid blue;
+cursor: pointer;
+}
+.ui-template-table-th.ui-template-focus {
+border: 1px solid blue;
+}
+.ui-template-head .ui-template-head-delbtn {
+position: absolute;
+top: 4px;
+left: 0;
+color: red;
+cursor: pointer;
+display: none;
+}
+.ui-template-table-order {
+position: absolute;
+top: 2px;
+line-height: 15px;
+right: 4px;
+color: #999;
+}
+
+.ui-template-head .ui-item {
+position: relative;
+}
+.ui-template-head .ui-inputarea, .ui-template-head .ui-inputarea input {
+width: 140px;
+}
+.ui-template-head .ui-item:hover .ui-template-head-delbtn,  .ui-template-head .ui-item.ui-template-focus .ui-template-head-delbtn{
+display: block;
+}
+.ui-template-body-delbtn {
+position: absolute;
+left: 0;
+cursor: pointer;
+color: red;
+display: none;
+}
+.ui-template-table-th:hover .ui-template-body-delbtn, .ui-template-table-th.ui-template-focus .ui-template-body-delbtn {
+display: block;
+}
+.ui-template-table-th.required::after {
+content: '*';
+color: red;
+margin-right: 5px;
+font-weight: 800;
+}
+/* .ui-template-head-settingbtn {
+position: absolute;
+right: 15px;
+top: 50px;
+} */
+.ui-template-overlay {
+width: 100%;
+height: 100%;
+position: absolute;
+top: 0;
+left: 0;
+background: rgba(0,0,0,0.3);
+z-index: 2;
+display: none;
+}
+.ui-template-head.novisible .ui-template-overlay {
+display: block;
+}
+.ui-template-body .u-tabs.is-upgraded.u-tabs .u-tabs__tab.novisible {
+background: rgba(0,0,0, 0.2);
+}
+.ui-template-body .novisible .ui-template-overlay {
+display: block;
+}
+.ui-template-body .u-tabs__panel {
+position: relative;
+}
+/*模板设计*/
+</style>
+<div class="ui-panel ui-list-panel">
+    <div>
+        <div class="page-title">
+            <!--<span data-bind="text:title"></span>-->
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="title-seperator"></div>
+    <ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+    </ui-searchbox>
+    <div class="ui-panel-body">
+        <div class="ui-panel-body-head">
+            <div class="ui-panel-body-head-left">
+                <!-- style="float:left;" -->
+                <ui-buttons params='datasource:$root.button1Source'  >
+                </ui-buttons>
+
+                <!-- <ui-buttons-menu params='datasource:$root.buttonMenu1Source,vm:$root'>
+                </ui-buttons-menu> -->
+
+            </div>
+        </div>
+        <div class="ui-panel-body">
+            <div class="ui-table-container">
+                <div id="customer" u-meta='{"id":"grid_busitemplate","data":"BusiTemplateParent","type":"grid","editable":false,"multiSelect":true,"onRowSelected":"handleListRowSelect","onRowUnSelected":"handleListRowSelect","fixedFloat":"left"}'>
+                    <div options='{"field":"code","dataType":"String","title":"编码","width":"250px"}'></div>
+                    <div options='{"field":"name","dataType":"String","title":"名称","width":"250px"}'></div>
+                    <div options='{"field":"busiObject","dataType":"String","title":"业务对象", "renderType": "busiObjectRender"}'></div>
+                    <div options='{"field":"templateType","dataType":"String","title":"模板类型", "renderType": "templateTypeRender"}'></div>
+                    <div options='{"field":"isDefault","dataType":"String","title":"是否初始模板", "renderType": "isDefaultRender"}'></div>
+                    <div options='{"field":"templateauth","dataType":"String","title":"组织区域", "renderType": "orgAreaRender"}'></div>
+                    <div options='{"field":"templateauth","dataType":"String","title":"业务类型", "renderType": "busiTypeRender"}'></div>
+                    <div options='{"field":"templateauth","dataType":"String","title":"终端属性", "renderType": "terminalPropertyRender"}'></div>
+                    <div options='{"field":"templateauth","dataType":"String","title":"用户角色", "renderType": "userRoleRender"}'></div>
+                </div>
+                <div class="ui-statistics margin-top-10">
+                    已选择
+                    <span class="font-c-blue" data-bind="text:BusiTemplateParent.selectedIndices().length"></span>项数据
+                </div>
+                <div class="pagination-right">
+                    <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"BusiTemplateParent","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+                </div>
+            </div>
+        </div>
+        <!-- 遮罩层 -->
+        <div id="mask-left"></div>
+        <div id="mask-top"></div>
+    </div>
+</div>
+
+<!--<div id="cus" class="ui-panel ui-list-panel">-->
+  <!--<div class="head-bg"></div>-->
+    <!--<div class="ui-list-panel-head clearfix">-->
+        <!--<div class="ui-list-panel-head-search">-->
+            <!--<ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>-->
+            <!--</ui-searchbox>-->
+            <!--<div class="ui-btn-group">-->
+                <!--<a class="ui-btn ui-btn-primary" data-bind="click: add">-->
+                    <!--<i class="uifont icon-plus margin-right-5"></i>新增-->
+                <!--</a>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="ui-list-panel-head-operation">-->
+            <!--<div class="ui-statistics">-->
+                <!--已选择-->
+                <!--<span class="font-c-blue" data-bind="text:BusiTemplateParent.selectedIndices().length"></span>条-->
+            <!--</div>-->
+            <!--<div class="ui-vertical-seperate"></div>-->
+            <!--<a class="ui-btn" data-bind="click: copy, visible: BusiTemplateParent.getSelectedRows().length==1">-->
+                <!--<i class="uifont icon-copy margin-right-5"></i>复制-->
+            <!--</a>-->
+            <!--<a class="ui-btn" data-bind="click: update, visible: BusiTemplateParent.getSelectedRows().length==1">-->
+            <!--&lt;!&ndash; <a class="ui-btn" data-bind="click: update, visible: BusiTemplateParent.getSelectedRows().length==1 && BusiTemplateParent.getSelectedRows()[0].ref('isDefault')() != '1'"> &ndash;&gt;-->
+                <!--<i class="uifont icon-xiugai margin-right-5"></i>修改-->
+            <!--</a>-->
+            <!--<a class="ui-btn" data-bind="click:del, visible: BusiTemplateParent.getSelectedRows().length>=1 && BusiTemplateParent.getSelectedRows()[0].ref('isDefault')() != '1'">-->
+              <!--<i class="uifont icon-shanchu margin-right-5"></i>删除-->
+            <!--</a>-->
+            <!--<a class="ui-btn" data-bind="click: showAllotDialog, visible: BusiTemplateParent.getSelectedRows().length==1 && BusiTemplateParent.getSelectedRows()[0].ref('isDefault')() != '1'">-->
+                <!--&lt;!&ndash; <i class="uifont icon-xiugai margin-right-5"></i> &ndash;&gt;-->
+                <!--分配-->
+            <!--</a>-->
+            <!--<a class="ui-btn" data-bind="click: setDefaultTemplate" style="display:none;">-->
+                <!--&lt;!&ndash; <i class="uifont icon-xiugai margin-right-5"></i> &ndash;&gt;-->
+                <!--设为初始模板-->
+            <!--</a>-->
+            <!--&lt;!&ndash;<a class="ui-btn clear-border-top-right-radius clear-border-bottom-right-radius">提交</a>&ndash;&gt;-->
+            <!--&lt;!&ndash;<a class="ui-btn clear-border-bottom-left-radius clear-border-top-left-radius">回收</a>&ndash;&gt;-->
+            <!--&lt;!&ndash;<a class="ui-btn">审批</a>&ndash;&gt;-->
+            <!--<div class="ui-head-operation-close">-->
+                <!--<i class="uifont icon-tubiao-danchuangguanbi"></i>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="ui-panel-body">-->
+        <!--<div class="ui-table-container">-->
+            <!--<div id="customer" u-meta='{"id":"grid_busitemplate","data":"BusiTemplateParent","type":"grid","editable":false,"multiSelect":true,"onRowSelected":"handleListRowSelect","onRowUnSelected":"handleListRowSelect","fixedFloat":"left"}'>-->
+                <!--<div options='{"field":"code","dataType":"String","title":"编码","width":"250px"}'></div>-->
+                <!--<div options='{"field":"name","dataType":"String","title":"名称","width":"250px"}'></div>-->
+                <!--<div options='{"field":"busiObject","dataType":"String","title":"业务对象", "renderType": "busiObjectRender"}'></div>-->
+                <!--<div options='{"field":"templateType","dataType":"String","title":"模板类型", "renderType": "templateTypeRender"}'></div>-->
+                <!--<div options='{"field":"isDefault","dataType":"String","title":"是否初始模板", "renderType": "isDefaultRender"}'></div>-->
+                <!--<div options='{"field":"templateauth","dataType":"String","title":"组织区域", "renderType": "orgAreaRender"}'></div>-->
+                <!--<div options='{"field":"templateauth","dataType":"String","title":"业务类型", "renderType": "busiTypeRender"}'></div>-->
+                <!--<div options='{"field":"templateauth","dataType":"String","title":"终端属性", "renderType": "terminalPropertyRender"}'></div>-->
+                <!--<div options='{"field":"templateauth","dataType":"String","title":"用户角色", "renderType": "userRoleRender"}'></div>-->
+            <!--</div>-->
+            <!--<div class="pagination-right">-->
+                <!--<div id='pagination-1' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"BusiTemplateParent","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--&lt;!&ndash; 遮罩层 &ndash;&gt;-->
+    <!--<div id="mask-left"></div>-->
+    <!--<div id="mask-top"></div>-->
+<!--</div>-->
+
+<div class="ui-panel ui-bill-panel" style="display: none;">
+  <div class="ui-panel-btn-bg">
+    <div class="ui-bill-panel-title">
+      <span>业务对象：</span><span data-bind="text: busiObjectName"></span>
+      <span class="margin-left-20">模板类型：</span><span data-bind="text: templateTypeName"></span>
+      <!-- <div class="ui-item">
+        <span class="ui-name">模板名称：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"u-text","data":"BusiTemplateParent","field":"name"}'>
+              <input class="u-input"/>
+            </div>
+        </div>
+      </div> -->
+    </div>
+    <div class="ui-operate-btn">
+    	<a class="ui-btn ui-btn-primary" data-bind="click:cancelEdit">取消
+      </a>
+      <a class="ui-btn ui-btn-green" data-bind="click:saveBill">保存
+      </a>
+    </div>
+  </div>
+  <div class="clearfix margin-top-10">
+    <div class="ui-item">
+      <span class="ui-name">模板名称：</span>
+      <div class="ui-inputarea">
+          <div u-meta='{"type":"u-text","data":"BusiTemplateParent","field":"name"}'>
+            <input class="u-input"/>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div id="tplEditorWrap">
+
+  </div>
+
+</div>
+
+<!-- 模板定义维度 -->
+
+
+<div id="templateDefineDialog" style="display:none;">
+    <div class="u-msg-title">
+        <h4>新增</h4>
+    </div>
+    <div class="u-msg-content">
+        <div class=" u-row margin-top-20">
+            <div class="u-col-4 ">
+                <label for="code" class="u-input-label right">
+                    业务对象：
+                </label>
+            </div>
+            <div class="u-col-6 ">
+                <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"BusiTemplateParent","field":"busiObject","datasource":"busiObjectSrc","showFix":"true","onlySelect":true}'>
+                    <input data-bind="disable: billStatus() == 'copy'"/>
+                    <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+                </div>
+            </div>
+        </div>
+        <div class=" u-row">
+            <div class="u-col-4 ">
+                <label for="code" class="u-input-label right">模板类型:</label>
+            </div>
+            <div class="u-col-6 ">
+                <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"BusiTemplateParent","field":"templateType","datasource":"templateTypeSrc","showFix":"true","onlySelect":true}'>
+                    <input/>
+                    <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+                </div>
+            </div>
+        </div>
+        <div class=" u-row">
+            <div class="u-col-4 ">
+                <label for="code" class="u-input-label right">模板编码:</label>
+            </div>
+            <div class="u-col-6 ">
+                <div class="u-input-group-before padding-left-10 ">
+                </div>
+                <div class="ui-inputarea" u-meta='{"type":"u-text","data":"BusiTemplateParent","field":"code"}'>
+                    <input/>
+                </div>
+            </div>
+        </div>
+        <div class=" u-row">
+            <div class="u-col-4 ">
+                <label for="code" class="u-input-label right">模板名称:</label>
+            </div>
+            <div class="u-col-6 ">
+                <div class="u-input-group-before padding-left-10 ">
+                </div>
+                <div class="ui-inputarea" u-meta='{"type":"u-text","data":"BusiTemplateParent","field":"name"}'>
+                    <input/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="u-msg-footer">
+        <a class="ui-btn ui-btn-green margin-right-5 J-ok" data-bind="click: confirmTemplateDefine">保存
+        </a>
+        <a class="ui-btn ui-btn-primary J-cancel" data-bind="click: cancelTemplateDefine">取消
+        </a>
+    </div>
+</div>
+
+
+<!-- 模板配置维度 -->
+<!-- 字段选择器 -->
+<div id="fieldSelectorDialog" class="ui-bill-detail" style="display:none;">
+  <div class="u-msg-title">
+    <h4>请选择</h4>
+  </div>
+  <div class="u-msg-content">
+    <div class="ui-table-container fixedhead-grid grid-h-400">
+        <div id="wholesalebaseprice"
+             u-meta='{"id":"grid_FieldSelector","data":"FieldSelector","type":"grid","editable":false,"multiSelect":true,"showNumCol":true,"onBeforeRowSelected":"beforeSelectField"}'>
+                    <div options='{"field":"key","dataType":"String","title":"字段键值"}'></div>
+                    <div options='{"field":"label","dataType":"String","title":"字段描述"}'></div>
+                    <div options='{"field":"enable","dataType":"String","title":"状态","renderType":"fieldEnableRender"}'></div>
+        </div>
+    </div>
+  </div>
+  <div class="u-msg-footer">
+    <a class="ui-btn margin-right-5" data-bind="click: cancelAddField">取消</a>
+    <a class="ui-btn ui-btn-primary" data-bind="click: addField">确定</a>
+  </div>
+</div>
+<!-- 字段选择器 -->
+
+<!-- 启用扩展字段 -->
+<div id="extfieldDialog" class="ui-bill-detail" style="display:none;">
+  <div class="u-msg-title">
+    <h4>启用扩展字段</h4>
+  </div>
+  <div class="u-msg-content">
+    <div class="ui-item">
+      <span class="ui-name">字段键值：</span>
+      <div class="ui-inputarea">
+          <div u-meta='{"type":"u-text","data":"Extfield","field":"key","enable":false}'>
+            <input class="u-input"/>
+          </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <span class="ui-name">字段描述：</span>
+      <div class="ui-inputarea">
+          <div u-meta='{"type":"u-text","data":"Extfield","field":"label"}'>
+            <input class="u-input"/>
+          </div>
+      </div>
+    </div>
+    <div class="ui-item required">
+      <span class="ui-name">类型：</span>
+      <div class="ui-inputarea">
+          <div u-meta='{"type":"u-combobox","data":"Extfield","field":"type","datasource":"itemTypeSrc","showFix":true,"onlySelect":true}'>
+            <input class="u-input"/>
+            <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+          </div>
+      </div>
+    </div>
+    <div class="ui-item required" data-bind="visible: Extfield.ref('type')() == 'combo'">
+      <div class="ui-name">枚举：</div>
+      <div class="ui-inputarea">
+        <div u-meta='{"type":"u-combobox","data":"Extfield","field":"enumkey","datasource":"enumSrc","showFix":true,"onlySelect":true}'>
+          <input class="u-input"/>
+          <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+        </div>
+        <!-- <div u-meta='{"type":"uiRefer","data":"Extfield","field":"enumkey"}'>
+          <input readonly="readonly"/>
+          <span class="ui-icon uifont icon-bar refer"></span>
+        </div> -->
+      </div>
+    </div>
+    <div class="ui-item required"  data-bind="visible: Extfield.ref('type')() == 'refer'">
+      <div class="ui-name">参照：</div>
+      <div class="ui-inputarea">
+        <div u-meta='{"type":"uiRefer","data":"Extfield","field":"refkey"}'>
+          <input id="extFieldrefkeyRefer" readonly="readonly"/>
+          <span class="ui-icon uifont icon-bar refer"></span>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item required"  data-bind="visible: Extfield.ref('type')() == 'docrefer'">
+      <div class="ui-name">自定义档案参照：</div>
+      <div class="ui-inputarea">
+        <div u-meta='{"type":"uiRefer","data":"Extfield","field":"refid","rel": {"refcode": "refcode", "refname": "refname"}}'>
+          <input id="extFielddocRefer" readonly="readonly"/>
+          <span class="ui-icon uifont icon-bar refer"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="u-msg-footer">
+    <a class="ui-btn margin-right-5" data-bind="click: cancelExtfield">取消</a>
+    <a class="ui-btn ui-btn-primary" data-bind="click: addExtfield">确定</a>
+  </div>
+</div>
+<!-- 启用扩展字段 -->
+
+
+<script type="text/template" id="defaultValueReferTpl">
+  <div u-meta='{"type":"uiRefer","data":"DefaultValueDt","field":"defaultValue"}'>
+    <input class="u-input"/>
+    <span class="ui-icon uifont icon-bar refer"></span>
+  </div>
+</script>
+<!-- 表体页签模板 -->
+<!-- 分配弹窗 -->
+<div id="allotDialog" class="ui-bill-detail" style="display:none;">
+  <div class="u-msg-title">
+    <h4>分配</h4>
+  </div>
+  <div class="u-msg-content">
+    <div data-bind="visible: showAllotGroup.busiType">
+      <span class="ui-name">业务类型：</span>
+      <div class="ui-inputarea margin-right-10" style="width:130px;">
+        <div u-meta='{"type":"uiRefer","data":"TemplateAllot","field":"busiCatalog"}'>
+          <input readonly="readonly" id="allotBusiCatalogRefer" style="width:130px;"/>
+          <span class="ui-icon uifont icon-bar refer"></span>
+        </div>
+      </div>
+      <div class="ui-inputarea">
+        <div u-meta='{"type":"uiRefer","data":"TemplateAllot","field":"busiType"}'>
+          <input readonly="readonly" id="allotBusiTypeRefer" disabled="disabled"/>
+          <span class="ui-icon uifont icon-bar refer"></span>
+        </div>
+      </div>
+    </div>
+    <div class="margin-top-10" data-bind="visible: showAllotGroup.customerProperty">
+      <span class="ui-name">客户属性：</span>
+      <div class="ui-inputarea margin-right-10" style="width:130px;" u-meta='{"type":"u-combobox","data":"AllotGroup","field":"customerProperty","datasource":"customerPropertySrc", "showFix": true,"onlySelect":true}'>
+          <input style="width:130px;"/>
+          <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+      </div>
+      <div class="ui-inputarea" data-bind="visible: AllotGroup.ref('customerProperty')() == 'customerChannelType'">
+        <div u-meta='{"type":"uiRefer","data":"TemplateAllot","field":"customerChannelType"}'>
+          <input readonly="readonly" id="allotCustomerChannelTypeRefer"/>
+          <span class="ui-icon uifont icon-bar refer"></span>
+        </div>
+      </div>
+      <div class="ui-inputarea" data-bind="visible: AllotGroup.ref('customerProperty')() == 'customerLevel'">
+        <div u-meta='{"type":"uiRefer","data":"TemplateAllot","field":"customerLevel"}'>
+          <input readonly="readonly" id="allotCustomerLevelRefer"/>
+          <span class="ui-icon uifont icon-bar refer"></span>
+        </div>
+      </div>
+    </div>
+    <div class="margin-top-10" data-bind="visible: showAllotGroup.terminalProperty">
+      <span class="ui-name">终端属性：</span>
+      <div class="ui-inputarea margin-right-10" style="width:130px;" u-meta='{"type":"u-combobox","data":"AllotGroup","field":"terminalProperty","datasource":"terminalPropertySrc", "showFix": true,"onlySelect":true}'>
+          <input style="width:130px;"/>
+          <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+      </div>
+      <div class="ui-inputarea" data-bind="visible: AllotGroup.ref('terminalProperty')() == 'channelType'">
+        <div u-meta='{"type":"uiRefer","data":"TemplateAllot","field":"channelType"}'>
+          <input readonly="readonly" id="allotChannelRefer"/>
+          <span class="ui-icon uifont icon-bar refer"></span>
+        </div>
+      </div>
+      <div class="ui-inputarea" data-bind="visible: AllotGroup.ref('terminalProperty')() == 'terminalType'">
+        <div u-meta='{"type":"uiRefer","data":"TemplateAllot","field":"terminalType"}'>
+          <input readonly="readonly" id="allotTerminalTypeRefer"/>
+          <span class="ui-icon uifont icon-bar refer"></span>
+        </div>
+      </div>
+      <div class="ui-inputarea" data-bind="visible: AllotGroup.ref('terminalProperty')() == 'terminalGrade'">
+        <div u-meta='{"type":"uiRefer","data":"TemplateAllot","field":"terminalGrade"}'>
+          <input readonly="readonly"id="allotTerminalGradeRefer"/>
+          <span class="ui-icon uifont icon-bar refer"></span>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="margin-top-10"  data-bind="visible: showAllotGroup.actProperty">
+      <span class="ui-name">活动属性：</span>
+      <div class="ui-inputarea margin-right-10" style="width:130px;">
+          <label style="text-indent: 10px;">活动方案类型</label>
+      </div>
+      <div class="ui-inputarea">
+        <div u-meta='{"type":"uiRefer","data":"TemplateAllot","field":"actScheme"}'>
+          <input readonly="readonly" id="actSchemeRefer"/>
+          <span class="ui-icon uifont icon-bar refer"></span>
+        </div>
+      </div>
+    </div>
+    <div class="margin-top-10"  data-bind="visible: showAllotGroup.inspectProperty">
+      <span class="ui-name">巡查属性：</span>
+      <div class="ui-inputarea margin-right-10" style="width:130px;">
+          <label style="text-indent: 10px;">巡查单类型</label>
+      </div>
+      <div class="ui-inputarea">
+        <div u-meta='{"type":"uiRefer","data":"TemplateAllot","field":"inspectType"}'>
+          <input readonly="readonly" id="inspectTypeRefer"/>
+          <span class="ui-icon uifont icon-bar refer"></span>
+        </div>
+      </div>
+    </div> -->
+    <div class="margin-top-10"  data-bind="visible: showAllotGroup.orgArea">
+      <span class="ui-name">人员归属：</span>
+      <div class="ui-inputarea margin-right-10" style="width:130px;" u-meta='{"type":"u-combobox","data":"AllotGroup","field":"orgArea","datasource":"orgAreaSrc", "showFix": true,"onlySelect":true}'>
+          <input style="width:130px;"/>
+          <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+      </div>
+      <div class="ui-inputarea" data-bind="visible: AllotGroup.ref('orgArea')() == 'organizationId'">
+        <div u-meta='{"type":"uiRefer","data":"TemplateAllot","field":"organizationId"}'>
+          <input readonly="readonly" id="allotOrgRefer"/>
+          <span class="ui-icon uifont icon-bar refer"></span>
+        </div>
+      </div>
+      <div class="ui-inputarea" data-bind="visible: AllotGroup.ref('orgArea')() == 'areaId'">
+        <div u-meta='{"type":"uiRefer","data":"TemplateAllot","field":"areaId"}'>
+          <input readonly="readonly" id="allotAreaRefer"/>
+          <span class="ui-icon uifont icon-bar refer"></span>
+        </div>
+      </div>
+      <div class="ui-inputarea" data-bind="visible: AllotGroup.ref('orgArea')() == 'departmentId'">
+        <div u-meta='{"type":"uiRefer","data":"TemplateAllot","field":"departmentId"}'>
+          <input readonly="readonly" id="allotDeptRefer"/>
+          <span class="ui-icon uifont icon-bar refer"></span>
+        </div>
+      </div>
+    </div>
+    <div class="margin-top-10" data-bind="visible: showAllotGroup.userRole">
+      <span class="ui-name">用户角色：</span>
+      <div class="ui-inputarea margin-right-10" style="width:130px;" u-meta='{"type":"u-combobox","data":"AllotGroup","field":"userRole","datasource":"userRoleSrc", "showFix": true,"onlySelect":true}'>
+          <input style="width:130px;"/>
+          <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+      </div>
+      <div class="ui-inputarea" data-bind="visible: AllotGroup.ref('userRole')() == 'userId'">
+        <div u-meta='{"type":"uiRefer","data":"TemplateAllot","field":"userId"}'>
+          <input readonly="readonly" id="allotUserRefer"/>
+          <span class="ui-icon uifont icon-bar refer"></span>
+        </div>
+      </div>
+      <div class="ui-inputarea" data-bind="visible: AllotGroup.ref('userRole')() == 'roleId'">
+        <div u-meta='{"type":"uiRefer","data":"TemplateAllot","field":"roleId"}'>
+          <input readonly="readonly" id="allotRoleRefer"/>
+          <span class="ui-icon uifont icon-bar refer"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="u-msg-footer">
+    <a class="ui-btn margin-right-5" data-bind="click: cancelAllot">取消</a>
+    <a class="ui-btn ui-btn-primary" data-bind="click: confirmAllot">确定</a>
+  </div>
+</div>
+<!-- 分配弹窗 -->

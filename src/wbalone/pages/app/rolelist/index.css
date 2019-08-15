@@ -1,0 +1,455 @@
+.tooltip.active .tooltip-inner {
+    background-color: #e33c37 !important
+}
+
+.tooltip.top .tooltip-arrow {
+    border-top-color: #e33c37 !important
+}
+
+#roleList {
+    background-color: initial;
+    padding-bottom: 40px;
+    font: 14px/18px "Microsoft YaHei"
+}
+
+#roleList .apptitle,
+#roleList .ecmi-input {
+    background-color: transparent;
+    color: #333;
+    font-family: "Microsoft YaHei"
+}
+
+@media (max-width:768px) {
+    #roleList .pro_oper {
+        visibility: visible !important
+    }
+}
+
+@media (max-width:1024px) {
+    #roleList .pro_oper {
+        visibility: visible !important
+    }
+}
+
+#roleList .padlft60 {
+    padding-left: 60px
+}
+
+#roleList input {
+    outline: 0
+}
+
+#roleList .ecmi-input {
+    font-size: 13px;
+    width: 170px;
+    height: 29px;
+    line-height: 29px;
+    border: 1px solid #d7d7d7;
+    outline: 0;
+    margin: 0;
+    padding: 0 0 0 5px;
+    border-radius: initial
+}
+
+#roleList .ecmi-input:focus {
+    border: 1px solid #6bcaea
+}
+
+#roleList .apptitle {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+}
+
+#roleList .f-fr {
+    float: right
+}
+
+#roleList .funbar {
+    margin-bottom: 10px
+}
+
+#roleList .Y_sarch_style {
+    position: relative;
+    height: 50px;
+    border-bottom: #eeeff1 1px solid;
+    background-color: #fff;
+    padding-right: 20px
+}
+
+#roleList .Y_sarch_style .condsearch {
+    display: inline-block;
+    height: 50px;
+    line-height: 50px
+}
+
+#roleList .Y_sarch_style .condsearch .styled-select {
+    position: relative;
+    display: inline-block;
+    width: 170px;
+    height: 36px;
+    line-height: 36px;
+    margin-top: 7px
+}
+
+#roleList .Y_sarch_style .condsearch .styled-select select {
+    padding-left: 5px;
+    width: 170px;
+    height: 36px;
+    line-height: 36px;
+    font-family: "microsoft yahei";
+    background: 0 0;
+    border: 1px solid #ccc;
+    outline: 0;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    border-radius: initial
+}
+
+#roleList .Y_sarch_style .condsearch .styled-select select:focus {
+    border: 1px solid #6bcaea
+}
+
+#roleList .Y_sarch_style .condsearch .styled-select .icon-arrow-down {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    color: #ccc;
+    font-size: 24px
+}
+
+#roleList .Y_sarch_style .condsearch .nc-search {
+    border: 1px solid #cecece;
+    font-size: 14px;
+    text-indent: 10px;
+    height: 36px;
+    line-height: 36px;
+    outline: 0;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    -o-border-radius: 1px;
+    border-radius: 1px
+}
+
+#roleList .Y_sarch_style .condsearch .nc-searchbtn {
+    font-size: 20px;
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    color: #ccc
+}
+
+#roleList .Y_sarch_style .condsearch .nc-searchbtn:hover {
+    color: #039BE5
+}
+
+#roleList .Y_sarch_style .condsearch .nc-search:focus {
+    border: 1px solid #6bcaea
+}
+
+#roleList .Y_sarch_style .u-input-group {
+    display: inline-block;
+    margin-bottom: 0;
+    height: 40px;
+    line-height: 40px
+}
+
+#roleList .Y_sarch_style #condionSearch {
+    padding: 0 20px;
+    font-size: 14px;
+    color: #0377c1;
+    cursor: pointer;
+    display: inline-block
+}
+
+#roleList .Y_sarch_style #condionSearch .iconfont {
+    padding-left: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 20px
+}
+
+#roleList .Y_sarch_style #condionSearch .icon-arrow-down {
+    display: none
+}
+
+#roleList .Y_sarch_style .quickoper {
+    position: absolute;
+    top: 16px;
+    right: -5px;
+    height: 36px;
+    background-color: #00bcd4;
+    border-radius: 2px;
+    padding-right: 15px;
+    padding-left: 10px
+}
+
+#roleList .Y_sarch_style .quickoper s.bg_quickoper {
+    position: absolute;
+    right: 0;
+    bottom: -5px;
+    display: block;
+    width: 5px;
+    height: 5px
+}
+
+#roleList .Y_sarch_style .quickoper span {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin: 8px 6px 0;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer
+}
+
+#roleList .Y_sarch_style .guideTit {
+    padding-left: 20px;
+    line-height: 50px;
+    height: 50px
+}
+
+#roleList .Y_sarch_style .guideTit .u-form-group {
+    height: 50px;
+    display: inline-block;
+    padding-top: 7px;
+    margin-bottom: 0;
+    margin-right: 0
+}
+
+#roleList .Y_sarch_style .guideTit .addbtn {
+    cursor: pointer;
+    background-color: #039BE5;
+    font-size: 12px;
+    padding: 0 7px;
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    outline: 0;
+    -webkit-border-radius: 0;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #fff;
+    margin-left: 0;
+    border: none;
+    min-width: 72px
+}
+
+#roleList #condition-row {
+    position: relative;
+    display: none;
+    background-color: #fff;
+    min-height: 50px
+}
+
+#roleList #condition-row dl {
+    padding: 0 60px;
+    margin-bottom: 0
+}
+
+#roleList #condition-row dl .u-row {
+    margin: 0;
+    height: 50px
+}
+
+#roleList #condition-row dl .outSel {
+    float: left;
+    padding-top: 10px;
+    margin-right: 60px;
+    padding-left: 0;
+    position: relative;
+}
+#roleList #condition-row  .outSelu-combo{
+    float: left;
+}
+#roleList #condition-row dl .outSel label {
+    float: left;
+    font-size: 13px;
+    font-weight: 700;
+    color: #666;
+    line-height: 29px;
+    padding-right: 10px
+}
+#roleList #condition-row .outSel .nc-searchbtn{
+    top: 9px;
+    right: 0;
+}
+#roleList #condition-row .outSel .u-combo{
+    float: left;
+}
+#roleList #condition-row dl .outSel .styled-select {
+    position: relative;
+    display: inline-block;
+    width: 170px;
+    height: 29px;
+    line-height: 29px;
+    overflow: hidden
+}
+
+#roleList #condition-row dl .outSel .styled-select select {
+    padding-left: 5px;
+    width: 170px;
+    height: 29px;
+    line-height: 29px;
+    -webkit-appearance: none;
+    font-family: "microsoft yahei";
+    background: 0 0;
+    border: 1px solid #ccc;
+    outline: 0
+}
+
+#roleList #condition-row dl .outSel .styled-select select:focus {
+    border: 1px solid #6bcaea
+}
+
+#roleList #condition-row dl .outSel .styled-select .icon-arrow-down {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    color: #ccc;
+    font-size: 24px
+}
+
+#roleList #condition-row dl .btns-search {
+    padding-left: 45px
+}
+
+#roleList .table-list {
+    width: 100%;
+    overflow: hidden;
+    background-color: #fff
+}
+
+#roleList .table-list .table-body {
+    padding: 20px;
+    background-color: #fff
+}
+
+#roleList .table-list .pro_oper {
+    visibility: hidden
+}
+
+#roleList .table-list .pro_oper span.ecmifont,
+#roleList .table-list .pro_oper span.iconfont {
+    cursor: pointer;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    font-size: 20px;
+    padding-left: 5px;
+    color: #039BE5
+}
+
+#roleList .table-list .pro_oper span.iconfont:active,
+#roleList .table-list .pro_oper span.iconfont:hover {
+    color: #13799b
+}
+
+#roleList .table-list tr:hover .pro_oper {
+    visibility: visible
+}
+
+#roleList #addModal .modal-body .body {
+    padding: 15px 0 30px
+}
+
+#roleList #addModal .modal-body .body .cc {
+    padding: 0 35px 24px
+}
+
+#roleList #addModal .modal-body .body .cc .head-xx {
+    font-weight: 700;
+    color: #333;
+    font-size: 14px;
+    margin: 0;
+    padding: 0
+}
+
+#roleList #addModal .btnBox {
+    text-align: right
+}
+
+#roleList #addModal .btnBox a.btn {
+    width: 110px;
+    background-color: #84c351;
+    display: inline-block;
+    height: 40px;
+    line-height: 28px;
+    text-align: center;
+    color: #fff !important;
+    border-radius: 6px;
+    margin: 0 5px;
+    font-size: 15px
+}
+
+#roleList .u-transfer {
+    font-size: 12px
+}
+
+#roleList .u-transfer-list,
+#roleList .u-transfer-operation {
+    display: inline-block;
+    margin: 8px;
+    vertical-align: middle
+}
+
+#roleList .u-transfer-list {
+    width: 160px;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px
+}
+
+#roleList .u-transfer-list-header {
+    padding: 4px 16px;
+    border-bottom: 1px solid #d9d9d9
+}
+
+#roleList .u-transfer-list-header .u-checkbox {
+    width: 24px;
+    height: 24px
+}
+
+#roleList .u-transfer-list-header-title {
+    float: right;
+    margin-top: 2px
+}
+
+#roleList .u-transfer-list-body {
+    height: 256px;
+    overflow: auto
+}
+
+#roleList .u-transfer-list-body>ul {
+    list-style: none;
+    margin: 0;
+    padding: 0
+}
+
+#roleList .u-transfer-list-body>ul li {
+    padding: 4px 16px
+}
+
+#roleList .u-transfer-operation .u-button {
+    display: block;
+    margin: 8px
+}
+
+#roleList #LoadingImage,
+#roleList #emptyImage {
+    text-align: center;
+    padding: 9%;
+    background-color: #fff
+}

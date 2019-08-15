@@ -1,0 +1,178 @@
+<!-- 列表页 -->
+<div class="ui-list-panel ui-panel">
+    <div>
+        <div class="page-title">
+            <span>导出文件查看</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="title-seperator"></div>
+    <div class="ui-searchbox">
+        <div id="ProductCombine-searchcontent" class="ui-searchbox-content">
+        </div>
+        <div class="clearfix">
+        </div>
+        <div class="ui-searchbox-footer">
+            <div class="ui-search-more hidden">
+                <a>更多
+                    <i class="uifont icon-down"></i>
+                </a>
+            </div>
+
+            <div class="ui-search-btn">
+                <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:cleanSearch">清空
+                </a>
+                <a class="ui-btn ui-btn-green margin-right-5" data-bind="click:search.bind($data,true)">搜索
+                </a>
+            </div>
+            <div class="clearfix">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="ui-panel-body">
+        <div class="ui-panel-body-head">
+            <div class="ui-panel-body-head-left">
+
+            </div>
+        </div>
+        <div class="ui-table-container">
+            <div u-meta='{"id":"grid_productCombine","data":"excelStatusList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+
+                <div options='{"field":"name","dataType":"String","title":"名称","renderType":"detailRender"}'></div>
+                <div options='{"field":"className","dataType":"String","title":"节点名称"}'></div>
+                <div options='{"field":"queryStatus","dataType":"String","title":"查询状态"}'></div>
+                <div options='{"field":"queryNum","dataType":"String","title":"数据条数"}'></div>
+                <div options='{"field":"exportStatus","dataType":"String","title":"导出状态"}'></div>
+                <!--<div options='{"field":"exportStatus","dataType":"String","title":"导出状态", "renderType":"exportStatusRender"}'></div>-->
+                <div options='{"field":"exportStartTime","dataType":"String","title":"导出开始时间"}'></div>
+                <div options='{"field":"exportEndTime","dataType":"String","title":"导出完成时间"}'></div>
+                <div options='{"field":"filePath","dataType":"String","title":"文件路径"}'></div>
+                <div options='{"field":"fileSize","dataType":"String","title":"文件大小"}'></div>
+                <div options='{"field":"log","dataType":"String","title":"日志信息"}'></div>
+                <div options='{"field":"errorMsg","dataType":"String","title":"错误信息"}'></div>
+                <div options='{"field":"operation","dataType": "String","title": "操作","renderType": "operationRole", "fixed": "true"}'></div>
+            </div>
+            <div class="ui-statistics margin-top-10">
+                已选择
+                <span class="font-c-blue" data-bind="text:excelStatusList.selectedIndices().length"></span>项数据
+            </div>
+            <div class="pagination-right">
+                <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"excelStatusList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 详情页 -->
+<div class="ui-bill-detail ui-panel" style="display: none;">
+    <div>
+        <div class="page-title">
+            <span>导出任务日志</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="ui-panel-btn-bg">
+        <div class="ui-operate-btn">
+            <a class="ui-btn ui-btn-primary" data-bind="click: retListPanel">返回
+            </a>
+        </div>
+    </div>
+    <div class="ui-panel-head">
+        <div class="ui-item" style="width: 100%">
+            <div class="ui-name">名称：</div>
+            <div class="ui-inputarea" style="width:auto">
+                <div data-bind='text: excelStatusList.ref("name")'>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item" style="width: 100%">
+            <div class="ui-name">节点名称：</div>
+            <div class="ui-inputarea" style="width:auto">
+                <div data-bind='text: excelStatusList.ref("className")'>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item" style="width: 100%">
+            <div class="ui-name">查询状态：</div>
+            <div class="ui-inputarea" style="width:auto">
+                <div data-bind='text: excelStatusList.ref("queryStatus")'>
+                </div>
+                <!--<div data-bind='text: whetherFmt'>-->
+                <!--</div>-->
+            </div>
+        </div>
+        <div class="ui-item" style="width: 100%">
+            <div class="ui-name">数据条数：</div>
+            <div class="ui-inputarea" style="width:auto">
+                <div data-bind='text: excelStatusList.ref("queryNum")'>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item" style="width: 100%">
+            <div class="ui-name">导出状态：</div>
+            <div class="ui-inputarea" style="width:auto;">
+                <div data-bind='text: excelStatusList.ref("exportStatus")'>
+                </div>
+                <!--<div data-bind='text: statusFmt'>-->
+                <!--</div>-->
+            </div>
+        </div>
+        <div class="ui-item" style="width: 100%">
+            <div class="ui-name">导出开始时间：</div>
+            <div class="ui-inputarea" style="width:auto;">
+                <div data-bind='text: excelStatusList.ref("exportStartTime")'>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item" style="width: 100%">
+            <div class="ui-name">导出完成时间：</div>
+            <div class="ui-inputarea" style="width:auto;">
+                <div data-bind='text: excelStatusList.ref("exportEndTime")'>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item" style="width: 100%">
+            <div class="ui-name">文件路径：</div>
+            <div class="ui-inputarea" style="width:auto">
+                <div data-bind='text: excelStatusList.ref("filePath")'>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item" style="width: 100%">
+            <div class="ui-name">文件大小：</div>
+            <div class="ui-inputarea" style="width:auto">
+                <div data-bind='text: excelStatusList.ref("fileSize")'>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item" style="width: 100%">
+            <div class="ui-name">日志信息：</div>
+            <div class="ui-inputarea" style="width:auto">
+                <div data-bind='text: excelStatusList.ref("log")'>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item" style="width: 100%">
+            <div class="ui-name">错误信息：</div>
+            <div class="ui-inputarea" style="width:auto">
+                <div data-bind='text: excelStatusList.ref("errorMsg")'>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="ui-bill-footer">
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+    <ModulePrefs title="审批待办" description="approve" userpref_url="/integration/pages/approve/approve.html?w=500&amp;h=500&amp;widgetId=${widgetId}">
+    </ModulePrefs>
+    <UserPref status="1" name="height" display_name="高度" datatype="string" default_value="240" required="true" />
+    <UserPref status="1" name="count" display_name="条数" datatype="string" default_value="6" required="true" />
+    <UserPref status="0" name="system" display_name="系统" datatype="list" default_value="NC5|NC6|NC56" required="true" />
+    <UserPref status="0" name="column" display_name="列名" datatype="list" default_value="title|senddate" required="true" />
+    <UserPref status="1" name="time" display_name="刷新间隔(分钟)" datatype="string" default_value="5" required="true" />
+    <Content type="html" inline="true">
+        <![CDATA[
+            <div class="oa-task width-full approve" id="${widgetId}">
+                <div class="u-panel">
+                    <div class="u-panel-heading clearfix">
+                        <span class="pull-left"><strong>全面预算待办</strong></span>
+                        <ul class="pull-right height-full" id="approveTitle">
+
+                        </ul>
+                    </div>
+                    <div class="u-panel-body">
+                        <div id="approveTable"  u-meta='{"id":"approveGrid","data":"dataTable","type":"grid","onBeforeClickFun":"onClickFun"}' class="margin-bottom-15">
+                            <div options='{"field":"title","dataType":"String","editType":"string"}'></div>
+                            <div options='{"field":"senddate","dataType":"String","editType":"float"}'></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                require(["${context}/widget/approve/approve.js"],function(task){
+                    var height=getWidgetAttr('${widgetId}','height');
+                    var count=getWidgetAttr('${widgetId}','count');
+                    var system=getWidgetAttr('${widgetId}','system');
+                    var column=getWidgetAttr('${widgetId}','column');
+                    var time=getWidgetAttr('${widgetId}','time');
+                    task.init('${widgetId}',height,count,system,column,time);
+                })
+            </script>
+        ]]>
+    </Content>
+</Module>

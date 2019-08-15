@@ -1,0 +1,90 @@
+<div class="ui-panel ui-list-panel">
+  <div>
+    <div class="page-title">
+      <span data-bind="text:title"></span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+  <ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+  </ui-searchbox>
+  <div class="ui-panel-body">
+    <div class="ui-panel-body-head">
+      <div class="ui-panel-body-head-left">
+        <ui-buttons params='datasource:$root.buttonSource'>
+        </ui-buttons>
+      </div>
+    </div>
+    <div class="ui-table-container">
+      <ui-grid params='options:$root.gridOption,vm:$root'>
+      </ui-grid>
+      <div class="ui-statistics margin-top-10">
+        已选择
+        <span class="font-c-blue" data-bind="text:simpleList.selectedIndices().length"></span>项数据
+      </div>
+      <div class="pagination-right">
+        <div id='pagination' class='pagination u-pagination pagination-sm'
+          u-meta='{"type":"pagination","data":"simpleList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <ui-dialogcard params='datasource:$root.dialogcardSource,ref:$root.dialogcardcomp,dt:$root.simpleList'>
+  </ui-dialogcard> -->
+
+<!-- 详情 -->
+<div class="ui-bill-detail ui-panel" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span data-bind="text:title"></span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-primary" data-bind="click: retListPanel">返回
+      </a>
+    </div>
+  </div>
+  <div class="ui-panel-head">
+    <ui-detail params='datasource:$root.detailSource,dt:$root.simpleDetail,vm:$root'>
+    </ui-detail>
+  </div>
+  <div class="ui-bill-body">
+    <div class="u-tabs  ui-tabs margin-top-10">
+      <div class="u-tabs__tab-bar">
+        <a id="tab3" href="#tab-panel-3" class="u-tabs__tab is-active" data-bind="click:checkGoods">商品信息</a>
+        <a id="tab4" href="#tab-panel-4" class="u-tabs__tab" data-bind="click:checkBom">BOM结构信息</a>
+      </div>
+      <!-- 商品信息开始 -->
+      <div class="u-tabs__panel is-active" id="tab-panel-3">
+        <div class="ui-table-container margin-bottom-30">
+          <ui-grid params='options:$root.gridGoodsSource,vm:$root'></ui-grid>
+        </div>
+      </div>
+      <!-- 商品信息结束 -->
+  
+      <!-- BOM结构开始 -->
+      <div class="u-tabs__panel" id="tab-panel-4">
+        <div class="ui-table-container margin-bottom-30">
+          <ui-grid params='options:$root.gridBomSource,vm:$root'></ui-grid>
+        </div>
+      </div>
+      <!-- BOM结构结束 -->
+  
+    </div>
+  </div>
+</div>
+<div id="exportFiel"></div>
+<div id="importFiel"></div>
+

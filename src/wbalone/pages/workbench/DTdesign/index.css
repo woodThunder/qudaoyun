@@ -1,0 +1,115 @@
+#DTdesign {
+    background-color: initial;
+    padding-bottom: 40px;
+    font: 14px/18px "Microsoft YaHei"
+}
+
+#DTdesign .apptitle {
+    background-color: transparent;
+    color: #333;
+    font-size: 18px;
+    font-weight: 400;
+    font-family: "Microsoft YaHei";
+    line-height: 30px;
+}
+
+#DTdesign .app-funbar {
+    position: relative;
+    height: 50px;
+    border-bottom: #eeeff1 1px solid;
+    background-color: #fff;
+    padding-right: 20px;
+    margin-bottom: 10px;
+    line-height: 50px
+}
+
+#DTdesign .app-funbar .u-button {
+    background-color: #1baede;
+    margin-left: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    outline: 0;
+    -webkit-border-radius: 0;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #fff;
+    border: none;
+    min-width: 72px
+}
+
+#DTdesign .pro_oper {
+    visibility: hidden
+}
+
+#DTdesign .pro_oper span.ecmifont,
+#DTdesign .pro_oper span.iconfont,
+#DTdesign .pro_oper span.uf {
+    cursor: pointer;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    font-size: 18px;
+    padding-left: 5px;
+    color: #1baede
+}
+
+#DTdesign .pro_oper span.iconfont:active,
+#DTdesign .pro_oper span.iconfont:hover,
+#DTdesign .pro_oper span.uf:active,
+#DTdesign .pro_oper span.uf:hover {
+    color: #13799b
+}
+
+#DTdesign .table-list {
+    width: 100%;
+    overflow: hidden;
+    background-color: #fff
+}
+
+#DTdesign .table-list .table-body {
+    padding: 20px;
+    background-color: #fff
+}
+
+#DTdesign .table-list tr:hover .pro_oper {
+    visibility: visible
+}
+
+#LoadingImage,
+#emptyImage,
+.emptyImage {
+    text-align: center;
+    padding: 9%;
+    background-color: #fff
+}
+
+#selRoleModal .u-msg-ok {
+    height: 30px;
+    line-height: 30px;
+    padding: 0 5px;
+    font-size: 12px;
+    background-color: #039BE5;
+    border-radius: 4px;
+}
+
+#selRoleModal .u-msg-cancel {
+    line-height: 30px;
+    height: 30px;
+    padding: 0 5px;
+    border: 1px solid #039BE5;
+    color: #039BE5;
+    font-size: 12px;
+    border-radius: 4px;
+    background: #fff;
+}

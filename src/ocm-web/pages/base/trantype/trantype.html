@@ -1,0 +1,116 @@
+<div class="ui-panel ui-list-panel">
+    <div>
+        <div class="page-title">
+            <span data-bind="text:title"></span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+
+    <div class="title-seperator"></div>
+
+    <div class="ui-panel-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2">
+                    <div style="overflow: hidden;" id="billtype" class="ztree" u-meta='{
+                                                "id":"billtype",
+                                                "data":"billtypeList",
+                                                "type":"tree",
+                                                "idField":"id",
+                                                "pidField":"pid",
+                                                "nameField":"name",
+                                                "setting":"treeSetting"
+                                            }'>
+                    </div>
+                </div>
+                <div class="u-col-md-10">
+                    <div class="ui-panel-body-head">
+                        <div class="ui-panel-body-head-left">
+                            <div>当前选择的单据类型：
+                                <span data-bind="text:billtypeList.ref('name')"></span>
+                            </div>
+                            <ui-buttons params='datasource:$root.buttonSource'>
+                            </ui-buttons>
+                        </div>
+                    </div>
+                    <div class="ui-table-container">
+                        <ui-grid params='options:$root.gridOption,vm:$root'>
+                        </ui-grid>
+                        <div class="ui-statistics margin-top-10">
+                            已选择
+                            <span class="font-c-blue" data-bind="text:trantypeList.selectedIndices().length"></span>项数据
+                        </div>
+                        <div class="pagination-right">
+                            <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"trantypeList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+                        </div>
+                    </div>
+                    <div class="ui-collapse-w100">
+                            <h3 class="ui-collapse-title open" >
+                                <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                                <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                                交易类型参数设置
+                            </h3>
+                            <div class="ui-collapse-content">
+                                <div id="detail">
+                                </div>
+                            </div>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="exportFiel"></div>
+<div id="importFiel"></div>
+<div id="dialog_transtype" style="display:none;">
+    <div class="u-msg-title">
+        <h4>交易类型</h4>
+    </div>
+    <div class="u-msg-content ui-editbox">
+        <div>
+            <div class="ui-item">
+                <span class="ui-name">编码:
+                </span>
+                <div class="ui-inputarea">
+                    <div u-meta='{"type":"u-text","data":"trantypeCard","field":"code"}'>
+                        <input class="u-input" />
+                    </div>
+                </div>
+            </div>
+            <div class="ui-item">
+                <span class="ui-name">名称:
+                </span>
+                <div class="ui-inputarea">
+                    <div u-meta='{"type":"u-text","data":"trantypeCard","field":"name"}'>
+                        <input class="u-input" />
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="ui-collapse-w70">
+            <h3 class="ui-collapse-title open" >
+                <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                交易类型参数设置
+            </h3>
+            <div class="ui-collapse-content">
+                <div id="billcard">
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="u-msg-footer">
+        <a class="ui-btn ui-btn-primary J-cancel margin-right-5">取消
+        </a>
+        <a class="ui-btn ui-btn-green  J-ok">确定
+        </a>
+    </div>
+</div>

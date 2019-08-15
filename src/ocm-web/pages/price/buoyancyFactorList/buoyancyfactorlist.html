@@ -1,0 +1,344 @@
+
+
+<div class="ui-panel ui-list-panel">
+  <div >
+    <div class="page-title">
+      <span>上浮系数设置</span>
+    </div>
+  </div>
+  <div >
+    <div >
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+  <div class="ui-searchbox ui-panel-head">
+    <div id="buoyancyfactorlist-searchcontent" class="ui-searchbox-content">
+
+    </div>
+    <div class="clearfix">
+
+    </div>
+    <div class="ui-searchbox-footer">
+      <div class="ui-search-more hidden">
+          <a>更多<i class="uifont icon-down"></i></a>
+      </div>
+
+      <div class="ui-search-btn">
+        <a class="ui-btn ui-btn-primary margin-right-5"
+        data-bind="click:cleanSearch">清空
+        </a>
+	      <a class="ui-btn ui-btn-green"
+	         data-bind="click:search.bind($data,true)">搜索
+	      </a>
+      </div>
+      <div class="clearfix">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-panel-body">
+  	<div class="ui-panel-body-head">
+  		<div class="ui-panel-body-head-left">
+  			<a class="ui-btn ui-btn-orange margin-right-5"
+          data-bind="click: showAddBillPanel, visible: buttonShowGroup['add']"><i class="uifont icon-plus margin-right-5"></i>新增
+        </a>
+        <a class="ui-btn ui-btn-primary margin-right-5"
+          data-bind="click: del, visible: buttonShowGroup['del']"><i class="uifont icon-shanchu1 margin-right-5"></i>删除
+        </a>
+        <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+          <a class="ui-button-item" data-bind="click: submit, visible: buttonShowGroup['submit']"><i class="uifont icon-tubiao-shenhe margin-right-5"></i>提交</a>
+          <a class="ui-button-item" data-bind="click: unsubmit, visible: buttonShowGroup['unsubmit']"><i class="uifont icon-tubiao-quxiaoshenhe margin-right-5"></i>收回</a>
+        </div>
+        <a class="ui-btn ui-btn-primary margin-right-5"
+          data-bind="click: auditHandle, visible: buttonShowGroup['approve']"><i class="uifont icon-tubiao-shenhe margin-right-5"></i>审核
+        </a>
+        <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+          data-bind="click: invalidHandle, visible: buttonShowGroup['unapprove']"><i class="uifont icon-shanchu1 margin-right-5"></i>作废
+        </a>
+         <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+            <a class="ui-button-item" data-bind="click: importHandle, visible: buttonShowGroup['import']"><i class="uifont  icon-import margin-right-5"></i>导入</a>
+            <a class="ui-button-item" data-bind="click: exportHandle, visible: buttonShowGroup['export']"><i class="uifont icon-export margin-right-5"></i>导出</a>
+        </div>
+  		</div>
+  	</div>
+      <div class="ui-table-container">
+          <div id="buoyancyfactorlist"
+               u-meta='{"id":"grid_buoyancyfactorlist","data":"buoyancyfactorlistList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+                      <div options='{"field":"code","dataType":"String","title":"上浮系数编码","renderType":"detailRender"}'></div>
+                      <div options='{"field":"name","dataType":"String","title":"上浮系数名称"}'></div>
+                      <div options='{"field":"auditStatus","dataType":"String","title":"审核状态","renderType":"auditStatusGrid"}'></div>
+                      <div options='{"field":"invalidStatus","dataType":"String","title":"作废状态","renderType":"invalidStatusGrid"}'></div>
+                      <div options='{"field":"remark","dataType":"String","title":"备注"}'></div>
+                      <div options='{"field":"auditor","dataType":"String","title":"审核人"}'></div>
+                      <div options='{"field":"auditTime","dataType":"datetime","title":"审核时间"}'></div>
+                      <div options='{"field":"invalider","dataType":"String","title":"作废人"}'></div>
+                      <div options='{"field":"invalidTime","dataType":"datetime","title":"作废时间"}'></div>
+                      <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation","fixed":"true","width":"110px"}'></div>
+                      <div options='{"field":"creator","dataType":"String","title":"创建人","editable":false,"visible":"false"}'></div>
+                      <div options='{"field":"creationTime","dataType":"Datetime","title":"创建时间","visible":"false","editable":false}'></div>
+                      <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":"false","editable":false}'></div>
+                      <div options='{"field":"modifiedTime","dataType":"Datetime","title":"修改时间","visible":"false","editable":false}'></div>
+
+          </div>
+          <div class="ui-statistics margin-top-10">
+            <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择<span class="font-c-blue" data-bind="text:buoyancyfactorlistList.selectedIndices().length"></span>项数据
+          </div>
+          <div class="pagination-right">
+            <div id='pagination' class='pagination u-pagination pagination-sm'
+            u-meta='{"type":"pagination","data":"buoyancyfactorlistList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+          </div>
+      </div>
+    </div>
+</div>
+
+
+
+<div class="ui-panel ui-bill-panel" style="display: none;" id="validate">
+  <div >
+    <div class="page-title">
+      <span>上浮系数单据页</span>
+    </div>
+  </div>
+  <div >
+    <div >
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+    	<a class="ui-btn ui-btn-primary" data-bind="click:cancelHandle">取消
+      </a>
+      <a class="ui-btn ui-btn-green" data-bind="click:saveBill.bind($data,-1)">保存
+      </a>
+    </div>
+  </div>
+  <div class="ui-panel-head ui-bill-head">
+   	<div class="ui-item">
+			<span class="ui-name">上浮系数编码：</span>
+			<div class="ui-inputarea">
+	        <div u-meta='{"id":"code","type":"u-text","data":"buoyancyfactorlistList","field":"code","enable":"false"}'>
+	          <input class="u-input"/>
+	        </div>
+	    </div>
+	  </div>
+	  <div class="ui-item">
+			<span class="ui-name"><i class="strong">*</i>上浮系数名称：</span>
+			<div class="ui-inputarea">
+	        <div u-meta='{"id":"name","type":"u-text","data":"buoyancyfactorlistList","field":"name"}'>
+	          <input class="u-input"/>
+	        </div>
+	    </div>
+	  </div>
+	  <div class="ui-item-text ui-item">
+	  		<span class="item-name ui-name">审核状态：</span>
+	  		<div class="ui-inputarea">
+	  			<span class="text-value" data-bind="text: auditStatus()"></span>
+	  		</div>
+	  </div>
+	  <div class="ui-item  ui-textarea-item">
+			<span class="ui-name">备注：</span>
+			<div class="ui-inputarea">
+	        <textarea u-meta='{"id":"remark","type":"textarea","data":"buoyancyfactorlistList","field":"remark"}'></textarea>
+	    </div>
+	  </div>
+	  <div class="clearfix"></div>
+  </div>
+	<div class="ui-searchbox ui-panel-head">
+		<div class="searchChild-area" style="display: none;">
+	    <div id="buoyancyfactorlist-searchcontent-child" class="ui-searchbox-content">
+
+	    </div>
+	    <div class="clearfix">
+
+	    </div>
+	    <div class="ui-searchbox-footer">
+	      <div class="ui-search-more hidden">
+	          <a>更多<i class="uifont icon-down"></i></a>
+	      </div>
+
+	      <div class="ui-search-btn">
+	        <a class="ui-btn ui-btn-primary margin-right-5"
+	        data-bind="click:cleanSearchChild">清空
+	        </a>
+	          <a class="ui-btn ui-btn-green"
+	             data-bind="click:searchChild.bind($data,true)">搜索
+	          </a>
+	      </div>
+	      <div class="clearfix">
+
+	      </div>
+	    </div>
+    </div>
+  </div>
+  <div class="ui-bill-body">
+
+      <div class="margin-bottom-10  margin-top-10">
+        <a class="ui-btn ui-btn-orange margin-right-5"
+          data-bind="click: addRow"><i class="uifont icon-plus margin-right-5"></i>增行
+        </a>
+        <a class="ui-btn ui-btn-primary margin-right-5"
+          data-bind="click: delChild"><i class="uifont icon-shanchu1 margin-right-5"></i>删行
+        </a>
+        <a class="ui-btn-primary ui-btn searchChild-btn">展开搜索</a>
+        <!--<a class="ui-btn ui-btn-primary"
+          data-bind="click: disableHandle,visible: isAuditStatusComputed()"><i class="uifont icon-tingyong margin-right-5"></i>停用
+        </a>-->
+        <!--<div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+						<a class="ui-button-item" >导入</a>
+						<a class="ui-button-item" >导出</a>
+				</div>-->
+      </div>
+      <div class="ui-table-container">
+          <div id="buoyancyfactorlist"
+               u-meta='{"id":"grid_buoyancyfactorlistChild","data":"buoyancyfactorlistChild","type":"grid","editable":true,"multiSelect":true,"showNumCol":true}'>
+                     <div options='{"field":"orderTypeCode","dataType":"string","title":"业务标识","editOptions":{"id":"orderType","type":"combo","datasource":"orderTypeDataSource"},"editType":"combo","renderType":"comboRender"}'></div>
+                      <div options='{"field":"saleChannelCode","dataType":"string","title":"渠道类型","editOptions":{"id":"saleChannel","type":"combo","datasource":"saleChannelDataSource"},"editType":"combo","renderType":"comboRender"}'></div>
+                      <div options='{"field":"productGroupId","dataType":"String","title":"产品组","renderType":"ncReferRender","editType":"ncReferEditType","showField":"productGroupName","editOptions":{"validType":"string","rel":{"refpk":"productGroupId","refname":"productGroupName","refcode":"productGroupCode"}}}'></div>
+                      <div options='{"field":"agencyId","dataType":"String","title":"办事处","renderType":"ncReferRender","editType":"ncReferEditType","showField":"agencyName","editOptions":{"validType":"string","rel":{"refpk":"agencyId","refname":"agencyName"}}}'></div>
+                      <div options='{"field":"customerId","dataType":"String","title":"客户","renderType":"ncReferRender","editType":"ncReferEditType","showField":"customerName","editOptions":{"validType":"string","rel":{"refpk":"customerId","refname":"customerName"}}}'></div>
+                      <div options='{"field":"proportion","dataType":"Float","title":"上浮比例","editType":"float","required":true,"renderType":"percentRender","precision":"2","editOptions":{"precision":"4","max":1000,"min":-1000}}'></div>
+                      <div options='{"field":"beginTime","dataType":"Date","title":"开始日期","editType":"date","required":true,"editOptions":{"validType":"date","disabledDate":"disabledBegin"}}'></div>
+                      <div options='{"field":"endTime","dataType":"Date","title":"截至日期","editType":"date","required":true,"editOptions":{"validType":"date","disabledDate":"disabledEnd"}}'></div>
+                      <div options='{"field":"isEnable","dataType":"String","title":"启用状态","renderType":"enabledGrid","editable":false}'></div>
+                      <div options='{"field":"adjustCode","dataType":"String","title":"调整单号","editable":false}'></div>
+                      <div options='{"field":"remark","dataType":"String","title":"备注"}'></div>
+                      <div options='{"field":"creator","dataType":"String","title":"创建人","editable":false,"visible":"false"}'></div>
+                      <div options='{"field":"creationTime","dataType":"Datetime","title":"创建时间","visible":"false","editable":false}'></div>
+                      <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":"false","editable":false}'></div>
+                      <div options='{"field":"modifiedTime","dataType":"Datetime","title":"修改时间","visible":"false","editable":false}'></div>
+          </div>
+      </div>
+      <div class="ui-statistics margin-top-10">
+		    <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择<span class="font-c-blue" data-bind="text:buoyancyfactorlistChild.selectedIndices().length"></span>项数据
+		  </div>
+		  <div class="pagination-right">
+		    <div id='paginationChild' class='pagination u-pagination pagination-sm'
+		    u-meta='{"type":"pagination","data":"buoyancyfactorlistChild","beforePageChange":"beforPageChangeFun","sizeChange":"sizeChangeChild"}'></div>
+		  </div>
+    </div>
+</div>
+
+<div class="ui-panel ui-bill-detail" style="display: none;">
+  <div >
+    <div class="page-title">
+      <span>上浮系数单据页</span>
+    </div>
+  </div>
+  <div >
+    <div >
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+    	<a class="ui-btn ui-btn-primary" data-bind="click:retListPanelFun">返回
+      </a>
+       <a class="ui-btn ui-btn-green" data-bind="click: editHandle.bind($data)">编辑
+      </a>
+    </div>
+  </div>
+  <div id="bpmhead"></div>
+  <div id="bpmfoot"></div>
+  <div class="ui-panel-head ui-bill-head">
+   	<div class="ui-item">
+			<span class="ui-name">上浮系数编码：</span>
+			<div class="ui-inputarea">
+					<div data-bind='text: buoyancyfactorlistList.ref("code")'></div>
+	    </div>
+	  </div>
+	  <div class="ui-item">
+			<span class="ui-name"><i class="strong">*</i>上浮系数名称：</span>
+			<div class="ui-inputarea">
+					<div data-bind='text: buoyancyfactorlistList.ref("name")'></div>
+	    </div>
+	  </div>
+	  <div class="ui-item-text ui-item">
+	  		<span class="ui-name">审核状态：</span>
+	  		<div class="ui-inputarea">
+	  			<span class="text-value" data-bind="text: auditStatus()"></span>
+	  		</div>
+	  </div>
+	  <div class="ui-item ui-textarea-detail clearfix">
+      <div class="ui-name">备注：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: buoyancyfactorlistList.ref("remark")'>
+        </div>
+      </div>
+    </div>
+	  <div class="clearfix"></div>
+  </div>
+	<div class="ui-searchbox ui-panel-head">
+		<div class="searchChild-area" style="display: none;">
+	    <div id="buoyancyfactorlist-searchcontent-child-detail" class="ui-searchbox-content">
+
+	    </div>
+	    <div class="clearfix">
+
+	    </div>
+	    <div class="ui-searchbox-footer">
+	      <div class="ui-search-more hidden">
+	          <a>更多<i class="uifont icon-down"></i></a>
+	      </div>
+
+	      <div class="ui-search-btn">
+	        <a class="ui-btn ui-btn-primary margin-right-5"
+	        data-bind="click:cleanSearchChild">清空
+	        </a>
+	          <a class="ui-btn ui-btn-green"
+	             data-bind="click:searchChild.bind($data,true)">搜索
+	          </a>
+	      </div>
+	      <div class="clearfix">
+
+	      </div>
+	    </div>
+    </div>
+  </div>
+  <div class="ui-bill-body">
+  		<!--<div class="ui-bill-body-btns">
+	      <a class="ui-btn-primary ui-btn searchChild-btn">展开搜索</a>
+	    </div>-->
+  	  <div class="margin-bottom-10  margin-top-10">
+			  <a class="ui-btn ui-btn-primary margin-right-5"
+           data-bind="click: disableHandle,visible: isAuditStatusComputed()"><i class="uifont icon-tingyong margin-right-5"></i>停用
+        </a>
+        <a class="ui-btn-primary ui-btn searchChild-btn">展开搜索</a>
+      </div>
+      <div class="ui-table-container">
+          <div id="buoyancyfactorlist"
+               u-meta='{"id":"grid_buoyancyfactorlistChild_detai","data":"buoyancyfactorlistChild","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+                      <div options='{"field":"orderTypeCode","dataType":"string","title":"业务标识","editOptions":{"id":"orderType","type":"combo","datasource":"orderTypeDataSource"},"editType":"combo","renderType":"comboRender"}'></div>
+                      <div options='{"field":"saleChannelCode","dataType":"string","title":"渠道类型","editOptions":{"id":"saleChannel","type":"combo","datasource":"saleChannelDataSource"},"editType":"combo","renderType":"comboRender"}'></div>
+                      <div options='{"field":"productGroupName","dataType":"String","title":"产品组"}'></div>
+                      <div options='{"field":"agencyName","dataType":"String","title":"办事处"}'></div>
+                      <div options='{"field":"customerName","dataType":"String","title":"客户"}'></div>
+                      <div options='{"field":"proportion","dataType":"String","title":"上浮比例","editType":"float","renderType":"percentRender"}'></div>
+                      <div options='{"field":"beginTime","dataType":"Date","title":"开始日期","editType":"date"}'></div>
+                      <div options='{"field":"endTime","dataType":"Date","title":"截至日期","editType":"date"}'></div>
+                      <div options='{"field":"isEnable","dataType":"String","title":"启用状态","renderType":"enabledGrid","editable":false}'></div>
+                      <div options='{"field":"adjustCode","dataType":"String","title":"调整单号","editable":false}'></div>
+                      <div options='{"field":"remark","dataType":"String","title":"备注"}'></div>
+                      <div options='{"field":"creator","dataType":"String","title":"创建人","editable":false,"visible":"false"}'></div>
+                      <div options='{"field":"creationTime","dataType":"Datetime","title":"创建时间","visible":"false","editable":false}'></div>
+                      <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":"false","editable":false}'></div>
+                      <div options='{"field":"modifiedTime","dataType":"Datetime","title":"修改时间","visible":"false","editable":false}'></div>
+          </div>
+          <div class="ui-statistics margin-top-10">
+			    	<i class="uifont icon-i font-c-blue margin-right-10"></i>已选择<span class="font-c-blue" data-bind="text:buoyancyfactorlistChild.selectedIndices().length"></span>项数据
+				  </div>
+				  <div class="pagination-right">
+				    <div id='paginationChild-detail' class='pagination u-pagination pagination-sm'
+				    u-meta='{"type":"pagination","data":"buoyancyfactorlistChild","pageChange":"pageChangeChild","sizeChange":"sizeChangeChild"}'></div>
+				  </div>
+      </div>
+    </div>
+</div>
+
+<!--导入弹框 end-->
+<div id="exportFiel"></div>
+<div id="importFiel"></div>

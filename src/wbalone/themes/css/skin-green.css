@@ -1,0 +1,45 @@
+.skin-green header {
+    background-color: rgba(46, 204, 113, 0.8);
+    border-color: #2ecc71;
+    color: white;
+}
+.skin-green header .logo {
+    color: white;
+    border-color: #2ecc71;
+}
+.skin-green header .navbar-main .button-container > .item > a {
+    color: white;
+}
+.skin-green header .navbar-main .button-container > .item.chat-search {
+    border-color: #2ecc71;
+}
+.skin-green header .navbar-main .button-container > .item.chat-search.collapse.in {
+    border-color: #2ecc71;
+}
+.skin-green header .navbar-main .nav-content .page-title {
+    color: white;
+}
+.skin-green header .logo {
+    border-bottom-color: #2ecc71;
+}
+.skin-green header .navbar-main {
+    background: rgba(46, 204, 113, 0.8);
+    border-bottom-color: #2ecc71;
+}
+.skin-green .sidebar .sidebar-wrapper .sidebar-nav li:hover > a {
+    background-color: #27ae60;
+    color: white;
+}
+.skin-green .sidebar .sidebar-wrapper .sidebar-nav li.active > a {
+    background-color: #2ecc71;
+}
+.skin-green .sidebar .sidebar-wrapper .sidebar-nav li.active:hover > a {
+    background-color: #27ae60;
+}
+.skin-green .sidebar .sidebar-wrapper .sidebar-nav li > ul li:hover > a {
+    color: #27ae60;
+    background-color: transparent;
+}
+.skin-green .sidebar .sidebar-wrapper .sidebar-nav li > ul li.active:hover > a {
+    color: white;
+}

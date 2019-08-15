@@ -1,0 +1,289 @@
+<div id="widgetList" class="padding-left-25">
+    <div class="page-header font-size-20 padding-left-0">
+        <ol class="breadcrumb margin-bottom-20">
+            <li class="page-title" class="active">小部件管理</li>
+
+            <a role="button" class="">
+                <button class="u-button btn-back font-size-14 margin-left-10 backBtn" type="button">
+                    <span class="text hidden-xs">返回</span>
+                </button>
+            </a>
+
+        </ol>
+        <div class="page-header-actions dropdown width-full margin-left-0 padding-10" style="z-index: 1!important;background: #fff">
+            <a href="javascript:void(0)" class="inline-block" role="button" data-animation="scale-up" aria-expanded="false"
+               data-toggle="dropdown">
+                <button class="u-button u-button-info font-size-14 create-widget-btn" type="button">
+                    <span class="text hidden-xs">创建小部件</span>
+                    <i aria-hidden="true" class="icon wb-chevron-right"></i>
+                </button>
+            </a>
+            <ul role="menu" style="width:300px;" class="dropdown-menu dropdown-menu-left dropdown-menu-media">
+                <li role="presentation" class="clearfix scrollable is-enabled scrollable-vertical"
+                    style="position: relative">
+                    <div data-role="container" class="scrollable-container">
+                        <div data-role="content" class="scrollable-content">
+                            <div id="widget-list" class="site-items list-unstyled">
+                                <div class="col-md-12 widget-create">
+                                    <div class="panel-body" id="widget-body">
+                                        <form class="form-horizontal" action="widget/save" id="widget-form">
+                                             <div class="form-inline">
+                                                 <label class="control-label text-right">名称:</label>
+                                                 <span class="field">*</span>
+                                                 <input type="text" name="name" placeholder="名称" id="inputRounded" class="form-control round">
+                                             </div>
+                                              <div class="form-inline">
+                                                  <label class="control-label text-right">编码:</label>
+                                                  <span class="field">*</span>
+                                                  <input type="text" name="code" placeholder="编码"  class="form-control round">
+                                              </div>
+
+
+                                               <div class="form-inline">
+                                                   <label class="control-label margin-right-10 text-right">分类:</label>
+                                                   <select name="category" id="create-category" class="form-control category-list round portal-select rel-5">
+                                                       <option value="workbench">工作台</option>
+                                                   </select>
+                                               </div>
+                                            <div class="form-inline">
+                                                <label class="control-label margin-right-10 text-right">类型:</label>
+                                                <select name="wtype" class="form-control wtype round portal-select rel-5">
+                                                    <option value="url">url</option>
+                                                    <option value="xml" selected=selected>xml</option>
+                                                    <option value="htmlfragment">html片段</option>
+                                                    <option value="js">js</option>
+                                                </select>
+                                            </div>
+                                             <div class="form-inline wtype-url hide">
+                                                 <label class="control-label text-right">url</label>
+                                                 <span class="field">*</span>
+                                                 <input type="text" name="url" placeholder="" class="form-control round"/>
+                                             </div>
+                                             <div class="form-inline wtype-xml">
+                                                 <label class="control-label text-right">xml</label>
+                                                 <span class="field">*</span>
+                                                 <input type="text" name="xml" placeholder="/gadgets/xxx.xml" class="form-control round"/>
+                                             </div>
+                                             <div class="form-inline wtype-html hide">
+                                                 <label class="control-label text-right">html片段</label>
+                                                 <span class="field">*</span>
+                                                 <textarea name="htmlfragment" placeholder="" style="height:50px"
+                                               class="form-control"></textarea>
+                                             </div>
+                                            <div class="form-inline wtype-js hide">
+                                                <label class="control-label text-right">js</label>
+                                                <span class="field">*</span>
+                                                <input type="text" name="js" placeholder="/portal/widget/xxx.js" class="form-control round"/>
+                                            </div>
+                                            <div class="form-inline">
+                                                <label class="control-label margin-right-10 text-right">描述:</label>
+                                                <input type="text" name="descr" placeholder="描述" class="form-control rel-5">
+                                            </div>
+                                            <div class="form-inline text-left">
+                                                <div id="errorMessage"></div>
+                                            </div>
+                                            <div class="u-form-group width-full margin-bottom-0" id="widgManBottom">
+                                                <a href="javascript:void(0)"
+                                                   class="u-button u-button-primary pull-right font-size-14" data-toggle="dropdown"
+                                                   aria-expanded="false">取消</a>
+                                                <button id="widget-create"
+                                                        class="u-button u-button-info margin-right-10 pull-right font-size-14">保存
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="scrollable-bar scrollable-bar-vertical scrollable-bar-hide" draggable="false">
+                        <div class="scrollable-bar-handle" style="height: 30px;"></div>
+                    </div>
+                </li>
+            </ul>
+            <select class="form-control input-sm inline-block width-auto margin-left-10 portal-select" id="category" style="background-position-x: 90%;">
+                <option value="">全部分类</option>
+            </select>
+            <span class="margin-left-5 margin-right-5 break">|</span>
+            <select class="form-control input-sm inline-block width-auto portal-select" id="type" style="background-position-x: 90%;">
+                <option value="">全部类型</option>
+                <option value="url">url</option>
+                <option value="xml">xml</option>
+                <option value="htmlfragment">html片段</option>
+                <option value="js">js</option>
+            </select>
+            <div class="search  pull-right margin-right-20 inline-block">
+                <div class="u-input-group u-has-feedback margin-bottom-0">
+                    <input type="text" class="u-form-control" placeholder="小部件名称/小部件编码" id="key">
+                    <span class="u-form-control-feedback uf uf-magnifyingglass" id="searchBtn"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-content container-fluid padding-left-15" >
+        <div class="row">
+            {{each list as item i}}
+            <div class="widget">
+                <div class="widget-content padding-30 bg-white clearfix">
+                    <div class="pull-left white icons-pull">
+                        <i aria-hidden="true" class="iconfont icon-component"></i>
+                    </div>
+                    <div class="counter counter-md">
+                        <div class="counter-number-group clearfix">
+                            <span class="counter-number-related text-capitalize" title="{{item.name}}">{{item.name}}</span>
+                        </div>
+                        <div class="counter-label text-capitalize font-size-16"></div>
+                    </div>
+                </div>
+                <div class="widget-footer bg-white">
+                    <div class="u-row">
+                        <div class="u-col-4 u-col-xs-4 text-center">
+                            <div class="icons-button text-center icons-l">
+                                <a href="" data-toggle="modal" data-target="#examplePositionCenter"
+                                   data-id="{{item.code}}" class="widget-edit" title="编辑">
+                                    <i class="iconfont icon-pencil"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="u-col-4 u-col-xs-4 text-center">
+                            <div class="icons-button text-center icons-l">
+                                <a href="" data-toggle="modal" data-target="#copy"
+                                   data-id="{{item.code}}" class="widget-copy" title="复制">
+                                    <i class="enterprisefont icon-fuzhi"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="u-col-4 u-col-xs-4 text-center">
+                            <div class="icons-button text-center">
+                                <a href="" data-id="{{item.code}}" data-tag="{{item.tag}}" class="widget-del" title="删除">
+                                    <i class="iconfont icon-delete"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+
+        </div>
+        <div class=" paginate-box text-center">
+            <div id="pagination" class=" u-pagination inline-block"></div>
+        </div>
+        <!-- Modal -->
+        <div tabindex="-1" role="dialog" aria-labelledby="examplePositionCenter" aria-hidden="true"
+             id="examplePositionCenter" class="modal fade">
+            <div class="modal-dialog modal-center">
+                <div class="modal-content">
+                    <div class="modal-header portal-modal-header">
+                        <button aria-label="Close" data-dismiss="modal" class="close" type="button">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <h4 class="modal-title">编辑小部件</h4>
+                    </div>
+                    <div class="modal-body widget-edit-body">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Modal -->
+
+        <div tabindex="-1" role="dialog" aria-labelledby="copy" aria-hidden="true" id="copy" class="modal fade">
+            <div class="modal-dialog modal-center">
+                <div class="modal-content">
+                    <div class="modal-header portal-modal-header">
+                        <button aria-label="Close" data-dismiss="modal" class="close" type="button">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <h4 class="modal-title">复制小部件</h4>
+                    </div>
+                    <div class="modal-body widget-edit-body">
+                        <form action="widget/save" class="widget-form">
+                            <div class="form-inline">
+                                <label class="control-label">名称</label><span class="field">*</span>
+                                <input type="text" name="name" value="我" placeholder="名称"
+                                       class="form-control inputRounded round">
+
+                            </div>
+                            <div class="form-inline">
+                                <label class="control-label">编码</label><span class="field">*</span>
+                                <input type="text" name="code" placeholder="编码" value="hde" class="form-control round">
+
+                            </div>
+                            <div class="form-inline">
+                                <label class="control-label">分类</label>
+                                <select name="category" class="form-control category-list round portal-select">
+                                    <option value="portal">门户</option>
+                                    <option selected="" value="workbench">工作台</option>
+                                </select>
+                            </div>
+                            <div class="form-inline">
+                                <label class="control-label">类型</label>
+                                <select name="wtype" class="form-control wtype round portal-select" disabled>
+                                    <option selected="selected" value="url">url</option>
+                                    <option value="xml">xml</option>
+                                    <option value="htmlfragment">html片段</option>
+                                </select>
+                            </div>
+
+                            <div class="form-inline wtype-url  ">
+                                <label class="control-label">url</label><span class="field">*</span>
+                                <input disabled type="text" name="url" value="http://www.sohu.com" placeholder=""
+                                       class="form-control round">
+
+                            </div>
+
+                            <div class="form-inline wtype-xml hide ">
+                                <label class="control-label">xml</label><span class="field">*</span>
+                                <input type="text" name="xml" value="" placeholder="/gadgets/xxx.xml"
+                                       class="form-control round">
+
+                            </div>
+
+
+                            <div class="form-inline wtype-html hide">
+                                <label class="control-label">html片段</label><span class="field">*</span>
+                                <textarea name="htmlfragment" placeholder="" style="height:50px"
+                                          class="form-control"></textarea>
+                            </div>
+                            <div class="form-inline">
+                                <label class="control-label">描述</label>
+                                <input type="text" name="descr" value="" placeholder="描述" class="form-control">
+                            </div>
+                            <input type="hidden" name="modifytime" value="2016-06-23 14:48:50" class="form-control">
+                            <div id="errorMessage"></div>
+                            <div class="modal-footer">
+                                <button class="u-button u-button-info" id="copy-widget" type="button">保存</button>
+                                <button data-dismiss="modal" class="btn btn-default" type="button">取消</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="widgetDel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header portal-modal-header" >
+                        <button type="button" class="close"  data-dismiss="modal"
+                                aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            确认
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        您确认要删除小部件吗？
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="u-button u-button-info margin-right-10 btn-del">确定</button>
+                        <button type="button" class="u-button u-button-primary btn-back" data-dismiss="modal">取消</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
+        <input type="hidden" id="parentCode"/>
+    </div>
+</div>

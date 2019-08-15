@@ -1,0 +1,1307 @@
+.header-fixed .sidebar {
+    /*   margin-top: 60px; */
+    position: fixed;
+    height: 100% !important;
+}
+ul{margin:0;padding:0}
+.header-fixed .sidebar.workbenckleft {
+    position: relative;
+    min-height: 768px;
+}
+
+.content-wrapper {
+    background: none;
+    margin-left: 0;
+    min-height: 500px;
+    height: auto !important;
+    padding: 0;
+    position: relative;
+    -webkit-transition: margin 0.3s ease;
+    -moz-transition: margin 0.3s ease;
+    -ms-transition: margin 0.3s ease;
+    -o-transition: margin 0.3s ease;
+    transition: margin 0.3s ease;
+}
+
+.content-wrapper.rolemgrright {
+    /* background: #fafafa; */
+    margin-left: 0px;
+    min-height: 500px;
+    height: calc(100% -86px) !important;
+    padding: 0;
+    position: relative;
+    /*   -webkit-transition: margin 0.3s ease;
+      -moz-transition: margin 0.3s ease;
+      -ms-transition: margin 0.3s ease;
+      -o-transition: margin 0.3s ease;
+      transition: margin 0.3s ease; */
+}
+
+.content-wrapper > .content {
+    max-width: 10000px;
+    padding-top: 0px;
+}
+
+.header-fixed .sidebar.workbenckleft {
+    margin-top: 0;
+}
+
+.nav-buttons {
+    border-top: #e8e8e8 solid 1px;
+}
+
+.sidebarRight .unsortable {
+
+}
+
+.publishbtn {
+    margin-top: 10px;
+    float: right;
+}
+
+.publishhz {
+    float: left;
+}
+
+.content.container-fluid.sidebarRight.animated.fadeInUp {
+    background-color: #E3E4E9;
+}
+
+.fsfw {
+    margin-top: 10px;
+}
+
+.fsfw .chzn-choices {
+    border: 1px solid #ddd;
+    box-shadow: none;
+}
+
+.spperselect {
+    margin-top: 10px;
+}
+
+.content-wrapper .chzn-container .chzn-choices {
+    border: 1px solid #ddd;
+    box-shadow: none;
+}
+
+.fxtfoolter {
+    float: right;
+    width: 100%;
+}
+
+.chzn-container-multi .chzn-choices li.search-choice {
+    line-height: 18px;
+    border-radius: 0;
+    background: #3D83E9;
+    border: 0;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 12px;
+    font-family: "Microsoft YaHei";
+}
+
+.chzn-container-multi .chzn-choices li.search-field input[type="text"] {
+
+    color: #3D83E9;
+    font-family: "Microsoft YaHei";
+}
+
+.chzn-container .chzn-results li.highlighted {
+    background: #3D83E9;
+}
+
+.wofbd {
+    padding: 0;
+}
+
+.w_page_container {
+    margin: 0;
+}
+
+.msgchoice {
+    display: none;
+}
+
+.ksfw.marg10 {
+    display: none;
+}
+
+ul {
+    list-style: none;
+}
+
+.main-interface-wrap {
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    right: 30px;
+    color: #4D4D4D;
+    font-size: 12px;
+    -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, .4);
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, .4);
+    z-index: 100;
+    border-radius: 2px 2px 0 0;
+    background: #fff;
+}
+
+#youxin-btn-toggle {
+    height: 31px;
+    background: #F0F2F5;
+    cursor: pointer;
+}
+
+.main_interface {
+    height: 530px;
+    width: 280px;
+    position: static;
+    border: none;
+    display: none;
+}
+
+.youxin-btn-toggle .show-btn {
+    display: block;
+    width: 280px;
+    height: 31px;
+}
+
+.youxin-btn-toggle .show-btn h6 {
+    float: left;
+    line-height: 30px;
+    margin: 0;
+}
+
+.youxin-btn-toggle .show-btn h6 i {
+    margin-right: 3px;
+    float: left;
+    margin-left: 5px;
+    margin-top: 7px;
+}
+
+.youxin-btn-toggle .show-btn span {
+    float: right;
+    line-height: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.youxin-btn-toggle .hide-btn {
+    display: none;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
+}
+
+.interface-show .youxin-btn-toggle .show-btn {
+    display: none;
+}
+
+.interface-show .youxin-btn-toggle .hide-btn {
+    display: block;
+}
+
+.interface-show .main_interface {
+    display: block;
+}
+
+.info_header {
+    display: none;
+}
+
+.tab_header ul {
+    border-bottom: 1px solid #c7d8f3;
+    height: 39px;
+}
+
+.message_tab:hover,
+.contact_tab:hover,
+.message-active .message_tab,
+.contact-active .contact_tab {
+    background: url('../../../webim/res/skin/images/PCIcon_massage_active.png') 25px no-repeat;
+    color: #266CC1;
+    cursor: pointer;
+}
+
+.contact_tab:hover,
+.contact-active .contact_tab {
+    background-image: url('../../../webim/res/skin/images/PCIcon_people_active.png');
+}
+
+.message-active .message_tab,
+.contact-active .contact_tab {
+    background-color: #EBF1FB;
+}
+
+.message_tab, .contact_tab {
+    float: left;
+    height: 38px;
+    line-height: 38px;
+    background: url('../../../webim/res/skin/images/PCIcon_massage.png') 25px no-repeat;
+    color: #BCBCBC;
+    text-align: center;
+    margin: 0px;
+    width: 50%;
+}
+
+.contact_tab {
+    background: url('../../../webim/res/skin/images/PCIcon_people.png') 25px no-repeat;
+}
+
+.search_contact_div {
+    margin-bottom: 0;
+    margin-top: 0;
+    position: relative;
+}
+
+.search_contact {
+    padding-left: 14px;
+    width: 260px;
+    padding-right: 30px;
+}
+
+.tab_header {
+    margin-bottom: 0px;
+    height: 39px;
+}
+
+.search_message_icon {
+    top: 0;
+}
+
+.common_contact {
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+.common_contact_list {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 350px;
+}
+
+.roster_info_div {
+    overflow: hidden;
+    height: auto;
+    border-color: #ddd;
+    z-index: 998;
+}
+
+.chat_window_many {
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 600px;
+    border: 0 none;
+    box-shadow: 0;
+}
+
+.chat_single_footer_div {
+    width: auto;
+}
+
+.snsim_sendbox_available_area {
+    margin-left: 14px;
+    color: #5A5A5A;
+}
+
+#chat_window_title_name {
+    float: none;
+    display: inline-block;
+}
+
+#chat_window_title_post {
+    float: none;
+    display: inline-block;
+}
+
+.close_icon {
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.head_portrait {
+    line-height: 36px;
+}
+
+.sendbox_area {
+    margin-left: 7px;
+}
+
+.snsim_chat_up {
+    background-color: #fff;
+}
+
+.snsim_chat_sendbox {
+    background-color: #fff;
+}
+
+.snsim_message_box_container {
+    padding: 0 20px;
+    height: 225px;
+}
+
+.single_chat_size_b,
+.chat_record {
+    z-index: 1000;
+    border: 0 none;
+    left: 10px;
+    top: 60px;
+}
+
+.single_chat_size_b {
+    width: 450px;
+    height: 450px;
+}
+
+.chat_single_footer {
+    height: 47px;
+}
+
+.btn.chat_single_footer_div {
+    padding: 0;
+}
+
+.web_im_company_colle,
+.web_im_company_colle:hover,
+.web_im_group, .web_im_department_colle,
+.web_im_group:hover, .web_im_department_colle:hover {
+    width: 93px;
+}
+
+.common_contact_hr {
+    clear: both;
+    margin: 8px auto;
+    width: 100%;
+}
+
+.one_common_contact,
+.one_contact {
+    width: 240px;
+    margin: 0 auto;
+    float: none;
+    padding-left: 7px;
+}
+
+.one_common_contact_header {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.no_message {
+    margin-top: 170px;
+}
+
+.close_single_chat {
+    background-position: center center;
+}
+
+.return_div {
+    text-align: left;
+}
+
+.chat_contain {
+    height: 230px;
+}
+
+.chat_window_manage {
+    height: 450px;
+}
+
+.chat_manage_panel {
+    height: 405px;
+}
+
+@media (max-width: 767px) {
+    .header-fixed .sidebar.sidebar-left.navbar-collapse.collapse {
+        min-height: initial;
+    }
+
+    .sidebar .sidebar-wrapper .sidebar-nav {
+        padding-bottom: 10px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .header-fixed .sidebar.sidebar-left.navbar-collapse.collapse {
+        min-height: initial;
+    }
+
+    .sidebar .sidebar-wrapper .sidebar-nav {
+        padding-bottom: 10px;
+    }
+}
+
+#dropdown-right li {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    text-overflow: ellipsis;
+}
+
+#dropdown-right li.active-role:after {
+    content: '·';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    font-weight: bold;
+    color: #1976d2;
+    font-size: 20px;
+    vertical-align: 20px;
+}
+
+#dropdown-right a {
+    padding-right: 70px;
+    white-space: nowrap;
+}
+
+#dropdown-right li .setDefault {
+    padding: 0 5px;
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    background: #3E84E9;
+    border: 1px solid #3E84E9;
+    border-radius: 3px;
+    display: none;
+}
+
+#dropdown-right li:hover .setDefault {
+    display: block;
+}
+
+#dropdown-right li.isDefault:hover .setDefault {
+    display: none;
+}
+
+/* 小部件授权 及 应用授权样式 */
+#role_tbody td {
+    vertical-align: middle;
+}
+
+#gadget-site-widgetAuth {
+    margin: 0;
+}
+
+#widget_display_and_select {
+    margin-top: 20px;
+}
+
+#widgetAuth .row {
+    padding: 0 14px;
+}
+
+.ui-dialog .ui-dialog-content {
+    min-width: 300px;
+}
+
+/*.navbar-brand > img {
+    *//*margin-top: 7px;*//*
+   *//* margin-left: 25px;*//*
+    *//*display: block;*//*
+    max-width: 280px;
+    max-height: 40px;
+    margin-top:5px;
+    width: auto;
+    height: auto;
+}*/
+
+/* 	侧边栏管理---->编辑---->保存取消按钮设置为微软雅黑 */
+body, button, input, select, textarea {
+    font: 13px/1.5 "Microsoft YaHei" arial, \5b8b\4f53  !important;
+}
+
+#widgetAuth .container-fluid {
+    padding: 0;
+}
+
+#widget_display_and_select center {
+    height: 10px;
+    position: absolute;
+    right: 22px;
+    top: 1px;
+    width: 10px;
+    z-index: 2;
+}
+
+#widget_display_and_select .col-sm-3 {
+    position: relative;
+}
+
+#auth-after-rolemgr-wrap .container-fluid {
+    padding: 12px 27px 0 27px;
+}
+
+.w-publish .publish-wrapper .publish-tab-trigger-wrapper {
+    margin-bottom: 4px;
+    z-index: 6 !important;
+}
+
+/**消息框样式**/
+.dialogmin {
+    position: fixed;
+    top: 20%;
+    left: 42%;
+    width: 20%;
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 2% 0;
+}
+
+.dialogmin i {
+    position: absolute;
+    left: 5%;
+    top: 30%;
+}
+/**消息框样式**/
+.dialogmin {
+    position: fixed;
+      top: 77px;
+  min-width: 140px;
+    max-width: 500px;
+    min-height: 36px;
+       padding: 10px 20px;
+ background-color: #444;
+    border: 1px solid #333;
+    color: #fff;
+}
+.tip-error{
+    background-color: #fff67f;
+    border: 1px solid #f8aef9;
+    color: #f15a4a;
+}
+.tip-suc{
+    background-color: #f4fff3;
+    border: 1px solid #c2e5c8;
+    color: #32aa57;
+}
+
+.tip-alert{
+    background-color: #fffef0;
+    border: 1px solid #f5cd87;
+    color: #f2a601;
+}
+
+
+.dialogmin i {
+    position: absolute;
+    left: 5%;
+    top: 20%;
+}
+
+/****修复sidebar不会被弹出框遮罩住****/
+.site-menubar {
+    z-index: 1000;
+}
+
+/****管理菜单磁铁化产生的样式问题****/
+.unsortable {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    position: relative;
+
+}
+
+/*body{*/
+    /*font-size: 12px;*/
+    /*font-family:'Open Sans','Helvetica Neue’,Arial,’Hiragino Sans GB’,’Microsoft YaHei’,sans-serif' !important;*/
+/*}*/
+  body{
+      font-family: "Microsoft YaHei";
+  }
+  .auth-after-rolemgr-wrap,
+  .app-after-rolemgr-wrap{
+      padding: 0 15px;
+  }
+/*public style*/
+/*页面 标题栏 收藏,以及返回按钮样式*/
+.W-title {
+    font-family: "Microsoft YaHei";
+    font-size: 18px;
+    color: #222;
+    height: 45px;
+    line-height: 45px;
+    margin-bottom: 10px;
+    padding-left: 15px;
+}
+
+.W-title .icon-star {
+    color: #FCC186;
+    display: none;
+}
+
+.W-title .icon-star1:hover {
+    color: #FCC186;
+    display: none;
+}
+
+/*页面中按钮样式*/
+.W-button {
+    cursor: pointer;
+    background-color: #1baede;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid #1baede;
+    padding: 0 7px;
+    float: left;
+    margin-left: 10px;
+    height: 30px;
+    line-height: 30px;
+    outline: none;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    min-width: 72px;
+    display: inline-block;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    border-radius: 1px;
+    text-decoration: none;
+
+}
+.W-button:hover ,
+.W-button:focus,
+.W-button:active
+{
+    background-color: #189cc7;
+    color: #fff;
+    text-decoration: none;
+
+}
+
+.nc-btn{
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+    padding: 0 7px;
+    float: left;
+    margin-left: 10px;
+    height: 30px;
+    line-height: 30px;
+    outline: none;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    min-width: 72px;
+    display: inline-block;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 1px;
+
+    font-family: "Microsoft YaHei";
+    font-size: 14px;
+    background-color: #fff;
+    border: 1px solid #cecece;
+    text-decoration: none;
+}
+.nc-btn:hover{
+    background-color: #f1f1f1;
+    border: 1px solid #cecece;
+    text-decoration: none;
+
+}
+
+.nc-required:-moz-placeholder {
+    color: red
+}
+
+.nc-required::-moz-placeholder {
+    color: red
+}
+
+.nc-required:-ms-input-placeholder {
+    color: red
+}
+
+.nc-required::-webkit-input-placeholder {
+    color: red
+}
+.backbutton {
+    background: #ffffff;
+    color: #333;
+    outline: none;
+    margin-left: 25px;
+    min-width: 72px;
+    font-size: 14px !important;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    border-radius: 1px;
+    text-decoration: none;
+    border: 1px solid #cecece;
+}
+
+.nc-thead{
+    background-color: #fff;
+    height: 54px;
+    /* line-height: 54px; */
+    padding-left: 20px;
+    padding-top: 12px;
+}
+.backbutton:hover {
+    background-color: #f1f1f1;
+    border: 1px solid #cecece;
+    text-decoration: none;
+    color: #333;
+}
+
+.W-button.addbtn {
+    background: #1baede;
+    color: #fff;
+    margin-left: 0;
+    border: none;
+    min-width: 72px;
+    font-size: 14px;
+}
+
+.W-button.addbtn:hover {
+    background: #189cc7;
+}
+
+/*搜索框样式*/
+.W-search {
+    outline: none;
+    border: 1px solid #ccc;
+    float: right;
+    border-radius: 20px;
+    text-indent: 10px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.W-searchbtn {
+    position: absolute;
+    right: 1%;
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 18px;
+    padding: 2px 5px;
+}
+
+/*返回到顶部*/
+.W-backTop:hover {
+    background: #bcbcbc;
+}
+
+.W-backTop {
+    position: fixed;
+    width: 44px;
+    height: 44px;
+    background: #a6a8b1;
+    right: 3%;
+    bottom: 6%;
+    font-size: 25px;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+    z-index: 10;
+}
+
+/* 适配移动端  */
+@media (max-width: 767px) {
+    .site-menubar-lock .page,
+    .site-menubar-fd .page {
+        margin-left: 0px;
+    }
+}
+
+
+
+/* fix portal style bug  4.14  update 6.21*/
+#username{
+    /* padding: 13px; */
+    min-width: 160px;
+}
+#username span img {
+    max-width: 36px;
+    max-height: 36px;
+   
+}
+.site-skintools {
+/*     display: none; */
+}
+
+.site-menubar {
+    z-index: 1000;
+}
+
+.navbar-fixed-bottom, .navbar-fixed-top {
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1001;
+}
+#content>.row{
+    margin-right: 0;
+}
+.sidebarRight .unsortable {
+    margin-bottom: 0px;
+}
+
+iframe {
+    outline: none;
+    border: 0;
+}
+
+#widgetAuth  .widgetItem {
+    margin-bottom: 0;
+    margin-top: 0;
+    border-radius: 0;
+    border: 1px solid #fff;
+    background-color: #fff;
+    color: #000;
+    margin-bottom: 22px;
+    text-align: center;
+}
+
+#widgetAuth .widgetItem h3 {
+    font-size: 16px;
+    color: #222;
+    margin-top: 3px;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+#widgetAuth .widgetItem>div {
+    font-size: 45px;
+}
+
+.page.side-page>.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+}
+.content-wrapper>.content {
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 15px !important;
+}
+/*fix end*/
+
+
+
+
+/*
+工作台设计部分样式
+*/
+.role {
+    background-color: #fff;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+#roleDeskDesign .btn-design {
+    padding: 5px 8px;
+    cursor: pointer;
+}
+
+#roleDeskDesign .btn-design .iconfont {
+    font-size: 12px;
+    margin-right: 10px;
+}
+
+#roleDeskDesign .btn-design:hover {
+    cursor: pointer;
+    background-color: #D7D7D7;
+    padding: 5px 8px;
+    color: #333;
+}
+
+/*#roleDeskDesign .btn-design:hover .iconfont {
+    color: #36ab7a !important;
+}*/
+
+#roleDeskDesign .table-responsive  {
+    background-color: #fff;
+}
+/*
+table 部分样式
+*/
+
+.table > thead > tr > th {
+    font-weight: 400;
+    color: #222222;
+    font-size: 14px;
+    padding: 10px;
+    /*text-align: center;*/
+    border-top: 0;
+    border-bottom: 1px solid #cccccc;
+    padding: 10px;
+}
+
+.table > tbody > tr > td {
+    border-top: 1px solid #ebebeb;
+    /*text-align: center;*/
+}
+.table-hover>tbody>tr:hover  ,
+.table-hover>tbody>tr.active
+{
+    background-color: #ebebeb;
+}
+
+
+/*侧边栏菜单设置样式*/
+#appmgr .nav{
+    background-color: #fff;
+    padding-bottom: 20px;
+}
+#appmgr .nav li.active{
+    color: #0377c1;
+}
+#appmgr .nav li.menu-head{
+    padding: 12px 25px;
+    font-size: 16px;
+    border-bottom: 1px solid #ebebeb;
+}
+#appmgr .nav li .mname{
+    margin-left: 25px;
+    display: inline-block;
+    overflow: hidden;
+    min-width:177px ;
+    width: 177px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    -webkit-text-overflow:ellipsis;
+    -moz-text-overflow:ellipsis;
+    white-space:nowrap;
+}
+#appmgr .nav li.menu-head .iconfont{
+    font-size: 18px;
+    color: #1baede;
+}
+#appmgr .nav li{
+    color: #333;
+}
+
+#appmgr .nav>li>a .madd-child {
+    display: none;
+    font-size: 18px;
+    color: #1baede;
+    padding: 1px 5px;
+    line-height: 18px;
+    margin-right: 6px;
+    position: absolute;
+    right: 16px;
+    top: 8px;
+}
+#appmgr .nav>li>a:hover .madd-child,
+#appmgr .nav>li.active>a .madd-child{
+    display: inline-block;
+    cursor: pointer;
+}
+#appmgr .nav>li>a{
+    color: #333;
+}
+#appmgr .menu-group>.items>li>a{
+    color: #333;
+    text-decoration: none;
+    background-color: #fff;
+    position: relative;
+    display: block;
+    padding: 5px 15px;
+    padding-left: 50px;
+}
+#appmgr li.active>.items>li.active>a {
+    background-color: #c4eaf6;
+    color: #333;
+}
+#appmgr .nav li.active>a{
+   /* color: #0377c1;*/
+    background-color: #c4eaf6;
+}
+#appmgr .nav li>.items
+{
+    overflow: hidden;
+}
+#appmgr a{
+    text-decoration: none;
+}
+#appmgr a.active{
+    text-decoration: none;
+    background-color: #e9f7fc;
+    color: #333;
+}
+#appmgr .minfo,
+#appmgr .medit{
+    background-color: #fff;
+    padding-left: 30px;
+    padding-bottom: 50px;
+}
+#appmgr  .minfohead{
+    padding: 12px 25px;
+    font-size: 16px;
+    border-bottom: 1px solid #ebebeb;
+}
+#appmgr  .minfohead .m-title{
+    display: inline-block;
+    min-width: 150px;
+    overflow: inherit;
+}
+#appmgr .minfo .icon-pencil,
+#appmgr .minfo .icon-delete
+{
+    font-size: 18px;
+    color: #1baede;
+    margin-left: 15px;
+    cursor: pointer;
+}
+#appmgr .nav li>a:hover{
+    background-color: #e9f7fc;
+}
+#appmgr .nav li.active>a:hover{
+    background-color: #c4eaf6;
+}
+#appmgr .nav li.menu-add {
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    background-color: #1baede;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+#appmgr .minfo  .col-sm-2.text-right
+#appmgr .medit   label.col-sm-2
+{
+    color: #666;
+    font-weight: 500;
+}
+#appmgr .minfo  .col-sm-8{
+    color: #333;
+}
+#appmgr .menu-group a>.iconfont  {
+   position: absolute;
+    font-weight: 100;
+    font-size: 12px;
+    color: #ccc;
+}
+#appmgr .menu-group.active a>.iconfont{
+    font-weight: 100;
+    font-size: 12px;
+    color: #7A7777;
+}
+.rotate90{
+    filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=-1);
+    -moz-transform:rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+
+
+/*
+ fix table for NCUE rule
+*/
+table.nctable{
+    font-family: "Microsoft YaHei";
+    font-size: 12px;
+    color: #333;
+    border:1px solid #cecece !important;
+    border-bottom: 0;
+}
+.nctable > tbody > tr.active > td,
+.table-hover>tbody>tr.active:hover>td{
+    background-color: #c4eaf6;
+    vertical-align: middle;
+}
+.nctable > thead > tr > th{
+
+    font-weight: 400;
+    color: #333;
+    font-size: 14px;
+    border-bottom: 1px solid #cecece !important;
+    padding: 12px;
+    background-color: #eeeff1 !important;
+}
+.nctable tr:hover {
+    background-color: #e9f7fc !important;
+}
+.nctable > tbody > tr > td{
+    padding: 10px;
+    height: 45px;
+    border-bottom: 1px solid #cecece !important;
+}
+
+.ui-dialog-footer button.ui-dialog-autofocus {
+    color: #fff;
+    background-color: #1baede;
+    border-color: #1baede;
+    -webkit-border-radius: 1px;
+    -moz-border-radius:1px;
+    -o-border-radius: 1px;
+    border-radius:1px;
+}
+
+.nc-search{
+    border: 1px solid #cecece;
+    font-size: 14px;
+    float: right;
+    text-indent: 10px;
+    height: 30px;
+    line-height: 30px;
+    outline: none;
+
+    -webkit-border-radius: 1px;
+    -moz-border-radius:1px;
+    -o-border-radius: 1px;
+    border-radius:1px;
+}
+.nc-searchbtn {
+    position: absolute;
+    right: 1%;
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 18px;
+    line-height: 30px;
+    outline: none;
+}
+.nc-sel{
+    border: 1px solid #cecece;
+    font-size: 14px;
+   /* float: right;*/
+    text-indent: 0px;
+    height: 32px;
+    line-height: 32px;
+    outline: none;
+    -webkit-border-radius: 1px;
+    -moz-border-radius:1px;
+    -o-border-radius: 1px;
+    border-radius:1px;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background: url(iconimg/selectDown.png) 99% center no-repeat #fff;
+    padding: 0px;
+    padding-left: 15px;
+    min-width: 120px;
+    outline: 0;
+
+    box-shadow: none;
+}
+/*.nc-sel:focus,
+.nc-sel:active
+{
+    border: 1px solid #6bcaea;
+    color: #333;
+    box-shadow: none;
+}*/
+
+.nc-search:focus
+{
+    border: 1px solid #6bcaea;
+    color: #333;
+}
+.nc-search:focus+.nc-searchbtn{
+    color: #6bcaea;
+}
+.control-label{
+    font-weight: normal;
+    color: #666;
+}
+.has-success .control-label,
+.has-error .control-label
+{
+    font-weight: normal;
+    color: #666;
+}
+
+.form-control{
+    -webkit-box-shadow:none;
+    box-shadow: none;
+    border: 1px solid #cecece;
+    font-size: 14px;
+    outline: none;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    -o-border-radius: 1px;
+    border-radius: 1px;
+}
+.form-control:focus {
+    border: 1px solid #6bcaea;
+    color: #333;
+    -webkit-box-shadow:none;
+    box-shadow: none;
+}
+.more .btn{
+    background-color: #fff;
+    border: 1px solid #cecece;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    font-size: 14px;
+    color: #666;
+}
+.more .btn:hover{
+    background-color: #fff;
+    border: 1px solid #1baede;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    font-size: 14px;
+    color: #1baede;
+}
+
+.ui-dialog-button button{
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    -o-border-radius: 1px;
+    border-radius: 1px;
+}
+.ui-dialog-button button:first-child{
+    color: #fff ;
+    background-color: #1baede ;
+    border-color: #1baede;
+}
+.ui-dialog-button button:first-child:hover,
+.ui-dialog-button button:first-child:active
+{
+    background-color: #189cc7;
+    color: #fff;
+    text-decoration: none;
+}
+body{
+    background: #eeeff1;
+}
+.navbar-portal.navbar>.container-fluid .navbar-brand {
+    margin-left: 30px !important;
+}
+/*
+for  IE10-11
+*/
+input::-ms-clear{display:none;}

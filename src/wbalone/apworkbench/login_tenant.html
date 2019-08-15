@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html class="no-js">
+	<head>
+		<title>登录</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+		<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+		<meta http-equiv="Pragma" content="No-cache">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="Expires" content="0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<link rel="Shortcut Icon" href="images/favicon.ico"/> 
+
+		<!-- CSS -->
+		<link rel="stylesheet" type="text/css" href="/workbench/portalui/trd/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/login.css">
+		<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+			<script src="/workbench/portalui/trd/html5/html5.js"></script>
+		<![endif]-->
+		
+		<style type="text/css">
+				.login_form input[type='text'], .login_form input[type='password'] {
+		    width: 75%;
+		    margin-left: 0;
+		    border-radius: 0;
+		    background: #fff;
+		    padding: 10px 0;
+		    text-indent: 15px;
+		    border: 0;
+		    outline: none;
+		    border-bottom: 1px solid #ccc;
+		    position: absolute;
+		    border: 0;
+		}
+			.phone-num {
+			    z-index: 2;
+			}
+			.reg-list {
+			    position: relative;
+			    margin-bottom: 20px;
+			    z-index: 1;
+			}
+			.input-wrapper {
+			    width: 318px;
+			    height: 42px;
+			    line-height: 38px;
+			    font-size: 16px;
+			    color: #b3b3b3;
+			    padding: 0 10px;
+			    border: 1px solid #c7c7c7;
+			    -webkit-border-radius: 6px;
+			    -moz-border-radius: 6px;
+			    border-radius: 6px;
+			    background-color: #ffffff;
+			        margin-left: 40px;
+			}
+			
+			.select-area {
+			    display: inline-block;
+			    color: #999;
+			    width: 60px;
+			    height: 30px;
+			    cursor: pointer;
+			    line-height: 30px;
+			    padding-right: 10px;
+			    position: relative;
+			    border-right: 1px solid #c7c7c7;
+			    vertical-align: middle;
+			}
+			.ipt-phonenum {
+				    width: 230px;
+		     }
+		     .reg-ipt {
+			    height: 40px;
+			    line-height: 40px;
+			    border: none;
+			    padding-left: 6px;
+			    vertical-align: middle;
+			}
+			
+			.error-tip-wrapper {
+			    color: #f38867;
+			    font-size: 14px;
+			    height: 36px;
+			    line-height: 36px;
+			    text-align: center;
+			    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+			    background-color: #ffffff;
+			    border-top-right-radius: 6px;
+			    border-bottom-right-radius: 6px;
+			    padding: 0 30px;
+			    margin-left: 36px;
+			    white-space: nowrap;
+			    position: absolute;
+			    left: 100%;
+			    top: 2px;
+			}
+			
+			#login ul {
+			    padding: 0;
+			    margin: 0;
+			}
+			
+			.area-body {
+			    display: none;
+			    position: absolute;
+			    z-index: 10;
+			    top: 42px;
+			    left: -1px;
+			    background-color: #ffffff;
+			    width: 100%;
+			    max-height: 348px;
+			    border: 1px solid #E0E0E0;
+			    -webkit-border-radius: 1px;
+			    -moz-border-radius: 1px;
+			    border-radius: 1px;
+			    list-style: none;
+			}
+			
+			
+			.enterprise-title {
+			    text-align: center;
+			    color: #666;
+			    font-size: 20px;
+			    height: 22px;
+			    line-height: 22px;
+/* 			    margin: 38px 0 32px; */
+			        margin: 8px 0 32px;
+			}
+			
+			#login ul.list-wrapper {
+			    padding: 0 40px;
+			    min-height: 156px;
+			    overflow: auto;
+			}
+			#login ul li.enterprise-item {
+			    padding: 5px 0;
+			    margin-top: -1px;
+			}
+			
+			#login ul li {
+			    list-style-type: none;
+			    padding: 15px 0;
+			    overflow: hidden;
+			    vertical-align: middle;
+			    position: relative;
+			}
+			
+			.enterprise-item.first-item {
+			    border-top: 1px solid #d8d8d8;
+			}
+			.enterprise-item.can-use {
+			    cursor: pointer;
+			}
+			.enterprise-item {
+			    height: 44px;
+			    border-bottom: 1px solid #d8d8d8;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="login_bg">
+			<div class="logo"><img src="images/loginlogo.png"/></div>
+			<div class="logo2"><img src="images/login-logo.png"/></div>
+		</div>
+		<div class="page-container">
+			<div class="main_box">
+				<div class="login_box" id="login">
+					<div class="login_form">
+					<form action="index.html" id="login_form" method="post">
+							<div class="form-group">
+<!-- 								<input id="username" placeholder="用户名" name="username" type="text" class="username"  -->
+<!-- 								autocomplete="off"> -->
+								<div class="j-phone-num phone-num input-wrapper reg-list j-reg-list">
+                                    <span class="j-select-area select-area"><span class="j-select-area-num">+86</span><i class="select-area-icon"></i></span>
+                                    <input class="reg-ipt j-ipt-phonenum ipt-phonenum" type="text" name="telephone" id="telephone" value="" placeholder="请输入手机号" tabindex="1">
+                                    <span class="j-error-tip-wrapper error-tip-wrapper" style="display: none;">
+                                        <i class="arrows-icon"></i>
+                                        <span class="tip"><i class="error-tip-icon"></i><span class="j-error-content">手机号格式错误</span></span>
+                                    </span>
+                                    <ul class="j-area-body area-body" style="display: none;"><li class="j-area-item area-item"><span class="j-area-name area-name">中国</span><span class="j-area-name-en area-name-en">China</span><span class="j-area-num area-num">+86</span></li></ul>
+                                </div>
+							</div>
+							<div class="form-group">
+<!-- 								<input id="password" placeholder="密码" name="password" type="password"  -->
+<!-- 								class="password"> -->
+								<div class="reg-list input-wrapper j-reg-list">
+                                    <input class="reg-ipt j-ipt-password ipt-password" type="password" name="password" id="password" placeholder="请输入密码" tabindex="2">
+                                </div>
+							</div>
+							<div class="form-group">
+								<label for="j_remember" class="m">
+								<input id="j_remember" type="checkbox" value="true">&nbsp;记住登录账号!</label>
+							</div>
+							<div class="form-group space">
+								<button type="button"  id="loginBtn" 
+								class="btn btn-primary btn-lg">&nbsp;登&nbsp;录&nbsp </button>
+							</div>
+						</form>
+<!-- 						11111 -->
+						<div class="enterprises" style="display:none;">
+                            <p class="enterprise-title">选择企业</p>
+                            <ul class="list-wrapper">
+                            	
+                            </ul>
+                        </div>
+<!-- 11111 -->
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Javascript -->
+		<script src="/workbench/portalui/trd/jquery/jquery-1.11.2.js"></script>
+		<script src="trd/jquery.form/jquery.form.js"></script>
+		<script src="js/login/tooltips.js"></script>
+		<script src="js/login/login_tenant.js"></script>
+	</body>
+</html>

@@ -1,0 +1,25 @@
+<div class="ordertrackbox">
+  <div class="ordertrackbox-content" data-bind="foreach: {data:nodeDataArr, as:'data'}">
+    <!-- node box -->
+    <div class="ordertrack-node clearfix">
+      <div class="d-bt">
+        <p class="li-sb sb01" data-bind="text:operateTime">title</p>
+      </div>
+      <ul class="ul01" >
+        <li class="node-li ">
+          <!-- <p class="li-sb sb-time" data-bind="text:datalist.operateTime">2018-10-13 21:29:54</p> -->
+          <div class="sb-content text-b"   data-bind="foreach: {data: data.descriptionArr  }">
+            <span class="s-txt-b"  data-bind="text:$data"></span>
+          </div>
+          <div class="sb-content"  data-bind="foreach: {data: data.imgsArr}" >
+            <a class="a-img" href="javacript:void(0);">
+                <img  data-bind="attr:{src:$data}"/>
+            </a>
+          </div>          
+        </li>
+      </ul>
+    </div>
+    <!-- node box end -->
+
+  </div>
+</div>

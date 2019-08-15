@@ -1,0 +1,748 @@
+<div class="ui-panel ui-list-panel">
+  <div >
+    <div class="page-title">业务账号</div>
+  </div>
+  <div >
+    <div >
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+  <div class="ui-searchbox ui-panel-head">
+    <div id="accountList-searchcontent" class="ui-searchbox-content">
+
+    </div>
+    <div class="clearfix">
+
+    </div>
+    <div class="ui-searchbox-footer">
+      <div class="ui-search-more hidden">
+          <a>更多<i class="uifont icon-down"></i></a>
+      </div>
+
+      <div class="ui-search-btn">
+        <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:cleanSearch">清空</a>
+        <a class="ui-btn ui-btn-green" data-bind="click:search.bind($data,true)">搜索</a>
+      </div>
+      <div class="clearfix">
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-panel-body">
+  	<div class="ui-panel-body-head">
+  		<div class="ui-panel-body-head-left">
+  			<a class="ui-btn ui-btn-orange margin-right-5" id="user-action-add"
+          data-bind="click: beforeEdit.bind($data,-1),visible:buttonShowGroup['add']"><i class="uifont icon-plus margin-right-5"></i>新增
+        </a>
+        <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del" data-bind="click: del,visible:buttonShowGroup['del']">
+            <i class="uifont icon-shanchu1 margin-right-5"></i>删除
+        </a>
+        <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+            <a class="ui-button-item"  data-bind="click:enable,visible:buttonShowGroup['enable']">
+              <i class="uifont icon-qiyong margin-right-5"></i>启用
+            </a>
+            <a class="ui-button-item" data-bind="click:disable,visible:buttonShowGroup['disable']">
+              <i class="uifont icon-tingyong margin-right-5"></i>停用
+            </a>
+          </div>
+        <div class="ui-button-group clearfix vertical-align-middle margin-right-5">		
+    				<button class="ui-button-item" id="shopImport" style="background: #fff" data-bind="visible:buttonShowGroup['import']">
+                <i class="uifont  icon-import margin-right-5"></i>导入
+            </button>
+            <ul class="u-menu u-menu-info2" for="shopImport">
+                <li class="u-menu-item"><a data-bind="click: importHandle">导入主表信息</a></li>
+                <li class="u-menu-item"><a data-bind="click: importContact">导入账号联系人</a></li>
+                <li class="u-menu-item"><a data-bind="click: importaccountMgOrg">导入账号所属组织</a></li>
+                <li class="u-menu-item"><a data-bind="click: importchannelCusStore">导入账号送达方</a></li>
+                <li class="u-menu-item"><a data-bind="click: importcompanyInfo">导入账号公司信息</a></li>
+            </ul>
+
+            <button class="ui-button-item" id="shopExport" style="background: #fff" >
+                <i class="uifont icon-export margin-right-5"></i>导出
+            </button>
+            <ul class="u-menu u-menu-info2" for="shopExport">
+                <li class="u-menu-item "><a data-bind="click: exportHandle">导出主表信息</a></li>
+                <li class="u-menu-item"><a data-bind="click: exportContact">导出账号联系人</a></li>
+                <li class="u-menu-item"><a data-bind="click: exportaccountMgOrg">导出账号所属组织</a></li>
+                <li class="u-menu-item"><a data-bind="click: exportchannelCusStore">导出账号送达方</a></li>
+                <li class="u-menu-item"><a data-bind="click: exportcompanyInfo">导出账号公司信息</a></li>
+            </ul>
+         </div>
+  		</div>
+  	</div>
+      <div class="ui-table-container">
+          <div id="buoyancyfactorlist"
+               u-meta='{"id":"grid_accountList","data":"accountList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+              <div options='{"field":"code","dataType":"String","title":"账号编码","renderType":"detailRender"}'></div>
+              <div options='{"field":"name","dataType":"String","title":"账号名称"}'></div>
+              <div options='{"field":"accountTypeName","dataType":"String","title":"账号类型"}'></div>
+              <div options='{"field":"oneCategoryName","dataType":"String","title":"客户一级分类"}'></div>
+              <div options='{"field":"twoCategoryName","dataType":"String","title":"客户二级分类"}'></div>
+              <div options='{"field":"statusCode","dataType":"integer","title":"启用状态","renderType":"stateGrid"}'></div>
+              <div options='{"field":"creator","dataType":"String","title":"创建人","visible":"false"}'></div>
+              <div options='{"field":"creationTime","dataType":"Datetime","title":"创建时间","visible":"false"}'></div>
+              <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":"false"}'></div>
+              <div options='{"field":"modifiedTime","dataType":"Datetime","title":"修改时间","visible":"false"}'></div>
+              <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation4single","fixed":true,"width":"110px"}'></div>
+          </div>
+          <div class="ui-statistics margin-top-10">
+            <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择<span class="font-c-blue" data-bind="text:accountList.selectedIndices().length"></span>项数据
+          </div>
+          <div class="pagination-right">
+            <div id='pagination' class='pagination u-pagination pagination-sm'
+            u-meta='{"type":"pagination","data":"accountList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+          </div>
+      </div>
+    </div>
+</div>
+
+
+
+<div class="ui-panel ui-bill-panel" style="display: none;">
+  <div >
+    <div class="page-title">
+      <span>业务账号</span>
+    </div>
+  </div>
+  <div >
+    <div >
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+	    <div class="ui-operate-btn">
+	    	<a class="ui-btn ui-btn-green  margin-right-5" data-bind="click:backPanel">返回
+	      </a>
+	    </div>
+	</div>
+  <div class="ui-panel-body">
+			 <div class="u-tabs  ui-tabs margin-top-10">
+			    <div class="u-tabs__tab-bar">
+			        <a href="#tab-panel-1" class="u-tabs__tab is-active">基本信息</a>
+			        <a href="#tab-panel-2" class="u-tabs__tab" >账号所属组织</a>
+			        <a href="#tab-panel-3" class="u-tabs__tab">账号联系人</a>
+			        <a href="#tab-panel-4" class="u-tabs__tab" >账号送达方</a>
+			        <a href="#tab-panel-5" class="u-tabs__tab" >公司信息</a>
+			    </div>
+			    <!--基本信息开始-->
+			    <div class="u-tabs__panel is-active" id="tab-panel-1">
+							  <div class="ui-bill-body">
+							    <div class="ui-collapse-group">
+							      <div id="default-example" >
+							      	<!--基本信息开始-->
+							      	 <!-- <div class="ui-collapse-title  clearfix open margin-top-30"></div>-->
+							      	 <div class="">
+							      	 	   <a class="ui-btn ui-btn-primary  margin-right-5" data-bind="click:saveHandle"><i class="uifont icon-tubiao-baocun margin-right-5"></i>保存</a>
+									    	   <a class="ui-btn ui-btn-primary" data-bind="click:cancelHandle"><i class="uifont icon-tubiao-guanbi-xianxing margin-right-5"></i>取消</a>
+							      	 </div>
+							          <div class="ui-collapse-content clearfix" id="productBase">
+												    <!--一个添加项开始-->
+													    <div class="ui-item">
+													      <div class="ui-name">账号编码：</div>
+													       <div class="ui-inputarea">
+													        <div class="u-text" id="codeBox"  u-meta='{"id":"code","type":"u-text","data":"accountList","field":"code","enable":"false"}'>
+													          <input class="u-input" id="codeinfo"/>
+													        </div>
+													      </div>
+													    </div>
+													    <!--一个添加项结束-->
+			                      <!--一个添加项开始-->
+													    <div class="ui-item">
+													      <div class="ui-name"><i class="strong">*</i>账号名称：</div>
+													       <div class="ui-inputarea">
+													        <div class="u-text"  u-meta='{"id":"name","type":"u-text","data":"accountList","field":"name"}'>
+													          <input class="u-input"/>
+													        </div>
+													      </div>
+													    </div>
+													    <!--一个添加项结束-->
+			                      <!--一个添加项开始-->
+													    <div class="ui-item">
+													      <div class="ui-name"><i class="strong">*</i>简称：</div>
+													       <div class="ui-inputarea">
+													        <div class="u-text"  u-meta='{"id":"accountAbbr","type":"u-text","data":"accountList","field":"accountAbbr"}'>
+													          <input class="u-input"/>
+													        </div>
+													      </div>
+													    </div>
+													    <!--一个添加项结束-->
+															 <!--一个添加项开始-->
+														    <div class="ui-item">
+														      <div class="ui-name">账号类型：</div>
+														      <div class="ui-inputarea">
+				                            <div  u-meta='{"id":"accountTypeId","type":"uiRefer","data":"accountList","field":"accountTypeId"}'>
+														          <input readonly="readonly"/>
+														          <span class="ui-icon uifont icon-bar refer"></span>
+														        </div>
+														      </div>
+														    </div>
+														    <!--一个添加项结束-->
+													    <!--一个添加项开始-->
+													    <div class="ui-item">
+													      <div class="ui-name"><i class="strong">*</i>客户编码：</div>
+													      <div class="ui-inputarea">
+			                            <div id="customerIdref" u-meta='{"id":"customerId","type":"uiRefer","data":"accountList","field":"customerId"}'>
+													          <input readonly="readonly"/>
+													          <span class="ui-icon uifont icon-bar refer"></span>
+													        </div>
+													      </div>
+													    </div>
+													    <!--一个添加项结束-->
+
+													    <!--一个添加项开始-->
+													    <div class="ui-item">
+													      <div class="ui-name">客户名称：</div>
+													       <div class="ui-inputarea">
+													        <div class="u-text"  u-meta='{"id":"customerName","type":"u-text","data":"accountList","field":"customerName","enable":"false"}'>
+													          <input class="u-input"/>
+													        </div>
+													      </div>
+													    </div>
+													    <!--一个添加项结束-->
+													    <!--一个添加项开始-->
+													    <div class="ui-item">
+													      <div class="ui-name">客户一级分类：</div>
+													       <div class="ui-inputarea">
+													        <div class="u-text"  u-meta='{"id":"oneCategoryName","type":"u-text","data":"accountList","field":"oneCategoryName","enable":"false"}'>
+													          <input class="u-input"/>
+													        </div>
+													      </div>
+													    </div>
+													    <!--一个添加项结束-->
+													    <!--一个添加项开始-->
+													    <div class="ui-item">
+													      <div class="ui-name">客户二级分类：</div>
+													       <div class="ui-inputarea">
+													        <div class="u-text"  u-meta='{"id":"twoCategoryName","type":"u-text","data":"accountList","field":"twoCategoryName","enable":"false"}'>
+													          <input class="u-input"/>
+													        </div>
+													      </div>
+													    </div>
+													    <!--一个添加项结束-->
+														 	<!--一个添加项开始-->
+													    <div class="ui-item">
+													      <div class="ui-name">国别：</div>
+													      <div class="ui-inputarea">
+													        <div class="u-text"  u-meta='{"id":"countryName","type":"u-text","data":"accountList","field":"countryName","enable":"false"}'>
+													          <input class="u-input" id="countryNameInfo" />
+													        </div>
+													      </div>
+													    </div>
+													    <!--一个添加项结束-->
+														 	<!--一个添加项开始-->
+													    <div class="ui-item">
+													      <div class="ui-name"><i class="strong">*</i>客户地址：</div>
+													      <div class="ui-inputarea">
+			                            <div id="customerAddressId" u-meta='{"id":"customerAddressId","type":"uiRefer","data":"accountList","field":"customerAddressId","enable":"false"}'>
+													          <input readonly="readonly"/>
+													          <span class="ui-icon uifont icon-bar refer"></span>
+													        </div>
+													      </div>
+													    </div>
+													    <!--一个添加项结束-->
+														  <!--一个添加项开始-->
+													    <div class="ui-item">
+													      <div class="ui-name">开户银行：</div>
+													      <div class="ui-inputarea">
+													        <div class="u-text"  u-meta='{"id":"bank","type":"u-text","data":"accountList","field":"bank"}'>
+													          <input class="u-input"/>
+													        </div>
+													      </div>
+													    </div>
+													    <!--一个添加项结束-->
+														  <!--一个添加项开始-->
+													    <div class="ui-item">
+													      <div class="ui-name">银行账号：</div>
+													      <div class="ui-inputarea">
+													        <div class="u-text"  u-meta='{"id":"bankAccount","type":"u-text","data":"accountList","field":"bankAccount"}'>
+													          <input class="u-input"/>
+													        </div>
+													      </div>
+													    </div>
+													    <!--一个添加项结束-->
+														  <!--一个添加项开始-->
+													    <div class="ui-item">
+													      <div class="ui-name">停止时间：</div>
+													      <div class="ui-inputarea">
+													        <div class="u-text"  u-meta='{"id":"stopTime","type":"u-date","data":"accountList","field":"stopTime"}'>
+													          <input class="u-input"/>
+										                <span class="ui-icon uf uf-calendar"></span>
+													        </div>
+													      </div>
+													    </div>
+													    <!--一个添加项结束-->
+														  <!--一个添加项开始-->
+													    <div class="ui-item">
+													      <div class="ui-name">停止原因：</div>
+													      <div class="ui-inputarea">
+													        <div class="u-text"  u-meta='{"id":"stopCause","type":"u-text","data":"accountList","field":"stopCause"}'>
+													          <input class="u-input"/>
+													        </div>
+													      </div>
+													    </div>
+													    <!--一个添加项结束-->
+											    		<!--一个添加项开始-->
+															<div class="ui-item">
+														      <div class="ui-name">启用状态：</div>
+														      <div class="ui-inputarea">
+														        <div>
+														  			    <span class="text-value" data-bind="text:status()"></span>
+														        </div>
+														      </div>
+														  </div>
+															<!--一个添加项结束-->
+													    <!--一个添加项开始-->
+													    <div class="ui-item ui-textarea-item">
+													      <div class="ui-name">详细地址：</div>
+													      <div class="ui-inputarea">
+													        <textarea id="addressDetail" style="resize: none" u-meta='{"type":"textarea","data":"accountList","field":"addressDetail"}'>
+													        </textarea>
+													      </div>
+													    </div>
+														  <!--一个添加项结束-->
+													    <!--一个添加项开始-->
+													    <div class="ui-item ui-textarea-item">
+													      <div class="ui-name">账号描述：</div>
+													      <div class="ui-inputarea">
+													        <textarea  style="resize: none" u-meta='{"type":"textarea","data":"accountList","field":"description"}'>
+													        </textarea>
+													      </div>
+													    </div>
+														  <!--一个添加项结束-->
+							          </div>
+			              <!--基本信息结束-->
+										   <!--保存后开始-->
+			                  <div style="display: none;" id="productBase_show">
+			                  	  <div class="">
+															<div class="ui-item-text ui-item">
+													        <span class="item-name ui-name">账号编码：</span>
+													        <div class="ui-inputarea">
+														  			<span class="text-value" data-bind="text:accountList.ref('code')"></span>
+													        </div>
+													    </div>
+															<div class="ui-item-text ui-item">
+													        <span class="item-name ui-name">账号名称：</span>
+													        <div class="ui-inputarea">
+														  			<span class="text-value" data-bind="text:accountList.ref('name')"></span>
+													        </div>
+													    </div>
+															<div class="ui-item-text ui-item">
+													        <span class="item-name ui-name">简称：</span>
+													        <div class="ui-inputarea">
+														  			<span class="text-value" data-bind="text:accountList.ref('accountAbbr')"></span>
+													        </div>
+													    </div>
+															<div class="ui-item-text ui-item">
+													        <span class="item-name ui-name">账号类型：</span>
+													        <div class="ui-inputarea">
+														  			<span class="text-value" data-bind="text:accountList.ref('accountTypeName')"></span>
+													        </div>
+													    </div>
+															<div class="ui-item-text ui-item">
+													        <span class="item-name ui-name">客户：</span>
+													        <div class="ui-inputarea">
+														  			<span class="text-value" data-bind="text:accountList.ref('customerName')"></span>
+													        </div>
+													    </div>
+															<div class="ui-item-text ui-item">
+													        <span class="item-name ui-name">国别：</span>
+													        <div class="ui-inputarea">
+														  			<span class="text-value" data-bind="text:accountList.ref('countryName')"></span>
+													        </div>
+													    </div>
+													    
+															<div class="ui-item-text ui-item">
+													        <span class="item-name ui-name">客户地址：</span>
+													        <div class="ui-inputarea">
+														  			<span class="text-value" data-bind="text:accountList.ref('customerAddressName')"></span>
+													        </div>
+													    </div>
+															<div class="ui-item-text ui-item">
+													        <span class="item-name ui-name">开户银行：</span>
+													        <div class="ui-inputarea">
+														  			<span class="text-value" data-bind="text:accountList.ref('bank')"></span>
+													        </div>
+													    </div>
+															<div class="ui-item-text ui-item">
+													        <span class="item-name ui-name">银行账号：</span>
+													        <div class="ui-inputarea">
+														  			<span class="text-value" data-bind="text:accountList.ref('bankAccount')"></span>
+													        </div>
+													    </div>		
+															<div class="ui-item-text ui-item">
+													        <span class="item-name ui-name">停止时间：</span>
+													        <div class="ui-inputarea">
+														  			<span class="text-value" data-bind="text:accountList.ref('stopTime')"></span>
+													        </div>
+													    </div>	
+															<div class="ui-item-text ui-item">
+													        <span class="item-name ui-name">停止原因：</span>
+													        <div class="ui-inputarea">
+														  			<span class="text-value" data-bind="text:accountList.ref('stopCause')"></span>
+													        </div>
+													    </div>				
+													    
+													    <div class="ui-item-text ui-item">
+													        <span class="item-name ui-name">详细地址：</span>
+													        <div class="ui-inputarea">
+														  			<span class="text-value" data-bind="text:accountList.ref('addressDetail')"></span>
+													        </div>
+													    </div>
+													    <div class="ui-item-text ui-item">
+													        <span class="item-name ui-name">账号描述：</span>
+													        <div class="ui-inputarea">
+														  			<span class="text-value" data-bind="text:accountList.ref('description')"></span>
+													        </div>
+													    </div>
+				                      <div class="clearfix"></div>
+			                  	  </div>
+			                  </div>
+			                  <!--保存后结束-->
+							      </div>
+							    </div>
+							  </div>
+					</div>
+			    <!--基本信息结束-->
+			    <!-- 账号所属组织开始-->
+			    <div class="u-tabs__panel" id="tab-panel-2">
+			        <div class="ui-panel-body-head">
+					        <div class="ui-panel-body-head-left">
+					           <a class="ui-btn ui-btn-orange margin-right-5 " id="user-action-add"
+						          data-bind="click: addRow.bind($data,'accountMgOrgList')"><i class="uifont icon-plus margin-right-5"></i>增行
+						        </a>
+						        <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click: delChild.bind($data,'accountMgOrgList')"><i class="uifont icon-shanchu1 margin-right-5"></i>删行</a>
+					        	<a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:saveAccountMgOrg"><i class="uifont icon-tubiao-baocun margin-right-5"></i>保存</a>
+						        <a class="ui-btn ui-btn-primary  margin-right-5" data-bind="click:cancelaccountMgOrg"><i class="uifont icon-tubiao-guanbi-xianxing margin-right-5"></i>取消</a>
+					        </div>
+				      </div>
+						  <div class="ui-table-container" id="accountMgOrgInfo">
+						      <div u-meta='{"id":"grid_accountMgOrg","data":"accountMgOrgList","type":"grid","editable":true,"multiSelect":true,"showNumCol":true,"onBeforeEditFun":"officeOrganizationCheck"}'>
+						                  <div options='{"field":"organizationId","dataType":"String","title":"销售组织编码","renderType":"ncReferRender","editType":"ncReferEditType","editOptions":{"validType":"string","rel":{"refname":"organizationName","refcode":"organizationCode"}},"showField":"organizationCode","required":true}'></div>
+						                  <div options='{"field":"channelId","dataType":"String","title":"分销渠道编码","renderType":"ncReferRender","editType":"ncReferEditType","editOptions":{"validType":"string","rel":{"refname":"channelName","refcode":"channelCode"}},"showField":"channelCode","required":true}'></div>
+						                  <div options='{"field":"productGroupId","dataType":"String","title":"产品组编码","renderType":"ncReferRender","editType":"ncReferEditType","editOptions":{"validType":"string","rel":{"refname":"productGroupName","refcode":"productGroupCode"}},"showField":"productGroupCode","required":true}'></div>
+						                  <div options='{"field":"officeOrganizationId","dataType":"String","title":"所属办事处编码","renderType":"ncReferRender","editType":"ncReferEditType","editOptions":{"validType":"string","rel":{"refname":"officeOrganizationName","refcode":"officeOrganizationCode"}},"showField":"officeOrganizationCode"}'></div>
+						                  <div options='{"field":"officeOrganizationName","dataType":"String","title":"所属办事处名称","editable":false}'></div>
+						                  <div options='{"field":"personId","dataType":"String","title":"客户经理编码","renderType":"ncReferRender","editType":"ncReferEditType","editOptions":{"validType":"string","rel":{"personId":"personId","personTel":"personTel","refname":"personName","refCode":"personCode" }},"showField":"personCode"}'></div>
+						                  <div options='{"field":"personName","dataType":"String","title":"客户经理名称","editable":false}'></div>
+						                  <div options='{"field":"personTel","dataType":"String","title":"客户经理电话","editable":false}'></div>
+						                  <div options='{"field":"accountAllocationGroupCode","dataType":"String","title":"账户分配组","editOptions":{"id":"accountAllocationGroupCode","type":"combo","datasource":"accountAllocationGroupNameSource"},"editType":"combo","renderType":"comboRender","showField":"accountAllocationGroupName","required":true}'></div>
+						                  <div options='{"field":"soState","dataType":"String","title":"销售订单冻结","editOptions":{"id":"soState","type":"combo","datasource":"whetherSource"},"editType":"combo","renderType":"comboRender"}'></div>
+						                  <div options='{"field":"deliveryState","dataType":"String","title":"交货冻结","editOptions":{"id":"deliveryState","type":"combo","datasource":"whetherSource"},"editType":"combo","renderType":"comboRender"}'></div>
+						                  <div options='{"field":"invoiceState","dataType":"String","title":"出具发票冻结","editOptions":{"id":"invoiceState","type":"combo","datasource":"whetherSource"},"editType":"combo","renderType":"comboRender"}'></div>
+						                  <div options='{"field":"supportState","dataType":"String","title":"销售支持冻结","editOptions":{"id":"supportState","type":"combo","datasource":"whetherSource"},"editType":"combo","renderType":"comboRender"}'></div>
+						                  <!-- <div options='{"field":"accountState","dataType":"String","title":"记账冻结","editOptions":{"id":"accountState","type":"combo","datasource":"whetherSource"},"editType":"combo","renderType":"comboRender"}'></div> -->
+						      </div>
+						    </div>
+			    </div>
+			     <!-- 账号所属组织结束-->
+			    <!-- 联系人开始-->
+			    <div class="u-tabs__panel" id="tab-panel-3">
+				      <div class="ui-panel-body-head">
+					        <div class="ui-panel-body-head-left">
+					           <a class="ui-btn ui-btn-orange margin-right-5 "  data-bind="click: addRow.bind($data,'ContactList')"><i class="uifont icon-plus margin-right-5"></i>增行</a>
+						         <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click: delChild.bind($data,'ContactList')"><i class="uifont icon-shanchu1 margin-right-5"></i>删行</a>
+						         <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:saveContact"><i class="uifont icon-tubiao-baocun margin-right-5"></i>保存</a>
+						         <a class="ui-btn ui-btn-primary  margin-right-5" data-bind="click:cancelContact"><i class="uifont icon-tubiao-guanbi-xianxing margin-right-5"></i>取消</a>
+					        </div>
+				      </div>  
+						  <div class="ui-table-container" id="contactInfo">
+						      <div u-meta='{"id":"grid_Contact","data":"ContactList","type":"grid","editable":true,"multiSelect":true,"showNumCol":true}'>
+						                  <div options='{"field":"name","dataType":"String","title":"联系人姓名","required":true}'></div>
+                              <div options='{"field":"contactTypeId","dataType":"String","title":"联系人类别","renderType":"ncReferRender","editType":"ncReferEditType","showField":"contactTypeName","editOptions":{"validType":"string","rel":{"refpk":"contactTypeId","refname":"contactTypeName"}},"required":true}'></div>
+						                  <div options='{"field":"contactTel","dataType":"String","title":"联系人电话","required":true}'></div>
+						                  <div options='{"field":"contactPhone","dataType":"String","title":"联系人手机","required":true}'></div>
+						                  <div options='{"field":"contactFax","dataType":"String","title":"传真"}'></div>
+						                  <div options='{"field":"address","dataType":"String","title":"联系人地址"}'></div>
+						                  <div options='{"field":"email","dataType":"String","title":"联系人邮箱"}'></div>
+			                        <div options='{"field":"creator","dataType":"String","title":"创建人","visible":false}'></div>
+			                        <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":false}'></div>
+			                        <div options='{"field":"creationTime","dataType":"Date","title":"创建时间","visible":false}'></div>
+			                        <div options='{"field":"modifiedTime","dataType":"Date","title":"修改时间","visible":false}'></div>
+						      </div>
+						    </div>
+			    </div>
+			     <!-- 联系人结束-->
+
+			    <!-- 账号送达方开始-->
+			    <div class="u-tabs__panel" id="tab-panel-4">
+			        <div class="ui-panel-body-head">
+					        <div class="ui-panel-body-head-left">
+						         	 <a class="ui-btn ui-btn-orange margin-right-5 "   data-bind="click: addRow.bind($data,'channelCusStoreList')"><i class="uifont icon-plus margin-right-5"></i>增行</a>
+							         <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click: delChild.bind($data,'channelCusStoreList')"><i class="uifont icon-shanchu1 margin-right-5"></i>删行</a>
+					             <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:saveChannelCusStore"><i class="uifont icon-tubiao-baocun margin-right-5"></i>保存</a>
+							         <a class="ui-btn ui-btn-primary  margin-right-5" data-bind="click:cancelChannelCusStore"><i class="uifont icon-tubiao-guanbi-xianxing margin-right-5"></i>取消</a>
+					        </div>
+				      </div>
+						  <div class="ui-table-container" id="channelCusStoreInfo">
+						      <div u-meta='{"id":"grid_MarketArea","data":"channelCusStoreList","type":"grid","editable":true,"multiSelect":true,"showNumCol":true}'>
+			                  <div options='{"field":"shipToPartyId","dataType":"String","title":"送达方","renderType":"ncReferRender","editType":"ncReferEditType","showField":"shipToPartyCode","editOptions":{"validType":"string",
+			                  	              "rel":{"refpk":"shipToPartyId","customerAddresCode":"shipToPartyCode","customerAddresName":"shipToPartyName","countryName":"countryName","provinceName":"provinceName","cityName":"cityName","townName":"townName",
+											                  "countyName":"countyName","address":"address","logisticPeriod":"logisticPeriod","longitude":"longitude","latitude":"latitude",
+											                  "firstReceiver":"firstReceiver","firstReceiverTel":"firstReceiverTel","firstReceiverPhone":"firstReceiverPhone","secondReceiver":"secondReceiver","secondReceiverTel":"secondReceiverTel",
+											                  "secondReceiverPhone":"secondReceiverPhone","thirdReceiver":"thirdReceiver","thirdReceiverTel":"thirdReceiverTel","thirdReceiverPhone":"thirdReceiverPhone"}},"required":true}'></div>
+			                  <div options='{"field":"shipToPartyName","dataType":"String","title":"送达方名称","editable":false}'></div>
+			                  <div options='{"field":"countryName","dataType":"String","title":"国别","editable":false}'></div>
+			                  <div options='{"field":"provinceName","dataType":"String","title":"所在省份","editable":false}'></div>
+			                  <div options='{"field":"cityName","dataType":"String","title":"所在城市","editable":false}'></div>
+			                  <div options='{"field":"countyName","dataType":"String","title":"所在区/县","editable":false}'></div>
+			                  <div options='{"field":"townName","dataType":"String","title":"所在街道/镇","editable":false}'></div>
+			                  <div options='{"field":"address","dataType":"String","title":"详细地址","editable":false}'></div>
+			                  <div options='{"field":"logisticPeriod","dataType":"String","title":"标准物流周期","editable":false}'></div>
+			                  <div options='{"field":"longitude","dataType":"String","title":"经度","editable":false}'></div>
+			                  <div options='{"field":"latitude","dataType":"String","title":"纬度","editable":false}'></div>
+			                  <div options='{"field":"firstReceiver","dataType":"String","title":"收货第一联系人姓名","editable":false}'></div>
+			                  <div options='{"field":"firstReceiverTel","dataType":"String","title":"收货第一联系人电话","editable":false}'></div>
+			                  <div options='{"field":"firstReceiverPhone","dataType":"String","title":"收货第一联系人手机","editable":false}'></div>
+			                  <div options='{"field":"secondReceiver","dataType":"String","title":"收货第二联系人姓名","editable":false}'></div>
+			                  <div options='{"field":"secondReceiverTel","dataType":"String","title":"收货第二联系人电话","editable":false}'></div>
+			                  <div options='{"field":"secondReceiverPhone","dataType":"String","title":"收货第二联系人手机","editable":false}'></div>
+			                  <div options='{"field":"thirdReceiver","dataType":"String","title":"收货第三联系人姓名","editable":false}'></div>
+			                  <div options='{"field":"thirdReceiverTel","dataType":"String","title":"收货第三联系人电话","editable":false}'></div>
+			                  <div options='{"field":"thirdReceiverPhone","dataType":"String","title":"收货第三联系人手机","editable":false}'></div>
+						      </div>
+						    </div>
+			    </div>
+			     <!-- 账号送达方结束-->
+			    <!-- 公司信息开始-->
+			    <div class="u-tabs__panel" id="tab-panel-5">
+			        <div class="ui-panel-body-head">
+					        <div class="ui-panel-body-head-left">
+						         	 <a class="ui-btn ui-btn-orange margin-right-5 "  data-bind="click: addRow.bind($data,'companyInfoList')"><i class="uifont icon-plus margin-right-5"></i>增行</a>
+						         <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click: delChild.bind($data,'companyInfoList')"><i class="uifont icon-shanchu1 margin-right-5"></i>删行</a>
+			        			 <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:savecompanyInfo"><i class="uifont icon-tubiao-baocun margin-right-5"></i>保存</a>
+						         <a class="ui-btn ui-btn-primary  margin-right-5" data-bind="click:cancelcompanyInfo"><i class="uifont icon-tubiao-guanbi-xianxing margin-right-5"></i>取消</a>
+					        </div>
+				      </div>
+						  <div class="ui-table-container" id="companyInfo">
+						      <div u-meta='{"id":"grid_Partner","data":"companyInfoList","type":"grid","editable":true,"multiSelect":true,"showNumCol":true}'>
+				                  <div options='{"field":"corporateUnitId","dataType":"String","title":"公司代码","renderType":"ncReferRender","editType":"ncReferEditType","editOptions":{"validType":"string","rel":{"refname":"corporateUnitName"}},"showField":"corporateUnitName","required":true}'></div>
+				                  <div options='{"field":"reconciliationAccountId","dataType":"String","title":"统驭科目","renderType":"ncReferRender","editType":"ncReferEditType","editOptions":{"validType":"string","rel":{"refname":"reconciliationAccountName"}},"showField":"reconciliationAccountName","required":true}'></div>
+				                  <div options='{"field":"accountState","dataType":"String","title":"记账冻结","editOptions":{"id":"accountState","type":"combo","datasource":"whetherSource"},"editType":"combo","renderType":"comboRender"}'></div>
+				                  <!-- <div options='{"field":"status","dataType":"String","title":"状态","editOptions":{"id":"status","type":"combo","datasource":"statusSource"},"editType":"combo","renderType":"comboRender","required":true}'></div> -->
+				                  
+						      </div>
+						    </div>
+			    </div>
+			     <!-- 公司信息开始-->
+			</div>
+  </div>
+
+</div>
+
+<div class="ui-panel ui-bill-detail" style="display: none;">
+  <div >
+    <div class="page-title">
+      <span>业务账号</span>
+    </div>
+  </div>
+  <div >
+    <div >
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+    	<a class="ui-btn ui-btn-green" data-bind="click:cancelHandle">返回
+     </a>
+    </div>
+  </div>
+  <div class="ui-panel-body">
+  				 <div class="u-tabs  ui-tabs margin-top-10">
+			    <div class="u-tabs__tab-bar">
+			        <a href="#tab-panel-6" class="u-tabs__tab is-active">基本信息</a>
+			        <a href="#tab-panel-7" class="u-tabs__tab">账号联系人</a>
+			        <a href="#tab-panel-8" class="u-tabs__tab" >账号所属组织</a>
+			        <a href="#tab-panel-9" class="u-tabs__tab" >账号送达方</a>
+			        <a href="#tab-panel-10" class="u-tabs__tab" >公司信息</a>
+			    </div>
+			    <!--基本信息开始-->
+			    <div class="u-tabs__panel is-active" id="tab-panel-6">
+							  <div class="ui-bill-body">
+							    <div class="ui-collapse-group">
+							      <div id="default-example" >
+							      	<!--基本信息开始-->
+							      	 <!-- <div class="ui-collapse-title  clearfix open margin-top-30"></div>-->
+			                 <!--基本信息结束-->
+										   <!--保存后开始-->
+			                  <div>
+			                  	  <div class="">
+															<div class="ui-item-text ui-item">
+													        <span class="item-name ui-name">账号编码：</span>
+													        <div class="ui-inputarea">
+														  			<span class="text-value" data-bind="text:accountList.ref('code')"></span>
+													        </div>
+													    </div>
+															<div class="ui-item-text ui-item">
+													        <span class="item-name ui-name">账号名称：</span>
+													        <div class="ui-inputarea">
+														  			<span class="text-value" data-bind="text:accountList.ref('name')"></span>
+													        </div>
+													    </div>
+															<div class="ui-item-text ui-item">
+													        <span class="item-name ui-name">简称：</span>
+													        <div class="ui-inputarea">
+														  			<span class="text-value" data-bind="text:accountList.ref('accountAbbr')"></span>
+													        </div>
+													    </div>
+															<div class="ui-item-text ui-item">
+													        <span class="item-name ui-name">账号类型：</span>
+													        <div class="ui-inputarea">
+														  			<span class="text-value" data-bind="text:accountList.ref('accountTypeName')"></span>
+													        </div>
+													    </div>
+															<div class="ui-item-text ui-item">
+													        <span class="item-name ui-name">客户：</span>
+													        <div class="ui-inputarea">
+														  			<span class="text-value" data-bind="text:accountList.ref('customerName')"></span>
+													        </div>
+													    </div>
+															<div class="ui-item-text ui-item">
+													        <span class="item-name ui-name">国别：</span>
+													        <div class="ui-inputarea">
+														  			<span class="text-value" data-bind="text:accountList.ref('countryName')"></span>
+													        </div>
+													    </div>
+													    
+															<div class="ui-item-text ui-item">
+													        <span class="item-name ui-name">客户地址：</span>
+													        <div class="ui-inputarea">
+														  			<span class="text-value" data-bind="text:accountList.ref('customerAddressName')"></span>
+													        </div>
+													    </div>
+															<div class="ui-item-text ui-item">
+													        <span class="item-name ui-name">开户银行：</span>
+													        <div class="ui-inputarea">
+														  			<span class="text-value" data-bind="text:accountList.ref('bank')"></span>
+													        </div>
+													    </div>
+															<div class="ui-item-text ui-item">
+													        <span class="item-name ui-name">银行账号：</span>
+													        <div class="ui-inputarea">
+														  			<span class="text-value" data-bind="text:accountList.ref('bankAccount')"></span>
+													        </div>
+													    </div>	
+													    <div class="ui-item-text ui-item">
+													        <span class="item-name ui-name">停止时间：</span>
+													        <div class="ui-inputarea">
+														  			<span class="text-value" data-bind="text:accountList.ref('stopTime')"></span>
+													        </div>
+													    </div>	
+															<div class="ui-item-text ui-item">
+													        <span class="item-name ui-name">停止原因：</span>
+													        <div class="ui-inputarea">
+														  			<span class="text-value" data-bind="text:accountList.ref('stopCause')"></span>
+													        </div>
+													    </div>	
+													    <div class="ui-item-text ui-item">
+													        <span class="item-name ui-name">账号描述：</span>
+													        <div class="ui-inputarea">
+														  			<span class="text-value" data-bind="text:accountList.ref('description')"></span>
+													        </div>
+													    </div>
+				                      <div class="clearfix"></div>
+			                  	  </div>
+			                  </div>
+			                  <!--保存后结束-->
+							      </div>
+							    </div>
+							  </div>
+					</div>
+			    <!--基本信息结束-->
+			    <!-- 联系人开始-->
+			    <div class="u-tabs__panel" id="tab-panel-7">
+						  <div class="ui-table-container margin-top-20">
+						      <!--<div u-meta='{"id":"grid_Contact","data":"ContactList","type":"grid","editable":true,"multiSelect":true,"showNumCol":true}'>-->
+						      <div u-meta='{"id":"grid_Contact_detail","data":"ContactList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+						                  <div options='{"field":"name","dataType":"String","title":"联系人姓名"}'></div>
+						                  <div options='{"field":"contactType","dataType":"String","title":"联系人类别"}'></div>
+						                  <div options='{"field":"contactTel","dataType":"String","title":"联系人电话"}'></div>
+						                  <div options='{"field":"contactPhone","dataType":"String","title":"联系人手机"}'></div>
+						                  <div options='{"field":"contactFax","dataType":"String","title":"传真"}'></div>
+						                  <div options='{"field":"address","dataType":"String","title":"联系人地址"}'></div>
+						                  <div options='{"field":"email","dataType":"String","title":"联系人邮箱"}'></div>
+			                        <div options='{"field":"creator","dataType":"String","title":"创建人","visible":false}'></div>
+			                        <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":false}'></div>
+			                        <div options='{"field":"creationTime","dataType":"Date","title":"创建时间","visible":false}'></div>
+			                        <div options='{"field":"modifiedTime","dataType":"Date","title":"修改时间","visible":false}'></div>
+						      </div>
+						    </div>
+			    </div>
+			     <!-- 联系人结束-->
+			    <!-- 账号所属组织开始-->
+			    <div class="u-tabs__panel" id="tab-panel-8">
+						  <div class="ui-table-container margin-top-20">
+						      <div u-meta='{"id":"grid_accountMgOrg_detail","data":"accountMgOrgList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+						                  <div options='{"field":"organizationId","dataType":"String","title":"销售组织编码","renderType":"ncReferRender","editType":"ncReferEditType","editOptions":{"validType":"string"},"showField":"organizationName"}'></div>
+						                  <div options='{"field":"channelId","dataType":"String","title":"分销渠道编码","renderType":"ncReferRender","editType":"ncReferEditType","editOptions":{"validType":"string"},"showField":"channelName"}'></div>
+						                  <div options='{"field":"productGroupId","dataType":"String","title":"产品组编码","renderType":"ncReferRender","editType":"ncReferEditType","editOptions":{"validType":"string"},"showField":"productGroupName"}'></div>
+						                  <div options='{"field":"officeOrganizationId","dataType":"String","title":"所属办事处编码","renderType":"ncReferRender","editType":"ncReferEditType","editOptions":{"validType":"string"},"showField":"officeOrganizationCode"}'></div>
+						                  <div options='{"field":"officeOrganizationName","dataType":"String","title":"所属办事处名称","editable":false}'></div>
+						                  <div options='{"field":"personId","dataType":"String","title":"客户经理编码","renderType":"ncReferRender","editType":"ncReferEditType","editOptions":{"validType":"string","rel":{"refpk":"personId","tel":"personTel"}},"showField":"personCode"}'></div>
+						                  <div options='{"field":"personName","dataType":"String","title":"客户经理名称","editable":false}'></div>
+						                  <div options='{"field":"personTel","dataType":"String","title":"客户经理电话","editable":false}'></div>
+						                  <div options='{"field":"accountAllocationGroupCode","dataType":"String","title":"账户分配组","editOptions":{"id":"accountAllocationGroupCode","type":"combo","datasource":"accountAllocationGroupNameSource"},"editType":"combo","renderType":"comboRender","showField":"accountAllocationGroupName"}'></div>
+						                  <div options='{"field":"soState","dataType":"String","title":"销售订单冻结","editOptions":{"id":"soState","type":"combo","datasource":"whetherSource"},"editType":"combo","renderType":"comboRender"}'></div>
+						                  <div options='{"field":"deliveryState","dataType":"String","title":"交货冻结","editOptions":{"id":"deliveryState","type":"combo","datasource":"whetherSource"},"editType":"combo","renderType":"comboRender"}'></div>
+						                  <div options='{"field":"invoiceState","dataType":"String","title":"出具发票冻结","editOptions":{"id":"invoiceState","type":"combo","datasource":"whetherSource"},"editType":"combo","renderType":"comboRender"}'></div>
+						                  <div options='{"field":"supportState","dataType":"String","title":"销售支持冻结","editOptions":{"id":"supportState","type":"combo","datasource":"whetherSource"},"editType":"combo","renderType":"comboRender"}'></div>
+						                <!--   <div options='{"field":"accountState","dataType":"String","title":"记账冻结","editOptions":{"id":"accountState","type":"combo","datasource":"whetherSource"},"editType":"combo","renderType":"comboRender"}'></div> -->
+						      </div>
+						    </div>
+			    </div>
+			     <!-- 账号所属组织结束-->
+			    <!-- 账号送达方开始-->
+			    <div class="u-tabs__panel" id="tab-panel-9">
+						  <div class="ui-table-container margin-top-20">
+						      <div u-meta='{"id":"grid_channelCusStore_detail","data":"channelCusStoreList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+			                  <div options='{"field":"shipToPartyCode","dataType":"String","title":"送达方","editable":false}'></div>
+			                  <!--<div options='{"field":"shipToPartyId","dataType":"String","title":"送达方","renderType":"ncReferRender","editType":"ncReferEditType","editOptions":{"validType":"string","rel":{"refpk":"shipToPartyId","countryName":"countryName","provinceName":"provinceName","cityName":"cityName","townName":"townName","countyName":"countyName","address":"address","logisticPeriod":"logisticPeriod","longitude":"longitude","latitude":"latitude","firstReceiver":"firstReceiver","firstReceiverTel":"firstReceiverTel","firstReceiverPhone":"firstReceiverPhone","secondReceiver":"secondReceiver","secondReceiverTel":"secondReceiverTel","secondReceiverPhone":"secondReceiverPhone","thirdReceiver":"thirdReceiver","thirdReceiverTel":"thirdReceiverTel","thirdReceiverPhone":"thirdReceiverPhone"}},"showField":"shipToPartyName"}'></div>-->
+			                  <div options='{"field":"shipToPartyName","dataType":"String","title":"送达方名称","editable":false}'></div>
+			                  <div options='{"field":"countryName","dataType":"String","title":"国别","editable":false}'></div>
+			                  <div options='{"field":"provinceName","dataType":"String","title":"所在省份","editable":false}'></div>
+			                  <div options='{"field":"cityName","dataType":"String","title":"所在城市","editable":false}'></div>
+			                  <div options='{"field":"countyName","dataType":"String","title":"所在区/县","editable":false}'></div>
+			                  <div options='{"field":"townName","dataType":"String","title":"所在街道/镇","editable":false}'></div>
+			                  <div options='{"field":"address","dataType":"String","title":"详细地址","editable":false}'></div>
+			                  <div options='{"field":"logisticPeriod","dataType":"String","title":"标准物流周期","editable":false}'></div>
+			                  <div options='{"field":"longitude","dataType":"String","title":"经度","editable":false}'></div>
+			                  <div options='{"field":"latitude","dataType":"String","title":"纬度","editable":false}'></div>
+			                  <div options='{"field":"firstReceiver","dataType":"String","title":"收货第一联系人姓名","editable":false}'></div>
+			                  <div options='{"field":"firstReceiverTel","dataType":"String","title":"收货第一联系人电话","editable":false}'></div>
+			                  <div options='{"field":"firstReceiverPhone","dataType":"String","title":"收货第一联系人手机","editable":false}'></div>
+			                  <div options='{"field":"secondReceiver","dataType":"String","title":"收货第二联系人姓名","editable":false}'></div>
+			                  <div options='{"field":"secondReceiverTel","dataType":"String","title":"收货第二联系人电话","editable":false}'></div>
+			                  <div options='{"field":"secondReceiverPhone","dataType":"String","title":"收货第二联系人手机","editable":false}'></div>
+			                  <div options='{"field":"thirdReceiver","dataType":"String","title":"收货第三联系人姓名","editable":false}'></div>
+			                  <div options='{"field":"thirdReceiverTel","dataType":"String","title":"收货第三联系人电话","editable":false}'></div>
+			                  <div options='{"field":"thirdReceiverPhone","dataType":"String","title":"收货第三联系人手机","editable":false}'></div>
+						      </div>
+						    </div>
+			    </div>
+			     <!-- 账号送达方结束-->
+			    <!-- 公司信息开始-->
+			    <div class="u-tabs__panel" id="tab-panel-10">
+						  <div class="ui-table-container margin-top-20">
+						      <div u-meta='{"id":"grid_companyInfo_detail","data":"companyInfoList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+				                  <div options='{"field":"corporateUnitName","dataType":"String","title":"公司代码"}'></div>
+				                  <div options='{"field":"reconciliationAccountId","dataType":"String","title":"统驭科目","renderType":"ncReferRender","editType":"ncReferEditType","editOptions":{"validType":"string"},"showField":"reconciliationAccountName"}'></div>
+				                  <div options='{"field":"accountState","dataType":"String","title":"记账冻结","editOptions":{"id":"accountState","type":"combo","datasource":"whetherSource"},"editType":"combo","renderType":"comboRender"}'></div>
+				                  <div options='{"field":"status","dataType":"String","title":"状态","editOptions":{"id":"status","type":"combo","datasource":"statusSource"},"editType":"combo","renderType":"comboRender"}'></div>
+
+						      </div>
+						    </div>
+			    </div>
+			     <!-- 公司信息开始-->
+			</div>
+
+  </div>
+
+  <!--<div class="ui-panel-body"></div>-->
+</div>
+
+<!--导入弹框 end-->
+<div id="exportFiel"></div>
+<div id="importFiel"></div>

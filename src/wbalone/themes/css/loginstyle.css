@@ -1,0 +1,100 @@
+body {
+  width: 100%;
+  background: url(../../images/background.png) no-repeat top center;
+  background-size: 100%;
+  position: relative;
+  font-family: "Microsoft YaHei","Open Sans","Helvetica Neue",Arial,"Hiragino Sans GB",sans-serif;
+  color: #333; }
+
+ul, li {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+
+.loginBox {
+  width: 700px;
+  height: 450px;
+  background-color: #fff;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px #888888;
+  margin: 0 auto;
+  margin-top: 200px; }
+  .loginBox .a-btn {
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 100px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    text-align: center; }
+  .loginBox .title-d {
+    text-align: center;
+    margin-top: 50px; }
+    .loginBox .title-d img.logo {
+      width: 200px;
+      height: 50px;
+      margin: 0 auto; }
+    .loginBox .title-d p.p-t {
+      font-size: 24px;
+      color: #666;
+      text-align: center;
+      margin: 25px 0 20px 0; }
+  .loginBox .ul-d {
+    width: 530px;
+    margin: 40px auto 0; }
+    .loginBox .ul-d .li-p {
+      margin-top: 20px; }
+    .loginBox .ul-d .s-b {
+      display: inline-block;
+      vertical-align: middle; }
+    .loginBox .ul-d .s-txt {
+      width: 100px;
+      text-align: right;
+      font-size: 14px; }
+    .loginBox .ul-d .s-input {
+      display: inline-block;
+      height: 40px;
+      line-height: 40px;
+      font-size: 14px;
+      border: 1px solid #ddd;
+      overflow: hidden;
+      border-radius: 100px;
+      position: relative; }
+      .loginBox .ul-d .s-input input {
+        width: 90%;
+        height: 40px;
+        border: none;
+        font-size: 14px;
+        line-height: inherit;
+        padding: 0 5%;
+        top: 0;
+        position: absolute;
+        top: 0;
+        left: 0; }
+        .loginBox .ul-d .s-input input:focus {
+          background-color: #ffffcc;
+          outline: none; }
+      .loginBox .ul-d .s-input.s-input-sj {
+        width: 400px; }
+      .loginBox .ul-d .s-input.s-input-yzm {
+        width: 275px; }
+    .loginBox .ul-d .a-btn {
+      vertical-align: middle;
+      border: 1px solid #E70013;
+      width: 110px;
+      color: #E70013;
+      margin-left: 5px; }
+      .loginBox .ul-d .a-btn:hover {
+        background: #fcd9d0; }
+  .loginBox .btn-d {
+    margin-top: 50px;
+    text-align: center; }
+    .loginBox .btn-d .a-btn {
+      background-image: linear-gradient(-131deg, #FF4E18 0%, #E70013 100%);
+      width: 240px;
+      color: #fff; }
+      .loginBox .btn-d .a-btn:hover {
+        background-image: linear-gradient(-131deg, #f86d36 10%, #d10f1f 100%); }
+
+/*# sourceMappingURL=loginstyle.css.map */

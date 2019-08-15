@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+	<ModulePrefs title="Social Hello World"
+		description="The Social Hello World Application Displays multilingual hello messages"
+		thumbnail="http://localhost:8080/" icon="http://localhost:8080/images/icon.png">
+		<Require feature="osapi"></Require>
+		<Require feature="settitle" />
+		<Require feature="shindig-container" />
+		<Require feature="dynamic-height"></Require>
+	</ModulePrefs>
+	<Content type="html" inline="true">
+    <![CDATA[
+   
+    <style>
+		#group_list .app-wrap {
+		    display: block;
+		    background: #fff;
+		    border-radius: 0;
+		    /* box-shadow: 0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);  */
+		    cursor: pointer;
+		    /* height: 95px; */
+		    margin-bottom: 0;
+		    margin-top: 0px;
+		    border: 1px solid #fff;
+		}
+		#group_list .app-wrap:hover{
+			    border: 1px solid #6bcaea;
+    cursor: pointer;
+    background-color: #e9f7fc;
+		}
+		.app-wrap .img-and-dynamic{
+      height: 88px;
+      padding: 15px 25px;
+      margin: 0;
+      font-size: 40px;
+      font-weight: 500;
+      color: #424242;
+      overflow: hidden;
+		}
+.app-wrap  .img-area{
+float: right;
+    color: #fcc186;
+}#group_list .img-area .appIcon {
+    font-size: 40px!important;
+}
+		#group_list .app-wrap .title{
+			padding-left:25px;
+			padding-top:15px;
+			margin:0;
+			white-space: nowrap;
+			overflow:hidden;
+			width:100%;
+			text-overflow: ellipsis;
+		}
+		.app-select {
+			height: 32px;
+			width: 40%;
+			max-width:200px;
+			margin-left: 10px;
+			border: 1px solid #Ccc;
+		}
+		.app-select:first-child{ margin-left:0}
+		.col-sm-6.col-lg-3 {
+			width: 186px;
+			cursor: pointer;
+		}
+		.outrowtitle {
+                font-size: 14px;
+     border: none!important;
+    box-shadow: none!important;
+    cursor: inherit;
+    font-weight: 400;
+    line-height: 1.2;
+    color: #333;
+    padding-left: 0px;
+		}
+		.row {
+			margin-right: 0px;
+			margin-left: 0px;
+		}
+		.img-rounded {
+			width:auto;
+			height:auto;
+			margin-top:30px;
+		}
+		#group_list .container-fluid .row-fluid:nth-child(6){
+			clear:both;
+		}
+		.col-sm-3 {max-width: 200px; cursor:pointer}
+		.padding0 { padding:0}
+		.input-group {}
+		.nav-bar {
+		    position: fixed;
+		    height: 40px;
+		    z-index: 999;
+		    width: 75%;
+		    line-height: 40px;
+		    color: #fff;
+		    top: 53px;
+		    /* left: 242px; */
+		    background: #6db4f9;
+		    padding: 0;
+		}
+
+		.title{text-align: center;
+			    float: left;
+			    margin-left: 35%;}
+
+		.mtop20 { margin-top:30px}
+		@media only screen and (max-width:1200px){.title{margin-left: 30%;}}
+	.ui-dialog-body {    padding: 30px 50px;}
+	.ui-dialog .ui-dialog-title {width:100%}
+		.fa-save {margin: 0 5px 0 0;}
+		.auth-after-rolemgr-wrap .container-fluid{
+			margin-top: 20px;
+		}
+		.auth-after-rolemgr-wrap .outrow{
+			margin-bottom: 10px;
+		}
+		.auth-after-rolemgr-wrap .checkbox-wrap{
+		margin-bottom: 24px;
+        text-align: left;
+        margin-left: 10px;
+        margin-top: -24px;
+		}
+		.auth-after-rolemgr-wrap .checkbox-wrap input{
+			display: inline-block;
+			margin-top: 0;
+		}
+   </style>
+           <div class="W-title">   小应用授权
+	    <span class="iconfont icon-star "></span>
+	      <a role="button" class="btn btn-default btn-sm backbutton">
+	      返回</a>
+	      </div>
+	<div class="auth-after-rolemgr-wrap">
+
+		<div class="mtop20 nc-thead">
+			<div class="row">
+				<div class="col-sm-5 padding0">
+    				<select onchange="areaChange(this.value)" class="form-inline app-select nc-sel" id="area-menu">
+					</select>
+					<select onchange="groupChange(this.value)" class="form-inline app-select nc-sel" id="group-menu">
+					</select>
+					<label>&nbsp&nbsp全选&nbsp&nbsp</label><input id="select-all" type="checkbox"/>
+  				</div>
+				<!-- <div class="col-sm-3" style="max-width:300px">
+    				<div class="input-group">
+						<input type="text" class="form-control" id="searchApp" style="height: 32px; " placeholder="请输入关键字...">
+						<span class="input-group-btn">
+							<button class="btn btn-default" style="height: 32px;" type="button" onclick="queryAppByKeyword()">查询</button>
+						</span>
+					</div>
+  				</div> -->
+
+  				   <div class="col-sm-3   pull-right">
+                <div class="input-group">
+                    <button class="W-button"   onclick="authFinishApp()">保存</button>
+                   <button class="W-button backbutton"  style="margin-left: 15px" id="toBack" onclick="backTolistPage()">取消</button>
+
+                </div>
+            </div>
+			</div>
+		</div>
+
+		<br/>
+
+		<div id="group_list">
+		</div>
+
+		<br/>
+		<!--<div class="container-fluid">
+			<div class="row-fluid">
+				<center>
+					<a class="btn btn-default" href="#" role="button" onclick="authFinishApp()">完成</a>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<a class="btn btn-default" href="#rolemgr" role="button">返回</a>
+				</center>
+			</div>
+		</div>-->
+
+	</div>
+<script src='${context}/apworkbench/js/gadgets/MyRoleMgrAuth.js'>
+</script>
+  ]]>
+	</Content>
+</Module>

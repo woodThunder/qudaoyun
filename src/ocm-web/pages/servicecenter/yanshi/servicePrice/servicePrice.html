@@ -1,0 +1,432 @@
+<div class="ui-list-panel ui-panel">
+    <div>
+        <div class="page-title">
+            <span>领料申请</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="title-seperator"></div>
+
+    <div class="ui-searchbox" >
+        <div id="mainList-searchcontent" class="ui-searchbox-content clearfix"></div>
+        <!--searchbox-btn-->
+        <div class="ui-searchbox-footer">
+            <div class="ui-search-more hidden">
+                <a>更多
+                    <i class="uifont icon-down"></i>
+                </a>
+            </div>
+
+            <div class="ui-search-btn">
+
+                <a class="ui-btn ui-btn-primary" data-bind="click:cleanSearch">清空
+                </a>
+                <a class="ui-btn ui-btn-green margin-right-5" data-bind="click:search.bind($data,true)">搜索
+                </a>
+            </div>
+            <div class="clearfix">
+
+            </div>
+        </div>
+        <!--searchbox-btn end-->
+    </div>
+
+    <div class="ui-panel-body">
+        <div class="margin-bottom-10">
+            <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click: beforeEdit.bind($data)">
+                <i class="uifont icon-plus margin-right-5"></i>新增
+            </a>
+            <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click: del">
+                <i class="uifont icon-shanchu1 margin-right-5"></i>删除
+            </a>
+        </div>
+        <div class="ui-table-container">
+            <div id="orderList" u-meta='{"id":"grid_PromoActivity","data":"mainList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+                <div options='{"field":"code","dataType":"String","title":"价表编码","renderType":"detailRender"}'></div>
+                <div options='{"field":"name","dataType":"String","title":"价表名称"}'></div>
+                <div options='{"field":"product","dataType":"Datetime","title":"产品系列"}'></div>
+                <div options='{"field":"goodsCode","dataType":"String","title":"物料编码"}'></div>
+                <div options='{"field":"goodsName","dataType":"String","title":"物料名称"}'></div>
+                <div options='{"field":"jtPrice","dataType":"String","title":"阶梯定价", "renderType":"enableRender"}'></div>
+                <div options='{"field":"creator","dataType":"String","title":"创建人","visible":false}'></div>
+                <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":false}'></div>
+                <div options='{"field":"creationTime","dataType":"Datetime","title":"创建时间","visible":false}'></div>
+                <div options='{"field":"modifiedTime","dataType":"Datetime","title":"修改时间","visible":false}'></div>
+                <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation","fixed":true}'></div>
+            </div>
+
+            <div class="ui-statistics margin-top-10">
+                <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择
+                <span class="font-c-blue" data-bind="text:mainList.selectedIndices().length"></span>项数据
+            </div>
+
+            <div class="pagination-right">
+                <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"mainList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!--详情表单-->
+<div class="ui-panel ui-bill-detail" style="display: none;">
+    <div>
+        <div class="page-title">
+        <span>物料申请</span>
+        </div>
+    </div>
+    <div>
+        <div>
+        <div class="oc-breadcrumb">
+        </div>
+        </div>
+    </div>
+    <div class="ui-panel-btn-bg">
+        <div class="ui-operate-btn">
+        <a class="ui-btn ui-btn-primary" data-bind="click:retListPanel">返回</a>
+        </div>
+    </div>
+    <!--head-->
+    <div class="margin-top-10">
+        <div class="ui-bill-body">
+            <div class="ui-collapse-group orderCenter">
+                <div id="default-example" data-collapse>
+                    <!--基本信息开始-->
+                    <h3 class="ui-collapse-title orderCenter clearfix open margin-top-10">
+                        <a href="javascript:;" class="click-btn inline-block">
+                        <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                        <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                        基本信息
+                        </a>
+                    </h3>
+                    <div class="ui-collapse-content  clearfix">
+                        <div class="ui-item">
+                            <div class="ui-name">所属组织：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" u-meta='{"type":"u-combobox","data":"mainList",
+                                    "field":"organization","datasource":"organizationDataSource","enable":"false"}'>
+                                    <input class="ui-no-border"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                                <div class="ui-name">
+                                        服务组织：</div>
+                                <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"mainList",
+                                "field":"serviceOrganization","datasource":"serviceOrgDatasource","enable":"false"}'>
+                                    <input class="ui-no-border"/>
+                                </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">价表编码</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('code')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">价表名称：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('name')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">产品：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('product')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">物料编码：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('goodsCode')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">物料名称：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('goodsName')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">保内单价：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('bnPrice')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">保内结算价：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('bnjsPrice')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">保外单价：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('bwPrice')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">保外结算价：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('bwjsPrice')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">指标来源：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('source')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">
+                                阶梯定价：</div>
+                            <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"mainList",
+                            "field":"jtPrice","datasource":"beableState","enable":"false"}'>
+                                <input class="ui-no-border" />
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">描述：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('description')"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--基本信息结束-->
+                </div>
+            </div>
+            <div class="ui-bill-footer">
+            </div>
+        </div>
+    </div>
+    <div class="u-tabs ui-tabs">  
+        <!-- 备件信息-start -->
+        <div class="u-tabs__panel is-active" id="tab-panel-2" >
+            <div u-meta='{"id":"grid_goods","data":"partsList","type":"grid","editable":false,"multiSelect":"false","showNumCol":true}'>
+                <div options='{"field":"qjxx","dataType":"String","title":"区间下限"}'></div>
+                <div options='{"field":"priceIndex","dataType":"float","title":"价格指数"}'></div>
+                <div options='{"field":"bnPrice","dataType":"float","title":"保内基价"}'></div>
+                <div options='{"field":"bnjsj","dataType":"String","title":"保内结算价"}'></div>
+                <div options='{"field":"bwjj","dataType":"float","title":"保外基价"}'></div>
+                <div options='{"field":"bwjsj","dataType":"String","title":"保外结算价"}'></div>
+            </div>
+        </div>
+        <!-- 备件信息-end -->   
+    </div>  
+</div>
+
+<!--详情表单-->
+<div class="ui-panel ui-bill-panel" style="display: none;">
+    <div>
+        <div class="page-title">
+        <span>物料申请</span>
+        </div>
+    </div>
+    <div>
+        <div>
+        <div class="oc-breadcrumb">
+        </div>
+        </div>
+    </div>
+    <div class="ui-panel-btn-bg">
+        <div class="ui-operate-btn">
+            <a class="ui-btn ui-btn-primary" data-bind="click: cancelBill.bind($data)">取消
+            </a>
+            <a class="ui-btn ui-btn-green" data-bind="click: saveBill.bind($data)">保存
+            </a>
+            </div>
+    </div>
+    <!--head-->
+    <div class="margin-top-10">
+        <div class="ui-bill-body">
+            <div class="ui-collapse-group orderCenter">
+                <div id="default-example" data-collapse>
+                    <!--基本信息开始-->
+                    <h3 class="ui-collapse-title orderCenter clearfix open margin-top-10">
+                        <a href="javascript:;" class="click-btn inline-block">
+                        <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                        <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                        基本信息
+                        </a>
+                    </h3>
+                    <div class="ui-collapse-content  clearfix">
+                        <div class="ui-item">
+                                <div class="ui-name">
+                                        所属组织：</div>
+                                <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"mainList",
+                                "field":"organization","datasource":"organizationDataSource","enable":"true"}'>
+                                    <input />
+                                    <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+                                </div>
+                        </div>
+                        <div class="ui-item">
+                                <div class="ui-name">
+                                        服务组织：</div>
+                                <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"mainList",
+                                "field":"serviceOrganization","datasource":"serviceOrgDatasource","enable":"true"}'>
+                                    <input />
+                                    <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+                                </div>
+                        </div>
+                        <div class="ui-item sp-add">
+                            <div class="ui-name">价表编码</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" u-meta='{"type":"u-text","data":"mainList","field":"code"}'>
+                                    <input class="u-input" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-item sp-edit">
+                            <div class="ui-name">价表编码</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('code')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">价表名称：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" u-meta='{"type":"u-text","data":"mainList","field":"name"}'>
+                                    <input class="u-input" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-item sp-edit">
+                            <div class="ui-name">产品：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('product')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item sp-add">
+                            <div class="ui-name">产品：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" u-meta='{"type":"u-text","data":"mainList","field":"product"}'>
+                                    <input class="u-input" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-item sp-edit">
+                            <div class="ui-name">物料编码：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('goodsCode')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item sp-add">
+                            <div class="ui-name">物料编码：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" u-meta='{"type":"u-text","data":"mainList","field":"goodsCode"}'>
+                                    <input class="u-input" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-item sp-edit">
+                            <div class="ui-name">物料名称：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('goodsName')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item sp-add">
+                            <div class="ui-name">物料名称：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" u-meta='{"type":"u-text","data":"mainList","field":"goodsName"}'>
+                                    <input class="u-input" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">保内单价：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" u-meta='{"type":"float","data":"mainList","field":"bnPrice"}'>
+                                    <input class="u-input" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">保内结算价：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" u-meta='{"type":"float","data":"mainList","field":"bnjsPrice"}'>
+                                    <input class="u-input" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">保外单价：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" u-meta='{"type":"float","data":"mainList","field":"bwPrice"}'>
+                                    <input class="u-input" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">保外结算价：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" u-meta='{"type":"float","data":"mainList","field":"bwjsPrice"}'>
+                                    <input class="u-input" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">指标来源：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" data-bind="text:mainList.ref('source')"></div>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">
+                                阶梯定价：</div>
+                            <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"mainList",
+                            "field":"jtPrice","datasource":"beableState","enable":"true"}'>
+                                <input />
+                                <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+                            </div>
+                        </div>
+                        <div class="ui-item">
+                            <div class="ui-name">描述：</div>
+                            <div class="ui-inputarea">
+                                <div class="ui-textonly" u-meta='{"type":"u-text","data":"mainList","field":"description"}'>
+                                    <input class="u-input" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--基本信息结束-->
+                </div>
+            </div>
+            <div class="ui-bill-footer">
+            </div>
+        </div>
+    </div>
+    <div class="u-tabs ui-tabs">  
+            <div class="ui-panel-body-head">
+                    <div class="ui-panel-body-head-left">
+                        <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-additems" data-bind="click: addRow">
+                            <i class="uifont icon-bar margin-right-5"></i>增行
+                        </a>
+                        <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del" data-bind="click: delRow">
+                            <i class="uifont icon-shanchu1 margin-right-5"></i>删行
+                        </a>
+                    </div>
+                </div>
+        <!-- 备件信息-start -->
+        <div class="u-tabs__panel is-active" id="tab-panel-1" >
+            <div u-meta='{"id":"grid_goods1","data":"partsList","type":"grid","editable":true,"multiSelect":true,"showNumCol":true}'>
+                <div options='{"field":"qjxx","dataType":"String","title":"区间下限"}'></div>
+                <div options='{"field":"priceIndex","dataType":"float","title":"价格指数"}'></div>
+                <div options='{"field":"bnPrice","dataType":"float","title":"保内基价"}'></div>
+                <div options='{"field":"bnjsj","dataType":"String","title":"保内结算价"}'></div>
+                <div options='{"field":"bwjj","dataType":"float","title":"保外基价"}'></div>
+                <div options='{"field":"bwjsj","dataType":"String","title":"保外结算价"}'></div>
+            </div>
+        </div>
+        <!-- 备件信息-end -->   
+    </div>  
+</div>
+
+
+
+  

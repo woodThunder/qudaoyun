@@ -1,0 +1,381 @@
+#editModal .w170 {
+    width: 170px
+}
+
+#editModal .w530 {
+    width: 530px
+}
+
+#editModal .w85 {
+    width: 85px
+}
+
+#editModal .w110 {
+    width: 110px
+}
+
+#editModal .vam {
+    vertical-align: middle
+}
+
+#editModal .pd-lf10 {
+    padding-left: 10px
+}
+
+#editModal button {
+    outline: 0
+}
+
+#editModal input[type=checkbox],
+#editModal input[type=radio] {
+    display: none
+}
+
+#editModal input[type=checkbox]+label {
+    display: inline-block;
+    height: 20px;
+    line-height: 20px;
+    padding: 0 8px 0 28px;
+    cursor: pointer;
+    margin-bottom: 0
+}
+
+#editModal .modal-dialog {
+    width: 65%;
+    margin: 150px auto
+}
+
+#editModal .u-form-control-success {
+    position: absolute;
+    display: none;
+    font-size: 18px;
+    color: #72ca97;
+    margin-top: -20px
+}
+
+#editModal a {
+    color: #333;
+    font-family: "Microsoft YaHei";
+    outline: 0;
+    text-decoration: none
+}
+
+#editModal .modal-header {
+    padding: 0 5px 0 20px
+}
+
+#editModal .modal-header h4 {
+    color: #333;
+    font-size: 14px;
+    height: 50px;
+    line-height: 50px;
+    font-weight: 700
+}
+
+#editModal .modal-header .close:active {
+    border: none
+}
+
+#editModal .modal-header .close {
+    color: #fff;
+    float: right;
+    font-size: 30px;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 6px;
+    text-align: center;
+    width: 30px;
+    opacity: 1;
+    font-weight: lighter;
+    text-shadow: none
+}
+
+#editModal .modal-header .close .icon-cancel02 {
+    font-size: 20px;
+    font-weight: lighter;
+    color: #ccc
+}
+
+#editModal .modal-header .close .icon-cancel02:hover {
+    color: #333
+}
+
+#editModal .modal-body {
+    padding: 30px 0 0
+}
+
+#editModal .modal-body .head-xx {
+    color: #333;
+    font-size: 14px;
+    font-weight: 700
+}
+
+#editModal .modal-body .cc {
+    padding: 0 35px
+}
+
+#editModal .modal-body .ccTabForm .msg-tb {
+    width: 100%
+}
+
+#editModal .modal-body .ccTabForm .msg-tb .u-row {
+    padding: 10px 0;
+    margin: 0;
+    margin-bottom: 30px;
+}
+
+#editModal .modal-body .ccTabForm .msg-tb .u-row>div {
+    padding: 0
+}
+
+#editModal .modal-body .ccTabForm .msg-tb>div {
+    padding: 0
+}
+
+#editModal .modal-body .ccTabForm .msg-tb .thbold {
+    color: #666;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 36px;
+    text-align: right;
+    float: left;
+    width: 25%
+}
+
+#editModal .modal-body .ccTabForm .msg-tb .no {
+    color: #999
+}
+
+#editModal .modal-body .ccTabForm .msg-tb .tdlight {
+    line-height: 36px;
+    float: left;
+    padding-left: 10px;
+    width: 65%
+}
+
+#editModal .modal-body .ccTabForm .msg-tb .ecmi-input {
+    width: 100%;
+    height: 36px;
+    padding-right: 0;
+    padding-left: 15px;
+    box-shadow: none
+}
+
+#editModal .modal-body .ccTabForm .msg-tb .u-input-group-before {
+    padding: 0 10px
+}
+
+#editModal .modal-body .ccTabForm .msg-tb .must-in {
+    width: 100%
+}
+
+#editModal .modal-body .ccTabForm .msg-tb .must-in .u-form-control-info {
+    top: 25px !important
+}
+
+#editModal .modal-body .ccTabForm .msg-tb .checkh {
+    display: inline-block;
+    height: 50px;
+    line-height: 50px
+}
+
+#editModal .modal-body .ccTabForm .msg-tb .label {
+    font-size: 14px;
+    color: #666;
+    font-weight: 400
+}
+
+#editModal .modal-body .ccTabForm .msg-tb form>div {
+    float: left;
+    margin: 5px
+}
+
+#editModal .modal-body .ccTabForm .msg-tb form label {
+    cursor: pointer;
+    font-size: 12px;
+    border-radius: 6px;
+    background-color: #c8c8c8;
+    display: inline-block;
+    height: 20px;
+    line-height: 20px;
+    margin: 0 5px;
+    text-align: center;
+    font-weight: 400
+}
+
+#editModal .modal-body .ccTabForm .msg-tb .txtInput {
+    background-color: transparent;
+    color: #333;
+    font-family: "Microsoft YaHei";
+    font-size: 13px;
+    height: 36px;
+    line-height: 36px;
+    outline: 0
+}
+
+#editModal .modal-body .ccTabForm .msg-tb .headscu {
+    height: 66px;
+    width: 66px
+}
+
+#editModal .modal-body .ccTabForm .msg-tb .t-img-box {
+    float: left;
+    position: relative;
+    height: 66px;
+    width: 66px
+}
+
+#editModal .modal-body .ccTabForm .msg-tb .t-img-box .tou-img {
+    height: 64px;
+    text-align: center;
+    width: 64px;
+    display: block
+}
+
+#editModal .modal-body .ccTabForm .msg-tb .t-img-box .sc {
+    display: block;
+    font-family: "微软雅黑";
+    font-size: 12px;
+    height: 20px;
+    left: 0;
+    line-height: 20px;
+    position: absolute;
+    text-align: center;
+    margin-bottom: 0;
+    width: 64px;
+    bottom: 0;
+    background-color: #ccc
+}
+
+#editModal .modal-body .ccTabForm .msg-tb .t-img-box .iconfont {
+    position: absolute;
+    top: 0;
+    color: #ccc;
+    left: 11px;
+    font-size: 40px;
+    font-weight: 400
+}
+
+#editModal .modal-body .ccTabForm .msg-tb .t-img-box .webuploader-pick {
+    color: #333
+}
+
+#editModal .modal-body .ccTabForm .msg-tb .upload-tip {
+    float: left;
+    height: 50px;
+    line-height: 50px;
+    overflow: hidden
+}
+
+#editModal .modal-footer {
+    padding: 30px 20px 20px 0;
+    height: 90px
+}
+
+#editModal .modal-footer .btnBox {
+    text-align: right
+}
+
+#editModal .modal-footer .btnBox .btnBox,
+#editModal .modal-footer .btnBox .u-form-group {
+    height: 40px;
+    display: inline-block;
+    margin-bottom: 0;
+    margin-right: 0
+}
+
+#editModal .modal-footer .btnBox .u-form-group:nth-of-type(2) {
+    padding-left: 10px
+}
+
+#editModal .modal-footer .btnBox .cancelbtn {
+    line-height: 30px;
+    height: 30px;
+    padding: 0 5px;
+    border: 1px solid #039BE5;
+    color: #039BE5;
+    font-size: 12px;
+    border-radius: 4px;
+    background: #fff;
+    cursor: pointer;
+    float: left;
+    outline: 0;
+    -webkit-border-radius: 0;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-decoration: none;
+    min-width: 72px;
+}
+
+#editModal .modal-footer .btnBox .savebtn {
+    cursor: pointer;
+    float: left;
+    outline: 0;
+    -webkit-border-radius: 0;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-decoration: none;
+    min-width: 72px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 5px;
+    font-size: 12px;
+    color: #fff;
+    background-color: #039BE5;
+    border-radius: 4px;
+}
+
+#editModal .modal-footer .btnBox .cancelbtn {
+    cursor: pointer;
+    float: left;
+    outline: 0;
+    -webkit-border-radius: 0;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-decoration: none;
+    min-width: 72px;
+    line-height: 30px;
+    height: 30px;
+    padding: 0 5px;
+    border: 1px solid #039BE5;
+    color: #039BE5;
+    font-size: 12px;
+    border-radius: 4px;
+    background: #fff;
+    border-radius: 4px;
+}
+
+#editModal .modal-footer {
+    text-align: right;
+    border-top: none
+}

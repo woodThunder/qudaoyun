@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <!--360 使用Google Chrome Frame-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <!--优先使用 IE 最新版本和 Chrome-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="bootstrap admin template">
+    <meta name="author" content="">
+    <title>云工作台</title>
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="globalviewsale.css">
+    <script src="../../../vendor/jquery/jquery-1.11.2.js"></script>
+    <script src="../../../vendor/echarts/echarts.js"></script>
+    <script src="../../../vendor/echarts/china.js"></script>
+    <script src="js/bootstrap-datetimepicker.min.js"></script>
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-title">
+            <span></span>
+        </div>
+        <div class="header-border"></div>
+        <div class="header-left"></div>
+        <div class="header-time"></div>
+        <div class="header-right"></div>
+        <div class="header-right-btn">
+            <a class="num" id="fullscreen" href="#"><img src="img/home.png"></a>
+            <a class="num" id="viewClose" href="#"><img src="img/viewclose.png"></a>
+            <a class="num" id="viewSettings" href="#"><img src="img/setting.png"></a>
+        </div>
+    </div>
+
+    <div class="sale-Content">
+        <div class="left">
+            <!--整体销售情况  start-->
+            <div class="sales-status">
+                <div class="child-title">
+                    <a class="sales-status-bg" href="#"></a>
+                </div>
+                <div class="total-money">
+                    <a class="num" id="totalSales" href="#">0</a>
+                    <a class="text" href="#">总销售金额</a>
+                </div>
+                <div class="total-amount">
+                    <a class="num" id="totalMainNum" href="#">0</a>
+                    <a class="text" href="#">销售数量</a>
+                </div>
+                <div class="total-num">
+                    <a class="num" id="saleMainNum" href="#">0</a>
+                    <a class="text" href="#">交易笔数</a>
+                </div>
+            </div>
+            <!--整体销售情况  end-->
+            <!--客户销售排行  start-->
+            <div class="sales-rank">
+                <div class="child-title">
+                    <a class="sales-rank-bg" href="#"></a>
+                </div>
+                <div class="rank-list">
+                    <ul>
+                        <!-- <li>
+                            <span class="list-num icon num1"> </span><a href="#">曲美家具北京分公司</a>
+                            <div class="rank-bar"><span></span></div>
+                            <span class="sales-amount">10000</span>
+                        </li>
+                        <li>
+                            <span class="list-num icon num2"> </span><a href="#">曲美家具天津分公司</a>
+                            <div class="rank-bar"><span style="width: 90%;"></span></div>
+                            <span class="sales-amount">9000</span>
+                        </li>
+                        <li>
+                            <span class="list-num icon num3"> </span><a href="#">曲美家具河北分公司</a>
+                            <div class="rank-bar"><span style="width: 80%;"></span></div>
+                            <span class="sales-amount">8000</span>
+                        </li>
+                        <li>
+                            <span class="list-num">4</span><a href="#">曲美家具河南分公司</a>
+                            <div class="rank-bar"><span style="width: 70%;"></span></div>
+                            <span class="sales-amount">7000</span>
+                        </li>
+                        <li>
+                            <span class="list-num">5</span><a href="#">曲美家具山西分公司</a>
+                            <div class="rank-bar"><span style="width: 60%;"></span></div>
+                            <span class="sales-amount">6000</span>
+                        </li>
+                        <li>
+                            <span class="list-num">6</span><a href="#">曲美家具辽宁分公司</a>
+                            <div class="rank-bar"><span style="width: 50%;"></span></div>
+                            <span class="sales-amount">5000</span>
+                        </li>
+                        <li>
+                            <span class="list-num">7</span><a href="#">曲美家具新疆分公司</a>
+                            <div class="rank-bar"><span style="width: 40%;"></span></div>
+                            <span class="sales-amount">4000</span>
+                        </li>
+                        <li>
+                            <span class="list-num">8</span><a href="#">曲美家具四川分公司</a>
+                            <div class="rank-bar"><span style="width: 30%;"></span></div>
+                            <span class="sales-amount">3000</span>
+                        </li>
+                        <li>
+                            <span class="list-num">9</span><a href="#">曲美家具内蒙分公司</a>
+                            <div class="rank-bar"><span style="width: 20%;"></span></div>
+                            <span class="sales-amount">2000</span>
+                        </li>
+                        <li>
+                            <span class="list-num">10</span><a href="#">曲美家具上海分公司</a>
+                            <div class="rank-bar"><span style="width: 10%;"></span></div>
+                            <span class="sales-amount">1000</span>
+                        </li> -->
+
+                    </ul>
+                </div>
+            </div>
+            <!--客户销售排行  end-->
+
+        </div>
+        <div class="middle">
+            <div id="main">
+            </div>
+            <div class="middle-bottom">
+                <div class="child-title">
+                    <a class="middle-bottom-bg" href="#"></a>
+                </div>
+                <div class="sales-money">
+                    <div id="sales-money"></div>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="right-top">
+                <!--实时订单  start-->
+                <div class="child-title">
+                    <a class="right-top-bg" href="#"></a>
+                </div>
+                <div class="realTime-order">
+                    <ul class="realTime-title">
+                        <li>销售员</li>
+                        <li>订单金额</li>
+                        <li>订单时间</li>
+                    </ul>
+                    <ul class="realTime-value">
+                        <div class="u-loader">
+                            <div class="ant-spin ant-spin-lg ant-spin-spinning">
+                                <span class="ant-spin-dot">
+                                    <i></i><i></i><i></i><i></i>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- <li><span>窦贺</span><span class="color-golden">2000.00</span> <span>12:20:55</span></li>
+                        <li><span>于水峰</span><span class="color-golden">1000.00</span> <span>12:10:22</span></li>
+                        <li><span>杜晓东</span><span class="color-golden">3000.00</span> <span>12:05:33</span></li>
+                        <li><span>李慧静</span><span class="color-golden">5000.00</span> <span>12:03:11</span></li>
+                        <li><span>郝琳杰</span><span class="color-golden">2000.00</span> <span>12:02:44</span></li>
+                        <li><span>高鹏</span><span class="color-golden">1000.00</span> <span>12:01:22</span></li>
+                        <li><span>冯婵</span><span class="color-golden">5000.00</span> <span>11:55:33</span></li>
+                        <li><span>彭军伟</span><span class="color-golden">3000.00</span> <span>11:54:44</span></li>
+                        <li><span>王睿</span><span class="color-golden">7000.00</span> <span>11:34:55</span></li> -->
+                    </ul>
+                </div>
+                <!--实时订单  end-->
+            </div>
+            <!--销售员排行  start-->
+            <div class="sales-person">
+                <div class="child-title">
+                    <a class="sales-person-bg" href="#"></a>
+                </div>
+                <div class="child-list">
+                    <ul>
+                        <!-- <li>
+                            <span class="list-num icon num1"> </span>
+                            <a href="#">窦贺</a>
+                            <div class="rank-bar"><span></span></div>
+                            <span class="sales-amount">100000</span>
+                        </li>
+                        <li>
+                            <span class="list-num icon num2"> </span>
+                            <a href="#">于水峰</a>
+                            <div class="rank-bar"><span style="width: 80%"></span></div>
+                            <span class="sales-amount">90000</span>
+                        </li>
+                        <li>
+                            <span class="list-num icon num3"> </span>
+                            <a href="#">杜晓东</a>
+                            <div class="rank-bar"><span style="width: 80%"></span></div>
+                            <span class="sales-amount">80000</span>
+                        </li>
+                        <li>
+                            <span class="list-num">4</span>
+                            <a href="#">李慧静</a>
+                            <div class="rank-bar"><span style="width: 60%"></span></div>
+                            <span class="sales-amount">70000</span>
+                        </li>
+                        <li>
+                            <span class="list-num">5</span>
+                            <a href="#">高鹏</a>
+                            <div class="rank-bar"><span style="width: 50%"></span></div>
+                            <span class="sales-amount">60000</span>
+                        </li>
+                        <li>
+                            <span class="list-num">6</span>
+                            <a href="#">王睿</a>
+                            <div class="rank-bar"><span style="width: 30%"></span></div>
+                            <span class="sales-amount">50000</span>
+                        </li>
+                        <li>
+                            <span class="list-num">7</span>
+                            <a href="#">郝琳杰</a>
+                            <div class="rank-bar"><span style="width: 10%"></span></div>
+                            <span class="sales-amount">40000</span>
+                        </li> -->
+                    </ul>
+                </div>
+            </div>
+            <!--销售员排行  end-->
+
+        </div>
+    </div>
+    <!-- settings -->
+    <div class="setting">
+        <div>
+            <p class="setting-title">销售组织</p>
+            <div class="setting-opt">
+                <label class="setting-name">销售组织</label>
+                <input type="text" readonly class="setting-select setting-select-ref" placeholder="请选择" id="saleOrg">
+                
+            </div>
+        </div>
+        <div>
+            <p class="setting-title">统计时间</p>
+            <div class="setting-opt">
+                <label class="setting-name">开始时间</label>
+                <input type="text" readonly class="setting-select" placeholder="请选择开始时间" id="startDate" >
+            </div>
+            <div class="setting-opt mt10">
+                <label class="setting-name">更新时长</label>
+                <input type="text" class="setting-input" id="timerQuery" value="5" onkeyup="this.value = this.value.replace(/[^0-9]/g,'');"><span class="setting-input-name">分钟</span>
+            </div>
+        </div>
+        <div class="settingBtn">
+            <a class="setting-btn cancel">取消</a><a class="setting-btn confirm">确定</a>
+        </div>
+    </div>
+
+</body>
+<script src="globalviewsale.js"></script>
+
+</html>

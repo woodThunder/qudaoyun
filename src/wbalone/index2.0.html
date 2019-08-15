@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html class="no-js css-menubar" lang="zh-cmn-Hans">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <!--360 使用Google Chrome Frame-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <!--优先使用 IE 最新版本和 Chrome-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="bootstrap admin template">
+    <meta name="author" content="">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="云工作台"/>
+    <link rel="shortcut icon" href="./images/favicon.ico" type="images/x-icon"/>
+    <link rel="Bookmark" href="./images/favicon.ico">
+    <link rel="icon" href="./images/favicon.png" type="images/png"/>
+
+    <title>云工作台</title>
+
+
+    <link rel="stylesheet" href="apworkbench/trd/uui/css/u.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="apworkbench/trd/uui/css/tree.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="apworkbench/trd/uui/css/grid.css" media="screen" title="no title" charset="utf-8">
+
+    <link rel="stylesheet" href="trd/swiper/swiper-3.3.1.min.css">
+
+    <!--   <link rel="stylesheet" href="//design.yyuap.com/static/uui/3.0.6/css/u.css">
+      <link rel="stylesheet" type="text/css" href="//design.yyuap.com/static/uui/3.0.6/css/grid.css">
+   -->
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="trd/bootstrap/css/bootstrap.min.css">
+    <link href="apworkbench/css/assets/workbench_common.css" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
+    <link href="apworkbench/trd/bootstrap-multiselect/dist/css/bootstrap-multiselect.css" rel="stylesheet">
+
+    <!-- <link rel="stylesheet" href="trd/vendor/skintools/skintools.css"> -->
+
+    <style type="text/css">
+            /*消息中心小图标样式*/
+        .wb-msgtip {
+
+        }
+
+        .wb-msgtip > a {
+            padding: 0 !important;
+            margin: 0;
+        }
+
+        .wb-msgtip > a .u-badge {
+            margin: 15px 14px 11px 14px;
+        }
+
+        .wb-msgtip > a .u-badge>i {
+            font-size: 24px !important;
+        }
+
+            /*修正个人头像样式*/
+        .wb-child #username {
+            padding-bottom: 11px;
+            padding-top: 12px;
+        }
+
+        #username span img {
+            max-width: 34px;
+            max-height: 33px;
+            position: relative;
+            top: 6px;
+        }
+    </style>
+    <!--[if lt IE 9]>
+    <script src="trd/vendor/html5shiv/html5shiv.min.js"></script>
+    <script src="trd/es5-shim/4.5.7/es5-shim.min.js"></script>
+    <script src="trd/es5-shim/4.5.7/es5-sham.min.js"></script>
+    <script src="trd/vendor/respond/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Scripts -->
+    <script src="trd/vendor/modernizr/modernizr.min.js"></script>
+    <script>
+        window.$ctx = '/wbalone';
+    </script>
+    <script>
+        window.baseUrl = '/wbalone';
+        window.contextRoot = '/wbalone';
+    </script>
+
+
+    <script src="apworkbench/trd/eventBus/sockjs-0.3.4.min.js"></script>
+
+    <script src="apworkbench/trd/eventBus/vertx-eventbus.js"></script>
+    <script src="apworkbench/trd/eventBus/vertx-client-sdk.js"></script>
+
+</head>
+<body class="dashboard site-navbar-small site-menubar-fd">
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<!-- menubar -->
+<nav class="navbar cloud navbar-fixed-top navbar-default navbar-portal">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button aria-expanded="false" data-target=".side-page" data-toggle="collapse"
+                    class="navbar-toggle side-page navbar-toggle-button" type="button">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="javascript:void (0);" class="navbar-brand">
+                <div class="logo">
+                    <img id="syslogo" src=""/>
+                </div>
+            </a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div id="bs-example-navbar-collapse-9" class="collapse navbar-collapse navbar-right">
+            <ul class="nav navbar-nav">
+                <li class="wb-msgtip">
+                    <a href="#messageCenter" id="messageCount">
+                        <div class="u-badge u-badge-info w-20 m" data-badge="0">
+                            <i class="iconfont icon-alarmsmd"></i>
+                        </div>
+                    </a>
+                </li>
+                <li class="dropdown wb-child">
+                    <a role="button" id="username" aria-expanded="false" href="javascript:void (0);"
+                       data-toggle="dropdown" class="navbar-avatar dropdown-toggle">
+						<span class="avatar avatar-online">
+                            <img onerror="javascript:this.src='./user.png';"/>
+                        </span>
+                        <span class="avatar-name"></span>
+                        <span class="iconfont icon-arrowdown"></span>
+                    </a>
+                    <ul role="menu" class="dropdown-menu">
+                        <li role="presentation" class="divider"></li>
+                        <li role="presentation">
+                            <a role="menuitem" href="user/beflogout">
+                                <i aria-hidden="true" class="iconfont  icon-logout"></i>
+                                注销
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+<!-- menubar end-->
+<!-- sidebar -->
+<div class="site-menubar sidebar-left side-page collapse in">
+    <div class="site-menubar-inner">
+        <ul class="menubar">
+        </ul>
+    </div>
+</div>
+<!-- sidebar  end-->
+<!-- Page -->
+<div class="page side-page collapse in">
+    <div class="container-fluid">
+        <div data-plugin="matchHeight" data-by-row="true">
+            <div id="content"></div>
+        </div>
+    </div>
+    <div id="toolbar" style="display: none"></div>
+    <div class="modal fade" id="modalBlue" tabindex="-1" role="dialog" aria-labelledby="modalBlue">
+        <div class="modal-dialog modal-center">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button aria-label="Close" data-dismiss="modal" class="close" type="button">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">编辑小部件</h4>
+                </div>
+                <div class="modal-body widget-edit-body">
+                    <div class="site-items list-unstyled">
+                        <div class="widget-create-edit">
+                            <div class="panel-body">
+                                <form class="widget-form">
+                                    <div id="editModal" class="margin-bottom-15"></div>
+                                    <div id="errorMessage"></div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-primary" data-type="save" type="button" id="modelSave">保存
+                                        </button>
+                                        <button data-dismiss="modal" class="btn btn-default" type="button">取消</button>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modalUser" tabindex="-1" role="dialog" aria-labelledby="modalUser">
+        <div class="modal-dialog modal-center">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button aria-label="Close" data-dismiss="modal" class="close" type="button">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">凭证管理</h4>
+                </div>
+                <div class="modal-body widget-edit-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- End Page -->
+<!--配置注销地址-->
+<input type="hidden" value="account/logout" id="logooutUrl"/>
+
+
+<script src="trd/jquery/jquery-1.11.2.min.js"></script>
+
+<!-- <script src="//design.yyuap.com/static/knockout/knockout-3.2.0.debug.js"></script> -->
+<script src="trd/knockout/knockout-3.2.0.debug.js"></script>
+<!-- portal 引入资源 -->
+<script src="trd/jquery-mousewheel/jquery.mousewheel.min.js"></script>
+<script src="trd/common.js"></script>
+
+<!-- uui js cdn资源链接 -->
+<!-- 
+<script src="//design.yyuap.com/static/uui/3.0.6/js/u.js"></script>
+<script src="//design.yyuap.com/static/uui/3.0.6/js/u-polyfill.js"></script>
+<script src="//design.yyuap.com/static/uui/3.0.6/js/u-grid.js"></script>
+<script src="//design.yyuap.com/static/uui/3.0.6/js/u-tree.js"></script> -->
+
+<!-- 静态资源链接 -->
+<script src="apworkbench/trd/uui/js/u.js"></script>
+<script src="apworkbench/trd/uui/js/u-polyfill.js"></script>
+<script src="apworkbench/trd/uui/js/u-grid.js"></script>
+<script src="apworkbench/trd/uui/js/u-tree.js"></script>
+
+<!--swiper组件-->
+<script src="trd/swiper/swiper-3.3.1.min.js"></script>
+<script src="trd/swiper/swiper.animate1.0.2.min.js"></script>
+
+
+<script src="index.js"></script>
+
+
+<script src="apworkbench/js/requireConfig.js"></script>
+<script src="apworkbench/js/index.js"></script>
+<!-- <script src="trd/vendor/skintools/skintools.js"></script> -->
+<script src="apworkbench/trd/bootstrap-multiselect/dist/js/bootstrap-multiselect.js"></script>
+
+
+</body>
+
+</html>

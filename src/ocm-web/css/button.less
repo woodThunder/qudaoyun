@@ -1,0 +1,369 @@
+@import "./core.less";
+/*button*/
+
+.ui-btn {
+    display: inline-block;
+    position: relative;
+    height: 28px;
+    padding: 4px 16px;
+    margin-bottom: 0;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+a.ui-btn {
+    text-decoration: none;
+}
+
+.ui-btn.ui-mini-btn {
+    height: 23px;
+    line-height: 15px;
+}
+
+.ui-btn>i {
+    font-size: 14px;
+    vertical-align: -1px;
+}
+
+.ui-btn>i.margin-right-5 {
+    margin-right: 8px !important;
+}
+
+.ui-btn.u-msg-ok,
+.ui-btn.u-msg-cancel {
+    float: none;
+}
+
+.ui-btn.ui-btn-disabled {
+    background: #FAFAFA;
+    border: 1px solid #DDDDDD;
+    color: #ccc;
+    cursor: auto;
+}
+
+.ui-btn.ui-btn-disabled:hover {
+    background: #FAFAFA;
+    border: 1px solid #DDDDDD;
+    color: #ccc;
+}
+
+.ui-btn-primary,
+.ui-btn-orange {
+    background-color: #ffffff;
+    color: #666;
+    border-color: #DDDDDD;
+}
+
+a.ui-btn-primary:hover,
+a.ui-btn-orange:hover {
+    color: @color-base;
+    border-color: @color-base;
+}
+
+.ui-btn-green {
+    background: @color-base;
+    color: #ffffff;
+}
+
+a.ui-btn-green:hover {
+    background: @color-base-border;
+    color: #ffffff;
+}
+
+.ui-btn-gray {
+    background: #DDDDDD;
+    color: #333;
+    border: 1px solid #CCCCCC;
+}
+
+a.ui-btn-gray:hover {
+    background: #CCCCCC;
+    color: #333;
+    border: 1px solid #DDDDDD;
+}
+
+.ui-operate-btn .ui-btn {
+    margin-right: 5px;
+}
+
+.ui-operate-btn .ui-mini-btn {
+    margin-top: 1px;
+}
+
+//按钮组
+.ui-button-group {
+    display: inline-block;
+    background: @color-font-f;
+    i {
+        font-size: 14px;
+        vertical-align: -1px;
+    }
+    i.margin-right-5 {
+        margin-right: 8px !important;
+    } //不可使用
+    &.ui-button-group-disabled {
+        .ui-button-item {
+            background: #FAFAFA;
+            color: #ccc;
+            &:hover {
+                border: 1px solid @color-font-d;
+                background: #FAFAFA;
+                color: #ccc;
+                &:before {
+                    content: '';
+                    position: absolute;
+                    right: 0;
+                    top: 0px;
+                    width: 0px;
+                    height: 0px;
+                }
+            }
+        }
+        .ui-button-item:first-of-type {
+            border-radius: 4px 0 0 4px;
+            border-right: none;
+            &:hover {
+                &:before {
+                    content: '';
+                    position: absolute;
+                    right: 0;
+                    top: 0px;
+                    width: 0px;
+                    height: 0px;
+                }
+            }
+        }
+        .ui-button-item:last-of-type {
+            border-radius: 0px 4px 4px 0px;
+            &:hover {
+                border-left: 1px solid @color-font-d;
+                &:before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 0px;
+                    width: 0px;
+                    height: 0px;
+                }
+            }
+        }
+    } //2个按钮以上
+    &.ui-button-more {
+        .ui-button-item {
+            border-right: none;
+        }
+        .ui-button-item:last-of-type {
+            border-left: 1px solid @color-font-d;
+            border-right: 1px solid @color-font-d;
+            &:hover {
+                border-left: 1px solid transparent !important;
+                color: @color-base;
+                border-color: @color-base;
+            }
+        }
+    }
+    .ui-button-item {
+        float: left;
+        height: 28px;
+        padding: 4px 16px;
+        border: 1px solid @color-font-d;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 20px;
+        text-align: center;
+        color: @color-font-6;
+        text-decoration: none;
+        cursor: pointer;
+        position: relative;
+        outline: none;
+        .icon {
+            color: @color-font-6;
+            padding-right: 10px;
+        }
+    }
+    .ui-button-item:first-of-type {
+        border-radius: 4px 0 0 4px;
+        border-right: none;
+        &:hover {
+            &:before {
+                content: '';
+                position: absolute;
+                right: 0;
+                top: -1px;
+                width: 1px;
+                height: 28px;
+                border-right: 1px solid @color-base;
+            }
+        }
+    }
+    .ui-button-item:last-of-type {
+        border-radius: 0px 4px 4px 0px;
+        &:hover {
+            border-left: 1px solid #fff;
+            &:before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: -1px;
+                width: 1px;
+                height: 28px;
+                border-right: 1px solid @color-base;
+            }
+        }
+    }
+    .ui-button-item:hover {
+        color: @color-base;
+        border-color: @color-base;
+        .icon {
+            color: @color-base;
+        }
+        &:before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: -1px;
+            width: 1px;
+            height: 28px;
+            border-right: 1px solid @color-base;
+        }
+    }
+}
+
+/*火狐下拉兼容*/
+
+.u-menu-container {
+    .u-menu {
+        .u-menu-item {
+            font-size: 12px;
+            a {
+                text-decoration: none;
+            }
+            a:hover {
+                color: @color-base
+            }
+        }
+        .u-menu-item:hover {
+            background-color: @color-base-light;
+        }
+    }
+}
+
+//表格行编辑按钮组
+.ui-handle-icon .ui-handle {
+    position: relative;
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+    text-align: center; // box-shadow: 0 0 4px #e2e3e4;
+    cursor: pointer;
+}
+
+.ui-handle-icon .ui-handle a {
+    font-weight: normal;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.ui-handle-icon .ui-handle:hover a {
+    color: @color-a-hover;
+}
+
+// .ui-handle-icon .ui-handle b{
+//   position:absolute;
+//   top:-22px;
+//   right:12px;
+//   width:36px;
+//   height:26px;
+//   line-height:26px;
+//   font-size:12px;
+//   font-weight:normal;
+//   color:#333;
+//   text-align:center;
+//   background: #fff;
+//   box-shadow: 0 0 4px #f9f9f9;
+//   border-radius: 5px;
+//   border: 1px solid #f9f9f9;
+//   display: none;
+// }
+// .ui-handle-icon .ui-handle:hover b{
+//   display: block;
+// }
+.ui-handle-icon .ui-handle-word {
+    position: relative;
+    display: inline-block;
+    height: 22px;
+    line-height: 22px;
+    text-align: center; // box-shadow: 0 0 4px #e2e3e4;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.ui-handle-icon .ui-handle-word a {
+    text-decoration: none;
+    color: @color-a-hover;
+}
+
+.ui-handle-icon .ui-handle-word a.disabled {
+    color: #CECECE;
+}
+
+.ui-handle-icon .ui-handle-word:hover a.disabled {
+    color: #CECECE;
+}
+
+.btn-img-switch {
+    position: absolute;
+    top: 50%;
+    margin-top: -13px;
+    width: 70px;
+    height: 26px;
+    line-height: 26px;
+    text-align: center;
+    font-size: 12px;
+    color: @color-font-f;
+    background: rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    &.prev {
+        left: 0;
+    }
+    &.next {
+        right: 0;
+    }
+    &:hover {
+        color: @color-font-f;
+    }
+}
+
+.btn-img-tip {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -13px;
+    margin-left: -60px;
+    width: 120px;
+    height: 26px;
+    font-size: 12px;
+    line-height: 26px;
+    text-align: center;
+    color: @color-font-f;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}

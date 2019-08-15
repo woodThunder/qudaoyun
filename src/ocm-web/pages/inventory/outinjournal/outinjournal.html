@@ -1,0 +1,42 @@
+<div class="ui-panel">
+    <div>
+        <div class="page-title">
+            <span>库存出入库流水账</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="title-seperator"></div>
+    <ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+    </ui-searchbox>
+    <div class="ui-panel-body">
+        <div class="ui-panel-body-head">
+            <div class="ui-panel-body-head-left">
+                <ui-buttons params='datasource:$root.button1Source' style="float: left">
+                </ui-buttons>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="ui-table-container">
+            <ui-grid params='options:$root.gridOption,vm:$root'>
+            </ui-grid>
+            <div class="ui-statistics margin-top-10">
+                已选择
+                <span class="font-c-blue" data-bind="text:simpleList.selectedIndices().length"></span>项数据
+            </div>
+            <div class="pagination-right">
+                <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"simpleList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+            </div>
+        </div>
+    </div>
+</div>
+<ui-dialogcard params='datasource:$root.dialogcardSource,ref:$root.dialogcardcomp'>
+</ui-dialogcard>
+
+<!--导出-->
+<div id="exportFiel"></div>

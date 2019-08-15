@@ -1,0 +1,99 @@
+<div class="ui-panel ui-list-panel">
+  <div>
+    <div class="page-title">
+      <span data-bind="text:title"></span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+  <ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+  </ui-searchbox>
+  <div class="ui-panel-body">
+    <div class="ui-panel-body-head">
+      <div class="ui-panel-body-head-left">
+        <ui-buttons params='datasource:$root.button1Source'>
+        </ui-buttons>
+      </div>
+    </div>
+    <div class="ui-table-container">
+      <ui-grid params='options:$root.grid1Option,vm:$root'>
+      </ui-grid>
+      <div class="ui-statistics margin-top-10">
+        已选择
+        <span class="font-c-blue" data-bind="text:simpleList.selectedIndices().length"></span>项数据
+      </div>
+      <div class="pagination-right">
+        <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"simpleList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+      </div>
+    </div>
+  </div>
+</div>
+<ui-dialogcard params='datasource:$root.dialog1cardSource,ref:$root.dialogcardcomp,dt:$root.simpleList'>
+
+</ui-dialogcard>
+
+<div id="dialog_splitRule" style="display:none;">
+  <div class="u-msg-title">
+    <h4>分单规则</h4>
+  </div>
+  <div class="u-msg-content  margin-top-10">
+    <div style="display: flex">
+      <div style="width: 40%;font-size: 20px;font-weight: bold">
+        <span>(来源)</span>
+        <span id="split-rule-src"></span>
+      </div>
+      <div style="width: 10%;font-size: 20px;font-weight: bold"><i class="uifont icon-long-arrow-rt"></i></div>
+      <div style="width: 40%;font-size: 20px;font-weight: bold">
+        <span>(目的)</span>
+        <span id="split-rule-dest"></span>
+      </div>
+    </div>
+    <ui-grid params='options:$root.grid2Option,vm:$root'>
+    </ui-grid>
+  </div>
+  <div class="u-msg-footer">
+    <a class="ui-btn ui-btn-primary J-cancel margin-right-5">取消
+    </a>
+    <a class="ui-btn ui-btn-green  J-ok" data-bind="click:confirmSplitRule">确认
+    </a>
+  </div>
+</div>
+
+<div id="dialog_fieldMapping" style="display:none;">
+  <div class="u-msg-title">
+    <h4>单据字段映射</h4>
+  </div>
+  <div class="u-msg-content margin-top-10">
+    <div style="display: flex">
+      <div style="width: 40%;font-size: 20px;font-weight: bold">
+        <span>(来源)</span>
+        <span id="map-rule-src"></span>
+      </div>
+      <div style="width: 10%;font-size: 20px;font-weight: bold">=></div>
+      <div style="width: 40%;font-size: 20px;font-weight: bold">
+        <span>(目的)</span>
+        <span id="map-rule-dest"></span>
+      </div>
+    </div>
+    <ui-buttons params='datasource:$root.button2Source'>
+      </ui-buttons>
+      <div class="margin-top-10"> 
+    <ui-grid params='options:$root.grid3Option,vm:$root'>
+    </ui-grid>
+    </div>
+  </div>
+  <div class="u-msg-footer">
+    <a class="ui-btn ui-btn-primary J-cancel margin-right-5">取消
+    </a>
+    <a class="ui-btn ui-btn-green  J-ok" data-bind="click:confirmFieldMapping">确认
+    </a>
+  </div>
+</div>
+
+<div id="exportFiel"></div>
+<div id="importFiel"></div>

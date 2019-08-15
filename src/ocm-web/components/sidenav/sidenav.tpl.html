@@ -1,0 +1,50 @@
+<div class="sidebar-collapse">
+    <ul class="nav" >
+        <li class="nav-header">
+            <div class="logo-element-primary">
+              <span>
+                <img alt="image" src="../ocm-web/images/qylogo.png" />
+              </span>
+            </div>
+            <div class="logo-element">
+                QU+
+            </div>
+        </li>
+        <li class="metismenu" id="side-menu" >
+	        <ul class="nav nav-first-level" data-bind="foreach: ObservableArray">
+		        <li data-bind="css:menustatus">
+		            <a data-bind="attr:{href:location,'data-target':target}">
+		            	<i data-bind="css:icon"></i>
+		            	<span class="nav-label" data-bind="text:name"></span>
+		            	<!-- ko if:children-->
+		            	<span class="uifont arrow"></span>
+		            	<!-- /ko -->
+		            </a>
+		            <!-- ko if:children-->
+		            <ul class="nav nav-second-level" data-bind="foreach:{data:children,as : 'child'}">
+		                <li>
+                      <a data-bind="attr:{href:child.location,'data-target':child.target}">
+                        <i data-bind="css:child.icon"></i>
+                        <span class="nav-label" data-bind="text:child.name"></span>
+                        <!-- ko if:child.children-->
+                        <span class="uifont arrow"></span>
+                        <!-- /ko -->
+                      </a>
+                      <!-- ko if:child.children-->
+                      <ul class="nav nav-third-level" data-bind="foreach:{data:child.children,as : 'grandchild'}">
+                        <li>
+                          <a data-bind="attr:{href:grandchild.location,'data-target':grandchild.target}">
+                            <i data-bind="css:grandchild.icon"></i>
+                            <span class="nav-label" data-bind="text:grandchild.name"></span>
+                          </a>
+                        </li>
+                      </ul>
+                      <!-- /ko -->
+                    </li>
+		            </ul>
+		            <!-- /ko -->
+		        </li>
+	        </ul>
+        </li>
+    </ul>
+</div>

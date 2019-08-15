@@ -1,0 +1,159 @@
+<div class="u-row grid-content" id="dataPermission">
+    <div class="u-col-6">
+        <div class="ui-panel-body">
+            <div class="height50 dataPermission-role">
+                角色：
+            </div>
+            <div class="ui-table-container">
+                <ui-grid params='options:$root.grid1Option,vm:$root'>
+                </ui-grid>
+                <div class="ui-statistics margin-top-10">
+                    已选择
+                    <span class="font-c-blue" data-bind="text:roleList.selectedIndices().length"></span>项数据
+                </div>
+                <div class="pagination-right">
+                    <div id='pagination1' class='pagination u-pagination pagination-sm'
+                         u-meta='{"type":"pagination","data":"roleList","pageChange":"pageChange1","sizeChange":"sizeChange1"}'></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="u-col-6">
+        <div class="ui-panel-body">
+            <div class="height50">
+                <div class="u-col-6">
+                    <ui-card
+                            params='datasource:$root.card1Source,vm:$root,dt:$root.assignedComboList,billstatus:$root.billPanelStatus'>
+                    </ui-card>
+                </div>
+                <div class="u-col-6">
+                    <div class="margin-top8">
+                    <ui-buttons params='datasource:$root.button1Source'>
+                    </ui-buttons>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-table-container">
+                <ui-grid params='options:$root.grid2Option,vm:$root'>
+                </ui-grid>
+                <div class="ui-statistics margin-top-10">
+                    已选择
+                    <span class="font-c-blue" data-bind="text:assignedList.selectedIndices().length"></span>项数据
+                </div>
+                <div class="pagination-right">
+                    <div id='pagination' class='pagination u-pagination pagination-sm'
+                         u-meta='{"type":"pagination","data":"assignedList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="dialog_appWin" style="display:none;">
+    <div class="u-msg-title">
+        <div class="appwin-tile">
+            <h4 class="appwin-tile-left">选择业务对象</h4>
+            <div class="appwin-tile-right"> 名称：<input class="appwin-title-input"/> &nbsp;&nbsp;
+                <button class="ui-btn ui-btn-green J-search">搜索</button></div>
+        </div>
+    </div>
+    <div class="u-tabs ui-tabs u-msg-content">
+        <div class="special-product">
+            <div class="ui-collapse-content">
+                <ui-grid params='options:$root.grid3Option,vm:$root'>
+                </ui-grid>
+            </div>
+        </div>
+    </div>
+    <div class="pagination-right">
+        <div id='pagination3' class='pagination u-pagination pagination-sm'
+             u-meta='{"type":"pagination","data":"appList","pageChange":"pageChange3","sizeChange":"sizeChange3"}'></div>
+    </div>
+    <div class="u-msg-footer">
+        <a class="ui-btn ui-btn-primary J-cancel margin-right-5">取消</a>
+        <a id="checkOk1" class="ui-btn ui-btn-green J-ok">保存</a>
+    </div>
+</div>
+
+<div id="dialog_assignWin" style="display:none;">
+    <div class="u-msg-title">
+        <h4 id="assignWinTitle2">选择资源对象/规则</h4>
+    </div>
+    <div class="u-tabs ui-tabs u-msg-content">
+        <div class="special-product">
+            <div class="ui-collapse-content">
+                <ui-grid params='options:$root.grid4Option,vm:$root'>
+                </ui-grid>
+            </div>
+        </div>
+    </div>
+    <div class="u-msg-footer">
+        <a class="ui-btn ui-btn-primary J-cancel margin-right-5">取消</a>
+        <a id="checkOk2" class="ui-btn ui-btn-green J-ok">保存</a>
+    </div>
+</div>
+
+<div id="dialog_itemWin" style="display:none;">
+    <div class="u-msg-title">
+        <div class="appwin-tile">
+            <h4 id="assignWinTitle" class="appwin-tile-left">分配资源实例</h4>
+            <div class="appwin-tile-right"> 名称：<input class="itemwin-title-input"/> &nbsp;&nbsp;
+                <button class="ui-btn ui-btn-green J-search">搜索</button></div>
+        </div>
+    </div>
+    <div class="u-tabs ui-tabs u-msg-content">
+            <div class="ui-collapse-content">
+                <div class="ui-table-container">
+                    <ui-grid params='options:$root.grid5Option,vm:$root'>
+                    </ui-grid>
+                    <div class="ui-statistics margin-top-10">
+                        已选择
+                        <span class="font-c-blue" data-bind="text:itemWinList.selectedIndices().length"></span>项数据
+                    </div>
+                    <div class="pagination-right">
+                        <div id='pagination5' class='pagination u-pagination pagination-sm'
+                             u-meta='{"type":"pagination","data":"itemWinList","pageChange":"pageChange5","sizeChange":"sizeChange5"}'></div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <div class="u-msg-footer">
+        <a class="ui-btn ui-btn-primary J-cancel margin-right-5">取消</a>
+        <a id="checkOk3" class="ui-btn ui-btn-green J-ok">保存</a>
+    </div>
+</div>
+
+<div id="dialog_assignedItemWin" style="display:none;">
+    <div class="u-msg-title">
+        <div class="appwin-tile">
+            <h4 id="assignItemWinTitle" class="appwin-tile-left">已分配资源实例</h4>
+            <div class="appwin-tile-right"> 名称：<input class="assignItemWin-title-input"/> &nbsp;&nbsp;
+                <button class="ui-btn ui-btn-green J-search">搜索</button> &nbsp;&nbsp; &nbsp;&nbsp;
+                <button class="ui-btn ui-btn-green J-batchCancel">批量取消</button>
+            </div>
+        </div>
+    </div>
+    <div class="u-tabs ui-tabs u-msg-content">
+        <div class="special-product">
+            <div class="ui-collapse-content">
+                <ui-grid params='options:$root.grid6Option,vm:$root'>
+                </ui-grid>
+            </div>
+        </div>
+    </div>
+
+    <div class="pagination-right">
+        <div id='pagination6' class='pagination u-pagination pagination-sm'
+             u-meta='{"type":"pagination","data":"assignedItemWinList","pageChange":"pageChange6","sizeChange":"sizeChange6"}'></div>
+    </div>
+
+    <div class="u-msg-footer">
+        <a class="ui-btn ui-btn-green J-cancel margin-right-15">确定</a>
+    </div>
+</div>
+
+
+<div id="exportFiel"></div>
+<div id="importFiel"></div>

@@ -1,0 +1,269 @@
+<div class="ui-list-panel ui-panel">
+  <div>
+    <div class="page-title">
+      <span>特征属性</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+
+  <ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+  </ui-searchbox>
+
+  <div class="ui-panel-body">
+    <div class="ui-panel-body-head">
+      <div class="ui-panel-body-head-left">
+        <ui-buttons params='datasource:$root.button1Source'>
+        </ui-buttons>
+      </div>
+      <!-- <div class="ui-button-group clearfix vertical-align-middle">
+            <a class="ui-button-item" data-bind="click: importHandle"><i class="uifont  icon-import margin-right-5"></i>导入</a>
+            <a class="ui-button-item" data-bind="click: exportHandle"><i class="uifont icon-export margin-right-5"></i>导出</a>
+        </div> -->
+      <!-- <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+          <a class="ui-button-item"
+            data-bind="click:importHandle">
+               <i class="uifont  icon-import margin-right-5"></i>导入
+          </a>
+          <a class="ui-button-item"
+            data-bind="click:exportHandle">
+             <i class="uifont icon-export margin-right-5"></i>导出
+          </a>
+      </div> -->
+    </div>
+  </div>
+  <div class="ui-table-container">
+    <ui-grid params='options:$root.grid1Option,vm:$root'>
+    </ui-grid>
+    <div class="ui-statistics margin-top-10">
+      已选择
+      <span class="font-c-blue" data-bind="text:ProAttrDocList.selectedIndices().length"></span>项数据
+    </div>
+    <div class="pagination-right">
+      <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"ProAttrDocList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+    </div>
+  </div>
+</div>
+</div>
+<div id="dialog_layer" class="ui-searchbox" style="display:none;padding:20px">
+
+</div>
+
+<div class="ui-bill-panel ui-panel" style="display:none;">
+  <div>
+    <div class="page-title">
+      <span>特征属性</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <ui-buttons params='datasource:$root.button2Source'>
+      </ui-buttons>
+    </div>
+  </div>
+  <div class="margin-top-10">
+    <!--成品信息开始-->
+    <div class="ui-bill-body">
+      <div class="ui-collapse-group border">
+        <div id="default-example" data-collapse>
+          <!--成品：成品信息开始-->
+          <h3 class="ui-collapse-title  clearfix open margin-top-10">
+            <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+            <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+            特征属性信息
+          </h3>
+          <div class="ui-collapse-content  clearfix" id="productBase">
+            <ui-card params='datasource:$root.card1Source,vm:$root,dt:$root.ProAttrDocList,billstatus:$root.billPanelStatus'>
+            </ui-card>
+          </div>
+          <!--特征属性：特征属性信息结束-->
+          <!--特征属性：值集属性开始-->
+          <h3 class="ui-collapse-title  clearfix product-choose-result margin-top-10 open">
+            <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+            <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+            特征属性值
+          </h3>
+          <div class="ui-collapse-content product-choose-content clearfix " id="saleInfo">
+            <div class="ui-bill-body-btns">
+              <ui-buttons params='datasource:$root.button3Source'>
+              </ui-buttons>
+            </div>
+            <div class="ui-table-container">
+              <ui-grid params='options:$root.grid2Option,vm:$root'>
+              </ui-grid>
+              <div class="ui-statistics margin-top-10">
+                已选择
+                <span class="font-c-blue" data-bind="text:ProductAttrValueList.selectedIndices().length"></span>项数据
+              </div>
+              <div class="pagination-right">
+                <div id='pagination1' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"ProductAttrValueList","pageChange":"pageChange1","sizeChange":"sizeChange1"}'></div>
+              </div>
+            </div>
+          </div>
+          <!--成品：销售属性结束-->
+          <!--自定义档案：-->
+          <h3 class="ui-collapse-title  clearfix custdoc-choose-result margin-top-10 open">
+            <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+            <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+            自定义档案
+          </h3>
+          <div class="ui-collapse-content custdoc-choose-content clearfix " id="saleInfo2">
+            <div class="ui-table-container">
+              <ui-grid params='options:$root.grid3Option,vm:$root'>
+              </ui-grid>
+              <div class="ui-statistics margin-top-10">
+                已选择
+                <span class="font-c-blue" data-bind="text:CustDocList.selectedIndices().length"></span>项数据
+              </div>
+              <div class="pagination-right">
+                <div id='pagination2' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"CustDocList","pageChange":"pageChange2","sizeChange":"sizeChange2"}'></div>
+              </div>
+            </div>
+          </div>
+
+          <!--系统档案：-->
+          <h3 class="ui-collapse-title  clearfix sysdoc-choose-result margin-top-10 open">
+            <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+            <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+            系统档案
+          </h3>
+          <div class="ui-collapse-content sysdoc-choose-content clearfix " id="saleInfo2">
+            <div class="ui-table-container">
+              <ui-grid params='options:$root.grid6Option,vm:$root'>
+              </ui-grid>
+              <div class="ui-statistics margin-top-10">
+                已选择
+                <span class="font-c-blue" data-bind="text:SysDocList.selectedIndices().length"></span>项数据
+              </div>
+              <div class="pagination-right">
+                <div id='pagination3' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"SysDocList","pageChange":"pageChange3","sizeChange":"sizeChange3"}'></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!--成品信息结束-->
+    </div>
+  </div>
+</div>
+
+<!-- 详情 -->
+<div class="ui-bill-detail ui-panel" style="display: none;">
+
+  <div>
+    <div class="page-title">
+      <span>特征属性</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <ui-buttons params='datasource:$root.button4Source'>
+      </ui-buttons>
+    </div>
+  </div>
+  <div class="margin-top-10">
+    <!--成品信息开始-->
+    <div class="ui-bill-body">
+      <div class="ui-collapse-group border">
+        <div id="default-example-detail" data-collapse>
+          <!--特征属性信息开始-->
+          <h3 class="ui-collapse-title  clearfix open margin-top-10">
+            <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+            <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+            特征属性信息
+          </h3>
+          <div class="ui-collapse-content  clearfix" id="productBase-detail">
+            <ui-detail params='datasource:$root.detail1Source,dt:$root.ProAttrDocList,vm:$root'>
+            </ui-detail>
+          </div>
+          <!--特征属性信息结束-->
+          <!--特征属性值开始-->
+          <h3 class="ui-collapse-title  clearfix product-choose-result margin-top-10 open">
+            <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+            <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+            特征属性值
+          </h3>
+          <div class="ui-collapse-content product-choose-content clearfix " id="saleInfo-detail">
+            <div class="ui-table-container">
+              <ui-grid params='options:$root.grid4Option,vm:$root'>
+              </ui-grid>
+              <div class="ui-statistics margin-top-10">
+                已选择
+                <span class="font-c-blue" data-bind="text:ProductAttrValueList.selectedIndices().length"></span>项数据
+              </div>
+              <div class="pagination-right">
+                <div id='pagination1' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"ProductAttrValueList","pageChange":"pageChange1","sizeChange":"sizeChange1"}'></div>
+              </div>
+            </div>
+          </div>
+          <!--特征属性值结束-->
+          <!--自定义档案：-->
+          <h3 class="ui-collapse-title  clearfix custdoc-choose-result margin-top-10 open">
+            <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+            <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+            自定义档案
+          </h3>
+          <div class="ui-collapse-content custdoc-choose-content clearfix " id="saleInfo2-detail">
+            <div class="ui-table-container">
+              <ui-grid params='options:$root.grid5Option,vm:$root'>
+              </ui-grid>
+              <div class="ui-statistics margin-top-10">
+                已选择
+                <span class="font-c-blue" data-bind="text:CustDocList.selectedIndices().length"></span>项数据
+              </div>
+              <div class="pagination-right">
+                <div id='pagination2' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"CustDocList","pageChange":"pageChange2","sizeChange":"sizeChange2"}'></div>
+              </div>
+            </div>
+          </div>
+          <!--自定义档案结束-->
+
+          <!--系统档案：-->
+          <h3 class="ui-collapse-title  clearfix sysdoc-choose-result margin-top-10 open">
+            <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+            <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+            系统档案
+          </h3>
+          <div class="ui-collapse-content sysdoc-choose-content clearfix " id="saleInfo2-detail">
+            <div class="ui-table-container">
+              <ui-grid params='options:$root.grid7Option,vm:$root'>
+              </ui-grid>
+              <div class="ui-statistics margin-top-10">
+                已选择
+                <span class="font-c-blue" data-bind="text:SysDocList.selectedIndices().length"></span>项数据
+              </div>
+              <div class="pagination-right">
+                <div id='pagination2' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"SysDocList","pageChange":"pageChange3","sizeChange":"sizeChange3"}'></div>
+              </div>
+            </div>
+          </div>
+          <!--系统档案结束-->
+        </div>
+      </div>
+      <!--成品信息结束-->
+    </div>
+  </div>
+
+</div>
+<!--导入导出弹窗-->
+<div id="exportFiel"></div>
+<div id="importFiel"></div>
+<!--导入导出弹窗-->

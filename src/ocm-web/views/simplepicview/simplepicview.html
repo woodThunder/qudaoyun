@@ -1,0 +1,146 @@
+<div class="ui-panel ui-list-panel">
+  <div>
+    <div class="page-title">
+      <span data-bind="text:title"></span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+  <ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+  </ui-searchbox>
+  <div class="ui-panel-body">
+    <div class="ui-panel-body-head">
+      <div class="ui-panel-body-head-left">
+        <ui-buttons params='datasource:$root.buttonSource'>
+        </ui-buttons>
+      </div>
+    </div>
+    <div class="ui-table-container">
+      <ui-grid params='options:$root.gridOption,vm:$root'>
+      </ui-grid>
+      <div class="ui-statistics margin-top-10">
+        已选择
+        <span class="font-c-blue" data-bind="text:simpleList.selectedIndices().length"></span>项数据
+      </div>
+      <div class="pagination-right">
+        <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"simpleList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+      </div>
+    </div>
+  </div>
+</div>
+<ui-dialogcard params='datasource:$root.dialogcardSource,ref:$root.dialogcardcomp,dt:$root.simpleList'>
+</ui-dialogcard>
+<!-- 详情 -->
+<div class="ui-bill-detail ui-panel" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span data-bind="text:title"></span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-primary" data-bind="click: retListPanel">返回
+      </a>
+    </div>
+  </div>
+  <div class="ui-panel-head">
+    <ui-detail params='datasource:$root.detailSource,dt:$root.simpleList,vm:$root'>
+    </ui-detail>
+  </div>
+</div>
+<div id="exportFiel"></div>
+<div id="importFiel"></div>
+<!--   附件上传     -->
+<div class="ui-bill-pic ui-panel" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span>图片维护</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-green" data-bind="click: goPicPanelbill">返回</a>
+    </div>
+  </div>
+  <div class="ui-bill-body">
+    <div class="ui-panel-body-head margin-top-15">
+      <div class="ui-panel-body-head-left">
+        <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-add" data-bind="click: showFileDialog">
+          <i class="uifont icon-plus margin-right-5"></i>上传图片</a>
+        <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click: delPic.bind($data,'simplePhotoList')">
+          <i class="uifont icon-shanchu1 margin-right-5"></i>删行</a>
+      </div>
+    </div>
+    <div class="ui-table-container">
+        <ui-grid params='options:$root.gridPhotoOption,vm:$root'>
+        </ui-grid>
+    </div>
+    <div class="ui-bill-footer"></div>
+  </div>
+  <!-- 图片维护页 end-->
+  <!-- 模态框(附件上传)start-->
+  <div id="fileiptwrap">
+    <input class="u-input" type="file" name="addfile" id="uploadbatch_id" multiple="multiple" style="display:none;" />
+  </div>
+  <div id="file-dialog" style="display:none;">
+    <div class="u-msg-title">
+      <h4>附件</h4>
+    </div>
+    <div class="u-msg-content">
+      <div class="margin-bottom-10" style="color: #f00;">
+        *支持图片格式jpg，bmp，gif，png，jpeg；每次上传图片大小总和不得超过500MB。
+      </div>
+      <div class="ui-file-btns">
+        <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del" data-bind='click: onOpenUploadWin'>
+          <i class="uifont icon-tubiao-shangchuan margin-right-5"></i>上传
+        </a>
+        <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del" data-bind='click: fileDelete'>
+          <i class="uifont icon-shanchu1 margin-right-5"></i>删除
+        </a>
+        <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del" data-bind='click: fileView'>
+          <i class="uifont icon-tubiao-chakan margin-right-5"></i>查看
+        </a>
+        <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-add" data-bind="click: savePic">保存</a>
+      </div>
+      <div class="ui-file-list">
+        <div class="ui-table-container">
+            <ui-grid params='options:$root.gridFileOption,vm:$root'>
+            </ui-grid>
+        </div>
+      </div>
+    </div>
+    <div class="u-msg-footer">
+      <!-- <a class="ui-btn ui-btn-green J-ok">确定</a> -->
+    </div>
+  </div>
+  <!-- 模态框(附件上传)end-->
+</div>
+<!--大图浏览模态框开始-->
+<div id="picBig-dialog" style="display:none;">
+  <div class="u-msg-title">
+    <h4>图片预览</h4>
+  </div>
+  <div class="u-msg-content text-center">
+    <img src="" id="picBig" style="max-width: 860px;" />
+  </div>
+  <div class="u-msg-footer">
+  </div>
+</div>
+<!--大图浏览模态框结束-->

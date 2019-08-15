@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="vendor/uui/css/u.css">
+    <!--必要样式-->
+    <link href="./css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="./css/city-picker.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+    <div style="position: relative;width:220px;" u-meta='{"id":"t1","type":"u-citypicker","data":"dt1","field":"f1"}'>
+            <input id="city-picker31" class="form-control u-citypicker" >
+    </div>
+
+
+    <script src="project/libs/jquery/jquery-1.11.2.js"></script>
+
+    <script src="vendor/knockout/knockout-3.2.0.debug.js"></script>
+    <script src="vendor/uui/js/u-polyfill.js"></script>
+    <script src="vendor/uui/js/u.js"></script>
+
+    <script src="city-picker.data.js"></script>
+    <script src="city-picker.js"></script>
+    <script>
+        var app, viewModel;
+        viewModel = {
+            dt1: new u.DataTable({
+                meta: {
+                    f1: {}
+                }
+            })
+
+        }
+
+        app = u.createApp({
+            el: 'body',
+            model: viewModel
+        });
+
+        var r = viewModel.dt1.createEmptyRow();
+        // r.setValue('f1', '310000/310100/310101');
+        viewModel.dt1.setRowSelect(0);
+        window.vm = viewModel;
+    </script>
+</body>
+
+</html>

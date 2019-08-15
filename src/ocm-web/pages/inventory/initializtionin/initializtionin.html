@@ -1,0 +1,155 @@
+<!-- 列表页 -->
+<div class="ui-list-panel ui-panel">
+    <div>
+        <div class="page-title">
+            <span>期初余额</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="title-seperator"></div>
+    <ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+    </ui-searchbox>
+
+    <div class="ui-panel-body">
+        <div class="ui-panel-body-head">
+            <div class="ui-panel-body-head-left">
+                <ui-buttons params='datasource:$root.button1Source'>
+                </ui-buttons>
+            </div>
+        </div>
+        <div class="ui-table-container">
+            <ui-grid params='options:$root.grid1Option,vm:$root'>
+            </ui-grid>
+            <div class="ui-statistics margin-top-10">
+                已选择
+                <span class="font-c-blue" data-bind="text:initializationList.selectedIndices().length"></span>项数据
+            </div>
+            <div class="pagination-right">
+            <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"initializationList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 单据页 -->
+<div class="ui-bill-panel ui-panel" style="display: none;">
+    <div>
+        <div class="page-title">
+            <span>期初余额</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="ui-panel-btn-bg">
+        <div class="ui-operate-btn">
+            <ui-buttons params='datasource:$root.button2Source'>
+            </ui-buttons>
+        </div>
+    </div>
+    <div class="ui-panel-head ui-bill-head">
+        <ui-card params='datasource:$root.card1Source,vm:$root,dt:$root.initializationCard,billstatus:$root.billPanelStatus'>
+        </ui-card>
+    </div>
+    <div class="ui-bill-body">
+        <div class="u-tabs  ui-tabs margin-top-10">
+            <div class="u-tabs__tab-bar">
+                <a id ="tab1" href="#tab-panel-1" class="u-tabs__tab is-active" data-bind="click:checkGoods">商品信息</a>
+                <a id ="tab2" href="#tab-panel-2" class="u-tabs__tab" data-bind="click:checkBom">BOM结构信息</a>
+            </div>
+            <div class="margin-bottom-10">
+                <ui-buttons  data-bind='visible:isBomPanel()' params='datasource:$root.button3Source'>
+                </ui-buttons>
+                <ui-buttons  data-bind='visible:!isBomPanel()' params='datasource:$root.button6Source'>
+                </ui-buttons>
+                <div id="addItemsRef" u-meta='{"type":"uiRefer","data":"ItemRefList","field":"goodsref"}' style="display:none;">
+                    <input readonly="readonly" />
+                    <span class="ui-icon uifont icon-bar refer"></span>
+                </div>
+            </div>
+            <div class="u-tabs__panel is-active" id="tab-panel-1">
+                <div class="ui-table-container margin-bottom-30">
+                    <ui-grid params='options:$root.grid2Option,vm:$root'>
+                    </ui-grid>
+                </div>
+            </div>
+            <div class="u-tabs__panel is-active" id="tab-panel-2">
+                <div class="ui-table-container margin-bottom-30">
+                    <ui-grid params='options:$root.grid4Option,vm:$root'>
+                    </ui-grid>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 详情页 -->
+<div class="ui-bill-detail ui-panel" style="display: none;">
+    <div>
+        <div class="page-title">
+            <span>期初余额</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="ui-panel-btn-bg">
+        <div class="ui-operate-btn">
+            <ui-buttons params='datasource:$root.button4Source'>
+            </ui-buttons>
+        </div>
+    </div>
+    <div class="ui-panel-head">
+        <ui-detail params='datasource:$root.detail11Source,dt:$root.initializationList,vm:$root'>
+
+        </ui-detail>
+    </div>
+    <div class="ui-bill-body">
+        <div class="u-tabs  ui-tabs margin-top-10">
+            <div class="u-tabs__tab-bar">
+                <a id ="tab3" href="#tab-panel-3" class="u-tabs__tab is-active" data-bind="click:checkGoods">商品信息</a>
+                <a id ="tab4" href="#tab-panel-4" class="u-tabs__tab" data-bind="click:checkBom">BOM结构信息</a>
+            </div>
+            <!--商品信息开始-->
+            <div class="margin-bottom-10">
+                <ui-buttons params='datasource:$root.button5Source'>
+                </ui-buttons>
+            </div>
+            <div class="u-tabs__panel is-active" id="tab-panel-3">
+                <div class="ui-table-container margin-bottom-30">
+                    <ui-grid params='options:$root.grid3Option,vm:$root'>
+                    </ui-grid>
+                </div>
+            </div>
+            <!--商品信息结束-->
+
+            <!-- BOM结构开始-->
+            <div class="u-tabs__panel is-active" id="tab-panel-4">
+                <div class="ui-table-container margin-bottom-30">
+                    <ui-grid params='options:$root.grid5Option,vm:$root'>
+                    </ui-grid>
+                </div>
+            </div>
+            <!-- BOM结构结束-->
+        </div>
+    </div>
+    <div class="ui-bill-footer">
+    </div>
+</div>
+<div id="exportFiel"></div>
+<div id="importFiel"></div>
+<!-- 选配 -->
+<div id="dialog_goodsOptional" style="display:none;"></div>
+<!-- 选配 -->
+<!-- 选配 -->
+<div id="dialog_goodsOptDetails" style="display:none;"></div>
+<!-- 选配 -->

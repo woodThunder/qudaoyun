@@ -1,0 +1,99 @@
+@charset "utf-8";
+#pwPolicy .apptitle {
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    background: #fff;
+    text-align: center;
+    font-size: 16px;
+}
+
+#pwPolicy .localtitle {
+    font-size: 14px;
+    color: #333;
+    font-weight: bolder;
+    height: 50px;
+    line-height: 50px;
+    padding: 8px 0;
+    margin: 0 25px
+}
+#pwPolicy #backBtn {
+    float: left;
+    height: 30px;
+    color: #1E7BE2;
+    padding: 0;
+    border: none;
+    position: absolute;
+    left: 22px;
+    top: 6px;
+    margin: 0;
+    line-height: 30px;
+    background: #fff;
+    font-size: 14px;
+}
+
+#pwPolicy .editrow .u-col-5, #pwPolicy .editrow label {
+    height: 40px;
+    line-height: 32px
+}
+#pwPolicy .editrow .u-col-5, #pwPolicy .editrow label .u-radio-outer-circle {
+    top:0;
+}
+#pwPolicy .editrow label.u-radio {
+    line-height:9px;
+    position: relative;
+    height:13px;
+}
+#pwPolicy .editrow label.u-radio .u-radio-label {
+    vertical-align:text-bottom;
+}
+
+#pwPolicy .labelcss {
+    padding: 0;
+    margin-right: -20px
+}
+
+#pwPolicy .editrow .u-form-group {
+    margin-bottom: 10px
+}
+
+#pwPolicy .editrow .u-col-5 {
+    font-size: 12px;
+    color: #999;
+    padding-left: 0;
+    margin-left: -15px;
+    display: table
+}
+
+#pwPolicy .localfootcss {
+    height: 56px;
+    padding: 10px 0;
+    margin: 0 40px;
+    border-top: 1px solid #cecece;
+    line-height: 56px
+}
+
+#pwPolicy .editrow select {
+    margin-bottom: 0 !important;
+    padding-right: 0;
+}
+
+#pwPolicy .must-in > .u-input-group-before {
+    top: 20px
+}
+
+#pwPolicy .warnsign {
+    font-size: 12px;
+    color: #e33c37;
+    padding: 0
+}
+
+#pwPolicy .warnsigninput {
+    border-color: #e33c37 !important
+}
+
+#pwPolicy .editrow .verticalcalss {
+    display: table-cell;
+    vertical-align: middle;
+    line-height: 20px
+}

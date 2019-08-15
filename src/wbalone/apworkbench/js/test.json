@@ -1,0 +1,412 @@
+[
+    {
+        "name": "icon-C-music",
+        "code": "& #xe601;",
+        "fontClass": "icon-icon-C-music"
+    },
+    {
+        "name": "icon-C-photo",
+        "code": "& #xe602;",
+        "fontClass": "icon-icon-C-photo"
+    },
+    {
+        "name": "icon-C-heart",
+        "code": "& #xe604;",
+        "fontClass": "icon-icon-C-heart"
+    },
+    {
+        "name": "icon-C-book",
+        "code": "& #xe605;",
+        "fontClass": "icon-icon-C-book"
+    },
+    {
+        "name": "icon-C-phone",
+        "code": "& #xe607;",
+        "fontClass": "icon-icon-C-phone"
+    },
+    {
+        "name": "icon-C-lock",
+        "code": "& #xe608;",
+        "fontClass": "icon-icon-C-lock"
+    },
+    {
+        "name": "icon-C-html5",
+        "code": "& #xe609;",
+        "fontClass": "icon-icon-C-html5"
+    },
+    {
+        "name": "icon-C-oslinux",
+        "code": "& #xe60a;",
+        "fontClass": "icon-icon-C-oslinux"
+    },
+    {
+        "name": "icon-C-gears",
+        "code": "& #xe60d;",
+        "fontClass": "icon-icon-C-gears"
+    },
+    {
+        "name": "icon-C-fire",
+        "code": "& #xe60e;",
+        "fontClass": "icon-icon-C-fire"
+    },
+    {
+        "name": "icon-C-flags",
+        "code": "& #xe610;",
+        "fontClass": "icon-icon-C-flags"
+    },
+    {
+        "name": "icon-C-ioscloud",
+        "code": "& #xe611;",
+        "fontClass": "icon-icon-C-ioscloud"
+    },
+    {
+        "name": "icon-C-iconfontplane",
+        "code": "& #xe612;",
+        "fontClass": "icon-icon-C-iconfontplane"
+    },
+    {
+        "name": "icon-C-facetime",
+        "code": "& #xe613;",
+        "fontClass": "icon-icon-C-facetime"
+    },
+    {
+        "name": "icon-C-win",
+        "code": "& #xe614;",
+        "fontClass": "icon-icon-C-win"
+    },
+    {
+        "name": "icon-C-github",
+        "code": "& #xe615;",
+        "fontClass": "icon-icon-C-github"
+    },
+    {
+        "name": "icon-C-bug",
+        "code": "& #xe616;",
+        "fontClass": "icon-icon-C-bug"
+    },
+    {
+        "name": "icon-C-desktop",
+        "code": "& #xe617;",
+        "fontClass": "icon-icon-C-desktop"
+    },
+    {
+        "name": "icon-C-money",
+        "code": "& #xe618;",
+        "fontClass": "icon-icon-C-money"
+    },
+    {
+        "name": "icon-C-qrcode",
+        "code": "& #xe619;",
+        "fontClass": "icon-icon-C-qrcode"
+    },
+    {
+        "name": "icon-C-suitcase",
+        "code": "& #xe61a;",
+        "fontClass": "icon-icon-C-suitcase"
+    },
+    {
+        "name": "icon-C-bookmarks",
+        "code": "& #xe626;",
+        "fontClass": "icon-icon-C-bookmarks"
+    },
+    {
+        "name": "icon-C-uesrs",
+        "code": "& #xe627;",
+        "fontClass": "icon-icon-C-uesrs"
+    },
+    {
+        "name": "icon-C-dribble",
+        "code": "& #xe61d;",
+        "fontClass": "icon-icon-C-dribble"
+    },
+    {
+        "name": "icon-C-android",
+        "code": "& #xe60b;",
+        "fontClass": "icon-icon-C-android"
+    },
+    {
+        "name": "icon-C-app",
+        "code": "& #xe60c;",
+        "fontClass": "icon-icon-C-app"
+    },
+    {
+        "name": "icon-C-authorization",
+        "code": "& #xe60f;",
+        "fontClass": "icon-icon-C-authorization"
+    },
+    {
+        "name": "icon-C-chemical",
+        "code": "& #xe61b;",
+        "fontClass": "icon-icon-C-chemical"
+    },
+    {
+        "name": "icon-C-favorite",
+        "code": "& #xe61c;",
+        "fontClass": "icon-icon-C-favorite"
+    },
+    {
+        "name": "icon-C-gift",
+        "code": "& #xe61e;",
+        "fontClass": "icon-icon-C-gift"
+    },
+    {
+        "name": "icon-C-home",
+        "code": "& #xe61f;",
+        "fontClass": "icon-icon-C-home"
+    },
+    {
+        "name": "icon-C-more",
+        "code": "& #xe620;",
+        "fontClass": "icon-icon-C-more"
+    },
+    {
+        "name": "icon-C-organization",
+        "code": "& #xe621;",
+        "fontClass": "icon-icon-C-organization"
+    },
+    {
+        "name": "icon-C-palette",
+        "code": "& #xe622;",
+        "fontClass": "icon-icon-C-palette"
+    },
+    {
+        "name": "icon-C-setting",
+        "code": "& #xe623;",
+        "fontClass": "icon-icon-C-setting"
+    },
+    {
+        "name": "icon-C-statistical",
+        "code": "& #xe624;",
+        "fontClass": "icon-icon-C-statistical"
+    },
+    {
+        "name": "icon-C-tea",
+        "code": "& #xe625;",
+        "fontClass": "icon-icon-C-tea"
+    },
+    {
+        "name": "icon-C-electricity",
+        "code": "& #xe628;",
+        "fontClass": "icon-icon-C-electricity"
+    },
+    {
+        "name": "icon-C-enterprise",
+        "code": "& #xe629;",
+        "fontClass": "icon-icon-C-enterprise"
+    },
+    {
+        "name": "icon-C-erp",
+        "code": "& #xe62a;",
+        "fontClass": "icon-icon-C-erp"
+    },
+    {
+        "name": "icon-C-maintain",
+        "code": "& #xe62b;",
+        "fontClass": "icon-icon-C-maintain"
+    },
+    {
+        "name": "icon-C-organizationicon",
+        "code": "& #xe62c;",
+        "fontClass": "icon-icon-C-organizationicon"
+    },
+    {
+        "name": "icon-C-requisition",
+        "code": "& #xe62d;",
+        "fontClass": "icon-icon-C-requisition"
+    },
+    {
+        "name": "icon-C-role",
+        "code": "& #xe62e;",
+        "fontClass": "icon-icon-C-role"
+    },
+    {
+        "name": "icon-C-salestogether",
+        "code": "& #xe62f;",
+        "fontClass": "icon-icon-C-salestogether"
+    },
+    {
+        "name": "icon-C-sales",
+        "code": "& #xe630;",
+        "fontClass": "icon-icon-C-sales"
+    },
+    {
+        "name": "icon-C-shopping",
+        "code": "& #xe631;",
+        "fontClass": "icon-icon-C-shopping"
+    },
+    {
+        "name": "icon-C-subscription",
+        "code": "& #xe635;",
+        "fontClass": "icon-icon-C-subscription"
+    },
+    {
+        "name": "icon-C-source",
+        "code": "& #xe636;",
+        "fontClass": "icon-icon-C-source"
+    },
+    {
+        "name": "icon-C-apple",
+        "code": "& #xe603;",
+        "fontClass": "icon-icon-C-apple"
+    },
+    {
+        "name": "icon-C-pad",
+        "code": "& #xe606;",
+        "fontClass": "icon-icon-C-pad"
+    },
+    {
+        "name": "icon-C-car",
+        "code": "& #xe637;",
+        "fontClass": "icon-icon-C-car"
+    },
+    {
+        "name": "icon-C-c1688",
+        "code": "& #xe600;",
+        "fontClass": "icon-icon-C-c1688"
+    },
+    {
+        "name": "icon-C-capprove",
+        "code": "& #xe632;",
+        "fontClass": "icon-icon-C-capprove"
+    },
+    {
+        "name": "icon-C-cauth",
+        "code": "& #xe633;",
+        "fontClass": "icon-icon-C-cauth"
+    },
+    {
+        "name": "icon-C-ccarright",
+        "code": "& #xe634;",
+        "fontClass": "icon-icon-C-ccarright"
+    },
+    {
+        "name": "icon-C-classg",
+        "code": "& #xe638;",
+        "fontClass": "icon-icon-C-classg"
+    },
+    {
+        "name": "icon-C-cclassy",
+        "code": "& #xe639;",
+        "fontClass": "icon-icon-C-cclassy"
+    },
+    {
+        "name": "icon-C-cdelivery",
+        "code": "& #xe63a;",
+        "fontClass": "icon-icon-C-cdelivery"
+    },
+    {
+        "name": "icon-C-centerprise",
+        "code": "& #xe63b;",
+        "fontClass": "icon-icon-C-centerprise"
+    },
+    {
+        "name": "icon-C-cgoods",
+        "code": "& #xe63c;",
+        "fontClass": "icon-icon-C-cgoods"
+    },
+    {
+        "name": "icon-C-cinquiry",
+        "code": "& #xe63d;",
+        "fontClass": "icon-icon-C-cinquiry"
+    },
+    {
+        "name": "icon-C-cinvioce",
+        "code": "& #xe63e;",
+        "fontClass": "icon-icon-C-cinvioce"
+    },
+    {
+        "name": "icon-C-cmaterial",
+        "code": "& #xe63f;",
+        "fontClass": "icon-icon-C-cmaterial"
+    },
+    {
+        "name": "icon-C-coffer",
+        "code": "& #xe640;",
+        "fontClass": "icon-icon-C-coffer"
+    },
+    {
+        "name": "icon-C-corder",
+        "code": "& #xe641;",
+        "fontClass": "icon-icon-C-corder"
+    },
+    {
+        "name": "icon-C-corg",
+        "code": "& #xe642;",
+        "fontClass": "icon-icon-C-corg"
+    },
+    {
+        "name": "icon-C-cpro",
+        "code": "& #xe643;",
+        "fontClass": "icon-icon-C-cpro"
+    },
+    {
+        "name": "icon-C-cprocess",
+        "code": "& #xe644;",
+        "fontClass": "icon-icon-C-cprocess"
+    },
+    {
+        "name": "icon-C-csecurity",
+        "code": "& #xe645;",
+        "fontClass": "icon-icon-C-csecurity"
+    },
+    {
+        "name": "icon-C-cshipping",
+        "code": "& #xe646;",
+        "fontClass": "icon-icon-C-cshipping"
+    },
+    {
+        "name": "icon-C-cstorage",
+        "code": "& #xe647;",
+        "fontClass": "icon-icon-C-cstorage"
+    },
+    {
+        "name": "icon-C-cgateway",
+        "code": "& #xe648;",
+        "fontClass": "icon-icon-C-cgateway"
+    },
+    {
+        "name": "icon-C-cscalling",
+        "code": "& #xe649;",
+        "fontClass": "icon-icon-C-cscalling"
+    },
+    {
+        "name": "icon-C-csupplier",
+        "code": "& #xe64a;",
+        "fontClass": "icon-icon-C-csupplier"
+    },
+    {
+        "name": "icon-C-cusers",
+        "code": "& #xe64b;",
+        "fontClass": "icon-icon-C-cusers"
+    },
+    {
+        "name": "icon-C-handinvolice",
+        "code": "& #xe64c;",
+        "fontClass": "icon-icon-C-handinvolice"
+    },
+    {
+        "name": "icon-C-incoiceapply",
+        "code": "& #xe64d;",
+        "fontClass": "icon-icon-C-incoiceapply"
+    },
+    {
+        "name": "icon-C-invoicehis",
+        "code": "& #xe64e;",
+        "fontClass": "icon-icon-C-invoicehis"
+    },
+    {
+        "name": "icon-C-invoiceinformation",
+        "code": "& #xe64f;",
+        "fontClass": "icon-icon-C-invoiceinformation"
+    },
+    {
+        "name": "icon-C-taxequipment",
+        "code": "& #xe650;",
+        "fontClass": "icon-icon-C-taxequipment"
+    },
+    {
+        "name": "icon-C-taxinformation",
+        "code": "& #xe651;",
+        "fontClass": "icon-icon-C-taxinformation"
+    }
+]

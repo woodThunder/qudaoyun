@@ -1,0 +1,451 @@
+<div class="ui-panel ui-list-panel">
+    <div>
+        <div class="page-title">
+            <span>活动选品</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="title-seperator"></div>
+
+    <div class="ui-searchbox">
+        <div id="ProductCombine-searchcontent" class="ui-searchbox-content">
+
+        </div>
+        <div class="clearfix">
+
+        </div>
+        <div class="ui-searchbox-footer">
+            <div class="ui-search-more hidden">
+                <a>更多<i class="uifont icon-down"></i></a>
+            </div>
+
+            <div class="ui-search-btn">
+                <a class="ui-btn ui-btn-primary margin-right-5"
+                   data-bind="click:cleanSearch">清空
+                </a>
+                <a class="ui-btn ui-btn-green"
+                   data-bind="click:search.bind($data,true)">搜索
+                </a>
+            </div>
+            <div class="clearfix">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="ui-panel-body">
+        <div class="ui-panel-body-head">
+            <div class="ui-panel-body-head-left">
+                <a class="ui-btn ui-btn-primary margin-right-5"
+                   data-bind="click: selectionClick.bind($data)"><i class="uifont icon-tubiao-xuanpin margin-right-5"></i>选品
+                </a>
+                <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-copy"
+                   data-bind="click:showCopyBillPanel"><i class="uifont icon-copy margin-right-5"></i>复制
+                </a>
+                <div id="copyactref" u-meta='{"type":"uiRefer","data":"CopyActRef","field":"copyactref"}' style="display:none;">
+                    <input readonly="readonly"/>
+                    <span class="ui-icon uifont icon-bar refer"></span>
+                </div>
+            </div>
+
+        </div>
+        <div class="ui-table-container">
+            <div u-meta='{"id":"grid_productCombine","data":"ProductCombineList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+                <div options='{"field":"code","dataType":"String","title":"活动编码","renderType":"detailRender"}'></div>
+                <div options='{"field":"name","dataType":"String","title":"活动名称"}'></div>
+                <div options='{"field":"activeTypecName","dataType":"String","title":"活动类型"}'></div>
+                <div options='{"field":"agencyName","dataType":"String","title":"所属办事处"}'></div>
+                <div options='{"field":"terminalStartDate","dataType":"Date","title":"活动开始日期"}'></div>
+                <div options='{"field":"terminalEndDate","dataType":"Date","title":"活动截至日期"}'></div>
+                <div options='{"field":"creator","dataType":"String","title":"创建人","visible":"false"}'></div>
+                <div options='{"field":"creationTime","dataType":"Datetime","title":"创建时间","visible":"false"}'></div>
+                <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":"false"}'></div>
+                <div options='{"field":"modifiedTime","dataType":"Datetime","title":"修改时间","visible":"false"}'></div>
+                <div options='{"field":"auditStatus","dataType":"String","title":"审核状态","renderType":"approveFormat"}'></div>
+                <!--<div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation"}'></div>-->
+            </div>
+            <div class="ui-statistics margin-top-10">
+                已选择<span class="font-c-blue" data-bind="text:ProductCombineList.selectedIndices().length"></span>项数据
+            </div>
+            <div class="pagination-right">
+                <div id='pagination' class='pagination u-pagination pagination-sm'
+                     u-meta='{"type":"pagination","data":"ProductCombineList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="dialog_layer" class="ui-searchbox" style="display:none;padding:20px">
+
+</div>
+
+
+<!--编辑页面-->
+<div class="ui-panel ui-bill-panel" style="display: none;" data-bind="billPanelStatus">
+    <div>
+        <div class="page-title">
+            <span>活动选品</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+
+    <div data-bind='visible:billPanelStatus()=="edit" '>
+        <div class="ui-panel-btn-bg">
+            <div class="ui-operate-btn">
+                <a class="ui-btn ui-btn-primary" data-bind="click: cancelBill.bind($data)">取消
+                </a>
+                <a class="ui-btn ui-btn-green" data-bind="click: saveBill.bind($data)">保存
+                </a>
+            </div>
+        </div>
+        <div class="ui-panel-head ui-bill-head">
+            <div class="ui-item">
+                <div class="ui-name">活动编码：</div>
+                <div class="ui-inputarea">
+                    <div data-bind='text: ProductCombineList.ref("code")'></div>
+                </div>
+            </div>
+            <div class="ui-item">
+                <div class="ui-name">活动名称：</div>
+                <div class="ui-inputarea">
+                    <div data-bind='text: ProductCombineList.ref("name")'></div>
+                </div>
+            </div>
+            <div class="ui-item">
+                <div class="ui-name">活动类型：</div>
+                <div class="ui-inputarea">
+                    <div data-bind='text: ProductCombineList.ref("activeTypecName")'></div>
+                </div>
+            </div>
+            <div class="ui-item">
+                <div class="ui-name">所属办事处：</div>
+                <div class="ui-inputarea">
+                    <div data-bind='text: ProductCombineList.ref("agencyName")'></div>
+                </div>
+            </div>
+            <div class="ui-item">
+              <div class="ui-name">产品状态：</div>
+              <div class="ui-inputarea">
+                  <div u-meta='{"type":"u-combobox","data":"ItemRefList","field":"prodState","datasource":"prodStateSrc","mutil":true}'>
+                    <input />
+                    <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+                  </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div data-bind='visible:billPanelStatus()=="detail" '>
+        <div class="ui-panel-btn-bg">
+            <div class="ui-operate-btn">
+                <a class="ui-btn ui-btn-primary" data-bind="click: cancelBill.bind($data)">取消
+                </a>
+                <a class="ui-btn ui-btn-green" data-bind="click: saveBill.bind($data)">保存
+                </a>
+            </div>
+        </div>
+        <div class="ui-panel-head ui-bill-head">
+        <div class="ui-item">
+            <div class="ui-name">活动编码：</div>
+            <div class="ui-inputarea">
+                <div data-bind='text: ProductCombineList.ref("code")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">活动名称：</div>
+            <div class="ui-inputarea">
+                <div data-bind='text: ProductCombineList.ref("name")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">活动类型：</div>
+            <div class="ui-inputarea">
+                <div data-bind='text: ProductCombineList.ref("activeTypecName")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">所属办事处：</div>
+            <div class="ui-inputarea">
+                <div data-bind='text: ProductCombineList.ref("agencyName")'></div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    </div>
+
+    <div data-bind='visible:billPanelStatus()=="copy" '>
+        <div class="ui-panel-btn-bg">
+            <div class="ui-operate-btn">
+                <a class="ui-btn ui-btn-primary" data-bind="click: cancelBill.bind($data)">取消
+                </a>
+                <!--<a class="ui-btn ui-btn-primary ui-btn-disabled">编辑-->
+                </a>
+                <a class="ui-btn ui-btn-green" data-bind="click: copyBill.bind($data)">保存
+                </a>
+            </div>
+        </div>
+        <div class="ui-panel-head ui-bill-head">
+            <div class="ui-item">
+                <div class="ui-name">活动编码：</div>
+                <div class="ui-inputarea">
+                        <div  u-meta='{"id":"xxx","type":"uiRefer","data":"actselect","field":"code"}'>
+                        <input readonly="readonly"/>
+                        <span class="ui-icon uifont icon-bar refer"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-item">
+                <div class="ui-name">活动名称：</div>
+                <div class="ui-inputarea">
+                    <div class="ui-inputarea">
+                        <div class="ui-textonly" data-bind='text: actselect.ref("name")'></div>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-item">
+                <div class="ui-name">活动类型：</div>
+                <div class="ui-inputarea">
+                    <div class="ui-inputarea">
+                        <div class="ui-textonly" data-bind='text: actselect.ref("activeTypecName")'></div>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-item">
+                <div class="ui-name">所属办事处：</div>
+                <div class="ui-inputarea">
+                    <div class="ui-inputarea">
+                        <div class="ui-textonly" data-bind='text: actselect.ref("agencyName")'></div>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-item">
+              <div class="ui-name">产品状态：</div>
+              <div class="ui-inputarea">
+                  <div u-meta='{"type":"u-combobox","data":"ItemRefList","field":"prodState","datasource":"prodStateSrc","mutil":true}'>
+                    <input />
+                    <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+                  </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!--子表搜索-->
+    <div class="ui-searchbox margin-bottom-10">
+        <div class="searchChild-area" style="display: none;">
+            <div id="product-searchcontent-child" class="ui-searchbox-content">
+
+            </div>
+            <div class="clearfix">
+
+            </div>
+            <div class="ui-searchbox-footer">
+                <div class="ui-search-more hidden">
+                    <a>更多<i class="uifont icon-down"></i></a>
+                </div>
+
+                <div class="ui-search-btn">
+                    <a class="ui-btn ui-btn-primary margin-right-5"
+                       data-bind="click:cleanSearchChild">清空
+                    </a>
+                    <a class="ui-btn ui-btn-green"
+                       data-bind="click:searchChild.bind($data,true)">搜索
+                    </a>
+                </div>
+                <div class="clearfix">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui-bill-body">
+        <div class="ui-bill-body-btns">
+            <a class="ui-btn-primary ui-btn searchChild-btn  margin-right-5">展开搜索</a>
+            <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-additem"
+               data-bind="click: showAddItemsRef">
+                <i class="uifont icon-plus margin-right-5"></i>
+                增行
+            </a>
+            <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+               data-bind="click: delItems.bind($data)">
+                <i class="uifont icon-shanchu1 margin-right-5"></i>
+                删行
+            </a>
+            <!--<div class="ui-button-group clearfix vertical-align-middle margin-right-5">-->
+                <!--<a class="ui-button-item" data-bind="click: enable">-->
+                    <!--<i class="uifont icon-qiyong margin-right-5"></i>-->
+                    <!--启用-->
+                <!--</a>-->
+                <!--<a class="ui-button-item" data-bind="click: disable">-->
+                    <!--<i class="uifont icon-tingyong margin-right-5"></i>-->
+                    <!--停用-->
+                <!--</a>-->
+            <!--</div>-->
+            <div class="ui-button-group clearfix margin-right-5 vertical-align-middle">
+                <a class="ui-button-item" data-bind="click: importHandle"><i class="uifont icon-qiyong margin-right-5"></i>导入</a>
+                <a class="ui-button-item" data-bind="click: exportHandle"><i class="uifont icon-qiyong margin-right-5"></i>导出</a>
+            </div>
+            <div id="addItemsRef" u-meta='{"type":"uiRefer","data":"ItemRefList","field":"productRefer"}' style="display:none;">
+                <input id="productRefer" readonly="readonly"/>
+                <span class="ui-icon uifont icon-bar refer"></span>
+            </div>
+        </div>
+        <div class="ui-table-container margin-bottom-30">
+            <div u-meta='{"id":"grid_productCombineItem","data":"ProductCombineItem","type":"grid","editable":true,"multiSelect":true,"showNumCol":true,"nullField":"activityProductDealerSet"}'>
+                <div options='{"field":"showCode","dataType":"String","title":"产品编码","editable":false}'></div>
+                <div options='{"field":"showName","dataType":"String","title":"产品名称","editable":false}'></div>
+                <div options='{"field":"productCategoryName","dataType":"String","title":"产品品类","editable":false}'></div>
+                <div options='{"field":"productSaleSeriesName","dataType":"String","title":"产品系列","editable":false}'></div>
+                <div options='{"field":"mainColorDocName","dataType":"String","title":"色号","editable":false}'></div>
+                <div options='{"field":"productModelName","dataType":"String","title":"产品型号","editable":false}'></div>
+                <div options='{"field":"standardName","dataType":"String","title":"尺寸/规格","editable":false}'></div>
+                <div options='{"field":"productStatus","dataType":"String","title":"产品状态","editable":false}'></div>
+                <div options='{"field":"isEnable","dataType":"String","title":"启用状态","renderType":"enableRender","editable":false}'></div>
+            </div>
+            <div class="ui-statistics margin-top-10">
+                已选择<span class="font-c-blue" data-bind="text:ProductCombineItem.selectedIndices().length"></span>项数据
+            </div>
+            <div class="pagination-right">
+                <div id='item-pagination' class='pagination u-pagination pagination-sm'
+                     u-meta='{"type":"pagination","data":"ProductCombineItem","beforePageChange":"itemBeforePageChange","sizeChange":"itemSizeChange"}'></div>
+            </div>
+        </div>
+    </div>
+    <div class="ui-bill-footer">
+    </div>
+</div>
+<!--编辑页面 end-->
+
+<!--详情页-->
+<div class="ui-panel ui-bill-detail" style="display: none;">
+    <div>
+        <div class="page-title">
+            <span>活动选品</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="ui-panel-btn-bg">
+        <div class="ui-operate-btn">
+            <a class="ui-btn ui-btn-primary" data-bind="click: cancelBill.bind($data)">返回
+            </a>
+            <a class="ui-btn ui-btn-primary ui-btn-green" data-bind="click: editHandle.bind($data)">编辑
+            </a>
+        </div>
+    </div>
+    <div class="ui-panel-head ui-bill-head">
+        <div class="ui-item">
+            <div class="ui-name">活动编码：</div>
+            <div class="ui-inputarea">
+                <div data-bind='text: ProductCombineList.ref("code")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">活动名称：</div>
+            <div class="ui-inputarea">
+                <div data-bind='text: ProductCombineList.ref("name")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">活动类型：</div>
+            <div class="ui-inputarea">
+                <div data-bind='text: ProductCombineList.ref("activeTypecName")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">所属办事处：</div>
+            <div class="ui-inputarea">
+                <div data-bind='text: ProductCombineList.ref("agencyName")'></div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!--子表搜索-->
+    <div class="ui-searchbox margin-bottom-10">
+        <div class="searchChild-area" style="display: none;">
+            <div id="product-searchcontent-child-detail" class="ui-searchbox-content">
+
+            </div>
+            <div class="clearfix">
+
+            </div>
+            <div class="ui-searchbox-footer">
+                <div class="ui-search-more hidden">
+                    <a>更多<i class="uifont icon-down"></i></a>
+                </div>
+
+                <div class="ui-search-btn">
+                    <a class="ui-btn ui-btn-primary margin-right-5"
+                       data-bind="click:cleanSearchChild">清空
+                    </a>
+                    <a class="ui-btn ui-btn-green"
+                       data-bind="click:searchChild.bind($data,true)">搜索
+                    </a>
+                </div>
+                <div class="clearfix">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui-bill-body">
+        <div class="ui-bill-body-btns">
+            <a class="ui-btn-primary ui-btn searchChild-btn  margin-right-5">展开搜索</a>
+            <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+                <a class="ui-button-item" data-bind="click: enable">
+                    <i class="uifont icon-qiyong margin-right-5"></i>
+                    启用
+                </a>
+                <a class="ui-button-item" data-bind="click: disable">
+                    <i class="uifont icon-tingyong margin-right-5"></i>
+                    停用
+                </a>
+            </div>
+            <a class="ui-btn ui-btn-primary margin-right-5"  data-bind="click: exportHandle"><i class="uifont icon-export margin-right-5"></i>导出</a>
+        </div>
+        <div class="ui-table-container margin-bottom-30">
+            <div u-meta='{"id":"grid_ProductCombineItem_detail","data":"ProductCombineItem","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+                <div options='{"field":"showCode","dataType":"String","title":"产品编码","renderType":"ncReferRender","editType":"ncReferEditType","showField":"showCode","editOptions":{"validType":"string","rel":{"refpk":"combineId","refcode":"showCode","refname":"showName"}}}'></div>
+                <div options='{"field":"showName","dataType":"String","title":"产品名称","editable":false}'></div>
+                <div options='{"field":"productCategoryName","dataType":"String","title":"产品品类","editable":false}'></div>
+                <div options='{"field":"productSaleSeriesName","dataType":"String","title":"产品系列","editable":false}'></div>
+                <div options='{"field":"mainColorDocName","dataType":"String","title":"色号","editable":false}'></div>
+                <div options='{"field":"productModelName","dataType":"String","title":"产品型号","editable":false}'></div>
+                <div options='{"field":"standardName","dataType":"String","title":"尺寸/规格","editable":false}'></div>
+                <div options='{"field":"productStatus","dataType":"String","title":"产品状态","editable":false}'></div>
+                <div options='{"field":"isEnable","dataType":"String","title":"启用状态","renderType":"enableRender","editable":false}'></div>
+            </div>
+            <div class="ui-statistics margin-top-10 line-height-27">
+                <!-- 已选择<span class="font-c-blue" data-bind="text:ProductCombineItem.selectedIndices().length"></span>项数据 -->
+            </div>
+            <div class="pagination-right">
+                <div class="pagination-right">
+                    <div id='detail-item-pagination' class='pagination u-pagination pagination-sm'
+                         u-meta='{"type":"pagination","data":"ProductCombineItem","pageChange":"itemPageChange","sizeChange":"itemSizeChange"}'></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui-bill-footer">
+    </div>
+</div>
+<!--详情页 end-->
+<!--导入导出 start-->
+<div id="exportFiel"></div>
+<div id="importFiel"></div>
+<!--导入导出 end-->

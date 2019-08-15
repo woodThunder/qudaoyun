@@ -1,0 +1,370 @@
+<div class="u-container-fluid u-widget-bg padding-0" id="pwPolicy">
+    <div class="u-row" data-bind="visible:temType">
+        <div class="u-col-md-12">
+            <div class="pap-title">
+                <button class="u-button backbutton" onclick="window.history.go(-1)">
+                    <i class="uf uf-arrow-left"></i> <span class="i18n" name="ht.pag.pwP.0001"></span>
+                    <span class="u-button-container">
+                        <span class="u-ripple"></span>
+                    </span>
+                </button>
+                <h1><span class="i18n" name="ht.pag.pwP.0002"></span></h1>
+                <button class="u-button raised primary u-button-info u-right" style="margin-top:5px;margin-right:20px;" data-bind="click:save"><span class="i18n" name="ht.pag.pwP.0003"></span></button>
+
+            </div>
+
+            <div class="u-widget  u-widget-right" style="margin-right: 0px;">
+                <div class="u-widget-heading localtitle">
+                    <span style="float:left;margin-top: -8px;"><span class="i18n" id="ht.pag.pwP.0004" name="ht.pag.pwP.0004"></span></span>
+                    <button class="u-button raised primary u-button-info u-right" data-bind="click:edit"><span class="i18n" id="ht.pag.pwP.0005" name="ht.pag.pwP.0005"></span></button>
+                </div>
+                <div class="u-widget-body" style="padding-top: 55px;padding-left: 142px;">
+                    <ul class="u-form-browse">
+                        <!--
+                        <li class="m-v">
+                            <label class="u-control-label w-sm"><span class="i18n" id="ht.pag.pwP.0006" name="ht.pag.pwP.0006"></span></label>
+                            <span data-bind="text:PolicyData.ref('name')">name</span>
+                        </li>
+                        -->
+                        <li class="m-v">
+                            <label class="u-control-label w-sm"><span class="i18n" id="ht.pag.pwP.0007" name="ht.pag.pwP.0007"></span></label>
+                            <span data-bind="text:PolicyData.ref('code')">name</span>
+                        </li>
+                        <li class="m-v">
+                            <label class="u-control-label w-sm"><span class="i18n" id="ht.pag.pwP.0008" name="ht.pag.pwP.0008"></span></label>
+                            <span data-bind="text:PolicyData.ref('pwdcomplexityName')">name</span>
+                        </li>
+                        <li class="m-v">
+                            <label class="u-control-label w-sm"><span class="i18n" id="ht.pag.pwP.0009" name="ht.pag.pwP.0009"></span></label>
+                            <span data-bind="text:PolicyData.ref('mininumlength')">name</span>
+
+                        </li>
+                        <li class="m-v">
+                            <label class="u-control-label w-sm"><span class="i18n" id="ht.pag.pwP.0010" name="ht.pag.pwP.0010"></span></label>
+                            <span data-bind="text:PolicyData.ref('validatedays')">name</span>
+
+                        </li>
+                        <li class="m-v">
+                            <label class="u-control-label w-sm"><span class="i18n" id="ht.pag.pwP.0011" name="ht.pag.pwP.0011"></span></label>
+                            <span data-bind="text:PolicyData.ref('alertdays')">name</span>
+
+                        </li>
+                        <li class="m-v">
+                            <label class="u-control-label w-sm"><span class="i18n" name="ht.pag.pwP.0012"></span></label>
+                            <span data-bind="text:(PolicyData.ref('isautolock')()=='Y'? $.i18n.prop('ht.pag.pwP.0013'):$.i18n.prop('ht.pag.pwP.0014'))">name</span>
+
+                        </li>
+                        <li class="m-v">
+                            <label class="u-control-label w-sm"><span class="i18n" id="ht.pag.pwP.0015" name="ht.pag.pwP.0015"></span></label>
+                            <span data-bind="text:PolicyData.ref('unlocktime')">name</span>
+
+                        </li>
+                        <li class="m-v">
+                        </li>
+                        <li class="m-v">
+                            <label class="u-control-label w-sm"><span class="i18n" id="ht.pag.pwP.0016" name="ht.pag.pwP.0016"></span></label>
+                            <span data-bind="text:PolicyData.ref('errorloginthreshold')">name</span>
+
+                        </li>
+                        <li class="m-v">
+                            <label class="u-control-label w-sm"><span class="i18n" id="ht.pag.pwP.0017" name="ht.pag.pwP.0017"></span></label>
+                            <span data-bind="text:PolicyData.ref('similaritydegree')">name</span>
+                        </li>
+                        <li class="m-v">
+                            <label class="u-control-label w-sm"><span class="i18n" id="ht.pag.pwP.0018" name="ht.pag.pwP.0018"></span></label>
+                            <span data-bind="text:PolicyData.ref('remembercount')">name</span>
+
+                        </li>
+                        <li class="m-v">
+                            <label class="u-control-label w-sm"><span class="i18n" id="ht.pag.pwP.0019" name="ht.pag.pwP.0019"></span></label>
+                            <span data-bind="text:PolicyData.ref('defaultPassword')">name</span>
+
+                        </li>
+                        <li class="m-v">
+                            <label class="u-control-label w-sm"><span class="i18n" id="ht.pag.pwP.0020" name="ht.pag.pwP.0020"></span></label>
+                            <span data-bind="text:(PolicyData.ref('isforceupdate')()=='Y'?$.i18n.prop('ht.pag.pwP.0013'):$.i18n.prop('ht.pag.pwP.0014'))">name</span>
+                        </li>
+                        <li class="m-v">
+                            <label class="u-control-label w-sm"><span class="i18n" id="ht.pag.pwP.0021" name="ht.pag.pwP.0021"></span></label>
+                            <span class="i18n" name="ht.pag.pwP.0022"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="u-row editrow" data-bind="visible:!temType()">
+        <div class="u-col-12">
+            <div class="pap-title">
+                <button class="u-button backbutton" onclick="window.history.go(-1)">
+                    <i class="uf uf-arrow-left"></i> <span class="i18n" id="ht.pag.pwP.0001" name="ht.pag.pwP.0001"></span>
+                    <span class="u-button-container">
+                                <span class="u-ripple"></span>
+                            </span>
+                </button>
+                <h1><span class="i18n" id="ht.pag.pwP.0002" name="ht.pag.pwP.0002"></span></h1>
+            </div>
+            <div class="u-widget  u-widget-right" style="margin-right: 0px;">
+                <div class="u-widget-heading localtitle">
+                    <span style="float:left;margin-top: -8px;"><span class="i18n" id="ht.pag.pwP.0023" name="ht.pag.pwP.0023"></span></span>
+                </div>
+                <div class="u-widget-body" style="padding-top: 55px;">
+                    <div class="u-row">
+                        <!--
+                        <div class="u-col-12">
+                            <div class="u-form-group">
+                                <label class="u-col-3 u-form-label text-right labelcss"><span class="i18n" name="ht.pag.pwP.0006"></span></label>
+                                <div class="u-col-4">
+                                    <div class="u-input-group  must-in u-col-12">
+                                        <div class="u-input-group-before " style="color: red;">*</div>
+                                        <input type="text" disabled class="u-form-control" name="name" u-meta='{"id":"name","type":"string","data":"PolicyData","field":"name"}'
+                                               placeholder="">
+                                        <span class=""></span>
+                                    </div>
+                                </div>
+                                <div class="u-col-5"></div>
+                            </div>
+                        </div>
+                        -->
+                        <div class="u-col-lg-12 u-col-md-12 u-col-sm-12">
+                            <div class="u-form-group">
+                                <label class="u-col-3 u-form-label text-right labelcss"><span class="i18n" name="ht.pag.pwP.0007"></span></label>
+                                <div class="u-col-4">
+                                    <div class="u-input-group  must-in u-col-lg-12 u-col-md-12 u-col-sm-12">
+                                        <div class="u-input-group-before " style="color: red;">*</div>
+                                        <input type="text" name="code" disabled u-meta='{"id":"code","type":"string","data":"PolicyData","field":"code"}' class="u-form-control"
+                                               placeholder="">
+                                        <span class=""></span>
+                                    </div>
+                                </div>
+                                <div class="u-col-5"></div>
+                            </div>
+                        </div>
+                        <div class="u-col-lg-12 u-col-md-12 u-col-sm-12">
+                            <div class="u-form-group">
+                                <label class="u-col-3 u-form-label text-right labelcss"><span class="i18n" name="ht.pag.pwP.0008"></span></label>
+                                <div class="u-col-4">
+                                    <div class="u-input-group  must-in u-col-lg-12 u-col-md-12 u-col-sm-12">
+                                        <div class="u-input-group-before " style="color: red;">*</div>
+                                        <div id="test-select" class="u-combo" u-meta='{"type":"u-combobox","datasource":"pwdqiangdu","data":"PolicyData","field":"pwdcomplexityId","onlySelect":true}'>
+                                            <div class="u-input-group u-has-feedback">
+                                                <span class="u-form-control-feedback fa fa-angle-down" data-role="combo-button"></span>
+                                                <input class="u-form-control" readonly/>
+                                            </div>
+                                        </div>
+
+                                        <span class=""></span>
+                                    </div>
+                                </div>
+                                <div class="u-col-5"></div>
+                            </div>
+                        </div>
+                        <div class="u-col-lg-12 u-col-md-12 u-col-sm-12">
+                            <div class="u-form-group">
+                                <label class="u-col-3 u-form-label text-right labelcss"><span class="i18n" name="ht.pag.pwP.0009"></span></label>
+                                <div class="u-col-4 mininumlengthclass">
+                                    <div class="u-input-group  must-in u-col-lg-12 u-col-md-12 u-col-sm-12">
+                                        <div class="u-input-group-before " style="color: red;">*</div>
+                                        <input type="text" class="u-form-control integer" name="mininumlength" u-meta='{"id":"mininumlength","type":"string","data":"PolicyData","field":"mininumlength"}'
+                                               placeholder="">
+                                        <span class=""></span>
+                                        <div class="warnsign hide">
+                                            <i class="uf uf-exc-c-2"></i><span class="i18n" id="ht.pag.pwP.0024" name="ht.pag.pwP.0024"></span></div>
+                                    </div>
+                                </div>
+                                <div class="u-col-5"><span class="i18n" id="ht.pag.pwP.0025" name="ht.pag.pwP.0025"></span></div>
+                            </div>
+                        </div>
+                        <div class="u-col-lg-12 u-col-md-12 u-col-sm-12">
+                            <div class="u-form-group">
+                                <label class="u-col-3 u-form-label text-right labelcss"><span class="i18n" name="ht.pag.pwP.0010"></span></label>
+                                <div class="u-col-4 validatedaysclass">
+                                    <div class="u-input-group  must-in u-col-lg-12 u-col-md-12 u-col-sm-12">
+                                        <div class="u-input-group-before " style="color: red;">*</div>
+                                        <input type="text" class="u-form-control integer" name="validatedays" u-meta='{"id":"validatedays","type":"string","data":"PolicyData","field":"validatedays"}'
+                                               placeholder="">
+                                        <span class=""></span>
+                                        <div class="warnsign hide">
+                                            <i class="uf uf-exc-c-2"></i><span class="i18n" id="ht.pag.pwP.0026" name="ht.pag.pwP.0026"></span></div>
+                                    </div>
+                                </div>
+                                <div class="u-col-5">
+                                    <div class="verticalcalss"><span class="i18n" id="ht.pag.pwP.0027" name="ht.pag.pwP.0027"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="u-col-lg-12 u-col-md-12 u-col-sm-12">
+                            <div class="u-form-group">
+                                <label class="u-col-3 u-form-label text-right labelcss"><span class="i18n" name="ht.pag.pwP.0011"></span></label>
+                                <div class="u-col-4 alertdaysclass">
+
+
+                                    <div class="u-input-group  must-in u-col-lg-12 u-col-md-12 u-col-sm-12">
+                                        <div class="u-input-group-before " style="color: red;">*</div>
+                                        <input type="text" class="u-form-control integer" name="alertdays" u-meta='{"id":"alertdays","type":"string","data":"PolicyData","field":"alertdays"}'
+                                               placeholder="">
+                                        <span class=""></span>
+                                        <div class="warnsign hide">
+                                            <i class="uf uf-exc-c-2"></i><span class="i18n" id="ht.pag.pwP.0028" name="ht.pag.pwP.0028"></span></div>
+                                    </div>
+                                </div>
+                                <div class="u-col-5">
+                                    <div class="verticalcalss"><span class="i18n" id="ht.pag.pwP.0029" name="ht.pag.pwP.0029"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="u-col-lg-12 u-col-md-12 u-col-sm-12">
+                            <div class="u-form-group">
+                                <label class="u-col-3 u-form-label text-right labelcss"><span class="i18n" id="ht.pag.pwP.0012" name="ht.pag.pwP.0012"></span></label>
+                                <div class="u-col-4">
+                                    <div class="u-input-group  must-in u-col-lg-12 u-col-md-12 u-col-sm-12" style="margin-bottom: 0px;">
+                                        <label class="u-radio u-radio-success" data-bind="css:{' is-checked': (PolicyData.ref('isautolock')()=='Y')?true:false }">
+                                            <input type="radio" class="u-radio-button" name="isautolock" value="Y" data-bind="checked:PolicyData.ref('isautolock')">
+                                            <span class="u-radio-label"><span class="i18n" name="ht.pag.pwP.0030"></span></span>
+                                        </label>
+                                        <label class="u-radio u-radio-danger" data-bind="css:{' is-checked': (PolicyData.ref('isautolock')()=='N')?true:false }"
+                                               style="margin-left: 15px">
+                                            <input type="radio" class="u-radio-button" name="isautolock" value="N" data-bind="checked:PolicyData.ref('isautolock')">
+                                            <span class="u-radio-label"><span class="i18n" name="ht.pag.pwP.0031"></span></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="u-col-5"></div>
+                            </div>
+                        </div>
+                        <div class="u-col-lg-12 u-col-md-12 u-col-sm-12">
+                            <div class="u-form-group">
+                                <label class="u-col-3 u-form-label text-right labelcss"><span class="i18n" name="ht.pag.pwP.0015"></span></label>
+                                <div class="u-col-4 unlocktimeclass">
+                                    <div class="u-input-group  must-in u-col-lg-12 u-col-md-12 u-col-sm-12">
+                                        <div class="u-input-group-before " style="color: red;">*</div>
+                                        <input type="text" class="u-form-control integer" name="unlocktime" u-meta='{"id":"unlocktime","type":"string","data":"PolicyData","field":"unlocktime"}'
+                                               data-bind="value:PolicyData.ref('unlocktime'), enable:(PolicyData.ref('isautolock')()=='Y')"
+                                               placeholder="">
+                                        <span class=""></span>
+                                        <div class="warnsign hide">
+                                            <i class="uf uf-exc-c-2"></i><span class="i18n" id="ht.pag.pwP.0032" name="ht.pag.pwP.0032"></span></div>
+                                    </div>
+                                </div>
+                                <div class="u-col-5"><span class="i18n" id="ht.pag.pwP.0033" name="ht.pag.pwP.0033"></span></div>
+                            </div>
+                        </div>
+                        <div class="u-col-lg-12 u-col-md-12 u-col-sm-12">
+                            <div class="u-form-group">
+                                <label class="u-col-3 u-form-label text-right labelcss"><span class="i18n" name="ht.pag.pwP.0016"></span></label>
+                                <div class="u-col-4">
+                                    <div class="u-input-group  must-in u-col-lg-12 u-col-md-12 u-col-sm-12">
+                                        <div class="u-input-group-before " style="color: red;">*</div>
+                                        <div class="u-combo" u-meta='{"type":"u-combobox","datasource":"errorloginthreshold","data":"PolicyData","field":"errorloginthreshold","onlySelect":true}'>
+                                            <div class="u-input-group u-has-feedback">
+                                                <span class="u-form-control-feedback fa fa-angle-down" data-role="combo-button"></span>
+                                                <input class="u-form-control" readonly/>
+                                            </div>
+                                        </div>
+                                        <span class=""></span>
+                                    </div>
+                                </div>
+                                <div class="u-col-5"></div>
+                            </div>
+                        </div>
+                        <div class="u-col-lg-12 u-col-md-12 u-col-sm-12">
+                            <div class="u-form-group">
+                                <label class="u-col-3 u-form-label text-right labelcss"><span class="i18n" name="ht.pag.pwP.0017"></span></label>
+                                <div class="u-col-4 similaritydegreeclass">
+                                    <div class="u-input-group  must-in u-col-lg-12 u-col-md-12 u-col-sm-12">
+                                        <div class="u-input-group-before " style="color: red;">*</div>
+                                        <input type="text" class="u-form-control integer" name="similaritydegree" u-meta='{"id":"similaritydegree","type":"string","data":"PolicyData","field":"similaritydegree"}'
+                                               placeholder="">
+                                        <span class=""></span>
+                                        <div class="warnsign hide">
+                                            <i class="uf uf-exc-c-2"></i><span class="i18n" id="ht.pag.pwP.0034" name="ht.pag.pwP.0034"></span></div>
+                                    </div>
+                                </div>
+                                <div class="u-col-5">
+                                    <div class="verticalcalss"><span class="i18n" id="ht.pag.pwP.0035" name="ht.pag.pwP.0035"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="u-col-lg-12 u-col-md-12 u-col-sm-12">
+                            <div class="u-form-group">
+                                <label class="u-col-3 u-form-label text-right labelcss"><span class="i18n" name="ht.pag.pwP.0018"></span></label>
+                                <div class="u-col-4 remembercountclass">
+                                    <div class="u-input-group  must-in u-col-lg-12 u-col-md-12 u-col-sm-12">
+                                        <div class="u-input-group-before " style="color: red;">*</div>
+                                        <input type="text" class="u-form-control integer" name="remembercount" u-meta='{"id":"remembercount","type":"string","data":"PolicyData","field":"remembercount"}'
+                                               placeholder="">
+                                        <span class=""></span>
+                                        <div class="warnsign hide">
+                                            <i class="uf uf-exc-c-2"></i><span class="i18n" id="ht.pag.pwP.0036" name="ht.pag.pwP.0036"></span></div>
+                                    </div>
+                                </div>
+                                <div class="u-col-5">
+                                    <div class="verticalcalss"><span class="i18n" id="ht.pag.pwP.0037" name="ht.pag.pwP.0037"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="u-col-lg-12 u-col-md-12 u-col-sm-12">
+                            <div class="u-form-group">
+                                <label class="u-col-3 u-form-label text-right labelcss"><span class="i18n" name="ht.pag.pwP.0019"></span></label>
+                                <div class="u-col-4 defalutPasswordclass">
+                                    <div class="u-input-group  must-in u-col-lg-12 u-col-md-12 u-col-sm-12">
+                                        <div class="u-input-group-before " style="color: red;">*</div>
+                                        <input type="text" class="u-form-control" name="defaultPassword" u-meta='{"id":"defalutPassword","type":"string","data":"PolicyData","field":"defaultPassword"}'
+                                               placeholder="">
+                                        <span class=""></span>
+                                        <div class="warnsign hide">
+                                            <i class="uf uf-exc-c-2"></i>
+                                            <p style="display: inline;"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="u-col-5"></div>
+                            </div>
+                        </div>
+                        <div class="u-col-lg-12 u-col-md-12 u-col-sm-12">
+                            <div class="u-form-group">
+                                <label class="u-col-3 u-form-label text-right labelcss"><span class="i18n" name="ht.pag.pwP.0020"></span></label>
+                                <div class="u-col-4">
+                                    <div class="u-input-group  must-in u-col-lg-12 u-col-md-12 u-col-sm-12" style="margin-bottom: 0px;">
+                                        <label class="u-radio u-radio-success" data-bind="css:{'is-checked':(PolicyData.ref('isforceupdate')()=='Y'?true:false)}">
+                                            <input type="radio" class="u-radio-button" name="isforceupdate" value="Y"  data-bind="checked:PolicyData.ref('isforceupdate')">
+                                            <span class="u-radio-label"><span class="i18n" id="ht.pag.pwP.0030" name="ht.pag.pwP.0030"></span></span>
+                                        </label>
+                                        <label class="u-radio u-radio-danger" data-bind="css:{'is-checked':(PolicyData.ref('isforceupdate')()=='N'?true:false)}"
+                                               style="margin-left: 15px">
+                                            <input type="radio" class="u-radio-button" name="isforceupdate" value="N"  data-bind="checked:PolicyData.ref('isforceupdate')">
+                                            <span class="u-radio-label"><span class="i18n" id="ht.pag.pwP.0031" name="ht.pag.pwP.0031"></span></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="u-col-5"></div>
+                            </div>
+                        </div>
+                        <div class="u-col-lg-12 u-col-md-12 u-col-sm-12">
+                            <div class="u-form-group">
+                                <label class="u-col-3 u-form-label text-right labelcss"><span class="i18n" name="ht.pag.pwP.0021"></span></label>
+                                <div class="u-col-4">
+                                    <div class="u-input-group  must-in u-col-lg-12 u-col-md-12 u-col-sm-12">
+                                        <div class="u-input-group-before " style="color: red;">*</div>
+                                        <select class="u-form-control margin-bottom-15"  name="validateType" data-bind="value: PolicyData.ref('validateType')">
+                                            <!--<option value="password">密码验证</option>-->
+                                            <option class="i18n" name="ht.pag.pwP.0039" value="phone"></option>
+                                            <option class="i18n" name="ht.pag.pwP.0038" value="email"></option>
+                                        </select>
+                                        <span class=""></span>
+                                    </div>
+                                </div>
+                                <div class="u-col-5"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="u-widget-heading localfootcss">
+                    <button class="btn btn-default btn-sm backbutton u-right hide" data-bind="click:cancel" style="margin-left: 10px;"><span class="i18n" id="ht.pag.pwP.0040" name="ht.pag.pwP.0040"></span>
+                    </button>
+                    <button class="u-button raised primary u-button-info u-right" data-bind="click:save"><span class="i18n" id="ht.pag.pwP.0003" name="ht.pag.pwP.0003"></span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

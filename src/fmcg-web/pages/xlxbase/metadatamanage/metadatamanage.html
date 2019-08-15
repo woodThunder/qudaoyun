@@ -1,0 +1,173 @@
+<div class="ui-panel ui-list-panel">
+  <div class="head-bg"></div>
+    <div class="ui-list-panel-head clearfix">
+        <div class="ui-list-panel-head-search">
+            <ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+            </ui-searchbox>
+            <div class="ui-btn-group">
+                <a class="ui-btn ui-btn-primary" data-bind="click: addTab">
+                    新增页签
+                </a>
+                <a class="ui-btn ui-btn-primary" data-bind="click: showDefaultTplDialog">
+                    生成初始模板
+                </a>
+            </div>
+        </div>
+        <div class="ui-list-panel-head-operation">
+            <div class="ui-statistics">
+                已选择
+                <span class="font-c-blue" data-bind="text:BusiEntityParent.selectedIndices().length"></span>条
+            </div>
+            <div class="ui-vertical-seperate"></div>
+            <a class="ui-btn" data-bind="click: showEditPanel, visible: BusiEntityParent.getSelectedRows().length==1
+              && BusiEntityParent.getSelectedRows()[0].getValue('entityType') != '1' ">
+                <i class="uifont icon-edit margin-right-5"></i>修改
+            </a>
+            <a class="ui-btn" data-bind="click: updateTab, visible: BusiEntityParent.getSelectedRows().length==1
+              && BusiEntityParent.getSelectedRows()[0].getValue('entityType') == '1'">
+                <i class="uifont icon-edit margin-right-5"></i>修改页签
+            </a>
+            <a class="ui-btn" data-bind="click: delTab, visible: BusiEntityParent.getSelectedRows().length==1
+              && BusiEntityParent.getSelectedRows()[0].getValue('entityType') == '1'">
+                <i class="uifont icon-edit margin-right-5"></i>删除页签
+            </a>
+            <div class="ui-head-operation-close">
+                <i class="uifont icon-tubiao-danchuangguanbi"></i>
+            </div>
+        </div>
+    </div>
+    <div class="ui-panel-body">
+        <div class="ui-table-container">
+            <ui-grid params='options:$root.grid1Option,vm:$root'>
+            </ui-grid>
+            <div class="pagination-right">
+                <div id='pagination-1' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"BusiEntityParent","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+            </div>
+        </div>
+    </div>
+    <!-- 遮罩层 -->
+    <div id="mask-left"></div>
+    <div id="mask-top"></div>
+</div>
+
+<div class="ui-panel ui-bill-panel" style="display: none;">
+  <div class="ui-panel-btn-bg">
+    <div class="ui-bill-panel-title">
+      <span>业务实体编码：</span><span data-bind="text: BusiEntityParent.ref('code')()"></span>
+      <span class="margin-left-20">业务实体名称：</span><span data-bind="text: BusiEntityParent.ref('name')()"></span>
+    </div>
+    <div class="ui-operate-btn">
+    	<a class="ui-btn ui-btn-primary" data-bind="click:cancelEdit">取消
+      </a>
+      <a class="ui-btn ui-btn-green" data-bind="click:saveBill">保存
+      </a>
+    </div>
+  </div>
+  <div class="ui-bill-body margin-top-20">
+      <ui-grid params='options:$root.grid3Option,vm:$root'>
+      </ui-grid>
+  </div>
+
+</div>
+
+<div class="ui-panel ui-bill-detail" style="display: none;">
+  <div class="ui-panel-btn-bg">
+    <div class="ui-bill-panel-title">
+      <span>业务实体编码：</span><span data-bind="text: BusiEntityParent.ref('code')()"></span>
+      <span class="margin-left-20">业务实体名称：</span><span data-bind="text: BusiEntityParent.ref('name')()"></span>
+    </div>
+    <div class="ui-operate-btn">
+    	<a class="ui-btn ui-btn-primary" data-bind="click: detail2list">返回
+      </a>
+    </div>
+  </div>
+  <div class="ui-bill-body margin-top-20">
+      <ui-grid params='options:$root.grid2Option,vm:$root'>
+      </ui-grid>
+  </div>
+
+</div>
+<!-- 生成初始模板对话框 -->
+<div id="defaultTplDialog" style="display:none;">
+  <div class="u-msg-title">
+    <h4>请选择</h4>
+  </div>
+  <div class="u-msg-content">
+    <div class="box">
+      <div class="ui-row">
+        <div class="ui-item required">
+            <div class="ui-name">
+                业务对象：
+            </div>
+            <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"DefaultTpl","field":"busiObject","datasource":"busiObjectSrc","showFix":"true","onlySelect":true}'>
+                <input />
+                <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="ui-card margin-top-15">
+        <div class="ui-card-head">
+          模板类型
+        </div>
+        <div class="ui-card-content padding-bottom-0">
+          <div class="ui-checklist" data-bind="foreach: {data: TemplateType.rows(), as: 'row'}">
+            <span class="ui-checkitem" data-bind="click: $root.toggleTemplateType.bind($root, row), text: row.ref('name'), css:{select: row.selected}"></span>
+          </div>
+        </div>
+    </div>
+    <div class="box-bg"></div>
+  </div>
+  <div class="u-msg-footer">
+    <a class="ui-btn margin-right-5" data-bind="click: cancelGenerateDefaultTpl">取消</a>
+    <a class="ui-btn ui-btn-primary" data-bind="click: confirmGenerateDefaultTpl">确定</a>
+  </div>
+</div>
+<!-- 生成初始模板对话框 -->
+<!-- 页签编辑对话框 start -->
+<div id="tabEditDialog" style="display:none;">
+  <div class="u-msg-title">
+    <h4>页签编辑</h4>
+  </div>
+  <div class="u-msg-content">
+    <div class="box">
+      <div class="ui-row">
+        <div class="ui-item required">
+            <div class="ui-name">
+                业务对象：
+            </div>
+            <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"TabEditParent","field":"busiobject","datasource":"busiObjectSrc","showFix":"true","onlySelect":true}'>
+                <input />
+                <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+            </div>
+        </div>
+      </div>
+      <div class="ui-row">
+        <div class="ui-item required">
+            <div class="ui-name">
+                编码：
+            </div>
+            <div class="ui-inputarea" u-meta='{"type":"u-text","data":"TabEditParent","field":"code"}'>
+                <input />
+            </div>
+        </div>
+      </div>
+      <div class="ui-row">
+        <div class="ui-item required">
+            <div class="ui-name">
+                名称：
+            </div>
+            <div class="ui-inputarea" u-meta='{"type":"u-text","data":"TabEditParent","field":"name"}'>
+                <input />
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="box-bg"></div>
+  </div>
+  <div class="u-msg-footer">
+    <a class="ui-btn margin-right-5" data-bind="click: cancelSaveTab">取消</a>
+    <a class="ui-btn ui-btn-primary" data-bind="click: saveTab">确定</a>
+  </div>
+</div>
+<!-- 页签编辑对话框 end -->

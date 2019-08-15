@@ -1,0 +1,55 @@
+.grid-content{
+    background-color: #eee;
+    height: 100%;
+}
+
+.height50{
+    height: 60px;
+}
+#dataPermission .ui-name{
+    width:70px;
+}
+
+
+#dataPermission .ui-inputarea{
+    width:150px;
+}
+
+#dataPermission .u-combobox-input{
+    width:150px;
+}
+
+.margin-top8{
+    margin-top:8px;
+}
+
+.dataPermission-role{
+    margin-left: 30px;
+    padding-top:10px;
+    font-size: 20px;
+
+}
+
+.backRow{
+    background: #ccc !important;
+}
+
+.appwin-tile{
+    display: flex;
+}
+
+.appwin-tile-left{
+    width: 40%;
+
+}
+
+.appwin-tile-right{
+    width: 55%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    line-height: 24px;
+}
+
+
+

@@ -1,0 +1,35 @@
+<table class="table table-hover nctable" id="row_table">
+    <thead>
+    <tr class="topbody">
+        <th>角色名称</th>
+        <th>角色编码</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody id="role_tbody">
+    <% var list = data.content;
+    for(var i=0,j=list.length;i<j;i++){
+    var item = list[i];
+    %>
+    <tr data-roleid="<%=item.roleId%>">
+        <td><%=item.roleName%></td>
+        <td><%=item.roleCode%></td>
+        <td data-attrRoleId="<%=item.roleId%>" data-attrRoleCode="<%=item.roleCode%>" data-attrRoleName="<%=item.roleName%>">
+            <button class="btn btn-primary btn-sm design">设计</button>
+        </td>
+    </tr>
+    <%}%>
+    </tbody>
+</table>
+<div class="pageCtrl">
+    <% if(data.totalPages>1){ %>
+    <div  class="text-right more">
+        <% if(!data.firstPage){%>
+        <button type="button" class="btn btn-default btn-sm lastP"  >上一页</button>
+        <%}if(!data.lastPage){%>
+        <button type="button" class="btn btn-default btn-sm nextP"  >下一页</button>
+        <%}%>
+        <!--<a href="javascript:void(0);" class="showmore">显示更多<i class="iconfont icon-arrow-down"></i></a>-->
+    </div>
+    <%}%>
+</div>

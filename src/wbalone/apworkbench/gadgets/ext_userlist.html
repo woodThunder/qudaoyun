@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta charset="utf-8" />
+		<title>用户管理</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta content="" name="description" />
+		<meta content="" name="author" />
+		<link rel="Shortcut Icon" href="../images/favicon.ico"/>
+		<link href="../css/userlist/style.css" rel="stylesheet">
+
+		<link href="../css/userlist/index.css" rel="stylesheet">
+		<link href="../trd/iconfont/iconfont.css" rel="stylesheet">
+
+		<script>
+		    var $urlStatus = 1;
+			window.$ctx = '${ctx}';
+			var $tenantId = "${tenantId?if_exists}";
+			var $userId = "${userId?if_exists}";
+            var $systemId = "${systemId?if_exists}";
+            window.sessionStorage.$ctx = "${ctx}";
+            window.sessionStorage.tenantId = $tenantId;
+            var $typeAlias = "${typeAlias?if_exists}";
+            window.sessionStorage.typeAlias = $typeAlias;
+            var $usertype = "${usertype?if_exists}";
+            window.sessionStorage.usertype = $usertype;
+		</script>
+	</head>
+
+	<body style="overflow-x: hidden;">
+		<!-- content -->
+		<div class="content" style="padding:0"></div>
+		<script src="../trd/requirejs/require.js"></script>
+		<script src="../js/require.config.js"></script>
+		<script src="../js/userlist/index.js"></script>
+	</body>
+</html>

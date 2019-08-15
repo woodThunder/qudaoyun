@@ -1,0 +1,232 @@
+
+<div class="ui-list-panel ui-panel">
+  <div>
+    <div class="page-title">
+      <span>办事处分区</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+  <div class="ui-searchbox ui-panel-head">
+    <div id="agencypartition-searchcontent" class="ui-searchbox-content">
+
+    </div>
+    <div class="clearfix">
+
+    </div>
+    <div class="ui-searchbox-footer">
+      <div class="ui-search-more hidden">
+          <a>更多<i class="uifont icon-down"></i></a>
+      </div>
+
+      <div class="ui-search-btn">
+        <a class="ui-btn ui-btn-primary margin-right-5"
+        data-bind="click:cleanSearch">清空
+        </a>
+        <a class="ui-btn ui-btn-green"
+        data-bind="click:search.bind($data,true)">搜索
+        </a>
+      </div>
+      <div class="clearfix">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-panel-body">
+  	<div class="ui-panel-body-head">
+  		<div class="ui-panel-body-head-left">
+  			<a class="ui-btn ui-btn-orange margin-right-5" id="user-action-add"
+          data-bind="click: showAddBillPanel.bind($data)"><i class="uifont icon-plus margin-right-5"></i>新增
+        </a>
+        <a class="ui-btn ui-btn-primary" id="user-action-del"
+          data-bind="click: del"><i class="uifont icon-shanchu1 margin-right-5"></i>删除
+        </a>
+        <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+						<a class="ui-button-item" data-bind="click: enable"><i class="uifont icon-qiyong margin-right-5"></i>启用</a>
+						<a class="ui-button-item" data-bind="click: disable"><i class="uifont icon-tingyong margin-right-5"></i>停用</a>
+				</div>
+       <!--  <div class="ui-button-group clearfix vertical-align-middle">
+						<a class="ui-button-item" data-bind="click: enable">启用</a>
+						<a class="ui-button-item" data-bind="click: disable">停用</a>
+				</div> -->
+  		</div>
+  	</div>
+      <div class="ui-table-container">
+          <div id="agencypartition"
+               u-meta='{"id":"grid_agencypartition","data":"agencypartitionList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+                     <div options='{"field":"code","dataType":"String","title":"分区编码","renderType":"detailRender"}'></div>
+                      <div options='{"field":"name","dataType":"String","title":"分区名称"}'></div>
+                      <div options='{"field":"parentName","dataType":"String","title":"上级分区名称"}'></div>
+                      <div options='{"field":"isEnable","dataType":"integer","title":"启用状态","renderType":"enableRender"}'></div>
+                      <div options='{"field":"creator","dataType":"String","title":"创建人"}'></div>
+                      <div options='{"field":"creationTime","dataType":"Datetime","title":"创建时间"}'></div>
+                      <div options='{"field":"modifier","dataType":"String","title":"修改人"}'></div>
+                      <div options='{"field":"modifiedTime","dataType":"Datetime","title":"修改时间"}'></div>
+                      <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation","fixed":true,"width":"110px"}'></div>
+          </div>
+          <div class="ui-statistics margin-top-10">
+            <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择<span class="font-c-blue" data-bind="text:agencypartitionList.selectedIndices().length"></span>项数据
+          </div>
+          <div class="pagination-right">
+            <div id='pagination' class='pagination u-pagination pagination-sm'
+            u-meta='{"type":"pagination","data":"agencypartitionList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+          </div>
+      </div>
+    </div>
+</div>
+
+<!-- 对话框 -->
+<div id="dialog_layer" class="ui-searchbox" style="display:none;padding:20px">
+
+</div>
+<div class="ui-bill-panel ui-panel" style="display:none;">
+  <div>
+    <div class="page-title">
+      <span>办事处分区</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+    	<a class="ui-btn ui-btn-primary" data-bind="click: cancelBill.bind($data)">取消
+      </a>
+      <a class="ui-btn ui-btn-green" data-bind="click: saveBill.bind($data)">保存
+      </a>
+    </div>
+  </div>
+  <div class="ui-bill-head ui-panel-head">
+    <div class="ui-item">
+      <div class="ui-name">
+        <span class='ui-redstar'>*</span>
+        分区编码：
+      </div>
+      <div class="ui-inputarea">
+        <!-- <div u-meta='{"id":"f1","type":"u-text","data":"agencypartitionList","field":"code"}'> -->
+        <div u-meta='{"type":"u-text","data":"agencypartitionList","field":"code"}'>
+          <input class="u-input"/>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">
+        <span class='ui-redstar'>*</span>
+        分区名称：
+      </div>
+      <div class="ui-inputarea">
+        <div u-meta='{"type":"u-text","data":"agencypartitionList","field":"name"}'>
+          <input class="u-input"/>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">上级分区名称：</div>
+      <div class="ui-inputarea">
+        <div u-meta='{"type":"uiRefer","data":"agencypartitionList","field":"parentId"}'>
+          <input readonly="readonly"/>
+          <span class="ui-icon uifont icon-bar refer"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui-item">
+      <span class="item-name ui-name">启用状态：</span>
+  		<div class="ui-inputarea">
+  			<span class="text-value" data-bind='text: enableFormat("agencypartitionList","isEnable")'></span>
+  		</div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="ui-bill-body">
+    <div class="margin-bottom-10">
+      <a class="ui-btn ui-btn-orange margin-right-5" id="user-action-additem"
+        data-bind="click: addItem.bind($data)"><i class="uifont icon-plus margin-right-5"></i>增行
+      </a>
+      <div style="display: none;">
+					<div id="rolerefadd" class="input-group" u-meta='{"type":"uiRefer", "data":"agencypartitionfakeChild", "field":"agencyID"}'>
+						<input class="u-form-control u-input" type="text" data-bind="enable: true">
+						<span class="u-form-control-feedback fa fa-search refer" data-bind="enable: true"></span>
+					</div>
+			</div>
+      <a class="ui-btn ui-btn-primary" id="user-action-del"
+        data-bind="click: delItems.bind($data)"><i class="uifont icon-shanchu1 margin-right-5"></i>删行
+      </a>
+    </div>
+    <div class="ui-table-container margin-bottom-30">
+      <div u-meta='{"id":"grid_agencypartitionChild","data":"agencypartitionChild","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+        <!-- <div options='{"field":"agencyID","dataType":"String","title":"办事处编码","renderType":"ncReferRender","editType":"ncReferEditType","showField":"agencyCode","editOptions":{"validType":"string","rel":{"refpk":"agencyID","refcode":"agencyCode","refname":"agencyName"}}}'></div> -->
+        <div options='{"field":"agencyCode","dataType":"String","title":"办事处编码","required":true}'></div>
+        <div options='{"field":"agencyName","dataType":"String","title":"办事处名称","editable":false}'></div>
+     </div>
+    </div>
+  </div>
+</div>
+<div class="ui-panel ui-bill-detail" style="display:none;">
+  <div>
+    <div class="page-title">
+      <span>办事处分区</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+    	<a class="ui-btn ui-btn-primary" data-bind="click: retListPanel">返回
+      </a>
+      <a class="ui-btn ui-btn-green" data-bind="click: editHandle.bind($data)">编辑
+      </a>
+    </div>
+  </div>
+  <div class="ui-bill-head ui-panel-head">
+    <div class="ui-item">
+      <div class="ui-name">分区编码：</div>
+      <div class="ui-inputarea">
+					<div data-bind='text: agencypartitionList.ref("code")'></div>
+	    </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">分区名称：</div>
+      <div class="ui-inputarea">
+					<div data-bind='text: agencypartitionList.ref("name")'></div>
+	    </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">上级分区名称：</div>
+      <div class="ui-inputarea">
+					<div data-bind='text: agencypartitionList.ref("parentName")'></div>
+	    </div>
+    </div>
+
+    <div class="ui-item">
+      <span class="item-name ui-name">启用状态：</span>
+  		<div class="ui-inputarea">
+  			<span class="text-value" data-bind="text: enableHandle()"></span>
+  		</div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="ui-bill-body">
+
+    <div class="ui-table-container margin-bottom-30">
+      <div u-meta='{"id":"grid_agencypartitionChild_detail","data":"agencypartitionChild","type":"grid","editable":false,"multiSelect":false,"showNumCol":true}'>
+        <!-- <div options='{"field":"agencyCode","dataType":"String","title":"办事处编码","renderType":"ncReferRender","editType":"ncReferEditType","showField":"agencyCode","editOptions":{"validType":"string","rel":{"refpk":"agencyID","refcode":"agencyCode","refname":"agencyName"}}}'></div> -->
+        <div options='{"field":"agencyCode","dataType":"String","title":"办事处编码"}'></div>
+        <div options='{"field":"agencyName","dataType":"String","title":"办事处名称","editable":false}'></div>
+     </div>
+    </div>
+  </div>
+</div>

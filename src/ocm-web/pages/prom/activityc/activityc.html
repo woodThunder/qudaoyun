@@ -1,0 +1,494 @@
+﻿<div class="ui-list-panel ui-panel">
+    <div>
+        <div class="page-title">
+            <span>活动定义</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="title-seperator"></div>
+
+    <div class="ui-searchbox">
+        <div id="ActivityC-searchcontent" class="ui-searchbox-content">
+
+        </div>
+        <div class="clearfix">
+
+        </div>
+        <div class="ui-searchbox-footer">
+            <div class="ui-search-more hidden">
+                <a>更多<i class="uifont icon-down"></i></a>
+            </div>
+
+            <div class="ui-search-btn">
+                <a class="ui-btn ui-btn-primary margin-right-5"
+                   data-bind="click:cleanSearch">清空
+                </a>
+                <a class="ui-btn ui-btn-green"
+                   data-bind="click:search.bind($data,true)">搜索
+                </a>
+
+            </div>
+            <div class="clearfix">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="ui-panel-body">
+        <div class="ui-panel-body-head">
+            <div class="ui-panel-body-head-left">
+                <a class="ui-btn ui-btn-orange margin-right-5" id="user-action-add"
+                   data-bind="click: showAddBillPanel.bind($data)"><i class="uifont icon-plus margin-right-5"></i>新增
+                </a>
+                <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+                   data-bind="click: del"><i class="uifont icon-shanchu1 margin-right-5"></i>删除
+                </a>
+                <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-copy"
+                   data-bind="click: showCopyBillPanel.bind($data)"><i class="uifont icon-copy margin-right-5"></i>复制
+                </a>
+                <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+                    <a class="ui-button-item" data-bind="click: enable"><i class="uifont icon-qiyong margin-right-5"></i>启用</a>
+                    <a class="ui-button-item" data-bind="click: disable"><i class="uifont icon-tingyong margin-right-5"></i>停用</a>
+                </div>
+                <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+                    <a class="ui-button-item" data-bind="click: submit"><i class="uifont icon-tubiao-shenhe margin-right-5"></i>提交</a>
+                    <a class="ui-button-item" data-bind="click: unsubmit"><i class="uifont icon-tubiao-quxiaoshenhe margin-right-5"></i>收回</a>
+                </div>
+                <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+                    <a class="ui-button-item" data-bind='click: approve'><i class="uifont icon-tubiao-shenhe margin-right-5"></i>审核</a>
+                    <a class="ui-button-item" data-bind='click: unapprove'><i class="uifont icon-tubiao-quxiaoshenhe margin-right-5"></i>弃审</a>
+                </div>
+
+            </div>
+            <!-- <div class="ui-panel-body-head-right">
+              <i class="uifont icon-i font-c-blue margin-right-5"></i>共搜索到<span data-bind="text:ActivityCList.totalRow"></span>条数据
+            </div> -->
+        </div>
+        <div class="ui-table-container">
+            <div u-meta='{"id":"grid_ActivityC","data":"ActivityCList","type":"grid","editable":false,"multiSelect":true,"showNumCol":false}'>
+                <div options='{"field":"code","dataType":"String","title":"活动编码","renderType":"detailRender"}'></div>
+                <div options='{"field":"name","dataType":"String","title":"活动名称"}'></div>
+                <div options='{"field":"activeTypecName","dataType":"String","title":"活动类型"}'></div>
+                <!--<div options='{"field":"theme","dataType":"String","title":"活动主题"}'></div>-->
+                <!--<div options='{"field":"responsiblePersonName","dataType":"String","title":"活动负责人"}'></div>-->
+
+                <div options='{"field":"terminalStartDate","dataType":"Date","title":"活动开始时间"}'></div>
+                <div options='{"field":"terminalEndDate","dataType":"Date","title":"活动结束时间"}'></div>
+
+                <div options='{"field":"agencyName","dataType":"String","title":"所属办事处"}'></div>
+                 <div options='{"field":"auditStatus","dataType":"String","title":"审核状态","renderType": "approveRender"}'></div>
+                 <div options='{"field":"auditor","dataType":"String","title":"审核人"}'></div>
+                <div options='{"field":"auditTime","dataType":"Date","title":"审核时间"}'></div>
+                <div options='{"field":"isEnable","dataType":"String","title":"启用状态","editable":false,"renderType":"enableRender"}'></div>
+                <div options='{"field":"creator","dataType":"String","title":"创建人"}'></div>
+                <div options='{"field":"creationTime","dataType":"Date","title":"创建时间"}'></div>
+                <div options='{"field":"modifier","dataType":"String","title":"修改人"}'></div>
+                <div options='{"field":"modifiedTime","dataType":"Date","title":"修改时间"}'></div>
+                <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation","fixed":true,"width":"110px"}'></div>
+            </div>
+            <div class="ui-statistics margin-top-10">
+                <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择<span class="font-c-blue" data-bind="text:ActivityCList.selectedIndices().length"></span>项数据
+            </div>
+            <div class="pagination-right">
+                <div id='pagination' class='pagination u-pagination pagination-sm'
+                     u-meta='{"type":"pagination","data":"ActivityCList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="dialog_layer" class="ui-searchbox" style="display:none;padding:20px">
+
+</div>
+<!-- 新增详情页 -->
+<div class="ui-bill-panel ui-panel" style="display:none;">
+    <div>
+        <div class="page-title">
+            <span>活动定义</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="ui-panel-btn-bg">
+        <div class="ui-operate-btn">
+            <a class="ui-btn ui-btn-primary" data-bind="click: cancelBill.bind($data)">取消
+            </a>
+            <a class="ui-btn ui-btn-green" data-bind="click: saveBill.bind($data)">保存
+            </a>
+        </div>
+    </div>
+    <div class="ui-panel-head ui-bill-head">
+        <div data-bind='visible:billPanelStatus()=="add" '>
+            <div class="ui-item">
+                <div class="ui-name"><span class='ui-redstar'>*</span>活动编码：</div>
+                <div class="ui-inputarea">
+                    <input readonly="readonly" placeholder="根据编码规则自动生成"/>
+                </div>
+            </div>
+        </div>
+        <div data-bind='visible:billPanelStatus()=="edit" '>
+            <div class="ui-item">
+                <div class="ui-name"><span class='ui-redstar'>*</span>活动编码：</div>
+                <div class="ui-inputarea">
+                    <div class="ui-textonly" data-bind='text: ActivityCList.ref("code")'></div>
+                </div>
+            </div>
+        </div>
+        <div data-bind='visible:billPanelStatus()=="copy" '>
+            <div class="ui-item">
+                <div class="ui-name"><span class='ui-redstar'>*</span>活动编码：</div>
+                <div class="ui-inputarea">
+                    <input readonly="readonly" placeholder="根据编码规则自动生成"/>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name"><span class='ui-redstar'>*</span>活动名称：</div>
+            <div class="ui-inputarea">
+                <div class="u-text"  u-meta='{"type":"u-text","data":"ActivityCList","field":"name"}'>
+                    <input class="u-input"/>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name"><span class='ui-redstar'>*</span>活动类型：</div>
+            <div class="ui-inputarea">
+                <div u-meta='{"type":"uiRefer","data":"ActivityCList","field":"activeTypecId"}'>
+                    <input readonly="readonly"/>
+                    <span class="ui-icon uifont icon-bar refer"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui-item">
+            <div class="ui-name"><span class='ui-redstar'>*</span>活动主题：</div>
+            <div class="ui-inputarea">
+                <div class="u-text"  u-meta='{"type":"u-text","data":"ActivityCList","field":"theme"}'>
+                    <input class="u-input"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui-item">
+            <div class="ui-name">活动负责人：</div>
+            <div class="ui-inputarea">
+                <div u-meta='{"type":"uiRefer","data":"ActivityCList","field":"responsiblePersonId"}'>
+                    <input readonly="readonly"/>
+                    <span class="ui-icon uifont icon-bar refer"></span>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">联系方式：</div>
+            <div class="ui-inputarea">
+                <div class="u-text"   u-meta='{"type":"u-text","data":"ActivityCList","field":"linkPhone"}'>
+                    <input class="u-input"/>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name"><span class='ui-redstar'>*</span>所属办事处：</div>
+            <div class="ui-inputarea">
+                <div u-meta='{"type":"uiRefer","data":"ActivityCList","field":"agencyId"}'>
+                    <input id="agencyId" readonly="readonly"/>
+                    <span class="ui-icon uifont icon-bar refer"></span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="ui-item">
+            <div class="ui-name">团购地址：</div>
+            <div class="ui-inputarea">
+                <div class="u-text"  u-meta='{"id":"f1","type":"u-text","data":"ActivityCList","field":"address"}'>
+                    <input class="u-input"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui-item">
+            <div class="ui-name"><span class='ui-redstar'>*</span>费用预算：</div>
+            <div class="ui-inputarea">
+                <div class="u-text"  u-meta='{"type":"float","data":"ActivityCList","field":"costAmount"}'>
+                    <input class="u-input"/>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name"><span class='ui-redstar'>*</span>活动期间：</div>
+            <div class="ui-daterange-area" style="display:inline-block;">
+                <div class="ui-inputarea" u-meta='{"type":"u-date","data":"ActivityCList","field":"terminalDateRange","rangeFlag":true}'>
+                    <input class="u-input" type="text">
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name"><span class='ui-redstar'>*</span>活动目标总额：</div>
+            <div class="ui-inputarea">
+                <div class="ui-inputarea">
+                    <div data-bind='text: ActivityCList.ref("goalMny")'></div>
+                </div>
+                <!--<div class="ui-inputarea">-->
+                    <!--<div class="u-text"  u-meta='{"type":"u-text","data":"ActivityCList","field":"goalMny","enable":false}'>-->
+                        <!--<input class="u-input"/>-->
+                    <!--</div>-->
+                <!--</div>-->
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">活动描述：</div>
+            <div class="ui-inputarea">
+                <div class="u-text"  u-meta='{"type":"u-text","data":"ActivityCList","field":"description"}'>
+                    <input class="u-input"/>
+                </div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">上传活动文件：</div>
+            <div class="ui-inputarea">
+                <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-add"
+                   data-bind="click: showFileDialog"><i class="uifont icon-tubiao-fujian margin-right-5"></i>附件
+                </a>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="ui-bill-body">
+        <div class="ui-collapse-group">
+            <div id="default-example" data-collapse>
+                <h3 class="ui-collapse-title open">
+                    <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                    <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                    门店范围
+                </h3>
+                <div class="ui-collapse-content">
+                    <div class="ui-bill-body-btns">
+                        <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-add"
+                           data-bind="click: showStoreRef"><i class="uifont icon-plus margin-right-5"></i>增行
+                        </a>
+                        <div id="storeRefer" u-meta='{"type":"uiRefer","data":"ActivityStoreRef","field":"storeRefer"}' style="display:none;">
+                            <input readonly="readonly"/>
+                            <span class="ui-icon uifont icon-bar refer"></span>
+                        </div>
+                        <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+                           data-bind="click: delStoreItems"><i class="uifont icon-shanchu1 margin-right-5"></i>删行
+                        </a>
+                        <div class="ui-button-group clearfix vertical-align-middle">
+                            <a class="ui-button-item" data-bind="click: importHandle"><i class="uifont icon-import margin-right-5"></i>导入</a>
+                            <a class="ui-button-item" data-bind="click: exportHandle"><i class="uifont icon-export margin-right-5"></i>导出</a>
+                        </div>
+                    </div>
+
+                    <div class="ui-table-container">
+                        <div u-meta='{"id":"grid_ActivityStoreItems","data":"ActivityStoreItems","type":"grid","editable":true,"multiSelect":true,"showNumCol":true}'>
+                            <div options='{"field":"customerCode","dataType":"String","title":"经销商编码","editable":false}'></div>
+                            <div options='{"field":"customerName","dataType":"String","title":"经销商名称","editable":false}'></div>
+                            <div options='{"field":"storeCode","dataType":"String","title":"门店编码","editable":false}'></div>
+                            <div options='{"field":"storeName","dataType":"String","title":"门店名称","editable":false}'></div>
+                            <div options='{"field":"joinNumber","dataType":"String","title":"参与户数","editType":"float"}'></div>
+                            <div options='{"field":"saleGoalMny","dataType":"float","title":"零售活动目标","editType":"float"}'></div>
+                            <div options='{"field":"isEnable","dataType":"String","title":"门店启用状态","editable":false,"renderType":"enableRender"}'></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 单据详情页 -->
+<div class="ui-bill-detail ui-panel" style="display: none;">
+    <div>
+        <div class="page-title">
+            <span>活动定义</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="ui-panel-btn-bg">
+        <div class="ui-operate-btn">
+            <a class="ui-btn ui-btn-primary" data-bind="click: retListPanel">返回
+            </a>
+        </div>
+    </div>
+    <div id="bpmhead"></div>
+    <div id="bpmfoot"></div>
+    <div class="ui-panel-head">
+        <div class="ui-item">
+            <div class="ui-name">活动编码：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: ActivityCList.ref("code")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">活动名称：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: ActivityCList.ref("name")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">活动类型：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: ActivityCList.ref("activeTypecName")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">活动主题：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: ActivityCList.ref("theme")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">活动负责人：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: ActivityCList.ref("responsiblePersonName")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">联系方式：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: ActivityCList.ref("linkPhone")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">所属办事处：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: ActivityCList.ref("agencyName")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">团购地址：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: ActivityCList.ref("address")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">费用预算：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: ActivityCList.ref("costAmount")'></div>
+            </div>
+        </div>
+
+        <div class="ui-item">
+            <div class="ui-name">活动期间：</div>
+            <div class="ui-daterange-area" style="display:inline-block;">
+                <div class="ui-inputarea">
+                    <div class="ui-textonly">
+                        <div class="ui-daterange-part" data-bind='text: dateFormat("ActivityCList", "terminalStartDate")'>
+                        </div>
+                        <span class="ui-daterange-seperate" data-bind='visible: ActivityCList.ref("terminalStartDate")'>至</span>
+                        <div class="ui-daterange-part" data-bind='text: dateFormat("ActivityCList", "terminalEndDate")'>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui-item">
+            <div class="ui-name">活动目标总额：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: ActivityCList.ref("goalMny")'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">活动描述：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: ActivityCList.ref("description"),attr:{title:ActivityCList.ref("description")}'></div>
+            </div>
+        </div>
+        <div class="ui-item">
+            <div class="ui-name">上传活动文件：</div>
+            <div class="ui-inputarea">
+                <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-add"
+                   data-bind="click: showFileDialog"><i class="uifont icon-plus margin-right-5"></i>附件
+                </a>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+    </div>
+    <div class="ui-bill-body">
+        <div class="ui-collapse-group">
+            <div id="default-example" data-collapse>
+                <h3 class="ui-collapse-title open">门店范围</h3>
+                <div class="ui-collapse-content">
+                    <div class="ui-bill-body-btns">
+                        <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+                            <a class="ui-button-item" data-bind="click: storeEnable"><i class="uifont icon-qiyong margin-right-5"></i>启用</a>
+                            <a class="ui-button-item" data-bind="click: storeDisable"><i class="uifont icon-tingyong margin-right-5"></i>停用</a>
+                        </div>
+                        <a class="ui-btn ui-btn-primary margin-right-5"  data-bind="click: exportHandle"><i class="uifont icon-export margin-right-5"></i>导出</a>
+                    </div>
+                    <div class="ui-table-container">
+                        <div u-meta='{"id":"grid_ActivityStoreItems_detail","data":"ActivityStoreItems","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+                            <div options='{"field":"customerCode","dataType":"String","title":"经销商编码"}'></div>
+                            <div options='{"field":"customerName","dataType":"String","title":"经销商名称"}'></div>
+                            <div options='{"field":"storeCode","dataType":"String","title":"门店编码"}'></div>
+                            <div options='{"field":"storeName","dataType":"String","title":"门店名称"}'></div>
+                            <div options='{"field":"joinNumber","dataType":"String","title":"参与户数"}'></div>
+                            <div options='{"field":"saleGoalMny","dataType":"float","title":"零售活动目标"}'></div>
+                            <div options='{"field":"isEnable","dataType":"String","title":"门店启用状态","editable":false,"renderType":"enableRender"}'></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui-bill-footer">
+    </div>
+</div>
+
+<!--添加附件功能 start -->
+<input class="u-input" type="file" name="addfile" id = "uploadbatch_id" multiple="multiple" style="display:none;"/>
+<div id="file-dialog" style="display:none;">
+    <div class="u-msg-title">
+        <h4>附件</h4>
+    </div>
+    <div class="u-msg-content">
+        <div class="ui-file-btns">
+            <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+                data-bind='click: onOpenUploadWin'><i class="uifont icon-tubiao-shangchuan margin-right-5"></i>上传
+            </a>
+            <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+               data-bind='click: fileDownload'><i class="uifont icon-tubiao-xiazai margin-right-5"></i>下载
+            </a>
+            <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+               data-bind='click: fileDelete'><i class="uifont icon-shanchu1 margin-right-5"></i>删除
+            </a>
+            <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+               data-bind='click: fileView'><i class="uifont icon-tubiao-chakan margin-right-5"></i>查看
+            </a>
+        </div>
+        <div class="ui-file-list">
+            <div class="ui-table-container">
+                <div u-meta='{"id":"grid_attach","data":"FileList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true,"columnMenu":false}'>
+                    <div options='{"field":"filename","dataType":"String","title":"文件名称"}'></div>
+                    <div options='{"field":"filesize","dataType":"String","title":"文件大小"}'></div>
+                    <div options='{"field":"uploaderName","dataType":"String","title":"上传人"}'></div>
+                    <div options='{"field":"uploadtime","dataType":"Datetime","title":"上传时间"}'></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="u-msg-footer">
+        <!-- <a class="ui-btn ui-btn-green J-ok">确定</a> -->
+    </div>
+</div>
+<!--添加附件功能 end  -->
+
+
+<div id="exportFiel"></div>
+<div id="importFiel"></div>

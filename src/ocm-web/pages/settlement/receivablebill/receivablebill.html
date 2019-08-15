@@ -1,0 +1,186 @@
+<div class="ui-panel ui-list-panel">
+        <div>
+            <div class="page-title">
+                <span>应收单</span>
+            </div>
+        </div>
+        <div>
+            <div>
+                <div class="oc-breadcrumb">
+                </div>
+            </div>
+        </div>
+        <div class="title-seperator"></div>
+    
+        <ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+        </ui-searchbox>
+    
+        <div class="ui-panel-body">
+            <div class="ui-table-container">
+                <div class="ui-panel-body-head">
+                    <div class="ui-panel-body-head-left">
+                        <ui-buttons params='datasource:$root.buttonListSource'>
+                        </ui-buttons>
+                    </div>
+                </div>
+    
+                <ui-grid params='options:$root.gridListOption,vm:$root'>
+                </ui-grid>
+                <div class="ui-statistics margin-top-10">
+                    已选择
+                    <span class="font-c-blue" data-bind="text:salesorderList.selectedIndices().length"></span>项数据
+                </div>
+                <div class="pagination-right">
+                    <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"salesorderList","pageChange":"pageChange","sizeChange":"sizeChange","pageList":[5, 10, 20, 50, 100]}'></div>
+                </div>
+            </div>
+            <!-- <div class="u-tabs ui-tabs">
+                    <div class="u-tabs__tab-bar margin-top-10 margin-bottom-10">
+                        <a href="#tab-panel-5" class="u-tabs__tab">详细信息</a>
+                    </div>
+                    
+                    <div class="u-tabs__panel" id="tab-panel-5">
+                            <div class="ui-table-container margin-bottom-30">
+                                <ui-grid params='options:$root.gridDetailOption,vm:$root'>
+                                </ui-grid>
+                            </div>
+                    </div>
+                </div> -->
+
+        </div>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <!-- 单据详情页 -->
+    <div class="ui-bill-detail ui-panel" style="display: none;">
+        <div>
+            <div class="page-title">
+                <span>应收单</span>
+            </div>
+        </div>
+        <div>
+            <div>
+                <div class="oc-breadcrumb">
+                </div>
+            </div>
+        </div>
+         <div class="ui-panel-btn-bg">
+            <div class="ui-operate-btn">
+                <!-- <a class="ui-btn ui-btn-primary" data-bind="click: showCopyBillPanel">复制
+                </a> -->
+                <a class="ui-btn ui-btn-primary" data-bind="click: retListPanel">返回
+                </a>
+                <!-- <span class="J-bill-committed" data-bind="visible:billstatusCheck() == 1">
+                    <a class="ui-btn ui-btn-primary" data-bind="click: showEditBillPanel.bind($data,-1)">编辑
+                    </a>
+                    <a class="ui-btn ui-btn-green" data-bind="click: approveBill">审核
+                    </a>
+                </span>
+                <span class="J-bill-audited" data-bind="visible:billstatusCheck() == 2">
+                    <a class="ui-btn ui-btn-green" data-bind="click: unapproveBill">弃审
+                    </a>
+                </span> -->
+            </div>
+        </div> 
+    
+        <div class="ui-panel-head ui-bill-head">
+             <ui-detail params='datasource:$root.cardDetailOption,dt:$root.salesorderDetailCard,vm:$root'>
+            </ui-detail>
+        </div>
+        
+        <div class="ui-bill-body">
+            <div class="ui-table-container margin-bottom-30">
+                <ui-grid params='options:$root.gridDetailOption,vm:$root'>
+                </ui-grid>
+            </div>
+            <div class="ui-statistics margin-top-10">
+                已选择
+                <span class="font-c-blue" data-bind="text:saleOrderItems.selectedIndices().length"></span>项数据
+            </div>
+            <div class="pagination-right">
+                <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"saleOrderItems","pageChange":"pageChange","sizeChange":"sizeChange","pageList":[5, 10, 20, 50, 100]}'></div>
+            </div>
+        </div>
+        </div>
+        <div class="ui-bill-footer">
+        </div>
+    </div>
+    
+    
+    <!-- 单据新增页 -->
+    <div class="ui-bill-panel ui-panel" style="display: none;" id="salesorder-operatepanel">
+        <div>
+            <div class="page-title">
+                <span>应收单</span>
+            </div>
+        </div>
+        <div>
+            <div>
+                <div class="oc-breadcrumb">
+                </div>
+            </div>
+        </div>
+        <div class="ui-panel-btn-bg">
+            <div class="ui-operate-btn">
+                <a class="ui-btn ui-btn-primary" data-bind="click: retListPanel">取消
+                </a>
+                <span class="J-bill-audited" >
+                    <a class="ui-btn ui-btn-green" data-bind="click: saveBill">保存
+                    </a>
+                </span>
+                <!-- <span class="J-bill-audited" >
+                    <a class="ui-btn ui-btn-green" data-bind="click: ">费用冲抵
+                    </a>
+                </span>
+                <span class="J-bill-audited" >
+                    <a class="ui-btn ui-btn-green" data-bind="click: ">取消费用冲抵
+                    </a>
+                </span> -->
+            </div>
+        </div>
+    
+        <div class="ui-panel-head ui-bill-head">
+            <ui-card params='datasource:$root.cardEditOption,vm:$root,dt:$root.salesorderCard'>
+            </ui-card>
+        </div>
+        <div class="ui-panel-body-head-left">
+            <ui-buttons params='datasource:$root.buttonEditSource'>
+            </ui-buttons>
+            <div style="height: 8px;"></div>
+            <div id="saleorderaddItemsRef" u-meta='{"type":"uiRefer","data":"ItemRefList","field":"productref"}' style="display:none;">
+                    <input readonly="readonly" />
+                    <span class="ui-icon uifont icon-bar refer"></span>
+                </div>
+        </div>
+        <div class="ui-bill-body">
+            <div class="ui-table-container margin-bottom-30">
+                <ui-grid params='options:$root.gridEditOption,vm:$root'>
+                </ui-grid>
+            </div>
+            <div class="ui-statistics margin-top-10">
+                已选择
+                <span class="font-c-blue" data-bind="text:saleOrderItems.selectedIndices().length"></span>项数据
+            </div>
+            <div class="pagination-right">
+                <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"saleOrderItems","pageChange":"pageChange","sizeChange":"sizeChange","pageList":[5, 10, 20, 50, 100]}'></div>
+            </div>
+        </div>
+        </div>
+        <div class="ui-bill-footer">
+        </div>
+    </div>
+    
+    <!--导出弹窗-->
+    <div id="exportFiel"></div>
+    <div id="currencyRef" u-meta='{"type":"uiRefer","data":"currencyRefDs","field":"currency"}' style="display:none;">
+        <input readonly="readonly" />
+        <span class="ui-icon uifont icon-bar refer"></span>
+    </div>

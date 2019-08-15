@@ -1,0 +1,108 @@
+.portal-tabs {
+    height:45px;
+    position:fixed;
+    bottom:0;
+    z-index:100;
+    background: rgba(3, 3, 3, 0.8); 
+    width:100%;
+}
+.portal-tabs-list-box {
+    margin-right:83px;
+    overflow: hidden;
+}
+.portal-tabs-list,.portal-tabs-list li {
+    list-style: none;
+    margin:0;
+    padding:0;
+    transition: all 0.3s ease 0s;
+}
+.portal-tabs-list {
+    width:1000000px;
+}
+.portal-tabs-list li {
+    line-height:45px;
+    display:inline-block;
+    transition: all 0.3s ease 0s;
+}
+.portal-tabs-list li.home {
+    border-right:1px solid #616161;
+}
+.portal-tabs-list li a {
+    color:#d8d8d8;
+    text-decoration: none;
+    padding:0 10px;
+    transition: all 0.3s ease 0s;
+    outline: 0;
+    font-size:12px;
+}
+.portal-tabs-list li.selected {
+    border-top:5px solid #0081cc;
+    line-height:40px;
+}
+.portal-tabs-list li.home.selected {
+    line-height:34px;
+}
+.portal-tabs-list li a i {
+    font-size:22px;
+}
+.portal-tabs-list li i.x-close {
+    font-size:14px;
+    color:#97b1c9;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+.portal-tabs-list li i.x-close:hover {
+    color:#fff;
+}
+.portal-tabs-list li a:hover,.portal-tabs-list li.selected a {
+    color:#fff;
+}
+.scroll-tools {
+    position:absolute;
+    right:0;
+    top:0;
+    height:35px;
+    width:83px;
+    margin:0;
+    padding:5px 0;
+}
+.scroll-tools li {
+    display:inline-block;
+    transition: all 0.3s ease 0s;
+}
+.scroll-tools li a {
+    display:inline-block;
+    text-decoration: none;
+    transition: all 0.3s ease 0s;
+    background: rgba(0, 0, 0, 0.8); 
+    color:#617587;
+    padding:3px;
+    height:36px;
+    line-height:30px;
+    border-radius: 4px;
+    outline:0;
+}
+.scroll-tools li a.arrow-close {
+    padding:0 10px;
+    border-left:1px solid #3b546b;
+    background:none;
+    font-size:20px;
+}
+.scroll-tools li a.arrow-open {
+    padding:0 10px;
+    border-left:1px solid #3b546b;
+    background:none;
+    font-size:20px;
+}
+.scroll-tools li a:hover {
+    color:#fff;
+}
+.portal-tabs-close {
+    width: 50px;
+    right: 0;
+}
+.scroll-tools-open {
+   width: 50px;
+} 
+
+

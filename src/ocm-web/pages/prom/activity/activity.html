@@ -1,0 +1,392 @@
+<div class="ui-list-panel ui-panel">
+  <div>
+    <div class="page-title">
+      <span>活动定义</span></div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb"></div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+  <ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'></ui-searchbox>
+  <div class="ui-panel-body">
+    <div class="ui-panel-body-head">
+      <div class="ui-panel-body-head-left">
+        <ui-buttons params='datasource:$root.button1Source'></ui-buttons>
+      </div>
+      <!-- <div class="ui-button-group clearfix vertical-align-middle">
+      <a class="ui-button-item" data-bind="click: importHandle"><i class="uifont  icon-import margin-right-5"></i>导入</a>
+      <a class="ui-button-item" data-bind="click: exportHandle"><i class="uifont icon-export margin-right-5"></i>导出</a></div> -->
+      <!-- <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+      <a class="ui-button-item"
+      data-bind="click:importHandle">
+      <i class="uifont  icon-import margin-right-5"></i>导入
+      </a>
+      <a class="ui-button-item"
+      data-bind="click:exportHandle">
+      <i class="uifont icon-export margin-right-5"></i>导出
+      </a>
+      </div> -->
+    </div>
+  </div>
+  <div class="ui-table-container">
+    <ui-grid params='options:$root.grid1Option,vm:$root'></ui-grid>
+    <div class="ui-statistics margin-top-10">已选择
+      <span class="font-c-blue" data-bind="text:ProAttrDocList.selectedIndices().length"></span>项数据</div>
+    <div class="pagination-right">
+      <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"ProAttrDocList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+    </div>
+  </div>
+</div>
+
+<div id="dialog_layer" class="ui-searchbox" style="display:none;padding:20px"></div>
+<div class="ui-bill-panel-main ui-panel" style="display:none;" id="bodyDiv">
+  <div>
+    <div class="page-title">
+      <span>活动</span></div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb"></div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <ui-buttons params='datasource:$root.button2Source'></ui-buttons>
+    </div>
+  </div>
+  <div class="margin-top-10">
+    <!--成品信息开始-->
+    <div class="ui-bill-body">
+      <div class="ui-collapse-group border">
+        <div id="default-example" data-collapse>
+          <!--成品：成品信息开始-->
+          <h3 class="ui-collapse-title  clearfix open margin-top-10">
+            <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+            <i class="uifont icon-tubiao-xiaosanjiao-you"></i>基本信息</h3>
+          <div class="ui-collapse-content  clearfix" id="productBase">
+            <ui-card params='datasource:$root.card1Source,vm:$root,dt:$root.ProAttrDocList,billstatus:$root.billPanelStatus'></ui-card>
+          </div>
+
+          <!--特征属性：特征属性信息结束-->
+          <div data-bind="visible: ProAttrDocList.ref('isAllCustomer')() == 0">
+            <!--客户选择：客户选择开始-->
+            <h3 class="ui-collapse-title  clearfix product-choose-result margin-top-10 open">
+              <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+              <i class="uifont icon-tubiao-xiaosanjiao-you"></i>客户选择
+            </h3>
+            <div class="ui-collapse-content product-choose-content clearfix " id="saleInfo">
+              <div class="ui-bill-body-btns">
+                <ui-buttons params='datasource:$root.button3Source'></ui-buttons>
+              </div>
+              <div class="ui-table-container">
+                <ui-grid params='options:$root.grid2Option,vm:$root'></ui-grid>
+                <div class="ui-statistics margin-top-10 pagelever">已选择
+                  <span class="font-c-blue" data-bind="text:ProductAttrValueList.selectedIndices().length"></span>项数据</div>
+                <div class="pagination-right pagelever">
+                  <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"ProductAttrValueList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--客户选择：客户选择开始-->
+          <!--规则：规则选择开始-->
+          <h3 class="ui-collapse-title  clearfix product-choose-result margin-top-10 open">
+            <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+            <i class="uifont icon-tubiao-xiaosanjiao-you"></i>促销规则选择</h3>
+          <div class="ui-collapse-content product-choose-content clearfix " id="ruleInfo">
+            <div class="ui-bill-body-btns">
+              <ui-buttons params='datasource:$root.button4Source'></ui-buttons>
+            </div>
+            <div class="ui-table-container">
+              <ui-grid params='options:$root.grid3Option,vm:$root'></ui-grid>
+            </div>
+          </div>
+          <!--规则：规则选择结束-->
+          <!--规则：是否互斥start-->
+          <h3 class="ui-collapse-title  clearfix product-choose-result margin-top-10 open">
+            <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+            <i class="uifont icon-tubiao-xiaosanjiao-you"></i>规则互斥设置
+            <div class="ui-inputarea">
+              <div u-meta='{"type":"u-checkbox","data":"ProAttrDocList","field":"isMutual","datasource":"isMutualSrc"}'>
+                <label class="u-checkbox">
+                  <input type="checkbox" class="u-checkbox-input">
+                  <span class="u-checkbox-label" data-role="name"></span>
+                </label>
+              </div>
+            </div>
+          </h3>
+
+
+
+          <div data-bind="visible: ProAttrDocList.ref('isMutual')() == 1">
+            <div class="ui-inputarea" data-bind="visible: proMutualRuleObserve() == 1">
+              <div u-meta='{"type":"u-checkbox","data":"ProAttrDocList","field":"isBuyGiftOrder","datasource":"buyGiftOrderSrc"}'>
+                <label class="u-checkbox">
+                  <input type="checkbox" class="u-checkbox-input">
+                  <span class="u-checkbox-label" data-role="name"></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="ui-inputarea" data-bind="visible: proMutualRuleObserve() == 1">
+              <div u-meta='{"type":"u-checkbox","data":"ProAttrDocList","field":"isFullCutOrder","datasource":"fullCutOrderSrc"}'>
+                <label class="u-checkbox">
+                  <input type="checkbox" class="u-checkbox-input">
+                  <span class="u-checkbox-label" data-role="name"></span>
+                </label>
+              </div>
+            </div>
+            <div class="ui-inputarea" data-bind="visible: proMutualRuleObserve() == 0">
+              <div u-meta='{"type":"u-checkbox","data":"ProAttrDocList","field":"isBuyGiftProduct","datasource":"buyGiftProductSrc"}'>
+                <label class="u-checkbox">
+                  <input type="checkbox" class="u-checkbox-input">
+                  <span class="u-checkbox-label" data-role="name"></span>
+                </label>
+              </div>
+            </div>
+            <div class="ui-inputarea" data-bind="visible: proMutualRuleObserve() == 0">
+              <div u-meta='{"type":"u-checkbox","data":"ProAttrDocList","field":"isFullCutProduct","datasource":"fullCutProductSrc"}'>
+                <label class="u-checkbox">
+                  <input type="checkbox" class="u-checkbox-input">
+                  <span class="u-checkbox-label" data-role="name"></span>
+                </label>
+              </div>
+            </div>
+
+
+          </div>
+
+        </div>
+        <!--规则：是否互斥end-->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--下发树状对话框start-->
+<div id="dialog_content_product" style="display:none ">
+  <div id="billtype" style="width: 450px;height: 300px" class="ztree" u-meta='{
+  "id":"billtype",
+  "data":"lowerOrgList",
+  "type":"tree",
+  "idField":"id",
+  "pidField":"parentId",
+  "nameField":"name",
+  "setting":"treeSetting"
+  }'>
+  </div>
+  <div class="u-msg-footer">
+    <a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+    <a class="u-msg-ok ui-btn ui-btn-green">确定</a></div>
+</div>
+<!--下发树状对话框end-->
+<!--导入导出弹窗-->
+<div id="exportFiel"></div>
+<div id="importFiel"></div>
+<!--导入导出弹窗-->
+<!--文件上传start-->
+<div id="file-dialog" style="display:none;">
+  <div class="u-msg-title">
+    <h4>附件</h4>
+  </div>
+  <div class="u-msg-content">
+    <div class="ui-collapse-content product-choose-content clearfix ">
+      <div class="ui-bill-body-btns">
+        <ui-buttons params='datasource:$root.button5Source'></ui-buttons>
+      </div>
+      <div class="ui-table-container">
+        <ui-grid params='options:$root.grid4Option,vm:$root'></ui-grid>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div id="fileiptwrap">
+  <input class="u-input" type="file" name="addfile" id="uploadbatch_id" multiple="multiple" style="display:none;" />
+</div>
+<!--规则界面-->
+<div id="ruleContent" style="display: none;">
+
+</div>
+<!--文件上传end-->
+
+
+
+
+<!--活动详情页start-->
+<div class="ui-bill-detail-main ui-panel" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span data-bind="text:title"></span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-primary" data-bind="click: retListPanel">返回
+      </a>
+    </div>
+  </div>
+  <div class="ui-panel-head">
+    <div id="bpmhead"></div>
+    <div id="bpmfoot"></div>
+    <!-- 活动信息开始-->
+    <h3 class="ui-collapse-title  clearfix  margin-top-10 open">
+      <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+      <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+      活动信息
+    </h3>
+    <div class="ui-collapse-content clearfix">
+      <ui-detail params='datasource:$root.detail1Source,dt:$root.ProAttrDocList,vm:$root'>
+      </ui-detail>
+    </div>
+    <!--活动信息结束-->
+    <!--客户信息开始-->
+    <div data-bind="visible: ProAttrDocList.ref('isAllCustomer')() == 0">
+      <h3 class="ui-collapse-title  clearfix  margin-top-10 open">
+        <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+        <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+        客户信息
+      </h3>
+      <ui-grid params='options:$root.grid22Option,vm:$root'>
+      </ui-grid>
+    </div>
+    <!--任职信息结束-->
+    <div class="ui-table-container">
+      <ui-grid params='options:$root.grid33Option,vm:$root'></ui-grid>
+    </div>
+    <!--规则：是否互斥start-->
+    <h3 class="ui-collapse-title  clearfix product-choose-result margin-top-10 open">
+      <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+      <i class="uifont icon-tubiao-xiaosanjiao-you"></i>规则互斥设置
+      <div class="ui-inputarea">
+        <div u-meta='{"type":"u-checkbox","data":"ProAttrDocList","id":"isMutualId","field":"isMutual","datasource":"isMutualSrc"}'>
+          <label class="u-checkbox">
+            <input type="checkbox" class="u-checkbox-input">
+            <span class="u-checkbox-label" data-role="name"></span>
+          </label>
+        </div>
+      </div>
+    </h3>
+    <div data-bind="visible: ProAttrDocList.ref('isMutual')() == 1">
+      <div class="ui-inputarea" data-bind="visible: proMutualRuleObserve() == 1">
+        <div u-meta='{"type":"u-checkbox","data":"ProAttrDocList","id":"isBuyGiftOrderId","field":"isBuyGiftOrder","datasource":"buyGiftOrderSrc"}'>
+          <label class="u-checkbox">
+            <input type="checkbox" class="u-checkbox-input">
+            <span class="u-checkbox-label" data-role="name"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="ui-inputarea" data-bind="visible: proMutualRuleObserve() == 1">
+        <div u-meta='{"type":"u-checkbox","data":"ProAttrDocList","id":"isFullCutOrderId","field":"isFullCutOrder","datasource":"fullCutOrderSrc"}'>
+          <label class="u-checkbox">
+            <input type="checkbox" class="u-checkbox-input">
+            <span class="u-checkbox-label" data-role="name"></span>
+          </label>
+        </div>
+      </div>
+      <div class="ui-inputarea" data-bind="visible: proMutualRuleObserve() == 0">
+        <div u-meta='{"type":"u-checkbox","data":"ProAttrDocList","id":"isBuyGiftProductId","field":"isBuyGiftProduct","datasource":"buyGiftProductSrc"}'>
+          <label class="u-checkbox">
+            <input type="checkbox" class="u-checkbox-input">
+            <span class="u-checkbox-label" data-role="name"></span>
+          </label>
+        </div>
+      </div>
+      <div class="ui-inputarea" data-bind="visible: proMutualRuleObserve() == 0">
+        <div u-meta='{"type":"u-checkbox","data":"ProAttrDocList","id":"isFullCutProductId","field":"isFullCutProduct","datasource":"fullCutProductSrc"}'>
+          <label class="u-checkbox">
+            <input type="checkbox" class="u-checkbox-input">
+            <span class="u-checkbox-label" data-role="name"></span>
+          </label>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+  <!--规则：是否互斥end-->
+</div>
+<!--活动详情页end-->
+<!--执行结果详情页start-->
+<div id="dialog_view_excute" style="display: none;">
+  <div class="u-tabs ui-tabs">
+    <div class="u-tabs__tab-bar" data-bind="foreach: {data: excuteRules, as:'excuteRule'}">
+      <a class="u-tabs__tab" data-bind="text: name , attr :{ruleId:ruleId}"></a>
+    </div>
+
+
+    <div class="ui-collapse-group border">
+      <div id="default-example" data-collapse>
+        <ui-grid params='options:$root.grid5Option,vm:$root'>
+        </ui-grid>
+      </div>
+    </div>
+
+  </div>
+
+
+</div>
+<!--执行结果详情页end-->
+
+
+<!--活动变更页start-->
+
+<div class="ui-bill-change" style="display: none">
+  <div>
+    <div class="page-title">
+      <span>活动</span></div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb"></div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <ui-buttons params='datasource:$root.button2Source'></ui-buttons>
+    </div>
+  </div>
+  <div class="ui-collapse-group border">
+    <div id="default-example" data-collapse>
+      <!--成品：成品信息开始-->
+      <h3 class="ui-collapse-title  clearfix open margin-top-10">
+        <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+        <i class="uifont icon-tubiao-xiaosanjiao-you"></i>基本信息</h3>
+      <div class="ui-collapse-content  clearfix">
+        <ui-card params='datasource:$root.card2Source,vm:$root,dt:$root.ProAttrDocList,billstatus:$root.billPanelStatus'></ui-card>
+      </div>
+      <!--特征属性：特征属性信息结束-->
+
+      <div data-bind="visible: ProAttrDocList.ref('isAllCustomer')() == 0">
+        <!--客户选择：客户选择开始-->
+        <h3 class="ui-collapse-title  clearfix product-choose-result margin-top-10 open">
+          <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+          <i class="uifont icon-tubiao-xiaosanjiao-you"></i>客户选择
+        </h3>
+        <div class="ui-collapse-content product-choose-content clearfix " id="saleInfo">
+          <div class="ui-bill-body-btns">
+            <ui-buttons params='datasource:$root.button33Source'></ui-buttons>
+          </div>
+          <div class="ui-table-container">
+            <ui-grid params='options:$root.grid222Option,vm:$root'></ui-grid>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--客户选择：客户选择开始-->
+  </div>
+</div>
+<!--活动变更页end-->

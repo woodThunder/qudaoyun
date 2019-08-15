@@ -1,0 +1,142 @@
+<div class="ui-panel ui-list-panel">
+    <div>
+        <div class="page-title">
+            <span>渠道库存清理扣款明细</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="title-seperator"></div>
+    <div class="ui-searchbox">
+        <div id="purchasereport-searchcontent" class="ui-searchbox-content">
+
+        </div>
+        <div class="clearfix">
+
+        </div>
+        <div class="ui-searchbox-footer">
+            <div class="ui-search-more hidden">
+                <a>更多<i class="uifont icon-down"></i></a>
+            </div>
+
+            <div class="ui-search-btn">
+                <a class="ui-btn ui-btn-primary margin-right-5"
+                   data-bind="click:cleanSearch">清空
+                </a>
+                <a class="ui-btn ui-btn-green"
+                   data-bind="click:search.bind($data,true)">搜索
+                </a>
+                <!--<a class="ui-btn ui-btn-green"
+                   data-bind="click:show2dimensional.bind($data,true)">二维展示
+                </a>-->
+            </div>
+            <div class="clearfix">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="ui-panel-body">
+        <div class="ui-panel-body-head">
+            <div class="ui-panel-body-head-left">
+                <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+                    <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click: exportHandle">
+                        <i class="uifont icon-export margin-right-5"></i> 导出
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        <div class="ui-table-container">
+            <div id="productPromotionOrderList" u-meta='{"id":"grid_productPromotionOrderList","data":"productPromotionOrderList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true,"nullField":"poProductStrucs"}'>
+                <div options='{"field":"code","dataType":"String","title":"渠道库存号"}'></div>
+                <div options='{"field":"officeName","dataType":"String","title":"办事处"}'></div>
+                <div options='{"field":"serviceProviderCode","dataType":"String","title":"服务商编码"}'></div>
+                <div options='{"field":"serviceProviderName","dataType":"String","title":"服务商名称"}'></div>
+                <div options='{"field":"productCode","dataType":"String","title":"产品编码"}'></div>
+                <div options='{"field":"productName","dataType":"String","title":"产品名称"}'></div>
+                <div options='{"field":"num","dataType":"Float","title":"数量"}'></div>
+                <div options='{"field":"price","dataType":"Float","title":"采购单价"}'></div>
+                <div options='{"field":"rate","dataType":"Float","title":"清理折扣"}'></div>
+                <div options='{"field":"discount","dataType":"Float","title":"折后金额"}'></div>
+                <div options='{"field":"allowance","dataType":"Float","title":"补贴金额"}'></div>
+                <div options='{"field":"cleanTime","dataType":"date","title":"清理时间"}'></div>
+                <div options='{"field":"accountCode","dataType":"String","title":"账号编码"}'></div>
+                <!--<div options='{"field":"accountType","dataType":"String","title":"信贷类别"}'></div>-->
+                <div options='{"field":"cleanReason","dataType":"String","title":"清理原因"}'></div>
+                <div options='{"field":"storeName","dataType":"String","title":"店铺名称"}'></div>
+                <!--<div options='{"field":"SO","dataType":"String","title":"SO"}'></div>-->
+                <div options='{"field":"采购单号","dataType":"String","title":"PO"}'></div>
+                <div options='{"field":"orderPCode","dataType":"String","title":"平台单号"}'></div>
+                <div options='{"field":"orderCode","dataType":"String","title":"电商单号"}'></div>
+                <div options='{"field":"customer","dataType":"String","title":"顾客ID"}'></div>
+                <div options='{"field":"bookTime","dataType":"date","title":"下单时间"}'></div>
+                <div options='{"field":"customerName","dataType":"String","title":"顾客姓名"}'></div>
+                <div options='{"field":"customerPhone","dataType":"String","title":"联系方式"}'></div>
+                <div options='{"field":"customerAddr","dataType":"String","title":"收货地址"}'></div>
+                <!--<div options='{"field":"customerCode","dataType":"String","title":"是否已汇总结算0"}'></div>-->
+            </div>
+            <div class="ui-statistics margin-top-10">
+                已选择<span class="font-c-blue" data-bind="text:productPromotionOrderList.selectedIndices().length"></span>项数据
+            </div>
+            <div class="pagination-right">
+                <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"productPromotionOrderList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--导入导出弹窗-->
+<div id="exportFiel"></div>
+<!--导入导出弹窗-->
+<!--二维展示弹窗-->
+<div id="dialog_content_2dimensional" style="display:none;">
+    <div class="u-msg-title">
+        <h4>二维展示</h4>
+    </div>
+    <div class="u-msg-content">
+        <div class="ui-btn-group margin-bottom-10">
+        </div>
+        <div id="summary-table-container" class="ui-table-container" style="position:relative; width: 1150px; overflow:hidden; padding-bottom:20px;">
+            <table class="ui-table ui-table-multihead">
+                <thead>
+                <tr>
+                    <td rowspan="2">产品名称</td>
+                    <!-- ko foreach: {data: officeList, as: 'office'} -->
+                    <td colspan="8" data-bind='text: office["2"]' style="text-align: center;"></td>
+                    <!-- /ko -->
+                </tr>
+                <tr>
+                    <!-- ko foreach:{data: officeList, as: 'office'} -->
+                    <td>承诺量</td>
+                    <td>采购量</td>
+                    <td>销售开单量</td>
+                    <td>预销售订单量</td>
+                    <td>采购剩余量</td>
+                    <td>开单剩余量</td>
+                    <td>开单完成率</td>
+                    <td>采购完成率</td>
+                    <!-- /ko -->
+                </tr>
+                </thead>
+                <tbody data-bind="foreach: {data: summaryDatas, as: 'record'}">
+                <tr>
+                    <td nowrap data-bind='text: record.productName'></td>
+                    <!-- ko foreach:{data: record.dataInfo, as: 'officeKeys'} -->
+                    <!-- ko foreach:{data: officeKeys, as: 'keyNum'} -->
+                    <td data-bind="text: keyNum"></td>
+                    <!-- /ko -->
+                    <!-- /ko -->
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="u-msg-footer">
+        <a data-bind="click: summaryConfirm" class="u-msg-ok ui-btn ui-btn-green">确定</a>
+    </div>
+</div>
+<!--二维展示弹窗 end-->

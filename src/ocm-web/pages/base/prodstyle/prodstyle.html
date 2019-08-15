@@ -1,0 +1,96 @@
+<div class="ui-panel ui-list-panel">
+  <div class="u-row">
+    <div class="u-col-4  page-title">
+      <span>产品风格管理</span>
+    </div>
+  </div>
+  <div class="u-row">
+    <div class="u-col-4">
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+  <div class="ui-searchbox">
+    <div id="ProdStyle-searchcontent" class="ui-searchbox-content">
+
+    </div>
+    <div class="clearfix">
+
+    </div>
+    <div class="ui-searchbox-footer">
+      <div class="ui-search-more hidden">
+          <a>更多<i class="uifont icon-down"></i></a>
+      </div>
+
+      <div class="ui-search-btn">
+        <a class="ui-btn ui-btn-primary margin-right-5"
+        data-bind="click:cleanSearch">清空
+        </a>
+        <a class="ui-btn ui-btn-green "
+        data-bind="click:search.bind($data,true)">搜索
+        </a>
+      </div>
+      <div class="clearfix">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-panel-body">
+      <div class="ui-panel-body-head">
+        <div class="ui-panel-body-head-left">
+            <a class="ui-btn ui-btn-orange margin-right-5" id="user-action-add"
+            data-bind="click: beforeEdit.bind($data,-1),visible:buttonShowGroup['add']"><i class="uifont icon-plus margin-right-5"></i>新增
+          </a>
+          <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+            data-bind="click: del,visible:buttonShowGroup['del']">
+            <i class="uifont icon-shanchu1 margin-right-5"></i>删除
+          </a>
+          <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+             <a class="ui-button-item" 
+              data-bind="click:enable,visible:buttonShowGroup['enable']">
+              <i class="uifont icon-qiyong margin-right-5"></i>启用
+            </a>
+            <a class="ui-button-item"
+              data-bind="click:disable,visible:buttonShowGroup['disable']">
+              <i class="uifont icon-tingyong margin-right-5"></i>停用
+            </a>
+          </div>
+         <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+            <a class="ui-btn ui-btn-orange margin-right-5" data-bind="click: exportHandle"><i class="uifont icon-export margin-right-5"></i>导出</a>
+          </div>
+          
+        </div>  
+        
+      </div>
+      <div class="ui-table-container">
+          <div id="ProdStyle"
+               u-meta='{"id":"grid_ProdStyle","data":"ProdStyleList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+                      <div options='{"field":"code","dataType":"String","title":"风格编码"}'></div>
+                      <div options='{"field":"name","dataType":"String","title":"风格名称"}'></div>
+                      <div options='{"field":"description","dataType":"String","title":"风格描述","visible":false}'></div>
+                      <div options='{"field":"parentCode","dataType":"String","title":"上级风格编码"}'></div>
+                      <div options='{"field":"parentName","dataType":"String","title":"上级风格名称"}'></div>
+                       <div options='{"field":"statusCode","dataType":"String","title":"状态","renderType":"enableRender"}'></div>
+                        <div options='{"field":"creator","dataType":"String","title":"创建人","visible":false}'></div>
+                        <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":false}'></div>
+                        <div options='{"field":"creationTime","dataType":"Date","title":"创建时间","visible":false}'></div>
+                        <div options='{"field":"modifiedTime","dataType":"Date","title":"修改时间","visible":false}'></div>
+                      <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation4single","fixed":true,"width":"110px"}'></div>
+          </div>
+          <div class="ui-statistics margin-top-10">
+            <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择<span class="font-c-blue" data-bind="text:ProdStyleList.selectedIndices().length"></span>项数据
+          </div>
+          <div class="pagination-right">
+            <div id='pagination' class='pagination u-pagination pagination-sm'
+            u-meta='{"type":"pagination","data":"ProdStyleList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+          </div>
+      </div>
+    </div>
+</div>
+<div id="dialog_layer" style="display:none;">
+
+</div>
+<!--导出弹框 end-->
+<div id="exportFiel"></div>

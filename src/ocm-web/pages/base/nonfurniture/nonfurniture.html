@@ -1,0 +1,929 @@
+<div class="ui-list-panel ui-panel">
+  <div>
+    <div class="page-title">
+      <span>非家具</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+
+  <div class="ui-searchbox">
+    <div id="custommade-searchcontent" class="ui-searchbox-content">
+
+    </div>
+    <div class="clearfix">
+
+    </div>
+    <div class="ui-searchbox-footer">
+      <div class="ui-search-more hidden">
+          <a>更多<i class="uifont icon-down"></i></a>
+      </div>
+
+      <div class="ui-search-btn">
+      	<a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:cleanSearch">清空</a>
+        <a class="ui-btn ui-btn-green" data-bind="click:search.bind($data,true)">搜索</a>
+      </div>
+      <div class="clearfix">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-panel-body">
+    <div class="ui-panel-body-head">
+      <div class="ui-panel-body-head-left">
+        <a class="ui-btn ui-btn-orange margin-right-5" id="user-action-add"
+          data-bind="click: showAddBillPanel.bind($data),visible:buttonShowGroup['add']"><i class="uifont icon-plus margin-right-5"></i>新增
+        </a>
+        <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+          data-bind="click: del,visible:buttonShowGroup['del']"><i class="uifont icon-shanchu1 margin-right-5"></i>删除
+        </a>
+	      <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+	        <a class="ui-button-item" 
+	          data-bind="click:enable,visible:buttonShowGroup['enable']">
+	          <i class="uifont icon-qiyong margin-right-5"></i>启用
+	        </a>
+	        <a class="ui-button-item"
+	          data-bind="click:disable,visible:buttonShowGroup['disable']">
+	          <i class="uifont icon-tingyong margin-right-5"></i>停用
+	        </a>
+	      </div>
+        <div class="ui-button-group clearfix vertical-align-middle">
+						<a class="ui-button-item" data-bind="click: importHandle,visible:buttonShowGroup['import']"><i class="uifont  icon-import margin-right-5"></i>导入</a>
+						<a class="ui-button-item" data-bind="click: exportHandle"><i class="uifont icon-export margin-right-5"></i>导出</a>
+        </div>
+      </div>
+    </div>
+      <div class="ui-table-container">
+          <div u-meta='{"id":"grid_PromoActivity","data":"finishedProductSuiteList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+              <div options='{"field":"code","dataType":"String","title":"产品编码","renderType":"detailRender"}'></div>
+              <div options='{"field":"description","dataType":"String","title":"产品描述"}'></div>
+              <div options='{"field":"radSeriesCode","dataType":"String","title":"研发系列编码"}'></div>
+              <div options='{"field":"productGroupCode","dataType":"String","title":"产品组编码"}'></div>
+              <div options='{"field":"materialGroupCode","dataType":"String","title":"物料组编码"}'></div>
+              <div options='{"field":"exteriorSize","dataType":"String","title":"外观尺寸"}'></div>
+              <div options='{"field":"colorDesc","dataType":"String","title":"颜色描述"}'></div>
+              <div options='{"field":"statusCode","dataType":"String","title":"启用状态","renderType":"stateGrid"}'></div>
+              <div options='{"field":"proStateCode","dataType":"String","title":"产品状态编码","visible":"false"}'></div>
+              <div options='{"field":"croMaStateCode","dataType":"String","title":"跨工厂物料状态编码","visible":"false"}'></div>
+              <div options='{"field":"baseUnitCode","dataType":"String","title":"基本单位编码","visible":"false"}'></div>
+              <div options='{"field":"roughWeight","dataType":"String","title":"重量","visible":"false"}'></div>
+              <div options='{"field":"cubage","dataType":"String","title":"体积","visible":"false"}'></div>
+              <div options='{"field":"functionDescription","dataType":"String","title":"功能描述","visible":"false"}'></div>
+              <div options='{"field":"productionModeCode","dataType":"String","title":"生产模式编码","visible":"false"}'></div>
+              <div options='{"field":"genericTypeCode","dataType":"String","title":"通用类型编码","visible":"false"}'></div>
+              <div options='{"field":"labelStandardCode","dataType":"String","title":"标签规格编码","visible":"false"}'></div>
+              <div options='{"field":"textureDesc","dataType":"String","title":"材质描述","visible":"false"}'></div>
+              <div options='{"field":"surfaceDesc","dataType":"String","title":"外观描述","visible":"false"}'></div>
+              <div options='{"field":"proAbbreviation","dataType":"String","title":"简称","visible":"false"}'></div>
+              <div options='{"field":"whetherSaleProduct","dataType":"integer","title":"是否销售产品","visible":"false","renderType":"whether"}'></div>
+              <div options='{"field":"whetherProductSuite","dataType":"integer","title":"是否套件","visible":"false","renderType":"whether"}'></div>
+              <div options='{"field":"whetherProductPack","dataType":"integer","title":"是否包件","visible":"false","renderType":"whether"}'></div>
+              <div options='{"field":"whetherFinishedProduct","dataType":"integer","title":"是否成品渠道","visible":"false","renderType":"whether"}'></div>
+              <div options='{"field":"whetherCustomized","dataType":"integer","title":"是否定制渠道","visible":"false","renderType":"whether"}'></div>
+              <div options='{"field":"whetherElecBusiniess","dataType":"integer","title":"是否电商渠道","visible":"false","renderType":"whether"}'></div>
+              <div options='{"field":"whetherEnginieering","dataType":"integer","title":"是否工程渠道","visible":"false","renderType":"whether"}'></div>
+              <div options='{"field":"creator","dataType":"String","title":"创建人","visible":false}'></div>
+              <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":false}'></div>
+              <div options='{"field":"creationTime","dataType":"Date","title":"创建时间","visible":false}'></div>
+              <div options='{"field":"modifiedTime","dataType":"Date","title":"修改时间","visible":false}'></div>
+              <div options='{"field":"operationPic","dataType":"String","title":"图片维护","renderType":"operationPic","fixed":true,"width":"110px"}'></div>
+              <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation","fixed":true,"width":"110px"}'></div>
+          </div>
+          <div class="ui-statistics margin-top-10">
+            已选择<span class="font-c-blue" data-bind="text:finishedProductSuiteList.selectedIndices().length"></span>项数据
+          </div>
+          <div class="pagination-right">
+            <div id='pagination' class='pagination u-pagination pagination-sm'
+            u-meta='{"type":"pagination","data":"finishedProductSuiteList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+          </div>
+      </div>
+    </div>
+</div>
+<div id="dialog_layer" class="ui-searchbox" style="display:none;padding:20px">
+
+</div>
+
+<div class="ui-bill-panel ui-panel" style="display:none;">
+  <div>
+    <div class="page-title">
+      <span>非家具</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-primary" data-bind="click: cancelBill.bind($data)">取消
+      </a>
+      <a class="ui-btn ui-btn-green" data-bind="click: saveBill.bind($data)">保存
+      </a>
+    </div>
+  </div>
+	<!--定制信息开始-->
+  <div class="ui-bill-body">
+      	<!--定制信息开始-->
+          <div class="clearfix" id="productBase">
+			<!--一个添加项开始-->
+						    <div class="ui-item ui-checkboxes-item">
+						      <div class="ui-name">产品类型：</div>
+											<div class="ui-inputarea ">
+								        <div class="u-text">
+								        	 <label class="u-checkbox margin-right-10 "  u-meta='{"type":"u-checkbox","data":"finishedProductSuiteList","field":"whetherSaleProduct","checkedValue":1,
+      "unCheckedValue":0,"enable":"true"}'>
+								              <input type="checkbox" class="u-checkbox-input isSaleProduct">
+								              <span class="u-checkbox-label" data-role="name">销售产品</span>
+								          </label>
+								        	 <label class="u-checkbox margin-right-10 suite-checkbox "  u-meta='{"type":"u-checkbox","data":"finishedProductSuiteList","field":"whetherProductSuite","checkedValue":1,
+      "unCheckedValue":0,"enable":"false"}'>
+								              <input type="checkbox" class="u-checkbox-input">
+								              <span class="u-checkbox-label" data-role="name">套件产品</span>
+								          </label>
+								          <label class="u-checkbox product-choose"  u-meta='{"type":"u-checkbox","data":"finishedProductSuiteList","field":"whetherProductPack","checkedValue":1,
+      "unCheckedValue":0,"enable":"true"}'>
+								              <input type="checkbox" class="u-checkbox-input">
+								              <span class="u-checkbox-label" data-role="name">包件产品</span>
+								          </label>
+								        </div>
+								      </div>
+						    </div>
+						    <!--一个添加项结束-->
+                <!--一个添加项开始-->
+						    <div class="ui-item">
+						      <div class="ui-name"><i class="strong">*</i>产品编码：</div>
+						       <div class="ui-inputarea">
+						        <div class="u-text"  u-meta='{"id":"code","type":"u-text","data":"finishedProductSuiteList","field":"code"}'>
+						          <input class="u-input" id="code-input" />
+						          <span id="code-text" style="display: none;"></span>
+						        </div>
+						      </div>
+						    </div>
+						    <!--一个添加项结束-->
+						    <!--一个添加项开始-->
+						    <div class="ui-item">
+						      <div class="ui-name"><i class="strong">*</i>产品描述：</div>
+						      <div class="ui-inputarea">
+						        <div class="u-text"  u-meta='{"id":"description","type":"u-text","data":"finishedProductSuiteList","field":"description"}'>
+						          <input class="u-input"/>
+						        </div>
+						      </div>
+						    </div>
+						    <!--一个添加项结束-->
+						   
+						    <!--一个添加项开始-->
+						    <div class="ui-item">
+						      <div class="ui-name"><i class="strong">*</i>产品简称：</div>
+						      <div class="ui-inputarea">
+						        <div class="u-text"  u-meta='{"id":"proAbbreviation","type":"u-text","data":"finishedProductSuiteList","field":"proAbbreviation"}'>
+						          <input class="u-input"/>
+						        </div>
+						      </div>
+						    </div>
+						    <!--一个添加项结束-->
+						    <!--一个添加项开始-->
+						    <div class="ui-item">
+						      <div class="ui-name"><i class="strong">*</i>研发系列：</div>
+						      <div class="ui-inputarea">
+						        <div u-meta='{"type":"uiRefer","data":"finishedProductSuiteList","field":"radSeriesId"}'>
+						          <input readonly="readonly" id="radSeriesId"/>
+						          <span class="ui-icon uifont icon-bar refer"></span>
+						        </div>
+						      </div>
+						    </div>
+						    <!--一个添加项结束-->
+						    <!--一个添加项开始-->
+						    <div class="ui-item">
+						      <div class="ui-name">销售系列：</div>
+						      <div class="ui-inputarea">
+						        <div class="u-text"  u-meta='{"id":"saleSeriesName","type":"u-text","data":"finishedProductSuiteList","field":"saleSeriesName","enable":false}'>
+						          <input class="u-input"/>
+						        </div>
+						      </div>
+						    </div>
+						    <!--一个添加项结束-->
+						    <!--一个添加项开始-->
+						    <div class="ui-item">
+						      <div class="ui-name">跨工厂物料状态：</div>
+						      <div class="ui-inputarea">
+						        <div class="u-text"  u-meta='{"id":"croMaStateCode","type":"u-combobox","data":"finishedProductSuiteList","field":"croMaStateCode","datasource":"croMaStateSrc"}'>
+						          <input class="u-input" readonly="true" id="croMaStateCode"/>
+						          <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+						        </div>
+						      </div>
+						    </div>
+						    <!--一个添加项结束-->
+           	   	<!--一个添加项开始-->
+						    <div class="ui-item">
+						      <div class="ui-name">通用类型：</div>
+						      <div class="ui-inputarea">
+						        <div class="u-text"  u-meta='{"id":"genericTypeCode","type":"u-combobox","data":"finishedProductSuiteList","field":"genericTypeCode","datasource":"genericTypeSrc"}'>
+						          <input class="u-input"/>
+						          <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+						        </div>
+						      </div>
+						    </div>
+						    <!--一个添加项结束-->
+							   <!--一个添加项开始-->
+							  <div class="ui-item">
+							      <div class="ui-name"><i class="strong">*</i>基本单位：</div>
+							      <div class="ui-inputarea">
+							        <div u-meta='{"type":"uiRefer","data":"finishedProductSuiteList","field":"baseUnitId"}'>
+							          <input readonly="readonly"/>
+							          <span class="ui-icon uifont icon-bar refer"></span>
+							        </div>
+							      </div>
+							    </div>
+							  <!--一个添加项结束-->
+						    <!--一个添加项开始-->
+							  <div class="ui-item">
+							      <div class="ui-name">体积单位：</div>
+							      <div class="ui-inputarea">
+							       		<div>
+								  			    <span class="text-value">M3</span>
+								        </div>
+							      </div>
+							    </div>
+							  <!--一个添加项结束-->
+							  <!--一个添加项开始-->
+						    <div class="ui-item">
+						      <div class="ui-name">体积：</div>
+						      <div class="ui-inputarea">
+						        <div class="u-text"  u-meta='{"id":"cubage","type":"u-text","data":"finishedProductSuiteList","field":"cubage"}'>
+						          <input class="u-input"/>
+						        </div>
+						      </div>
+						    </div>
+						    <!--一个添加项结束-->
+							  <!--一个添加项开始-->
+							  <div class="ui-item">
+							      <div class="ui-name">重量单位：</div>
+							      <div class="ui-inputarea">
+							        	<div>
+								  			    <span class="text-value">KG</span>
+								        </div>
+							      </div>
+							    </div>
+							  <!--一个添加项结束-->
+							    <!--一个添加项开始-->
+							    <div class="ui-item">
+							      <div class="ui-name">长(外观)：</div>
+							      <div class="ui-inputarea">
+							        <div class="u-text"  u-meta='{"id":"length","type":"u-text","data":"finishedProductSuiteList","field":"length"}'>
+							          <input class="u-input"/>
+							        </div>
+							      </div>
+							    </div>
+							    <!--一个添加项结束-->
+							   <!--一个添加项开始-->
+							    <div class="ui-item">
+							      <div class="ui-name">宽(外观)：</div>
+							      <div class="ui-inputarea">
+							        <div class="u-text"  u-meta='{"id":"width","type":"u-text","data":"finishedProductSuiteList","field":"width"}'>
+							          <input class="u-input"/>
+							        </div>
+							      </div>
+							    </div>
+							    <!--一个添加项结束-->
+							     <!--一个添加项开始-->
+							    <div class="ui-item">
+							      <div class="ui-name">高(外观)：</div>
+							      <div class="ui-inputarea">
+							        <div class="u-text"  u-meta='{"id":"height","type":"u-text","data":"finishedProductSuiteList","field":"height"}'>
+							          <input class="u-input"/>
+							        </div>
+							      </div>
+							    </div>
+							    <!--一个添加项结束-->
+							    <!--一个添加项开始-->
+							    <div class="ui-item">
+							      <div class="ui-name">外观尺寸：</div>
+							      <div class="ui-inputarea">
+								      <div class="u-text"  u-meta='{"id":"exteriorSize","type":"u-text","data":"finishedProductSuiteList","field":"exteriorSize"}'>
+							          <input class="u-input" />
+							        </div>
+							      </div>
+							    </div>
+							    <!--一个添加项结束-->
+							     <!--一个添加项开始-->
+							    <div class="ui-item">
+							      <div class="ui-name">重量：</div>
+							      <div class="ui-inputarea">
+							        <div class="u-text"  u-meta='{"id":"roughWeight","type":"u-text","data":"finishedProductSuiteList","field":"roughWeight"}'>
+							          <input class="u-input"/>
+							        </div>
+							      </div>
+							    </div>
+							    <!--一个添加项结束-->
+							     <!--一个添加项开始-->
+							    <div class="ui-item">
+							      <div class="ui-name">材质描述：</div>
+							      <div class="ui-inputarea">
+							        <div class="u-text"  u-meta='{"id":"textureDesc","type":"u-text","data":"finishedProductSuiteList","field":"textureDesc"}'>
+							          <input class="u-input"/>
+							        </div>
+							      </div>
+							    </div>
+							    <!--一个添加项结束-->
+							     <!--一个添加项开始-->
+							    <div class="ui-item">
+							      <div class="ui-name">颜色描述：</div>
+							      <div class="ui-inputarea">
+							        <div class="u-text"  u-meta='{"id":"textureDesc0","type":"u-text","data":"finishedProductSuiteList","field":"colorDesc"}'>
+							          <input class="u-input"/>
+							        </div>
+							      </div>
+							    </div>
+							    <!--一个添加项结束-->
+							     <!--一个添加项开始-->
+							    <div class="ui-item">
+							      <div class="ui-name">外观描述：</div>
+							      <div class="ui-inputarea">
+							        <div class="u-text"  u-meta='{"id":"surfaceDesc","type":"u-text","data":"finishedProductSuiteList","field":"surfaceDesc"}'>
+							          <input class="u-input"/>
+							        </div>
+							      </div>
+							    </div>
+							    <!--一个添加项结束-->
+						    <!--一个添加项开始-->
+							  <div class="ui-item">
+							      <div class="ui-name"><i class="strong">*</i>产品组：</div>
+							      <div class="ui-inputarea">
+							        <div u-meta='{"type":"uiRefer","data":"finishedProductSuiteList","field":"productGroupId"}'>
+							          <input readonly="readonly"/>
+							          <span class="ui-icon uifont icon-bar refer"></span>
+							        </div>
+							      </div>
+							    </div>
+							  <!--一个添加项结束-->
+						    <!--一个添加项开始-->
+							  <div class="ui-item">
+							      <div class="ui-name"><i class="strong">*</i>物料组：</div>
+							      <div class="ui-inputarea">
+							        <div u-meta='{"id":"materialGroupId","type":"uiRefer","data":"finishedProductSuiteList","field":"materialGroupId"}'>
+							          <input readonly="readonly" id="materialGroupId"/>
+							          <span class="ui-icon uifont icon-bar refer" style="z-index:1"></span>
+                      <label id="materialGroupIdshow"
+                      style="width: 220px;height: 28px;
+                      border: 1px solid #DDDDDD;
+                      border-radius: 4px;
+                      text-indent: 8px;
+                      padding-right:20px;
+                      visibility:hidden;position:absolute;top:0;left:0"></label>
+							        </div>
+							      </div>
+							    </div>
+							  <!--一个添加项结束-->
+							  <!--一个添加项开始-->
+						    <div class="ui-item">
+						      <div class="ui-name"><i class="strong">*</i>包装数量：</div>
+						      <div class="ui-inputarea">
+						        <div class="u-text"  u-meta='{"id":"packageNum","type":"u-text","data":"finishedProductSuiteList","field":"packageNum"}'>
+						          <input class="u-input"/>
+						        </div>
+						      </div>
+						    </div>
+						    <!--一个添加项结束-->
+				    		<!--一个添加项开始-->
+						    <div class="ui-item">
+						      <div class="ui-name"><i class="strong pack-check">*</i>标签规格：</div>
+						      <div class="ui-inputarea">
+						        <div class="u-text"  u-meta='{"id":"labelStandardId","type":"u-combobox","data":"finishedProductSuiteList","field":"labelStandardId","datasource":"labelStandardSrc"}'>
+						          <input class="u-input"/>
+						          <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+						        </div>
+						      </div>
+						    </div>
+						    <!--一个添加项结束-->
+							  <!--一个添加项开始-->
+						    <div class="ui-item">
+						      <div class="ui-name"><i class="strong">*</i>生产模式：</div>
+						      <div class="ui-inputarea">
+						        <div class="u-text"  u-meta='{"id":"productionModeCode","type":"u-combobox","data":"finishedProductSuiteList","field":"productionModeCode","datasource":"productionModeSrc"}'>
+						          <input class="u-input"/>
+						          <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+						        </div>
+						      </div>
+						    </div>
+						    <!--一个添加项结束-->
+								<!--一个添加项开始-->
+							    <div class="ui-item">
+							      <div class="ui-name"><i class="strong">*</i>产品状态：</div>
+							      <div class="ui-inputarea">
+							        <div class="u-text"  u-meta='{"id":"proStateCode","type":"u-combobox","data":"finishedProductSuiteList","field":"proStateCode","datasource":"proStateSrc"}'>
+							          <input class="u-input" readonly="true"/>
+							          <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+							        </div>
+							      </div>
+							    </div>
+							    <!--一个添加项结束-->
+
+						    <!--一个添加项开始-->
+								<div class="ui-item">
+							      <div class="ui-name"><i class="strong">*</i>成品渠道：</div>
+							      <div class="ui-inputarea">
+							        <div u-meta='{"type":"u-radio","data":"finishedProductSuiteList","field":"whetherFinishedProduct","datasource":"whetherUnconventionalitySrc"}'>
+                  <label  class="u-radio margin-right-10" >
+							                <input type="radio" class="u-radio-button" name="whetherFinishedProduct">
+							                <span class="u-radio-label"></span>
+							            </label>
+							        </div>
+							      </div>
+							    </div>
+							  <!--一个添加项结束-->
+							 <!--一个添加项开始-->
+								<div class="ui-item">
+							      <div class="ui-name"><i class="strong">*</i>定制渠道：</div>
+							      <div class="ui-inputarea">
+							        <div u-meta='{"type":"u-radio","data":"finishedProductSuiteList","field":"whetherCustomized","datasource":"whetherUnconventionalitySrc"}'>
+                  <label  class="u-radio margin-right-10" >
+							                <input type="radio" class="u-radio-button" name="whetherCustomized">
+							                <span class="u-radio-label"></span>
+							            </label>
+							        </div>
+							      </div>
+							    </div>
+							  <!--一个添加项结束-->
+							  <!--一个添加项开始-->
+								<div class="ui-item">
+							      <div class="ui-name"><i class="strong">*</i>工程渠道：</div>
+							      <div class="ui-inputarea">
+							        <div u-meta='{"type":"u-radio","data":"finishedProductSuiteList","field":"whetherEnginieering","datasource":"whetherUnconventionalitySrc"}'>
+                  <label  class="u-radio margin-right-10" >
+							                <input type="radio" class="u-radio-button" name="whetherEnginieering">
+							                <span class="u-radio-label"></span>
+							            </label>
+							        </div>
+							      </div>
+							    </div>
+							  <!--一个添加项结束-->
+							  <!--一个添加项开始-->
+								<div class="ui-item">
+							      <div class="ui-name"><i class="strong">*</i>电商渠道：</div>
+							      <div class="ui-inputarea">
+							        <div u-meta='{"type":"u-radio","data":"finishedProductSuiteList","field":"whetherElecBusiniess","datasource":"whetherUnconventionalitySrc"}'>
+                  <label  class="u-radio margin-right-10" >
+							                <input type="radio" class="u-radio-button" name="whetherElecBusiniess">
+							                <span class="u-radio-label"></span>
+							            </label>
+							        </div>
+							      </div>
+							    </div>
+							  <!--一个添加项结束-->
+							  <!--一个添加项开始-->
+								<div class="ui-item">
+							      <div class="ui-name">供货状态：</div>
+							      <div class="ui-inputarea">
+							        <div u-meta='{"type":"u-radio","data":"finishedProductSuiteList","field":"whetherSupply","datasource":"supplySrc"}'>
+                  <label  class="u-radio margin-right-10" >
+							                <input type="radio" class="u-radio-button" name="whetherSupply">
+							                <span class="u-radio-label"></span>
+							            </label>
+							        </div>
+							      </div>
+							    </div>
+							  <!--一个添加项结束-->
+								<!--一个item开始-->
+						  		<div class="ui-item">
+							      <div class="ui-name">启用状态：</div>
+							      <div class="ui-inputarea">
+							        <div class="ui-textonly" data-bind='text: whetherEnable()'></div>
+							      </div>
+							    </div>
+						  	 <!--一个item结束-->
+						  	 
+          </div>
+        <!--定制信息结束-->
+  </div>
+	<!--定制信息结束-->
+</div>
+<!-- 单据详情页 -->
+<div class="ui-bill-detail ui-panel" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span>非家具</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-primary" data-bind="click: retListPanel">返回</a>
+      <a class="ui-btn ui-btn-primary" data-bind="click: goPicPanel">图片维护</a>
+      <a class="ui-btn ui-btn-green" data-bind="click: detail2bill">编辑</a>
+    </div>
+  </div>
+  <div class="ui-panel-head">
+	  	<div class="margin-left-20">
+		 <!--一个添加项开始-->
+		    <div class="ui-item ui-checkboxes-item">
+		      <div class="ui-name">产品类型：</div>
+							<div class="ui-inputarea ">
+				        <div class="u-text">
+				        	 <label class="u-checkbox margin-right-10 "  u-meta='{"type":"u-checkbox","data":"finishedProductSuiteList","field":"whetherSaleProduct","checkedValue":1,
+  "unCheckedValue":0,"enable":"flase"}'>
+				              <input type="checkbox" class="u-checkbox-input isSaleProduct">
+				              <span class="u-checkbox-label" data-role="name">销售产品</span>
+				          </label>
+				        	 <label class="u-checkbox margin-right-10 suite-checkbox "  u-meta='{"type":"u-checkbox","data":"finishedProductSuiteList","field":"whetherProductSuite","checkedValue":1,
+  "unCheckedValue":0,"enable":"false"}'>
+				              <input type="checkbox" class="u-checkbox-input">
+				              <span class="u-checkbox-label" data-role="name">套件产品</span>
+				          </label>
+				          <label class="u-checkbox product-choose"  u-meta='{"type":"u-checkbox","data":"finishedProductSuiteList","field":"whetherProductPack","checkedValue":1,
+  "unCheckedValue":0,"enable":"flase"}'>
+				              <input type="checkbox" class="u-checkbox-input">
+				              <span class="u-checkbox-label" data-role="name">包件产品</span>
+				          </label>
+				        </div>
+				      </div>
+		    </div>
+		    <!--一个添加项结束-->
+	  		<!--一个item开始-->
+	  		<div class="ui-item">
+		      <div class="ui-name">产品编码：</div>
+		      <div class="ui-inputarea">
+		        <div class="ui-textonly" data-bind='text: finishedProductSuiteList.ref("code")'></div>
+		      </div>
+		    </div>
+	  	 <!--一个item结束-->
+	  	 <!--一个item开始-->
+				<div class="ui-item">
+			      <div class="ui-name">产品描述：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-wordbreak" data-bind='text: finishedProductSuiteList.ref("description")'>
+			        <div class="ui-textonly" data-bind='attr:{title:finishedProductSuiteList.ref("description")},text: finishedProductSuiteList.ref("description")'></div>
+			        </div>
+			      </div>
+			    </div>
+	  	 <!--一个item结束-->
+	  		<!--一个item开始-->
+	  		<div class="ui-item">
+		      <div class="ui-name">产品简称：</div>
+		      <div class="ui-inputarea">
+		        <div class="ui-textonly" data-bind='text: finishedProductSuiteList.ref("proAbbreviation")'></div>
+		      </div>
+		    </div>
+	  	 <!--一个item结束-->
+	  		<!--一个item开始-->
+	  		<div class="ui-item">
+		      <div class="ui-name">研发系列：</div>
+		      <div class="ui-inputarea">
+		        <div class="ui-textonly" data-bind='text: finishedProductSuiteList.ref("radSeriesName")'></div>
+		      </div>
+		    </div>
+	  	 <!--一个item结束-->
+	  		<!--一个item开始-->
+	  		<div class="ui-item">
+		      <div class="ui-name">销售系列：</div>
+		      <div class="ui-inputarea">
+		        <div class="ui-textonly" data-bind='text: finishedProductSuiteList.ref("saleSeriesName")'></div>
+		      </div>
+		    </div>
+	  	 <!--一个item结束-->
+	  	<!--一个item开始-->
+	  		<div class="ui-item">
+		      <div class="ui-name">跨工厂物料状态：</div>
+		      <div class="ui-inputarea">
+		        <div class="ui-textonly" data-bind='text: finishedProductSuiteList.ref("croMaStateName")'></div>
+		      </div>
+		    </div>
+			<!--一个item结束-->
+	  		<!--一个item开始-->
+	  		<div class="ui-item">
+		      <div class="ui-name">通用类型：</div>
+		      <div class="ui-inputarea">
+		        <div class="ui-textonly" data-bind='text: finishedProductSuiteList.ref("genericTypeName")'></div>
+		      </div>
+		    </div>
+	  	 <!--一个item结束-->
+	  	 <!--一个item开始-->
+				<div class="ui-item">
+			      <div class="ui-name">基本单位：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: finishedProductSuiteList.ref("baseUnitName")'></div>
+			      </div>
+			    </div>
+			 <!--一个item结束-->
+			 <!--一个item开始-->
+				<div class="ui-item">
+			      <div class="ui-name">体积单位(M3)：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: finishedProductSuiteList.ref("volumeUnitCode")'></div>
+			      </div>
+			    </div>
+			 <!--一个item结束-->
+			 <!--一个item开始-->
+				<div class="ui-item">
+			      <div class="ui-name">体积：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: finishedProductSuiteList.ref("cubage")'></div>
+			      </div>
+			    </div>
+			 <!--一个item结束-->
+			 <!--一个item开始-->
+				<div class="ui-item">
+			      <div class="ui-name">重量单位：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: finishedProductSuiteList.ref("weightUnitCode")'></div>
+			      </div>
+			    </div>
+			 <!--一个item结束-->
+			 <!--一个item开始-->
+				<div class="ui-item">
+			      <div class="ui-name">长(外观)：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: finishedProductSuiteList.ref("length")'></div>
+			      </div>
+			    </div>
+			 <!--一个item结束-->
+			 <!--一个item开始-->
+				<div class="ui-item">
+			      <div class="ui-name">宽(外观)：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: finishedProductSuiteList.ref("width")'></div>
+			      </div>
+			    </div>
+			 <!--一个item结束-->
+			 <!--一个item开始-->
+				<div class="ui-item">
+			      <div class="ui-name">高(外观)：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: finishedProductSuiteList.ref("height")'></div>
+			      </div>
+			    </div>
+			 <!--一个item结束-->
+			 <!--一个item开始-->
+				<div class="ui-item">
+			      <div class="ui-name">外观尺寸：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: finishedProductSuiteList.ref("exteriorSize")'></div>
+			      </div>
+			    </div>
+			 <!--一个item结束-->
+			 <!--一个item开始-->
+				<div class="ui-item">
+			      <div class="ui-name">重量：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: finishedProductSuiteList.ref("roughWeight")'></div>
+			      </div>
+			    </div>
+			 <!--一个item结束-->
+			 <!--一个item开始-->
+				<div class="ui-item">
+			      <div class="ui-name">材质描述：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: finishedProductSuiteList.ref("textureDesc")'></div>
+			      </div>
+			    </div>
+			 <!--一个item结束-->
+			 <!--一个item开始-->
+				<div class="ui-item">
+			      <div class="ui-name">颜色描述：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: finishedProductSuiteList.ref("colorDesc")'></div>
+			      </div>
+			    </div>
+			 <!--一个item结束-->
+			 <!--一个item开始-->
+				<div class="ui-item">
+			      <div class="ui-name">外观描述：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: finishedProductSuiteList.ref("surfaceDesc")'></div>
+			      </div>
+			    </div>
+			 <!--一个item结束-->
+			<!--一个item开始-->
+  		<div class="ui-item">
+	      <div class="ui-name">产品组：</div>
+	      <div class="ui-inputarea">
+	        <div class="ui-textonly" data-bind='text: finishedProductSuiteList.ref("productGropName")'></div>
+	      </div>
+	    </div>
+  	 <!--一个item结束-->
+  		<!--一个item开始-->
+  		<div class="ui-item">
+	      <div class="ui-name">物料组：</div>
+	      <div class="ui-inputarea">
+	        <div class="ui-textonly" data-bind='text: finishedProductSuiteList.ref("materialGroupName")'></div>
+	      </div>
+	    </div>
+  	 <!--一个item结束-->
+			 <!--一个item开始-->
+				<div class="ui-item">
+			      <div class="ui-name">包装数量：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: finishedProductSuiteList.ref("packageNum")'></div>
+			      </div>
+			    </div>
+			 <!--一个item结束-->
+			 <!--一个item开始-->
+				<div class="ui-item">
+			      <div class="ui-name">标签规格：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: finishedProductSuiteList.ref("labelStandardName")'></div>
+			      </div>
+			    </div>
+			 <!--一个item结束-->
+			<!--一个item开始-->
+	  		<div class="ui-item">
+		      <div class="ui-name">生产模式：</div>
+		      <div class="ui-inputarea">
+		        <div class="ui-textonly" data-bind='text: finishedProductSuiteList.ref("productionModeName")'></div>
+		      </div>
+		    </div>
+			<!--一个item结束-->
+			<!--一个item开始-->
+				<div class="ui-item">
+			      <div class="ui-name">产品状态：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text: finishedProductSuiteList.ref("proStateName")'></div>
+			      </div>
+			    </div>
+			 <!--一个item结束-->
+		  <!--一个item开始-->
+				<div class="ui-item">
+			      <div class="ui-name">成品渠道：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text:whetherFormat("finishedProductSuiteList","whetherFinishedProduct")'></div>
+			      </div>
+			    </div>
+			 <!--一个item结束-->
+			 <!--一个item开始-->
+				<div class="ui-item">
+			      <div class="ui-name">定制渠道：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text:whetherFormat("finishedProductSuiteList","whetherCustomized")'></div>
+			      </div>
+			    </div>
+			 <!--一个item结束-->
+			 <!--一个item开始-->
+				<div class="ui-item">
+			      <div class="ui-name">工程渠道：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text:whetherFormat("finishedProductSuiteList","whetherEnginieering")'></div>
+			      </div>
+			    </div>
+			 <!--一个item结束-->
+			 <!--一个item开始-->
+				<div class="ui-item">
+			      <div class="ui-name">电商渠道：</div>
+			      <div class="ui-inputarea">
+			        <div class="ui-textonly" data-bind='text:whetherFormat("finishedProductSuiteList","whetherElecBusiniess")'></div>
+			      </div>
+			    </div>
+			 <!--一个item结束-->
+			 <!--一个item开始-->
+	  		<div class="ui-item">
+		      <div class="ui-name">供货状态：</div>
+		      <div class="ui-inputarea">
+		        <div class="ui-textonly" data-bind='text: whetherSupply()'></div>
+		      </div>
+		    </div>
+	  	 <!--一个item结束-->
+			<div class="ui-item">
+		      <div class="ui-name">启用状态：</div>
+		      <div class="ui-inputarea">
+		        <div class="ui-textonly" data-bind='text: whetherEnable()'></div>
+		      </div>
+		  </div>
+				
+	  	 <!--一个item开始-->
+	  		<div class="ui-item">
+		      <div class="ui-name">物料类型：</div>
+		      <div class="ui-inputarea">
+		        <div class="ui-textonly" data-bind='text: finishedProductSuiteList.ref("proTypeName")'></div>
+		      </div>
+		    </div>
+	  	 <!--一个item结束-->
+        <div class="clearfix"></div>			 
+			 </div>
+  </div>
+  <div class="ui-bill-body">
+
+  </div>
+  <div class="ui-bill-footer">
+  </div>
+</div>
+<!--导入导出-->
+<div id="exportFiel"></div>
+<div id="importFiel"></div>
+<!--导入导出end-->
+<!-- 图片维护页 -->
+<div class="ui-bill-pic ui-panel" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span>图片维护</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-green" data-bind="click: picBack">返回</a>
+    </div>
+  </div>
+  <div class="ui-bill-body">
+        <div class="ui-panel-body-head margin-top-15">
+					  <div class="ui-panel-body-head-left">
+			        <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-add" data-bind="click: showFileDialog"><i class="uifont icon-plus margin-right-5"></i>上传图片</a>
+			        <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click: delRow.bind($data,'ProdInfoAndPhotoInfoList')"><i class="uifont icon-shanchu1 margin-right-5"></i>删行</a>
+	        		<a class="ui-btn ui-btn-primary margin-right-5" id="user-action-add" data-bind="click: saveParse">保存</a>
+			      </div>
+        </div>
+			  <div class="ui-table-container">
+			      <div u-meta='{"id":"grid_ProdInfoAndPhotoInfo","data":"ProdInfoAndPhotoInfoList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+	              <div options='{"field":"prodPhotoInfoUrl","dataType":"String","title":"图片预览","renderType":"picShow"}'></div>
+	              <div options='{"field":"prodPhotoInfoCode","dataType":"String","title":"图片名称"}'></div>
+	              <div options='{"field":"pictureCategoryName","dataType":"String","title":"图片类型"}'></div>
+	              <div options='{"field":"isMainPhoto","dataType":"String","title":"是否主图","renderType":"mainPhoto"}'></div>
+	              <div options='{"field":"operationMain","dataType":"String","title":"设为主图","renderType":"operationMain","fixed":true,"width":"110px"}'></div>
+			      </div>
+			  </div>
+  </div>
+  <div class="ui-bill-footer"></div>
+</div>
+<!-- 图片维护页 end-->
+<!-- 模态框(附件上传)start-->	
+<div id="fileiptwrap">
+  <input class="u-input" type="file" name="addfile" id = "uploadbatch_id" multiple="multiple" style="display:none;"/>
+</div>
+<div id="file-dialog" style="display:none;">
+  <div class="u-msg-title">
+    <h4>附件</h4>
+  </div>
+  <div class="u-msg-content">
+  	<div class="margin-bottom-15 clearfix">
+			<!--选择图片类型开始-->
+				  <div class="">
+				      <div class="ui-name margin-top-5" style="width: 85px;">选择图片类型：</div>
+				      <div class="ui-inputarea">
+				        <div u-meta='{"type":"uiRefer","data":"pictureCategoryRef","field":"pictureCategory"}'>
+				          <input readonly="readonly"/>
+				          <span class="ui-icon uifont icon-bar refer"></span>
+				        </div>
+				      </div>
+				    </div>
+		  <!--选择图片类型开始-->
+  		<div class="margin-top-10" style="color: #f00;">
+      	*支持图片格式jpg，bmp，gif，png，jpeg；每次上传图片大小总和不得超过500MB。
+      </div>
+  	</div>
+    <div class="ui-file-btns">
+      <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+        data-bind='click: onOpenUploadWin'><i class="uifont icon-tubiao-shangchuan margin-right-5"></i>上传
+      </a>
+      <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+        data-bind='click: fileDelete'><i class="uifont icon-shanchu1 margin-right-5"></i>删除
+      </a>
+      <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+        data-bind='click: fileView'><i class="uifont icon-tubiao-chakan margin-right-5"></i>查看
+      </a>
+      <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-add" data-bind="click: savePic">保存</a>
+    </div>
+    <div class="ui-file-list">
+      <div class="ui-table-container">
+          <div u-meta='{"id":"grid_attach","data":"FileList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true,"columnMenu":false}'>
+              <div options='{"field":"filename","dataType":"String","title":"文件名称"}'></div>
+              <div options='{"field":"filesize","dataType":"String","title":"文件大小"}'></div>
+              <div options='{"field":"uploadtime","dataType":"Datetime","title":"上传时间"}'></div>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="u-msg-footer">
+    <!-- <a class="ui-btn ui-btn-green J-ok">确定</a> -->
+  </div>
+  </div>
+	<!-- 模态框(附件上传)end-->	
+	<!--大图浏览模态框开始-->
+  <div id="picBig-dialog" style="display:none;">
+		  <div class="u-msg-title">
+		    <h4>图片预览</h4>
+		  </div>
+		  <div class="u-msg-content text-center img-big-content">
+		  	  <img src="" id="picBig" style="max-width: 600px;"/>
+		  		<a class="btn-img-switch prev" id="prev" data-bind="click: prev">上一张</a>
+			  	<a class="btn-img-switch next" id="next" data-bind="click: next">下一张</a>
+			  	<div class="btn-img-tip" id="imgTip"></div>
+		  </div>
+	    <div class="u-msg-footer">
+	    </div>
+  </div>
+	<!--大图浏览模态框结束-->

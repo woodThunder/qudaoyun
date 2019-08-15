@@ -1,0 +1,65 @@
+var a =
+{"statusCode": 200, "message": null, "data":
+{
+    "content": [
+        {
+            "id": 3434,
+            "sort": 2,
+            "code": "j99999",
+            "name": "guoyuyang",
+            "gender": "男",
+            "phone": "18612636062",
+            "email": "anry@yonyou.com",
+            "coRole": "系统管理员",
+            "owner": "用友商城"
+        },
+        {
+            "id": 3435,
+            "sort": 3,
+            "code": "j999991",
+            "name": "guoyuyang1",
+            "gender": "男",
+            "phone": "18612636062",
+            "email": "anry@yonyou.com",
+            "coRole": "系统管理员",
+            "owner": "用友商城"
+        },
+        {
+            "id": 3436,
+            "sort": 4,
+            "code": "j999992",
+            "name": "guoyuyang3",
+            "gender": "男",
+            "phone": "18612636062",
+            "email": "anry@yonyou.com",
+            "coRole": "系统管理员",
+            "owner": "用友商城"
+        },
+        {
+            "id": 3437,
+            "sort": 5,
+            "code": "j999994",
+            "name": "guoyuyang4",
+            "gender": "男",
+            "phone": "18612636062",
+            "email": "anry@yonyou.com",
+            "coRole": "系统管理员",
+            "owner": "用友商城"
+        }
+    ],
+    "pageable": {
+        "sort": null,
+        "pageSize": 10,
+        "pageNumber": 0,
+        "offset": 0
+    },
+    "totalElements": 34,
+    "totalPages": 4,
+    "last": false,
+    "sort": null,
+    "numberOfElements": 10,
+    "first": true,
+    "size": 10,
+    "number": 0
+}
+};

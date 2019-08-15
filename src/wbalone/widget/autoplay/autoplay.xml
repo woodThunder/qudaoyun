@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+    <ModulePrefs title="首页轮播图" description="autoplay">
+    </ModulePrefs>
+    <UserPref status="1" name="height" display_name="高度" datatype="string" default_value="240" required="true" />
+    <UserPref status="1" name="number" display_name="图片数量" datatype="string" default_value="3" required="true" />
+    <Content type="html" inline="true">
+        <![CDATA[
+        <div class="swiper-container width-full"  id="${widgetId}">
+            <div class="swiper-wrapper">
+
+            </div>
+        </div>
+            <script type="text/javascript">
+                require(["./widget/autoplay/autoplay.js"],function(task){
+                    var count=getWidgetAttr("${widgetId}",'number');
+                    var height=getWidgetAttr("${widgetId}",'height');
+                    task.init("${widgetId}",count,height);
+                })
+            </script>
+        ]]>
+    </Content>
+</Module>

@@ -1,0 +1,132 @@
+/*.ztree li span.button.ico_close{*/
+    /*display: none*/
+/*}*/
+/*.ztree li span.button.ico_open{*/
+    /*display: none*/
+/*}*/
+
+/*.ztree li span.button.ico_docu{*/
+    /*display: none*/
+/*}*/
+/*.ztree li a.curSelectedNode span{*/
+    /*color:#41a6fb;*/
+    /*background-color: #ebf5fe;*/
+    /*border-radius: 5px;*/
+/*}*/
+
+/*.ztree li.focusNode>span.button.switch{*/
+    /*color:#000;*/
+/*}*/
+
+/*.treeSearch{*/
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+    /*height: 100%;*/
+    /*width: 90%*/
+/*}*/
+/*.treeSearch input{*/
+    /*height: 30px;*/
+/*}*/
+
+/*.treeSearch span{*/
+    /*height: 30px;*/
+    /*background-color: #fff*/
+/*}*/
+
+/*.u-input-group{*/
+    /*margin-bottom: 0px*/
+/*}*/
+/*.u-input-group .u-input-group-addon{*/
+    /*padding:8px 0px;*/
+    /*width: 60px;*/
+    /*background-color: #fff;*/
+    /*!* border: 0 *!*/
+/*}*/
+
+/*.seached a{*/
+	/*color:blue !important;*/
+/*}*/
+
+/*.u-col-3{*/
+    /*background: #fff;*/
+    /*min-height: 570px;*/
+    /*padding-right: 0px; */
+/*}*/
+/*.u-col-3 .ui-name {*/
+    /*width: 60px;*/
+/*}*/
+/*.treeTitle{*/
+    /*margin-left:20px;*/
+    /*margin-top:10px;*/
+    /*font-size: 16px*/
+/*}*/
+
+
+
+
+
+
+.ztree li span.button.ico_close{
+    display: none
+}
+.ztree li span.button.ico_open{
+    display: none
+}
+
+.ztree li span.button.ico_docu{
+    display: none
+}
+.ztree li a.curSelectedNode span{
+    color:#41a6fb;
+    background-color: #ebf5fe;
+    border-radius: 5px;
+}
+
+.ztree li.focusNode>span.button.switch{
+    color:#000;
+}
+
+.treeSearch{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 90%
+}
+.treeSearch input{
+    height: 30px;
+}
+
+.treeSearch span{
+    height: 30px;
+    background-color: #fff
+}
+
+.u-input-group{
+    margin-bottom: 0px
+}
+.u-input-group .u-input-group-addon{
+    padding:8px 0px;
+    width: 60px;
+    background-color: #fff;
+    /* border: 0 */
+}
+
+.seached{
+    color:blue !important;
+}
+
+.u-col-3{
+    background: #fff;
+    min-height: 570px;
+    padding-right: 0px;
+}
+.u-col-3 .ui-name {
+    width: 60px;
+}
+.treeTitle{
+    margin-left:20px;
+    margin-top:10px;
+    font-size: 16px
+}

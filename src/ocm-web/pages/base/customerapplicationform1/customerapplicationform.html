@@ -1,0 +1,552 @@
+<div class="ui-panel ui-list-panel ui-name-140">
+	<div>
+		<div class="page-title">客户</div>
+	</div>
+	<div>
+		<div>
+			<div class="oc-breadcrumb">
+			</div>
+		</div>
+	</div>
+	<div class="title-seperator"></div>
+	<ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+	</ui-searchbox>
+
+	<div class="ui-panel-body">
+		<div class="ui-panel-body-head">
+			<div class="ui-panel-body-head-left">
+				<ui-buttons params='datasource:$root.button1Source' style="float:left;">
+				</ui-buttons>
+				<ui-buttons params='datasource:$root.button15Source'>
+				</ui-buttons>
+			</div>
+
+		</div>
+		<div class="ui-table-container">
+			<ui-grid params='options:$root.grid0Option,vm:$root'>
+			</ui-grid>
+			<div class="ui-statistics margin-top-10">
+				<i class="uifont icon-i font-c-blue margin-right-10"></i>已选择
+				<span class="font-c-blue" data-bind="text:customerApplicationList.selectedIndices().length"></span>项数据
+			</div>
+			<div class="pagination-right">
+				<div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"customerApplicationList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="ui-panel  ui-bill-panel ui-name-140" style="display: none;">
+	<div>
+		<div class="page-title">
+			<span>客户</span>
+		</div>
+	</div>
+	<div>
+		<div>
+			<div class="oc-breadcrumb">
+			</div>
+		</div>
+	</div>
+	<div class="ui-panel-btn-bg">
+		<div class="ui-operate-btn">
+			<ui-buttons params='datasource:$root.button2Source'>
+			</ui-buttons>
+		</div>
+	</div>
+	<!-- <div id="bpmhead"></div>
+	<div id="bpmfoot"></div> -->
+	<div class="ui-panel-body">
+		<div class="u-tabs  ui-tabs margin-top-10">
+			<div class="u-tabs__tab-bar">
+				<a href="#tab-panel-0" class="u-tabs__tab">基本信息</a>
+				<a href="#tab-panel-1" class="u-tabs__tab">客户信息</a>
+				<a href="#tab-panel-2" class="u-tabs__tab">联系人</a>
+				<a href="#tab-panel-3" class="u-tabs__tab">收货地址</a>
+				<a href="#tab-panel-8" class="u-tabs__tab">账户信息</a>
+				<a href="#tab-panel-4" class="u-tabs__tab">开票信息</a>
+				<a href="#tab-panel-5" class="u-tabs__tab">门店</a>
+				<a href="#tab-panel-6-1" class="u-tabs__tab">门店联系人</a>
+				<a href="#tab-panel-7-1" class="u-tabs__tab">附件维护</a>
+			</div>
+			<!--申请信息开始-->
+			<div class="u-tabs__panel is-active" id="tab-panel-0">
+				<div class="ui-bill-body">
+					<div class="">
+						<ui-buttons params='datasource:$root.button0Source'>
+						</ui-buttons>
+					</div>
+					<div id="applyBase">
+						<div class="ui-collapse-group border">
+							<ui-card params='datasource:$root.card0Source,vm:$root,dt:$root.customerApplicationList,billstatus:$root.billPanelStatus'>
+							</ui-card>
+						</div>
+					</div>
+					<!--保存后开始-->
+					<div style="display: none;" id="applyBase_show">
+						<div class="ui-collapse-group border">
+							<ui-detail params='datasource:$root.detail0Source,dt:$root.customerApplicationList,vm:$root'>
+							</ui-detail>
+						</div>
+					</div>
+					<!--保存后结束-->
+				</div>
+			</div>
+			<!--申请信息结束-->
+			<!--基本信息开始-->
+			<div class="u-tabs__panel is-active" id="tab-panel-1">
+				<div class="ui-bill-body">
+					<div class="">
+						<ui-buttons params='datasource:$root.button3Source'>
+						</ui-buttons>
+					</div>
+					<div id="productBase">
+						<div class="ui-collapse-group border">
+							<div id="default-example" data-collapse>
+								<!--基本信息开始-->
+								<h3 class="ui-collapse-title  clearfix  margin-top-10 open">
+									<i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+									<i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+									客户信息
+								</h3>
+								<div class="ui-collapse-content clearfix" id="baseInfo">
+									<ui-card params='datasource:$root.card1Source,vm:$root,dt:$root.CustomerList,billstatus:$root.billPanelStatus'>
+									</ui-card>
+								</div>
+								<!--一个添加项结束-->
+								<div class="clearfix"></div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<!--保存后开始-->
+				<div style="display: none;" id="productBase_show">
+					<div class="ui-collapse-group border">
+						<div id="default-example" data-collapse>
+							<h3 class="ui-collapse-title  clearfix  margin-top-10 open">
+								<i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+								<i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+								客户信息
+							</h3>
+							<div class="ui-collapse-content clearfix">
+								<ui-detail params='datasource:$root.detail1Source,dt:$root.CustomerList,vm:$root'>
+								</ui-detail>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<!--保存后结束-->
+			</div>
+
+			<!--基本信息结束-->
+			<!-- 联系人开始-->
+			<div class="u-tabs__panel" id="tab-panel-2">
+				<div class="ui-panel-body-head">
+					<div class="ui-panel-body-head-left">
+						<ui-buttons params='datasource:$root.button4Source'>
+						</ui-buttons>
+					</div>
+				</div>
+				<div class="ui-table-container" id="contactInfo">
+					<ui-grid params='options:$root.grid2Option,vm:$root'>
+					</ui-grid>
+				</div>
+			</div>
+			<!-- 联系人结束-->
+			<!-- 收货地址开始-->
+			<div class="u-tabs__panel" id="tab-panel-3">
+				<div class="ui-panel-body-head">
+					<div class="ui-panel-body-head-left">
+						<ui-buttons params='datasource:$root.button5Source'>
+						</ui-buttons>
+					</div>
+				</div>
+				<div class="ui-table-container" id="customerAddressInfo">
+					<ui-grid params='options:$root.grid3Option,vm:$root'>
+					</ui-grid>
+				</div>
+			</div>
+			<!-- 收货地址结束-->
+			<!-- 账户信息开始-->
+			<div class="u-tabs__panel" id="tab-panel-8">
+				<div class="ui-panel-body-head">
+					<div class="ui-panel-body-head-left">
+						<ui-buttons params='datasource:$root.button16Source'>
+						</ui-buttons>
+					</div>
+				</div>
+				<div class="ui-table-container" id="accountInfo">
+					<ui-grid params='options:$root.grid16Option,vm:$root'>
+					</ui-grid>
+				</div>
+			</div>
+			<!-- 账户信息结束-->
+			<!-- 开票信息开始-->
+			<div class="u-tabs__panel" id="tab-panel-4">
+				<div class="ui-panel-body-head">
+					<div class="ui-panel-body-head-left">
+						<ui-buttons params='datasource:$root.button11Source'>
+						</ui-buttons>
+					</div>
+				</div>
+				<div class="ui-table-container" id="customerInvoiceInfo">
+					<ui-grid params='options:$root.grid9Option,vm:$root'>
+					</ui-grid>
+				</div>
+			</div>
+			<!-- 开票信息结束-->
+
+			<!-- 门店信息开始-->
+			<div class="u-tabs__panel is-active" id="tab-panel-5">
+				<div class="ui-bill-body">
+					<div class="ui-collapse-group">
+						<div class="ui-panel-body-head-left">
+							<ui-buttons params='datasource:$root.button12Source'>
+							</ui-buttons>
+						</div>
+						<div id="shopproductBase">
+							<ui-card params='datasource:$root.card2Source,vm:$root,dt:$root.ShopList,billstatus:$root.billPanelStatus'>
+							</ui-card>
+						</div>
+						<!-- 保存后 -->
+						<div style="display: none;" id="shopproductBase_show">
+							<ui-detail params='datasource:$root.detail2Source,dt:$root.ShopList,vm:$root'>
+							</ui-detail>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<!-- 门店信息结束-->
+			<!-- 联系人开始-->
+			<div class="u-tabs__panel" id="tab-panel-6-1">
+				<div class="ui-table-container margin-top-15">
+					<div id="shopcontactBase">
+						<ui-buttons params='datasource:$root.button13Source'>
+						</ui-buttons>
+						<div class="margin-top-15">
+							<ui-grid params='options:$root.grid10Option,vm:$root'>
+							</ui-grid>
+						</div>
+					</div>
+					<!-- <div id="shopcontactBase_show" style="display: none;">
+						<ui-grid params='options:$root.grid14Option,vm:$root'>
+						</ui-grid>
+					</div> -->
+				</div>
+			</div>
+			<!-- 附件维护开始-->
+			<div class="u-tabs__panel" id="tab-panel-7-1">
+				<div class="ui-panel-body-head">
+					<div class="ui-panel-body-head-left">
+						<ui-buttons params='datasource:$root.button14Source'>
+						</ui-buttons>
+					</div>
+				</div>
+				<div class="ui-table-container" id="customerInvoiceInfo1">
+					<ui-grid params='options:$root.grid11Option,vm:$root'>
+					</ui-grid>
+				</div>
+			</div>
+			<!-- 附件维护结束-->
+		</div>
+	</div>
+</div>
+
+</div>
+<!--详情开始-->
+<div class="ui-panel ui-bill-detail ui-name-140" style="display: none;">
+	<div>
+		<div class="page-title">
+			<span>客户</span>
+		</div>
+	</div>
+	<div>
+		<div>
+			<div class="oc-breadcrumb">
+			</div>
+		</div>
+	</div>
+	
+	<div class="ui-panel-btn-bg">
+		<div class="ui-operate-btn">
+			<!-- <a class="ui-btn ui-btn-primary" data-bind="click: picPage">图片维护</a> -->
+			<ui-buttons params='datasource:$root.button6Source'>
+			</ui-buttons>
+		</div>
+	</div>
+	<div id="bpmhead"></div>
+	<div id="bpmfoot"></div>
+	<div class="ui-panel-body">
+		<div class="u-tabs ui-tabs">
+			<div class="u-tabs__tab-bar">
+				<!-- <a href="#tab-panel-6" class="u-tabs__tab is-active">基本信息</a>
+				<a href="#tab-panel-7" class="u-tabs__tab">联系人</a>
+				<a href="#tab-panel-8" class="u-tabs__tab">收货地址</a>
+				<a href="#tab-panel-9" class="u-tabs__tab">开票信息</a>
+ -->
+
+
+				<a href="#tab-panel-10" class="u-tabs__tab is-active">基本信息</a>
+				<a href="#tab-panel-11" class="u-tabs__tab">客户信息</a>
+				<a href="#tab-panel-12" class="u-tabs__tab">联系人</a>
+				<a href="#tab-panel-13" class="u-tabs__tab">收货地址</a>
+				<a href="#tab-panel-18" class="u-tabs__tab">账户信息</a>
+				<a href="#tab-panel-14" class="u-tabs__tab">开票信息</a>
+				<a href="#tab-panel-15" class="u-tabs__tab">门店</a>
+				<a href="#tab-panel-16-1" class="u-tabs__tab">门店联系人</a>
+				<a href="#tab-panel-17-1" class="u-tabs__tab">附件维护</a>
+			</div>
+
+			<!--申请信息开始-->
+			<div class="u-tabs__panel is-active" id="tab-panel-10">
+				<div class="ui-bill-body">
+					<div class="">
+						<ui-buttons params='datasource:$root.button0Source'>
+						</ui-buttons>
+					</div>
+
+					<div class="ui-collapse-group border">
+						<ui-detail params='datasource:$root.detail0Source,dt:$root.customerApplicationList,vm:$root'>
+						</ui-detail>
+					</div>
+					<!--保存后结束-->
+				</div>
+			</div>
+			<!--申请信息结束-->
+
+			<div class="u-tabs__panel is-active" id="tab-panel-11">
+				<div class="ui-collapse-group border">
+					<div data-collapse>
+						<h3 class="ui-collapse-title  clearfix open  margin-top-10 margin-bottom-0">
+							<i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+							<i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+							基本信息
+						</h3>
+						<div class="ui-collapse-content">
+							<ui-detail params='datasource:$root.detail1Source,dt:$root.CustomerList,vm:$root'>
+							</ui-detail>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<!-- 联系人开始-->
+			<div class="u-tabs__panel" id="tab-panel-12">
+
+				<div class="ui-table-container">
+					<ui-grid params='options:$root.grid4Option,vm:$root'>
+					</ui-grid>
+				</div>
+			</div>
+			<!-- 联系人结束-->
+			<!-- 收货地址开始-->
+			<div class="u-tabs__panel" id="tab-panel-13">
+
+				<div class="ui-table-container">
+					<ui-grid params='options:$root.grid5Option,vm:$root'>
+					</ui-grid>
+				</div>
+			</div>
+			<!-- 收货地址结束-->
+
+			<!-- 账户信息开始-->
+			<div class="u-tabs__panel" id="tab-panel-18">
+				<div class="ui-table-container margin-top-20">
+					<ui-grid params='options:$root.grid17Option,vm:$root'>
+					</ui-grid>
+				</div>
+			</div>
+			<!-- 账户信息结束-->
+			<!-- 开票信息开始-->
+			<div class="u-tabs__panel" id="tab-panel-14">
+
+				<div class="ui-table-container">
+					<ui-grid params='options:$root.grid12Option,vm:$root'>
+					</ui-grid>
+				</div>
+			</div>
+			<!-- 开票信息结束-->
+
+			<!-- 门店信息开始-->
+			<div class="u-tabs__panel is-active" id="tab-panel-15">
+				<div class="ui-bill-body">
+					<div class="ui-collapse-group">
+						<ui-detail params='datasource:$root.detail2Source,dt:$root.ShopList,vm:$root'>
+						</ui-detail>
+					</div>
+				</div>
+			</div>
+			<!-- 门店信息结束-->
+			<!-- 联系人开始-->
+			<div class="u-tabs__panel" id="tab-panel-16-1">
+
+				<div class="ui-table-container margin-top-15">
+					<ui-grid params='options:$root.grid14Option,vm:$root'>
+					</ui-grid>
+				</div>
+			</div>
+			<!-- 附件维护开始-->
+			<div class="u-tabs__panel" id="tab-panel-17-1">
+        <ui-buttons params='datasource:$root.button17Source'>
+        </ui-buttons>
+				<div class="ui-table-container">
+					<ui-grid params='options:$root.grid15Option,vm:$root'>
+					</ui-grid>
+				</div>
+			</div>
+			<!-- 附件维护结束-->
+
+
+		</div>
+
+	</div>
+	<!--
+  <div class="ui-panel-body">
+
+
+
+
+  </div>-->
+
+</div>
+<!--详情结束-->
+<!-- 图片维护页 -->
+<div class="ui-bill-pic ui-panel" style="display: none;">
+	<div>
+		<div class="page-title">
+			<span>图片维护</span>
+		</div>
+	</div>
+	<div>
+		<div>
+			<div class="oc-breadcrumb">
+			</div>
+		</div>
+	</div>
+	<div class="ui-panel-btn-bg">
+		<div class="ui-operate-btn">
+			<ui-buttons params='datasource:$root.button7Source'>
+			</ui-buttons>
+		</div>
+	</div>
+	<div class="ui-bill-body">
+		<div class="ui-panel-body-head margin-top-15">
+			<div class="ui-panel-body-head-left">
+				<ui-buttons params='datasource:$root.button8Source'>
+				</ui-buttons>
+			</div>
+		</div>
+		<div class="ui-table-container">
+			<ui-grid params='options:$root.grid6Option,vm:$root'>
+			</ui-grid>
+		</div>
+		<div class="ui-bill-footer"></div>
+	</div>
+
+</div>
+
+
+<!--查看变更记录 -->
+<div class="ui-bill-alter ui-panel" style="display: none;">
+	<div>
+		<div class="page-title">
+			<span>变更记录</span>
+		</div>
+	</div>
+	<div>
+		<div>
+			<div class="oc-breadcrumb">
+			</div>
+		</div>
+	</div>
+	<div class="ui-panel-btn-bg">
+		<div class="ui-operate-btn">
+			<ui-buttons params='datasource:$root.button7Source'>
+			</ui-buttons>
+		</div>
+	</div>
+	<div class="ui-bill-body">
+		<!-- <div class="ui-panel-body-head margin-top-15">
+			<div class="ui-panel-body-head-left">
+				<ui-buttons params='datasource:$root.button8Source'>
+				</ui-buttons>
+			</div>
+		</div> -->
+		<div class="ui-table-container">
+			<ui-grid params='options:$root.grid8Option,vm:$root'>
+			</ui-grid>
+		</div>
+		<div class="ui-bill-footer"></div>
+	</div>
+
+</div>
+
+
+
+
+<!-- 图片维护页 end-->
+<!-- 客户图片上传-->
+<div id="fileiptwrap">
+	<input class="u-input" type="file" name="addfile" id="uploadbatch_id" multiple="multiple" style="display:none;" />
+</div>
+<div id="file-dialog" style="display:none;">
+	<div class="u-msg-title">
+		<h4>附件</h4>
+	</div>
+	<div class="u-msg-content">
+		<div class="margin-bottom-15 clearfix">
+			<!--选择图片类型开始-->
+			<div class="">
+				<div class="ui-name margin-top-5" style="width: 85px;">选择图片类型：</div>
+				<div class="ui-inputarea">
+					<div u-meta='{"type":"uiRefer","data":"pictureCategoryRef","field":"pictureCategory"}'>
+						<input readonly="readonly" />
+						<span class="ui-icon uifont icon-bar refer"></span>
+					</div>
+				</div>
+			</div>
+			<!--选择图片类型开始-->
+			<div class="margin-top-10" style="color: #f00;">
+				*支持图片格式jpg，bmp，gif，png，jpeg；每次上传图片大小总和不得超过500MB。
+			</div>
+		</div>
+		<div class="ui-file-btns">
+			<ui-buttons params='datasource:$root.button9Source'>
+			</ui-buttons>
+		</div>
+		<div class="ui-file-list">
+			<div class="ui-table-container">
+				<ui-grid params='options:$root.grid7Option,vm:$root'>
+				</ui-grid>
+			</div>
+		</div>
+	</div>
+	<div class="u-msg-footer">
+		<!-- <a class="ui-btn ui-btn-green J-ok">确定</a> -->
+	</div>
+</div>
+<!-- 客户图片上传end-->
+<!--导入弹框 end-->
+<div id="exportFiel"></div>
+<div id="importFiel"></div>
+<!--大图浏览模态框开始-->
+<div id="picBig-dialog" style="display:none;">
+	<div class="u-msg-title">
+		<h4>图片预览</h4>
+	</div>
+	<div class="u-msg-content text-center">
+		<img src="" id="picBig" style="max-width: 860px;" />
+		<ui-buttons params='datasource:$root.button10Source'>
+		</ui-buttons>
+		<div class="btn-img-tip" id="imgTip"></div>
+	</div>
+	<div class="u-msg-footer">
+	</div>
+</div>
+<!--大图浏览模态框结束-->
+
+<ui-dialogcard params='datasource:$root.dialog1Source,ref:$root.addresscardcomp,dt:$root.purchaseItems'>
+</ui-dialogcard>

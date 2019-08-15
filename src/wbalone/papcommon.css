@@ -1,0 +1,239 @@
+/* 固定导航头 */
+
+/* 小部件管理 */
+
+#widgetList .breadcrumb {
+    position: fixed;
+    z-index: 2;
+}
+
+#widgetList .page-header-actions {
+    margin-top: 41px;
+}
+
+/* 布局管理 */
+
+#layoutList .page-header {
+    position: fixed;
+    width: 100%;
+    z-index: 3;
+    top: 0;
+}
+
+#layoutList .page-content {
+    margin-top: 41px;
+}
+
+/* 功能管理 */
+
+.apptitle {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 2;
+}
+
+.funbar {
+    margin-top: 41px;
+}
+.apptitle + .u-row{
+    margin-top: 41px;
+}
+/* 管理中心 */
+
+#ctrlCenter .apptitle {
+    position:static;
+}
+
+/* 角色分配用户 */
+
+#roleConUser .wrap-body>.u-row {
+    margin-top: 41px;
+}
+
+/* 按钮管理 */
+
+#demo-mdlayout .function-head-row {
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+}
+
+#demo-mdlayout .activity-detail {
+    margin-top: 41px;
+}
+
+#demo-mdlayout,
+#demo-mdlayout .function-section,
+#demo-mdlayout .function-page,
+#demo-mdlayout .u-widget,
+#demo-mdlayout .activity-detail {
+    background: #f5f5f5;
+}
+
+#demo-mdlayout .function-detail {
+    margin-top: 0;
+}
+
+/* 菜单管理 */
+
+#sideMenu>.u-row {
+    margin-top: 41px;
+}
+
+/* 密码策略管理 */
+
+#pwPolicy .editrow .pap-title {
+    position: fixed;
+    width: 100%;
+    z-index: 3;
+}
+
+#pwPolicy .editrow .pap-title+.u-widget-right {
+    margin-top: 41px;
+}
+
+/* 上机日志 */
+
+#uselog #uselogHead {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 4;
+}
+
+#uselog #uselogHead+.u-row {
+    margin-top: 41px;
+}
+/* 业务日志 单独修改 /pap/iweb_ieoplog/iuap-busilog-service/src/main/webapp/static/css/busilog.css */
+
+
+/* 在线用户 */
+#busslog #onlineUserHead{
+    position: fixed;
+    width: 100%;
+    z-index: 4;
+    top: 0;
+}
+#busslog #onlineUserHead + .u-row{
+    margin-top: 41px;
+}
+/* 工作台设计 */
+#DTdesign .app-funbar{
+    margin-top: 41px;
+}
+/* 岗位 */
+#quarters #quartersList .po-title{
+    position: fixed;
+    top: 0;
+    z-index: 2;
+}
+#quarters #quartersList .search{
+    margin-top: 41px;
+}
+/* 人员单独修改  /pap/iuap_cloud_basedoc/iuap_basedoc_fe/src/style/main.less*/
+
+/* 编码映射，编码规则 /pap/iweb_ieopcoderule/iuap-billcode-service/src/main/webapp/static/css/billcode.css
+ 单独修改*/
+
+/* 打印业务对象 /pap/pap-plus/eiap-plus/src/main/webapp/pages/print/print_obj.css
+打印模板管理 /pap/pap-plus/eiap-plus/src/main/webapp/pages/print/print_template.css
+消息通道配置 /pap/iweb_ieopcommicate/iuap-message-channel/src/main/webapp/static/css/channel/message-manage.css
+调度任务 /pap/iweb_saas_dispatch/iuap-dispatch-service/src/main/webapp/common/css/tasklog.css
+流程模型 /pap/iuap-eiap-bpm/iuap-eiap-bpm-service/src/main/webapp/static/css/procindex.css
+流程监控 /pap/iuap-eiap-bpm/iuap-eiap-bpm-service/src/main/webapp/static/css/index.css
+单独修改 */
+
+/* 角色管理--功能授权 */
+.gnsq{
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    top: 0;
+}
+.gnsq + .auth-after-rolemgr-wrap{
+    margin-top: 41px;
+}
+/* 小部件授权 */
+#widgetAuthorize .pap-title{
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    top: 0;
+}
+#widgetAuthorize .pap-title .backbutton i{
+    top: 0
+}
+#widgetAuthorize .pap-title + .app-after-rolemgr-wrap {
+    margin-top: 41px;
+}
+/* 消息模板 */
+.m-template .edge>.u-panel.panel-default>.u-panel-heading{
+    position: fixed;
+    width: 100%;
+    z-index: 1111;
+    top: 0;
+}
+.m-template .edge>.u-panel.panel-default>.u-panel-heading + .u-panel-body{
+    margin-top: 41px;
+}
+/* 档案 */
+#dicttype-mdlayout{
+    overflow: auto;
+}
+#dicttype-mdlayout>.u-mdlayout-btn{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 2;
+}
+#dicttype-mdlayout>.u-mdlayout-btn + .form-search {
+    margin-top: 40px;
+}
+/* 树表 */
+#infoPanel{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 99;
+}
+#user-mdlayout #papList{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 99;
+}
+#user-mdlayout #papList + .form-search {
+    margin-top: 40px;
+}
+/* 督办任务 */
+#user-mdlayout.duban #papList{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 99;
+}
+#user-mdlayout .form-search {
+    margin-top: 40px;
+}
+/* 任务中心 */
+#taskecenter-mdlayout .lsz-title{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 22;
+    margin: 0;
+}
+#test.bpmsearch{
+    margin-top: 41px;
+}
+/* 消息中心 */
+.m-ctn .u-panel .u-panel-heading .msg-head{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 2;
+}
+.m-ctn .u-panel .u-panel-heading .m-sort{
+    margin-top: 41px;
+}

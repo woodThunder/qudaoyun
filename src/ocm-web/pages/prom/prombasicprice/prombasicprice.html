@@ -1,0 +1,90 @@
+<div class="ui-panel">
+  <div>
+    <div class="page-title">
+      <span>促销价格管理</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+
+
+  <div class="ui-searchbox">
+    <div id="commonproprice-searchcontent" class="ui-searchbox-content">
+
+    </div>
+    <div class="clearfix">
+
+    </div>
+    <div class="ui-searchbox-footer">
+      <div class="ui-search-more hidden">
+          <a>更多<i class="uifont icon-down"></i></a>
+      </div>
+
+      <div class="ui-search-btn">
+        <a class="ui-btn ui-btn-primary margin-right-5"
+        data-bind="click:cleanSearch">清空
+        </a>
+        <a class="ui-btn ui-btn-green margin-right-5"
+        data-bind="click:search.bind($data,true)">搜索
+        </a>
+      </div>
+      <div class="clearfix">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-panel-body">
+    <div class="ui-panel-body-head">
+        <div class="ui-panel-body-head-left">
+          <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click: disable, visible: buttonShowGroup['disable']">
+            <i class="uifont icon-tingyong margin-right-5"></i>
+            停用
+          </a>
+          <a class="ui-btn ui-btn-primary" data-bind="click: exportPrice, visible: buttonShowGroup['export']">
+            <i class="uifont icon-export margin-right-5"></i>
+            导出
+          </a>
+        </div>
+        <div class="ui-panel-body-head-right">
+        </div>
+      </div>
+      <div class="ui-table-container">
+          <div u-meta='{"id":"grid_PromBasicPriceList","data":"PromBasicPriceList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+              <div options='{"field":"productShowCode","dataType":"String","title":"产品编码"}'></div>
+              <div options='{"field":"productShowName","dataType":"String","title":"产品名称","editable":false}'></div>
+              <div options='{"field":"packProCode","dataType":"String","title":"包件编码","editable":false}'></div>
+              <div options='{"field":"packProName","dataType":"String","title":"包件名称","editable":false}'></div>
+              <!-- <div options='{"field":"productGroup","dataType":"String","title":"产品组","editable":false}'></div> -->
+              <div options='{"field":"channelName","dataType":"String","title":"渠道类型"}'></div>
+              <div options='{"field":"agencypartitionName","dataType":"String","title":"办事处分区"}'></div>
+              <div options='{"field":"officeName","dataType":"String","title":"办事处"}'></div>
+              <div options='{"field":"customerName","dataType":"String","title":"客户"}'></div>
+              <div options='{"field":"price","dataType":"float","title":"价格"}'></div>
+              <div options='{"field":"enabled","dataType":"integer","title":"启用状态","editable":false,"renderType":"enableRender"}'></div>
+              <div options='{"field":"adjustCode","dataType":"String","title":"调价单号"}'></div>
+              <div options='{"field":"note","dataType":"String","title":"备注"}'></div>
+              <div options='{"field":"creator","dataType":"String","title":"创建人","editable":false,"visible":false}'></div>
+              <div options='{"field":"creationTime","dataType":"Datetime","title":"创建时间","editable":false,"visible":false}'></div>
+              <div options='{"field":"modifier","dataType":"String","title":"最后修改人","editable":false,"visible":false}'></div>
+              <div options='{"field":"modifiedTime","dataType":"Datetime","title":"最后修改时间","editable":false,"visible":false}'></div>
+          </div>
+          <div class="ui-statistics margin-top-10">
+            已选择<span class="font-c-blue" data-bind="text:PromBasicPriceList.selectedIndices().length"></span>项数据
+          </div>
+          <div class="pagination-right">
+            <div id='pagination' class='pagination u-pagination pagination-sm'
+            u-meta='{"type":"pagination","data":"PromBasicPriceList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+          </div>
+      </div>
+    </div>
+</div>
+<div id="dialog_layer" style="display:none;">
+
+</div>
+<div id="exportFiel"></div>

@@ -1,0 +1,45 @@
+.skin-dark .sidebar .sidebar-wrapper .sidebar-nav li:hover > a {
+    background-color: #313131;
+    color: white;
+}
+.skin-dark .sidebar .sidebar-wrapper .sidebar-nav li.active > a {
+    background-color: #1a1a1a;
+}
+.skin-dark .sidebar .sidebar-wrapper .sidebar-nav li.active:hover > a {
+    background-color: #313131;
+}
+.skin-dark .sidebar .sidebar-wrapper .sidebar-nav li > ul li:hover > a {
+    color: #313131;
+    background-color: transparent;
+}
+.skin-dark .sidebar .sidebar-wrapper .sidebar-nav li > ul li.active:hover > a {
+    color: white;
+}
+.skin-dark header {
+    background-color: rgba(35, 35, 35, 0.8);
+    border-color: #232323;
+    color: white;
+}
+.skin-dark header .logo {
+    color: white;
+}
+.skin-dark header .navbar-main .button-container > .item > a {
+    color: white;
+}
+.skin-dark header .navbar-main .button-container > .item.chat-search {
+    border-color: #232323;
+}
+.skin-dark header .navbar-main .button-container > .item.chat-search.collapse.in {
+    border-color: #232323;
+}
+.skin-dark header .navbar-main .nav-content .page-title {
+    color: white;
+}
+.skin-dark.dark header .logo {
+    background: #232323;
+    color: white;
+    border-right: 1px solid #2c2c2c;
+}
+.skin-dark.dark header .logo:hover {
+    background: #313131;
+}

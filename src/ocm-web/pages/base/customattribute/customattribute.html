@@ -1,0 +1,309 @@
+<div class="ui-panel ui-list-panel">
+  <div>
+    <div class="page-title">
+      <span>属性值域设置</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+  <!-- <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-green margin-right-5">导出
+      </a>
+      <a class="ui-btn ui-btn-primary">导入
+      </a>
+    </div>
+  </div> -->
+
+  <div class="ui-searchbox ui-panel-head">
+    <div id="CustomAttribute-searchcontent" class="ui-searchbox-content">
+
+    </div>
+    <div class="clearfix">
+
+    </div>
+    <div class="ui-searchbox-footer">
+      <div class="ui-search-more hidden">
+          <a>更多<i class="uifont icon-down"></i></a>
+      </div>
+
+      <div class="ui-search-btn">
+        
+        <a class="ui-btn ui-btn-primary margin-right-5"
+        data-bind="click:cleanSearch">清空
+        </a>
+        <a class="ui-btn ui-btn-green margin-right-5"
+        data-bind="click:search.bind($data,true)">搜索
+        </a>
+      </div>
+      <div class="clearfix">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-panel-body">
+      <div class="ui-panel-body-head">
+        <div class="ui-panel-body-head-left">
+          <a class="ui-btn ui-btn-orange margin-right-5" id="user-action-add"
+            data-bind="click: showAddBillPanel.bind($data)"><i class="uifont icon-plus margin-right-5"></i>新增
+          </a>
+          <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+            data-bind="click: del"><i class="uifont icon-shanchu1 margin-right-5"></i>删除
+          </a>
+          <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+						<a class="ui-button-item" data-bind="click: enable">
+            <i class="uifont icon-qiyong margin-right-5"></i>启用</a>
+						<a class="ui-button-item" data-bind="click: disable">
+            <i class="uifont icon-tingyong margin-right-5"></i>停用</a>
+					</div>
+				
+         <!--  <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+            <a class="ui-button-item" data-bind="click: importHandle,visible:buttonShowGroup['importHandle']"><i class="uifont  icon-import margin-right-5"></i>导入</a>
+            <a class="ui-button-item" data-bind="click: exportHandle,visible:buttonShowGroup['exportHandle']"><i class="uifont icon-export margin-right-5"></i>导出</a>
+          </div> -->
+           <!-- <a class="ui-btn ui-btn-primary margin-right-5" 
+	          data-bind="click: printPage">打印
+	        </a> -->
+        </div>
+
+        
+      </div>
+      <div class="ui-table-container">
+          <div u-meta='{"id":"grid_ProductBom","data":"CustomAttributeList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+              
+              <div options='{"field":"name","dataType":"String","title":"属性名称","renderType":"detailRender"}'></div>
+              <div options='{"field":"type","dataType":"String","title":"属性类型"}'></div>
+              <div options='{"field":"unitName","proTypeName":"String","title":"计量单位"}'></div>
+              <div options='{"field":"creator","dataType":"String","title":"创建人","visible":false}'></div>
+              <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":false}'></div>
+              <div options='{"field":"creationTime","dataType":"Date","title":"创建时间","visible":false}'></div>
+              <div options='{"field":"statusCode","dataType":"String","title":"状态","renderType":"enableRender"}'></div>
+              <!-- <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation"}'></div> -->
+              <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation","fixed":true,"width":"110px"}'></div>
+          </div>
+          <div class="ui-statistics margin-top-10">
+            <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择<span class="font-c-blue" data-bind="text:CustomAttributeList.selectedIndices().length"></span>项数据
+          </div>
+          <div class="pagination-right">
+            <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"CustomAttributeList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+          </div>
+      </div>
+    </div>
+</div>
+<div id="dialog_layer" class="ui-searchbox" style="display:none;padding:20px">
+
+</div>
+
+<div class="ui-panel ui-bill-panel" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span>属性值域设置</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-primary" data-bind="click: cancelBill.bind($data)">取消
+      </a>
+      <a class="ui-btn ui-btn-green" data-bind="click: saveBill.bind($data)">保存
+      </a>
+    </div>
+  </div>
+  <div class="ui-panel-head ui-bill-head">
+    <div class="ui-item">
+      <div class="ui-name">属性名称：</div>
+      <div class="ui-inputarea">
+        <div u-meta='{"type":"u-text","data":"CustomAttributeList","field":"name"}'>
+          <input readonly="readonly"/>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">属性类型：</div>
+      <div class="ui-inputarea">
+        <div u-meta='{"type":"u-combobox","data":"CustomAttributeList","field":"type","datasource":"typeSrc"}'>
+          <input readonly="readonly"/>
+          <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">计量单位：</div>
+      <div class="ui-inputarea">
+        <div id="" u-meta='{"id":"unitId","type":"uiRefer","data":"CustomAttributeList","field":"unitId","disableInEdit":"true","enable":"ture"}'>
+          <input id="" readonly="readonly"/>
+          <span id="" class="ui-icon uifont icon-bar refer"></span>
+          <!-- <span id="code-text" style="display: none;"></span> -->
+        </div>
+      </div>
+    </div>
+    
+    <div class="ui-item">
+      <div class="ui-name">启用状态：</div>
+      <div class="ui-inputarea">
+        <div u-meta='{"type":"u-label","data":"CustomAttributeList","field":"statusCode"}'>
+           <label>启用</label>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="ui-bill-body">
+    <div class="ui-bill-body-btns">
+      <!-- <a class="ui-btn ui-btn-orange margin-right-5" id="user-action-additem"
+        data-bind="click: addItem"><i class="uifont icon-plus margin-right-5"></i>新增
+      </a> -->
+      <a class="ui-btn ui-btn-orange margin-right-5" id="user-action-additems"
+        data-bind="click: showAddItemsRef"><i class="uifont icon-plus margin-right-5"></i>增行
+      </a>
+     
+      <a class="ui-btn ui-btn-primary" id="user-action-del"
+        data-bind="click: delItems.bind($data)"><i class="uifont icon-shanchu1 margin-right-5"></i>删行
+      </a>
+      <!-- <a class="ui-btn ui-btn-primary" id="user-action-del"
+        data-bind="click: showTabRef">产品/产品组合参照
+      </a> -->
+     <!--  <div id="productTabRef" u-meta='{"type":"uiRefer","data":"ProductBomTabRef","field":"productTabRef"}' style="display:none;">
+        <input readonly="readonly"/>
+        <span class="ui-icon uifont icon-bar refer"></span>
+      </div> -->
+    </div>
+    <div class="ui-table-container margin-bottom-30">
+        <div u-meta='{"id":"grid_ProductBomItem","data":"CustomAttributeItems","type":"grid","editable":true,"multiSelect":true,"showNumCol":true}'>
+          <div options='{"field":"name","dataType":"String","title":"值域"}'></div>
+          <div options='{"field":"creator","dataType":"String","title":"创建人","visible":false}'></div>
+          <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":false}'></div>
+          <div options='{"field":"creationTime","dataType":"Date","title":"创建时间","visible":false}'></div>
+          <div options='{"field":"statusCode","dataType":"String","title":"状态","renderType":"enableRender"}'></div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<!-- 单据详情页 -->
+<div class="ui-bill-detail ui-panel" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span>产品结构详情 </span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+        <!--<a class="ui-btn ui-btn-primary margin-right-5" data-bind="click: printPage">打印</a>-->
+        <a class="ui-btn ui-btn-green" data-bind="click: retListPanel">返回
+      </a>
+    </div>
+  </div>
+  <div class="ui-panel-head">
+    <div class="ui-item">
+      <div class="ui-name">父项产品编码：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: CustomAttributeList.ref("productInfoCode")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">父项产品描述：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: CustomAttributeList.ref("productInfoDescription")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">单位：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: CustomAttributeList.ref("baseUnitName")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">生效起始日期：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: CustomAttributeList.ref("bomStartTime")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">失效日期：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: CustomAttributeList.ref("bomEndTime")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">工厂：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: CustomAttributeList.ref("organizationName")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">版本：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: CustomAttributeList.ref("bomVersion")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">物料层级关系：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: CustomAttributeList.ref("bomTypeName")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">启用状态：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: enableFmt'>
+        </div>
+      </div>
+    </div>
+
+    
+    <!-- <div class="ui-item">
+      <div class="ui-name">启用状态：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: enableFmt'>
+        </div>
+      </div>
+    </div> -->
+    <div class="clearfix"></div>
+  </div>
+  <div class="ui-bill-body">
+    <div class="ui-table-container margin-bottom-30">
+        
+        <div u-meta='{"id":"grid_ProductBomItem2","data":"CustomAttributeItems","type":"grid","editable":true,"showNumCol":true}'>
+                    <div options='{"field":"productInfoId","dataType":"String","title":"子项产品编码","renderType":"ncReferRender","editType":"ncReferEditType","showField":"productInfoCode","editOptions":{"validType":"string","rel":{"refpk":"productInfoId","refcode":"productInfoCode","refname":"productInfoName","baseUnitName":"baseUnitName"}},"editable":false}'></div>
+                    <!-- <div options='{"field":"productid","dataType":"String","title":"销售产品编码","renderType":"ncReferRender","editType":"ncReferEditType","showField":"productidName","editOptions":{"validType":"string"}}'></div> -->
+                    <div options='{"field":"productInfoName","dataType":"String","title":"子项产品描述","editable":false}'></div>
+                     <div options='{"field":"childNum","dataType":"String","title":"数量","editType":"integer","editable":false}'></div>
+                    <div options='{"field":"baseUnitName","dataType":"String","title":"单位","editable":false}'></div>
+                    <div options='{"field":"code","dataType":"String","title":"编号","editable":false}'></div>
+                   
+                    <!-- <div options='{"field":"operation","dataType":"String","title":"操作","editable":false}'></div> -->
+        </div>
+    </div>
+  </div>
+  <div class="ui-bill-footer">
+  </div>
+</div>
+<!--导入弹框 end-->
+<div id="exportFiel"></div>
+<div id="importFiel"></div>

@@ -1,0 +1,90 @@
+{   "templateId": "saleorder",
+    "publishTime": "1552985065269",
+    "schema": {
+        "head": {
+        },
+        "tabs": [
+        ],
+        "list": [
+            {
+                "comps": [
+                    {
+                        "objectKey": "OrderListDto",
+                        "type": "table",
+                        "editable": false,
+						"multiSelect": true,
+						"showNumCol": true,
+                        "buttons": [
+                            {
+                                "key": "addBillPanel",
+                                "label": "新增订单",
+                                "iconCls": "icon-plus",
+                                "click": "showAddBillPanel",
+                                "clickArg": "$data"
+                            }
+                        ],
+                        "items": [
+                            {
+                                "label": "销售组织",
+                                "type": "label",
+                                "key": "saleOrgName"
+                            },
+                            {
+                                "label": "客户",
+                                "type": "label",
+                                "key": "customerName"
+                            },
+                            {
+                                "label": "订单类型",
+                                "type": "label",
+                                "key": "orderTypeName"
+                            },
+                            {
+                                "label": "承运商",
+                                "type": "label",
+                                "key": "logisticsName",
+                                "visible": 0
+                            },
+                            {
+                                "label": "订单单号",
+                                "type": "label",
+                                "key": "orderCode",
+                                "rendertype": "detailRender"
+                            },
+                            {
+                                "label": "订单日期",
+                                "type": "date",
+                                "key": "orderDate"
+                            },
+                            {
+                                "label": "总数量",
+                                "type": "label",
+                                "key": "totalNum"
+                            },
+                            {
+                                "label": "总金额",
+                                "type": "flaot",
+                                "key": "totalDealAmount"
+                            },
+                            {
+                                "label": "订单状态",
+                                "type": "label",
+                                "key": "orderStatusName"
+                            },
+                            {
+                                "label": "关闭",
+                                "type": "boolean",
+                                "key": "isClose"
+                            },
+                            {
+                                "label": "操作",
+                                "type": "label",
+                                "key": "billStatusCode"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

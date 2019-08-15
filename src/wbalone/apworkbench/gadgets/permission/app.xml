@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+    <ModulePrefs title="Social Hello World"
+                 description="The Social Hello World Application Displays multilingual hello messages"
+                 thumbnail="http://localhost:8080/"
+                 icon="http://localhost:8080/images/icon.png">
+        <Require feature="osapi"></Require>
+        <Require feature="settitle"/>
+        <Require feature="shindig-container"/>
+        <Require feature="dynamic-height"></Require>
+    </ModulePrefs>
+    <Content type="html" inline="true">
+        <![CDATA[
+        <style type="text/css">
+		#iframe_tenant_app{
+		width:100%;
+		height:100%;
+		border:none;
+		}
+		</style>
+		<div class="W-title">    许可    <span class="iconfont icon-star "></span>    <a href="#sysmgr" role="button" class="btn btn-default btn-sm backbutton">返回</a></div>
+		<iframe id="iframe_tenant_app" src="https://uastest.yyuap.com/tenant/ext/app?systemId=workbench" />
+		<script>
+		//$('#iframe_tenant_app').height($('#content').height());
+		 $(function () {
+            var autodiv = $('#iframe_tenant_app');
+
+            function autoH() {
+                var addh = $(window).height() - 163;
+                autodiv.height(addh);
+            }
+
+            autoH();
+            if (autodiv) {
+                autodiv.css({
+                    overflow: "auto"
+                });
+                $(window).resize(function () {
+                    autoH();
+                })
+            }
+
+        });
+		</script>
+    ]]>
+    </Content>
+</Module>

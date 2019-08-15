@@ -1,0 +1,196 @@
+<div class="ui-panel ui-list-panel">
+  <div>
+    <div class="page-title">
+      <span data-bind="text:title"></span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+  <ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+  </ui-searchbox>
+  <div class="ui-panel-body">
+    <div class="ui-panel-body-head">
+      <div class="ui-panel-body-head-left">
+		  <!-- style="float:left;" -->
+		  <ui-buttons params='datasource:$root.button1Source'  >
+          </ui-buttons>
+		  <!--
+		  <ui-buttons-menu params='datasource:$root.buttonMenu1Source,vm:$root'>
+		  </ui-buttons-menu>
+		  -->
+      </div>
+    </div>
+    <div class="ui-table-container">
+      <ui-grid params='options:$root.grid1Option,vm:$root'>
+      </ui-grid>
+      <div class="ui-statistics margin-top-10">
+        已选择
+        <span class="font-c-blue" data-bind="text:simpleList.selectedIndices().length"></span>项数据
+      </div>
+      <div class="pagination-right">
+        <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"simpleList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="ui-panel ui-bill-panel" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span>供应商可供商品</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <ui-buttons params='datasource:$root.button2Source'>
+      </ui-buttons>
+    </div>
+  </div>
+  <div class="ui-panel-body">
+    <div class="u-tabs  ui-tabs margin-top-10">
+      <div class="u-tabs__tab-bar">
+        <a href="#tab-panel-1" class="u-tabs__tab is-active" data-bind="">基本信息</a>
+      </div>
+      <!--基本信息开始-->
+      <div class="u-tabs__panel is-active" id="tab-panel-1">
+        <div class="ui-bill-body">
+          <div class="ui-collapse-group">
+
+            <ui-buttons params='datasource:$root.button3Source'>
+            </ui-buttons>
+            <div id="personBase">
+              <div class="ui-collapse-group border">
+                <div id="default-example" data-collapse>
+                  <!--供应商开始-->
+                  <h3 class="ui-collapse-title  clearfix  margin-top-10 open">
+                    <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                    <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                    供应商
+                  </h3>
+                  <div class="ui-collapse-content clearfix" id="baseInfo">
+                    <ui-card params='datasource:$root.card1Source,vm:$root,dt:$root.simpleList,billstatus:$root.billPanelStatus'>
+                    </ui-card>
+                  </div>
+                  <!--供应商结束-->
+                  <!--可供商品开始-->
+                  <h3 class="ui-collapse-title  clearfix  margin-top-10 open">
+                    <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                    <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                    可供商品
+                  </h3>
+                  <div class="ui-collapse-content clearfix" id="baseInfo">
+                    <ui-buttons params='datasource:$root.button4Source'>
+                    </ui-buttons>
+                    <div class="margin-top-10">
+                      <ui-grid params='options:$root.grid2Option,vm:$root'>
+                      </ui-grid>
+                    </div>
+                  </div>
+                  <!--可供商品结束-->
+                </div>
+              </div>
+            </div>
+
+            <!-- 保存后 -->
+            <div style="display: none;" id="personBase_show">
+
+              <div class="ui-collapse-group border">
+                <div id="default-example_show" data-collapse>
+                  <!--供应商开始-->
+                  <h3 class="ui-collapse-title  clearfix  margin-top-10 open">
+                    <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                    <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                    供应商
+                  </h3>
+                  <div class="ui-collapse-content clearfix" id="baseInfo_show">
+                    <ui-detail params='datasource:$root.detail1Source,dt:$root.simpleList,vm:$root'>
+                    </ui-detail>
+                  </div>
+                  <!--供应商结束-->
+
+                  <!--可供商品开始-->
+                  <h3 class="ui-collapse-title  clearfix  margin-top-10 open">
+                    <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                    <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                    可供商品
+                  </h3>
+                  <div class="ui-collapse-content clearfix" id="baseInfo_show">
+                    <ui-grid params='options:$root.grid3Option,vm:$root'>
+                    </ui-grid>
+                  </div>
+                  <!--可供商品结束-->
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<ui-dialogcard params='datasource:$root.dialog2cardSource,ref:$root.dialogcardcomp,dt:$root.postList'>
+</ui-dialogcard>
+<!-- <ui-dialogcard params='datasource:$root.dialogcardSource,ref:$root.dialogcardcomp,dt:$root.simpleList'>
+</ui-dialogcard> -->
+<!-- 详情 -->
+<div class="ui-bill-detail ui-panel" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span data-bind="text:title"></span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-primary" data-bind="click: retListPanel">返回
+      </a>
+    </div>
+  </div>
+  <div class="ui-panel-head">
+    <!--供应商开始-->
+    <h3 class="ui-collapse-title  clearfix  margin-top-10 open">
+      <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+      <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+      供应商
+    </h3>
+    <div class="ui-collapse-content clearfix">
+      <ui-detail params='datasource:$root.detail1Source,dt:$root.simpleList,vm:$root'>
+      </ui-detail>
+    </div>
+    <!--供应商结束-->
+
+    <!--可供商品开始-->
+    <h3 class="ui-collapse-title  clearfix  margin-top-10 open">
+      <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+      <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+      可供商品
+    </h3>
+    <ui-grid params='options:$root.grid3Option,vm:$root'>
+    </ui-grid>
+    <!--可供商品结束-->
+  </div>
+</div>
+<div id="exportFiel"></div>
+<div id="importFiel"></div>

@@ -1,0 +1,529 @@
+<div class="ui-list-panel ui-panel">
+  <div>
+    <div class="page-title">
+      <span>活动定义</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+
+  <div class="ui-searchbox">
+    <div id="PromoActivity-searchcontent" class="ui-searchbox-content">
+
+    </div>
+    <div class="clearfix">
+
+    </div>
+    <div class="ui-searchbox-footer">
+      <div class="ui-search-more hidden">
+          <a>更多<i class="uifont icon-down"></i></a>
+      </div>
+
+      <div class="ui-search-btn">
+        <a class="ui-btn ui-btn-primary margin-right-5"
+        data-bind="click:cleanSearch">清空
+        </a>
+        <a class="ui-btn ui-btn-green margin-right-5"
+        data-bind="click:search.bind($data,true)">搜索
+        </a>
+      </div>
+      <div class="clearfix">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-panel-body">
+    <div class="ui-panel-body-head">
+      <div class="ui-panel-body-head-left">
+        <a class="ui-btn ui-btn-orange margin-right-5" id="user-action-add"
+          data-bind="click: showAddBillPanel.bind($data)"><i class="uifont icon-plus margin-right-5"></i>新增
+        </a>
+        <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+          data-bind="click: del"><i class="uifont icon-shanchu1 margin-right-5"></i>删除
+        </a>
+        <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-copy"
+          data-bind="click: showCopyBillPanel"><i class="uifont icon-copy margin-right-5"></i>复制
+        </a>
+        <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+          <a class="ui-button-item" data-bind="click: enable"><i class="uifont icon-qiyong margin-right-5"></i>启用</a>
+          <a class="ui-button-item" data-bind="click: disable"><i class="uifont icon-tingyong margin-right-5"></i>停用</a>
+        </div>
+        <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+          <a class="ui-button-item" data-bind="click: submit"><i class="uifont icon-tubiao-shenhe margin-right-5"></i>提交</a>
+          <a class="ui-button-item" data-bind="click: unsubmit"><i class="uifont icon-tubiao-quxiaoshenhe margin-right-5"></i>收回</a>
+        </div>
+        <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+          <a class="ui-button-item" data-bind="click: approve"><i class="uifont icon-tubiao-shenhe margin-right-5"></i>审核</a>
+          <a class="ui-button-item" data-bind="click: unapprove"><i class="uifont icon-tubiao-quxiaoshenhe margin-right-5"></i>弃审</a>
+        </div>
+      </div>
+      <!-- <div class="ui-panel-body-head-right">
+        <i class="uifont icon-i font-c-blue margin-right-5"></i>共搜索到<span data-bind="text:PromoActivityList.totalRow"></span>条数据
+      </div> -->
+    </div>
+      <div class="ui-table-container">
+          <div u-meta='{"id":"grid_PromoActivity","data":"PromoActivityList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+                      <div options='{"field":"code","dataType":"String","title":"活动编码","renderType":"detailRender"}'></div>
+                      <div options='{"field":"name","dataType":"String","title":"活动名称"}'></div>
+                      <div options='{"field":"activeTypeName","dataType":"String","title":"活动类型"}'></div>
+                      <div options='{"field":"activeNodeName","dataType":"String","title":"活动节点"}'></div>
+                      <div options='{"field":"orderStartDate","dataType":"Date","title":"订货开始日期"}'></div>
+                      <div options='{"field":"orderEndDate","dataType":"Date","title":"订货截至日期"}'></div>
+                      <div options='{"field":"enrolStartDate","dataType":"Date","title":"报名开始日期"}'></div>
+                      <div options='{"field":"enrolEndDate","dataType":"Date","title":"报名截至日期"}'></div>
+                      <div options='{"field":"terminalStartDate","dataType":"Date","title":"终端活动开始日期"}'></div>
+                      <div options='{"field":"terminalEndDate","dataType":"Date","title":"终端活动截至日期"}'></div>
+                      <div options='{"field":"useStatus","dataType":"String","title":"使用状态","renderType":"useStatusRender"}'></div>
+                      <div options='{"field":"description","dataType":"String","title":"活动描述"}'></div>
+                      <div options='{"field":"enableStatus","dataType":"String","title":"启用状态","renderType": "enableRender"}'></div>
+                      <div options='{"field":"approveStatus","dataType":"String","title":"审核状态","renderType": "approveRender"}'></div>
+                      <div options='{"field":"creator","dataType":"String","title":"创建人","visible":false}'></div>
+                      <div options='{"field":"creationTime","dataType":"Datetime","title":"创建时间","visible":false}'></div>
+                      <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":false}'></div>
+                      <div options='{"field":"modifiedTime","dataType":"Datetime","title":"修改时间","visible":false}'></div>
+                      <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation","fixed":true,"width":"110px"}'></div>
+          </div>
+          <div class="ui-statistics margin-top-10">
+            已选择<span class="font-c-blue" data-bind="text:PromoActivityList.selectedIndices().length"></span>项数据
+          </div>
+          <div class="pagination-right">
+            <div id='pagination' class='pagination u-pagination pagination-sm'
+            u-meta='{"type":"pagination","data":"PromoActivityList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+          </div>
+      </div>
+    </div>
+</div>
+<div id="dialog_layer" class="ui-searchbox" style="display:none;padding:20px">
+
+</div>
+
+<div class="ui-bill-panel ui-panel" style="display:none;">
+  <div>
+    <div class="page-title">
+      <span>活动定义</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-primary" data-bind="click: cancelBill.bind($data)">取消
+      </a>
+      <a class="ui-btn ui-btn-green" data-bind="click: saveBill.bind($data)">保存
+      </a>
+    </div>
+  </div>
+  <div class="ui-panel-head ui-bill-head">
+    <div data-bind='visible:billPanelStatus()=="add"||billPanelStatus()=="copy" '>
+        <div class="ui-item">
+            <div class="ui-name">
+              <span class='ui-redstar'>*</span>
+              活动编码：
+            </div>
+            <div class="ui-inputarea">
+                <input readonly="readonly" placeholder="根据编码规则自动生成"/>
+            </div>
+        </div>
+    </div>
+    <div data-bind='visible:billPanelStatus()=="edit" '>
+        <div class="ui-item">
+            <div class="ui-name"><span class='ui-redstar'>*</span>活动编码：</div>
+            <div class="ui-inputarea">
+                <div class="ui-textonly" data-bind='text: PromoActivityList.ref("code")'></div>
+            </div>
+        </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">
+        <span class='ui-redstar'>*</span>
+        活动名称：
+      </div>
+      <div class="ui-inputarea">
+        <div class="u-text"  u-meta='{"id":"f1","type":"u-text","data":"PromoActivityList","field":"name"}'>
+          <input class="u-input"/>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">上级活动：</div>
+      <div class="ui-inputarea">
+        <div u-meta='{"type":"uiRefer","data":"PromoActivityList","field":"higherActiveId"}'>
+          <input readonly="readonly"/>
+          <span class="ui-icon uifont icon-bar refer"></span>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">
+        <!-- <span class='ui-redstar'>*</span> -->
+        活动节点：
+      </div>
+      <div class="ui-inputarea">
+        <div u-meta='{"id":"f1","type":"uiRefer","data":"PromoActivityList","field":"activeNodeId"}'>
+          <input readonly="readonly"/>
+          <span class="ui-icon uifont icon-bar refer"></span>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">审核状态：</div>
+      <div class="ui-inputarea">
+        <div class="ui-textonly" data-bind='text: approveFormat("PromoActivityList", "approveStatus")'></div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">启用状态：</div>
+      <div class="ui-inputarea">
+          <div class="ui-textonly" data-bind='text: enableFormat("PromoActivityList", "enableStatus")'></div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">
+        <span class='ui-redstar'>*</span>
+        订货有效期：
+      </div>
+      <div class="ui-daterange-area" style="display:inline-block;">
+        <div class="ui-inputarea" u-meta='{"type":"u-date","data":"PromoActivityList","field":"orderDateRange","rangeFlag":true}'>
+            <input class="u-input" type="text">
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">
+        <span class='ui-redstar'>*</span>
+        报名有效期：
+      </div>
+      <div class="ui-daterange-area" style="display:inline-block;">
+        <div class="ui-inputarea" u-meta='{"type":"u-date","data":"PromoActivityList","field":"enrolDateRange","rangeFlag":true}'>
+            <input class="u-input" type="text">
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">终端活动期间：</div>
+      <div class="ui-daterange-area" style="display:inline-block;">
+        <div class="ui-inputarea" u-meta='{"type":"u-date","data":"PromoActivityList","field":"terminalDateRange","rangeFlag":true}'>
+            <input class="u-input" type="text">
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">费用预算金额：</div>
+      <div class="ui-inputarea">
+        <div class="u-text"  u-meta='{"type":"float","data":"PromoActivityList","field":"costBudgetAmout"}'>
+          <input class="u-input"/>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">提货目标总额：</div>
+      <div class="ui-inputarea">
+        <div class="u-text"  u-meta='{"type":"float","data":"PromoActivityList","field":"deliveryTargetAmout"}'>
+          <input class="u-input"/>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">零售目标总额：</div>
+      <div class="ui-inputarea">
+        <div class="u-text"  u-meta='{"type":"float","data":"PromoActivityList","field":"saleTargetAmout"}'>
+          <input class="u-input"/>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">活动描述：</div>
+      <div class="ui-inputarea">
+        <div class="u-text"  u-meta='{"type":"u-text","data":"PromoActivityList","field":"description"}'>
+          <input class="u-input"/>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">上传活动文件：</div>
+      <div class="ui-inputarea">
+        <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-add"
+          data-bind="click: showFileDialog"><i class="uifont icon-tubiao-fujian margin-right-5"></i>附件
+        </a>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">
+        <span class='ui-redstar'>*</span>
+        活动类型：
+      </div>
+      <div class="ui-inputarea">
+        <div u-meta='{"type":"uiRefer","data":"PromoActivityList","field":"activeTypeId"}'>
+          <input readonly="readonly"/>
+          <span class="ui-icon uifont icon-bar refer"></span>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="ui-bill-body">
+    <div class="u-tabs  ui-tabs margin-top-10">
+      <div class="u-tabs__tab-bar">
+         <a href="#tab-panel-1" class="u-tabs__tab is-active">业务类型</a>
+         <a href="#tab-panel-2" class="u-tabs__tab" >办事处</a>
+      </div>
+      <div class="u-tabs__panel is-active" id="tab-panel-1">
+        <div class="ui-bill-body-btns">
+          <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-add"
+            data-bind="click: showBussRef"><i class="uifont icon-plus margin-right-5"></i>增行
+          </a>
+          <div id="bussRefer" u-meta='{"type":"uiRefer","data":"BussTypeRef","field":"bussRefer"}' style="display:none;">
+            <input readonly="readonly"/>
+            <span class="ui-icon uifont icon-bar refer"></span>
+          </div>
+          <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+            data-bind="click: delBussItems"><i class="uifont icon-shanchu1 margin-right-5"></i>删行
+          </a>
+        </div>
+        <div class="ui-table-container">
+            <div u-meta='{"id":"grid_BussTypeItems","data":"BussTypeItems","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+                <div options='{"field":"bussiTypeCode","dataType":"String","title":"业务类型编码","required":true}'></div>
+                <div options='{"field":"bussiTypeName","dataType":"String","title":"业务类型名称"}'></div>
+            </div>
+        </div>
+      </div>
+      <div class="u-tabs__panel" id="tab-panel-2">
+        <div class="ui-bill-body-btns">
+          <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-add"
+            data-bind="click: showAgencyRef"><i class="uifont icon-plus margin-right-5"></i>增行
+          </a>
+          <div id="agencyRefer" u-meta='{"type":"uiRefer","data":"AgencyRef","field":"agencyRefer"}' style="display:none;">
+            <input readonly="readonly"/>
+            <span class="ui-icon uifont icon-bar refer"></span>
+          </div>
+          <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+            data-bind="click: delAgencyItems"><i class="uifont icon-shanchu1 margin-right-5"></i>删行
+          </a>
+        </div>
+        <div class="ui-table-container">
+            <div u-meta='{"id":"grid_AgencyItems","data":"AgencyItems","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+                <div options='{"field":"officeCode","dataType":"String","title":"办事处编码","required":true}'></div>
+                <div options='{"field":"officeName","dataType":"String","title":"办事处名称"}'></div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 单据详情页 -->
+<div class="ui-bill-detail ui-panel" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span>活动定义</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-primary" data-bind="click: retListPanel">返回
+      </a>
+      <a class="ui-btn ui-btn-green" data-bind="click: detail2bill">编辑
+      </a>
+    </div>
+  </div>
+  <div id="bpmhead"></div>
+  <div id="bpmfoot"></div>
+  <div class="ui-panel-head">
+    <div class="ui-item">
+      <div class="ui-name">活动编码：</div>
+      <div class="ui-inputarea">
+        <div class="ui-textonly" data-bind='text: PromoActivityList.ref("code")'></div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">活动名称：</div>
+      <div class="ui-inputarea">
+        <div class="ui-textonly" data-bind='text: PromoActivityList.ref("name")'></div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">上级活动：</div>
+      <div class="ui-inputarea">
+        <div class="ui-textonly" data-bind='text: PromoActivityList.ref("higherActiveName")'></div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">活动节点：</div>
+      <div class="ui-inputarea">
+        <div class="ui-textonly" data-bind='text: PromoActivityList.ref("activeNodeName")'></div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">审核状态：</div>
+      <div class="ui-inputarea">
+        <div class="ui-textonly" data-bind='text: approveFormat("PromoActivityList", "approveStatus")'></div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">启用状态：</div>
+      <div class="ui-inputarea">
+          <div class="ui-textonly" data-bind='text: enableFormat("PromoActivityList", "enableStatus")'></div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">订货有效期：</div>
+      <div class="ui-daterange-area" style="display:inline-block;">
+        <div class="ui-inputarea">
+          <div class="ui-textonly">
+            <div class="ui-daterange-part" data-bind='text: dateFormat("PromoActivityList", "orderStartDate")'>
+            </div>
+            <span class="ui-daterange-seperate" data-bind='visible: PromoActivityList.ref("orderStartDate")'>至</span>
+            <div class="ui-daterange-part" data-bind='text: dateFormat("PromoActivityList", "orderEndDate")'>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">报名有效期：</div>
+      <div class="ui-daterange-area" style="display:inline-block;">
+        <div class="ui-inputarea">
+          <div class="ui-textonly">
+            <div class="ui-daterange-part" data-bind='text: dateFormat("PromoActivityList", "enrolStartDate")'>
+            </div>
+            <span class="ui-daterange-seperate" data-bind='visible: PromoActivityList.ref("enrolStartDate")'>至</span>
+            <div class="ui-daterange-part" data-bind='text: dateFormat("PromoActivityList", "enrolEndDate")'>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">终端活动期间：</div>
+      <div class="ui-daterange-area" style="display:inline-block;">
+        <div class="ui-inputarea">
+          <div class="ui-textonly">
+            <div class="ui-daterange-part" data-bind='text: dateFormat("PromoActivityList", "terminalStartDate")'>
+            </div>
+            <span class="ui-daterange-seperate" data-bind='visible: PromoActivityList.ref("terminalStartDate")'>至</span>
+            <div class="ui-daterange-part" data-bind='text: dateFormat("PromoActivityList", "terminalEndDate")'>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">费用预算金额：</div>
+      <div class="ui-inputarea">
+        <div class="ui-textonly" data-bind='text: PromoActivityList.ref("costBudgetAmout")'></div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">提货目标总额：</div>
+      <div class="ui-inputarea">
+        <div class="ui-textonly" data-bind='text: PromoActivityList.ref("deliveryTargetAmout")'></div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">零售目标总额：</div>
+      <div class="ui-inputarea">
+        <div class="ui-textonly" data-bind='text: PromoActivityList.ref("saleTargetAmout")'></div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">活动描述：</div>
+      <div class="ui-inputarea">
+        <div class="ui-textonly" data-bind='text: PromoActivityList.ref("description")'></div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">上传活动文件：</div>
+      <div class="ui-inputarea">
+        <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-add"
+          data-bind="click: showFileDialog"><i class="uifont icon-tubiao-fujian margin-right-5"></i>附件
+        </a>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">活动类型：</div>
+      <div class="ui-inputarea">
+        <div class="ui-textonly" data-bind='text: PromoActivityList.ref("activeTypeName")'></div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="ui-bill-body">
+    <div class="u-tabs  ui-tabs margin-top-10">
+      <div class="u-tabs__tab-bar">
+         <a href="#tab-panel-1" class="u-tabs__tab is-active">业务类型</a>
+         <a href="#tab-panel-2" class="u-tabs__tab" >办事处</a>
+      </div>
+      <div class="u-tabs__panel is-active" id="tab-panel-1">
+        <div class="ui-table-container">
+            <div u-meta='{"id":"grid_BussTypeItems_detail","data":"BussTypeItems","type":"grid","editable":false,"multiSelect":"false","showNumCol":true}'>
+                <div options='{"field":"bussiTypeCode","dataType":"String","title":"业务类型编码"}'></div>
+                <div options='{"field":"bussiTypeName","dataType":"String","title":"业务类型名称"}'></div>
+            </div>
+        </div>
+      </div>
+      <div class="u-tabs__panel" id="tab-panel-2">
+        <div class="ui-table-container">
+            <div u-meta='{"id":"grid_AgencyItems_detail","data":"AgencyItems","type":"grid","editable":false,"multiSelect":false,"showNumCol":true}'>
+                <div options='{"field":"officeCode","dataType":"String","title":"办事处编码"}'></div>
+                <div options='{"field":"officeName","dataType":"String","title":"办事处名称"}'></div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ui-bill-footer">
+  </div>
+</div>
+
+<div id="fileiptwrap">
+  <input class="u-input" type="file" name="addfile" id = "uploadbatch_id" multiple="multiple" style="display:none;"/>
+</div>
+<div id="file-dialog" style="display:none;">
+  <div class="u-msg-title">
+    <h4>附件</h4>
+  </div>
+  <div class="u-msg-content">
+    <div class="ui-file-btns">
+      <a data-bind='visible: billPanelStatus()=="edit", click: onOpenUploadWin' class="ui-btn ui-btn-primary margin-right-5" id="user-action-del">
+        <i class="uifont icon-tubiao-shangchuan margin-right-5"></i>上传
+      </a>
+      <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+        data-bind='click: fileDownload'><i class="uifont icon-tubiao-xiazai margin-right-5"></i>下载
+      </a>
+      <a data-bind='visible: billPanelStatus()=="edit", click: fileDelete' class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+        data-bind=''><i class="uifont icon-shanchu1 margin-right-5"></i>删除
+      </a>
+      <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+        data-bind='click: fileView'><i class="uifont icon-tubiao-chakan margin-right-5"></i>查看
+      </a>
+    </div>
+    <div class="ui-file-list">
+      <div class="ui-table-container">
+          <div u-meta='{"id":"grid_attach","data":"FileList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true,"columnMenu":false}'>
+              <div options='{"field":"filename","dataType":"String","title":"文件名称"}'></div>
+              <div options='{"field":"filesize","dataType":"String","title":"文件大小"}'></div>
+              <div options='{"field":"uploaderName","dataType":"String","title":"上传人"}'></div>
+              <div options='{"field":"uploadtime","dataType":"Datetime","title":"上传时间"}'></div>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="u-msg-footer">
+    <!-- <a class="ui-btn ui-btn-green J-ok">确定</a> -->
+  </div>
+  </div>

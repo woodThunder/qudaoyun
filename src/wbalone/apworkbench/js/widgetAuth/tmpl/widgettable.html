@@ -1,0 +1,26 @@
+<div class="wrap">
+    <table class="table   table-hover nctable">
+        <thead>
+        <tr>
+            <th>小部件分组</th>
+            <th>小部件名称</th>
+        </tr>
+        </thead>
+        <tbody id="widget_tbody">
+        <% if(data&&data.length){
+        var list = data;
+        for(var i=0,j=list.length;i<j;i++){
+        var item = list[i];
+        %>
+        <tr>
+            <td><%=item.category%></td>
+            <td><%=item.name%></td>
+        </tr>
+        <%}}else{%>
+        <tr>
+            <td colspan="3" style="text-align: center">暂时还没有数据~！</td>
+        </tr>
+        <%}%>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,124 @@
+<div class="ui-panel">
+  <div>
+    <div class="page-title">
+      <span>通用包件基础设置</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+
+
+  <div class="ui-searchbox">
+    <div id="commonproprice-searchcontent" class="ui-searchbox-content">
+
+    </div>
+    <div class="clearfix">
+
+    </div>
+    <div class="ui-searchbox-footer">
+      <div class="ui-search-more hidden">
+          <a>更多<i class="uifont icon-down"></i></a>
+      </div>
+
+      <div class="ui-search-btn">
+        <a class="ui-btn ui-btn-primary margin-right-5"
+        data-bind="click:cleanSearch">清空
+        </a>
+        <a class="ui-btn ui-btn-green"
+        data-bind="click:search.bind($data,true)">搜索
+        </a>
+      </div>
+      <div class="clearfix">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-panel-body">
+    <div class="ui-panel-body-head">
+        <div class="ui-panel-body-head-left" id="page-edit" style="display:none">
+          <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+            <a class="ui-button-item" data-bind="click: addRow">
+              <i class="uifont icon-plus margin-right-5"></i>
+              增行
+            </a>
+            <a class="ui-button-item" data-bind="click: delRow">
+              <i class="uifont icon-shanchu1 margin-right-5"></i>
+              删行
+            </a>
+           </div>
+           <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+             <a class="ui-button-item" data-bind="click: save">
+               <i class="uifont icon-tubiao-duigou-xianxing margin-right-5"></i>
+               保存
+             </a>
+             <a class="ui-button-item" data-bind="click: cancle">
+               <i class="uifont icon-tubiao-guanbi-xianxing margin-right-5"></i>
+               取消
+             </a>
+            </div>
+        </div>
+        <div class="ui-panel-body-head-left" id="page-view">
+          <a class="ui-btn ui-btn-orange margin-right-5"
+            data-bind="click: edit, visible: buttonShowGroup['edit']"><i class="uifont icon-edit margin-right-5"></i>编辑
+          </a>
+          <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+            <a class="ui-button-item" data-bind="click: enable, visible: buttonShowGroup['enable']">
+              <i class="uifont icon-qiyong margin-right-5"></i>
+              启用
+            </a>
+            <a class="ui-button-item" data-bind="click: disable, visible: buttonShowGroup['disable']">
+              <i class="uifont icon-tingyong margin-right-5"></i>
+              停用
+            </a>
+           </div>
+           <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+             <a class="ui-button-item" data-bind="click: importHandle, visible: buttonShowGroup['import']">
+               <i class="uifont icon-import margin-right-5"></i>
+               导入
+             </a>
+             <a class="ui-button-item" data-bind="click: exportHandle, visible: buttonShowGroup['export']">
+               <i class="uifont icon-export margin-right-5"></i>
+               导出
+             </a>
+            </div>
+        </div>
+
+      </div>
+      <div class="ui-table-container">
+          <div id="commonproprice"
+               u-meta='{"id":"grid_commonproprice","data":"commonpropriceList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+                     <div options='{"field":"productid","dataType":"String","title":"产品编码","required":true,"showField":"productidCode","renderType":"ncReferRender","editType":"ncReferEditType","editOptions":{"validType":"string","rel":{"refpk":"productid","refcode":"productidCode","refname":"productidName"}}}'></div>
+                      <div options='{"field":"productidName","dataType":"String","title":"产品名称","editable":false}'></div>
+                      <div options='{"field":"channelCode","dataType":"String","title":"渠道类型","editOptions":{"type":"combo","datasource":"channeltypeSrc","onlySelect":true},"editType":"combo","renderType":"comboRender"}'></div>
+                      <div options='{"field":"agencypartitionId","dataType":"String","title":"办事处分区","renderType":"ncReferRender","editType":"ncReferEditType","showField":"agencypartitionName","editOptions":{"validType":"string","rel":{"refpk":"agencypartitionId","refname":"agencypartitionName","refcode":"agencypartitionCode"}}}'></div>
+                      <div options='{"field":"officeId","dataType":"String","title":"办事处","renderType":"ncReferRender","editType":"ncReferEditType","showField":"officeName","editOptions":{"validType":"string","rel":{"refpk":"officeId","refname":"officeName"}}}'></div>
+                      <div options='{"field":"customerId","dataType":"String","title":"客户","renderType":"ncReferRender","editType":"ncReferEditType","showField":"customerName","editOptions":{"validType":"string","rel":{"refpk":"customerId","refname":"customerName"}}}'></div>
+                      <div options='{"field":"price","dataType":"float","title":"价格","editType":"float","required":true,"editOptions":{"required":true,"minNotEq":"0"}}'></div>
+                      <div options='{"field":"enableStatus","dataType":"integer","title":"启用状态","editable":false,"renderType":"enableRender"}'></div>
+                      <div options='{"field":"vnote","dataType":"String","title":"备注","editType":"text"}'></div>
+                      <div options='{"field":"creator","dataType":"String","title":"创建人","editable":false}'></div>
+                      <div options='{"field":"creationTime","dataType":"Datetime","title":"创建时间","editable":false}'></div>
+                      <div options='{"field":"modifier","dataType":"String","title":"最后修改人","editable":false}'></div>
+                      <div options='{"field":"modifiedTime","dataType":"Datetime","title":"最后修改时间","editable":false}'></div>
+          </div>
+          <div class="ui-statistics margin-top-10">
+            已选择<span class="font-c-blue" data-bind="text:commonpropriceList.selectedIndices().length"></span>项数据
+          </div>
+          <div class="pagination-right">
+            <div id='pagination' class='pagination u-pagination pagination-sm'
+            u-meta='{"type":"pagination","data":"commonpropriceList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+          </div>
+      </div>
+    </div>
+</div>
+<div id="dialog_layer" style="display:none;">
+
+</div>
+<div id="exportFiel"></div>
+<div id="importFiel"></div>

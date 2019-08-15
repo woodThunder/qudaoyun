@@ -1,0 +1,217 @@
+<div class="ui-bill-panel-main">
+  <div class="ui-bill-panel-left">
+    <div class="ui-template-head clearfix">
+      <div class="ui-template-head-title">
+        <span class="ui-template-head-titletext">行信息</span>
+        <a class="ui-btn ui-template-head-addbtn margin-left-20" data-bind="click: showFieldSelector.bind($root, '{{listObjectKey}}', 'PCListParentItems')"><i class="uifont icon-plus"></i></a>
+      </div>
+      <div class="ui-template-overlay"></div>
+      <div class="ui-template-table-container">
+        <div class="ui-template-table margin-top-10" data-bind="foreach: {data: $root.PCListParentItems.rows(), as: 'compItem'}">
+          <div class="ui-template-table-th" data-bind="attr: {'data-field': compItem.ref('key')}, css: {'required': compItem.ref('required')()=='1'}">
+            <i class="uifont icon-tubiao-guanbi-xiao ui-template-body-delbtn" data-bind="click: $root.delField.bind($root, $root.PCListParentItems, compItem.rowId)"></i>
+            <span data-bind="text: compItem.ref('label')"></span>
+            <span class="ui-template-table-order" data-bind="text: compItem.ref('order')"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ui-bill-panel-right">
+    <div class="ui-template-property ui-template-headitem-property clearfix">
+      <div class="ui-item">
+        <span class="ui-name">类型：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"u-combobox","data":"PCListParentItems","field":"type","datasource":"itemTypeSrc"}' style="display:none;">
+              <input class="u-input" />
+              <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+            </div>
+            <div u-meta='{"type":"u-combobox","data":"PCListParentItems","field":"type","datasource":"itemTypeSrc","enable":false}'>
+              <input class="u-input" disabled="disabled" />
+              <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+            </div>
+        </div>
+      </div>
+      <div class="ui-item" data-bind="visible: PCListParentItems.ref('type')()=='float'">
+        <span class="ui-name">精度：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"integer","data":"PCListParentItems","field":"precision"}'>
+              <input class="u-input"/>
+            </div>
+        </div>
+      </div>
+      <div class="ui-item">
+        <span class="ui-name">显示名称：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"u-text","data":"PCListParentItems","field":"label"}'>
+              <input class="u-input"/>
+            </div>
+        </div>
+      </div>
+      <div class="ui-item">
+        <span class="ui-name">对应字段：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"u-text","data":"PCListParentItems","field":"key","enable":"false"}'>
+              <input class="u-input" disabled="disabled"/>
+            </div>
+        </div>
+      </div>
+      <div class="ui-item hidden">
+        <span class="ui-name">是否可编辑：</span>
+        <div class="ui-inputarea">
+            <label class="u-checkbox margin-right-20" style="height: 20px"  u-meta='{"type":"u-checkbox","data":"PCListParentItems","field":"editable","checkedValue":"1","unCheckedValue":"0"}'>
+              <input type="checkbox" class="u-checkbox-input">
+            </label>
+        </div>
+      </div>
+      <div class="ui-item hidden">
+        <span class="ui-name">是否必填：</span>
+        <div class="ui-inputarea">
+            <label class="u-checkbox margin-right-20" style="height: 20px"  u-meta='{"type":"u-checkbox","data":"PCListParentItems","field":"required","checkedValue":"1","unCheckedValue":"0"}'>
+              <input type="checkbox" class="u-checkbox-input">
+            </label>
+        </div>
+      </div>
+      <div class="ui-item" data-bind="visible: showInputItemTypes.indexOf(PCListParentItems.ref('type')()) > -1">
+        <span class="ui-name">默认值：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"u-text","data":"PCListParentItems","field":"defaultValue"}'>
+              <input class="u-input"/>
+            </div>
+        </div>
+      </div>
+      <div class="ui-item" data-bind="visible: PCListParentItems.ref('type')() === 'boolean'">
+        <span class="ui-name">默认值：</span>
+        <div class="ui-inputarea">
+          <label class="u-checkbox margin-right-20" u-meta='{"type":"u-checkbox","data":"PCListParentItems","field":"defaultValue","checkedValue":"1","unCheckedValue":"0"}'>
+            <input type="checkbox" class="u-checkbox-input">
+          </label>
+        </div>
+      </div>
+      <div class="ui-item" data-bind="visible: PCListParentItems.ref('type')() === 'combo'">
+        <span class="ui-name">默认值：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"u-combobox","data":"PCListParentItems","field":"defaultValue","datasource":"comboDefaultSrc"}'>
+              <input class="u-input" />
+              <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+            </div>
+        </div>
+      </div>
+      <div class="ui-item" data-bind="visible: PCListParentItems.ref('type')() === 'refer' || PCListParentItems.ref('type')() === 'docrefer'">
+        <span class="ui-name">默认值：</span>
+        <div class="ui-inputarea" id="defaultValueReferWrap">
+        </div>
+      </div>
+      <div class="ui-item">
+        <span class="ui-name">显示顺序：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"integer","data":"PCListParentItems","field":"order"}'>
+              <input class="u-input"/>
+            </div>
+        </div>
+      </div>
+      <div class="ui-item hidden">
+        <span class="ui-name">最大长度或数量：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"integer","data":"PCListParentItems","field":"maxLength"}'>
+              <input class="u-input" />
+            </div>
+        </div>
+      </div>
+      <div class="ui-item">
+        <span class="ui-name">业务说明：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"u-text","data":"PCListParentItems","field":"busiTip"}'>
+              <input class="u-input"/>
+            </div>
+        </div>
+      </div>
+      <div data-bind="visible: PCListParentItems.ref('type')()=='refer'" style="float: left;margin-top: 10px;">
+        <div class="ui-item ">
+          <span class="ui-name">参照标识：</span>
+          <div class="ui-inputarea">
+            <div u-meta='{"type":"uiRefer","data":"PCListParentItems","field":"refkey","enable":false}'>
+              <input id="headRefkeyRefer" class="u-input" disabled="disabled" />
+            </div>
+          </div>
+        </div>
+        <div class="ui-item ">
+          <span class="ui-name">是否多选：</span>
+          <div class="ui-inputarea">
+              <label class="u-checkbox margin-right-20" style="height: 20px"  u-meta='{"type":"u-checkbox","data":"PCListParentItems","field":"multi","checkedValue":"1","unCheckedValue":"0"}'>
+                <input type="checkbox" class="u-checkbox-input">
+              </label>
+          </div>
+        </div>
+        <div class="ui-item ">
+          <span class="ui-name">参照显示内容：</span>
+          <div class="ui-inputarea">
+              <div u-meta='{"type":"u-combobox","data":"PCListParentItems","field":"refshowcontent","datasource":"refshowcontentSrc"}'>
+                <input class="u-input" />
+                <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="ui-item" data-bind="visible: PCListParentItems.ref('type')()=='docrefer'">
+        <span class="ui-name">自定义档案参照名称：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"uiRefer","data":"PCListParentItems","field":"refid"}'>
+              <input id="headCustdocRefer" class="u-input"/>
+              <span class="ui-icon uifont icon-bar refer"></span>
+            </div>
+            <div u-meta='{"type":"u-text","data":"PCListParentItems","field":"refname","enable":false}'>
+              <input class="u-input" disabled="disabled"/>
+            </div>
+        </div>
+      </div>
+      <div class="ui-item" data-bind="visible: PCListParentItems.ref('type')()=='docrefer'">
+        <span class="ui-name">自定义档案参照编码：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"u-text","data":"PCListParentItems","field":"refcode","enable":false}'>
+              <input class="u-input" disabled="disabled"/>
+            </div>
+        </div>
+      </div>
+      <div class="ui-item" data-bind="visible: PCListParentItems.ref('type')()=='docrefer'">
+        <span class="ui-name">是否多选：</span>
+        <div class="ui-inputarea">
+            <label class="u-checkbox margin-right-20" style="height: 20px"  u-meta='{"type":"u-checkbox","data":"PCListParentItems","field":"multi","checkedValue":"1","unCheckedValue":"0"}'>
+              <input type="checkbox" class="u-checkbox-input">
+            </label>
+        </div>
+      </div>
+      <div class="ui-item" data-bind="visible: PCListParentItems.ref('type')()=='combo'">
+        <span class="ui-name">枚举标识：</span>
+        <div class="ui-inputarea">
+          <div u-meta='{"type":"u-combobox","data":"PCListParentItems","field":"enumkey","datasource":"enumSrc"}'>
+            <input class="u-input" />
+            <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+          </div>
+        </div>
+      </div>
+      <div class="ui-item" data-bind="visible: PCListParentItems.ref('type')()=='image'">
+        <span class="ui-name">图片是否加水印：</span>
+        <div class="ui-inputarea">
+            <label class="u-checkbox margin-right-20" style="height: 20px"  u-meta='{"type":"u-checkbox","data":"PCListParentItems","field":"needWatermark","checkedValue":"1","unCheckedValue":"0"}'>
+              <input type="checkbox" class="u-checkbox-input">
+            </label>
+        </div>
+      </div>
+    </div>
+    <div class="ui-template-property-refrel ui-template-property clearfix"
+      style="display:none; border-top: none; position: relative; top: -1px; z-index: 9; background: #fff;">
+      <div class="ui-item">
+        <span class="ui-name">参照关联字段：</span>
+      </div>
+      <div class="ui-table-container" style="float:left; width: 100%;">
+          <div id="grid_BillRefrel"
+               u-meta='{"id":"grid_BillRefrelmeta","data":"AllRefrel","type":"grid","editable":true,"multiSelect":true,"showNumCol":false,"columnMenu":false,"sortable":false,"canDrag":false,"canSwap":false}'>
+               <div options='{"field":"label","dataType":"String","title":"字段名称"}'></div>
+               <div options='{"field":"showLabel","dataType":"String","title":"显示名称","renderType":"editTypeText","width":"100px"}'></div>
+               <div options='{"field":"order","dataType":"String","title":"显示顺序","renderType":"editTypeText","width":"80px"}'></div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

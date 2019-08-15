@@ -1,0 +1,511 @@
+<link rel="stylesheet" href="./font/iconfont.css"/>
+<div class="main-wrap list-panel" id='userList'>
+    <div class="wrapper">
+        <!--页面头部功能条-->
+        <div class="Y_sarch_style">
+            <div class="quickoper f-fr">
+                <s class="bg_quickoper"></s>
+                <span class="ecmifont icon-fangdajing1" id="condionSearch"></span>
+            <span class="ecmifont icon-iconfontadd2"
+                  data-bind="click:addUser"></span>
+                <span class="ecmifont  icon-shangpinliebiaotubiao02 " data-bind="click:showModal.shopShow"></span>
+                <span class="ecmifont icon-liebiao" data-bind="click:showModal.tableShow"></span>
+            </div>
+            <div class="guideTit">
+                <h3>用户管理</h3>
+            </div>
+        </div>
+        <!--按条件查询区域-->
+        <div class="Y_selector" id="condition-row">
+            <dl class="sort">
+                <dd>
+                    <div class="outSel">
+                        <label class="seLab">用户编码：</label>
+                        <input type="text" id="s-loginName" class="ecmi-input">
+                    </div>
+                    <div class="outSel">
+                        <label class="seLab">手机：</label>
+                        <input type="text" id="s-phone" class="ecmi-input">
+                    </div>
+                    <div class="outSel">
+                        <label class="seLab">名称：</label>
+                        <input type="text" id="s-name" class="ecmi-input">
+                    </div>
+                    <div class="outSel">
+                        <label class="seLab">启用条件：</label>
+                        <span class="styled-select">
+                        <select id="s-state">
+                            <option value="1">启用</option>
+                            <option value="0">停用</option>
+                            <option selected value="">全部</option>
+                        </select>
+                        </span>
+                    </div>
+                    <div class="clearfix"></div>
+                </dd>
+            </dl>
+        </div>
+        <!--tale列表展现区域-->
+        <div class="table-list table-responsive" data-bind="visible:showModal.showType()">
+            <table class="u-table u-table-striped u-table-hover tabOne">
+                <thead>
+                <tr>
+                    <th width="6%">序号</th>
+                    <th width="12%">用户名称</th>
+                    <th width="12%">用户编码</th>
+                    <th width="10%">手机</th>
+                    <th width="12%">邮箱</th>
+                    <th width="8%">锁定</th>
+                    <th width="18%">备注</th>
+                    <th width="12%">操作</th>
+                </tr>
+                </thead>
+                <tbody data-bind="foreach:{data:listData.rows(), as: 'row',afterAdd: afterAdd}">
+                <tr>
+                    <td data-bind="text: $index()">1</td>
+                    <td data-bind="text: row.ref('name')">guoyuyang</td>
+                    <td data-bind="text: row.ref('loginName')"><a href="#">js9999999</a></td>
+                    <td data-bind="text: row.ref('phone')">15901006306</td>
+                    <td data-bind="text: row.ref('email')">nirvana_guo@msn.com</td>
+                    <td >
+                        <label class="u-checkbox" data-bind="click: $parent.lockUser.bind($data, $index())">
+                            <input type="checkbox" data-bind="checked:(row.ref('islock')()=='true')" class="u-checkbox-input">
+                            <span class="u-checkbox-label"></span>
+                        </label>
+                    </td>
+                    <td data-bind="text: row.ref('remark')">备注</td>
+                    <td>
+                        <div class="pro_oper">
+                        <span class="ecmifont icon-morenmima "
+                              data-bind="click:$parent.resetPasword.bind($data, $index())"><b>重置</b></span>
+                            <span data-bind="visible: !(row.ref('type')()=='2')">
+                                <span class="ecmifont icon-jiaose"
+                                      data-bind="click:$parent.asignRole.bind($data, $index())"><b>角色</b></span>
+                                <span class="ecmifont icon-bianji"
+                                      data-bind="click:$parent.useredit.bind($data, $index())"
+                                        ><b>编辑</b></span>
+                                <span class="ecmifont icon-shanchu1"
+                                      data-bind="click:$parent.delete.bind($data, $index())"><b>删除</b></span>
+                                <span class="ecmifont "
+                                      data-bind="click:$parent.changeState.bind($data, $index()),
+                                      css:{ ' icon-pause': (row.ref('states')()=='0'),
+                                      ' icon-zanting': (row.ref('states')()=='1') }">
+                                    <b data-bind="text:(row.ref('states')()=='1'?'启用':'停用')">启用</b>
+                                </span>
+                           </span>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div id="LoadingImage">
+                <img src="./images/loading.gif"/>
+                <span>请稍后...</span>
+            </div>
+            <div id="emptyImage">
+                <img src="./images/empty.png"/>
+                <span>没有查询到符合条件的记录</span>
+            </div>
+        </div>
+        <!--橱窗列表展现区域-->
+        <div class="Y_userlist" id="Y_userlist" data-bind="visible:!(showModal.showType())">
+            <div class="u-row" data-bind="foreach:{data:listData.rows(), as: 'row',afterAdd: afterAdd}">
+                <div class="u-col-md-3 u-col-sm-6 u-col-xs-12 ulist">
+                    <div class="user_item">
+                        <div class="user_front u-row">
+                            <div class="userimg u-col-md-6 u-col-sm-6">
+                                <a href="javascript:void(0);">
+                                    <img src="./images/pic.jpg" data-bind="css{'img-gray':(row.ref('states')()=='0')}" alt=""/>
+                                </a>
+                            </div>
+                            <div class="userinfo u-col-md-6 u-col-sm-6">
+                                <div class="zx-box" data-bind="visible:(row.ref('islock')()=='true')">
+                                    <span class="zx-icon-box">
+                                        <i class="ecmifont icon-suo"></i>
+                                    </span>
+                                </div>
+                                <dl>
+                                    <dt>
+                                        <span data-bind="text: row.ref('name')">黄小梅</span>
+                                    </dt>
+                                    <dd class="ucontact">
+                                        <p data-bind="text: row.ref('phone')">139313145454</p>
+
+                                        <p data-bind="text: row.ref('email')">sjlgjioen@yonyou.com</p>
+                                    </dd>
+                                    <dd class="uin">
+                                        <p data-bind="text: row.ref('loginName')">YH1234556</p>
+                                    </dd>
+                                    <!--<dd class="urole">
+                                        <p data-bind="text: row.ref('corole')">商家管理员</p>
+
+                                        <p>商家</p>
+                                    </dd>-->
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user_footer user">
+                        <s class="triangle-up"></s>
+
+                        <div class="SKU_oper">
+                            <div class="SKU_oper_o">
+                            <span data-bind="click:$parent.resetPasword.bind($data, $index())">
+                                <i class="ecmifont icon-morenmima"></i>
+                            </span>
+                                <a data-bind="visible: !(row.ref('type')()=='2')">
+                                    <span data-bind="click:$parent.asignRole.bind($data, $index())"><i class="ecmifont icon-jiaose"></i></span>
+                                    <span data-bind="click:$parent.useredit.bind($data, $index())"><i class="ecmifont icon-bianji"></i></span>
+                                 <span data-bind="click:$parent.delete.bind($data, $index())"> <i
+                                         class="ecmifont icon-shanchu1"></i> </span>
+                                 <span data-bind="click:$parent.changeState.bind($data, $index())"> <i
+                                         data-bind="css:{ ' icon-pause': (row.ref('states')()=='0'),' icon-zanting': (row.ref('states')()=='1') }"
+                                         class="ecmifont"></i> </span>
+                                 <span data-bind="click:$parent.lockUser.bind($data, $index())">
+                                     <i  class="ecmifont "
+                                         data-bind="css:{ ' icon-suo': (row.ref('islock')()=='true'),' icon-suokai': (row.ref('islock')()=='false') }"
+                                         class="ecmifont "></i> </span>
+
+                                </a>
+
+                            </div>
+                            <div class="select_check">
+                                <span class="zx-name" data-bind="text: row.ref('name')">黄小梅</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--分页区域-->
+        <div class="paginate-box" data-bind="visible: pagination.count() > 10">
+            <div id="pagination" class="u-pagination pagination-gap "></div>
+        </div>
+    </div>
+    <!-- 编辑用户  模态框-->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true" class="ecmifont icon-shangchu"></span></button>
+                    <h4 class="modal-title" id="myModalLabel1" data-bind="text:modal.title">编辑内部用户</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="cc">
+                        <div id="editcardC" class="cardC">
+                            <div id="editcard00">
+                                <div class="ccTabForm">
+                                    <div class="msg-tb" >
+                                        <div class="u-row">
+                                            <div class="u-col-md-6">
+                                                <div class="thbold w85">用户编码：</div>
+                                                <div class="tdlight">
+                                                    <input type="text"
+                                                           class="  ecmi-input"
+                                                           u-meta='{"id":"loginName","type":"string","data":"usereditData","field":"loginName"}'
+                                                            ></div>
+                                            </div>
+                                            <div class="u-col-md-6">
+                                                <div class="thbold w110">用户名称：</div>
+                                                <div class="tdlight">
+                                                    <input type="text"
+                                                           u-meta='{"id":"name","type":"string","data":"usereditData","field":"name"}'
+                                                           class=" ecmi-input"
+                                                            ></div>
+                                            </div>
+                                        </div>
+                                        <div class="u-row">
+                                            <div class="u-col-md-6">
+                                                <div class="thbold w85">邮箱：</div>
+                                                <div class="tdlight">
+                                                    <input type="text"
+                                                           class="txtInput ecmi-input"
+                                                           u-meta='{"id":"email","type":"string","data":"usereditData","field":"email"}'
+                                                            >
+                                                </div>
+                                            </div>
+                                            <div class="u-col-md-6">
+                                                <div class="thbold w110">手机：</div>
+                                                <div class="tdlight">
+                                                    <input type="text" class=" ecmi-input"
+                                                           u-meta='{"id":"phone","type":"string","data":"usereditData","field":"phone"}'
+                                                            >
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="u-row">
+                                            <!-- <div class="u-col-md-6">
+                                                 <div class="thbold w85 no">所属渠道：</div>
+                                                 <div class="tdlight">
+                                                     <input type="text" class=" ecmi-input ">
+                                                 </div>
+                                             </div>-->
+                                            <div class="u-col-md-6">
+                                                <div class="thbold w85">备注：</div>
+                                                <div class="tdlight">
+                                                    <input type="text" class=" ecmi-input " u-meta='{"id":"remark","type":"string","data":"usereditData","field":"remark"}'></div>
+                                            </div>
+                                        </div>
+                                        <div class="u-row">
+                                            <div class="u-col-md-6 u-col-xs-6">
+                                                <div class="thbold w85">头像：</div>
+                                                <div class="tdlight">
+                                                    <div class="t-img-box" style="float:left;    background-color: #00bcd4;">
+                                                        <img data-bind="attr:{src:usereditData.ref('avator')}" class="tou-img" >
+                                                        <p class="sc" id="filePicker">
+                                                            上传
+                                                        </p>
+                                                    </div>
+                                                    <div class="upload-tip"  style="display: none">
+                                                        <span>
+                                                            上传成功
+                                                        </span>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <!-- <div class="u-col-md-6">
+                                                 <div class="vam pd-lf10 checkh"><input type="checkbox" id="ee1" name="a" checked  /><label class="label" >内部用户</label></div>
+                                                 <div class="vam pd-lf10 checkh"><input type="checkbox" id="ee11" name="a" data-bind="checked:usereditData.islock"><label class="label" >锁定</label></div>
+                                             </div>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="btnBox">
+                        <a id="editUserForm" href="#" class="btn green" data-bind="click:modal.save">保存</a>
+                        <a id="editcancelUserForm" href="#" class="btn blue" data-bind="click:modal.cancel" data-dismiss="modal">取消</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--保存成功提示框-->
+    <div class="modal fade" id="saveModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true" class="ecmifont icon-shangchu"></span></button>
+                    <h4 class="modal-title">提示</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="cc">
+                        <div class="error">
+                            <b class="zx-true"></b>
+                            <div class="d-txt-box">
+                                <p class="txt-p">恭喜 ! 保存成功 !</p>
+                                <p class="txt-p1">您可以进行下一步操作!
+                                    “<a href="#" data-dismiss="modal"  data-bind="click:asignRole">分配角色</a>”
+                                </p>
+                            </div>
+                            <div class="cl"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--选择角色-->
+    <div class="modal fade" id="selectRoleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true" class="ecmifont icon-shangchu"></span></button>
+                    <h4 class="modal-title">选择角色</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="main-box">
+                        <div class="main-left-box">
+                            <div class="con-box">
+                                <h2 class="hd">待选角色</h2>
+                                <div class="con">
+                                    <div class="d-con ">
+                                        <div class="overflow auto h350">
+                                            <div>
+                                                <ul data-bind="foreach: {data:srcListData.rows(), as: 'row', afterAdd: afterAdd}">
+                                                    <li>
+                                                        <label class="vam" data-bind="click: row.multiSelect, css:{'is-checked': row.selected()}">
+                                                            <input type="checkbox" >
+                                                            <label class="label" data-bind="text: row.ref('roleName')"></label>
+                                                        </label>
+
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main-center-box">
+                            <div class="ipt-box">
+                                <div class="aBtn-box">
+                                    <a class="aBtn" data-bind="click: selToR">
+                                        <i class="uf uf-anglearrowpointingtoright"></i></a>
+                                    <a class="aBtn" data-bind="click: allToR">
+                                        <i class="uf uf-doubleanglepointingtoright"></i></a>
+                                    <a class="aBtn" data-bind="click: selToL">
+                                        <i class="uf uf-anglepointingtoleft"></i></a>
+                                    <a class="aBtn" data-bind="click: allToL">
+                                        <i class="uf uf-doubleleftchevron"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main-right-box">
+                            <div class="con-box">
+                                <h2 class="hd">已选角色</h2>
+                                <div class="con">
+                                    <div class="d-con">
+                                        <div class="overflow auto h350">
+                                            <div>
+                                                <ul data-bind="foreach: {data:destListData.rows(), as: 'row', afterAdd: afterAdd}">
+                                                    <li>
+                                                        <label class="vam" data-bind="click: row.multiSelect, css:{'is-checked': row.selected()}">
+                                                            <input type="checkbox">
+                                                            <label class="label" data-bind="text: row.ref('roleName')"></label>
+                                                        </label>
+
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cl"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="btnBox"><a  class="btn green" data-bind="click:confirmRole">确定</a></div>
+                </div>
+                <div class="btnBox">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--分配角色-->
+    <div class="modal fade" id="asignStoreModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true" class="ecmifont icon-shangchu"></span></button>
+                    <h4 class="modal-title" >分配角色</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="prt30-10 ta-rt"><a  data-dismiss="modal" data-bind="click:selRole" class="btn blue" style="width:70px;">选择角色</a></div>
+                    <div class="cc">
+                        <div class="ccTab">
+                            <table class="lay_table" cellpadding="0" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th >角色编码</th>
+                                    <th>角色名称</th>
+                                    <th width="100">操作</th>
+                                </tr>
+                                </thead>
+                                <tbody data-bind="foreach:{data:destListData.rows(), as: 'row',afterAdd: afterAdd}">
+                                <tr>
+                                    <td data-bind="text: row.ref('roleCode')"></td>
+                                    <td data-bind="text: row.ref('roleName')"></td>
+                                    <td>
+                                        <div class="pro_oper">
+                                    <span class="zx-icon-box">
+                                        <span class="icon-shanchu1 ecmifont" data-bind="click:$parent.cancelLink.bind($data, $index())"><b class="bdr0">删除</b></span>
+                                    </span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="btnBox"><a id="asignUserForm" href="#" data-bind="click:linkSave" class="btn green">保存</a><a data-dismiss="modal" class="btn blue">取消</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--操作成功提示-->
+    <div class="modal fade" id="hintModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true" class="ecmifont icon-shangchu"></span></button>
+                    <h4 class="modal-title">提示</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="cc">
+                        <div class="error">
+                            <b data-bind="css:{faild:hintModal.type}"></b>
+                            <span data-bind="text:hintModal.msg"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--删除提示-->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true" class="ecmifont icon-shangchu"></span></button>
+                    <h4 class="modal-title">提示</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="cc">
+                        <div class="error">
+                            <b></b>
+                            确定删除选中项？删除后无法恢复。
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="btnBox"><a id="delconfirm" data-bind="click:deleteconfirm" class="btn green">确认</a><a data-dismiss="modal" class="btn blue">取消</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--取消关联提示-->
+    <div class="modal fade" id="cancelLinkModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true" class="ecmifont icon-shangchu"></span></button>
+                    <h4 class="modal-title">提示</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="cc">
+                        <div class="error">
+                            <b></b>
+                            确定删除选中项？删除后无法恢复。
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="btnBox"><a id="confirmcancel" data-bind="click:confirmcancelLink" class="btn green">确认</a><a data-dismiss="modal" class="btn blue">取消</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

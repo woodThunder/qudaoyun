@@ -1,0 +1,109 @@
+<div class="ui-panel ui-list-panel">
+    <div>
+        <div class="page-title">
+            <span>订单列表</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="title-seperator"></div>
+    <div class="ui-searchbox ui-panel-head">
+        <div id="goodslist-searchcontent" class="ui-searchbox-content">
+
+        </div>
+        <div class="clearfix">
+
+        </div>
+        <div class="ui-searchbox-footer">
+            <div class="ui-search-more hidden">
+                <a>更多
+                    <i class="uifont icon-down"></i>
+                </a>
+            </div>
+
+            <div class="ui-search-btn">
+                <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:cleanSearch">清空
+                </a>
+                <a class="ui-btn ui-btn-green" data-bind="click:search.bind($data,true)">搜索
+                </a>
+            </div>
+            <div class="clearfix">
+            </div>
+        </div>
+    </div>
+
+    <div class="ui-panel-body">
+        <div class="ui-table-container">
+            <div id="goodslist" u-meta='{"id":"grid_goodslist","data":"PrimaryGoodsHub","type":"grid","editable":false,"multiSelect":true,"showNumCol":true,"onBeforeClickFun": "detail"}'>
+                <div options='{"field":"platformName","dataType":"String","title":"平台名称"}'></div>
+                <div options='{"field":"storeName","dataType":"String","title":"店铺名称"}'></div>
+                <div options='{"field":"platformNumber","dataType":"String","title":"平台单号"}'></div>
+                <div options='{"field":"commerceNumber","dataType":"String","title":"电商单号"}'></div>
+                <div options='{"field":"orderType","dataType":"String","title":"订单类型"}'></div>
+                <div options='{"field":"orderStatus","dataType":"String","title":"订单状态"}'></div>
+                <div options='{"field":"platformStatus","dataType":"String","title":"平台状态"}'></div>
+                <div options='{"field":"logisticsMode","dataType":"String","title":"物流方式"}'></div>                
+                <div options='{"field":"buyerName","dataType":"String","title":"买家名称"}'></div>
+                <div options='{"field":"totalTransactionAmount","dataType":"String","title":"总成交金额"}'></div>
+                <div options='{"field":"totalClosingAmount","dataType":"String","title":"总关闭金额"}'></div>
+                <div options='{"field":"totalDiffBillAmount","dataType":"String","title":"总对账金额"}'></div>
+                <div options='{"field":"totalNoDiffBillAmount","dataType":"String","title":"总未对账金额"}'></div>
+                <div options='{"field":"totalAlreadyDiffBillAmount","dataType":"String","title":"总已对账金额"}'></div>
+                <div options='{"field":"diffBillStatus","dataType":"String","title":"对账状态"}'></div>
+                <div options='{"field":"exceptionFlag","dataType":"String","title":"异常标识"}'></div>
+                <div options='{"field":"verifyTime","dataType":"Date","title":"勾兑时间"}'></div>
+                <div options='{"field":"orderTime","dataType":"Date","title":"下单时间"}'></div>
+                <div options='{"field":"paymentTime","dataType":"Date","title":"付款时间"}'></div>
+                <div options='{"field":"checkPeople","dataType":"Date","title":"对账人"}'></div>
+                <div options='{"field":"creator","dataType":"String","title":"创建人","visible":false}'></div>
+                <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":false}'></div>
+                <div options='{"field":"creationTime","dataType":"Date","title":"创建时间","visible":false}'></div>
+                <div options='{"field":"modifiedTime","dataType":"Date","title":"修改时间","visible":false}'></div>
+                <!-- <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation","width":"110px","fixed":true}'></div> -->
+            </div>
+            <div class="ui-statistics margin-top-10">
+                <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择
+                <span class="font-c-blue" data-bind="text:PrimaryGoodsHub.selectedIndices().length"></span>项数据
+            </div>
+            <div class="pagination-right">
+                <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"PrimaryGoodsHub","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+            </div>
+        </div>
+    </div>
+     <div class="u-tabs ui-tabs">
+        <!-- 商品子表-start -->
+        <div class="u-tabs__panel margin-top-20" id="tab-panel-3">
+            <div class="u-tabs__tab-bar margin-top-10 margin-bottom-10">
+                <a href="#tab-panel-7" class="u-tabs__tab">商品子表</a>
+            </div>
+            <!--head-->
+            <div class="u-tabs__panel" id="tab-panel-7">
+                <div class="clearfix"></div>
+                <!--head end-->
+                <div u-meta='{"id":"grid_GoodsChildProduct_detail","data":"ECProductHub","type":"grid","editable":false,"multiSelect":"false","showNumCol":true, "onBeforeEditFun":"bomTreeBeforeEdit"}'>
+                    <div options='{"field":"productCode","dataType":"String","title":"商品编码"}'></div>
+                    <div options='{"field":"productName","dataType":"String","title":"商品名称"}'></div>                    
+                    <div options='{"field":"productGroupCode","dataType":"String","title":"商品组合编码"}'></div>
+                    <div options='{"field":"productGroupName","dataType":"String","title":"商品组合名称"}'></div>
+                    <div options='{"field":"productGroupNumber","dataType":"String","title":"商品组合数量"}'></div>
+                    <div options='{"field":"productGroupNumberDiff","dataType":"String","title":"商品组合数量比"}'></div>
+                    <div options='{"field":"isPresented","dataType":"String","title":"是否赠品"}'></div>
+                    <div options='{"field":"tagPrice","dataType":"String","title":"吊牌价"}'></div>
+                    <div options='{"field":"succeedUnitPrice","dataType":"String","title":"成交单价"}'></div>
+                    <div options='{"field":"succeedMoney","dataType":"String","title":"成交金额"}'></div>
+                    <div options='{"field":"buyNumber","dataType":"String","title":"购买数量"}'></div>
+                    <div options='{"field":"closeNumber","dataType":"String","title":"关闭数量"}'></div>
+                    <div options='{"field":"closeAmount","dataType":"String","title":"关闭金额"}'></div>
+                    <div options='{"field":"diffBillAmount","dataType":"String","title":"对账金额"}'></div>
+                    <div options='{"field":"alreadyDiffBillAmount","dataType":"String","title":"已对账金额"}'></div>
+                    <div options='{"field":"noDiffBillAmount","dataType":"String","title":"未对账金额"}'></div>
+                </div>
+            </div>
+        </div>
+        <!-- 商品子表-end -->
+</div>
+</div>

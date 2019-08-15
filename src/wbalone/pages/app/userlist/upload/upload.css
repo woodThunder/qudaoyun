@@ -1,0 +1,55 @@
+#chosenFile {
+    font-size: 16px;
+    color: #0377c1;
+    cursor: pointer;
+}
+.dangerInfo{
+    color: #edbbb7;
+}
+#uploader {
+    margin-left:16%;
+}
+.thelist {
+li {
+    float: left;
+    list-style: none;
+    margin-bottom:10px;
+    border: 1px solid rgba(255,255,255,0);
+    position: relative;
+&:hover{
+     border: 1px solid #78aceb;
+     background-color:#ebf2fc;
+ }
+}
+img{
+    float: left;
+}
+.content{
+    float: left;
+    display: inline-block;
+    margin-left: 5px;
+    padding:5px 0;
+
+}
+.bar{
+
+    /*width: 80%;*/
+    /*min-width: 200px;*/
+    /*&:after{*/
+    /*content:'10%';*/
+    /*}*/
+}
+.glyphicon{
+    position: absolute;
+    top: 32%;
+    right: 4%;
+    color: #78aceb;
+    cursor: pointer;
+    display: none;
+}
+.progress{
+    height: 6px;
+    margin-bottom: 0px;
+    display: inline-block;
+}
+}

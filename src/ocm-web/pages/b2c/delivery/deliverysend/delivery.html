@@ -1,0 +1,122 @@
+<!--main-->
+<div class="ui-list-panel ui-panel">
+	<div>
+		<div class="page-title">
+			<span>发货单</span>
+		</div>
+	</div>
+	<div>
+		<div>
+			<div class="oc-breadcrumb">
+			</div>
+		</div>
+	</div>
+	<div class="title-seperator"></div>
+	<ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+  			</ui-searchbox>
+	<!-- <div class="ui-searchbox">
+		<div id="PromoActivity-searchcontent" class="ui-searchbox-content clearfix"></div>
+		<div class="ui-searchbox-footer clearfix">
+			<div class="ui-search-more hidden">
+				<a>更多<i class="uifont icon-down"></i></a>
+			</div>
+
+			<div class="ui-search-btn">
+				<a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:cleanSearch">清空
+				</a>
+				<a class="ui-btn ui-btn-green " data-bind="click:search.bind($data,true)">搜索
+				</a>
+
+			</div>
+		</div>
+	</div> -->
+
+	<div class="ui-panel-body">
+		<!--ui-panel-body-head -->
+		<div class="ui-panel-body-head">
+			<div class="ui-panel-body-head-left">
+				<ui-buttons params='datasource:$root.button1Source'>
+        </ui-buttons>
+				<!--<a class="ui-btn ui-btn-primary margin-right-5" id="user-action-sendsoout" data-bind="click: sendsoout"> 推销售出库-->
+				<!--</a>-->
+				<!--<a class="ui-btn ui-btn-primary margin-right-5" id="user-action-interceptx" data-bind="click: interceptx">截单-->
+				<!--</a>-->
+				<!-- 
+
+					<a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del" data-bind="click: del">删除
+					</a>
+					
+					<div class="ui-button-group clearfix vertical-align-middle">
+						<a class="ui-button-item">导入</a>
+						<a class="ui-button-item">导出</a>
+					</div>
+				-->
+			</div>
+			
+		<!-- <div class="ui-panel-body-head-right">
+		<i class="uifont icon-i font-c-blue margin-right-5"></i>共搜索到<span data-bind="text:PromoActivityList.totalRow"></span>条数据
+		 -->
+      </div>
+	</div>
+	<!--ui-panel-body-head end-->
+	<div class="ui-table-container">
+		<ui-grid params='options:$root.grid1Option,vm:$root'>
+  		</ui-grid>
+		<div class="ui-statistics margin-top-10">
+			<i class="uifont icon-i font-c-blue margin-right-10"></i>已选择
+			<span class="font-c-blue" data-bind="text:OrderList.selectedIndices().length"></span>项数据
+		</div>
+		<div class="pagination-right">
+			<div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"OrderList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+		</div>
+	</div>
+
+
+	<!-- 查看详情-start -->
+	<div class="delivery u-tabs ui-tabs">
+			<div class="u-tabs__tab-bar margin-top-10 margin-bottom-10">
+				<a href="#tab-panel-5" class="u-tabs__tab">商品信息</a>
+				<a href="#tab-panel-6" class="u-tabs__tab">操作日志</a>
+			</div>
+			
+			<!-- 所有产品信息-start -->
+			<div class="u-tabs__panel" id="tab-panel-5">
+					<ui-grid params='options:$root.grid2Option,vm:$root'></ui-grid>
+			</div>
+			<!-- 所有产品信息-end -->
+			
+			<!-- 操作日志-start -->
+			<div class="u-tabs__panel" id="tab-panel-6">
+					<ui-grid params='options:$root.grid3Option,vm:$root'>
+  		</ui-grid>
+				<div class="pagination-right margin-top-20">
+					<div id='pagination_log' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"OrderLogs","pageChange":"pageChangeLog","sizeChange":"sizeChangeLog"}'></div>
+				</div>
+			</div>
+			<!-- 操作日志-end -->
+			
+		</div>
+		<!-- 查看详情-end -->
+</div>
+
+<!--main end-->
+
+
+<!--添加备注-->
+<div id="complimentary-popup" style="display: none;">
+		<div class="u-msg-title">
+			<h4>添加备注</h4>
+		</div>
+		<div class="ui-item ui-textarea-item" style="float:none;">
+			<div class="ui-name">
+				<i class="strong">*</i>卖家备注：</div>
+			<div class="ui-inputarea ui-inputarea ">
+				<textarea u-meta='{"id":"remarkserviceData-textarea","data":"remarkserviceData","field":"vnote","type":"textarea"}'></textarea>
+			</div>
+		</div>
+		<div class="u-msg-footer">
+			<a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+			<a class="u-msg-ok ui-btn ui-btn-green">保存</a>
+		</div>
+	</div>
+	<!--添加备注 end-->

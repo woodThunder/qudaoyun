@@ -1,0 +1,25 @@
+.f-clear{clear: both;}
+.clearfix::after{
+    content: "";
+    display: block;
+    clear: both;
+    height: 0;
+}
+.clearfix{zoom: 1;}
+
+.ordertrackbox{
+background-color: #fff;padding:30px 0 30px 0;margin:0 50px 0 50px;
+}
+/**/
+
+.ordertrackbox .ordertrackbox-content{width:100%;}
+.ordertrackbox .ordertrackbox-content .ordertrack-node{ border-bottom: 1px dashed #E0E0E0;padding:5px 0 5px 0;}
+.ordertrackbox .ordertrackbox-content .ordertrack-node .d-bt{width: 180px;color:#666;display: inline-block;line-height:26px;float: left;text-align: left;padding:0 10px;}
+.ordertrackbox .ordertrackbox-content .ordertrack-node .ul01{width: 1000px;float:left;}
+.ordertrackbox .ordertrackbox-content .ordertrack-node .node-li{line-height:26px;}
+.ordertrackbox .ordertrackbox-content .ordertrack-node .node-li .li-sb{display: inline-block;text-align: left;}
+.ordertrackbox .ordertrackbox-content .ordertrack-node .node-li .sb-content{width:750px;color:#333;}
+.ordertrackbox .ordertrackbox-content .ordertrack-node .node-li .sb-content.text-b{width: 700px;}
+.ordertrackbox .ordertrackbox-content .ordertrack-node .node-li .sb-content.text-b .s-txt-b{display: inline-block;margin-right: 20px;}
+.ordertrackbox .ordertrackbox-content .ordertrack-node .node-li .sb-content .a-img{display:inline-block;margin-right:5px; width:60px;height: 60px;color:#333;border: 1px solid #ddd;}
+.ordertrackbox .ordertrackbox-content .ordertrack-node .node-li .sb-content .a-img img{border:none;width:inherit;height:inherit;}

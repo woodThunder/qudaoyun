@@ -1,0 +1,253 @@
+<!-- 列表页 -->
+<div class="ui-list-panel ui-panel">
+    <div>
+        <div class="page-title">
+            <span>发货单</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="title-seperator"></div>
+    <ui-searchbox
+        params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+    </ui-searchbox>
+
+    <div class="ui-panel-body">
+        <div class="ui-panel-body-head">
+            <div class="ui-panel-body-head-left">
+                <ui-buttons-menu params='datasource:$root.button1Source, vm:$root'>
+                </ui-buttons-menu>
+            </div>
+        </div>
+        <div class="ui-table-container">
+            <!-- <ui-grid params='options:$root.grid1Option,vm:$root'>
+            </ui-grid>
+            <div class="ui-statistics margin-top-10">
+                已选择
+                <span class="font-c-blue" data-bind="text:deliveryOrderList.selectedIndices().length"></span>项数据
+            </div>
+            <div class="pagination-right">
+                <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"deliveryOrderList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+            </div> -->
+        </div>
+    </div>
+</div>
+<!-- 单据页 -->
+<div class="ui-bill-panel ui-panel" style="display: none;">
+    <div>
+        <div class="page-title">
+            <span>发货单</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="ui-panel-btn-bg">
+        <div class="ui-operate-btn">
+            <ui-buttons params='datasource:$root.button2Source'>
+            </ui-buttons>
+        </div>
+    </div>
+    <div class="ui-panel-head ui-bill-head">
+        
+    </div>
+</div>
+<!-- 详情页面 -->
+<div class="ui-bill-detail ui-panel" style="display: none;">
+    <div>
+        <div class="page-title">
+            <span>发货单</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="ui-panel-btn-bg">
+        <div class="ui-operate-btn">
+            <ui-buttons params='datasource:$root.button3Source'>
+            </ui-buttons>
+        </div>
+    </div>
+    <div id="bpmhead"></div>
+    <div id="bpmfoot"></div>
+    <div class="ui-panel-head">
+        
+    </div>
+    <div class="ui-bill-footer">
+    </div>
+</div>
+<div id="exportFiel"></div>
+<div id="importFiel"></div>
+
+<!-- 参照采购订单创建弹窗 -->
+<div id="dialog_referpurchaseorder" style="display:none;">
+    <div class="u-msg-title">
+        <h4>参照销售订单拉单</h4>
+    </div>
+    <div class="u-tabs ui-tabs u-msg-content">
+        <div class="special-product">
+            <div class="u-tabs__tab-bar">
+                <a id="panel-tab1-ref" href="#tab-panel-1-ref" class="u-tabs__tab is-active tab-active"
+                    data-bind="click:choiceFun">选单</a>
+                <a id="panel-tab2-ref" href="#tab-panel-2-ref" class="u-tabs__tab" data-bind="click:selectedsFun">已选</a>
+            </div>
+            <div id="tab-panel-1-ref" class=" is-active">
+                <div class="ui-bill-body">
+                    <div class="u-tabs  ui-tabs margin-top-10">
+                        <div class="u-tabs__tab-bar">
+                            <a id="panel-tab3" href="#tab-panel-3" class="u-tabs__tab tab-active"
+                                data-bind="click:getGoodsFun">商品信息</a>
+                            <a id="panel-tab4" href="#tab-panel-4" class="u-tabs__tab"
+                                data-bind="click:getBomFun">BOM结构信息</a>
+                        </div>
+                        <!--商品信息开始-->
+                        <div class=" is-active" id="tab-panel-3">
+                            <ui-searchbox style="position: relative ;top:-12px;"
+                                params='datasource:$root.search2Source,ref:$root.searchcomp2,search:$root.searchRefer,clean:$root.cleanSearchRefer,willSearch:false'>
+                            </ui-searchbox>
+                            <div class="ui-collapse-content">
+                                <div class="purchaseListItem">
+                                    <ui-grid params='options:$root.grid4Option,vm:$root'>
+                                    </ui-grid>
+                                    <div class="pagination-right">
+                                        <div class='pagination u-pagination pagination-sm'
+                                            u-meta='{"type":"pagination","data":"referSaleOrderItemsList","pageChange":"pageChangeRefer1","sizeChange":"sizeChangeRefer1"}'>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--商品信息结束-->
+                        <!-- BOM结构开始-->
+                        <div class="u-tabs__panel" id="tab-panel-4">
+                            <div class="ui-table-container margin-bottom-30">
+                                <ui-grid params='options:$root.grid6Option,vm:$root'>
+                                </ui-grid>
+                                <div class="pagination-right">
+                                    <div class='pagination u-pagination pagination-sm'
+                                        u-meta='{"type":"pagination","data":"referSaleOrderItemsList","pageChange":"pageChangeRefer1","sizeChange":"sizeChangeRefer1"}'>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- BOM结构结束-->
+                    </div>
+                </div>
+            </div>
+            <div id="tab-panel-2-ref" class="u-tabs__panel">
+                <div class="ui-bill-body">
+                    <div class="u-tabs  ui-tabs margin-top-10">
+                        <div class="u-tabs__tab-bar">
+                            <a id="panel-tab5" href="#tab-panel-5" class="u-tabs__tab tab-active"
+                                data-bind="click:getSelectGoodsFun">商品信息</a>
+                            <a id="panel-tab6" href="#tab-panel-6" class="u-tabs__tab"
+                                data-bind="click:getSelectBomFun">BOM结构信息</a>
+                        </div>
+                        <!--商品信息开始-->
+                        <div class="u-tabs__panel is-active" id="tab-panel-5">
+                            <div class="ui-collapse-content">
+                                <div class="purchaseListItem_Sel">
+                                    <ui-grid params='options:$root.grid5Option,vm:$root'>
+                                    </ui-grid>
+                                </div>
+                            </div>
+                        </div>
+                        <!--商品信息结束-->
+                        <!-- BOM结构开始-->
+                        <div class="u-tabs__panel" id="tab-panel-6">
+                            <div class="purchaseBomItems_Sel">
+                                <ui-grid params='options:$root.grid7Option,vm:$root'>
+                                </ui-grid>
+                                <div class="pagination-right">
+                                    <div class='pagination u-pagination pagination-sm'
+                                        u-meta='{"type":"pagination","data":"referSaleOrderItemsList","pageChange":"pageChangeRefer1","sizeChange":"sizeChangeRefer1"}'>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- BOM结构结束-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="u-msg-footer">
+        <a class="ui-btn ui-btn-primary J-cancel margin-right-5">取消
+        </a>
+        <a class="ui-btn ui-btn-green  J-ok" data-bind="click:confirmReferSaleOrder">确认
+        </a>
+    </div>
+</div>
+<!-- 参照采购订单创建弹窗 -->
+<!-- 选配查看 -->
+<div id="dialog_goodsOptDetails" style="display:none;">
+
+</div>
+<!-- 选配查看 -->
+<style>
+    .u-tabs__tab.tab-active {
+        color: #E14C46;
+    }
+
+    .u-tabs__tab.tab-active:after {
+        background: #E14C46 !important;
+    }
+
+    #dialog_save_bill3 .ui-collapse-content {
+        border-bottom: 1px solid #ccc;
+        padding-top: 0;
+    }
+
+    #dialog_submit_bill .ui-collapse-content {
+        padding-top: 0;
+    }
+
+    #dialog_submit_bill .bill-title {
+        font-size: 14px;
+    }
+</style>
+
+
+<div id="dialog_submit_bill" style="display:none;">
+    <div class="u-msg-title">
+        <h4>提交校验</h4>
+    </div>
+    <div class="u-tabs ui-tabs u-msg-content">
+        <div class="special-product">
+            <div class="bill-title">可用量校验</div>
+            <div id="submit_stock" class="ui-collapse-content">
+            </div>
+        </div>
+    </div>
+
+    <div class="u-msg-footer">
+        <a class="ui-btn ui-btn-primary J-cancel margin-right-5">取消</a>
+        <a class="ui-btn ui-btn-green J-ok">保存</a>
+    </div>
+</div>
+<div id="dialog_save_bill2" style="display:none;">
+    <div class="u-msg-title">
+        <h4>信用校验</h4>
+    </div>
+    <div class="u-tabs ui-tabs u-msg-content">
+        <div class="special-product">
+            <div class="ui-collapse-content">
+                <ui-grid params='options:$root.saveCheckCreditDetailOption,vm:$root'></ui-grid>
+            </div>
+        </div>
+    </div>
+    <div class="u-msg-footer">
+        <a class="ui-btn ui-btn-primary J-cancel margin-right-5">取消</a>
+        <a id="checkOk2" class="ui-btn ui-btn-green J-ok">下一步</a>
+    </div>
+</div>

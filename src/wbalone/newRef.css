@@ -1,0 +1,96 @@
+/*新参照hack*/
+.u-checkbox .u-checkbox-label:before,.u-checkbox .u-checkbox-label:after{
+    display: none!important;
+}
+.yyuap-ref .u-checkbox .u-checkbox-label:before,.yyuap-ref .u-checkbox .u-checkbox-label:after{
+    display: inline!important;
+    top: -12px !important;
+}
+/*布局管理*/
+#layoutList table th .u-checkbox-outline{
+    top: 16px;
+    /*left: 16px;*/
+}
+#layoutCopy .u-form-control,#layoutEdit .u-form-control{
+    width: auto;
+    min-width: 50%;
+}
+#layoutList .u-checkbox-outline{
+    top: 0;
+}
+/* 角色分配用户 */
+#roleConUser #ConUsers th .u-checkbox-outline{ 
+    /*left: 16px;*/
+}
+/* 督办任务 */
+.ygdemo_detail #list table th .u-checkbox-outline{
+    /*left: 16px;*/
+}
+/*用户管理，分配用户*/
+#refContainerroledata .outerContainer .qy-gridTree .gridtree .qy-gridtree-list .qy-gridtree-grid .msgtype-table .u-checkbox-outline{
+    top: -10px;
+}
+#refContainerroledata .outerContainer .qy-gridTree .gridtree .hotData .msgtype-table2 .u-checkbox-outline{
+    top: -10px;
+}
+.u-button{
+    background: none;
+}
+.treebox .c-tree .TabWrap .TabClass.u-tabs-top{
+    width: auto;
+}
+.yyuap-ref .table-bordered>tbody>tr>td,.yyuap-ref .table-bordered>thead>tr>th{
+    border: none!important;
+}
+.yyuap-ref .table{
+   margin-bottom: 0px!important;
+}
+.yyuap-ref .tableWrap .u-table th{
+    line-height: 45px !important;
+    height: 45px !important;
+}
+
+.yyuap-ref .saveButton {
+    background-color: rgba(33,150,243,1);
+    border:none;
+}
+.yyuap-ref .saveButton,.yyuap-ref .saveButton:hover{
+    background-color: rgba(33,150,243,1);
+}
+.u-table th{
+    white-space: nowrap !important;
+}
+.yyuap-ref .u-table th{
+    white-space: normal !important;
+}
+.yyuap-ref .tableWrap .u-table td{
+    padding: 10px 12px !important;
+}
+.yyuap-ref .u-table thead th {
+    padding: 0 8px;
+}
+.yyuap-ref .u-table th:first-of-type {
+    padding-left: 13px !important;
+}
+.yyuap-ref .cancelButton{
+    height: 30px;
+    border: none;
+    border-radius: 4px;
+    color: rgb(0,0,0);
+    position: relative;
+    min-width: 72px !important;
+    padding: 5px 13px;
+    display: inline-block;
+    font-family: "Open Sans", "Helvetica Neue", Arial, "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1 !important;
+    letter-spacing: 0;
+    overflow: hidden;
+    will-change: box-shadow, transform;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: middle;
+}

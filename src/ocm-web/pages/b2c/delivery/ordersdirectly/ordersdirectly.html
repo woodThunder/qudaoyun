@@ -1,0 +1,596 @@
+<div class="ui-list-panel ui-panel">
+	
+    <div class="u-row">
+        <div class="u-col-4  page-title">
+            <span>供应商直发订单</span>
+        </div>
+    </div>
+    <div class="u-row">
+        <div class="u-col-4">
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+
+	<div class="title-seperator"></div>
+
+	<div class="ui-searchbox">
+		<div id="ordersDirectlyList-searchcontent" class="ui-searchbox-content clearfix"></div>
+		<!--searchbox-btn-->
+		<div class="ui-searchbox-footer">
+			<div class="ui-search-more hidden">
+				<a>更多<i class="uifont icon-down"></i></a>
+			</div>
+			<div class="ui-search-btn">
+				<a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:cleanSearch">清空
+				</a>
+				<a class="ui-btn ui-btn-green" data-bind="click:search.bind($data,true)">搜索
+				</a>
+			</div>
+			<div class="clearfix">
+
+			</div>
+		</div>
+		<!--searchbox-btn end-->
+	</div>
+
+	<div class="ui-panel-body">
+		<div class="ui-table-container">
+			<div id="orderList" u-meta='{"id":"grid_supplier_order_list","data":"ordersDirectlyList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true,"onBeforeClickFun": "detail"}'>
+				<div options='{"field":"code","dataType":"String","title":"采购单号"}'></div>
+				<div options='{"field":"syscode","dataType":"String","title":"电商单号"}'></div>
+				<div options='{"field":"billStatus","dataType":"String","title":"订单状态","editOptions":{"type":"combo","datasource":"orderStatusSrc"},"renderType":"comboRender"}'></div>
+				<div options='{"field":"isLock","dataType":"String","title":"冻结标识","editOptions":{"type":"combo","datasource":"lockStatusSrc"},"renderType":"comboRender"}'></div>
+				<div options='{"field":"isReturn","dataType":"String","title":"是否退货","editOptions":{"type":"combo","datasource":"returnStatusSrc"},"renderType":"comboRender"}'></div>
+				<div options='{"field":"platformName","dataType":"String","title":"平台名称"}'></div>
+				<div options='{"field":"storeName","dataType":"String","title":"店铺名称"}'></div>
+				<div options='{"field":"supplierName","dataType":"String","title":"供应商"}'></div>
+				<div options='{"field":"buyer","dataType":"String","title":"顾客ID"}'></div>				
+				<div options='{"field":"deliveryTime","dataType":"datetime","title":"要求送货时间"}'></div>
+				<div options='{"field":"logisticsMode","dataType":"String","title":"物流方式","editOptions":{"type":"combo","datasource":"logisticsModeSrc"},"renderType":"comboRender"}'></div>
+				<div options='{"field":"logisticsName","dataType":"String","title":"快递公司"}'></div>
+				<div options='{"field":"waybillNo","dataType":"String","title":"快递单号"}'></div>
+				<div options='{"field":"logisticsInfo","dataType":"String","title":"快递其他信息"}'></div>
+				<div options='{"field":"creator","dataType":"String","title":"创建人","visible":false}'></div>
+				<div options='{"field":"modifier","dataType":"String","title":"修改人","visible":false}'></div>
+				<div options='{"field":"creationTime","dataType":"datetime","title":"创建时间","visible":false}'></div>
+				<div options='{"field":"modifiedTime","dataType":"datetime","title":"修改时间","visible":false}'></div>
+				<div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation","fixed":"true","width":"110px"}'></div>
+			</div>
+
+			<div class="ui-statistics margin-top-10">
+				<i class="uifont icon-i font-c-blue margin-right-10"></i>已选择<span class="font-c-blue" data-bind="text:ordersDirectlyList.selectedIndices().length"></span>项数据
+			</div>
+
+			<div class="pagination-right">
+				<div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"ordersDirectlyList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+			</div>
+		</div>
+	</div>
+<!-- 查看详情-start -->
+<div class="u-tabs ui-tabs">
+        <div class="u-tabs__tab-bar margin-top-10 margin-bottom-10">
+            <a href="#tab-panel-1" class="u-tabs__tab is-active">订单详情</a>
+            <a href="#tab-panel-2" class="u-tabs__tab">商品信息</a>
+			<a href="#tab-panel-3" class="u-tabs__tab">操作日志</a>
+			<a href="#tab-panel-4" class="u-tabs__tab">备注信息</a>
+        </div>
+        <!-- 订单信息-start -->
+        <div class="u-tabs__panel is-active" id="tab-panel-1">
+            <div class="ui-panel-head clearfix">
+					<div class="ui-item">
+						<div class="ui-name">采购单号：</div>
+						<div class="ui-inputarea">
+							<div data-bind="text:ordersDirectlyList.ref('code')"></div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">创建时间：</div>
+						<div class="ui-inputarea">
+							<div data-bind="text:ordersDirectlyList.ref('creationTime')"></div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">创建人：</div>
+						<div class="ui-inputarea">
+							<div data-bind="text:ordersDirectlyList.ref('creator')"></div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">订单类型：</div>
+						<div class="ui-inputarea">
+							<div u-meta='{"type":"u-combobox","data":"ordersDirectlyList","field":"billType","datasource":"orderTypeSrc","enable":"false"}'>
+								<input class="ui-no-border" />
+							</div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">订单状态：</div>
+						<div class="ui-inputarea">
+							<div u-meta='{"type":"u-combobox","data":"ordersDirectlyList","field":"billStatus","datasource":"orderStatusSrc","enable":"false"}'>
+								<input class="ui-no-border" />
+							</div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">是否退货：</div>
+						<div class="ui-inputarea">
+							<div data-bind="text:isReturn()"></div>
+						</div>
+					</div>
+                    <div class="ui-item">
+						<div class="ui-name">平台名称：</div>
+						<div class="ui-inputarea">
+							<div data-bind="text:ordersDirectlyList.ref('platformName')"></div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">店铺名称：</div>
+						<div class="ui-inputarea">
+							<div data-bind="text:ordersDirectlyList.ref('storeName')"></div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">冻结标识：</div>
+						<div class="ui-inputarea">
+							<!--<div data-bind='text: orderDetail.ref("isLock")'>
+							</div>-->
+							<div u-meta='{"type":"u-combobox","data":"ordersDirectlyList","field":"isLock","datasource":"lockStatusSrc","enable":"false"}'>
+								<input class="ui-no-border" />
+							</div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">冻结原因：</div>
+						<div class="ui-inputarea">
+							<div data-bind="text:ordersDirectlyList.ref('lockReason')"></div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">电商单号：</div>
+						<div class="ui-inputarea">
+							<div data-bind="text:ordersDirectlyList.ref('syscode')"></div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">要求送货时间：</div>
+						<div class="ui-inputarea">
+							<div data-bind='text: ordersDirectlyList.ref("deliveryTime")'></div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">供应商：</div>
+						<div class="ui-inputarea">
+							<div data-bind='text: ordersDirectlyList.ref("supplierName")'></div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">物流方式：</div>
+						<div class="ui-inputarea">
+							<div u-meta='{"type":"u-combobox","data":"ordersDirectlyList","field":"logisticsMode","datasource":"logisticsModeSrc","enable":"false"}'>
+								<input class="ui-no-border" />
+							</div>					
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">快递公司编码：</div>
+						<div class="ui-inputarea">
+							<div data-bind="text:ordersDirectlyList.ref('logisticsCode')"></div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">快递公司名称：</div>
+						<div class="ui-inputarea">
+							<div data-bind="text:ordersDirectlyList.ref('logisticsName')"></div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">快递单号：</div>
+						<div class="ui-inputarea">
+							<div data-bind="text:ordersDirectlyList.ref('waybillNo')"></div>							
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">快递其他信息：</div>
+						<div class="ui-inputarea">
+							<div class="ui-textonly" data-bind='text: ordersDirectlyList.ref("logisticsInfo"),attr:{title:ordersDirectlyList.ref("logisticsInfo")}'></div>						
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">顾客ID：</div>
+						<div class="ui-inputarea">
+							<div data-bind='text: ordersDirectlyList.ref("buyer")'></div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">顾客姓名：</div>
+						<div class="ui-inputarea">
+							<div data-bind='text: ordersDirectlyList.ref("receiverName")'></div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">联系方式1：</div>
+						<div class="ui-inputarea">
+							<div data-bind='text: ordersDirectlyList.ref("receiverPhone")'></div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">联系方式2：</div>
+						<div class="ui-inputarea">
+							<div data-bind='text: ordersDirectlyList.ref("receiverTel")'></div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">所属省：</div>
+						<div class="ui-inputarea">
+		                    <div u-meta='{"id":"receiverProvince","type":"uiRefer","data":"ordersDirectlyList","field":"receiverProvince","enable":"false"}'>
+					          <input readonly="readonly" class="ui-no-border"/>
+					        </div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">所属市：</div>
+						<div class="ui-inputarea">
+							<div u-meta='{"id":"receiverCity","type":"uiRefer","data":"ordersDirectlyList","field":"receiverCity","enable":"false"}'>
+					          <input readonly="readonly" class="ui-no-border"/>
+					        </div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">所属区：</div>
+						<div class="ui-inputarea">
+							<div u-meta='{"id":"receiverDistrict","type":"uiRefer","data":"ordersDirectlyList","field":"receiverDistrict","enable":"false"}'>
+					          <input readonly="readonly" class="ui-no-border"/>
+					        </div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">所属街道：</div>
+						<div class="ui-inputarea">
+							<div u-meta='{"id":"receiverTown","type":"uiRefer","data":"ordersDirectlyList","field":"receiverTown","enable":"false"}'>
+					          <input readonly="readonly" class="ui-no-border"/>
+					        </div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">顾客收货地址：</div>
+						<div class="ui-inputarea">
+							<!--<div class="ui-textonly" data-bind='text: ordersDirectlyList.ref("receiverAddress"),attr:{title:ordersDirectlyList.ref("receiverAddress")}'></div>-->
+							<div class="ui-textonly" data-bind='text: receiverAddress("ordersDirectlyList", "receiverAddress")'></div>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+            <!--head end-->
+        </div>
+        <!-- 订单信息-end -->
+        <!-- 商品信息-start -->
+        <div class="u-tabs__panel" id="tab-panel-2">	
+			<div u-meta='{"id":"grid_productListDetail","data":"productList","type":"grid","editable":false,"multiSelect":false,"showNumCol":true}'>
+				<div options='{"field":"productCode","dataType":"String","title":"商品编码"}'></div>
+				<div options='{"field":"productName","dataType":"String","title":"商品名称"}'></div>
+				<div options='{"field":"suplierCode","dataType":"String","title":"供应商商品编码"}'></div>
+				<div options='{"field":"suplierName","dataType":"String","title":"供应商商品名称"}'></div>
+				<div options='{"field":"price","dataType":"Float","title":"采购单价"}'></div>
+				<div options='{"field":"buyNum","dataType":"Float","title":"采购数量"}'></div>
+				<div options='{"field":"totalmny","dataType":"Float","title":"采购金额"}'></div>
+				<div options='{"field":"sendNum","dataType":"Int","title":"发货量","editType":"integer"}'></div>
+				<div options='{"field":"sendTotalmny","dataType":"Float","title":"发货金额"}'></div>
+			</div>
+		</div>
+		<!-- 日志信息-start -->
+        <div class="u-tabs__panel" id="tab-panel-3">
+			<div u-meta='{"id":"grid_logDetail","data":"logList","type":"grid","editable":false,"multiSelect":false,"showNumCol":true}'>
+				<div options='{"field":"operator","dataType":"String","title":"操作人"}'></div>
+				<div options='{"field":"operationTime","dataType":"Datetime","title":"操作时间"}'></div>
+				<div options='{"field":"operateType","dataType":"String","title":"操作"}'></div>
+				<div options='{"field":"operateContent","dataType":"String","title":"操作事项"}'></div>
+			</div>
+			<div class="pagination-right margin-top-20">
+                <div id='pagination_log' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"logList","pageChange":"pageChangeLog","sizeChange":"sizeChangeLog"}'></div>
+            </div>
+		</div>
+		<!-- 备注信息-start -->
+		<div class="u-tabs__panel" id="tab-panel-4">
+			<div class="u-msg-content">
+				<div class="ui-collapse-group border orderCenter">
+					<div id="default-example-1" data-collapse>
+						<!--买家备注开始-->
+						<h3 class="ui-collapse-title orderCenter clearfix open margin-top-10">
+							<a href="javascript:;" class="click-btn inline-block">
+								<i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+								<i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+								买家备注
+							</a>
+						</h3>
+						<div class="ui-collapse-content  clearfix">
+							<div class="margin-10"></div>
+							<div u-meta='{"id":"grid_remark_1","data":"commentList1","type":"grid","editable":false,"multiSelect":"false","showNumCol":true}'>
+								<div options='{"field":"creationTime","dataType":"Datetime","title":"时间"}'></div>
+								<div options='{"field":"creator","dataType":"String","title":"备注人"}'></div>
+								<div options='{"field":"commentTypes","dataType":"String","title":"备注类型"}'></div>
+								<div options='{"field":"commentInfo","dataType":"String","title":"备注内容"}'></div>
+							</div>
+						</div>
+						<!--买家备注结束-->
+						<!--卖家备注开始-->
+						<h3 class="ui-collapse-title orderCenter  clearfix product-choose-result margin-top-10 open">
+							<a href="javascript:;" class="click-btn inline-block">
+								<i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+								<i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+								卖家备注
+							</a>
+						</h3>
+						<div class="ui-collapse-content product-choose-content clearfix">
+							<div class="margin-10"></div>
+							<div u-meta='{"id":"grid_remark_2","data":"commentList2","type":"grid","editable":false,"multiSelect":"false","showNumCol":true}'>
+								<div options='{"field":"creationTime","dataType":"Datetime","title":"时间"}'></div>
+								<div options='{"field":"creator","dataType":"String","title":"备注人"}'></div>
+								<div options='{"field":"commentTypes","dataType":"String","title":"备注类型"}'></div>
+								<div options='{"field":"commentInfo","dataType":"String","title":"备注内容"}'></div>
+							</div>
+						</div>
+						<!--卖家备注结束-->
+
+						<!--订单备注开始-->
+						<h3 class="ui-collapse-title orderCenter  clearfix product-choose-result margin-top-10 open">
+							<a href="javascript:;" class="click-btn inline-block">
+								<i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+								<i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+								订单备注
+							</a>
+						</h3>
+						<div class="ui-collapse-content product-choose-content clearfix">
+							<div class="margin-10"></div>
+							<div u-meta='{"id":"grid_remark_3","data":"commentList3","type":"grid","editable":false,"multiSelect":"false","showNumCol":true}'>
+								<div options='{"field":"creationTime","dataType":"Datetime","title":"时间"}'></div>
+								<div options='{"field":"creator","dataType":"String","title":"备注人"}'></div>
+								<div options='{"field":"commentTypes","dataType":"String","title":"备注类型"}'></div>
+								<div options='{"field":"commentInfo","dataType":"String","title":"备注内容"}'></div>
+							</div>
+						</div>
+						<!--订单备注结束-->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 备注信息-end -->
+	</div>
+<!-- 查看详情-end -->
+</div>
+
+
+
+<!-- 新增/编辑 订单 -->
+<div class="ui-panel ui-bill-panel" style="display: none;" id="validate">
+	<div>
+		<div class="page-title">
+			<span>供应商直发订单</span>
+		</div>
+	</div>
+	<div>
+		<div>
+			<div class="oc-breadcrumb">
+			</div>
+		</div>
+	</div>
+	<div class="ui-panel-btn-bg">
+		<div class="ui-operate-btn">
+			<a class="ui-btn ui-btn-primary" data-bind="click:cancelHandle">取消
+			</a>
+			<a class="ui-btn ui-btn-green" data-bind="click:saveBill">保存
+			</a>
+		</div>
+	</div>
+
+	<div class="ui-bill-body">
+		<div class="ui-collapse-group border orderCenter">
+			<div id="default-example" data-collapse>
+				<h3 class="ui-collapse-title orderCenter clearfix open margin-top-10">
+					<a href="javascript:;" class="click-btn inline-block">
+						<i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+	            		<i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+					  	订单详情
+					</a>
+				</h3>
+				<div class="ui-collapse-content  clearfix" id="orderInfo">
+					<div class="ui-item">
+						<div class="ui-name">采购单号：</div>
+						<div class="ui-inputarea">
+							<div data-bind="text:ordersDirectlyList.ref('code')"></div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">创建时间：</div>
+						<div class="ui-inputarea">
+							<div data-bind="text:ordersDirectlyList.ref('creationTime')"></div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">创建人：</div>
+						<div class="ui-inputarea">
+							<div data-bind="text:ordersDirectlyList.ref('creator')"></div>
+						</div>
+					</div>
+
+					<div class="ui-item">
+						<div class="ui-name">订单状态：</div>
+						<div class="ui-inputarea">
+							<div u-meta='{"type":"u-combobox","data":"ordersDirectlyList","field":"billStatus","datasource":"orderStatusSrc","enable":"false"}'>
+								<input class="ui-no-border" />
+							</div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">平台名称：</div>
+						<div class="ui-inputarea">
+							<div data-bind="text:ordersDirectlyList.ref('platformName')"></div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">店铺名称：</div>
+						<div class="ui-inputarea">
+							<div data-bind="text:ordersDirectlyList.ref('storeName')"></div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">冻结标识：</div>
+						<div class="ui-inputarea">
+							<!--<div data-bind='text: orderDetail.ref("isLock")'>
+							</div>-->
+							<div u-meta='{"type":"u-combobox","data":"ordersDirectlyList","field":"isLock","datasource":"lockStatusSrc","enable":"false"}'>
+								<input class="ui-no-border" />
+							</div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">电商单号：</div>
+						<div class="ui-inputarea">
+							<div data-bind="text:ordersDirectlyList.ref('syscode')"></div>
+							<!--<div class="ui-textonly" u-meta='{"type":"u-text","data":"ordersDirectlyList","field":"syscode"}'>
+								<input class="u-input ui-no-border" />
+							</div>-->
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">要求送货时间: </div>
+						<div class="ui-inputarea">
+							<div data-bind='text: ordersDirectlyList.ref("deliveryTime")'></div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">供应商：</div>
+						<div class="ui-inputarea">
+							<div data-bind='text: ordersDirectlyList.ref("supplierName")'></div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">订单备注：</div>
+						<div class="ui-inputarea">
+							<div  u-meta='{"type":"u-text","data":"ordersDirectlyList","field":"sellerRemark"}'>
+								<input class="u-input" />
+							</div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">总数量：</div>
+						<div class="ui-inputarea">
+							<div data-bind='text: ordersDirectlyList.ref("totalNum")'></div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">总金额：</div>
+						<div class="ui-inputarea">
+							<div data-bind='text: ordersDirectlyList.ref("totalFee")'></div>
+							
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">物流方式: </div>
+						<div class="ui-inputarea">
+							<div u-meta='{"type":"u-combobox","data":"ordersDirectlyList","field":"logisticsMode","datasource":"logisticsModeSrc","enable":"false"}'>
+								<input class="ui-no-border" />
+							</div>
+						</div>
+					</div>	
+					<div class="ui-item">
+						<div class="ui-name">快递公司编码：</div>
+						<div class="ui-inputarea">
+							<div data-bind="text:ordersDirectlyList.ref('logisticsCode')"></div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name"><span class='ui-redstar'>*</span>快递公司名称：</div>						
+						<div class="ui-inputarea">
+							 <div class="ui-inputarea" u-meta=' {"type":"uiRefer","data":"ordersDirectlyList","field":"logisticsId"}' id="logistics">
+                                <input readonly="readonly" autocomplete="off" />
+                                <span class="ui-icon uifont icon-bar refer"></span>
+                            </div>
+						</div>
+					</div>
+
+					<div class="ui-item">
+						<div class="ui-name"><span class='ui-redstar'>*</span>快递单号：</div>
+						<div class="ui-inputarea">
+							<div class="ui-textonly" u-meta='{"type":"u-text","data":"ordersDirectlyList","field":"waybillNo"}'>
+								<input class="u-input" />
+							</div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">快递其他信息：</div>
+						<div class="ui-inputarea">
+							<div class="ui-textonly" u-meta='{"type":"u-text","data":"ordersDirectlyList","field":"logisticsInfo"}'>
+								<input class="u-input" />
+							</div>							
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">顾客ID：</div>
+						<div class="ui-inputarea">
+							<div data-bind='text: ordersDirectlyList.ref("buyer")'></div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">顾客姓名：</div>
+						<div class="ui-inputarea">
+							<div data-bind='text: ordersDirectlyList.ref("receiverName")'></div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">联系方式1：</div>
+						<div class="ui-inputarea">
+							<div data-bind='text: ordersDirectlyList.ref("receiverPhone")'></div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">联系方式2：</div>
+						<div class="ui-inputarea">
+							<div data-bind='text: ordersDirectlyList.ref("receiverTel")'></div>
+						</div>
+					</div>
+					<div class="ui-item">
+						<div class="ui-name">顾客收货地址：</div>
+						<div class="ui-inputarea">
+							<div data-bind='text: ordersDirectlyList.ref("receiverAddress")'></div>
+						</div>
+					</div>
+					
+					<div class="clearfix"></div>
+				</div>
+
+				<h3 class="ui-collapse-title orderCenter clearfix open margin-top-10">
+					<a href="javascript:;" class="click-btn inline-block">
+						<i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+	            		<i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+					  	商品信息
+					</a>
+				</h3>
+				<div class="ui-collapse-content product-choose-content clearfix">
+					<div class="ui-table-container">
+						<div u-meta='{"id":"grid_productList","data":"productList","type":"grid","editable":false,"multiSelect":false,"showNumCol":true}'>
+							<div options='{"field":"productCode","dataType":"String","title":"商品编码"}'></div>
+							<div options='{"field":"productName","dataType":"String","title":"商品名称"}'></div>
+							<div options='{"field":"suplierCode","dataType":"String","title":"供应商商品编码"}'></di>
+							<div options='{"field":"suplierName","dataType":"String","title":"供应商商品名称"}'></di>
+							<div options='{"field":"price","dataType":"Float","title":"采购单价"}'></div>
+							<div options='{"field":"buyNum","dataType":"Float","title":"采购数量"}'></div>
+							<div options='{"field":"totalmny","dataType":"Float","title":"采购金额"}'></div>
+							<div options='{"field":"sendNum","dataType":"Int","title":"发货量","editType":"integer"}'></div>
+							<div options='{"field":"sendTotalmny","dataType":"Float","title":"发货金额"}'></
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+<div id="dialog_layer" style="display:none;">
+
+</div>
+<!--导出弹框 end-->
+<div id="exportFiel"></div>
+<!--exportFiel-->
+<div id="importFiel"></div>

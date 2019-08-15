@@ -1,0 +1,518 @@
+<div class="ui-panel ui-list-panel">
+  <div>
+    <div class="page-title">
+      <span>批发活动价调价单</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+
+  <div class="ui-searchbox ui-panel-head">
+    <div id="ActivityPriceAdjust-searchcontent" class="ui-searchbox-content">
+
+    </div>
+    <div class="clearfix">
+
+    </div>
+    <div class="ui-searchbox-footer">
+      <div class="ui-search-more hidden">
+          <a>更多<i class="uifont icon-down"></i></a>
+      </div>
+
+      <div class="ui-search-btn">
+        <a class="ui-btn ui-btn-primary margin-right-5"
+        data-bind="click:cleanSearch">清空
+        </a>
+        <a class="ui-btn ui-btn-green margin-right-5"
+        data-bind="click:search.bind($data,true)">搜索
+        </a>
+      </div>
+      <div class="clearfix">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-panel-body">
+      <div class="ui-panel-body-head">
+        <div class="ui-panel-body-head-left">
+          <a class="ui-btn ui-btn-orange margin-right-5" id="user-action-add"
+            data-bind="click: showAddBillPanel.bind($data), visible: buttonShowGroup['add']"><i class="uifont icon-plus margin-right-5"></i>新增
+          </a>
+          <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+            data-bind="click: del, visible: buttonShowGroup['del']"><i class="uifont icon-shanchu1 margin-right-5"></i>删除
+          </a>
+          <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+            data-bind="click: showCopyBillPanel, visible: buttonShowGroup['copy']"><i class="uifont icon-copy margin-right-5"></i>复制
+          </a>
+          <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+            data-bind="click: batchCopy, visible: buttonShowGroup['batchcopy']"><i class="uifont icon-copy margin-right-5"></i>批量复制
+          </a>
+          <div id="copyorgref" u-meta='{"type":"uiRefer","data":"CopyOrgRef","field":"copyorgref"}' style="display:none;">
+            <input readonly="readonly"/>
+            <span class="ui-icon uifont icon-bar refer"></span>
+          </div>
+          <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+            data-bind="click: submit, visible: buttonShowGroup['submit']"><i class="uifont icon-tubiao-shenhe margin-right-5"></i>提交
+          </a>
+          <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+            data-bind="click: approve, visible: buttonShowGroup['approve']"><i class="uifont icon-tubiao-shenhe margin-right-5"></i>审核
+          </a>
+          <!-- <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+            <a class="ui-button-item" data-bind="click: approve"><i class="uifont icon-tubiao-shenhe margin-right-5"></i>审核</a>
+            <a class="ui-button-item"><i class="uifont icon-tubiao-quxiaoshenhe margin-right-5"></i>弃审</a>
+          </div> -->
+        </div>
+        <div class="ui-panel-body-head-right">
+        </div>
+      </div>
+      <div class="ui-table-container">
+          <div u-meta='{"id":"grid_ActivityPrice","data":"ActivityPriceAdjustList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+                      <div options='{"field":"code","dataType":"String","title":"调价单编码","renderType":"detailRender"}'></div>
+                      <div options='{"field":"name","dataType":"String","title":"调价单名称"}'></div>
+                      <div options='{"field":"promoActivityCode","dataType":"String","title":"活动编码"}'></div>
+                      <div options='{"field":"promoActivityName","dataType":"String","title":"活动名称"}'></div>
+                      <div options='{"field":"saleEntity","dataType":"String","title":"销售主体","renderType":"saleEntityRender"}'></div>
+                      <div options='{"field":"saleOrgName","dataType":"String","title":"销售组织"}'></div>
+                      <div options='{"field":"promoActivityOrderStartDate","dataType":"Date","title":"订货开始日期"}'></div>
+                      <div options='{"field":"promoActivityOrderEndDate","dataType":"Date","title":"订货截至日期"}'></div>
+                      <div options='{"field":"creator","dataType":"String","title":"创建人","visible":false}'></div>
+                      <div options='{"field":"creationTime","dataType":"Datetime","title":"创建时间","visible":false}'></div>
+                      <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":false}'></div>
+                      <div options='{"field":"modifiedTime","dataType":"Datetime","title":"修改时间","visible":false}'></div>
+                      <div options='{"field":"auditStatus","dataType":"String","title":"审核状态","renderType":"approveRender"}'></div>
+                      <div options='{"field":"auditor","dataType":"String","title":"审核人"}'></div>
+                      <div options='{"field":"auditTime","dataType":"Datetime","title":"审核时间"}'></div>
+                      <div options='{"field":"note","dataType":"String","title":"备注"}'></div>
+                      <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation","fixed":true,"width":"110px"}'></div>
+          </div>
+          <div class="ui-statistics margin-top-10">
+            已选择<span class="font-c-blue" data-bind="text:ActivityPriceAdjustList.selectedIndices().length"></span>项数据
+          </div>
+          <div class="pagination-right">
+            <div id='pagination' class='pagination u-pagination pagination-sm'
+            u-meta='{"type":"pagination","data":"ActivityPriceAdjustList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+          </div>
+      </div>
+    </div>
+</div>
+<div id="dialog_layer" class="ui-searchbox" style="display:none;padding:20px">
+
+</div>
+<!-- 单据页 -->
+<div class="ui-panel ui-bill-panel" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span>批发活动价调价单</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-primary" data-bind="click: cancelBill.bind($data)">取消
+      </a>
+      <a class="ui-btn ui-btn-green" data-bind="click: saveBill.bind($data)">保存
+      </a>
+    </div>
+  </div>
+  <div class="ui-panel-head ui-bill-head">
+    <div data-bind='visible: billPanelStatus()=="add"||billPanelStatus()=="copy"' class="ui-item">
+      <div class="ui-name">
+        <span class='ui-redstar'>*</span>
+        调价单编码：
+      </div>
+      <div class="ui-inputarea">
+        <input readonly="readonly" placeholder="根据编码规则自动生成"/>
+      </div>
+    </div>
+    <div data-bind='visible: billPanelStatus()=="edit"' class="ui-item">
+      <div class="ui-name">调价单编码：</div>
+      <div class="ui-inputarea">
+        <div class="ui-textonly" data-bind='text: ActivityPriceAdjustList.ref("code")'></div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">
+        <span class='ui-redstar'>*</span>
+        调价单名称：
+      </div>
+      <div class="ui-inputarea">
+        <div u-meta='{"type":"u-text","data":"ActivityPriceAdjustList","field":"name"}'>
+          <input />
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">审核状态：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: approveFormat("ActivityPriceAdjustList","auditStatus")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">
+        <span class='ui-redstar'>*</span>
+        活动编码：
+      </div>
+      <div class="ui-inputarea">
+        <div u-meta='{"type":"uiRefer","data":"ActivityPriceAdjustList","field":"promoActivityId"}'>
+          <input readonly="readonly"/>
+          <span class="ui-icon uifont icon-bar refer"></span>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">活动名称：</div>
+      <div class="ui-inputarea">
+        <div data-bind="text: ActivityPriceAdjustList.ref('promoActivityName')">
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">
+        <span class='ui-redstar'>*</span>
+        销售主体：
+      </div>
+      <div class="ui-inputarea">
+        <div u-meta='{"type":"u-combobox","data":"ActivityPriceAdjustList","field":"saleEntity","datasource":"saleEntitySrc","onlySelect":true}'>
+            <input />
+            <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">订货开始日期：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: orderStartFmt'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">订货截至日期：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: orderEndFmt'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">
+        <span class='ui-redstar'>*</span>
+        销售组织：
+      </div>
+      <div class="ui-inputarea">
+        <div id="orgRefer" u-meta='{"type":"uiRefer","data":"ActivityPriceAdjustList","field":"saleOrgId"}'>
+          <input readonly="readonly" data-bind='disable: !ActivityPriceAdjustList.ref("saleEntity")()'/>
+          <span class="ui-icon uifont icon-bar refer"></span>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">活动描述：</div>
+      <div class="ui-inputarea">
+        <div data-bind="text: ActivityPriceAdjustList.ref('promoActivityDescription')">
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">询价上浮系数：</div>
+      <div class="ui-inputarea">
+        <div data-bind="text: ActivityPriceAdjustList.ref('floatRatioName')">
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">
+        <span class='ui-redstar'>*</span>
+        调价生效日期：
+      </div>
+      <div class="ui-inputarea">
+        <div u-meta='{"type":"u-date","data":"ActivityPriceAdjustList","field":"effectiveDate"}'>
+          <input />
+          <span class="ui-icon uf uf-calendar"></span>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">执行结果：</div>
+      <div class="ui-inputarea">
+        <div data-bind="text: ActivityPriceAdjustList.ref('excuteResult')">
+        </div>
+      </div>
+    </div>
+    <div class="ui-item ui-textarea-item">
+      <div class="ui-name">备注：</div>
+      <div class="ui-inputarea">
+        <textarea u-meta='{"type":"textarea","data":"ActivityPriceAdjustList","field":"note"}'></textarea>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="ui-bill-body">
+    <div class="ui-bill-body-btns">
+      <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-additems"
+        data-bind="click: showAddItemsRef"><i class="uifont icon-plus margin-right-5"></i>增行
+      </a>
+      <div id="addItemsRef" u-meta='{"type":"uiRefer","data":"ProductTabRefList","field":"productref"}' style="display:none;">
+        <input readonly="readonly"/>
+        <span class="ui-icon uifont icon-bar refer"></span>
+      </div>
+      <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+        data-bind="click: delItems"><i class="uifont icon-shanchu1 margin-right-5"></i>删行
+      </a>
+      <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+        data-bind="click: showPriceRefDialog"><i class="uifont icon-bar margin-right-5"></i>参照
+      </a>
+      <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+        <a class="ui-button-item" data-bind='click: importHandle'><i class="uifont icon-import margin-right-5"></i>导入</a>
+        <a class="ui-button-item" data-bind='click: exportHandle'><i class="uifont icon-export margin-right-5"></i>导出</a>
+      </div>
+    </div>
+    <div class="ui-table-container margin-bottom-30">
+        <div u-meta='{"id":"grid_ActivityPriceAdjustItems","data":"ActivityPriceAdjustItems","type":"grid","editable":true,"multiSelect":true,"showNumCol":true,"nullField":"lowerDtos","onBeforeEditFun":"itemBeforeEdit"}'>
+                    <!-- <div options='{"field":"productid","dataType":"String","title":"销售产品编码","renderType":"ncReferRender","editType":"ncReferEditType","showField":"productidCode","editOptions":{"validType":"string","rel":{"refpk":"productid","refcode":"productidCode","refname":"productidName","status":"unitName"}}}'></div> -->
+                    <div options='{"field":"productShowCode","dataType":"String","title":"产品编码","editable":false,"required":true}'></div>
+                    <div options='{"field":"productShowName","dataType":"String","title":"产品名称","editable":false}'></div>
+                    <div options='{"field":"productSaleSeriesName","dataType":"String","title":"产品系列","editable":false}'></div>
+                    <!-- <div options='{"field":"channelId","dataType":"String","title":"渠道类型","renderType":"ncReferRender","editType":"ncReferEditType","showField":"channelName","editOptions":{"validType":"string","rel":{"refpk":"channelId","refcode":"channelCode","refname":"channelName"}}}'></div> -->
+                    <div options='{"field":"channelCode","dataType":"String","title":"渠道类型","editOptions":{"type":"combo","datasource":"channeltypeSrc","onlySelect":true},"editType":"combo","renderType":"comboRender"}'></div>
+                    <div options='{"field":"agencypartitionId","dataType":"String","title":"办事处分区","renderType":"ncReferRender","editType":"ncReferEditType","showField":"agencypartitionName","editOptions":{"validType":"string","rel":{"refpk":"agencypartitionId","refname":"agencypartitionName","refcode":"agencypartitionCode"}}}'></div>
+                    <div options='{"field":"officeId","dataType":"String","title":"办事处","renderType":"ncReferRender","editType":"ncReferEditType","showField":"officeName","editOptions":{"validType":"string","rel":{"refpk":"officeId","refcode":"officeCode","refname":"officeName"}}}'></div>
+                    <div options='{"field":"customerId","dataType":"String","title":"客户","renderType":"ncReferRender","editType":"ncReferEditType","showField":"customerName","editOptions":{"validType":"string","rel":{"refpk":"customerId","refcode":"customerCode","refname":"customerName"}}}'></div>
+                    <div options='{"field":"price","dataType":"String","title":"价格","editable":false}'></div>
+                    <div options='{"field":"enable_status","dataType":"String","title":"启用状态","editable":false,"renderType":"enableRender"}'></div>
+                    <div options='{"field":"note","dataType":"String","title":"备注"}'></div>
+                    <div options='{"field":"operation","dataType":"String","title":"子件价格","renderType":"priceItemRender","editable":false,"fixed":true,"width":"120px"}'></div>
+        </div>
+    </div>
+  </div>
+</div>
+<!-- 详情页 -->
+<div class="ui-panel ui-bill-detail" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span>批发活动价调价单</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-primary" data-bind="click: retListPanel">返回
+      </a>
+      <a class="ui-btn ui-btn-green" data-bind="click: detail2bill">编辑
+      </a>
+    </div>
+  </div>
+  <div id="bpmhead"></div>
+  <div id="bpmfoot"></div>
+  <div class="ui-panel-head ui-bill-head">
+    <div class="ui-item">
+      <div class="ui-name">调价单编码：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: ActivityPriceAdjustList.ref("code")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">调价单名称：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: ActivityPriceAdjustList.ref("name")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">审核状态：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: approveFormat("ActivityPriceAdjustList","auditStatus")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">活动编码：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: ActivityPriceAdjustList.ref("promoActivityCode")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">活动名称：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: ActivityPriceAdjustList.ref("promoActivityName")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">销售主体：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: saleEntityFormat("ActivityPriceAdjustList","saleEntity")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">订货开始日期：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: dateFormat("ActivityPriceAdjustList","promoActivityOrderStartDate")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">订货截至日期：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: dateFormat("ActivityPriceAdjustList","promoActivityOrderEndDate")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">销售组织：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: ActivityPriceAdjustList.ref("saleOrgName")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">活动描述：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: ActivityPriceAdjustList.ref("promoActivityDescription")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">询价上浮系数：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: ActivityPriceAdjustList.ref("floatRatioName")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">调价生效日期：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: dateFormat("ActivityPriceAdjustList","effectiveDate")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">执行结果：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: ActivityPriceAdjustList.ref("excuteResult")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item ui-textarea-item">
+      <div class="ui-name">备注：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: ActivityPriceAdjustList.ref("note")'>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="ui-bill-body">
+    <div class="ui-bill-body-btns">
+    </div>
+    <div class="ui-table-container margin-bottom-30">
+        <div u-meta='{"id":"grid_ActivityPriceAdjustItems_detail","data":"ActivityPriceAdjustItems","type":"grid","editable":false,"multiSelect":false,"showNumCol":true,"nullField":"lowerDtos"}'>
+                    <!-- <div options='{"field":"productid","dataType":"String","title":"销售产品编码","renderType":"ncReferRender","editType":"ncReferEditType","showField":"productidCode","editOptions":{"validType":"string","rel":{"refpk":"productid","refcode":"productidCode","refname":"productidName","status":"unitName"}}}'></div> -->
+                    <div options='{"field":"productShowCode","dataType":"String","title":"产品编码","editable":false}'></div>
+                    <div options='{"field":"productShowName","dataType":"String","title":"产品名称","editable":false}'></div>
+                    <div options='{"field":"productSaleSeriesName","dataType":"String","title":"产品系列","editable":false}'></div>
+                    <!-- <div options='{"field":"channelId","dataType":"String","title":"渠道类型","renderType":"ncReferRender","editType":"ncReferEditType","showField":"channelName","editOptions":{"validType":"string","rel":{"refpk":"channelId","refcode":"channelCode","refname":"channelName"}}}'></div> -->
+                    <div options='{"field":"channelCode","dataType":"String","title":"渠道类型","editOptions":{"type":"combo","datasource":"channeltypeSrc","onlySelect":true},"editType":"combo","renderType":"comboRender"}'></div>
+                    <div options='{"field":"agencypartitionName","dataType":"String","title":"办事处分区"}'></div>
+                    <div options='{"field":"officeId","dataType":"String","title":"办事处","renderType":"ncReferRender","editType":"ncReferEditType","showField":"officeName","editOptions":{"validType":"string","rel":{"refpk":"officeId","refcode":"officeCode","refname":"officeName"}}}'></div>
+                    <div options='{"field":"customerId","dataType":"String","title":"客户","renderType":"ncReferRender","editType":"ncReferEditType","showField":"customerName","editOptions":{"validType":"string","rel":{"refpk":"customerId","refcode":"customerCode","refname":"customerName"}}}'></div>
+                    <div options='{"field":"price","dataType":"String","title":"价格","editable":false}'></div>
+                    <div options='{"field":"enable_status","dataType":"String","title":"启用状态","editable":false,"renderType":"enableRender"}'></div>
+                    <div options='{"field":"note","dataType":"String","title":"备注"}'></div>
+                    <div options='{"field":"operation","dataType":"String","title":"子件价格","renderType":"priceItemRender","editable":false,"fixed":true,"width":"120px"}'></div>
+        </div>
+    </div>
+  </div>
+</div>
+<!-- 产品BOM -->
+<div id="dialog_bomprice" style="display:none;width:900px;">
+  <div class="u-msg-title">价格明细</div>
+  <div class="u-msg-content">
+    <div class="ui-table-container">
+        <div u-meta='{"id":"grid_BomPriceTree","data":"BomPriceTree","type":"grid","editable":false,"multiSelect":false,"showNumCol":true,"showTree":true,"keyField":"id","parentKeyField":"upperClass","autoExpand":true,"editable":true,"onBeforeEditFun":"bomTreeBeforeEdit"}'>
+            <div options='{"field":"productShowCode","dataType":"String","title":"产品编码","editable":false}'></div>
+            <div options='{"field":"productShowName","dataType":"String","title":"产品名称","editable":false}'></div>
+            <div options='{"field":"num","dataType":"Integer","title":"数量","editable":false}'></div>
+            <div options='{"field":"price","dataType":"Float","title":"价格","editType":"float"}'></div>
+        </div>
+    </div>
+  </div>
+  <div class="u-msg-footer">
+    <a class="ui-btn ui-btn-primary J-cancel margin-right-5" data-bind='click: cancelBom'>取消</a>
+    <a class="ui-btn ui-btn-green J-ok" data-bind="click:confirmBom">确定</a>
+  </div>
+</div>
+<!-- 批发活动价参照对话框 -->
+<div id="dialog_detailrefer" style="display:none;">
+	<div class="u-msg-title">
+		<h4>请选择</h4>
+	</div>
+	<div class="u-msg-content">
+		<div class="ui-panel-head ui-bill-head">
+			<div id="pricerefer-searchcontent" class="ui-searchbox-content">
+
+	    </div>
+	    <div class="clearfix"></div>
+	    <div class="ui-searchbox-footer">
+	      <!--<div class="ui-search-more hidden">
+	          <a>更多<i class="uifont icon-down"></i></a>
+	      </div>-->
+
+	      <div class="ui-search-btn u-text-align-right margin-top-10 margin-right-20">
+          <a class="ui-btn ui-btn-primary"
+          data-bind="click:cleanDetailReferSearch">清空
+          </a>
+	        <a class="ui-btn ui-btn-green margin-right-5"
+	        data-bind="click: searchDetailRefer">搜索
+	        </a>
+	      </div>
+	      <div class="clearfix"></div>
+	    </div>
+		</div>
+		<div u-meta='{"id":"grid_ActivityPriceAdjustItemsRefer","data":"ActivityPriceAdjustItemsRefer","type":"grid","editable":false,"multiSelect":true,"showNumCol":true,"columnMenu":false}'>
+      <div options='{"field":"productShowCode","dataType":"String","title":"产品编码","editable":false}'></div>
+      <div options='{"field":"productShowName","dataType":"String","title":"产品名称","editable":false}'></div>
+      <div options='{"field":"productGroup","dataType":"String","title":"产品组","editable":false}'></div>
+      <div options='{"field":"productSaleSeriesName","dataType":"String","title":"产品系列","editable":false}'></div>
+      <div options='{"field":"channelName","dataType":"String","title":"渠道类型"}'></div>
+      <div options='{"field":"agencypartitionName","dataType":"String","title":"办事处分区"}'></div>
+      <div options='{"field":"officeName","dataType":"String","title":"办事处"}'></div>
+      <div options='{"field":"customerName","dataType":"String","title":"客户"}'></div>
+      <div options='{"field":"price","dataType":"String","title":"价格","editType":"Float"}'></div>
+      <div options='{"field":"creator","dataType":"String","title":"创建人","editable":false,"visible":false}'></div>
+      <div options='{"field":"creationTime","dataType":"Datetime","title":"创建时间","editable":false,"visible":false}'></div>
+      <div options='{"field":"modifier","dataType":"String","title":"最后修改人","editable":false,"visible":false}'></div>
+      <div options='{"field":"modifiedTime","dataType":"Datetime","title":"最后修改时间","editable":false,"visible":false}'></div>
+      <div options='{"field":"note","dataType":"String","title":"备注"}'></div>
+   </div>
+	  <div class="pagination-right">
+	    <div id='paginationDetailRefer' class='pagination u-pagination pagination-sm'
+	    u-meta='{"type":"pagination","data":"ActivityPriceAdjustItemsRefer","pageChange":"pageChangeDetailRefer","sizeChange":"sizeChangeDetailRefer"}'></div>
+	  </div>
+	</div>
+	<div class="u-msg-footer">
+    <a class="ui-btn ui-btn-primary J-cancel margin-right-5" data-bind="click: cancelDetailRefer">取消</a>
+    <a class="ui-btn ui-btn-green J-ok" data-bind="click:confirmDetailRefer">确定</a>
+	</div>
+</div>
+<div id="exportFiel"></div>
+<div id="exportAddTpl"></div>
+<div id="importFiel"></div>

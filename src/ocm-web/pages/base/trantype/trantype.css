@@ -1,0 +1,30 @@
+.ui-collapse-w70{
+    border: 1px solid #ddd;
+    width: 70%;
+    margin: 28px auto;
+}
+.ui-collapse-w100{
+    border: 1px solid #ddd;
+    width: 100%;
+    margin: 10px auto;
+}
+
+.ztree li span.button.ico_close{
+    display: none
+}
+.ztree li span.button.ico_open{
+    display: none
+}
+
+.ztree li span.button.ico_docu{
+    display: none
+}
+.ztree li a.curSelectedNode span{
+    color:#41a6fb;
+    background-color: #ebf5fe;
+    border-radius: 5px;
+}
+
+.ztree li.focusNode>span.button.switch{
+    color:#000;
+}

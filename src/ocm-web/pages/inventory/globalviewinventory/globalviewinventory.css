@@ -1,0 +1,509 @@
+﻿body{
+    background:url("img/bg.png");
+    width:100%;
+    height:810px;
+    background-size:cover;
+}
+/*-------------header start-------------*/
+.header{
+    position: relative;
+}
+.header .header-title{
+    height: 70px;
+    background:url("img/headerTitleBg.png") no-repeat;
+    width:577px;
+    margin: 0 auto;
+    background-size:100% 100%;
+}
+.header .header-title span{
+    display: block;
+    position: relative;
+    height: 8px;
+    width: 336px;
+    top: 19px;
+    background:url("img/headerTitle.jpg") no-repeat;
+    margin: 0 auto;
+    background-size:100% 100%;
+}
+.header .header-border{
+    position: absolute;
+    top: 49px;
+    left: 0;
+    height: 34px;
+    width: 100%;
+    background: url("img/headBorderBottom.png"),no-repeat;
+    background-size:100% 100%;
+}
+.header .header-left{
+    position: absolute;
+    top: 0;
+    left: 222px;
+    height: 40px;
+    width: 229px;
+    background: url("img/header-left.png"),no-repeat;
+    background-size:100% 100%;
+}
+.header .header-right{
+    position: absolute;
+    top: 0;
+    right: 221px;
+    height: 40px;
+    width: 229px;
+    background: url("img/header-right.png"),no-repeat;
+    background-size:100% 100%;
+}
+.header span{
+    display:block;
+    position: relative;
+    font-size: 22px;
+    width:250px;
+    padding-top: 20px;
+    margin:0 auto;
+    color: #FFD100;
+    font-weight: bold;
+}
+/*-------------header end-------------*/
+
+
+/*------------- 整体库存情况 start-------------*/
+.stock-Content{
+    width: 100%;
+    margin: 0 20px 20px 20px;
+}
+.left{
+    float: left;
+    height: 766px;
+    width:27%;
+}
+.left .stock-status{
+    height: 273px;
+    width: 100%;
+}
+
+.left .stock-status .total-whole,
+.left .stock-status .total-store
+{
+    position: relative;
+    float: left;
+    height: 100px;
+    width: 96%;
+    margin: 10px 0 0 0;
+    background: url("img/total-money.png"), no-repeat;
+    background-size:100% 100%;
+    text-align: center;
+    text-decoration:none;
+}
+.left .stock-status .board a
+{
+    display: inline-block;
+    position: absolute;
+    left: 0;
+}
+.left .stock-status .board .num{
+    top: 30px;
+    color: #FFD100 ;
+    font-size: 32px;
+    height: 18px;
+    width: 100%;
+    line-height: 18px;
+}
+.left .stock-status .board .text{
+    top: 65px;
+    color: #ffffff ;
+    font-size: 14px;
+    height: 18px;
+    width: 100%;
+    line-height: 18px;
+}
+/*------------- 整体销售情况 end-------------*/
+
+/*------------- 客户销售排行 start-------------*/
+
+.left .stock-rank {
+    display: block;
+    height: 447px;
+    width: 100%;
+}
+.left .stock-rank .rank-list{
+    display: block;
+    width: 96%;
+    height: 450px;
+    background: url("img/rank-list.png"), no-repeat;
+    background-size:100% 100%;
+    margin-top: 10px;
+}
+.left .stock-rank .rank-list ul{
+    display: inline-block;
+    width: 90%;
+    margin: 26px 20px 44px 15px;
+}
+.left .stock-rank .rank-list ul li{
+    height: 37px;
+    width: 100%;
+    font-size: 12px;
+    color: #fff;
+}
+.left .stock-rank .rank-list ul li .list-num{
+    display: block;
+    float: left;
+    margin:8px 10px 0 0;
+    width: 30px;
+    height: 33px;
+    line-height: 33px;
+    text-align: center;
+}
+.left .stock-rank .rank-list ul li .list-num.icon{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+}
+
+.left .stock-rank .rank-list ul li .goods-name{
+    display: block;
+    float: left;
+    height: 100%;
+    line-height: 37px;
+    color: #ffffff;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    white-space:nowrap;
+    width:85px;
+}
+
+.left .stock-rank .rank-list ul li .rank-bar{
+    position: relative;
+    display: block;
+    float: left;
+    width: 202px;
+    padding: 10px 0 0 5px;
+}
+.rank-bar a{
+    display: block;
+    float: left;
+    height: 10px;
+    width: 28px;
+    margin-left: 6px;
+    color: #ffffff;
+}
+.rank-bar .rankBar-width{
+    width: 160px;
+}
+.rank-bar span{
+    display: block;
+    float: left;
+    height: 10px;
+    width: 100%;
+    border-radius:10px;
+    margin: 0 0 2px 6px;
+    background: radial-gradient(circle at left, #201A0D ,#634C2F,#E4CB7E);
+}
+.rank-bar p {
+    position: absolute;
+    left: 4px;
+    top: 22px;
+    height: 14px;
+    color: #D9B567;
+    -webkit-transform:scale(0.84);
+
+}
+
+
+
+
+
+/*------------- 客户销售排行 end-------------*/
+.middle{
+    float: left;
+    width: 43%;
+}
+.middle #main{
+    height: 465px;
+    width: 100%;
+    margin: 0 auto;
+}
+.middle-bottom {
+    height: 247px;
+    width: 100%;
+}
+.middle .middle-bottom .warning-goods{
+    display: block;
+    box-sizing:border-box;
+    padding: 20px;
+    width: 100%;
+    height: 258px;
+    background: url("./img/warningGoods.png") ,no-repeat;
+    background-size:100% 100%;
+    margin-top: 10px;
+    color: #fff;
+}
+.warning-goods .child-header{
+    width: 100%;
+    height: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 0.5px solid #E70013;
+}
+
+.warning-goods .child-header span{
+     display: inline-block;
+     float: left;
+     margin-left: 20px;
+     width: 20%;
+     height: 21px;
+ }
+.warning-goods .child-header .goodsName{
+    display: inline-block;
+    float: left;
+    margin-left: 64px;
+    width: 20%;
+    height: 21px;
+}
+.warning-goods span{
+    display: inline-block;
+    float: left;
+    margin-left: 20px;
+    width: 20%;
+    height: 21px;
+}
+.warning-goods span.goodsName{
+    width: 160px;
+    display: block;
+    float: left;
+    height: 100%;
+    color: #ffffff;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    white-space:nowrap;
+}
+.warning-goods span.storageName{
+    width: 100px;
+    height:30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    white-space:nowrap;
+}
+.warning-goods span.availableNum{
+    width: 60px;
+}
+.warning-goods span.onHandNum{
+    width: 60px;
+}
+.warning-goods span.onOrderNum{
+    width: 60px;
+}
+.warning-goods .child-content li{
+    height: 32px;
+    line-height: 35px;
+}
+.warning-goods .child-content li .availableNum,
+.warning-goods .child-content li .onHandNum,
+.warning-goods .child-content li .onOrderNum
+{
+  color:#FFD100;
+}
+
+
+
+
+.right{
+    float: left;
+    width: 28%;
+    height: 720px;
+    margin-left: 1%;
+}
+.right .right-top{
+    height: 273px;
+    width: 100%;
+}
+#category-ratio{
+    height: 100%;
+    width: 100%;
+}
+.right .right-top .category-ratio{
+    display: block;
+    width: 96%;
+    height: 210px;
+    margin-top: 10px;
+    background: url("img/realTime-order.png"),no-repeat;
+    background-size: 100% 100%;
+}
+
+
+.right .High-age-goods{
+    height: 297px;
+}
+.right .High-age-goods .rank-list{
+    display: block;
+    float: left;
+    width: 90%;
+    height: 254px;
+    margin-top: 10px;
+    background: url("img/HigtAgeBk.png"),no-repeat;
+    background-size: 100% 100%;
+    color: #fff;
+}
+.right .High-age-goods .rank-list{
+    display: block;
+    width: 96%;
+    height: 450px;
+    background: url("img/rank-list.png"), no-repeat;
+    background-size:100% 100%;
+    margin-top: 10px;
+}
+.right .High-age-goods .rank-list ul{
+    display: inline-block;
+    width: 90%;
+    margin: 26px 20px 44px 15px;
+}
+.right .High-age-goods .rank-list ul li{
+    height: 37px;
+    width: 100%;
+    font-size: 12px;
+    color: #fff;
+}
+.right .High-age-goods .rank-list ul li .list-num{
+    display: block;
+    float: left;
+    margin:8px 10px 0 0;
+    width: 30px;
+    height: 33px;
+    line-height: 33px;
+    text-align: center;
+}
+.right .High-age-goods .rank-list ul li .list-num.icon{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+}
+
+.right .High-age-goods .rank-list ul li .goods-name{
+    display: block;
+    float: left;
+    height: 100%;
+    line-height: 37px;
+    color: #ffffff;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    white-space:nowrap;
+    width:85px;
+}
+
+.right .High-age-goods .rank-list ul li .rank-bar{
+    position: relative;
+    display: block;
+    float: left;
+    width: 170px;
+    padding: 10px 0 0 5px;
+}
+.right .High-age-goods .rank-bar a{
+    display: block;
+    float: left;
+    height: 10px;
+    width: 46px;
+    margin-left: 6px;
+    color: #ffffff;
+}
+.right .High-age-goods .rank-bar .rankBar-width{
+    width: 110px;
+}
+.right .High-age-goods .rank-bar span{
+    display: block;
+    float: left;
+    height: 10px;
+    width: 100%;
+    border-radius:10px;
+    margin: 0 0 2px 6px;
+    background: radial-gradient(circle at left, #201A0D ,#634C2F,#E4CB7E);
+}
+.right .High-age-goods .rank-bar p {
+    position: absolute;
+    left: 4px;
+    top: 22px;
+    height: 14px;
+    color: #D9B567;
+    -webkit-transform:scale(0.84);
+
+}
+.right .High-age-goods .high-amount {
+    display: block;
+    float: right;
+    height: 37px;
+    width: 50px;
+    line-height: 37px;
+    color: #ffffff;
+}
+
+
+
+
+
+/*------------ common -------------*/
+.child-title{
+    display: inline-block;
+    width: 50%;
+    height: 33px;
+    background: url("img/title-bg.png"),no-repeat;
+    background-size:100% 100%;
+    text-align: center;
+}
+.child-title a{
+    display: block;
+    float: left;
+    margin:8px 0 0 40px;
+    height: 18px;
+    width: 74px;
+    line-height: 34px;
+    color: #FFD100;
+    text-decoration:none;
+    font-size: 16px;
+    vertical-align: middle;
+}
+.child-title .stock-status-bg{
+    background:url("img/stock-status-bg.png");
+    background-size:100% 100%;
+}
+.child-title .stock-rank-bg{
+    width: 54px;
+    background:url("img/stock-rank-bg.png");
+    background-size:100% 100%;
+}
+.child-title .right-top-bg{
+    /*width: 110px;*/
+    background:url("img/right-top-bg.jpg");
+    background-size:100% 100%;
+}
+.child-title .High-age-goods-bg{
+    width: 90px;
+    background:url("img/High-age-goods-bg.png");
+    background-size:100% 100%;
+}
+.child-title .middle-bottom-bg{
+    /*width: 124px;*/
+    background:url("img/middle-bottom-bg.jpg");
+    background-size:100% 100%;
+}
+.color-golden{
+    color: #FFD100;
+}
+.list-num.icon.num1{
+    background: url("img/num1.jpg"),no-repeat 0 0;
+    background-size :100% 100%;
+}
+.list-num.icon.num2{
+    background: url("img/num2.jpg"),no-repeat 0 0;
+    background-size :100% 100%;
+}
+.list-num.icon.num3{
+    background: url("img/num3.jpg"),no-repeat 0 0;
+    background-size :100% 100%;
+}

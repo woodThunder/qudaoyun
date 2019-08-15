@@ -1,0 +1,109 @@
+ .ui-grid-div{
+	margin-bottom: 5px;
+	margin-top: -40px;
+}
+
+.ui-grid-btn-display{
+	display:block;
+}
+
+.ui-grid-btn-nodisplay{
+	display:none;
+}
+
+.norequired-div-hoz{
+	width: 90px;
+	max-width: 90px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis; 
+	float: left;
+	text-align: right;
+}
+
+.norequired-div-vertical{
+	max-width: 145px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis; 
+	float: left;
+}
+
+.ui-label-hr{
+	margin-left:5px;
+	margin-right:5px;
+	border-top: 1px solid #efefef;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+/* 文本内容折行省略显示 start */
+.uitext-disp{
+	white-space: nowrap; 
+	overflow: hidden;
+	text-overflow: ellipsis;
+	word-wrap:normal;
+}
+/* 文本内容折行省略显示 end */
+
+/* 不能针对uui的控件统一处理，这样容易导致外层使用被覆盖 */
+.ui-form-control{
+	/*width:auto !important;*/
+}
+
+ * "*"号必填项样式
+ */
+
+.ui-must-icon:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #f00;
+}
+.ui-must-icon::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #f00;
+}
+.ui-must-icon:-ms-input-placeholder {
+    color: #f00;
+}
+.ui-must-icon::-webkit-input-placeholder {
+    color: #f00;
+}
+
+.ui-fieldset{
+	line-height: 36px;	
+	margin-right: 0px;
+}
+
+.ui-fieldset-label{
+    width:40%;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.ui-fieldset-div{
+	width:60%;
+	padding-right:0px;
+	padding-left: 0px;
+}
+.ui-fieldset-date{
+}
+
+.ui-h-36{
+	height:36px;
+}
+.ui-one-columns{
+	width:87.8%;
+}
+
+.form-tablelayout .pl-90{
+	padding-left: 150px;
+	padding-top: 4px;
+}
+.form-tablelayout {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.fieldset-label {
+    height: 31px;
+}

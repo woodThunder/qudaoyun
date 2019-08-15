@@ -1,0 +1,38 @@
+#widgetAuthorize .widget-wrap{
+    margin-bottom: 25px;
+}
+#widgetAuthorize .widget-wrap label{
+	display: block;
+    background-color: #fff;
+    cursor: pointer;
+	padding-top: 15px;
+    border: 1px solid #fff;
+}
+#widgetAuthorize .widget-wrap label:hover{
+    border: 1px solid #6bcaea;
+    cursor: pointer;
+    background-color: #e9f7fc;
+}
+#widgetAuthorize .widget-wrap label .title{
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+    text-overflow: ellipsis;
+} 
+
+#widgetAuthorize .widget-wrap label .img-and-dynamic {
+    padding: 15px 25px;
+    overflow: hidden;
+     text-align: center;
+}
+#widgetAuthorize .widget-wrap label .img-and-dynamic .iconfont{
+    color: #44bde4;
+    font-size: 40px;
+}
+
+#widgetAuthorize .widget-wrap .checkbox-wrap{
+    text-align: left;
+    margin-top: -30px;
+    margin-left: 10px;
+}

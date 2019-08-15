@@ -1,0 +1,363 @@
+<div class="ui-list-panel ui-panel">
+  <div>
+    <div class="page-title">
+      <span>活动目标管理</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+
+  <div class="ui-searchbox">
+    <div id="PromoActivity-searchcontent" class="ui-searchbox-content">
+
+    </div>
+    <div class="clearfix">
+
+    </div>
+    <div class="ui-searchbox-footer">
+      <div class="ui-search-more hidden">
+          <a>更多<i class="uifont icon-down"></i></a>
+      </div>
+
+      <div class="ui-search-btn">
+        <a class="ui-btn ui-btn-primary margin-right-5"
+        data-bind="click:cleanSearch">清空
+        </a>
+        <a class="ui-btn ui-btn-green margin-right-5"
+        data-bind="click:search.bind($data,true)">搜索
+        </a>
+      </div>
+      <div class="clearfix">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-panel-body">
+    <div class="ui-panel-body-head">
+      <div class="ui-panel-body-head-left">
+        <a class="ui-btn ui-btn-orange margin-right-5" id="user-action-add"
+          data-bind="click: showDispatchPanel"><i class="uifont icon-tubiao-mubiaofenjie" style="margin-left:-5px;"></i>目标分解
+        </a>
+      </div>
+    </div>
+      <div class="ui-table-container">
+          <div u-meta='{"id":"grid_PromoActivity","data":"PromoActivityList","type":"grid","editable":false,"multiSelect":true,"showNumCol":false}'>
+                      <div options='{"field":"code","dataType":"String","title":"活动编码","renderType":"detailRender"}'></div>
+                      <div options='{"field":"name","dataType":"String","title":"活动名称"}'></div>
+                      <div options='{"field":"activeTypeName","dataType":"String","title":"活动类型"}'></div>
+                      <div options='{"field":"activeNodeName","dataType":"String","title":"活动节点"}'></div>
+                      <div options='{"field":"orderStartDate","dataType":"Date","title":"订货开始日期"}'></div>
+                      <div options='{"field":"orderEndDate","dataType":"Date","title":"订货截至日期"}'></div>
+                      <div options='{"field":"enrolStartDate","dataType":"Date","title":"报名开始日期"}'></div>
+                      <div options='{"field":"enrolEndDate","dataType":"Date","title":"报名截至日期"}'></div>
+                      <div options='{"field":"terminalStartDate","dataType":"Date","title":"终端活动开始日期"}'></div>
+                      <div options='{"field":"terminalEndDate","dataType":"Date","title":"终端活动截至日期"}'></div>
+                      <div options='{"field":"description","dataType":"String","title":"活动描述"}'></div>
+                      <div options='{"field":"approveStatus","dataType":"String","title":"审核状态","renderType": "approveRender"}'></div>
+                      <div options='{"field":"creator","dataType":"String","title":"创建人","visible":false}'></div>
+                      <div options='{"field":"creationTime","dataType":"Datetime","title":"创建时间","visible":false}'></div>
+                      <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":false}'></div>
+                      <div options='{"field":"modifiedTime","dataType":"Datetime","title":"修改时间","visible":false}'></div>
+          </div>
+          <div class="ui-statistics margin-top-10">
+            已选择<span class="font-c-blue" data-bind="text:PromoActivityList.selectedIndices().length"></span>项数据
+          </div>
+          <div class="pagination-right">
+            <div id='pagination' class='pagination u-pagination pagination-sm'
+            u-meta='{"type":"pagination","data":"PromoActivityList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+          </div>
+      </div>
+    </div>
+</div>
+<div id="dialog_layer" class="ui-searchbox" style="display:none;padding:20px">
+
+</div>
+
+<div class="ui-bill-panel ui-panel" style="display:none;">
+  <div>
+    <div class="page-title">
+      <span>活动目标管理</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-primary" data-bind="click: cancelBill">取消
+      </a>
+      <a class="ui-btn ui-btn-green" data-bind="click: saveBill">保存
+      </a>
+    </div>
+  </div>
+  <div class="ui-panel-head ui-bill-head">
+    <div class="ui-item">
+      <div class="ui-name">活动编码：</div>
+      <div class="ui-inputarea">
+        <div class="ui-textonly" data-bind='text: PromoActivityList.ref("code")'></div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">活动名称：</div>
+      <div class="ui-inputarea">
+        <div class="ui-textonly" data-bind='text: PromoActivityList.ref("name")'></div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">订货有效期：</div>
+      <div class="ui-daterange-area" style="display:inline-block;">
+        <div class="ui-inputarea">
+          <div class="ui-textonly">
+            <div class="ui-daterange-part" data-bind='text: dateFormat("PromoActivityList", "orderStartDate")'>
+            </div>
+            <span class="ui-daterange-seperate" data-bind='visible: PromoActivityList.ref("orderStartDate")'>至</span>
+            <div class="ui-daterange-part" data-bind='text: dateFormat("PromoActivityList", "orderEndDate")'>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">上级活动：</div>
+      <div class="ui-inputarea">
+        <div class="ui-textonly" data-bind='text: PromoActivityList.ref("higherActiveName")'></div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">提货目标总额：</div>
+      <div class="ui-inputarea">
+        <div class="ui-textonly" data-bind='text: PromoActivityList.ref("deliveryTargetAmout")'></div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">零售目标总额：</div>
+      <div class="ui-inputarea">
+        <div class="ui-textonly" data-bind='text: PromoActivityList.ref("saleTargetAmout")'></div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">活动描述：</div>
+      <div class="ui-inputarea">
+        <div class="ui-textonly" data-bind='text: PromoActivityList.ref("description")'></div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="ui-bill-body">
+    <div class="u-tabs  ui-tabs margin-top-10">
+       <div class="u-tabs__tab-bar">
+           <a href="#tab-panel-1" class="u-tabs__tab is-active">产品目标分解</a>
+           <a href="#tab-panel-2" class="u-tabs__tab" >金额目标分解</a>
+       </div>
+       <!--基本信息开始-->
+       <div class="u-tabs__panel is-active" id="tab-panel-1">
+         <div class="ui-bill-body-btns">
+           <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-add"
+             data-bind="click: showProductRef"><i class="uifont icon-plus margin-right-5"></i>增行
+           </a>
+           <div id="productRefer" u-meta='{"type":"uiRefer","data":"ProductRef","field":"productRefer"}' style="display:none;">
+             <input readonly="readonly"/>
+             <span class="ui-icon uifont icon-bar refer"></span>
+           </div>
+           <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+             data-bind="click: delProductGoalItems"><i class="uifont icon-shanchu1 margin-right-5"></i>删行
+           </a>
+           <div class="ui-button-group clearfix vertical-align-middle">
+             <a class="ui-button-item" data-bind="click: importHandle"><i class="uifont icon-import margin-right-5"></i>导入</a>
+             <a class="ui-button-item" data-bind="click: exportHandle"><i class="uifont icon-export margin-right-5"></i>导出</a>
+           </div>
+         </div>
+         <div class="ui-table-container">
+             <div u-meta='{"id":"grid_ProductGoalItems","data":"ProductGoalItems","type":"grid","editable":true,"multiSelect":true,"showNumCol":true,"nullField":"agencyProdgoalSet"}'>
+                 <div options='{"field":"showCode","dataType":"String","title":"产品编码","editable":false,"required":true}'></div>
+                 <div options='{"field":"showName","dataType":"String","title":"产品名称","editable":false}'></div>
+                 <div options='{"field":"productUnitName","dataType":"String","title":"计量单位","editable":false}'></div>
+                 <div options='{"field":"goalNumber","dataType":"String","title":"目标数量","required":true,"renderType":"float","editType":"float","editOptions":{"validType":"float","precision":"0","min":1}}'></div>
+                 <div options='{"field":"doneNumber","dataType":"String","title":"已分解数","editable":false,"required":true}'></div>
+                 <div options='{"field":"doneMonnyNumber","dataType":"String","title":"已分解金额","editable":false,"required":true}'></div>
+                 <div options='{"field":"leftNumber","dataType":"String","title":"余量","editable":false,"required":true}'></div>
+                 <div options='{"field":"operate","dataType":"String","title":"操作","renderType":"productGoalOperate","editable":false,"fixed":true}'></div>
+             </div>
+         </div>
+       </div>
+       <div class="u-tabs__panel" id="tab-panel-2">
+         <div class="ui-bill-body-btns">
+           <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-add"
+             data-bind="click: showAgencyRef"><i class="uifont icon-plus margin-right-5"></i>增行
+           </a>
+           <div id="agencyRefer" u-meta='{"type":"uiRefer","data":"AgencyRef","field":"agencyRefer"}' style="display:none;">
+             <input readonly="readonly"/>
+             <span class="ui-icon uifont icon-bar refer"></span>
+           </div>
+           <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+             data-bind="click: delAgencyCashgoalItems"><i class="uifont icon-shanchu1 margin-right-5"></i>删行
+           </a>
+         </div>
+         <div class="ui-table-container">
+             <div u-meta='{"id":"grid_AgencyCashgoalItems","data":"AgencyCashgoalItems","type":"grid","editable":true,"multiSelect":true,"showNumCol":true}'>
+                 <div options='{"field":"agencyCode","dataType":"String","title":"办事处编码","editable":false,"width":"300px","required":true}'></div>
+                 <div options='{"field":"agencyName","dataType":"String","title":"办事处名称","editable":false,"width":"300px"}'></div>
+                 <div options='{"field":"takeTargetMny","dataType":"String","title":"提货目标金额","required":true,"editType":"float","width":"235px"}'></div>
+                 <div options='{"field":"saleTargetMny","dataType":"String","title":"零售目标金额","editType":"float","width":"235px"}'></div>
+             </div>
+         </div>
+       </div>
+    </div>
+  </div>
+</div>
+<!-- 单据详情页 -->
+<div class="ui-bill-detail ui-panel" style="display:none;">
+  <div>
+    <div class="page-title">
+      <span>活动目标管理</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-primary" data-bind="click: retListPanel">返回
+      </a>
+      <a class="ui-btn ui-btn-green" data-bind="click: detail2bill">编辑
+      </a>
+    </div>
+  </div>
+  <div class="ui-panel-head ui-bill-head">
+    <div class="ui-item">
+      <div class="ui-name">活动编码：</div>
+      <div class="ui-inputarea">
+        <div class="ui-textonly" data-bind='text: PromoActivityList.ref("code")'></div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">活动名称：</div>
+      <div class="ui-inputarea">
+        <div class="ui-textonly" data-bind='text: PromoActivityList.ref("name")'></div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">订货有效期：</div>
+      <div class="ui-daterange-area" style="display:inline-block;">
+        <div class="ui-inputarea">
+          <div class="ui-textonly">
+            <div class="ui-daterange-part" data-bind='text: dateFormat("PromoActivityList", "orderStartDate")'>
+            </div>
+            <span class="ui-daterange-seperate" data-bind='visible: PromoActivityList.ref("orderStartDate")'>至</span>
+            <div class="ui-daterange-part" data-bind='text: dateFormat("PromoActivityList", "orderEndDate")'>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">上级活动：</div>
+      <div class="ui-inputarea">
+        <div class="ui-textonly" data-bind='text: PromoActivityList.ref("higherActiveName")'></div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">提货目标总额：</div>
+      <div class="ui-inputarea">
+        <div class="ui-textonly" data-bind='text: PromoActivityList.ref("deliveryTargetAmout")'></div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">零售目标总额：</div>
+      <div class="ui-inputarea">
+        <div class="ui-textonly" data-bind='text: PromoActivityList.ref("saleTargetAmout")'></div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">活动描述：</div>
+      <div class="ui-inputarea">
+        <div class="ui-textonly" data-bind='text: PromoActivityList.ref("description")'></div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="ui-bill-body">
+    <div class="u-tabs  ui-tabs margin-top-10">
+      <div class="u-tabs__tab-bar">
+         <a href="#tab-panel-1" class="u-tabs__tab is-active">产品目标分解</a>
+         <a href="#tab-panel-2" class="u-tabs__tab" >金额目标分解</a>
+      </div>
+      <div class="u-tabs__panel is-active" id="tab-panel-1">
+        <div class="ui-bill-body-btns">
+        </div>
+        <div class="ui-table-container">
+            <div u-meta='{"id":"grid_ProductGoalItems_detail","data":"ProductGoalItems","type":"grid","editable":false,"multiSelect":true,"showNumCol":true,"nullField":"agencyProdgoalSet"}'>
+                <div options='{"field":"showCode","dataType":"String","title":"产品编码","editable":false}'></div>
+                <div options='{"field":"showName","dataType":"String","title":"产品名称","editable":false}'></div>
+                <div options='{"field":"productUnitName","dataType":"String","title":"计量单位","editable":false}'></div>
+                <div options='{"field":"goalNumber","dataType":"String","title":"目标数量","editType":"integer"}'></div>
+                <div options='{"field":"doneNumber","dataType":"String","title":"已分解数","editable":false}'></div>
+                <div options='{"field":"doneMonnyNumber","dataType":"String","title":"已分解金额","editable":false}'></div>
+                <div options='{"field":"leftNumber","dataType":"String","title":"余量","editable":false}'></div>
+                <div options='{"field":"operate","dataType":"String","title":"操作","renderType":"productGoalOperate","editable":false,"fixed":true}'></div>
+            </div>
+        </div>
+      </div>
+      <div class="u-tabs__panel" id="tab-panel-2">
+        <div class="ui-bill-body-btns">
+        </div>
+        <div class="ui-table-container">
+            <div u-meta='{"id":"grid_AgencyCashgoalItems_detail","data":"AgencyCashgoalItems","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+                <div options='{"field":"agencyCode","dataType":"String","title":"办事处编码","editable":false}'></div>
+                <div options='{"field":"agencyName","dataType":"String","title":"办事处名称","editable":false}'></div>
+                <div options='{"field":"takeTargetMny","dataType":"String","title":"提货目标金额","editType":"float"}'></div>
+                <div options='{"field":"saleTargetMny","dataType":"String","title":"零售目标金额","editType":"float"}'></div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 办事处产品目标对话框 -->
+<div id="dialog_agencyprod" style="display:none;width:900px;">
+  <div class="u-msg-title">办事处产品目标</div>
+  <div class="u-msg-content">
+    <div class="ui-btn-group margin-bottom-10">
+      <div id="dialog-btns">
+        <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-add"
+          data-bind="click: showProdAgencyRef"><i class="uifont icon-plus margin-right-5"></i>增行
+        </a>
+        <div id="prodagencyRefer" u-meta='{"type":"uiRefer","data":"ProdAgencyRef","field":"prodagencyRefer"}' style="display:none;">
+          <input readonly="readonly"/>
+          <span class="ui-icon uifont icon-bar refer"></span>
+        </div>
+        <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+          data-bind="click: delProdAgencySun"><i class="uifont icon-shanchu1 margin-right-5"></i>删行
+        </a>
+      </div>
+    </div>
+    <div class="ui-table-container">
+        <div u-meta='{"id":"grid_AgencyProdgoalSuns","data":"AgencyProdgoalSuns","type":"grid","editable":true,"multiSelect":true,"showNumCol":true}'>
+            <div options='{"field":"agencyCode","dataType":"String","title":"办事处编码","editable":false,"required":true}'></div>
+            <div options='{"field":"agencyName","dataType":"String","title":"办事处名称","editable":false}'></div>
+            <div options='{"field":"todoNumber","dataType":"integer","title":"分解数量","required":true}'></div>
+            <div options='{"field":"price","dataType":"String","title":"单价","editable":false,"required":true}'></div>
+            <div options='{"field":"doneMonnyNumber","dataType":"String","title":"已分解金额","editable":false}'></div>
+            <div options='{"field":"pkOrgId","dataType":"String","title":"销售组织","required":true,"renderType":"ncReferRender","editType":"ncReferEditType","showField":"pkOrgName","editOptions":{"validType":"string","rel":{"refpk":"pkOrgId","refname":"pkOrgName"}}}'></div>
+        </div>
+    </div>
+  </div>
+  <div class="u-msg-footer">
+    <!-- <a class="ui-btn ui-btn-primary J-cancel margin-right-5">取消</a> -->
+    <a class="ui-btn ui-btn-green J-ok" data-bind="click:confirmProdAgency">确定</a>
+  </div>
+</div>
+<div id="exportFiel"></div>
+<div id="importFiel"></div>

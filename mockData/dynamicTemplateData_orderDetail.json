@@ -1,0 +1,665 @@
+{   "templateId": "saleorder",
+    "publishTime": "1552985065269",
+    "schema": {
+        "head": {
+            "comps": [
+                {
+                    "objectKey": "OrderDto",
+                    "type": "form",
+                    "items": [
+                        {
+                            "label": "销售组织",
+                            "type": "refer",
+                            "key": "saleOrgId",
+                            "required": 1,
+                            "refkey": "organization_ocm",
+                            "refshowcontent": "saleOrgName"
+                        },
+                        {
+                            "label": "客户",
+                            "type": "refer",
+                            "key": "customerId",
+                            "required": 1,
+                            "refkey": "customer_sale",
+                            "refshowcontent": "customerName"
+                        },
+                        {
+                            "label": "上级客户",
+                            "type": "label",
+                            "key": "superiorCustomerId"
+                        },
+                        {
+                            "label": "交易类型",
+                            "type": "refer",
+                            "key": "orderTypeId",
+                            "required": 1,
+                            "refkey": "trantype",
+                            "refshowcontent": "orderTypeName",
+                            "refparam": "{\"EQ_isEnable\":\"1\"}"
+                        },
+                        {
+                            "label": "销售模式",
+                            "type": "label",
+                            "key": "saleModel",
+                            "visible": 0
+                        },
+                        {
+                            "label": "订单编号",
+                            "type": "label",
+                            "key": "code"
+                        },
+                        {
+                            "label": "订单日期",
+                            "type": "date",
+                            "key": "orderDate"
+                        },
+                        {
+                            "label": "收货地址",
+                            "type": "refer",
+                            "key": "receiveAddressId",
+                            "required": 1,
+                            "refkey": "saleorderCustomeraddress",
+                            "refshowcontent": "receiveAddressName"
+                        },
+                        {
+                            "label": "收货地址",
+                            "type": "label",
+                            "key": "receiverAddress",
+                            "visible": 0
+                        },
+                        {
+                            "label": "收货地址",
+                            "type": "label",
+                            "key": "receiveAddressName",
+                            "visible": 0
+                        },
+                        {
+                            "label": "收货人",
+                            "type": "label",
+                            "key": "receiver"
+                        },
+                        {
+                            "label": "收货人电话",
+                            "type": "label",
+                            "key": "receiverTel"
+                        },
+                        {
+                            "label": "收货人手机",
+                            "type": "label",
+                            "key": "receiverPhone",
+                            "visible": 0
+                        },
+                        {
+                            "label": "运输方式",
+                            "type": "refer",
+                            "key": "transportModeId",
+                            "refkey": "transportmode",
+                            "refshowcontent": "transportModeName"
+                        },
+                        {
+                            "label": "账期",
+                            "type": "refer",
+                            "key": "accountPeriodId",
+                            "refkey": "settlementSettings",
+                            "refshowcontent": "accountPeriodName"
+                        },
+                        {
+                            "label": "客户开票单位",
+                            "type": "refer",
+                            "key": "invoiceId",
+                            "refkey": "customer-invoice",
+                            "refshowcontent": "invoiceName"
+                        },
+                        {
+                            "label": "发票抬头",
+                            "type": "label",
+                            "key": "invoiceTitle",
+                            "visible": 0
+                        },
+                        {
+                            "label": "期望收货日期",
+                            "type": "date",
+                            "key": "deliveryDate"
+                        },
+                        {
+                            "label": "备注",
+                            "type": "text",
+                            "key": "remark"
+                        },
+                        {
+                            "label": "总数量",
+                            "type": "label",
+                            "key": "totalNum"
+                        },
+                        {
+                            "label": "总重量",
+                            "type": "label",
+                            "key": "totalWeight"
+                        },
+                        {
+                            "label": "总体积",
+                            "type": "label",
+                            "key": "totalVolume"
+                        },
+                        {
+                            "label": "费用冲抵金额",
+                            "type": "label",
+                            "key": "offsetAmount"
+                        },
+                        {
+                            "label": "促销折扣额",
+                            "type": "label",
+                            "key": "promAmount"
+                        },
+                        {
+                            "label": "审批意见",
+                            "type": "text",
+                            "key": "approveOpinion"
+                        },
+                        {
+                            "label": "驳回原因",
+                            "type": "text",
+                            "key": "rejectReason"
+                        },
+                        {
+                            "label": "总金额",
+                            "type": "label",
+                            "key": "totalDealAmount"
+                        },
+                        {
+                            "label": "订单状态",
+                            "type": "combo",
+                            "key": "orderStatus",
+                            "enumkey": "orderStatus",
+                            "defaultValue": "01",
+                            "enable": false
+                        },
+                        {
+                            "label": "单据状态",
+                            "type": "label",
+                            "key": "billStatusId",
+                            "enable": false
+                        },
+                        {
+                            "label": "单据状态",
+                            "type": "label",
+                            "key": "billStatusCode",
+                            "enable": false
+                        },
+                        {
+                            "label": "单据状态",
+                            "type": "label",
+                            "key": "billStatusName",
+                            "enable": false
+                        },
+                        {
+                            "label": "审批时间",
+                            "type": "label",
+                            "key": "approveTime",
+                            "enable": false
+                        },
+                        {
+                            "label": "审批意见",
+                            "type": "label",
+                            "key": "approveOpinion",
+                            "enable": false
+                        }
+                    ]
+                }
+            ]
+        },
+        "tabs": [
+            {
+                "tabName": "商品信息",
+                "comps": [
+                    {
+                        "objectKey": "OrderItemDto",
+                        "type": "table",
+                        "buttons": [
+                            {
+                                "key": "addBillPanel",
+                                "label": "商品参照",
+                                "iconCls": "icon-plus",
+                                "click": "showAddItemsRef",
+                                "clickArg": "$normal"
+                            },
+                            {
+                                "key": "addBillPanel",
+                                "label": "货补商品",
+                                "iconCls": "icon-plus",
+                                "click": "showAddSupplementItemsRef",
+                                "clickArg": "$additional"
+                            },
+                            {
+                                "key": "export",
+                                "label": "删行",
+                                "iconCls": "icon-shanchu1",
+                                "click": "del_row"
+                            },
+                            {
+                                "key": "export",
+                                "label": "促销匹配",
+                                "iconCls": "icon-tubiao-shenhe",
+                                "click": "searchprom"
+                            },
+                            {
+                                "key": "export",
+                                "label": "取消促销匹配",
+                                "iconCls": "icon-tubiao-guanbi-xianxing",
+                                "click": "closeSearchprom"
+                            }
+                        ],
+                        "items": [
+                            {
+                                "label": "行号",
+                                "type": "label",
+                                "key": "rowNum",
+                                "required": 1,
+                                "visible": 0
+                            },
+                            {
+                                "label": "商品",
+                                "type": "label",
+                                "key": "goodsId",
+                                "required": 1,
+                                "visible": 0
+                            },
+                            {
+                                "label": "商品编码",
+                                "type": "label",
+                                "key": "goodsCode",
+                                "required": 1
+                            },
+                            {
+                                "label": "商品名称",
+                                "type": "label",
+                                "key": "goodsName"
+                            },
+                            {
+                                "label": "商品显示名称",
+                                "type": "label",
+                                "key": "goodsDisplayName",
+                                "visible": false
+                            },
+                            {
+                                "label": "商品版本",
+                                "type": "label",
+                                "key": "version",
+                                "visible": false
+                            },
+                            {
+                                "label": "商品单位",
+                                "type": "label",
+                                "key": "version"
+                            },
+                            {
+                                "label": "标准用量",
+                                "type": "label",
+                                "key": "childGoodsQty",
+                                "visible": false
+                            },
+                            {
+                                "label": "商品图片",
+                                "type": "label",
+                                "key": "goodsImg",
+                                "visible": false
+                            },
+                            {
+                                "label": "商品选配",
+                                "type": "label",
+                                "key": "promotinName",
+                                "visible": false
+                            },
+                            {
+                                "label": "商品数量",
+                                "type": "label",
+                                "key": "mainNum"
+                            },
+                            {
+                                "label": "选配",
+                                "type": "label",
+                                "key": "baseGoodsOptValue",
+                                "visible": false
+                            },
+                            {
+                                "label": "单位换算率",
+                                "type": "label",
+                                "key": "conversionRate",
+                                "visible": false
+                            },
+                            {
+                                "label": "计量单位",
+                                "type": "label",
+                                "key": "measurementUnitId",
+                                "visible": false
+                            },
+                            {
+                                "label": "订货单位",
+                                "type": "label",
+                                "key": "orderNumUnitId",
+                                "visible": false
+                            },
+                            {
+                                "label": "主数量单位",
+                                "type": "label",
+                                "key": "mainNumUnitId",
+                                "visible": false
+                            },
+                            {
+                                "label": "收货地归属",
+                                "type": "label",
+                                "key": "arrivalBelongCode",
+                                "visible": false
+                            },
+                            {
+                                "label": "承运商",
+                                "type": "refer",
+                                "key": "logisticsId",
+                                "refkey": "suppliers",
+                                "refshowcontent": "logisticsName",
+                                "refparam": "{\"EQ_isEnable\":\"1\",\"EQ_isCarrier\":\"1\"}"
+                            },
+                            {
+                                "label": "项目",
+                                "type": "refer",
+                                "key": "projectId",
+                                "refkey": "project",
+                                "refshowcontent": "name",
+                                "refparam": "{\"EQ_isEnable\":\"1\"}"
+                            },
+                            {
+                                "label": "供应商",
+                                "type": "refer",
+                                "key": "supplierId",
+                                "refkey": "suppliers",
+                                "refshowcontent": "supplierName",
+                                "refparam": "{\"EQ_isEnable\":\"1\"}",
+                                "visible": false
+                            },
+                            {
+                                "label": "批号",
+                                "type": "label",
+                                "key": "batchCodeId",
+                                "refkey": "batchCode",
+                                "refshowcontent": "batchCodeName"
+                            },
+                            {
+                                "label": "订货单位",
+                                "type": "label",
+                                "key": "orderNumUnitName"
+                            },
+                            {
+                                "label": "订货量",
+                                "type": "float",
+                                "key": "orderNum",
+                                "required": 1
+                            },
+                            {
+                                "label": "原价",
+                                "type": "float",
+                                "key": "salePrice",
+                                "required": 1,
+                                "precision": 2
+                            },
+                            {
+                                "label": "促销价",
+                                "type": "float",
+                                "key": "promPrice",
+                                "precision": 2
+                            },
+                            {
+                                "label": "成交价",
+                                "type": "float",
+                                "key": "dealPrice",
+                                "required": 1,
+                                "precision": 2
+                            },
+                            {
+                                "label": "上级原价",
+                                "type": "float",
+                                "key": "supplierPrice"
+                            },
+                            {
+                                "label": "促销折扣额",
+                                "type": "float",
+                                "key": "promAmount",
+                                "precision": 2
+                            },
+                            {
+                                "label": "冲抵前金额",
+                                "type": "text",
+                                "key": "amount",
+                                "precision": 2,
+                                "visible": false
+                            },
+                            {
+                                "label": "冲抵金额",
+                                "type": "text",
+                                "key": "offsetAmount",
+                                "precision": 2,
+                                "visible": false
+                            },
+                            {
+                                "label": "成交金额",
+                                "type": "label",
+                                "key": "dealAmount",
+                                "precision": 2
+                            },
+                            {
+                                "label": "赠品",
+                                "type": "boolean",
+                                "key": "isGift"
+                            },
+                            {
+                                "label": "货补",
+                                "type": "boolean",
+                                "key": "goodsSupplement"
+                            },
+                            {
+                                "label": "重量",
+                                "type": "label",
+                                "key": "grossWeight",
+                                "visible": false
+                            },
+                            {
+                                "label": "行重量合计",
+                                "type": "label",
+                                "key": "rowWeight",
+                                "visible": false
+                            },
+                            {
+                                "label": "体积",
+                                "type": "label",
+                                "key": "volume",
+                                "visible": false
+                            },
+                            {
+                                "label": "行体积合计",
+                                "type": "label",
+                                "key": "rowVolume",
+                                "visible": false
+                            },
+                            {
+                                "label": "计划发货日期",
+                                "type": "date",
+                                "key": "planDeliveryDate"
+                            },
+                            {
+                                "label": "发货库存组织",
+                                "type": "refer",
+                                "key": "deliveryInvOrgId",
+                                "refkey": "organization_ocm",
+                                "refshowcontent": "deliveryInvOrgName",
+                                "refparam": "{\"EQ_orgFuncRel\": \"03\", \"EQ_isEnable\":\"1\"}"
+                            },
+                            {
+                                "label": "结算财务组织",
+                                "type": "refer",
+                                "key": "settleFinancialOrgId",
+                                "refkey": "batchCode",
+                                "refshowcontent": "settleFinancialOrgName",
+                                "refparam": "{\"EQ_orgFuncRel\": \"07\", \"EQ_isEnable\":\"1\"}"
+                            },
+                            {
+                                "label": "发货仓库",
+                                "type": "refer",
+                                "key": "deliveryWarehouseId",
+                                "refkey": "warehouse",
+                                "refshowcontent": "deliveryWarehouseName",
+                                "refparam": "{\"EQ_isEnable\":\"1\"}",
+                                "visible": false
+                            },
+                            {
+                                "label": "备注",
+                                "type": "text",
+                                "key": "remark"
+                            },
+                            {
+                                "label": "累计安排发货数量",
+                                "type": "label",
+                                "key": "deliveryNum",
+                                "visible": false
+                            },
+                            {
+                                "label": "累计出库数量",
+                                "type": "label",
+                                "key": "stockOutNum",
+                                "visible": false
+                            },
+                            {
+                                "label": "累计退货数量",
+                                "type": "label",
+                                "key": "returnNum",
+                                "visible": false
+                            },
+                            {
+                                "label": "累计退款数量",
+                                "type": "label",
+                                "key": "refundNum",
+                                "visible": false
+                            },
+                            {
+                                "label": "关闭",
+                                "type": "boolean",
+                                "key": "isClose"
+                            },
+                            {
+                                "label": "关闭打开原因",
+                                "type": "text",
+                                "key": "closeReason"
+                            },
+                            {
+                                "label": "是否可选配",
+                                "type": "boolean",
+                                "key": "isOptional",
+                                "visible": false
+                            },
+                            {
+                                "label": "商品选配id",
+                                "type": "label",
+                                "key": "baseGoodsOptId",
+                                "visible": false
+                            },
+                            {
+                                "label": "订货单位",
+                                "type": "label",
+                                "key": "orderNumUnitId"
+                            },
+                            {
+                                "label": "订货单位",
+                                "type": "label",
+                                "key": "orderNumUnitName",
+                                "visible": false
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "tabName": "BOM结构信息",
+                "comps": [
+                    {
+                        "objectKey": "OrderItemBomDto",
+                        "type": "table",
+                        "items": [
+                            {
+                                "label": "行号",
+                                "type": "label",
+                                "key": "rowNum"
+                            },
+                            {
+                                "label": "母件行号",
+                                "type": "label",
+                                "key": "parentRowNum"
+                            },
+                            {
+                                "label": "母件商品",
+                                "type": "label",
+                                "key": "parentGoodsId"
+                            },
+                            {
+                                "label": "商品",
+                                "type": "label",
+                                "key": "goodsId"
+                            },
+                            {
+                                "label": "商品编码",
+                                "type": "label",
+                                "key": "goodsCode"
+                            },
+                            {
+                                "label": "商品名称",
+                                "type": "label",
+                                "key": "goodsName"
+                            },
+                            {
+                                "label": "商品版本",
+                                "type": "label",
+                                "key": "version"
+                            },
+                            {
+                                "label": "促销活动",
+                                "type": "label",
+                                "key": "promotinName"
+                            },
+                            {
+                                "label": "主数量",
+                                "type": "label",
+                                "key": "mainNum"
+                            },
+                            {
+                                "label": "销售价",
+                                "type": "label",
+                                "key": "salePrice"
+                            },
+                            {
+                                "label": "标准用量",
+                                "type": "label",
+                                "key": "childGoodsQty",
+                                "visible": false
+                            },
+                            {
+                                "label": "计量单位",
+                                "type": "label",
+                                "key": "measurementUnitId",
+                                "visible": false
+                            },
+                            {
+                                "label": "是否可选配",
+                                "type": "boolean",
+                                "key": "isOptional",
+                                "visible": false
+                            },
+                            {
+                                "label": "选配",
+                                "type": "label",
+                                "key": "baseGoodsOptValue",
+                                "visible": false
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

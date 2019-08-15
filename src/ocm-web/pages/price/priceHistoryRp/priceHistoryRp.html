@@ -1,0 +1,82 @@
+<div class="ui-panel ui-list-panel">
+  <div>
+    <div class="page-title">
+      <span>价格历史调整记录报表</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+  <div class="ui-searchbox">
+    <div id="purchasereport-searchcontent" class="ui-searchbox-content">
+
+    </div>
+    <div class="clearfix">
+
+    </div>
+    <div class="ui-searchbox-footer">
+      <div class="ui-search-more hidden">
+        <a>更多<i class="uifont icon-down"></i></a>
+      </div>
+
+      <div class="ui-search-btn">
+        <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:cleanSearch">清空
+      </a>
+        <a class="ui-btn ui-btn-green" data-bind="click:search.bind($data,true)">搜索
+    </a>
+      </div>
+      <div class="clearfix">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-panel-body">
+    <div class="ui-panel-body-head">
+      <div class="ui-panel-body-head-left">
+        <!--<div class="ui-button-group clearfix vertical-align-middle margin-right-5">-->
+          <!--<a class="ui-btn ui-btn-primary margin-right-5" data-bind="click: exportHandle">-->
+            <!--<i class="uifont icon-export margin-right-5"></i> 导出-->
+          <!--</a>-->
+        <!--</div>-->
+      </div>
+
+    </div>
+    <div class="ui-table-container">
+      <div id="pricehistoryList" u-meta='{"id":"grid_pricehistoryList","data":"pricehistoryList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true,"nullField":"poProductStrucs"}'>
+        <div options='{"field":"priceType","dataType":"String","title":"价格类型"}'></div>
+        <div options='{"field":"priceCode","dataType":"String","title":"价格表(活动)编码"}'></div>
+        <div options='{"field":"priceName","dataType":"String","title":"价格表(活动)名称"}'></div>   <div options='{"field":"packCode","dataType":"String","title":"包件编码","width":"110px"}'></div>
+        <div options='{"field":"packName","dataType":"String","title":"包件名称"}'></div>
+        <div options='{"field":"belongProductCode","dataType":"String","title":"所属产品编码"}'></div>
+        <div options='{"field":"belongProductName","dataType":"String","title":"所属产品名称"}'></div>
+        <div options='{"field":"saleChannelName","dataType":"String","title":"渠道类型"}'></div>
+        <div options='{"field":"agencypartitionName","dataType":"String","title":"办事处分区"}'></div>
+        <div options='{"field":"agencyName","dataType":"String","title":"办事处"}'></div>
+        <div options='{"field":"customerName","dataType":"String","title":"客户"}'></div>
+        <div options='{"field":"shopName","dataType":"String","title":"门店"}'></div>
+        <div options='{"field":"price","dataType":"Float","title":"价格"}'></div>
+        <div options='{"field":"creationTime","dataType":"datetime","title":"调整时间"}'></div>
+        <div options='{"field":"auditStatus","dataType":"String","title":"审核状态","renderType":"auditStatusGrid"}'></div>
+        <div options='{"field":"auditTime","dataType":"datetime","title":"审核时间"}'></div>
+        <div options='{"field":"adjustCode","dataType":"String","title":"调价单号"}'></div>
+        <div options='{"field":"adjustName","dataType":"String","title":"调价单名称"}'></div>
+        <div options='{"field":"modifier","dataType":"String","title":"修改人姓名"}'></div>
+        <div options='{"field":"auditor","dataType":"String","title":"审核人姓名"}'></div>
+      </div>
+      <div class="ui-statistics margin-top-10">
+        已选择<span class="font-c-blue" data-bind="text:pricehistoryList.selectedIndices().length"></span>项数据
+      </div>
+      <div class="pagination-right">
+        <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"pricehistoryList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--导入导出弹窗-->
+<div id="exportFiel"></div>
+<!--导入导出弹窗-->

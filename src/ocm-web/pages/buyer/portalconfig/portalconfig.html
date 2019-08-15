@@ -1,0 +1,92 @@
+<div class="u-container-fluid u-widget-bg" id="portalConfig">
+    <div class="u-row">
+        <!--个人设置-->
+        <div class="u-col-12">
+            <div class="u-widget  u-widget-right" style="margin-right: 0px; padding-top:10px; height:30px;">
+                <div class="u-widget-heading headingcss">
+                    <h4>经销商宣传设置</h4>
+                </div>
+                <div class="u-widget-body">
+                    <div class="u-row">
+                        <div class="u-col-12">
+                            <div class="u-form-group">
+                                <label class="u-col-2 u-form-label text-right">企业LOGO：</label>
+                                <div class="u-col-8" style="padding-left: 0px;">
+                                    <div class="u-input-group must-in u-col-12" style="padding-left: 0px; margin-bottom: 5px;">
+                                        <img id="logo-img" data-bind="attr:{src:portalConfigList.ref('logoUrl')}" />
+                                        <div id="logoFilePicker" style="width: 100px;position:absolute;bottom:0;height:25px;opacity:.8;">上传logo</div>
+                                    </div>
+                                    <div class="u-input-group  must-in" style="height: 36px;line-height: 36px;">
+                                        <span style="font-size: 12px;color: #999999;">图片要求：格式JPG、PNG、GIF;图片规格为：160*60</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="u-col-12">
+                            <div class="u-form-group">
+                                <label class="u-col-2 u-form-label text-right">服务热线：</label>
+                                <div class="u-col-4 J-hotlines" style="padding-left: 0px;">
+                                    <div data-bind="foreach: {data: hotlineList.rows, as: 'hotlineData'}">
+                                            <div class="u-input-group  must-in u-col-12" style="padding-left: 0px;"  >
+                                                    <input placeholder="请输入服务热线：000-00000000" data-bind="value: hotlineData.ref('hotline')" />
+                                                    <i style="margin-left:15px;" class="uifont icon-tubiao-guanbi-xiao red margin-right-5" data-bind="click:$parent.removeHotline.bind($data, $index())"></i>
+                                                    
+                                            </div>
+                                    </div>
+                                    <div class="u-input-group  must-in u-col-12 J-addHotline" style="padding-left: 0px;" >
+                                        <i class="uifont icon-plus red margin-right-5" data-bind="click:addHotline"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="u-col-12">
+                            <div class="u-form-group">
+                                <label class="u-col-2 u-form-label text-right">移动端二维码：</label>
+                                <div class="u-col-4" style="padding-left: 0px;">
+                                    <div class="u-input-group must-in u-col-12" style="padding-left: 0px; margin-bottom: 5px;">
+                                        <img id="ios-img" data-bind="attr:{src:portalConfigList.ref('iosCodeUrl')}" />
+                                        <div id="iosFilePicker" style="width: 100px;position:absolute;bottom:0;height:25px;opacity:.8;">IOS</div>
+                                    </div>
+                                    <div class="u-input-group  must-in" style="height: 36px;line-height: 36px;">
+                                        <span style="font-size: 12px;color: #999999;">图片要求：格式JPG、PNG、GIF;图片规格为：80*80</span>
+                                    </div>
+                                </div>
+                                <div class="u-col-4" style="padding-left: 0px;">
+                                    <div class="u-input-group must-in u-col-12" style="padding-left: 0px; margin-bottom: 5px;">
+                                        <img id="android-img" data-bind="attr:{src:portalConfigList.ref('androidCodeUrl')}" />
+                                        <div id="androidFilePicker" style="width: 100px;position:absolute;bottom:0;height:25px;opacity:.8;">Android</div>
+                                    </div>
+                                    <div class="u-input-group  must-in" style="height: 36px;line-height: 36px;">
+                                        <span style="font-size: 12px;color: #999999;">图片要求：格式JPG、PNG、GIF;图片规格为：80*80</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="u-col-12">
+                            <div class="u-form-group">
+                                <label class="u-col-2 u-form-label text-right">帮助说明：</label>
+                                <div class="u-col-8 J-hotlines" style="padding-left: 0px;">
+                                    <div name="helpEditor" id="helpEditor" rows="10" cols="80">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="u-col-12">
+                            <div class="u-form-group">
+                                <label class="u-col-2 u-form-label text-right"></label>
+
+                                <div class="u-col-4" style="padding-left: 0px;">
+                                    <div class="u-input-group  must-in u-col-12" style="padding-left: 0px;">
+                                        <button class="u-button   u-button-info" data-bind="click:savePortalConfigInfo">完成</button>
+                                    </div>
+                                </div>
+                                <div class="u-col-4">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

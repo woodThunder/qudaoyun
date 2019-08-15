@@ -1,0 +1,27 @@
+<div class="ui-panel ui-list-panel">
+	<div>
+		<div class="page-title">客户变更记录</div>
+	</div>
+	<div>
+		<div>
+			<div class="oc-breadcrumb">
+			</div>
+		</div>
+	</div>
+	<div class="title-seperator"></div>
+	<ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+	</ui-searchbox>
+	<div class="ui-panel-body">
+		<div class="ui-table-container">
+			<ui-grid params='options:$root.grid1Option,vm:$root'>
+			</ui-grid>
+			<div class="ui-statistics margin-top-10">
+				<i class="uifont icon-i font-c-blue margin-right-10"></i>已选择
+				<span class="font-c-blue" data-bind="text:CustomerAlterList.selectedIndices().length"></span>项数据
+			</div>
+			<div class="pagination-right">
+				<div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"CustomerAlterList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+			</div>
+		</div>
+	</div>
+</div>

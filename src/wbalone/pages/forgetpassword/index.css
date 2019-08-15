@@ -1,0 +1,227 @@
+@charset "utf-8";
+.page {
+    background: #eeeff1
+}
+
+.page h3 {
+    font-size: 24px;
+    color: #333;
+    padding-left: 0;
+    padding-top: 20px
+}
+
+.page .step-box {
+    width: 100%
+}
+
+.page .step-box .step-head {
+    width: 100%;
+    position: relative;
+    border-bottom: 2px solid #b3b3b3;
+    padding-top: 15px
+}
+
+.page .step-box .step-head .step-h-title {
+    width: 24%;
+    display: inline-block;
+    text-align: center
+}
+
+.page .step-box .step-head .step-h-title .step-title {
+    display: inline-block
+}
+
+.page .step-box .step-head .step-h-title span {
+    display: inline-block;
+    margin: 0;
+    color: #bcbcbc
+}
+
+.page .step-box .step-head .step-h-title .border-radius {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    border: 1px solid #bcbcbc;
+    -moz-border-radius: 30px;
+    -webkit-border-radius: 30px;
+    border-radius: 30px;
+    position: relative
+}
+
+.page .step-box .step-head .step-h-title .border-radius .radius {
+    border: 12px solid #bcbcbc;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    border-radius: 25px;
+    display: inline-block;
+    text-align: center;
+    margin-top: 2px
+}
+
+.page .step-box .step-head .step-h-title .border-radius .num {
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30px;
+    margin-top: 4px;
+    overflow: hidden
+}
+
+.page .step-box .step-head .step-h-title.current-step {
+    width: 24%;
+    display: inline-block;
+    text-align: center
+}
+
+.page .step-box .step-head .step-h-title.current-step .step-title {
+    display: inline-block;
+    padding: 10px 25px;
+    border-bottom: 2px solid #e33c37;
+    margin: 1px 25px -1px
+}
+
+.page .step-box .step-head .step-h-title.current-step span {
+    display: inline-block;
+    margin: 0;
+    color: #333
+}
+
+.page .step-box .step-head .step-h-title.current-step .border-radius {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    border: 1px solid #e33c37;
+    -moz-border-radius: 30px;
+    -webkit-border-radius: 30px;
+    border-radius: 30px;
+    position: relative
+}
+
+.page .step-box .step-head .step-h-title.current-step .border-radius .radius {
+    border: 12px solid #e33c37;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    border-radius: 25px;
+    display: inline-block;
+    text-align: center;
+    margin-top: 2px
+}
+
+.page .step-box .step-head .step-h-title.current-step .border-radius .num {
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30px;
+    margin-top: 4px;
+    overflow: hidden
+}
+
+.page .step-box .step-head .step-title>span {
+    font-size: 18px
+}
+
+.page .step-box .step-body .step {
+    padding-top: 70px;
+    display: none
+}
+
+.page .step-box .step-body .step.cur-active {
+    display: block
+}
+
+.page .step-box .step-body .step1 .v-img {
+    cursor: pointer;
+    width: 120px;
+    height: auto
+}
+
+.page .step-box .step-body .step4 .suc-content {
+    display: inline-block;
+    margin: 20px auto
+}
+
+.page .step-box .step-body .step4 .suc-content .uf {
+    font-size: 80px;
+    color: #5bc81f;
+    display: inline-block
+}
+
+.page .step-box .step-body .step4 .suc-content .msg {
+    display: inline-block
+}
+
+.page .step-box .step-body .step4 .suc-content .msg h4,
+.page .step-box .step-body .step4 .suc-content .msg h5 {
+    color: #333
+}
+
+.page .step-box .step-body label {
+    height: 36px;
+    line-height: 36px;
+    font-size: 14px;
+    color: #666
+}
+
+.page .step-box .step-body input {
+    border-radius: 0;
+    border-color: #d7d7d7
+}
+
+.page .step-box .step-body input:focus {
+    border-color: #6bcaea
+}
+
+.page .step-box .step-body img {
+    width: 115px;
+    height: 36px;
+    border: 1px solid #d7d7d7
+}
+
+.page .step-box .step-body .greenbtn {
+    background-color: #4ebd7d;
+    border: 1px solid #4ebd7d;
+    padding: 0 10px;
+    font-size: 14px !important
+}
+
+.page header {
+    height: 50px;
+    line-height: 50px;
+    margin: 0;
+    background: #fff
+}
+
+.page header .nav-btn {
+    width: 50px;
+    display: inline-block;
+    padding-left: 25px;
+    cursor: pointer;
+    display: none;
+}
+
+.page header .nav-btn .line {
+    background-color: #d85342;
+    width: 18px;
+    display: block;
+    height: 2px;
+    border-radius: 1px
+}
+
+.page header .nav-btn .line+.line {
+    margin-top: 4px
+}
+
+.page header .logo {
+    display: inline-block;
+    padding-left: 25px;
+    padding-top: 1px;
+    width: 200px;
+}
+
+.page header .logo img {
+    height: 47px;
+    overflow: hidden;
+    width: 235px;
+}

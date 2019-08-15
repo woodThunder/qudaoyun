@@ -1,0 +1,141 @@
+<div class="ui-panel ui-list-panel">
+  <div>
+    <div class="page-title">
+      <span data-bind="text:title"></span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+  <ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+  </ui-searchbox>
+  <div class="ui-panel-body">
+    <div class="ui-panel-body-head">
+      <div class="ui-panel-body-head-left">
+        <ui-buttons params='datasource:$root.button1Source'>
+        </ui-buttons>
+      </div>
+    </div>
+    <div class="ui-table-container">
+      <ui-grid params='options:$root.gridOption,vm:$root'>
+      </ui-grid>
+      <div class="ui-statistics margin-top-10">
+        已选择
+        <span class="font-c-blue" data-bind="text:priceAdjustList.selectedIndices().length"></span>项数据
+      </div>
+      <div class="pagination-right">
+        <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"priceAdjustList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 单据页 -->
+<div class="ui-bill-panel ui-panel" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span data-bind="text:title"></span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <!-- <div id="bpmhead"></div>
+  <div id="bpmfoot"></div> -->
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <ui-buttons params='datasource:$root.button2Source'>
+      </ui-buttons>
+    </div>
+  </div>
+  <div class="ui-panel-head ui-bill-head">
+    <ui-card params='datasource:$root.card1Source,vm:$root,dt:$root.priceAdjustCard,billstatus:$root.billPanelStatus'>
+    </ui-card>
+  </div>
+  <div class="ui-collapse-group border" data-bind="visible:priceAdjustCard.ref('strictMatch')()==1">
+    <h3 class="ui-collapse-title open">
+      <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+      商品明细选择区域（仅严格匹配模式下可用）
+    </h3>
+    <div class="ui-collapse-content">
+
+      <ui-card params='datasource:$root.card2Source,vm:$root,dt:$root.detailSelectCard'>
+      </ui-card>
+      <div style="margin-left: 120px;margin-top: 10px">
+        <ui-buttons params='datasource:$root.button4Source'>
+        </ui-buttons>
+      </div>
+    </div>
+  </div>
+  <div class="ui-bill-body margin-top-10">
+    <div class="margin-bottom-10">
+      <ui-buttons params='datasource:$root.button3Source'>
+      </ui-buttons>
+    </div>
+    <div class="ui-table-container margin-bottom-30">
+      <div id="editgrid">
+      </div>
+      <div class="pagination-right margin-top-20">
+        <div id='pagination1' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"priceAdjustDetail","pageChange":"subPageChange","sizeChange":"subSizeChange"}'></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 单据联查页 -->
+<div id="dialog_joinquery" style="display:none;">
+  <div class="u-msg-title">
+      <h4>改价范围</h4>
+  </div>
+  <div class="u-msg-content">
+      <div id="joingrid" class="margin-top-10">
+
+      </div>
+  </div>
+</div>
+
+<!-- 详情页 -->
+<div class="ui-bill-detail ui-panel" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span data-bind="text:title"></span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div id="bpmhead"></div>
+  <div id="bpmfoot"></div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <ui-buttons params='datasource:$root.button5Source'>
+      </ui-buttons>
+    </div>
+  </div>
+  <div class="ui-panel-head">
+    <ui-detail params='datasource:$root.detail11Source,dt:$root.priceAdjustList,vm:$root'>
+
+    </ui-detail>
+  </div>
+  <div class="ui-bill-body">
+    <div class="ui-table-container margin-bottom-30">
+      <div id="detailgrid">
+      </div>
+      <div class="pagination-right margin-top-20">
+        <div id='pagination2' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"priceAdjustDetail","pageChange":"subPageChange","sizeChange":"subSizeChange"}'></div>
+      </div>
+    </div>
+  </div>
+  <div class="ui-bill-footer">
+  </div>
+</div>

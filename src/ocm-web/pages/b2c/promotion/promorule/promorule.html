@@ -1,0 +1,530 @@
+<!--main-->
+<div class="ui-list-panel ui-panel">
+  <div>
+    <div class="page-title">
+      <span>规则设置</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+
+  <div class="ui-searchbox">
+    <div id="PromoActivity-searchcontent" class="ui-searchbox-content clearfix"></div>
+    <div class="ui-searchbox-footer clearfix">
+      <div class="ui-search-more hidden">
+        <a>更多
+          <i class="uifont icon-down"></i>
+        </a>
+      </div>
+
+      <div class="ui-search-btn">
+      	<a class="ui-btn ui-btn-primary" data-bind="click:cleanSearch">清空
+        </a>
+        <a class="ui-btn ui-btn-green margin-right-5" data-bind="click:search.bind($data,true)">搜索
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-panel-body">
+    <!--ui-panel-body-head-->
+    <div class="ui-panel-body-head">
+      <div class="ui-panel-body-head-left">
+        <a class="ui-btn ui-btn-orange margin-right-5" id="user-action-add" data-bind="click: beforeEdit.bind($data,-1)">
+          <i class="uifont icon-plus margin-right-5"></i>新增
+        </a>
+        <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del" data-bind="click: del">
+          <i class="uifont icon-shanchu1 margin-right-5"></i>
+          删除
+        </a>
+
+        <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+          <a class="ui-button-item" data-bind="click:enable">
+            <i class="uifont icon-qiyong margin-right-5"></i>
+            启用</a>
+          <a class="ui-button-item" data-bind="click:disable ">
+            <i class="uifont icon-tingyong margin-right-5"></i>
+            停用</a>
+        </div>
+      </div>
+
+    </div>
+    <!--ui-panel-body-head end-->
+    <div class="ui-table-container">
+      <div id="promoRuleList" u-meta='{"id":"grid_main_list","data":"promoRuleList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true,"onBeforeClickFun": "detail"}'>
+        <div options='{"field":"code","dataType":"String","title":"规则编码"}'></div>
+        <div options='{"field":"name","dataType":"String","title":"规则名称"}'></div>
+        <div options='{"field":"condition","dataType":"String","title":"促销条件","editOptions":{"type":"combo","datasource":"promoConditionDataSrc"},"renderType":"comboRender"}'></div>
+        <div options='{"field":"isEnable","dataType":"String","title":"启用状态","renderType":"enableRender"}'></div>
+
+        <div options='{"field":"creator","dataType":"String","title":"创建人","visible":false}'></div>
+        <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":false}'></div>
+        <div options='{"field":"creationTime","dataType":"Datetime","title":"创建时间","visible":false}'></div>
+        <div options='{"field":"modifiedTime","dataType":"Datetime","title":"修改时间","visible":false}'></div>
+        <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation4single","fixed":true,"width":"110px"}'></div>
+
+      </div>
+      <div class="ui-statistics margin-top-10">
+        <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择
+        <span class="font-c-blue" data-bind="text:promoRuleList.selectedIndices().length"></span>项数据
+      </div>
+      <div class="pagination-right">
+        <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"promoRuleList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+      </div>
+    </div>
+  </div>
+  <!-- 详情-start -->
+<div class="u-tabs ui-tabs">
+    <div class="u-tabs__tab-bar margin-top-10 margin-bottom-10">
+      <a href="#tab-panel-1" class="u-tabs__tab">基本信息</a>
+      <a href="#tab-panel-2" class="u-tabs__tab is-active">促销方式</a>
+      <a href="#tab-panel-3" class="u-tabs__tab">时间范围</a>
+      <a href="#tab-panel-4" class="u-tabs__tab">商品信息</a>
+  </div>
+  <div class="u-tabs__panel" id="tab-panel-1">
+    <div class="ui-collapse-content  clearfix">
+      <div class="ui-item">
+        <div class="ui-name">规则编码：</div>
+        <div class="ui-inputarea">
+          <div class="ui-textonly" data-bind="text:promoRuleMeta.ref('code')"></div>
+        </div>
+      </div>
+      <div class="ui-item">
+        <div class="ui-name">
+          <span class='ui-redstar'>*</span> 规则名称：</div>
+        <div class="ui-inputarea">
+          <div class="ui-textonly" data-bind="text:promoRuleMeta.ref('name')"></div>
+        </div>
+      </div>
+      <div class="ui-item">
+        <div class="ui-name">
+          <span class='ui-redstar'>*</span> 促销条件：</div>
+        <div class="ui-inputarea">
+          <div u-meta='{"type":"u-combobox","data":"promoRuleMeta","field":"condition","datasource":"promoConditionDataSrc","enable":"false"}'>
+            <input class="ui-no-border" />
+          </div>
+        </div>
+      </div>            
+      <div class="ui-item">
+        <div class="ui-name">
+          <span class='ui-redstar'>*</span> 递增：</div>
+        <div class="ui-inputarea">
+          <div class="ui-textonly" data-bind='text: isProgressiveFun()'></div>
+        </div>
+      </div>           
+      <div class="ui-item">
+        <div class="ui-name">
+          <span class='ui-redstar'>*</span> 启用状态：</div>
+        <div class="ui-inputarea">
+          <div class="ui-textonly" data-bind='text: isEnableFun()'></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="u-tabs__panel is-active" id="tab-panel-2">
+  <div class="ui-table-container">
+    <div u-meta='{"id":"grid_item_list_detail","data":"promoRuleItemList","type":"grid","editable":false,"multiSelect":false,"showNumCol":true}'>
+      <div options='{"field":"amountLowerLimit","dataType":"Float","title":"满赠金额下限","renderType":"precision2Render"}'></div>
+      <div options='{"field":"amountUpperLimit","dataType":"Float","title":"满赠金额上限","renderType":"precision2Render"}'></div>
+      <div options='{"field":"amountBase","dataType":"Float","title":"满赠金额基数","renderType":"precision2Render"}'></div>
+      <div options='{"field":"numberLowerLimit","dataType":"Integer","title":"买送数量下限"}'></div>
+      <div options='{"field":"numberUpperLimit","dataType":"Integer","title":"买送数量上限"}'></div>
+      <div options='{"field":"numberBase","dataType":"Integer","title":"买送数量基数"}'></div>
+      <div options='{"field":"topLowerLimit","dataType":"Float","title":"按时间排名下限","renderType":"precision2Render","width":"150px"}'></div>
+      <div options='{"field":"topUpperLimit","dataType":"Float","title":"按时间排名上限","renderType":"precision2Render","width":"150px"}'></div>
+      <div options='{"field":"giftCount","dataType":"Integer","title":"赠品数量"}'></div>
+      <div options='{"field":"giftCode","dataType":"String","title":"赠品编码"}'></div>
+      <div options='{"field":"giftName","dataType":"String","title":"赠品名称"}'></div>
+    </div>
+  </div>
+  </div>
+  <div class="u-tabs__panel" id="tab-panel-3">
+      <div class="ui-table-container">
+        <div u-meta='{"id":"grid_timerange_detail","data":"promRuleTimeRanges","type":"grid","editable":false,"multiSelect":false,"showNumCol":false,"columnMenu":false}'>
+          <div options='{"field":"beginTime","dataType":"String","title":"开始时间"}'></div>
+          <div options='{"field":"endTime","dataType":"String","title":"结束时间"}'></div>
+        </div>
+      </div>
+  </div>
+  <div class="u-tabs__panel" id="tab-panel-4">
+      <div class="ui-collapse-content  clearfix">
+        <div class="ui-item">
+          <div class="ui-name">选择方式：</div>
+          <div class="ui-inputarea">
+            <div class="ui-textonly" data-bind='text: isForAllFun()'></div>
+          </div>
+        </div>
+      </div>
+      <div id="tab-control" class="u-tabs ui-tabs" data-bind="visible: promoRuleMeta.ref('isForAll')() == 0">
+        <div class="tab-box-z margin-top-10 margin-bottom-10">
+            <li class="tab-item active-z">
+                <a>包含</a>
+            </li>
+        </div>
+        <!-- 电商商品-start -->
+          <div class="ui-table-container" id="detail_in">
+            <div u-meta='{"id":"grid_include_goods_list_detail","data":"includeGoodsList","type":"grid","editable":false,"multiSelect":"false","showNumCol":true}'>
+              <div options='{"field":"goodsCode","dataType":"String","title":"商品编码"}'></div>
+              <div options='{"field":"goodsName","dataType":"String","title":"商品名称"}'></div>
+            </div>
+          </div>
+          <div class="ui-table-container" id="detail_ex" style="display: none;">
+            <div u-meta='{"id":"grid_exclude_goods_list_detail","data":"excludeGoodsList","type":"grid","editable":false,"multiSelect":"false","showNumCol":true}'>
+              <div options='{"field":"goodsCode","dataType":"String","title":"商品编码"}'></div>
+              <div options='{"field":"goodsName","dataType":"String","title":"商品名称"}'></div>
+            </div>
+          </div>
+      </div>
+      <div id="tab-control2" class="u-tabs ui-tabs" data-bind="visible: promoRuleMeta.ref('isForAll')() == 1">
+        <div class="tab-box-z">
+                <li class="tab-item active-z">
+                    <a>排除</a>
+                </li>
+            </div>
+          <div class="ui-table-container">
+            <div u-meta='{"id":"grid_exclude_goods_list_all_detail","data":"excludeGoodsList","type":"grid","editable":false,"multiSelect":"false","showNumCol":true}'>
+              <div options='{"field":"goodsCode","dataType":"String","title":"商品编码"}'></div>
+              <div options='{"field":"goodsName","dataType":"String","title":"商品名称"}'></div>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+</div>
+<!--main end-->
+
+<!-- 新增信息 -->
+<div class="ui-bill-panel ui-panel" style="display: none;" id="validate">
+  <div>
+    <div class="page-title">
+      <span>规则设置</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-primary" data-bind="click: cancelBill.bind($data)">取消
+      </a>
+      <a class="ui-btn ui-btn-green" data-bind="click: saveBill.bind($data)">保存
+      </a>
+    </div>
+  </div>
+  <!--head-->
+  <div class="margin-top-10">
+    <div class="ui-bill-body">
+      <div class="ui-collapse-group border orderCenter">
+        <div id="default-example" data-collapse>
+          <!--订单信息开始-->
+          <h3 class="ui-collapse-title orderCenter clearfix open margin-top-10">
+            <a href="javascript:;" class="click-btn inline-block">
+              <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+              <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+              基本信息
+            </a>
+          </h3>
+          <div class="ui-collapse-content  clearfix">
+            <div class="ui-item">
+              <div class="ui-name">
+                <span class='ui-redstar'>*</span> 促销规则编码：</div>
+              <div class="ui-inputarea">
+                <div class="ui-textonly" u-meta='{"type":"u-text","data":"promoRuleMeta","field":"code"}'>
+                  <input class="u-input" />
+                </div>
+              </div>
+            </div>
+            <div class="ui-item">
+              <div class="ui-name">
+                <span class='ui-redstar'>*</span> 促销规则名称：</div>
+              <div class="ui-inputarea">
+                <div class="ui-textonly" u-meta='{"type":"u-text","data":"promoRuleMeta","field":"name"}'>
+                  <input class="u-input" />
+                </div>
+              </div>
+            </div>
+            <div class="ui-item">
+              <div class="ui-name">
+                <span class='ui-redstar'>*</span> 促销条件：</div>
+              <div class="ui-inputarea" u-meta='{"type":"u-combobox","data":"promoRuleMeta","field":"condition","datasource":"promoConditionDataSrc"}'>
+                <input/>
+                <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+              </div>
+            </div>
+            <div class="ui-item">
+              <div class="ui-name">递增：</div>
+              <div class="ui-inputarea">
+                <div class="ui-textonly" u-meta='{"type":"u-radio","data":"promoRuleMeta","field":"isProgressive","datasource":"isProgressiveSrc"}'>
+                  <label class="u-radio">
+                    <input type="radio" class="u-radio-button" name="options2">
+                    <span class="u-radio-label"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="ui-item">
+              <div class="ui-name">
+                <span class='ui-redstar'>*</span> 启用状态：</div>
+              <div class="ui-inputarea">
+                <div class="ui-textonly" u-meta='{"type":"u-radio","data":"promoRuleMeta","field":"isEnable","datasource":"isEnableSrc"}'> 
+                  <label class="u-radio">
+                    <input type="radio" class="u-radio-button" name="options4">
+                    <span class="u-radio-label"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="ui-collapse-title orderCenter clearfix open margin-top-10">
+            <a href="javascript:;" class="click-btn inline-block">
+              <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+              <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+              规则详情
+            </a>
+          </h3>
+          <div class="ui-collapse-content" style="border: none;">
+            <div class="ui-panel-body-head">
+              <div class="ui-panel-body-head-left">
+                <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-additems" data-bind="click: addRow">
+                  <i class="uifont icon-plus margin-right-5"></i>增行
+                </a>
+                <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del" data-bind="click: delRow">
+                  <i class="uifont icon-shanchu1 margin-right-5"></i>删行
+                </a>
+              </div>
+            </div>
+            <div class="ui-table-container">
+              <div u-meta='{"id":"grid_item_list","data":"promoRuleItemList","type":"grid","editable":true,"multiSelect":true,"showNumCol":true,"sortable":false,"onValueChange":"ladderPrice"}'>
+                <div options='{"field":"amountLowerLimit","dataType":"Float","title":"满赠金额下限","editType":"float","editOptions":{"validType":"float","min":0,"max":100000000},"renderType":"precision2Render"}'></div>
+                <div options='{"field":"amountUpperLimit","dataType":"Float","title":"满赠金额上限","editType":"float","editOptions":{"validType":"float","min":0,"max":100000000},"renderType":"precision2Render"}'></div>
+                <div options='{"field":"amountBase","dataType":"Float","title":"满赠金额基数","renderType":"precision2Render"}'></div>
+                <div options='{"field":"numberLowerLimit","dataType":"Integer","title":"买送数量下限","editType":"integer","editOptions":{"validType":"integer","min":0,"max":100000000}}'></div>
+                <div options='{"field":"numberUpperLimit","dataType":"Integer","title":"买送数量上限","editType":"integer","editOptions":{"validType":"integer","min":0,"max":100000000}}'></div>
+                <div options='{"field":"numberBase","dataType":"Integer","title":"买送数量基数"}'></div>
+                <div options='{"field":"topLowerLimit","dataType":"Float","title":"按时间排名下限","editType":"float","width":"150px","editOptions":{"validType":"float","min":0,"max":100000000},"renderType":"precision2Render"}'></div>
+                <div options='{"field":"topUpperLimit","dataType":"Float","title":"按时间排名上限","editType":"float","width":"150px","editOptions":{"validType":"float","min":0,"max":100000000},"renderType":"precision2Render"}'></div>
+                <div options='{"field":"giftCount","dataType":"Integer","title":"赠品数量","editType":"integer","editOptions":{"validType":"integer","min":0,"max":100000000},"required":true}'></div>
+                <div options='{"field":"giftId","dataType":"String","title":"赠品编码","renderType":"ncReferRender","showField":"giftCode","editType":"ncReferEditType","editOptions":{"validType":"string","rel":{"refpk":"giftId","refcode":"giftCode","refname":"giftName"}}}'></div>
+                <div options='{"field":"giftName","dataType":"String","title":"赠品名称","editable":false}'></div>
+              </div>
+            </div>
+          </div>
+          <h3 class="ui-collapse-title orderCenter clearfix open margin-top-10">
+            <a href="javascript:;" class="click-btn inline-block">
+              <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+              <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+              时间范围
+            </a>
+          </h3>
+          <div class="ui-panel-body-head margin-top-10">
+              <div class="ui-panel-body-head-left">
+                <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-additems" data-bind="click: addRowTime">
+                  <i class="uifont icon-plus margin-right-5"></i>增行
+                </a>
+                <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del" data-bind="click: delRowTime">
+                  <i class="uifont icon-shanchu1 margin-right-5"></i>删行
+                </a>
+              </div>
+            </div>
+            <div class="ui-table-container">
+                <div u-meta='{"id":"grid_timerange","data":"promRuleTimeRanges","type":"grid","editable":true,"multiSelect":true,"showNumCol":true,"columnMenu":false}'>
+                  <div options='{"field":"beginTime","dataType":"String","title":"开始时间","editType":"timeOnly", "isRange":true}'></div>
+                  <div options='{"field":"endTime","dataType":"String","title":"结束时间","editType":"timeOnly", "isRange":true}'></div>
+                </div>
+              </div>
+            <div></div>
+          <h3 class="ui-collapse-title orderCenter clearfix open margin-top-10">
+            <a href="javascript:;" class="click-btn inline-block">
+              <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+              <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+              商品信息
+            </a>
+          </h3>
+          <div class="ui-collapse-content" style="border: none;">
+            <div class="ui-collapse-content  clearfix">
+              <div class="ui-item">
+                <div class="ui-name">选择方式：</div>
+                <div class="ui-inputarea">
+                  <div class="ui-textonly" u-meta='{"type":"u-radio","data":"promoRuleMeta","field":"isForAll","datasource":"isForAllSrc"}'>
+                    <label class="u-radio">
+                      <input type="radio" class="u-radio-button" name="options3">
+                      <span class="u-radio-label"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="tab-control" class="u-tabs ui-tabs" data-bind="visible: promoRuleMeta.ref('isForAll')() == 0">
+              <div class="u-tabs__tab-bar margin-top-10 margin-bottom-10" id="add-tab">
+                <a href="#tab-panel-1" class="u-tabs__tab is-active">包含</a>
+              </div>
+              <!-- 电商商品-start -->
+              <div class="u-tabs__panel is-active" id="tab-panel-1">
+                <div class="ui-table-container">
+                  <div class="ui-panel-body-head">
+                    <div class="ui-panel-body-head-left">
+                      <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-additems2" data-bind="click: addRow2">
+                        <i class="uifont icon-bar margin-right-5"></i>包含参照
+                      </a>
+                      <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del2" data-bind="click: delRow2">
+                        <i class="uifont icon-shanchu1 margin-right-5"></i>删行
+                      </a>
+                    </div>
+                  </div>
+                  <div id="productRefer2" u-meta='{"type":"uiRefer","data":"productRef2","field":"productRefer2"}' style="display:none;">
+                    <input readonly="readonly" />
+                    <span class="ui-icon uifont icon-bar refer"></span>
+                  </div>
+                  <div u-meta='{"id":"grid_include_goods_list","data":"includeGoodsList","type":"grid","editable":false,"multiSelect":"true","showNumCol":true}'>
+                    <div options='{"field":"goodsCode","dataType":"String","title":"商品编码"}'></div>
+                    <div options='{"field":"goodsName","dataType":"String","title":"商品名称"}'></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="tab-control2" class="u-tabs ui-tabs" data-bind="visible: promoRuleMeta.ref('isForAll')() == 1">
+              <div class="u-tabs__tab-bar margin-top-10 margin-bottom-10" id="add-tab1">
+                <a href="#tab-panel-3" class="u-tabs__tab is-active">排除</a>
+              </div>
+              <div class="u-tabs__panel is-active" id="tab-panel-3">
+                <div class="ui-table-container">
+                  <div class="ui-panel-body-head">
+                    <div class="ui-panel-body-head-left">
+                      <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-additems4" data-bind="click: addRow4">
+                        <i class="uifont icon-bar margin-right-5"></i>排除参照
+                      </a>
+                      <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del4" data-bind="click: delRow4">
+                        <i class="uifont icon-shanchu1 margin-right-5"></i>删行
+                      </a>
+                    </div>
+                  </div>
+                  <div id="productRefer4" u-meta='{"type":"uiRefer","data":"productRef4","field":"productRefer4"}' style="display:none;">
+                    <input readonly="readonly" />
+                    <span class="ui-icon uifont icon-bar refer"></span>
+                  </div>
+                  <div u-meta='{"id":"grid_exclude_goods_list_all","data":"excludeGoodsList","type":"grid","editable":false,"multiSelect":"true","showNumCol":true}'>
+                    <div options='{"field":"goodsCode","dataType":"String","title":"商品编码"}'></div>
+                    <div options='{"field":"goodsName","dataType":"String","title":"商品名称"}'></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="ui-bill-footer">
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div id="timepanel" style="position: absolute; top: 0px; left: 0px; width: 100%;display: none;">
+  <div data-reactroot="">
+    <div class="ant-time-picker-panel ant-time-picker-panel-column-3 ant-time-picker-panel-placement-bottomLeft" style="left: 344.5px; top: 354.375px;">
+      <div class="ant-time-picker-panel-inner">
+        <div class="ant-time-picker-panel-input-wrap">
+          <input class="ant-time-picker-panel-input  " value="" placeholder="选择时间">
+          <a class="ant-time-picker-panel-clear-btn" data-bind="click:clearTime" role="button" title="clear"></a>
+        </div>
+        <div class="ant-time-picker-panel-combobox" data-bind="click:selectOption">
+          <div class="ant-time-picker-panel-select">
+            <ul>
+            <li class="ant-time-picker-panel-select-option-selected zero">00</li>
+            <li class="">01</li>
+            <li class="">02</li>
+            <li class="">03</li>
+            <li class="">04</li>
+            <li class="">05</li>
+            <li class="">06</li>
+            <li class="">07</li>
+            <li class="">08</li>
+            <li class="">09</li>
+            <li class="">10</li>
+            <li class="">11</li>
+            <li class="">12</li>
+            <li class="">13</li>
+            <li class="">14</li>
+            <li class="">15</li>
+            <li class="">16</li>
+            <li class="">17</li>
+            <li class="">18</li>
+            <li class="">19</li>
+            <li class="">20</li>
+            <li class="">21</li>
+            <li class="">22</li>
+            <li class="">23</li>
+            </ul>
+          </div>
+          <div class="ant-time-picker-panel-select">
+            <ul>
+              <li class="ant-time-picker-panel-select-option-selected zero">00</li>
+              <li class="">01</li>
+              <li class="">02</li>
+              <li class="">03</li>
+              <li class="">04</li>
+              <li class="">05</li>
+              <li class="">06</li>
+              <li class="">07</li>
+              <li class="">08</li>
+              <li class="">09</li>
+              <li class="">10</li>
+              <li class="">11</li>
+              <li class="">12</li>
+              <li class="">13</li>
+              <li class="">14</li>
+              <li class="">15</li>
+              <li class="">16</li>
+              <li class="">17</li>
+              <li class="">18</li>
+              <li class="">19</li>
+              <li class="">20</li>
+              <li class="">21</li>
+              <li class="">22</li>
+              <li class="">23</li>
+              <li class="">24</li>
+              <li class="">25</li>
+              <li class="">26</li>
+              <li class="">27</li>
+              <li class="">28</li>
+              <li class="">29</li>
+              <li class="">30</li>
+              <li class="">31</li>
+              <li class="">32</li>
+              <li class="">33</li>
+              <li class="">34</li>
+              <li class="">35</li>
+              <li class="">36</li>
+              <li class="">37</li>
+              <li class="">38</li>
+              <li class="">39</li>
+              <li class="">40</li>
+              <li class="">41</li>
+              <li class="">42</li>
+              <li class="">43</li>
+              <li class="">44</li>
+              <li class="">45</li>
+              <li class="">46</li><li class="">47</li><li class="">48</li><li class="">49</li><li class="">50</li><li class="">51</li><li class="">52</li><li class="">53</li><li class="">54</li><li class="">55</li><li class="">56</li><li class="">57</li><li class="">58</li><li class="">59</li>
+            </ul>
+          </div>
+          <div class="ant-time-picker-panel-select">
+            <ul><li class="ant-time-picker-panel-select-option-selected zero">00</li><li class="">01</li><li class="">02</li><li class="">03</li><li class="">04</li><li class="">05</li><li class="">06</li><li class="">07</li><li class="">08</li><li class="">09</li><li class="">10</li><li class="">11</li><li class="">12</li><li class="">13</li><li class="">14</li><li class="">15</li><li class="">16</li><li class="">17</li><li class="">18</li><li class="">19</li><li class="">20</li><li class="">21</li><li class="">22</li><li class="">23</li><li class="">24</li><li class="">25</li><li class="">26</li><li class="">27</li><li class="">28</li><li class="">29</li><li class="">30</li><li class="">31</li><li class="">32</li><li class="">33</li><li class="">34</li><li class="">35</li><li class="">36</li><li class="">37</li><li class="">38</li><li class="">39</li><li class="">40</li><li class="">41</li><li class="">42</li><li class="">43</li><li class="">44</li><li class="">45</li><li class="">46</li><li class="">47</li><li class="">48</li><li class="">49</li><li class="">50</li><li class="">51</li><li class="">52</li><li class="">53</li><li class="">54</li><li class="">55</li><li class="">56</li><li class="">57</li><li class="">58</li><li class="">59</li>
+            </ul>
+          </div>
+        </div>
+        <div class="ant-calendar-footer ant-calendar-footer-show-ok"><span class="ant-calendar-footer-btn"><a class="ant-calendar-ok-btn" data-bind="click:timeOk" role="button">确 定</a></span></div>
+      </div>
+    </div>
+  </div>
+</div>

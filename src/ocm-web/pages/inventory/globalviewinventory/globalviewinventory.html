@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">               <!--360 使用Google Chrome Frame-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />   <!--优先使用 IE 最新版本和 Chrome-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="bootstrap admin template">
+    <meta name="author" content="">
+    <title>经销商库存存量情况</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="globalviewinventory.css">
+    <script src="../../../vendor/jquery/jquery-1.11.2.js"></script>
+    <script src="../../../vendor/echarts/echarts.js"></script>
+    <script src="../../../vendor/echarts/china.js"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="header-title">
+            <span></span>
+        </div>
+        <div class="header-border"></div>
+        <div class="header-left"></div>
+        <div class="header-right"></div>
+    </div>
+
+    <div class="stock-Content">
+        <div class="left">
+            <!--整体库存情况  start-->
+            <div class="stock-status">
+                <div class="child-title">
+                    <a class = "stock-status-bg" href="#"></a>
+                </div>
+                <div class="board">
+                    <div class="total-whole">
+                        <a class="num" id="totalstock" href="#">0</a>
+                        <a class="text" href="#">商品数量</a>
+                    </div>
+                    <div class="total-store">
+                        <a class="num" id="totalDepotNum" href="#">0</a>
+                        <a class="text" href="#">仓库数量</a>
+                    </div>
+                </div>
+            </div>
+            <!--整体库存情况  end-->
+
+            <!--售罄率  start-->
+            <div class="stock-rank">
+                <div class="child-title">
+                    <a class="stock-rank-bg" href="#"></a>
+                </div>
+                <div class="rank-list">
+                   <ul id="saleout">
+                   </ul>
+                </div>
+            </div>
+            <!--售罄率  end-->
+
+        </div>
+        <div class="middle">
+            <div id="main" >
+            </div>
+            <div class="middle-bottom">
+                <div class="child-title">
+                    <a class="middle-bottom-bg" href="#"> </a>
+                </div>
+                <div class="warning-goods">
+                    <div class="child-header">
+                        <span class="goodsName">商品</span>
+                        <span class="storageName">仓库</span>
+                        <span class="availableNum">可用量</span>
+                        <span class="onHandNum">现存量</span>
+                        <span class="onOrderNum">在途量</span>
+                    </div>
+                    <div class="child-content">
+                        <ul id="restnumwarning">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="right-top">
+                <!--品类占比  start-->
+                <div class="child-title">
+                    <a class="right-top-bg" href="#"> </a>
+                </div>
+                <div class="category-ratio">
+                    <div id="category-ratio"></div>
+                </div>
+                <!--品类占比  end-->
+            </div>
+            <!--高库龄商品  start-->
+            <div class="High-age-goods">
+                <div class="child-title">
+                    <a class="High-age-goods-bg" href="#"> </a>
+                </div>
+                <div class="rank-list">
+                    <ul id="highagegoods">
+                        <!-- <li>
+                            <span class="list-num icon num1"></span>
+                            <a href="###" class="goods-name" title="免烫衬衫男短袖衬衣">免烫衬衫男短袖衬衣</a>
+                            <div class="rank-bar">
+                                <div class="rankBar-width"><span></span></div>
+                                <a href="###">1162天</a>
+                                <p>北京三里屯专卖店</p>
+                            </div>
+                            <span class="high-amount">20000个</span>
+                        </li>
+                        <li>
+                            <span class="list-num icon num2"></span>
+                            <a href="###" class="goods-name" title="【DP免烫】秋季男士长袖衬衫">【DP免烫】秋季男士长袖衬衫</a>
+                            <div class="rank-bar">
+                                <div class="rankBar-width"><span style="width: 90%"></span></div>
+                                <a href="###">1062天</a>
+                                <p>北京三里屯专卖店</p>
+                            </div>
+                            <span class="high-amount">20000个</span>
+                        </li>
+                        <li>
+                            <span class="list-num icon num3"></span>
+                            <a href="###" class="goods-name" title="秋季新款男士长袖衬衫">秋季新款男士长袖衬衫</a>
+                            <div class="rank-bar">
+                                <div class="rankBar-width"><span style="width: 80%"></span></div>
+                                <a href="###">962天</a>
+                                <p>北京三里屯专卖店</p>
+                            </div>
+                            <span class="high-amount">20000个</span>
+                        </li>
+                        <li>
+                            <span class="list-num icon ">4</span>
+                            <a href="###" class="goods-name" title="男士长袖衬衫男修身">男士长袖衬衫男修身</a>
+                            <div class="rank-bar">
+                                <div class="rankBar-width"><span style="width: 70%"></span></div>
+                                <a href="###">862天</a>
+                                <p>北京三里屯专卖店</p>
+                            </div>
+                            <span class="high-amount">20000个</span>
+                        </li>
+                        <li>
+                            <span class="list-num icon ">5</span>
+                            <a href="###" class="goods-name" title="【DP免烫】秋季男士休闲裤">【DP免烫】秋季男士休闲裤</a>
+                            <div class="rank-bar">
+                                <div class="rankBar-width"><span style="width: 60%"></span></div>
+                                <a href="###">762天</a>
+                                <p>北京三里屯专卖店</p>
+                            </div>
+                            <span class="high-amount">20000个</span>
+                        </li>
+                        <li>
+                            <span class="list-num icon ">6</span>
+                            <a href="###" class="goods-name" title="【汉麻免烫】2018秋季男士长袖衬衫">【汉麻免烫】2018秋季男士长袖衬衫</a>
+                            <div class="rank-bar">
+                                <div class="rankBar-width"><span style="width: 50%"></span></div>
+                                <a href="###">662天</a>
+                                <p>北京三里屯专卖店</p>
+                            </div>
+                            <span class="high-amount">20000个</span>
+                        </li>
+                        <li>
+                            <span class="list-num icon ">7</span>
+                            <a href="###" class="goods-name" title="【DP免烫】长袖衬衫男2018秋季新品">【DP免烫】长袖衬衫男2018秋季新品</a>
+                            <div class="rank-bar">
+                                <div class="rankBar-width"><span style="width: 40%"></span></div>
+                                <a href="###">562天</a>
+                                <p>北京三里屯专卖店</p>
+                            </div>
+                            <span class="high-amount">20000个</span>
+                        </li>
+                        <li>
+                            <span class="list-num icon ">8</span>
+                            <a href="###" class="goods-name" title="短袖衬衫男 纯棉格子衬衫男修身">短袖衬衫男 纯棉格子衬衫男修身</a>
+                            <div class="rank-bar">
+                                <div class="rankBar-width"><span style="width: 30%"></span></div>
+                                <a href="###">462天</a>
+                                <p>北京三里屯专卖店</p>
+                            </div>
+                            <span class="high-amount">20000个</span>
+                        </li>
+                        <li>
+                            <span class="list-num icon ">9</span>
+                            <a href="###" class="goods-name" title="雅戈尔youngor 【汉麻免烫】 2018秋季男士长袖衬衫">雅戈尔youngor 【汉麻免烫】 2018秋季男士长袖衬衫</a>
+                            <div class="rank-bar">
+                                <div class="rankBar-width"><span style="width: 20%"></span></div>
+                                <a href="###">362天</a>
+                                <p>北京三里屯专卖店</p>
+                            </div>
+                            <span class="high-amount">20000个</span>
+                        </li>
+                        <li>
+                            <span class="list-num icon ">10</span>
+                            <a href="###" class="goods-name" title="短袖t恤男 纯色短袖T恤 男士短袖Polo衫 商">短袖t恤男 纯色短袖T恤 男士短袖Polo衫 商</a>
+                            <div class="rank-bar">
+                                <div class="rankBar-width"><span style="width: 10%"></span></div>
+                                <a href="###">262天</a>
+                                <p>北京三里屯专卖店</p>
+                            </div>
+                            <span class="high-amount">20000个</span>
+                        </li>
+                        <li>
+                            <span class="list-num icon ">11</span>
+                            <a href="###" class="goods-name" title="【丝光棉】夏季男士花纹短袖T恤 商务休闲 蓝">【丝光棉】夏季男士花纹短袖T恤 商务休闲 蓝</a>
+                            <div class="rank-bar">
+                                <div class="rankBar-width"><span style="width: 5%"></span></div>
+                                <a href="###">162天</a>
+                                <p>北京三里屯专卖店</p>
+                            </div>
+                            <span class="high-amount">20000个</span>
+                        </li> -->
+                    </ul>
+                </div>
+            </div>
+            <!--高库龄商品  end-->
+
+        </div>
+    </div>
+
+
+</body>
+<script src="globalviewinventory.js"></script>
+</html>

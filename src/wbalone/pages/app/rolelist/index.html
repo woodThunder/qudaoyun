@@ -1,0 +1,379 @@
+<div class="main-wrap list-panel" id="roleList">
+<div class="wrapper">
+    <!--页面功能名字-->
+    <!--iuap前端升级同步更改 wt 20190123
+    <div class="apptitle">
+        <span class="i18n" name="ht.app.rol.0001"></span>
+        <span class="btn btn-default btn-sm backbutton" data-bind="click:goback"><span class="i18n" name="ht.app.rol.0002"></span></span>
+    </div>
+    -->
+    <!--页面头部功能条-->
+    <div class="funbar">
+        <!--页面头部功能条-->
+        <div class="Y_sarch_style">
+            <div class="pull-right condsearch" id="condsearch">
+                <div class="u-input-group u-has-feedback" style="display: none;">
+                    <input type="text" class="nc-search" placeholder="ht.app.rol.0003">
+                    <span class="u-form-control-feedback iconfont icon-search nc-searchbtn"></span>
+                </div>
+                <div id="condionSearch">
+                    <span class="i18n" name="ht.app.rol.0004"></span>
+                    <span class="iconfont icon-arrow-down"></span>
+                    <span class="iconfont icon-arrow-up"></span>
+                </div>
+            </div>
+            <div class="guideTit">
+                <div class="u-form-group">
+                    <button class="addbtn" type="button" data-bind="click:addUser"><span class="i18n" name="ht.app.rol.0005"></span></button>
+                </div>
+            </div>
+        </div>
+        <!--按条件查询区域-->
+        <div class="Y_selector" id="condition-row">
+            <dl class="sort">
+                <dd>
+                    <div class="outSel ">
+                        <label class="seLab"><span class="i18n" name="ht.app.rol.0006"></span></label>
+
+                        <input type="text" id="s-name" u-meta='{"type":"u-text","data":"searchData","field":"roleName"}' class="ecmi-input u-form-control" placeholder="ht.app.rol.0007">
+                        <button type="button" class="nc-searchbtn"><i class="iconfont icon-search"></i></button>
+                    </div>
+                    <div class="outSel ">
+                        <label class="seLab"><span class="i18n" name="ht.app.rol.0008"></span></label>
+                        <input type="text" id="s-loginName" u-meta='{"type":"u-text","data":"searchData","field":"roleCode"}' class="ecmi-input u-form-control" placeholder="ht.app.rol.0009">
+                        <button type="button" class="nc-searchbtn"><i class="iconfont icon-search"></i></button>
+                        <!-- <input type="text" id="s-loginName" class="ecmi-input u-form-control" placeholder="ht.app.rol.0009"> -->
+                    </div>
+                    <div class="outSel">
+                        <label class="seLab"><span class="i18n" name="ht.app.rol.0010"></span></label>
+                        <div id="search_select" class="u-combo" u-meta='{"type":"u-combobox","datasource":"searchList","data":"searchData","field":"label","onlySelect":true}'>
+                            <div class="u-has-feedback">
+                                <input class="u-form-control ecmi-input" readonly/>
+                            </div>
+                        </div>
+
+                        <!--<span class="iconfont icon-arrow-down"></span>-->
+                        </span>
+                    </div>
+                    <div class="clearfix"></div>
+                </dd>
+            </dl>
+        </div>
+        </div>
+
+        <!--tale列表展现区域-->
+        <div class="table-list table-responsive">
+            <div class="table-body">
+                <table class="u-table u-table-striped u-table-hover tabOne">
+
+                <thead>
+                <tr>
+                    <th width="12%"><span class="i18n" name="ht.app.rol.0011"></span></th>
+                    <th width="12%"><span class="i18n" name="ht.app.rol.0012"></span></th>
+                    <th width="10%"><span class="i18n" name="ht.app.rol.0013"></span></th>
+                    <th width="18%"><span class="i18n" name="ht.app.rol.0014"></span></th>
+                    <th width="12%"><span class="i18n" name="ht.app.rol.0015"></span></th>
+                </tr>
+                </thead>
+                <tbody data-bind="foreach:{data:listData.rows(), as: 'row',afterAdd: afterAdd}">
+                <tr>
+                    <td data-bind="text: row.ref('roleName'+getPropSerial())"></td>
+                    <td data-bind="text: row.ref('roleCode')"><a href="#"> </a></td>
+                    <td data-bind="text: row.ref('labelName')"></td>
+                    <td data-bind="text: row.ref('remark')"></td>
+                    <td>
+                        <div class="pro_oper">
+                                <span class="iconfont icon-fenpeixiaoyingyong" title="ht.app.rol.0016"
+                                      data-bind="click:$parent.asign.bind($data, $index())"></span>
+                                <span class="iconfont icon-pencil" title="ht.app.rol.0017"
+                                      data-bind="click:$parent.useredit.bind($data, $index())"></span>
+                                <span class="iconfont icon-delete" title="ht.app.rol.0018"
+                                      data-bind="click:$parent.delete.bind($data, $index())"></span>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="LoadingImage">
+            <img src="./images/loading.gif"/>
+            <span><span class="i18n" name="ht.app.rol.0019"></span></span>
+        </div>
+        <div id="emptyImage">
+            <img src="./images/empty.png"/>
+            <span><span class="i18n" name="ht.app.rol.0020"></span></span>
+        </div>
+        <!--分页区域-->
+        <div class="paginate-box" data-bind="visible: pagination.count() > 10">
+            <div id="pagination" class="u-pagination"></div>
+        </div>
+    </div>
+
+</div>
+<!-- 新增/编辑用户  模态框-->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
+    <div class="modal-dialog " role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true" class="iconfont icon-cancel02"></span></button>
+                <h4 class="modal-title" id="myModalLabel1" data-bind="text:modal.title"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="cc">
+                    <div id="editcardC" class="cardC">
+                        <div id="editcard00">
+                            <div class="ccTabForm">
+                                <div class="msg-tb">
+                                    <div class="u-row">
+                                        <div class="u-col-md-12">
+                                            <div class="thbold w85"><span class="i18n" name="ht.app.rol.0008"></span></div>
+                                            <div class="tdlight">
+                                                <div class="u-input-group u-has-feedback must-in">
+                                                    <div class="u-input-group-before " style="color: red;">*</div>
+                                                    <input type="text"
+                                                           placeholder="ht.app.rol.0009"
+                                                           class="  ecmi-input u-form-control"
+                                                           u-meta='{"id":"roleCode","type":"string","data":"roleeditData","field":"roleCode"}'>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="u-row">
+                                        <div class="u-col-md-12">
+                                            <div class="thbold w110"><span class="i18n" name="ht.app.rol.0006"></span></div>
+                                            <div class="tdlight">
+                                                <div class="u-input-group u-has-feedback must-in">
+                                                    <div class="u-input-group-before " style="color: red;">*</div>
+                                                    <!--多语录入修改的部分-->
+                                                    <div class="u-text multi-input" id='default-value' data-bind="attr:{default: $root.mutlilang.sysLocale}">
+                                                        <input data-bind="value: $root.mutlilang.defaultLocaleValue,event: {blur: $root.mutlilang.changeDTValue }" type="text"
+                                                               placeholder="ht.app.rol.0007"
+                                                               u-meta='{"data":"roleeditData","field":"showName"}'
+                                                               class=" ecmi-input"/>
+                                                        <!--上的u-meta中"id":"roleName","type":"string",-->
+                                                        <div class="input-icon" data-bind='click: $root.mutlilang.showMul'></div>
+                                                    </div>
+                                                    <div class='multi-form' data-bind="css:{show: $root.mutlilang.show}">
+                                                        <div class='arrow'>
+                                                        </div>
+                                                        <div data-bind="foreach: $root.mutlilang.locale">
+                                                            <div class="item">
+                                                                <span class="field" data-bind="style:{visibility:serial==$root.mutlilang.sysDefaultLanguageSerial()|| serial==$root.mutlilang.currentSerial || serial =='' ? 'visible':'hidden'}">*</span>
+                                                                <label data-bind="text:label" class="multi-label"></label>
+                                                                <div class="u-text input-par" data-bind='attr:{"field":"roleName"+serial}' u-meta='{"data":"roleeditData","field":"roleName"}'>
+                                                                    <input class="" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class='btn-groups'>
+                                                            <button class="u-button u-button-border margin-left-10" data-bind='click:mutlilang.closeMul'><span class="i18n" name="ht.app.rol.0023"></span></button>
+                                                            <button class="u-button u-button-primary" data-bind='click:mutlilang.saveValue'><span class="i18n" name="ht.app.rol.0034"></span></button>
+                                                        </div>
+                                                    </div>
+
+                                                    <!--<input type="text"-->
+                                                    <!--placeholder="ht.app.rol.0007"-->
+                                                    <!--u-meta='{"id":"roleName","type":"string","data":"roleeditData","field":"roleName"}'-->
+                                                    <!--class=" ecmi-input">-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="u-row">
+                                        <div class="u-col-md-12">
+                                            <div class="thbold w85"><span class="i18n" name="ht.app.rol.0010"></span></div>
+                                            <div class="tdlight">
+                                                <div id="test-select" class="u-combo" u-meta='{"type":"u-combobox","datasource":"roleTypeList","data":"roleeditData","field":"label","onlySelect":true}'>
+                                                    <div class="u-input-group u-has-feedback"><div class="u-input-group-before " style="color: red;z-index: 3;">*</div>
+                                                        <span class="u-form-control-feedback fa fa-angle-down" data-role="combo-button"></span>
+                                                        <input class="u-form-control" readonly/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="u-row">
+                                        <div class="u-col-md-12">
+                                            <div class="thbold w110"><span class="i18n" name="ht.app.rol.0021"></span></div>
+                                            <div class="tdlight">
+                                                <input type="text" class="u-form-control ecmi-input"
+                                                       u-meta='{"id":"remark","type":"string","data":"roleeditData","field":"remark"}'>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="btnBox">
+                    <div class="u-form-group">
+                        <button class="savebtn"  type="button" id="editUserForm" data-bind="click:modal.save"><span class="i18n" name="ht.app.rol.0022"></span></button>
+                    </div>
+                    <div class="u-form-group">
+                        <button class="cancelbtn" type="button" id="editcancelUserForm" data-dismiss="modal"
+                                data-bind="click:modal.cancel"><span class="i18n" name="ht.app.rol.0023"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--保存成功提示框-->
+<div class="modal fade" id="saveModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog " role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true" class="iconfont icon-cancel02"></span></button>
+                <h4 class="modal-title"><span class="i18n" name="ht.app.rol.0024"></span></h4>
+            </div>
+            <div class="modal-body">
+                <div class="cc">
+                    <div class="error">
+                        <div class="d-txt-box">
+                            <span class="iconfont icon-ok"></span>
+
+                            <p class="txt-p"><span class="i18n" name="ht.app.rol.0025"></span></p>
+
+                            <!-- <p class="txt-p1"><span class="i18n" name="ht.app.rol.0026"></span>!
+                                <span class="i18n" name="ht.app.rol.0027"></span><a href="#" data-dismiss="modal" data-bind="click:asign"><span class="i18n" name="ht.app.rol.0028"></span></a><span class="i18n" name="ht.app.rol.0029"></span>
+                            </p> -->
+                        </div>
+                        <div class="cl"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--分配功能-->
+<div class="modal fade" id="asignFunModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog " role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true" class="iconfont icon-cancel02"></span></button>
+                <h4 class="modal-title"><span class="i18n" name="ht.app.rol.0028"></span></h4>
+            </div>
+            <div class="modal-body">
+                <div class="main-box">
+                    <div class="main-left-box">
+                        <div class="con-box">
+                            <h2 class="hd"><span class="i18n" name="ht.app.rol.0030"></span></h2>
+
+                            <div class="con overflow auto h350">
+                                <div class="d-con ">
+                                    <div class="">
+                                        <div>
+                                            <div class="ztree"
+                                                 u-meta='{"id":"tree1","data":"groupLeftDataTable","type":"tree","idField":"id","pidField":"pid","nameField":"appName","setting":"treeSetting"}'></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-center-box">
+                        <div class="ipt-box">
+                            <div class="aBtn-box">
+                                <a class="aBtn" data-bind="click:groupOneRightSelect">
+                                    <i class="uf uf-anglearrowpointingtoright"></i></a>
+                                <a class="aBtn" data-bind="click:groupAllRightSelect">
+                                    <i class="uf uf-doubleanglepointingtoright uf-2arrow-right"></i></a>
+                                <a class="aBtn" data-bind="click:groupOneLeftSelect">
+                                    <i class="uf uf-anglepointingtoleft"></i></a>
+                                <a class="aBtn" data-bind="click:groupAllLeftSelect">
+                                    <i class="uf uf-doubleleftchevron uf-2arrow-left"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-right-box">
+                        <div class="con-box">
+                            <h2 class="hd"><span class="i18n" name="ht.app.rol.0031"></span></h2>
+
+                            <div class="con overflow auto h350">
+                                <div class="d-con">
+                                    <div class="">
+                                        <div>
+                                            <div class="ztree"
+                                                 u-meta='{"id":"tree2","data":"groupRightDataTable","type":"tree","idField":"id","pidField":"pid","nameField":"appName","setting":"treeSetting"}'></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cl"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="btnBox">
+                    <div class="u-form-group">
+                        <button class="savebtn" type="button" data-bind="click:saveAsign"><span class="i18n" name="ht.app.rol.0022"></span></button>
+                    </div>
+                    <div class="u-form-group">
+                        <button class="cancelbtn" type="button" data-dismiss="modal"><span class="i18n" name="ht.app.rol.0032"></span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--操作成功/失败提示-->
+<div class="modal fade" id="hintModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog " role="document">
+        <div class="modal-content" data-bind="css:{modalfail:hintModal.type}">
+            <div class="modal-body">
+                <div class="cc">
+                    <div class="error">
+                        <span class="iconfont icon-tishi icontishi" data-bind="css:{iconok:hintModal.type}"></span>
+                        <span data-bind="text:hintModal.msg,css:{fail:hintModal.type}"></span>
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true" class="iconfont icon-cancel02"></span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--删除提示-->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog " role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true" class="iconfont icon-cancel02"></span></button>
+                <h4 class="modal-title"><span class="i18n" name="ht.app.rol.0024"></span></h4>
+            </div>
+            <div class="modal-body">
+                <div class="cc">
+                    <div class="error">
+                        <b></b>
+                        <span class="i18n" name="ht.app.rol.0033"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="btnBox">
+                    <div class="u-form-group">
+                        <button type="button" class="savebtn" id="delconfirm" data-bind="click:deleteconfirm"><span class="i18n" name="ht.app.rol.0034"></span></button>
+                    </div>
+                    <div class="u-form-group">
+                        <button type="button" class="cancelbtn" data-dismiss="modal"><span class="i18n" name="ht.app.rol.0032"></span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

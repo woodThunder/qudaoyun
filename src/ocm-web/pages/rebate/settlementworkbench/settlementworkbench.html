@@ -1,0 +1,108 @@
+<style type="text/css">
+.ui-operate-btn {
+  float: left !important;
+}
+</style>
+<div class="ui-panel ui-list-panel">
+  <div>
+    <div class="page-title">
+      <span>返利结算工作台</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+
+  <ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+  </ui-searchbox>
+
+  <div class="ui-panel-body">
+    <div class="ui-table-container">
+      <div class="ui-panel-body-head">
+      </div>
+
+      <ui-grid params='options:$root.grid1Option,vm:$root'>
+      </ui-grid>
+      <div class="ui-statistics margin-top-10">
+        已选择
+        <span class="font-c-blue" data-bind="text:SalesPolicyList.selectedIndices().length"></span>项数据
+      </div>
+      <div class="pagination-right">
+        <div id='pagination' class='pagination u-pagination pagination-sm'
+          u-meta='{"type":"pagination","data":"SalesPolicyList","pageChange":"pageChange","sizeChange":"sizeChange"}'>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 统计结果 start -->
+<div class="ui-panel  ui-bill-panel ui-name-140" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span>返利结算工作台</span>
+    </div>
+    <div class="ui-panel-btn-bg">
+      <div class="ui-operate-btn">
+        <ui-buttons params='datasource:$root.button1Source'>
+        </ui-buttons>
+      </div>
+    </div>
+  </div>
+  <div class="margin-top-20"></div>
+  <div class="ui-panel-body">
+    <div class="ui-table-container" id="customerScopeInfo">
+      <ui-grid params='options:$root.grid2Option,vm:$root'>
+      </ui-grid>
+    </div>
+  </div>
+</div>
+<!-- 统计结果 end -->
+<!--结算结果 start-->
+<div class="ui-panel ui-bill-detail ui-name-140" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span>返利结算工作台</span>
+    </div>
+    <div class="ui-panel-btn-bg">
+      <div class="ui-operate-btn">
+        <ui-buttons params='datasource:$root.button2Source'>
+        </ui-buttons>
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-body">
+    <div class="ui-table-container margin-top-20">
+      <ui-grid params='options:$root.grid3Option,vm:$root'>
+      </ui-grid>
+    </div>
+  </div>
+</div>
+<!--结算结果 end-->
+<!-- 结算结果弹框 start-->
+<div style="display: none;" id="dialog_settlement_result">
+  <div class="u-msg-title">
+    <h4>提示</h4>
+  </div>
+  <div class="ui-panel-body" style="width: 95%;margin-left: 2%;">
+    <i class="uifont icon-tubiao-zhengque font-c-base">本次结算已完成！</i>
+  </div>
+  <div class="u-msg-footer">
+    <a class="ui-btn ui-btn-primary J-cancel margin-right-5">继续结算</a>
+    <a class="ui-btn ui-btn-primary J-confirm margin-right-5">查看结果</a>
+  </div>
+</div>
+<!-- 结算结果弹框 end-->
+<!-- 查看结果 start-->
+<div style="display: none;" id="dialog_view_result">
+  <div class="u-msg-title">
+    <h4></h4>
+  </div>
+  <div class="ui-panel-body" style="width: 95%;margin-left: 2%;">
+    haha
+  </div>
+</div>
+<!-- 查看结果 end-->

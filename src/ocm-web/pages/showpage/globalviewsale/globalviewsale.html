@@ -1,0 +1,1745 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <!--360 使用Google Chrome Frame-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <!--优先使用 IE 最新版本和 Chrome-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="bootstrap admin template">
+    <meta name="author" content="">
+    <title>云工作台</title>
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="globalviewsale.css">
+    <link rel="stylesheet" type="text/css" href="antd/antd.css">
+    <script src="../../../vendor/jquery/jquery-1.11.2.js"></script>
+    <script src="../../../vendor/echarts/echarts.js"></script>
+    <script src="../../../vendor/echarts/china.js"></script>
+    <script src="js/bootstrap-datetimepicker.min.js"></script>
+    <script src="/wbalone/apworkbench/trd/echarts/custom.js"></script>
+</head>
+
+<body>
+    <div class="p1_header">
+        <div class="p1_header-title">
+            <span>渠道云中台</span>
+        </div>
+        <!-- <div class="p1_header-border"></div> -->
+        <!-- <div class="p1_header-left"></div> -->
+        <!-- <div class="p1_header-time"></div> -->
+        <!-- <div class="p1_header-right"></div> -->
+        <!-- <div class="p1_header-right-btn">
+            <a class="p1_num" id="p1_fullscreen" href="#"><img src="img/home.png"></a>
+            <a class="p1_num" id="p1_viewClose" href="#"><img src="img/viewclose.png"></a>
+            <a class="p1_num" id="p1_viewSettings" href="#"><img src="img/setting.png"></a>
+        </div> -->
+    </div>
+
+    <div class="contnet">
+        <div class="p1_sale-Content">
+            <div class="dingdanzhongxin-title">
+            </div>
+            <div class="p1_left">
+                <!--整体销售情况  start-->
+
+                <div class="p1_sales-status">
+                    <div class="p1_child-title">
+                        <!-- <a class="p1_sales-status-bg" href="#"></a>-->
+                        整体销售情况
+                    </div>
+                    <div class="p1_total-money">
+                        <a class="p1_num" id="p1_totalSales" href="#">1223946.23</a>
+                        <a class="p1_text" href="#">总销售金额</a>
+                    </div>
+                    <div class="p1_total-amount">
+                        <a class="p1_num" id="p1_totalMainNum" href="#">432</a>
+                        <a class="p1_text" href="#">销售数量</a>
+                    </div>
+                    <div class="p1_total-num">
+                        <a class="p1_num" id="p1_saleMainNum" href="#">67</a>
+                        <a class="p1_text" href="#">交易笔数</a>
+                    </div>
+                </div>
+                <!--整体销售情况  end-->
+                <!--客户销售排行  start-->
+                <div class="p1_sales-rank">
+                    <div class="p1_child-title">
+                        <!-- <a class="p1_sales-rank-bg" href="#"></a> -->
+                        客户销售排行
+                    </div>
+                    <div class="p1_rank-list">
+                        <ul>
+                            <li>
+                                <span class="p1_list-num p1_icon p1_num1"> </span><a href="#">曲美家具北京分公司</a>
+                                <div class="p1_rank-bar"><span></span></div>
+                                <span class="p1_sales-amount">10000</span>
+                            </li>
+                            <li>
+                                <span class="p1_list-num p1_icon p1_num2"> </span><a href="#">曲美家具天津分公司</a>
+                                <div class="p1_rank-bar"><span style="width: 90%;"></span></div>
+                                <span class="p1_sales-amount">9000</span>
+                            </li>
+                            <li>
+                                <span class="p1_list-num p1_icon p1_num3"> </span><a href="#">曲美家具河北分公司</a>
+                                <div class="p1_rank-bar"><span style="width: 80%;"></span></div>
+                                <span class="p1_sales-amount">8000</span>
+                            </li>
+                            <li>
+                                <span class="p1_list-num">4</span><a href="#">曲美家具河南分公司</a>
+                                <div class="p1_rank-bar"><span style="width: 70%;"></span></div>
+                                <span class="p1_sales-amount">7000</span>
+                            </li>
+                            <li>
+                                <span class="p1_list-num">5</span><a href="#">曲美家具山西分公司</a>
+                                <div class="p1_rank-bar"><span style="width: 60%;"></span></div>
+                                <span class="p1_sales-amount">6000</span>
+                            </li>
+                            <li>
+                                <span class="p1_list-num">6</span><a href="#">曲美家具辽宁分公司</a>
+                                <div class="p1_rank-bar"><span style="width: 50%;"></span></div>
+                                <span class="p1_sales-amount">5000</span>
+                            </li>
+                            <li>
+                                <span class="p1_list-num">7</span><a href="#">曲美家具新疆分公司</a>
+                                <div class="p1_rank-bar"><span style="width: 40%;"></span></div>
+                                <span class="p1_sales-amount">4000</span>
+                            </li>
+                            <!-- <li>
+                            <span class="p1_list-num">8</span><a href="#">曲美家具四川分公司</a>
+                            <div class="p1_rank-bar"><span style="width: 30%;"></span></div>
+                            <span class="p1_sales-amount">3000</span>
+                        </li>
+                        <li>
+                            <span class="p1_list-num">9</span><a href="#">曲美家具内蒙分公司</a>
+                            <div class="p1_rank-bar"><span style="width: 20%;"></span></div>
+                            <span class="p1_sales-amount">2000</span>
+                        </li>
+                        <li>
+                            <span class="p1_list-num">10</span><a href="#">曲美家具上海分公司</a>
+                            <div class="p1_rank-bar"><span style="width: 10%;"></span></div>
+                            <span class="p1_sales-amount">1000</span>
+                        </li> -->
+
+                        </ul>
+                    </div>
+                </div>
+                <!--客户销售排行  end-->
+
+            </div>
+            <div class="p1_middle">
+                <div id="p1_main">
+                </div>
+                <div class="p1_middle-bottom">
+                    <div class="p1_child-title">
+                        <!-- <a class="p1_middle-bottom-bg" href="#"></a> -->
+                        销售金额
+                    </div>
+                    <div class="p1_sales-money">
+                        <div id="p1_sales-money"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="p1_right">
+                <div class="p1_right-top">
+                    <!--实时订单  start-->
+                    <div class="p1_child-title">
+                        <!-- <a class="p1_right-top-bg" href="#"></a> -->
+                        实时订单
+                    </div>
+                    <div class="p1_realTime-order">
+                        <ul class="p1_realTime-title">
+                            <li>销售员</li>
+                            <li>订单金额</li>
+                            <li>订单时间</li>
+                        </ul>
+                        <ul class="p1_realTime-value">
+                            <div class="p1_u-loader">
+                                <div class="p1_ant-spin ant-spin-lg ant-spin-spinning">
+                                    <span class="p1_ant-spin-dot">
+                                        <i></i><i></i><i></i><i></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <li><span>窦贺</span><span class="p1_color-golden">2000.00</span> <span>12:20:55</span></li>
+                            <li><span>于水峰</span><span class="p1_color-golden">1000.00</span> <span>12:10:22</span></li>
+                            <li><span>杜晓东</span><span class="p1_color-golden">3000.00</span> <span>12:05:33</span></li>
+                            <li><span>李慧静</span><span class="p1_color-golden">5000.00</span> <span>12:03:11</span></li>
+                            <li><span>郝琳杰</span><span class="p1_color-golden">2000.00</span> <span>12:02:44</span></li>
+                            <li><span>高鹏</span><span class="p1_color-golden">1000.00</span> <span>12:01:22</span></li>
+                            <li><span>冯婵</span><span class="p1_color-golden">5000.00</span> <span>11:55:33</span></li>
+                            <li><span>彭军伟</span><span class="p1_color-golden">3000.00</span> <span>11:54:44</span></li>
+                            <li><span>王睿</span><span class="p1_color-golden">7000.00</span> <span>11:34:55</span></li>
+                        </ul>
+                    </div>
+                    <!--实时订单  end-->
+                </div>
+                <!--销售员排行  start-->
+                <div class="p1_sales-person">
+                    <div class="p1_child-title">
+                        <!-- <a class="p1_sales-person-bg" href="#"></a> -->
+                        销售员排行
+                    </div>
+                    <div class="p1_child-list">
+                        <ul>
+                            <li>
+                                <span class="p1_list-num p1_icon p1_num1"> </span>
+                                <a href="#">窦贺</a>
+                                <div class="p1_rank-bar"><span></span></div>
+                                <span class="p1_sales-amount">100000</span>
+                            </li>
+                            <li>
+                                <span class="p1_list-num p1_icon p1_num2"> </span>
+                                <a href="#">于水峰</a>
+                                <div class="p1_rank-bar"><span style="width: 80%"></span></div>
+                                <span class="p1_sales-amount">90000</span>
+                            </li>
+                            <li>
+                                <span class="p1_list-num p1_icon p1_num3"> </span>
+                                <a href="#">杜晓东</a>
+                                <div class="p1_rank-bar"><span style="width: 80%"></span></div>
+                                <span class="p1_sales-amount">80000</span>
+                            </li>
+                            <li>
+                                <span class="p1_list-num">4</span>
+                                <a href="#">李慧静</a>
+                                <div class="p1_rank-bar"><span style="width: 60%"></span></div>
+                                <span class="p1_sales-amount">70000</span>
+                            </li>
+                            <li>
+                                <span class="p1_list-num">5</span>
+                                <a href="#">高鹏</a>
+                                <div class="p1_rank-bar"><span style="width: 50%"></span></div>
+                                <span class="p1_sales-amount">60000</span>
+                            </li>
+                            <li>
+                                <span class="p1_list-num">6</span>
+                                <a href="#">王睿</a>
+                                <div class="p1_rank-bar"><span style="width: 30%"></span></div>
+                                <span class="p1_sales-amount">50000</span>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <!--销售员排行  end-->
+
+            </div>
+        </div>
+        <div class="p2_stock-Content">
+            <div class="kucunzhongxin-title">
+            </div>
+            <div class="p2_left">
+                <!--整体库存情况  start-->
+                <div class="p2_stock-status">
+                    <div class="p2_child-title">
+                        <!-- <a class="stock-status-bg" href="#"></a> -->
+                        整体库存情况
+                    </div>
+                    <div class="p2_board">
+                        <div class="p2_total-whole">
+                            <a class="p2_num" id="p2_totalstock" href="#"></a>
+                            <a class="p2_text" href="#">商品数量</a>
+                        </div>
+                        <div class="p2_total-store">
+                            <a class="p2_num" id="p2_totalDepotNum" href="#"></a>
+                            <a class="p2_text" href="#">仓库数量</a>
+                        </div>
+                    </div>
+                </div>
+                <!--整体库存情况  end-->
+
+                <!--售罄率  start-->
+                <div class="p2_stock-rank">
+                    <div class="p2_child-title">
+                        <!-- <a class="p2_stock-rank-bg" href="#"></a> -->
+                        发销率
+                    </div>
+                    <div class="p2_rank-list">
+                        <ul id="p2_saleout">
+                        </ul>
+                    </div>
+                </div>
+                <!--售罄率  end-->
+
+            </div>
+            <div class="p2_middle">
+                <div id="p2_main">
+                </div>
+                <div class="p2_middle-bottom">
+                    <div class="p2_child-title">
+                        <!-- <a class="p2_middle-bottom-bg" href="#"> </a> -->
+                        预警商品
+                    </div>
+                    <div class="p2_warning-goods">
+                        <div class="p2_child-header">
+                            <span class="p2_goodsName">商品</span>
+                            <span class="p2_storageName">仓库</span>
+                            <span class="p2_availableNum">可用量</span>
+                            <span class="p2_onHandNum">现存量</span>
+                            <span class="p2_onOrderNum">在途量</span>
+                        </div>
+                        <div class="p2_child-content">
+                            <ul id="p2_restnumwarning">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="p2_right">
+                <div class="p2_right-top">
+                    <!--品类占比  start-->
+                    <div class="p2_child-title">
+                        <!-- <a class="p2_right-top-bg" href="#"> </a> -->
+                        库存占比
+                    </div>
+                    <div class="p2_category-ratio">
+                        <div id="p2_category-ratio"></div>
+                    </div>
+                    <!--品类占比  end-->
+                </div>
+                <!--高库龄商品  start-->
+                <div class="p2_High-age-goods">
+                    <div class="p2_child-title">
+                        <!-- <a class="p2_High-age-goods-bg" href="#"> </a> -->
+                        高库龄商品
+                    </div>
+                    <div class="p2_rank-list">
+                        <ul id="p2_highagegoods">
+                            <li>
+                                <span class="p2_list-num p2_icon p2_num1"></span>
+                                <a href="###" class="p2_goods-name" title="免烫衬衫男短袖衬衣">免烫衬衫男短袖衬衣</a>
+                                <div class="p2_rank-bar">
+                                    <div class="p2_rankBar-width"><span></span></div>
+                                </div>
+                                <span class="p2_high-amount">20000个</span>
+                            </li>
+                            <li>
+                                <span class="p2_list-num p2_icon p2_num2"></span>
+                                <a href="###" class="p2_goods-name" title="【DP免烫】秋季男士长袖衬衫">【DP免烫】秋季男士长袖衬衫</a>
+                                <div class="p2_rank-bar">
+                                    <div class="p2_rankBar-width"><span style="width: 90%"></span></div>
+                                </div>
+                                <span class="p2_high-amount">20000个</span>
+                            </li>
+                            <li>
+                                <span class="p2_list-num p2_icon p2_num3"></span>
+                                <a href="###" class="p2_goods-name" title="秋季新款男士长袖衬衫">秋季新款男士长袖衬衫</a>
+                                <div class="p2_rank-bar">
+                                    <div class="p2_rankBar-width"><span style="width: 80%"></span></div>
+                                </div>
+                                <span class="p2_high-amount">20000个</span>
+                            </li>
+                            <li>
+                                <span class="p2_list-num p2_icon ">4</span>
+                                <a href="###" class="p2_goods-name" title="男士长袖衬衫男修身">男士长袖衬衫男修身</a>
+                                <div class="p2_rank-bar">
+                                    <div class="p2_rankBar-width"><span style="width: 70%"></span></div>
+                                </div>
+                                <span class="p2_high-amount">20000个</span>
+                            </li>
+                            <li>
+                                <span class="p2_list-num p2_icon ">5</span>
+                                <a href="###" class="p2_goods-name" title="【DP免烫】秋季男士休闲裤">【DP免烫】秋季男士休闲裤</a>
+                                <div class="p2_rank-bar">
+                                    <div class="p2_rankBar-width"><span style="width: 60%"></span></div>
+                                </div>
+                                <span class="p2_high-amount">20000个</span>
+                            </li>
+                            <li>
+                                <span class="p2_list-num p2_icon ">6</span>
+                                <a href="###" class="p2_goods-name" title="【汉麻免烫】2018秋季男士长袖衬衫">【汉麻免烫】2018秋季男士长袖衬衫</a>
+                                <div class="p2_rank-bar">
+                                    <div class="p2_rankBar-width"><span style="width: 50%"></span></div>
+                                </div>
+                                <span class="p2_high-amount">20000个</span>
+                            </li>
+                            <li>
+                                <span class="p2_list-num p2_icon ">7</span>
+                                <a href="###" class="p2_goods-name" title="【DP免烫】长袖衬衫男2018秋季新品">【DP免烫】长袖衬衫男2018秋季新品</a>
+                                <div class="p2_rank-bar">
+                                    <div class="p2_rankBar-width"><span style="width: 40%"></span></div>
+                                </div>
+                                <span class="p2_high-amount">20000个</span>
+                            </li>
+                            <li>
+                                <span class="p2_list-num p2_icon ">8</span>
+                                <a href="###" class="p2_goods-name" title="短袖衬衫男 纯棉格子衬衫男修身">短袖衬衫男 纯棉格子衬衫男修身</a>
+                                <div class="p2_rank-bar">
+                                    <div class="p2_rankBar-width"><span style="width: 30%"></span></div>
+                                </div>
+                                <span class="p2_high-amount">20000个</span>
+                            </li>
+                            <li>
+                                <span class="p2_list-num p2_icon ">9</span>
+                                <a href="###" class="p2_goods-name" title="雅戈尔youngor 【汉麻免烫】 2018秋季男士长袖衬衫">雅戈尔youngor
+                                    【汉麻免烫】 2018秋季男士长袖衬衫</a>
+                                <div class="p2_rank-bar">
+                                    <div class="p2_rankBar-width"><span style="width: 20%"></span></div>
+                                </div>
+                                <span class="p2_high-amount">20000个</span>
+                            </li>
+                            <li>
+                                <span class="p2_list-num p2_icon ">10</span>
+                                <a href="###" class="p2_goods-name" title="短袖t恤男 纯色短袖T恤 男士短袖Polo衫 商">短袖t恤男 纯色短袖T恤
+                                    男士短袖Polo衫 商</a>
+                                <div class="p2_rank-bar">
+                                    <div class="p2_rankBar-width"><span style="width: 10%"></span></div>
+                                </div>
+                                <span class="p2_high-amount">20000个</span>
+                            </li>
+                            <li>
+                                <span class="p2_list-num p2_icon ">11</span>
+                                <a href="###" class="p2_goods-name" title="【丝光棉】夏季男士花纹短袖T恤 商务休闲 蓝">【丝光棉】夏季男士花纹短袖T恤 商务休闲
+                                    蓝</a>
+                                <div class="p2_rank-bar">
+                                    <div class="p2_rankBar-width"><span style="width: 5%"></span></div>
+                                </div>
+                                <span class="p2_high-amount">20000个</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--高库龄商品  end-->
+
+            </div>
+        </div>
+    </div>
+    <div class="p3">
+        <div class="p3_1">
+            <div class="p3_1_child-title">
+                待办事项
+            </div>
+            <div class="left-first-panel">
+                <div class="left-first-item">
+                    <a class="route cursor-hand v-center" href="index-view.html?type=daishenhe#/saleorder"
+                        value="saleorder" name="销售订单">
+                        <div class="left-first-item-num">23</div>
+                        <div class="left-first-item-text">
+                            <!-- <img alt="image" src="img3//middle-index/icon-middle-1.png" width="15px"
+                                height="15px" /> -->
+                            待订单审核
+                        </div>
+                    </a>
+                </div>
+                <div class="left-first-item">
+                    <a class="route cursor-hand v-center" href="index-view.html?type=daifahuo#/deliveryOrder"
+                        value="deliveryOrder" name="发货单">
+                        <div class="left-first-item-num">56</div>
+                        <div class="left-first-item-text">
+                            <!-- <img alt="image" src="img3//middle-index/icon-middle-2.png" width="15px"
+                                height="15px" /> -->
+                            待发货审核
+                        </div>
+                    </a>
+                </div>
+                <div class="left-first-item">
+                    <a class="route cursor-hand v-center" href="index-view.html#/stock_sale_out_order"
+                        value="stock_sale_out_order" name="销售出库单">
+                        <div class="left-first-item-num">12</div>
+                        <div class="left-first-item-text">
+                            <!-- <img alt="image" src="img3//middle-index/icon-middle-3.png" width="15px" height="15px" /> -->
+                            待出库安排
+                        </div>
+                    </a>
+                </div>
+                <div class="left-first-item">
+                    <a class="route cursor-hand v-center" href="index-view.html#/rejectorder" value="rejectorder"
+                        name="退货订单">
+                        <div class="left-first-item-num">33</div>
+                        <div class="left-first-item-text">
+                            <!-- <img alt="image" src="img3//middle-index/icon-middle-4.png" width="15px"
+                                height="15px" /> -->
+                            待退单审核
+                        </div>
+                    </a>
+                </div>
+                <div class="left-first-item-last">
+                    <a class="route cursor-hand v-center" href="index-view.html?type=daishoukuan#/gatheringbill"
+                        value="gatheringbill" name="收款单">
+                        <div class="left-first-item-num">28</div>
+                        <div class="left-first-item-text">
+                            <!-- <img alt="image" src="img3//middle-index/icon-middle-5.png" width="15px" height="15px" /> -->
+                            待收款确认
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="yingshouqushi-title">
+                营收趋势
+            </div>
+            <div class="left-second-panel">
+                <div class="left-second-title">
+                    <div class="left-second-title-line1"></div>
+                    <div class="left-second-title-line2">
+                        <div class="left-second-title-line2-menu">
+                            <div class="left-second-title-line2-menu-item cursor-hand">
+                                订单金额
+                            </div>
+                            <div class="left-second-title-line2-menu-item-center cursor-hand">
+                                收款金额
+                            </div>
+                            <div class="left-second-title-line2-menu-item cursor-hand">
+                                订单量
+                            </div>
+                        </div>
+                        <div class="left-second-title-line2-right">
+                            <div class="left-second-title-line2-right-menu cursor-hand">本周</div>
+                            <div class="left-second-title-line2-right-menu cursor-hand color-red">本月</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="main3" class="e-charts-panel-main3">
+                </div>
+            </div>
+            <div class="bottom-title">
+                <div class="zhengcezhongxin-title">
+                </div>
+                <div class="qudaozhongxin-title">
+                </div>
+                <div class="huiyuanzhongxin-title">
+                </div>
+                <div class="jiesuanzhongxin-title">
+                </div>
+            </div>
+        </div>
+        <div class="p3_2">
+            <div class="p3_1_child-title">
+                营收简报
+            </div>
+            <div class="right-second-panel">
+                <div class="right-second-title">
+                    <div class="right-second-title-line1"></div>
+                    <div class="right-second-title-line2">
+                        <div class="right-second-title-line2-menu cursor-hand">今日</div>
+                        <div class="right-second-title-line2-menu cursor-hand">本周</div>
+                        <div class="right-second-title-line2-menu cursor-hand color-red">本月</div>
+                    </div>
+                </div>
+                <div class="right-second-content">
+                    <div class="right-second-content-box">
+                        <div class="right-second-content-box-line1">
+                            订单金额(元)
+                        </div>
+                        <div class="right-second-content-box-line2">
+                            <div class="right-second-content-box-line2-box">
+                                <div class="right-second-content-box-line2-left">
+                                    2353
+                                </div>
+                                <div class="right-second-content-box-line2-right">
+                                    (5笔)
+                                </div>
+                            </div>
+                            <div class="right-second-content-box-line3">
+                                <div class="right-second-content-box-line3-left">
+                                    比上月
+                                </div>
+                                <div class="right-second-content-box-line3-right color-red">
+                                    +9%
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="right-second-content-box-line3">
+                            <div class="right-second-content-box-line3-left">
+                                比上月
+                            </div>
+                            <div class="right-second-content-box-line3-right">
+
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="right-second-content-box">
+                        <div class="right-second-content-box-line1">
+                            收款金额(元)
+                        </div>
+                        <div class="right-second-content-box-line2">
+                            <div class="right-second-content-box-line2-box">
+                                <div class="right-second-content-box-line2-left">
+                                    4532
+                                </div>
+                                <div class="right-second-content-box-line2-right">
+                                    (4笔)
+                                </div>
+                            </div>
+                            <div class="right-second-content-box-line3">
+                                <div class="right-second-content-box-line3-left">
+                                    比上月
+                                </div>
+                                <div class="right-second-content-box-line3-right color-red">
+                                    +6%
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="right-second-content-box-line3">
+                                <div class="right-second-content-box-line3-left">
+                                    比上月
+                                </div>
+                                <div class="right-second-content-box-line3-right">
+    
+                                </div>
+                            </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="dingdanwanchengzhuangtaitongji-title">
+                客户订单统计
+            </div>
+            <div class="middle-half-panel">
+                <div class="middle-half-panel-title">
+                    <div class="middle-half-panel-title-line1">
+
+                    </div>
+                    <div class="middle-half-panel-title-line2">
+                        <div class="middle-half-panel-title-line2-menu cursor-hand">今日</div>
+                        <div class="middle-half-panel-title-line2-menu cursor-hand">本周</div>
+                        <div class="middle-half-panel-title-line2-menu cursor-hand color-red">本月</div>
+
+                    </div>
+                </div>
+                <div class="middle-half-panel-content">
+                    <div id="main1" class="e-charts-panel1">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="p3_3">
+            <div class="shangpinzhongxin-title">
+            </div>
+
+            <div class="dingdanwanchengzhuangtaitongji-title">
+                商品销售统计
+            </div>
+            <div class="middle-half-panel2 margin-left16">
+
+                <div class="middle-half-panel2-title">
+                    <div class="middle-half-panel2-title-line2">
+                        <div class="middle-half-panel2-title-line2-menu cursor-hand">今日</div>
+                        <div class="middle-half-panel2-title-line2-menu cursor-hand">本周</div>
+                        <div class="middle-half-panel2-title-line2-menu cursor-hand color-red">本月</div>
+
+                    </div>
+                </div>
+                <div class="middle-half-panel2-content">
+                    <div id="main2" class="e-charts-panel2">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="p3_4">
+            <div class="changxiaoshangpinpaihang-title">
+                畅销商品排行
+            </div>
+            <div class="right-fourth-panel">
+                <div class="right-fourth-panel-title">
+                    <!-- <div class="right-fourth-panel-title-line1">
+                        </div> -->
+                    <div class="right-fourth-panel-title-line2">
+                        <div class="right-fourth-panel-title-line2-menu cursor-hand">今日</div>
+                        <div class="right-fourth-panel-title-line2-menu cursor-hand color-red">本周</div>
+                        <div class="right-fourth-panel-title-line2-menu cursor-hand">本月</div>
+
+                    </div>
+                </div>
+                <div class="right-fourth-panel-content">
+                    <div class="right-fourth-panel-content-line">
+                        <div class="right-fourth-panel-content-line-left">
+
+                        </div>
+                        <div class="right-fourth-panel-content-line-middle">
+
+                        </div>
+                        <div class="right-fourth-panel-content-line-right">
+                        </div>
+                        <div class="right-fourth-panel-content-line-last">
+                        </div>
+                    </div>
+                    <div class="right-fourth-panel-content-line">
+
+                        <div class="right-fourth-panel-content-line-left">
+
+                        </div>
+                        <div class="right-fourth-panel-content-line-middle">
+
+                        </div>
+                        <div class="right-fourth-panel-content-line-right">
+                        </div>
+                        <div class="right-fourth-panel-content-line-last">
+                        </div>
+                    </div>
+                    <div class="right-fourth-panel-content-line">
+
+                        <div class="right-fourth-panel-content-line-left">
+
+                        </div>
+                        <div class="right-fourth-panel-content-line-middle">
+
+                        </div>
+                        <div class="right-fourth-panel-content-line-right">
+                        </div>
+                        <div class="right-fourth-panel-content-line-last">
+                        </div>
+                    </div>
+                    <div class="right-fourth-panel-content-line">
+
+                        <div class="right-fourth-panel-content-line-left">
+
+                        </div>
+                        <div class="right-fourth-panel-content-line-middle">
+
+                        </div>
+                        <div class="right-fourth-panel-content-line-right">
+                        </div>
+                        <div class="right-fourth-panel-content-line-last">
+                        </div>
+                    </div>
+                    <div class="right-fourth-panel-content-line">
+
+                        <div class="right-fourth-panel-content-line-left">
+
+                        </div>
+                        <div class="right-fourth-panel-content-line-middle">
+
+                        </div>
+                        <div class="right-fourth-panel-content-line-right">
+                        </div>
+                        <div class="right-fourth-panel-content-line-last">
+                        </div>
+                    </div>
+                    <div class="right-fourth-panel-content-line">
+
+                        <div class="right-fourth-panel-content-line-left">
+
+                        </div>
+                        <div class="right-fourth-panel-content-line-middle">
+                        </div>
+                        <div class="right-fourth-panel-content-line-right">
+                        </div>
+                        <div class="right-fourth-panel-content-line-last">
+                        </div>
+                    </div>
+                    <div class="right-fourth-panel-content-line">
+
+                        <div class="right-fourth-panel-content-line-left">
+
+                        </div>
+                        <div class="right-fourth-panel-content-line-middle">
+                        </div>
+                        <div class="right-fourth-panel-content-line-right">
+                        </div>
+                        <div class="right-fourth-panel-content-line-last">
+                        </div>
+                    </div>
+                    <div class="right-fourth-panel-content-line">
+
+                        <div class="right-fourth-panel-content-line-left">
+
+                        </div>
+                        <div class="right-fourth-panel-content-line-middle">
+                        </div>
+                        <div class="right-fourth-panel-content-line-right">
+                        </div>
+                        <div class="right-fourth-panel-content-line-last">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- settings -->
+    <div class="p1_setting">
+        <div>
+            <p class="p1_setting-title">销售组织</p>
+            <div class="p1_setting-opt">
+                <label class="p1_setting-name">销售组织</label>
+                <input type="text" readonly class="p1_setting-select setting-select-ref" placeholder="请选择"
+                    id="p1_saleOrg">
+
+            </div>
+        </div>
+        <div>
+            <p class="p1_setting-title">统计时间</p>
+            <div class="p1_setting-opt">
+                <label class="p1_setting-name">开始时间</label>
+                <input type="text" readonly class="p1_setting-select" placeholder="请选择开始时间" id="p1_startDate">
+            </div>
+            <div class="p1_setting-opt mt10">
+                <label class="p1_setting-name">更新时长</label>
+                <input type="text" class="p1_setting-input" id="p1_timerQuery" value="5"
+                    onkeyup="this.value = this.value.replace(/[^0-9]/g,'');"><span
+                    class="p1_setting-input-name">分钟</span>
+            </div>
+        </div>
+        <div class="p1_settingBtn">
+            <a class="p1_setting-btn cancel">取消</a><a class="p1_setting-btn confirm">确定</a>
+        </div>
+    </div>
+
+</body>
+<script src="globalviewsale.js"></script>
+<script src="globalviewinventory.js"></script>
+<!-- <script src="middle-channel.js"></script> -->
+<script src="/wbalone/trd/jquery/jquery-1.11.2.js"></script>
+<script src="/wbalone/trd/react/react.js"></script>
+<script src="/wbalone/trd/react/react-dom.min.js"></script>
+<script type="text/javascript">
+    window.u = {
+        DateTimeAdapter: function () {
+
+        }
+    }
+</script>
+
+<script src="/ocm-web/vendor/antd/antd.js"></script>
+
+<script type="text/javascript">
+    var routes = $(".route");
+    for (var i = 0; i < routes.length; i++) {
+        routes.eq(i).on("click", function (e) {
+            e.preventDefault();
+            var menuCode = e.target.parentElement.getAttribute("value");
+            if (!menuCode) {
+                e.target.parentElement.parentElement.getAttribute("value");
+            }
+            var menu = parent.parent.getCurrentMenu(menuCode)
+            parent.parent.handleClick(e, 1);
+        })
+    }
+
+
+    function onChange1(dateRange) {
+        var startTime = new Date(dateRange[0].format('YYYY-MM-DD') + " 00:00:00");
+        var endTime = new Date(dateRange[1].format('YYYY-MM-DD') + " 00:00:00");
+
+        $(".left-second-title-line2-right-menu").eq(0).removeClass("color-red");
+        $(".left-second-title-line2-right-menu").eq(1).removeClass("color-red");
+        if (revenueTrendParam[0] == 0) {
+            queryOrdertotalamoune(startTime, endTime)
+        } else if (revenueTrendParam[0] == 1) {
+            querymoneybystarttimeandendtime(startTime, endTime)
+        } else {
+            queryOrdertotalnum(startTime, endTime)
+        }
+        revenueTrendParam[1] = 2
+        revenueTrendParam[2] = startTime
+        revenueTrendParam[3] = endTime
+    }
+    function onChange2(dateRange) {
+        var startTime = new Date(dateRange[0].format('YYYY-MM-DD') + " 00:00:00");
+        var endTime = new Date(dateRange[1].format('YYYY-MM-DD') + " 00:00:00");
+        $(".right-second-title-line2-menu").eq(0).removeClass("color-red");
+        $(".right-second-title-line2-menu").eq(1).removeClass("color-red");
+        $(".right-second-title-line2-menu").eq(2).removeClass("color-red");
+        $(".right-second-content-box-line3-left")[0].innerHTML = "比上期"
+        $(".right-second-content-box-line3-left")[1].innerHTML = "比上期"
+        queryOrdertotalmoney(startTime, endTime, "/occ-b2b-order/b2b/home/query-orderbyday")
+        queryReceivablestotal(startTime, endTime, "/occ-settlement/web/settlement/query-receivablesbyday")
+
+    }
+
+    function onChange3(dateRange) {
+        var startTime = new Date(dateRange[0].format('YYYY-MM-DD') + " 00:00:00");
+        var endTime = new Date(dateRange[1].format('YYYY-MM-DD') + " 00:00:00");
+        $(".middle-half-panel-title-line2-menu").eq(0).removeClass("color-red")
+        $(".middle-half-panel-title-line2-menu").eq(1).removeClass("color-red")
+        $(".middle-half-panel-title-line2-menu").eq(2).removeClass("color-red")
+        queryOrderstatus(startTime, endTime);
+    }
+    function onChange4(dateRange) {
+        var startTime = new Date(dateRange[0].format('YYYY-MM-DD') + " 00:00:00");
+        var endTime = new Date(dateRange[1].format('YYYY-MM-DD') + " 00:00:00");
+        $(".middle-half-panel-title-line2-menu").eq(4).removeClass("color-red")
+        $(".middle-half-panel-title-line2-menu").eq(5).removeClass("color-red")
+        $(".middle-half-panel-title-line2-menu").eq(3).removeClass("color-red")
+        queryGoodsstatistics(startTime, endTime);
+    }
+
+    function onChange5(dateRange) {
+        var startTime = new Date(dateRange[0].format('YYYY-MM-DD') + " 00:00:00");
+        var endTime = new Date(dateRange[1].format('YYYY-MM-DD') + " 00:00:00");
+        $(".right-fourth-panel-title-line2-menu").eq(0).removeClass("color-red");
+        $(".right-fourth-panel-title-line2-menu").eq(1).removeClass("color-red");
+        $(".right-fourth-panel-title-line2-menu").eq(2).removeClass("color-red");
+        getHotGoods(startTime, endTime)
+    }
+    // // 基于准备好的dom，初始化echarts实例
+    // comp = ReactDOM.render(React.createElement(DatePicker.RangePicker, {
+    //     placeholder: ["开始日期", "结束日期"],
+    //     showTime: true,
+    //     format: "YYYY-MM-DD",
+    //     onOk: onChange1,
+    //     disabled: false
+    // }), $("#antd-input1")[0]);
+    // comp1 = ReactDOM.render(React.createElement(DatePicker.RangePicker, {
+    //     placeholder: ["开始日期", "结束日期"],
+    //     showTime: true,
+    //     format: "YYYY-MM-DD",
+    //     onOk: onChange2,
+    //     disabled: false
+    // }), $("#antd-input2")[0]);
+
+    // comp2 = ReactDOM.render(React.createElement(DatePicker.RangePicker, {
+    //     placeholder: ["开始日期", "结束日期"],
+    //     showTime: true,
+    //     format: "YYYY-MM-DD",
+    //     onOk: onChange3,
+    //     disabled: false
+    // }), $("#antd-input3")[0]);
+    // comp3 = ReactDOM.render(React.createElement(DatePicker.RangePicker, {
+    //     placeholder: ["开始日期", "结束日期"],
+    //     showTime: true,
+    //     format: "YYYY-MM-DD",
+    //     onOk: onChange4,
+    //     disabled: false
+    // }), $("#antd-input4")[0]);
+
+    // comp4 = ReactDOM.render(React.createElement(DatePicker.RangePicker, {
+    //     placeholder: ["开始日期", "结束日期"],
+    //     showTime: true,
+    //     format: "YYYY-MM-DD",
+    //     onOk: onChange5,
+    //     disabled: false
+    // }), $("#antd-input5")[0]);
+</script>
+<script type="text/javascript">
+
+
+    // 基于准备好的dom，初始化echarts实例
+    var myChart1 = echarts.init(document.getElementById("main1"), "custom");
+    var myChart2 = echarts.init(document.getElementById("main2"), "custom");
+
+    option1 = {
+
+        title: {
+            // text: "已审核未配车各办事处占比",
+            textStyle: {
+                color: "#a3b3af",
+                fontSize: 14
+            },
+            padding: [5, 0, 0, 20]
+        },
+        tooltip: {
+            trigger: "item",
+            formatter: "{a} <br/>{b}: {c} ({d}%)"
+        },
+        series: [
+            {
+                name: "客户订单查询",
+                type: "pie",
+                radius: ["35%", "60%"],
+                avoidLabelOverlap: false,
+                label: {
+                    normal: {
+                        formatter: function (params) {
+                            return params.name + ":" + parseInt(params.percent) + "%";
+                        }
+                    },
+                    emphasis: {
+                        textStyle: {
+                            fontWeight: "bold"
+                        }
+                    }
+                },
+                data: [
+
+                ]
+            }
+        ]
+    };
+
+    option2 = {
+
+        title: {
+            // text: "已审核未配车各办事处占比",
+            textStyle: {
+                color: "#a3b3af",
+                fontSize: 14
+            },
+            padding: [5, 0, 0, 20]
+        },
+        tooltip: {
+            trigger: "item",
+            formatter: "{a} <br/>{b}: {c} ({d}%)"
+        },
+        series: [
+            {
+                name: "商品销售统计",
+                type: "pie",
+                radius: ["35%", "60%"],
+                avoidLabelOverlap: false,
+                label: {
+                    normal: {
+                        formatter: function (params) {
+                            return params.name + ":" + parseInt(params.percent) + "%";
+                        }
+                    },
+                    emphasis: {
+                        textStyle: {
+                            fontWeight: "bold"
+                        }
+                    }
+                },
+                data: [
+
+                ]
+            }
+        ]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart1.setOption(option1);
+    myChart2.setOption(option2);
+    var customerStr = localStorage.getItem('_A_P_customer');
+    var customer = JSON.parse(customerStr);
+    var currencyStr = localStorage.getItem("_A_P_currency");
+    var currency = JSON.parse(currencyStr) || {};
+
+    var today = new Date();
+    var today0 = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    var tomorrow = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
+    var day = today.getDay() || 7;
+    var sunday = new Date(today.getFullYear(), today.getMonth(), today.getDate() - day);
+    var monthFirst = new Date(today.getFullYear(), today.getMonth(), 1);
+
+
+    function queryOrderstatus(startTime, endTime) {
+        //订单完成状态统计
+        // $.ajax({
+        //     type: "get",
+        //     url: "/occ-b2b-order/b2b/home/query-middleorderstatus",
+        //     dataType: "json",
+        //     data: {
+        //         // supplier: customer.id,
+        //         startTime: startTime.getTime(),
+        //         endTime: endTime.getTime()
+        //     },
+        //     success: function (data) {
+
+
+                var dataStr = '[["04",'+Math.floor(Math.random()*100)+'],["08",'+Math.floor(Math.random()*100)+'],["07",'+Math.floor(Math.random()*100)+'],["01",'+Math.floor(Math.random()*100)+'],["10",'+Math.floor(Math.random()*100)+'],["02",'+Math.floor(Math.random()*100)+'],["06",'+Math.floor(Math.random()*100)+']]'
+                
+                var data = JSON.parse(dataStr);
+
+
+                var arr = [];
+                for (var i = 0; i < data.length; i++) {
+                    var value = data[i][1]
+                    var name = data[i][0]
+                    var str = ""
+                    switch (name) {
+                        case "01":
+                            str = "北京大区"
+                            break;
+                        case "02":
+                            str = "东北大区"
+                            break;
+                        case "03":
+                            str = "西北大区"
+                            break;
+                        case "04":
+                            str = "华南大区"
+                            break;
+                        case "05":
+                            str = "上海大区"
+                            break;
+                        case "06":
+                            str = "华东大区"
+                            break;
+                        case "07":
+                            str = "华北大区"
+                            break;
+                        case "08":
+                            str = "海外大区"
+                            break;
+                        case "09":
+                            str = "西南大区"
+                            break;
+                        default:
+                            str = "";
+                            break;
+                    }
+                    arr.push({ value: value, name: str })
+                }
+                option1.series[0].data = arr
+                myChart1.setOption(option1);
+
+        //     }
+        // });
+    }
+
+    queryOrderstatus(monthFirst, today);
+
+    function queryGoodsstatistics(startTime, endTime) {
+        //商品销售统计
+        // $.ajax({
+        //     type: "get",
+        //     url: "/occ-b2b-order/b2b/home/query-middlegoodsstatistics",
+        //     dataType: "json",
+        //     data: {
+        //         // supplier: customer.id,
+        //         startTime: startTime.getTime(),
+        //         endTime: endTime.getTime()
+        //     },
+        //     success: function (data) {
+                
+                var dataStr = '[["工具刷",'+Math.floor(Math.random()*1000)+'],["防潮腻子粉",'+Math.floor(Math.random()*1000)+'],["K11防水浆",'+Math.floor(Math.random()*1000)+'],["美缝剂",'+Math.floor(Math.random()*1000)+'],["6X-低配",'+Math.floor(Math.random()*1000)+'],["6X-高配",'+Math.floor(Math.random()*1000)+']]'
+                var data = JSON.parse(dataStr);
+                var arr = []
+                for (var i = 0; i < data.length; i++) {
+                    arr.push({ name: data[i][0], value: data[i][1] })
+                }
+                // arr = [{ name: "121", value: 12 }]
+                option2.series[0].data = arr
+                myChart2.setOption(option2);
+        //     }
+        // });
+    }
+    queryGoodsstatistics(monthFirst, today);
+
+    $(".middle-half-panel-title-line2-menu").eq(0).click(function () {
+        $(".middle-half-panel-title-line2-menu").eq(0).addClass("color-red")
+        $(".middle-half-panel-title-line2-menu").eq(1).removeClass("color-red")
+        $(".middle-half-panel-title-line2-menu").eq(2).removeClass("color-red")
+        queryOrderstatus(today0, tomorrow)
+    });
+    $(".middle-half-panel-title-line2-menu").eq(1).click(function () {
+        $(".middle-half-panel-title-line2-menu").eq(1).addClass("color-red")
+        $(".middle-half-panel-title-line2-menu").eq(0).removeClass("color-red")
+        $(".middle-half-panel-title-line2-menu").eq(2).removeClass("color-red")
+        queryOrderstatus(sunday, today)
+    });
+    $(".middle-half-panel-title-line2-menu").eq(2).click(function () {
+        $(".middle-half-panel-title-line2-menu").eq(2).addClass("color-red")
+        $(".middle-half-panel-title-line2-menu").eq(0).removeClass("color-red")
+        $(".middle-half-panel-title-line2-menu").eq(1).removeClass("color-red")
+        queryOrderstatus(monthFirst, today)
+    });
+    $(".middle-half-panel2-title-line2-menu").eq(0).click(function () {
+        $(".middle-half-panel2-title-line2-menu").eq(0).addClass("color-red")
+        $(".middle-half-panel2-title-line2-menu").eq(1).removeClass("color-red")
+        $(".middle-half-panel2-title-line2-menu").eq(2).removeClass("color-red")
+        queryGoodsstatistics(today0, tomorrow)
+    });
+    $(".middle-half-panel2-title-line2-menu").eq(1).click(function () {
+        $(".middle-half-panel2-title-line2-menu").eq(1).addClass("color-red")
+        $(".middle-half-panel2-title-line2-menu").eq(0).removeClass("color-red")
+        $(".middle-half-panel2-title-line2-menu").eq(2).removeClass("color-red")
+        queryGoodsstatistics(sunday, today)
+    });
+    $(".middle-half-panel2-title-line2-menu").eq(2).click(function () {
+        $(".middle-half-panel2-title-line2-menu").eq(2).addClass("color-red")
+        $(".middle-half-panel2-title-line2-menu").eq(0).removeClass("color-red")
+        $(".middle-half-panel2-title-line2-menu").eq(1).removeClass("color-red")
+        queryGoodsstatistics(monthFirst, today)
+    });
+
+
+
+    // 基于准备好的dom，初始化echarts实例
+    var myChart3 = echarts.init(document.getElementById("main3"), "custom");
+    option3 = {
+        color: ['#1890FF'],
+
+        tooltip: {
+            trigger: "axis"
+        },
+        calculable: true,
+        xAxis: [
+            {
+                type: "category",
+                data: []
+            }
+        ],
+        yAxis: [
+            {
+                type: "value"
+            }
+        ],
+        textStyle: {
+            color: "#fff",
+            fontWeight: 'normal',
+            fontFamily: '宋体'
+          },
+        series: [
+            {
+                name: "",
+                type: "bar",
+                data: []
+            },
+
+        ]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart3.setOption(option3);
+
+    function getCookie(name) {
+        var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+        if (arr = document.cookie.match(reg))
+            return unescape(arr[2]);
+        else
+            return null;
+    }
+
+    var userId = getCookie('_A_P_userId')
+    var msgdata = '{"msgtype":"all","pagenum":"1","pagesize":10,"receiver":"' + userId + '","status":"0","starttime":"","endtime":""}'
+    // var msgdata = '{"msgtype":"all","pagenum":"1","pagesize":10,"receiver":"U001","status":"0","starttime":"","endtime":"2018-06-30 11:52:58"}'
+
+    // //通知消息
+    // $.ajax({
+
+    //     type: "post",
+    //     url: "/iuap-saas-message-center/message/getMessageforMainView",
+    //     contentType: "application/x-www-form-urlencoded",
+    //     data: {
+    //         'data': msgdata
+    //     },
+    //     success: function (data) {
+    //         // data = { "msg": "消息查询成功", "data": { "msgnum": [{ "num": 2, "status": "read" }, { "num": 0, "status": "unread" }], "totalUnreadNum": 899, "message": [{ "id": "b739c624-a6e5-4b92-863c-3bac45c67e9c", "subject": "任务执行状态", "content": "任务执行失败,具体任务的url是http://10.11.112.23:8769/occ-b2c/task/b2c/order-audit/background-auto异常信息：I/O error on POST request for \"http://10.11.112.23:8769/occ-b2c/task/b2c/order-audit/background-auto?ts=1528443300044&username=admin&appId=3c8242c9467d059f9b718a890c9932ca\":Connection refused (Connection refused); nested exception is java.net.ConnectException: Connection refused (Connection refused)", "msgtype": "notice", "status": "0", "sender": "任务调度系统发送", "sendtime": "2018-06-08 15:35:00", "billid": null, "busitype": null, "tenantid": "tenant", "sysid": null, "tag": null, "exstatus01": null, "exstatus02": null, "exstatus03": null, "exdetail01": null, "exdetail02": null, "exdetail03": null }, { "id": "8a3bcb77-8a85-4f2f-bf0e-0391f42c511a", "subject": "任务执行状态", "content": "任务执行失败,具体任务的url是http://10.11.112.23:8769/occ-b2c/task/b2c/order-audit/background-auto异常信息：500 null", "msgtype": "notice", "status": "0", "sender": "任务调度系统发送", "sendtime": "2018-05-25 13:08:05", "billid": null, "busitype": null, "tenantid": "tenant", "sysid": null, "tag": null, "exstatus01": null, "exstatus02": null, "exstatus03": null, "exdetail01": null, "exdetail02": null, "exdetail03": null }, { "id": "4c5bb925-141b-41cd-8468-cd16f8716f93", "subject": "任务执行状态", "content": "任务执行失败,具体任务的url是http://10.11.112.23:8769/occ-b2c/task/b2c/order-audit/background-auto异常信息：500 null", "msgtype": "notice", "status": "0", "sender": "任务调度系统发送", "sendtime": "2018-05-25 10:40:00", "billid": null, "busitype": null, "tenantid": "tenant", "sysid": null, "tag": null, "exstatus01": null, "exstatus02": null, "exstatus03": null, "exdetail01": null, "exdetail02": null, "exdetail03": null }], "msgtype": [{ "id": "1", "typecode": "notice", "typename": "通知", "description": null, "tenantid": "tenant", "sysid": "wbalone", "msgid": null }, { "id": "2", "typecode": "earlywarning", "typename": "预警", "description": null, "tenantid": "tenant", "sysid": "wbalone", "msgid": null }, { "id": "3", "typecode": "task", "typename": "任务", "description": null, "tenantid": "tenant", "sysid": "wbalone", "msgid": null }] }, "status": 1 }
+    //         var message = data.data.message;
+    //         for (var i = 0; i < message.length; i++) {
+    //             $(".right-third-panel-content-line-point")[i].innerHTML = "●";
+    //             $(".right-third-panel-content-line-text")[i].innerHTML = message[i].subject;
+    //             $(".right-third-panel-content-line-date")[i].innerHTML = message[i].sendtime.substring(0, 10);
+    //         }
+    //     }
+    // });
+
+    //待订单审核数量
+    // $.ajax({
+    //     type: "get",
+    //     url: "/occ-b2b-order/b2b/home/query-ordercheckpendcount",
+    //     dataType: "json",
+    //     success: function (data) {
+    //         $(".left-first-item-num")[0].innerHTML = data
+    //     }
+    // });
+
+
+
+    //待发货审核数量
+    // $.ajax({
+    //     type: "get",
+    //     url: "/occ-b2b-order/b2b/home/query-deliverycheckpendcount",
+    //     dataType: "json",
+    //     success: function (data) {
+    //         $(".left-first-item-num")[1].innerHTML = data
+    //     }
+    // });
+
+    // //待出库安排数量
+    // $.ajax({
+    //     type: "get",
+    //     url: "/occ-b2b-order/b2b/home/query-deliveryoutbountcount",
+    //     dataType: "json",
+    //     success: function (data) {
+    //         $(".left-first-item-num")[2].innerHTML = data
+    //     }
+    // });
+    // //待审核退货单数量
+    // $.ajax({
+    //     type: "get",
+    //     url: "/occ-b2b-order/b2b/home/query-orderreturncount",
+    //     dataType: "json",
+    //     success: function (data) {
+    //         $(".left-first-item-num")[3].innerHTML = data
+    //     }
+    // });
+
+    // //代收款确认数量
+    // $.ajax({
+    //     type: "get",
+    //     url: "/occ-settlement/api/settlement/query-receivablesconfirmationcount",
+    //     dataType: "json",
+    //     success: function (data) {
+    //         $(".left-first-item-num")[4].innerHTML = data
+    //     }
+    // });
+
+
+    //订单金额查询
+    function queryOrdertotalamoune(startTime, endTime) {
+        // $.ajax({
+        //     type: "get",
+        //     url: "/occ-b2b-order/b2b/home/query-ordertotalamoune",
+        //     dataType: "json",
+        //     data: {
+        //         startTime: startTime.getTime(),
+        //         endTime: endTime.getTime()
+        //     },
+        //     success: function (data) {
+                var dataStr =""
+                //86400000
+                if ((endTime.getTime() - startTime.getTime()) > 500000000) {
+                    startTime = new Date(1551888000000);
+                      endTime = new Date(1553270400000)
+                    dataStr = "[[1551888000000,460],[1551974400000,2849],[1552060800000,14552.01],[1552147200000,7060],[1552233600000,33595.8],[1552320000000,10531.03],[1552406400000,1542],[1552492800000,212],[1552579200000,2190],[1552838400000,10494],[1552924800000,3160],[1553011200000,5670],[1553097600000,1189],[1553184000000,13864],[1553270400000,22464]]"
+                } else {
+                    startTime = new Date(1552838400000);
+                      endTime = new Date(1553270400000)
+                    dataStr = "[[1552752000000,2552],[1552838400000,10494],[1552924800000,3160],[1553011200000,5670],[1553097600000,1189],[1553184000000,13864],[1553270400000,23728]]"
+                }
+                var data = JSON.parse(dataStr);
+               
+                var arr1 = []
+                var arr2 = []
+                for (var i = startTime.getTime(); i < endTime.getTime(); i += 86400000) {
+                    var date = new Date(i);
+                    var month = date.getMonth() + 1;
+                    var day = date.getDate();
+                    var str = month + "月" + day + "日"
+                    arr1.push(str);
+                    var flag = true
+                    for (j = 0; j < data.length; j++) {
+                        if (i == data[j][0]) {
+                            flag = false
+                            arr2.push(data[j][1])
+                            break;
+                        }
+                    }
+                    if (flag) {
+                        arr2.push(0)
+                    }
+                }
+                option3.xAxis[0].data = arr1
+                option3.series[0].data = arr2
+                option3.series[0].name = "订单金额"
+                myChart3.setOption(option3);
+        //     }
+
+        // });
+    }
+
+    queryOrdertotalamoune(monthFirst, today)
+
+
+
+    //收款金额查询
+    function querymoneybystarttimeandendtime(startTime, endTime) {
+        var startStr = startTime.getFullYear() + "-" + (startTime.getMonth() + 1) + "-" + startTime.getDate() + " " + startTime.getHours() + ":" + startTime.getMinutes() + ":" + startTime.getSeconds()
+        var endStr = endTime.getFullYear() + "-" + (endTime.getMonth() + 1) + "-" + endTime.getDate() + " " + endTime.getHours() + ":" + endTime.getMinutes() + ":" + endTime.getSeconds()
+
+        // $.ajax({
+        //     type: "get",
+        //     url: "/occ-settlement/api/settlement/query-querymoneybystarttimeandendtime",
+        //     dataType: "json",
+        //     data: {
+        //         startTime: startStr,
+        //         endTime: endStr
+        //     },
+        //     success: function (data) {
+                var dataStr=""
+                //86400000
+                if ((endTime.getTime() - startTime.getTime()) > 500000000) {
+                    startTime = new Date(1551369600000);
+                      endTime = new Date(1553184000000)
+                    dataStr = "[[1551369600000,220],[1551974400000,5],[1552060800000,100],[1552233600000,100],[1552320000000,2000],[1552492800000,102],[1552579200000,300],[1552752000000,1000],[1552838400000,200],[1552924800000,2700],[1553011200000,200],[1553184000000,543]]"
+                  } else {
+                      startTime = new Date(1552752000000);
+                      endTime = new Date(1553270400000)
+                    dataStr = "[[1552665600000,2552],[1552752000000,1000],[1552838400000,200],[1552924800000,2700],[1553011200000,200],[1553184000000,0],[1553270400000,2827]]"
+                }
+                var data = JSON.parse(dataStr);
+                var arr1 = []
+                var arr2 = []
+                for (var i = startTime.getTime(); i < endTime.getTime(); i += 86400000) {
+                    var date = new Date(i);
+                    var month = date.getMonth() + 1;
+                    var day = date.getDate();
+                    var str = month + "月" + day + "日"
+                    arr1.push(str);
+                    var flag = true
+                    for (j = 0; j < data.length; j++) {
+                        if (i == data[j][0]) {
+                            flag = false
+                            arr2.push(data[j][1])
+                            break;
+                        }
+                    }
+                    if (flag) {
+                        arr2.push(0)
+                    }
+                }
+                option3.xAxis[0].data = arr1
+                option3.series[0].data = arr2
+                option3.series[0].name = "订单金额"
+                myChart3.setOption(option3);
+        //     }
+        // });
+    }
+    // querymoneybystarttimeandendtime(monthFirst, today)
+
+    //订单量查询
+    function queryOrdertotalnum(startTime, endTime) {
+        
+                var dataStr = "";
+                //86400000
+                if ((endTime.getTime() - startTime.getTime()) > 500000000) {
+                    startTime = new Date(1551369600000);
+                      endTime = new Date(1553184000000)
+                    dataStr = "[[1551369600000,54],[1551974400000,55],[1552060800000,33],[1552233600000,66],[1552320000000,34],[1552492800000,102],[1552579200000,64],[1552752000000,668],[1552838400000,23],[1552924800000,66],[1553011200000,964],[1553184000000,23]]"
+                }else{
+                    startTime = new Date(1552665600000);
+                      endTime = new Date(1553270400000)
+                    dataStr = "[[1552665600000,252],[1552752000000,532],[1552838400000,95],[1552924800000,2600],[1553011200000,200],[1553184000000,143],[1553270400000,227]]"
+                }
+                var data = JSON.parse(dataStr);
+                var arr1 = []
+                var arr2 = []
+                for (var i = startTime.getTime(); i < endTime.getTime(); i += 86400000) {
+                    var date = new Date(i);
+                    var month = date.getMonth() + 1;
+                    var day = date.getDate();
+                    var str = month + "月" + day + "日"
+                    arr1.push(str);
+                    var flag = true
+                    for (j = 0; j < data.length; j++) {
+                        if (i == data[j][0]) {
+                            flag = false
+                            arr2.push(data[j][1])
+                            break;
+                        }
+                    }
+                    if (flag) {
+                        arr2.push(0)
+                    }
+                }
+                option3.xAxis[0].data = arr1
+                option3.series[0].data = arr2
+                option3.series[0].name = "订单量"
+                myChart3.setOption(option3);
+            }
+    //     });
+    // }
+    // queryOrdertotalnum(sunday, today)
+
+
+
+
+    //订单总额查询
+    function queryOrdertotalmoney(startTime, endTime, url) {
+       
+                
+                var dataStr = '[{"count":"'+Math.floor(Math.random()*100)+'","totalMoney":'+Math.floor(Math.random()*100)+',"totalAmount":"'+Math.floor(Math.random()*100)+'"}]'
+                var data = JSON.parse(dataStr);
+                $(".right-second-content-box-line2-left")[0].innerHTML = data[0].totalAmount;
+                $(".right-second-content-box-line2-right")[0].innerHTML = "(" + data[0].count + "笔)";
+                var percent = data[0].totalMoney;
+                percent = String(percent * 100);
+                var index = percent.indexOf(".");
+                if (index > 0) {
+                    percent = percent.substring(0, index);
+                }
+                if (percent == -200) {
+                    $(".right-second-content-box-line3-right")[0].innerHTML = "上期为空";
+                    $(".right-second-content-box-line3-right").eq(0).removeClass("color-red")
+                    $(".right-second-content-box-line3-right").eq(0).addClass("color-green")
+                } else if (percent.length > 0 && percent.indexOf("-") > -1) {
+                    $(".right-second-content-box-line3-right")[0].innerHTML = percent/100 + "%";
+                    $(".right-second-content-box-line3-right").eq(0).removeClass("color-red")
+                    $(".right-second-content-box-line3-right").eq(0).addClass("color-green")
+                } else {
+                    $(".right-second-content-box-line3-right")[0].innerHTML = "+" + percent/100 + "%";
+                    $(".right-second-content-box-line3-right").eq(0).removeClass("color-green")
+                    $(".right-second-content-box-line3-right").eq(0).addClass("color-red")
+                    if (percent == 0) {
+                        $(".right-second-content-box-line3-right").eq(0).addClass("color-green")
+                        $(".right-second-content-box-line3-right").eq(0).removeClass("color-red")
+                    }
+                }
+         
+    }
+
+    function queryReceivablestotal(startTime, endTime, url) {
+
+
+        var startStr = startTime.getFullYear() + "-" + (startTime.getMonth() + 1) + "-" + startTime.getDate() + " " + startTime.getHours() + ":" + startTime.getMinutes() + ":" + startTime.getSeconds()
+        var endStr = endTime.getFullYear() + "-" + (endTime.getMonth() + 1) + "-" + endTime.getDate() + " " + endTime.getHours() + ":" + endTime.getMinutes() + ":" + endTime.getSeconds()
+        // $.ajax({
+        //     type: "get",
+        //     url: url,
+        //     dataType: "json",
+        //     data: {
+        //         startTime: startStr,
+        //         endTime: endStr
+        //     },
+        //     success: function (data) {
+
+                var dataStr = '[{"count":'+Math.floor(Math.random()*100)+',"totalMoney":'+Math.floor(Math.random()*100)+',"totalAmount":"'+Math.floor(Math.random()*100)+'"}]'
+                var data = JSON.parse(dataStr);
+
+                $(".right-second-content-box-line2-left")[1].innerHTML = data[0].totalAmount;
+                $(".right-second-content-box-line2-right")[1].innerHTML = "(" + data[0].count + "笔)";
+                var percent = data[0].totalMoney;
+                percent = String(percent * 100);
+                var index = percent.indexOf(".");
+                if (index > 0) {
+                    percent = percent.substring(0, index);
+                }
+                if (percent == -200) {
+                    $(".right-second-content-box-line3-right")[1].innerHTML = "上期为空";
+                    $(".right-second-content-box-line3-right").eq(1).removeClass("color-red")
+                    $(".right-second-content-box-line3-right").eq(1).addClass("color-green")
+                } else if (percent.length > 0 && percent.indexOf("-") > -1) {
+                    $(".right-second-content-box-line3-right")[1].innerHTML = percent/100 + "%";
+                    $(".right-second-content-box-line3-right").eq(1).removeClass("color-red")
+                    $(".right-second-content-box-line3-right").eq(1).addClass("color-green")
+                } else {
+                    $(".right-second-content-box-line3-right")[1].innerHTML = "+" + percent/100 + "%";
+                    $(".right-second-content-box-line3-right").eq(1).removeClass("color-green")
+                    $(".right-second-content-box-line3-right").eq(1).addClass("color-red")
+                    if (percent == 0) {
+                        $(".right-second-content-box-line3-right").eq(1).addClass("color-green")
+                        $(".right-second-content-box-line3-right").eq(1).removeClass("color-red")
+                    }
+                }
+        //     }
+        // })
+    }
+
+    queryReceivablestotal(today0, tomorrow, "/occ-settlement/web/settlement/query-receivablestotalday")
+
+
+
+    //初始化 营收趋势 选择 [订单金额、本周]（若选择时间段时，第三第四个参数为开始结束时间）
+    var revenueTrendParam = [0, 1]
+
+    //营收趋势 本周点击
+    $(".left-second-title-line2-right-menu").eq(0).click(function () {
+        $(".left-second-title-line2-right-menu").eq(0).addClass("color-red")
+        $(".left-second-title-line2-right-menu").eq(1).removeClass("color-red")
+        if (revenueTrendParam[0] == 0) {
+            queryOrdertotalamoune(sunday, today)
+        } else if (revenueTrendParam[0] == 1) {
+            querymoneybystarttimeandendtime(sunday, today)
+        } else {
+            queryOrdertotalnum(sunday, today)
+        }
+
+        revenueTrendParam[1] = 0
+    });
+
+    //营收趋势 本月点击
+    $(".left-second-title-line2-right-menu").eq(1).click(function () {
+        $(".left-second-title-line2-right-menu").eq(1).addClass("color-red")
+        $(".left-second-title-line2-right-menu").eq(0).removeClass("color-red")
+        if (revenueTrendParam[0] == 0) {
+            queryOrdertotalamoune(monthFirst, today)
+        } else if (revenueTrendParam[0] == 1) {
+            querymoneybystarttimeandendtime(monthFirst, today)
+        }
+        else {
+            queryOrdertotalnum(monthFirst, today)
+        }
+        revenueTrendParam[1] = 1
+    });
+
+    //营收趋势 订货金额按钮点击
+    $(".left-second-title-line2-menu-item").eq(0).click(function () {
+        $(".left-second-title-line2-menu-item").eq(0).addClass("color-red")
+        $(".left-second-title-line2-menu-item").eq(1).removeClass("color-red")
+        $(".left-second-title-line2-menu-item-center").eq(0).removeClass("color-red")
+        if (revenueTrendParam[1] == 0) {
+            queryOrdertotalamoune(sunday, today)
+        } else if (revenueTrendParam[1] == 1) {
+            queryOrdertotalamoune(monthFirst, today)
+        } else {
+            queryOrdertotalamoune(revenueTrendParam[2], revenueTrendParam[3])
+        }
+        revenueTrendParam[0] = 0
+    });
+
+    //营收趋势 订单量按钮点击
+    $(".left-second-title-line2-menu-item").eq(1).click(function () {
+        $(".left-second-title-line2-menu-item").eq(1).addClass("color-red")
+        $(".left-second-title-line2-menu-item").eq(0).removeClass("color-red")
+        $(".left-second-title-line2-menu-item-center").eq(0).removeClass("color-red")
+        if (revenueTrendParam[1] == 0) {
+            queryOrdertotalnum(sunday, today)
+        } else if (revenueTrendParam[1] == 1) {
+            queryOrdertotalnum(monthFirst, today)
+        } else {
+            queryOrdertotalnum(revenueTrendParam[2], revenueTrendParam[3])
+        }
+        revenueTrendParam[0] = 2
+    });
+
+    //营收趋势 收款金额按钮点击
+    $(".left-second-title-line2-menu-item-center").eq(0).click(function () {
+        $(".left-second-title-line2-menu-item-center").eq(0).addClass("color-red")
+        $(".left-second-title-line2-menu-item").eq(0).removeClass("color-red")
+        $(".left-second-title-line2-menu-item").eq(1).removeClass("color-red")
+        if (revenueTrendParam[1] == 0) {
+            querymoneybystarttimeandendtime(sunday, today)
+        } else if (revenueTrendParam[1] == 1) {
+            querymoneybystarttimeandendtime(monthFirst, today)
+        } else {
+            querymoneybystarttimeandendtime(revenueTrendParam[2], revenueTrendParam[3])
+        }
+        revenueTrendParam[0] = 1
+    });
+
+    //营收简报 日、周、月
+    $(".right-second-title-line2-menu").eq(0).click(function () {
+        $(".right-second-title-line2-menu").eq(0).addClass("color-red");
+        $(".right-second-title-line2-menu").eq(1).removeClass("color-red");
+        $(".right-second-title-line2-menu").eq(2).removeClass("color-red");
+        $(".right-second-content-box-line3-left")[0].innerHTML = "比昨日"
+        $(".right-second-content-box-line3-left")[1].innerHTML = "比昨日"
+        queryOrdertotalmoney(today0, tomorrow, "/occ-b2b-order/b2b/home/query-ordertotalday")
+        queryReceivablestotal(today0, tomorrow, "/occ-settlement/web/settlement/query-receivablestotalday")
+    });
+    $(".right-second-title-line2-menu").eq(1).click(function () {
+        $(".right-second-title-line2-menu").eq(1).addClass("color-red");
+        $(".right-second-title-line2-menu").eq(0).removeClass("color-red");
+        $(".right-second-title-line2-menu").eq(2).removeClass("color-red");
+        $(".right-second-content-box-line3-left")[0].innerHTML = "比上周"
+        $(".right-second-content-box-line3-left")[1].innerHTML = "比上周"
+        queryOrdertotalmoney(sunday, today, "/occ-b2b-order/b2b/home/query-ordertotalweek")
+        queryReceivablestotal(sunday, today, "/occ-settlement/web/settlement/query-receivablestotalweek")
+    });
+    $(".right-second-title-line2-menu").eq(2).click(function () {
+        $(".right-second-title-line2-menu").eq(2).addClass("color-red");
+        $(".right-second-title-line2-menu").eq(0).removeClass("color-red");
+        $(".right-second-title-line2-menu").eq(1).removeClass("color-red");
+        $(".right-second-content-box-line3-left")[0].innerHTML = "比上月"
+        $(".right-second-content-box-line3-left")[1].innerHTML = "比上月"
+        queryOrdertotalmoney(monthFirst, today, "/occ-b2b-order/b2b/home/query-ordertotalmoney")
+        queryReceivablestotal(monthFirst, today, "/occ-settlement/web/settlement/query-receivablestotalmoney")
+    });
+    //营收简报，初始化默认按月
+    queryOrdertotalmoney(monthFirst, today, "/occ-b2b-order/b2b/home/query-ordertotalmoney")
+
+    // //订单总额查询(按编辑的天)
+    // $.ajax({
+    //     type: "get",
+    //     url: "/occ-b2b/b2b/home/query-orderbyday",
+    //     dataType: "json",
+    //     success: function (data) {
+
+    //     }
+    // });
+    //畅销商品
+    function getHotGoods(startDate, endDate) {
+        // $.ajax({
+        //     type: "get",
+        //     url: "/occ-b2b-order/api/b2b/order/get-hot-goods",
+        //     dataType: "json",
+        //     data: {
+        //         startDate: startDate,
+        //         endDate: endDate
+        //     },
+        //     success: function (data) {
+
+                var dataStr = '[{"goodsId":"0732fb79-0c15-4ebe-b0d2-1020e1f36562","goodsCode":"20190323000004","goodsName":"小米6X-低配","goodsDispalyName":"小米6X-低配","goodsImageUrl":"img3/davcoGoods.png","sumMoney":'+Math.floor(Math.random()*1000)+'},{"goodsId":"988442aa-aef9-4993-aa68-01151c5d427e","goodsCode":"20190312029948","goodsName":"瓷砖胶-勿用","goodsDispalyName":"瓷砖胶-勿用","goodsImageUrl":"img3/davcoGoods.png","sumMoney":'+Math.floor(Math.random()*1000)+'},{"goodsId":"0fdff6d7-a4c8-4d7f-9c5a-4c258ab16960","goodsCode":"20190323000001","goodsName":"小米6X","goodsDispalyName":"小米6X","goodsImageUrl":"img3/davcoGoods.png","sumMoney":'+Math.floor(Math.random()*1000)+'},{"goodsId":"c2104f13-6351-4213-bd1b-4238e4467fae","goodsCode":"20190306000231","goodsName":"通用型K11防水浆料灰6.8KG(D版)","goodsDispalyName":"通用型K11防水浆料灰6.8KG(D版)","goodsImageUrl":"img3/davcoGoods.png","sumMoney":'+Math.floor(Math.random()*1000)+'},{"goodsId":"a1dd2d48-c4c3-462c-b64e-4ee45c3603f4","goodsCode":"20190306000002","goodsName":"工具刷","goodsDispalyName":"工具刷","goodsImageUrl":"img3/davcoGoods.png","sumMoney":'+Math.floor(Math.random()*1000)+'},{"goodsId":"a7abff34-700a-4695-9b6f-92678260ec5b","goodsCode":"20190309000002","goodsName":"柔韧性K11粉剂灰(Ⅰ)25KG","goodsDispalyName":"柔韧性K11粉剂灰(Ⅰ)25KG","goodsImageUrl":"img3/davcoGoods.png","sumMoney":'+Math.floor(Math.random()*1000)+'},{"goodsId":"c3ec62fa-30e3-4d5d-ab8b-2fc8e605a9bc","goodsCode":"20190309000004","goodsName":"德高质感彩砂美缝胶2#朦胧月光银1.5KG","goodsDispalyName":"德高质感彩砂美缝胶2#朦胧月光银1.5KG","goodsImageUrl":"img3/davcoGoods.png","sumMoney":'+Math.floor(Math.random()*1000)+'},{"goodsId":"17f7f1f2-6bb7-4b6d-b9ba-af903d9e2b9d","goodsCode":"20190322000001","goodsName":"美缝剂","goodsDispalyName":"美缝剂","goodsImageUrl":"img3/davcoGoods.png","sumMoney":'+Math.floor(Math.random()*1000)+'}]'
+               
+                var data = JSON.parse(dataStr);
+                
+                for (var i = 0; i < 8; i++) {
+                    if (i < data.length) {
+                        var bigImg = document.createElement("img");     //创建一个img元素 
+                        bigImg.width = "20";  //200个像素 不用加px  
+                        bigImg.height = "25";  //200个像素 不用加px 
+                        // bigImg.src = "img3/davcoGoods.png";   
+                        bigImg.src = data[i].goodsImageUrl
+                        $(".right-fourth-panel-content-line-left")[i].innerHTML = i + 1;
+                        $(".right-fourth-panel-content-line-middle")[i].innerHTML = ""
+                        $(".right-fourth-panel-content-line-middle")[i].appendChild(bigImg);
+                        $(".right-fourth-panel-content-line-right")[i].innerHTML = data[i].goodsName;
+                        $(".right-fourth-panel-content-line-last")[i].innerHTML = "¥" + parseFloat(data[i].sumMoney || "0").toFixed(currency.currencyAmountScale || 2);
+                    } else {
+                        $(".right-fourth-panel-content-line-left")[i].innerHTML = ""
+                        $(".right-fourth-panel-content-line-middle")[i].innerHTML = ""
+                        $(".right-fourth-panel-content-line-right")[i].innerHTML = ""
+                        $(".right-fourth-panel-content-line-last")[i].innerHTML = ""
+                    }
+                }
+        //     }
+        // });
+    }
+    getHotGoods(sunday, today);
+
+    $(".right-fourth-panel-title-line2-menu").eq(0).click(function () {
+        $(".right-fourth-panel-title-line2-menu").eq(0).addClass("color-red");
+        $(".right-fourth-panel-title-line2-menu").eq(1).removeClass("color-red");
+        $(".right-fourth-panel-title-line2-menu").eq(2).removeClass("color-red");
+        getHotGoods(today0, today)
+    });
+    $(".right-fourth-panel-title-line2-menu").eq(1).click(function () {
+        $(".right-fourth-panel-title-line2-menu").eq(1).addClass("color-red");
+        $(".right-fourth-panel-title-line2-menu").eq(0).removeClass("color-red");
+        $(".right-fourth-panel-title-line2-menu").eq(2).removeClass("color-red");
+        getHotGoods(sunday, today)
+    });
+    $(".right-fourth-panel-title-line2-menu").eq(2).click(function () {
+        $(".right-fourth-panel-title-line2-menu").eq(2).addClass("color-red");
+        $(".right-fourth-panel-title-line2-menu").eq(0).removeClass("color-red");
+        $(".right-fourth-panel-title-line2-menu").eq(1).removeClass("color-red");
+        getHotGoods(monthFirst, today)
+    });
+
+    var loopNum = 0
+   
+    function loopChange(){
+        p2_totalstock
+        $("#p1_totalSales")[0].innerHTML = Math.round(Math.random()*1000000000)/100
+        $("#p1_totalMainNum")[0].innerHTML = Math.round(Math.random()*1000)
+        $("#p1_saleMainNum")[0].innerHTML = Math.round(Math.random()*100)
+        $("#p2_totalstock")[0].innerHTML = Math.round(Math.random()*10000)
+        $("#p2_totalDepotNum")[0].innerHTML = Math.round(Math.random()*1000)
+        
+        $(".left-first-item-num")[0].innerHTML =Math.round(Math.random()*100)
+        $(".left-first-item-num")[1].innerHTML =Math.round(Math.random()*100)
+        $(".left-first-item-num")[2].innerHTML =Math.round(Math.random()*100)
+        $(".left-first-item-num")[3].innerHTML =Math.round(Math.random()*100)
+        $(".left-first-item-num")[4].innerHTML =Math.round(Math.random()*100)
+
+
+        searchOrderSummary();
+
+        //营收简报
+        $(".right-second-title-line2-menu").eq(loopNum%3).trigger("click");
+        //客户订单统计
+        $(".middle-half-panel-title-line2-menu").eq(loopNum%3).trigger("click");
+        //商品销售统计
+        $(".middle-half-panel2-title-line2-menu").eq(loopNum%3).trigger("click");
+        //畅销商品排行
+        $(".right-fourth-panel-title-line2-menu").eq(loopNum%3).trigger("click");
+
+        switch (loopNum%3){
+            case 0 : 
+                $(".left-second-title-line2-menu-item").eq(0).trigger("click");
+                if(loopNum/6 == 0){
+                    $(".left-second-title-line2-right-menu").eq(1).trigger("click");
+                }else{
+                    $(".left-second-title-line2-right-menu").eq(0).trigger("click");
+                }
+                break;
+            case 1 : 
+                $(".left-second-title-line2-menu-item-center").eq(0).trigger("click");
+                break;
+            case 2 : 
+                $(".left-second-title-line2-menu-item").eq(1).trigger("click");
+                break;
+        }
+        $(".left-second-title-line2-menu-item").eq(loopNum%3).trigger("click");
+        console.log(loopNum)
+        loopNum++;
+        setTimeout(loopChange,5000);
+    }
+
+    loopChange()
+
+
+
+
+
+
+
+</script>
+
+</html>

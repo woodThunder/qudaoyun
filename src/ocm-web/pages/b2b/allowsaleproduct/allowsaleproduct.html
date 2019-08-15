@@ -1,0 +1,58 @@
+<div class="ui-panel ui-list-panel">
+  <div>
+    <div class="page-title">
+      <span>允销目录</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+  <!-- SearchBar -->
+  <ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+  </ui-searchbox>
+  <!-- e-SearchBar -->
+  <div class="ui-panel-body">
+    <div class="ui-bill-body">
+      <!-- 按钮区 -->
+      <ui-buttons params='datasource:$root.buttonSource'>
+      </ui-buttons>
+      <!-- e-按钮区 -->
+      <div style="clear: both; height: 8px;"></div>
+      <!-- 列表区 -->
+      <div id="contactInfo">
+      <ui-grid params='options:$root.grid1Option,vm:$root'>
+      </ui-grid>
+      </div>
+      <!-- e-列表区 -->
+      <div class="ui-statistics margin-top-10">
+        <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择<span class="font-c-blue" data-bind="text:AllowSaleProductList.selectedIndices().length"></span>项数据
+      </div>
+      <div class="pagination-right">
+        <div id='paginationChild' class='pagination u-pagination pagination-sm'
+        u-meta='{"type":"pagination","data":"AllowSaleProductList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+      </div>
+    </div>
+    </div>
+  </div>
+  <div id="AllowSaleProduct-dialog" style="display:none;" class="needwarning">
+    <div class="u-msg-title">
+      <h4>提示</h4>
+    </div>
+    <div class="u-msg-content ui-editbox">
+        &nbsp;&nbsp;&nbsp;有数据变更，是否确认不保存？
+    </div>
+    <div class="u-msg-footer">
+      <a class="ui-btn ui-btn-primary J-cancel margin-right-5">取消
+      </a>
+      <a class="ui-btn ui-btn-green  J-ok">确定
+      </a>
+    </div>
+  </div>
+<!--导入导出弹窗-->
+<div id="exportFiel"></div>
+<div id="importFiel"></div>
+<!--导入导出弹窗-->

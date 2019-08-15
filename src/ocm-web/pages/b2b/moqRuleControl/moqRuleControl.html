@@ -1,0 +1,71 @@
+<div class="ui-panel ui-list-panel">
+    <div>
+        <div class="page-title">
+            <span data-bind="text:title"></span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="title-seperator"></div>
+    <ui-searchbox
+        params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+    </ui-searchbox>
+    <div class="ui-panel-body">
+        <div class="ui-panel-body-head">
+            <div class="ui-panel-body-head-left">
+                <ui-buttons params='datasource:$root.buttonSource'>
+                </ui-buttons>
+            </div>
+        </div>
+        <div class="ui-table-container">
+            <!--  <ui-grid params='options:$root.gridOption,vm:$root'>
+                </ui-grid>
+                <div class="ui-statistics margin-top-10">
+                    已选择
+                    <span class="font-c-blue" data-bind="text:simpleList.selectedIndices().length"></span>项数据
+                </div>
+                <div class="pagination-right">
+                    <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"simpleList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+                </div> -->
+        </div>
+    </div>
+</div>
+<div class="ui-dialog-panel">
+
+</div>
+<!-- <ui-dialogcard params='datasource:$root.dialogcardSource,ref:$root.dialogcardcomp,dt:$root.simpleList'>
+</ui-dialogcard>
+<ui-dialogcard params='datasource:$root.dialogcardSource2,ref:$root.dialogcardcomp2,dt:$root.simpleList'>
+</ui-dialogcard>
+<ui-dialogcard params='datasource:$root.dialogcardSource3,ref:$root.dialogcardcomp3,dt:$root.simpleList'>
+</ui-dialogcard> -->
+<!-- 详情 -->
+<!-- <div class="ui-bill-detail ui-panel" style="display: none;">
+    <div>
+        <div class="page-title">
+            <span data-bind="text:title"></span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="ui-panel-btn-bg">
+        <div class="ui-operate-btn">
+            <a class="ui-btn ui-btn-primary" data-bind="click: retListPanel">返回
+            </a>
+        </div>
+    </div>
+    <div class="ui-panel-head">
+        <ui-detail params='datasource:$root.detailSource,dt:$root.simpleList,vm:$root'>
+        </ui-detail>
+    </div>
+</div> -->
+<div id="exportFiel"></div>
+<div id="importFiel"></div>

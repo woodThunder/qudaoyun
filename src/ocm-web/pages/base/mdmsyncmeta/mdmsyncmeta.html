@@ -1,0 +1,187 @@
+<div class="ui-panel ui-list-panel">
+  <div class="u-row">
+    <div class="u-col-4  page-title">
+      <span>同步日志</span>
+    </div>
+  </div>
+  <div class="u-row">
+    <div class="u-col-4">
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+  <div class="ui-searchbox">
+    <div id="MdmSyncMeta-searchcontent" class="ui-searchbox-content">
+
+    </div>
+    <div class="clearfix">
+
+    </div>
+    <div class="ui-searchbox-footer">
+      <div class="ui-search-more hidden">
+          <a>更多<i class="uifont icon-down"></i></a>
+      </div>
+
+      <div class="ui-search-btn">
+        <a class="ui-btn ui-btn-primary margin-right-5"
+        data-bind="click:cleanSearch">清空
+        </a>
+        <a class="ui-btn ui-btn-green "
+        data-bind="click:search.bind($data,true)">搜索
+        </a>
+      </div>
+      <div class="clearfix">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-panel-body">
+      
+      <div class="ui-panel-body-head">
+        <div class="ui-panel-body-head-left">
+            <a class="ui-btn ui-btn-orange margin-right-5 ui-a-detail" id="user-action-add" data-bind="click:detail.bind($data)">详情
+          </a>
+        </div>  
+      </div>
+
+      <div class="ui-table-container">
+          <div id="MdmSyncMeta"
+               u-meta='{"id":"grid_MdmSyncMeta","data":"MdmSyncMetaList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+                  <div options='{"field":"code","dataType":"String","title":"编码"}'></div>
+                  <div options='{"field":"name","dataType":"String","title":"名称"}'></div>
+                  <div options='{"field":"sourceTable","dataType":"String","title":"数据类型"}'></div>
+                  <!-- <div options='{"field":"targetTable","dataType":"String","title":"目标表（MDM数据表）"}'></div> -->
+                  <div options='{"field":"sourceId","dataType":"String","title":"来源表主键ID","visible":false}'></div>
+                  <div options='{"field":"createTime","dataType":"Datetime","title":"创建时间"}'></div>
+                  <div options='{"field":"creator","dataType":"String","title":"创建人"}'></div>
+                  <div options='{"field":"updateTime","dataType":"Datetime","title":"修改时间"}'></div>
+                  <div options='{"field":"modifier","dataType":"String","title":"修改人"}'></div>
+                  <div options='{"field":"status","dataType":"String","title":"操作类型","editOptions":{"type":"text","datasource":"stateSrc"},"editType":"text","renderType":"comboRender","editable":false}'></div>
+                      
+          </div>
+          <div class="ui-statistics margin-top-10">
+            <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择<span class="font-c-blue" data-bind="text:MdmSyncMetaList.selectedIndices().length"></span>项数据
+          </div>
+          <div class="pagination-right">
+            <div id='pagination' class='pagination u-pagination pagination-sm'
+            u-meta='{"type":"pagination","data":"MdmSyncMetaList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+          </div>
+      </div>
+  </div>
+</div>
+<div id="dialog_layer" style="display:none;">
+
+</div>
+<!--导出弹框 end-->
+<div id="exportFiel"></div>
+<!-- 详情 -->
+<div class="ui-bill-detail ui-panel" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span>同步日志详情</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-primary" data-bind="click: retListPanel">返回
+      </a>
+    </div>
+  </div>
+  <div class="ui-panel-head">
+    <div class="ui-item">
+      <div class="ui-name">编码：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: MdmSyncMetaList.ref("code")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">名称：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: MdmSyncMetaList.ref("name")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">来源表(协同数据表)：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: MdmSyncMetaList.ref("sourceTable")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">目标表(MDM数据表)：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: MdmSyncMetaList.ref("targetTable")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">来源表主键ID：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: MdmSyncMetaList.ref("sourceId")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item-text ui-item">
+      <span class="item-name ui-name">创建时间：</span>
+      <div class="ui-inputarea">
+        <span class="text-value" data-bind="text:MdmSyncMetaList.ref('createTime')"></span>
+      </div>
+    </div>
+    <div class="ui-item-text ui-item">
+      <span class="item-name ui-name">修改时间：</span>
+      <div class="ui-inputarea">
+        <span class="text-value" data-bind="text:MdmSyncMetaList.ref('updateTime')"></span>
+      </div>
+    </div>
+  <!--   <div class="ui-item">
+      <div class="ui-name">创建时间：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: MdmSyncMetaList.ref("createTime")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">修改时间：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: MdmSyncMetaList.ref("updateTime")'>
+        </div>
+      </div>
+    </div> -->
+<!--     <div class="ui-item" style="float: none;width: 100%;height: auto;overflow: hidden;word-wrap:break-word;word-break:break-all; ">
+      <div class="ui-name">来源同步数据：</div>
+      <div class="ui-inputarea" style="width: 100%;word-wrap:break-word;word-break:break-all; ">
+        <div data-bind='text: MdmSyncMetaList.ref("sourceData")' style="width: 100%;word-wrap:break-word;word-break:break-all;overflow: hidden; ">
+        </div>
+       <textarea data-bind='text: MdmSyncMetaList.ref("sourceData")' style="width: 100%;height: 100px"></textarea>
+      </div>
+    </div> -->
+    <div class="ui-item">
+      <div class="ui-name">来源同步数据：</div>
+      <div id="result" class="ui-inputarea">
+        <div class="ui-textonly" data-bind='attr:{title:newSourceData},text: newSourceData'></div>
+        <!-- <div id="result" class="ui-textonly"></div> -->
+      </div>
+    </div>
+    <!-- <div class="ui-item">
+      <div class="ui-name">启用状态：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: enableFmt'>
+        </div>
+      </div>
+    </div> -->
+    <div class="clearfix"></div>
+  </div>
+
+  <div class="ui-bill-footer">
+  </div>
+</div>

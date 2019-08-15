@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="renderer" content="webkit">               <!--360 使用Google Chrome Frame-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />   <!--优先使用 IE 最新版本和 Chrome-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="bootstrap admin template">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="/wbalone/images/favicon.ico" type="images/x-icon" />
+    <link rel="Bookmark" href="/wbalone/images/favicon.ico">
+    <link rel="icon" href="/wbalone/images/favicon.png" type="images/png" />
+    <link rel="stylesheet" type="text/css" href="/wbalone/trd/bootstrap/css/bootstrap.min.css">
+
+    <script src="/wbalone/apworkbench/trd/echarts/echarts.js"></script>
+    <script src="/wbalone/apworkbench/trd/echarts/custom.js"></script>
+
+    <title>中台首页</title>
+    <style type="text/css">
+        html, body {
+            margin: 0;
+            background-color: #fafafa;
+        }
+
+        .left-panel {
+            float: left;
+            width: 66%;
+        }
+
+        .left-item {
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+            box-shadow: 0 0 0 2px #efefef;
+            float: left;
+            height: 300px;
+            margin: 5px;
+            width: 48%;
+        }
+
+        .left-item > .e-charts-panel {
+            height: 100%;
+            width: 100%;
+        }
+
+        .right-panel {
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+            box-shadow: 0 0 0 2px #efefef;
+            float: left;
+            height: 610px;
+            width: 32%;
+            margin: 5px
+        }
+
+        ul, li {
+            list-style-type: none;
+        }
+
+        /***排名列表01***/
+        .udm-syPmlb01-box {
+            height: 580px;
+            overflow: hidden;
+        }
+
+        .udm-syPmlb01-box .data-bt-b {
+            height: 40px;
+            overflow: hidden;
+            position: relative;
+            margin: 0 30px;
+        }
+
+        .udm-syPmlb01-box .data-bt-b .udm-s-txt {
+            display: inline-block;
+            line-height: 25px;
+            padding-top: 0px;
+            font-size: 14px;
+            color: #a3b3af;
+            font-weight: bold;
+        }
+
+        .udm-syPmlb01-box .data-bt-b .udm-i-icon01 {
+            display: inline-block;
+            position: absolute;
+            right: 0;
+            top: 25px;
+            width: 35px;
+            height: 35px;
+            overflow: hidden;
+        }
+
+        .udm-syPmlb01-box .data-bt-b .udm-i-icon01.i-xspm01 {
+            background: url("/wbalone/apworkbench/images/i-xspm01.png") no-repeat;
+        }
+
+        .udm-syPmlb01-box .data-bt-b .udm-i-icon01.i-qhpm01 {
+            background: url("/wbalone/apworkbench/images/i-qhpm01.png") no-repeat;
+        }
+
+        /*列01表*/
+        .udm-syPmlb01-box .data-li-b {
+            margin: 0;
+        }
+
+        .udm-syPmlb01-box .data-li-b .udm-ul01 {
+        }
+
+        .udm-syPmlb01-box .data-li-b .udm-ul01 .udm-li {
+            margin-bottom: 21px;
+        }
+
+        .udm-syPmlb01-box .data-li-b .udm-ul01 .udm-li:first-child {
+            margin-top: 7px;
+        }
+
+        .udm-syPmlb01-box .data-li-b .udm-ul01 .udm-li .udm-s-number {
+            vertical-align: middle;
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            line-height: 16px;
+            overflow: hidden;
+            text-align: center;
+            margin-right: 5px;
+            background-color: #f3f3f3;
+            color: #666;
+        }
+
+        .udm-syPmlb01-box .data-li-b .udm-ul01 .udm-li .udm-s-number.s-number1 {
+            background-color: #ffbb2b;
+            color: #fff;
+        }
+
+        .udm-syPmlb01-box .data-li-b .udm-ul01 .udm-li .udm-s-number.s-number2 {
+            background-color: #ff927b;
+            color: #fff;
+        }
+
+        .udm-syPmlb01-box .data-li-b .udm-ul01 .udm-li .udm-s-number.s-number3 {
+            background-color: #ff4f4f;
+            color: #fff;
+        }
+
+        .udm-syPmlb01-box .data-li-b .udm-ul01 .udm-li .udm-a-txt {
+            color: #666;
+            display: inline-block;
+            vertical-align: middle;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            word-break: keep-all;
+            width: 240px;
+        }
+
+        .udm-syPmlb01-box .data-li-b .udm-ul01 .udm-li .udm-a-txt:hover {
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+<div class="left-panel">
+    <div class="left-item">
+        <div id="main1" class="e-charts-panel">
+        </div>
+    </div>
+    <div class="left-item">
+        <div id="main2" class="e-charts-panel">
+        </div>
+    </div>
+    <div class="left-item">
+        <div id="main3" class="e-charts-panel">
+        </div>
+    </div>
+    <div class="left-item">
+        <div id="main4" class="e-charts-panel">
+        </div>
+    </div>
+</div>
+<div class="right-panel">
+    <div class="udm-syPmlb01-box udm-syBorder01 udm-syM01-w">
+        <div class="data-bt-b">
+            <span class="udm-s-txt">未满足产品top50</span>
+            <i class="udm-i-icon01 i-qhpm01"></i>
+        </div>
+        <div class="data-li-b">
+            <ul class="udm-ul01 J-unmetTop">
+                <li class="udm-li">
+                    <span class="udm-s-number s-number1">1</span>
+                    <a class="udm-a-txt">(暂无)</a>
+                </li>
+                <li class="udm-li">
+                    <span class="udm-s-number s-number2">2</span>
+                    <a class="udm-a-txt">(暂无)</a>
+                </li>
+                <li class="udm-li">
+                    <span class="udm-s-number s-number3">3</span>
+                    <a class="udm-a-txt">(暂无)</a>
+                </li>
+                <li class="udm-li">
+                    <span class="udm-s-number">4</span>
+                    <a class="udm-a-txt">(暂无)</a>
+                </li>
+                <li class="udm-li">
+                    <span class="udm-s-number">5</span>
+                    <a class="udm-a-txt">(暂无)</a>
+                </li>
+                <li class="udm-li">
+                    <span class="udm-s-number">6</span>
+                    <a class="udm-a-txt">(暂无)</a>
+                </li>
+                <li class="udm-li">
+                    <span class="udm-s-number">7</span>
+                    <a class="udm-a-txt">(暂无)</a>
+                </li>
+                <li class="udm-li">
+                    <span class="udm-s-number">8</span>
+                    <a class="udm-a-txt">(暂无)</a>
+                </li>
+                <li class="udm-li">
+                    <span class="udm-s-number">9</span>
+                    <a class="udm-a-txt">(暂无)</a>
+                </li>
+                <li class="udm-li">
+                    <span class="udm-s-number">10</span>
+                    <a class="udm-a-txt">(暂无)</a>
+                </li>
+                <li class="udm-li">
+                    <span class="udm-s-number">11</span>
+                    <a class="udm-a-txt">(暂无)</a>
+                </li>
+                <li class="udm-li">
+                    <span class="udm-s-number">12</span>
+                    <a class="udm-a-txt">(暂无)</a>
+                </li>
+                <li class="udm-li">
+                    <span class="udm-s-number">13</span>
+                    <a class="udm-a-txt">(暂无)</a>
+                </li>
+                <li class="udm-li">
+                    <span class="udm-s-number">14</span>
+                    <a class="udm-a-txt">(暂无)</a>
+                </li>
+                <li class="udm-li">
+                    <span class="udm-s-number">15</span>
+                    <a class="udm-a-txt">(暂无)</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+<script src="/wbalone/trd/jquery/jquery-1.11.2.js"></script>
+
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+
+    var myChart1 = echarts.init(document.getElementById("main1"), "custom");
+    var myChart2 = echarts.init(document.getElementById("main2"), "custom");
+    var myChart3 = echarts.init(document.getElementById("main3"), "custom");
+    var myChart4 = echarts.init(document.getElementById("main4"), "custom");
+
+    option1 = {
+        title: {
+            text: "已审核未配车各订单类型占比",
+            textStyle: {
+                color: "#a3b3af",
+                fontSize: 14
+            },
+            padding: [5, 0, 0, 20]
+        },
+        tooltip: {
+            trigger: "item",
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        series: [
+            {
+                name: "已审核未配车各订单类型占比",
+                type: "pie",
+                radius: "60%",
+                center: ["50%", "50%"],
+                label: {
+                    normal: {
+                        formatter: function (params) {
+                            return params.name + ":" + parseInt(params.percent) + "%";
+                        }
+                    },
+                    emphasis: {
+                        textStyle: {
+                            fontWeight: "bold"
+                        }
+                    }
+                },
+                data: [
+                    {value: 335, name: "常规订单", selected: true},
+                    {value: 310, name: "资源订单"},
+                    {value: 234, name: "定制订单"},
+                    {value: 135, name: "饰品订单"},
+                    {value: 1548, name: "补件订单"}
+                ],
+                itemStyle: {
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: "rgba(0, 0, 0, 0.5)"
+                    }
+                }
+            }
+        ]
+    };
+    option2 = {
+        title: {
+            text: "已审核未配车各办事处占比",
+            textStyle: {
+                color: "#a3b3af",
+                fontSize: 14
+            },
+            padding: [5, 0, 0, 20]
+        },
+        tooltip: {
+            trigger: "item",
+            formatter: "{a} <br/>{b}: {c} ({d}%)"
+        },
+        series: [
+            {
+                name: "已审核未配车各办事处占比",
+                type: "pie",
+                radius: ["35%", "60%"],
+                avoidLabelOverlap: false,
+                label: {
+                    normal: {
+                        formatter: function (params) {
+                            return params.name + ":" + parseInt(params.percent) + "%";
+                        }
+                    },
+                    emphasis: {
+                        textStyle: {
+                            fontWeight: "bold"
+                        }
+                    }
+                },
+                data: [
+                    {value: 335, name: "云南办事处", selected: true},
+                    {value: 310, name: "新疆办事处"},
+                    {value: 234, name: "四川办事处"},
+                    {value: 135, name: "江西办事处"}
+                ]
+            }
+        ]
+    };
+    option3 = {
+        title: {
+            text: "采购订单未满足分析",
+            textStyle: {
+                color: "#a3b3af",
+                fontSize: 14
+            },
+            padding: [5, 0, 0, 20]
+        },
+        tooltip: {
+            trigger: "axis"
+        },
+        legend: {
+            left: "right",
+            data: ["方量", "重量", "金额"]
+        },
+        calculable: true,
+        xAxis: [
+            {
+                type: "category",
+                data: ["云南办事处", "新疆办事处", "四川办事处", "江西办事处"]
+            }
+        ],
+        yAxis: [
+            {
+                type: "value"
+            }
+        ],
+        series: [
+            {
+                name: "方量",
+                type: "bar",
+                data: [2.0, 4.9, 7.0, 23.2]
+            },
+            {
+                name: "重量",
+                type: "bar",
+                data: [2.6, 5.9, 9.0, 26.4]
+            },
+            {
+                name: "金额",
+                type: "bar",
+                data: [48.7, 18.8, 6.0, 2.3]
+            }
+        ]
+    };
+    option4 = {
+        title: {
+            text: "预订单未满足分析",
+            textStyle: {
+                color: "#a3b3af",
+                fontSize: 14
+            },
+            padding: [5, 0, 0, 20]
+        },
+        tooltip: {
+            trigger: "axis"
+        },
+        legend: {
+            left: "right",
+            data: ["方量", "重量", "金额"]
+        },
+        calculable: true,
+        xAxis: [
+            {
+                type: "category",
+                data: ["云南办事处", "新疆办事处", "四川办事处", "江西办事处"]
+            }
+        ],
+        yAxis: [
+            {
+                type: "value"
+            }
+        ],
+        series: [
+            {
+                name: "方量",
+                type: "bar",
+                data: [2.0, 4.9, 7.0, 23.2]
+            },
+            {
+                name: "重量",
+                type: "bar",
+                data: [2.6, 5.9, 9.0, 26.4]
+            },
+            {
+                name: "金额",
+                type: "bar",
+                data: [48.7, 18.8, 6.0, 2.3]
+            }
+        ]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart1.setOption(option1);
+    myChart2.setOption(option2);
+    myChart3.setOption(option3);
+    myChart4.setOption(option4);
+    myChart1.showLoading();
+    myChart2.showLoading();
+    myChart3.showLoading();
+    myChart4.showLoading();
+    $.ajax({
+        type: "get",
+        url: "/occ-b2b/b2b/order-reports/so-uncared-sum-by-so-type",
+        dataType: "json",
+        success: function (data) {
+            myChart1.hideLoading();
+            if (data && data.length > 0) {
+                var result = handlePercentPie(data, "soTypeName", "uncaredVolume");
+                myChart1.setOption(result);
+            }
+
+        }
+    });
+    $.ajax({
+        type: "get",
+        url: "/occ-b2b/b2b/order-reports/so-uncared-sum-by-business-agency",
+        dataType: "json",
+        success: function (data) {
+            myChart2.hideLoading();
+            if (data && data.length > 0) {
+                var result = handlePercentPie(data, "businessAgencyName", "uncaredVolume");
+                myChart2.setOption(result);
+            }
+        }
+    });
+    $.ajax({
+        type: "get",
+        url: "/occ-b2b/b2b/order-reports/po-unmet-sum",
+        dataType: "json",
+        success: function (data) {
+            myChart3.hideLoading();
+            if (data && data.length > 0) {
+                var result = handleUnmetColumn(data);
+                myChart3.setOption(result);
+            }
+        }
+    });
+    $.ajax({
+        type: "get",
+        url: "/occ-b2b/b2b/order-reports/vso-unmet-sum",
+        dataType: "json",
+        success: function (data) {
+            myChart4.hideLoading();
+            if (data && data.length > 0) {
+                var result = handleUnmetColumn(data);
+                myChart4.setOption(result);
+            }
+        }
+    });
+
+    $.ajax({
+        type: "get",
+        url: "/occ-b2b/b2b/order-reports/product-unmet-sum",
+        data: {
+            count: 50
+        },
+        dataType: "json",
+        success: function (data) {
+            if (data && data.length > 0) {
+                var htmlStr = "";
+                for (var i = 0; i < data.length; i++) {
+                    var className = "";
+                    var text = data[i].productCode + "-" + data[i].productDesc;
+                    if (i == 0 || i == 1 || i == 2) {
+                        className = "s-number" + (i + 1);
+                    }
+                    var tpl = "<li class=\"udm-li\">" +
+                        "<span class=\"udm-s-number " + className + "\">" + (i + 1) +
+                        "</span><a class=\"udm-a-txt\" title=" + text + ">" + text +
+                        "</a></li>";
+                    htmlStr += tpl;
+                }
+                if (htmlStr) {
+                    $(".J-unmetTop").html(htmlStr);
+                }
+            }
+        }
+    });
+
+    function handlePercentPie(data, name, value) {
+        var result = [];
+        for (var i = 0; i < data.length; i++) {
+            result.push({
+                name: data[i][name],
+                value: data[i][value]
+            });
+        }
+        result[0].selected = true;
+        return result;
+
+    }
+
+    function handleUnmetColumn(data) {
+        var xAxis1 = {
+            type: "category",
+            data: []
+        };
+        var series = [{
+            name: "方量",
+            type: "bar",
+            data: []
+        },
+            {
+                name: "重量",
+                type: "bar",
+                data: []
+            },
+            {
+                name: "金额",
+                type: "bar",
+                data: []
+            }];
+        for (var i = 0; i < data.length; i++) {
+            xAxis1.data.push(data[i].businessAgencyName);
+            series[0].data.push(data[i].unmetVolume);
+            series[1].data.push(data[i].unmetWeight);
+            series[2].data.push(data[i].unmetAmount);
+        }
+        return {
+            xAxis: [xAxis1],
+            series: series
+        };
+    }
+</script>
+</body>
+</html>

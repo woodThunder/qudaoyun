@@ -1,0 +1,82 @@
+<!-- 列表页 -->
+<div class="ui-list-panel ui-panel">
+  <div>
+    <div class="page-title">
+      <span>核销处理</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+  <div class="ui-panel-body">
+    <div class="u-tabs ui-tabs">
+    <div class="u-tabs__tab-bar margin-top-10 margin-bottom-10">
+      <a href="#tab-panel-1" class="u-tabs__tab is-active">核销匹配</a>
+      <a href="#tab-panel-2" class="u-tabs__tab">核销结果</a>
+    </div>
+    <!-- 订单信息-start -->
+    <div class="u-tabs__panel is-active" id="tab-panel-1">
+      <div class="ui-panel-head clearfix">
+        <ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+        </ui-searchbox>
+      </div>
+      <div class="u-msg-content">
+        <h3 class="ui-collapse-title orderCenter clearfix open margin-top-10">
+          <a href="javascript:;" class="click-btn inline-block">
+            <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+            <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+            收款单
+          </a>
+        </h3>
+        <div class="ui-collapse-content clearfix">
+          <div class="margin-10"></div>
+          <ui-grid params='options:$root.grid1Option,vm:$root'>
+              </ui-grid>
+        </div>
+            <!--买家备注结束-->
+            <!--卖家备注开始-->
+        <h3 class="ui-collapse-title orderCenter  clearfix product-choose-result margin-top-10 open">
+          <a href="javascript:;" class="click-btn inline-block">
+            <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+            <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+            应收单
+          </a>
+        </h3>
+            <div class="ui-collapse-content product-choose-content clearfix">
+              <div class="margin-10"></div>
+              <ui-grid params='options:$root.grid2Option,vm:$root'>
+                  </ui-grid>
+            </div>
+      </div>
+      <div id="operateBar" class="bottombar">
+          <div class="receiptbill">
+            <label>收款金额：</label><span>0.00</span>
+            <a class="ui-btn ui-btn-orange margin-right-5" data-bind="click:accordingToBill"><i class="uifont margin-right-5"></i>按收款单匹配</a>
+          </div>
+          <div class="duebill">
+            <label>应收金额：</label><span>0.00</span>
+            <a class="ui-btn ui-btn-orange margin-right-5" data-bind="click:accordingToBill"><i class="uifont margin-right-5"></i>按应收单匹配</a>
+          </div>
+          <div class="pagination-right">
+          <a class="ui-btn ui-btn-green margin-right-5" data-bind="click:saveBill"><i class="uifont margin-right-5"></i>核销</a>
+        </div>
+      </div>
+    </div>
+    <div class="u-tabs__panel" id="tab-panel-2">
+      <div class="ui-panel-head clearfix">
+        <ui-searchbox params='datasource:$root.search2Source,ref:$root.search2comp,search:$root.search2,clean:$root.cleanSearch2'>
+        </ui-searchbox>
+      </div>
+      <ui-grid params='options:$root.grid3Option,vm:$root'>
+      </ui-grid>
+      <div class="pagination-right bottombar">
+        <a class="ui-btn ui-btn-green margin-right-5" data-bind="click:rebackCancelVerification"><i class="uifont margin-right-5"></i>取消核销</a>
+      </div>
+    </div>
+  </div>  
+  </div>
+</div>

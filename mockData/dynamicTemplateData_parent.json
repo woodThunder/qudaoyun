@@ -1,0 +1,185 @@
+{   "templateId": "test",
+    "publishTime": "1552985065269",
+    "schema": {
+        "head": {
+            "comps": [
+                {
+                    "objectKey": "OrderDto",
+                    "type": "form",
+                    "items": [
+                        {
+                            "label": "文本",
+                            "type": "text",
+                            "key": "textField"
+                        },
+                        {
+                            "label": "整数",
+                            "type": "integer",
+                            "key": "integerField"
+                        },
+                        {
+                            "label": "浮点数",
+                            "type": "float",
+                            "key": "floatField"
+                        },
+                        {
+                            "label": "电话",
+                            "type": "phone",
+                            "key": "phoneField"
+                        },
+                        {
+                            "label": "日期",
+                            "type": "date",
+                            "key": "dateField"
+                        },
+                        {
+                            "label": "日期时间",
+                            "type": "datetime",
+                            "key": "datetimeField"
+                        },
+                        {
+                            "label": "布尔",
+                            "type": "boolean",
+                            "key": "booleanField"
+                        },
+                        {
+                            "label": "图片",
+                            "type": "image",
+                            "key": "imageField"
+                        },
+                        {
+                            "label": "文本域",
+                            "type": "textarea",
+                            "key": "textareaField"
+                        },
+                        {
+                            "label": "下拉",
+                            "type": "combo",
+                            "key": "comboField",
+                            "enumkey": "gender"
+                        },
+                        {
+                            "label": "自定义档案参照",
+                            "type": "docrefer",
+                            "key": "docreferField",
+                            "refid": "1b59f969-4b74-4471-b5e9-baa64276b5c7",
+                            "refcode": "langjiu-PayDisplay",
+                            "refname": "付费陈列"
+                        },
+                        {
+                            "label": "参照",
+                            "type": "refer",
+                            "key": "referField",
+                            "refkey": "parent_custs",
+                            "refshowcontent": "name",
+                            "refrel": [
+                                {"label": "参照关联编码", "key": "code", "showlabel": "参照关联编码", "order": 1}
+                            ]
+                        },
+                        {
+                            "label": "参照影响项",
+                            "type": "refer",
+                            "key": "refer2Field",
+                            "refkey": "administrative-divisions-province"
+                        },
+                        {
+                            "label": "参照被影响项",
+                            "type": "refer",
+                            "key": "refer2LinkageField",
+                            "refkey": "administrative-divisions-city"
+                        }
+                    ]
+                }
+            ]
+        },
+        "tabs": [
+            {
+                "tabName": "页签1",
+                "comps": [
+                    {
+                        "objectKey": "child1",
+                        "type": "table",
+                        "items": [
+                            {
+                                "label": "文本",
+                                "type": "text",
+                                "key": "textField"
+                            },
+                            {
+                                "label": "整数",
+                                "type": "integer",
+                                "key": "integerField"
+                            },
+                            {
+                                "label": "浮点数",
+                                "type": "float",
+                                "key": "floatField"
+                            },
+                            {
+                                "label": "电话",
+                                "type": "phone",
+                                "key": "phoneField"
+                            },
+                            {
+                                "label": "日期",
+                                "type": "date",
+                                "key": "dateField"
+                            },
+                            {
+                                "label": "日期时间",
+                                "type": "datetime",
+                                "key": "datetimeField"
+                            },
+                            {
+                                "label": "布尔",
+                                "type": "boolean",
+                                "key": "booleanField"
+                            },
+                            {
+                                "label": "文本域",
+                                "type": "textarea",
+                                "key": "textareaField"
+                            },
+                            {
+                                "label": "下拉",
+                                "type": "combo",
+                                "key": "comboField",
+                                "enumkey": "gender"
+                            },
+                            {
+                                "label": "自定义档案参照",
+                                "type": "docrefer",
+                                "key": "docreferField",
+                                "refid": "1b59f969-4b74-4471-b5e9-baa64276b5c7",
+                                "refcode": "langjiu-PayDisplay",
+                                "refname": "付费陈列"
+                            },
+                            {
+                                "label": "参照",
+                                "type": "refer",
+                                "key": "referField",
+                                "refkey": "parent_custs",
+                                "refshowcontent": "name",
+                                "refrel": [
+                                    {"label": "参照关联编码", "key": "code", "showlabel": "参照关联编码", "order": 1}
+                                ]
+                            },
+                            {
+                                "label": "参照影响项",
+                                "type": "refer",
+                                "key": "refer2Field",
+                                "refkey": "administrative-divisions-province"
+                            },
+                            {
+                                "label": "参照被影响项",
+                                "type": "refer",
+                                "key": "refer2LinkageField",
+                                "refkey": "administrative-divisions-city"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

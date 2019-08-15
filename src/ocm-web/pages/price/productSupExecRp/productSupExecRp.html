@@ -1,0 +1,72 @@
+<div class="ui-panel ui-list-panel">
+    <div>
+        <div class="page-title">
+            <span>产品支持执行表</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="title-seperator"></div>
+    <div class="ui-searchbox">
+        <div id="purchasereport-searchcontent" class="ui-searchbox-content">
+
+        </div>
+        <div class="clearfix">
+
+        </div>
+        <div class="ui-searchbox-footer">
+            <div class="ui-search-more hidden">
+                <a>更多<i class="uifont icon-down"></i></a>
+            </div>
+
+            <div class="ui-search-btn">
+                <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:cleanSearch">清空
+                </a>
+                <a class="ui-btn ui-btn-green" data-bind="click:search.bind($data,true)">搜索
+                </a>
+            </div>
+            <div class="clearfix">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="ui-panel-body">
+        <div class="ui-panel-body-head">
+            <div class="ui-panel-body-head-left">
+                <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+                <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click: exportHandle">
+                <i class="uifont icon-export margin-right-5"></i> 导出
+                </a>
+                </div>
+            </div>
+
+        </div>
+        <div class="ui-table-container">
+            <div id="productsupxxeclist" u-meta='{"id":"grid_productsupxxeclist","data":"productsupxxecList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true,"nullField":"poProductStrucs"}'>
+                <div options='{"field":"activityCode","dataType":"String","title":"活动编码"}'></div>
+                <div options='{"field":"activityName","dataType":"String","title":"活动名称"}'></div>
+                <div options='{"field":"showCode","dataType":"String","title":"产品（组合）编码"}'></div>
+                <div options='{"field":"showName","dataType":"String","title":"产品名称"}'></div>
+                <div options='{"field":"productTotalNum","dataType":"Float","title":"总量","renderType":"precision2Render"}'></div>
+                <div options='{"field":"productActualNum","dataType":"Float","title":"采购量","renderType":"precision2Render"}'></div>
+                <div options='{"field":"saleBillingNum","dataType":"Float","title":"销售开单量","renderType":"precision2Render"}'></div>
+                <div options='{"field":"preSaleOrderNum","dataType":"Float","title":"预销售订单量","renderType":"precision2Render"}'></div>
+                <div options='{"field":"productLeftNum","dataType":"Float","title":"剩余量","renderType":"precision2Render"}'></div>
+            </div>
+            <div class="ui-statistics margin-top-10">
+                已选择<span class="font-c-blue" data-bind="text:productsupxxecList.selectedIndices().length"></span>项数据
+            </div>
+            <div class="pagination-right">
+                <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"productsupxxecList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--导入导出弹窗-->
+<div id="exportFiel"></div>
+<!--导入导出弹窗-->

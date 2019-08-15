@@ -1,0 +1,182 @@
+<div class="main-wrap list-panel" id="userGroups">
+    <!--&lt;!&ndash; 参照 第一步：引入参照的css和js&ndash;&gt;-->
+    <!--<link href="/uitemplate_web/static/css/ref/ref.css" rel="stylesheet">-->
+    <!--<link href="/uitemplate_web/static/css/ref/jquery.scrollbar.css" rel="stylesheet">-->
+    <!--<link href="/uitemplate_web/static/trd/bootstrap-table/src/bootstrap-table.css" rel="stylesheet">-->
+    <!--页面功能名字-->
+    <div class="apptitle">
+        用户组
+        <span class="btn btn-default btn-sm backbutton" data-bind="click:goback">返回</span>
+    </div>
+    <!--删除提示-->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true" class="iconfont icon-cancel02"></span></button>
+                    <h4 class="modal-title">提示</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="cc">
+                        <div class="error">
+                            <b></b>
+                            确定删除该用户组？
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="btnBox">
+                        <div class="u-form-group">
+                            <button type="button" class="savebtn" id="delconfirm" data-bind="click:okremove">确定</button>
+                        </div>
+                        <div class="u-form-group">
+                            <button type="button" class="cancelbtn" data-dismiss="modal">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--tale列表展现区域-->
+    <div class="u-row">
+
+        <div class="u-col-xs-12 u-col-md-4">
+            <div class="u-container-fluid u-widget-bg">
+                <div class="u-row">
+                    <div class="u-col-md-12">
+                        <div class="u-widget  u-widget-right">
+                            <div class="u-widget-heading">
+                                <h3 class="u-widget-title">用户组
+                                    <button class="u-button u-button-squared  pull-right iconfont icon-plus"
+                                            data-bind="click:addgroup">
+                                    </button>
+                                </h3>
+
+                            </div>
+                            <div class="u-widget-body">
+                                <ul id="treeSimple" class="ztree"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="u-col-xs-12 u-col-md-8">
+            <div class="u-container-fluid u-widget-bg" data-bind="visible:flag">
+                <div class="u-row">
+                    <div class="u-col-md-12" data-bind="with:grouper">
+                        <div class="u-widget  u-widget-right">
+                            <div class="u-widget-heading">
+                                <h3 class="u-widget-title">
+
+                                    <span data-bind="text:name"></span>
+
+                                    <button class="u-button u-button-squared pull-right iconfont icon-delete"
+                                            data-bind="click:remove">
+                                    </button>
+                                    <button class="u-button u-button-squared pull-right iconfont icon-pencil"
+                                            data-bind="click:edit">
+                                    </button>
+                                </h3>
+
+                            </div>
+                            <div class="u-widget-body">
+                                <ul class="u-form-browse">
+                                    <li class="m-v">
+                                        <label class="u-control-label w-sm">名称:</label>
+                                        <span data-bind="text:name"></span>
+                                    </li>
+                                    <li class="m-v">
+                                        <label class="u-control-label w-sm">编码:</label>
+                                        <span data-bind="text:code"> </span>
+                                    </li>
+                                    <li class="m-v">
+                                        <label class="u-control-label w-sm">创建人:</label>
+                                        <span data-bind="text:creator"> </span>
+                                    </li>
+                                    <li class="m-v">
+                                        <label class="u-control-label w-sm">创建时间:</label>
+                                        <span data-bind="text:createDate"> </span>
+                                    </li>
+                                    <li class="m-v hide">
+                                        <label class="u-control-label w-sm">备注:</label>
+                                        <span> </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="u-col-md-12 " style="display: none" id="emptybox">
+                        <div class="u-widget  u-widget-right">
+                            <div class="u-widget-heading">
+                                <h3 class="u-widget-title">
+                                    用户组详细
+                                </h3>
+                            </div>
+                            <div class="u-widget-body">
+                                <div class="text-center font-size-18 height-150 margin-80"
+                                     style="color: #ccc;font-size: 24px;">
+                                    该用户组暂无内容！
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="u-container-fluid u-widget-bg" data-bind="ifnot:flag">
+                <div class="u-row">
+                    <div class="u-col-md-12" data-bind="with:grouper">
+                        <div class="u-widget  u-widget-right">
+                            <div class="u-widget-heading">
+                                <h3 class="u-widget-title" data-bind="text:name()?name():'用户组'"></h3>
+                            </div>
+                            <div class="u-widget-body">
+                                <div class="u-col-10 u-col-offset-1">
+                                    <form>
+                                        <div class="u-row">
+                                            <div class="u-col-12">
+                                                <div class="u-form-group">
+                                                    <label class="u-col-3 u-form-label">名称:</label>
+                                                    <div class="u-col-9">
+                                                        <input type="text" class="u-form-control" placeholder="请输入名称"
+                                                               data-bind="value:name">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="u-col-12">
+                                                <div class="u-form-group">
+                                                    <label class="u-col-3 u-form-label">编码:</label>
+                                                    <div class="u-col-9">
+                                                        <input type="text" class="u-form-control" placeholder="请输入编码"
+                                                               data-bind="value:code">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="u-col-12 hide">
+                                                <div class="u-form-group">
+                                                    <label class="u-col-3 u-form-label">备注:</label>
+                                                    <div class="u-col-9">
+                                                        <textarea class="u-form-control" rows="3"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="u-col-10 u-col-offset-1 text-right">
+                                                    <button class="u-button raised queren u-button-info" data-bind="click:save">保存
+                                                    </button>
+                                                    <button class="u-button raised " data-bind="click:cancel">取消
+                                                    </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

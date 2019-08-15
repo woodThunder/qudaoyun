@@ -1,0 +1,233 @@
+<div class="ui-panel ui-list-panel">
+    <div>
+        <div class="page-title">
+            <span>销售订单处理</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="title-seperator"></div>
+
+    <ui-searchbox
+        params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+    </ui-searchbox>
+
+    <div class="ui-panel-body">
+        <div class="ui-panel-body-head-left">
+            <ui-buttons-menu params='datasource:$root.buttonListSource,vm:$root'>
+            </ui-buttons-menu>
+        </div>
+        <div class="ui-table-container">
+        </div>
+    </div>
+</div>
+
+<!-- 单据详情页 -->
+<div class="ui-bill-detail ui-panel" style="display: none;">
+    <div>
+        <div class="page-title">
+            <span>退货订单处理</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="ui-panel-btn-bg">
+        <div class="ui-operate-btn">
+            <a class="ui-btn ui-btn-primary" data-bind="click: retListPanel">返回
+            </a>
+            <span class="J-bill-committed" data-bind="visible:billPanelStatusEdit() == 'Saved'">
+                <a class="ui-btn ui-btn-green" data-bind="click: showEditBillPanel.bind($data,-1)">编辑
+                </a>
+            </span>
+        </div>
+    </div>
+    <div id="bpmhead"></div>
+    <div id="bpmfoot"></div>
+    <div class="ui-panel-head ui-bill-head">
+
+        <div style="margin: 20px">
+            <div id="file-form"></div>
+            <div id="order-card-attachDetail"></div>
+            <div id="order-card-attachDetail-web"></div>
+        </div>
+
+    </div>
+</div>
+<div class="ui-bill-footer">
+</div>
+</div>
+
+
+<!-- 单据新增页 -->
+<div class="ui-bill-panel ui-panel" style="display: none;" id="salesorder-operatepanel">
+    <div>
+        <div class="page-title">
+            <span>退货订单处理</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="ui-panel-btn-bg">
+        <div class="ui-operate-btn">
+            <a class="ui-btn ui-btn-primary" data-bind="click: retListPanel">取消
+            </a>
+            <span class="J-bill-audited">
+                <a class="ui-btn ui-btn-green" data-bind="click: saveBill">保存
+                </a>
+            </span>
+            <span class="J-bill-audited">
+                <a class="ui-btn ui-btn-primary" data-bind="click: btnUploadAttach">
+                    <i class="uifont icon-tubiao-shangchuan margin-right-5" data-bind="ui-icon">上传</i>
+                </a>
+            </span>
+        </div>
+    </div>
+
+    <div class="ui-panel-head ui-bill-head">
+        <div style="margin: 20px">
+            <div id="file-form"></div>
+            <div id="order-card-attach"></div>
+            <div id="order-card-attach-web"></div>
+        </div>
+    </div>
+</div>
+<div class="ui-bill-footer">
+</div>
+</div>
+
+<!--导出弹窗-->
+<div id="exportFiel"></div>
+<div id="importFiel"></div>
+
+<!-- 查看费用兑付明细 -->
+<div id="dialog_showFeeCustItem" style="display:none;">
+    <div class="u-msg-title">
+        <h4>查看费用兑付明细</h4>
+    </div>
+    <div class="u-tabs ui-tabs u-msg-content">
+        <div class="special-product">
+            <div class="ui-collapse-content">
+                <ui-grid params='options:$root.gridFlushDetail,vm:$root'>
+                </ui-grid>
+            </div>
+        </div>
+    </div>
+    <div class="u-msg-footer">
+        <a class="ui-btn ui-btn-primary J-cancel margin-right-5">取消
+        </a>
+    </div>
+</div>
+<!-- 查看费用兑付明细 -->
+
+<!-- 参照原单退货 -->
+<div id="dialog_referorder" style="display:none;">
+    <div class="u-msg-title">
+        <h4>参照原单</h4>
+    </div>
+    <div class="u-tabs ui-tabs u-msg-content">
+        <div class="special-product">
+            <ui-searchbox style="position: relative ;top:-12px;"
+                params='datasource:$root.search2Source,ref:$root.searchcomp2,search:$root.searchRefer,clean:$root.cleanSearchRefer,willSearch:false'>
+            </ui-searchbox>
+            <div class="product-content margin-top-10">
+                <div class="ui-table-container">
+                    <div class="ui-collapse-group">
+                        <div data-collapse>
+                            <h3 class="ui-collapse-title open" style="margin-bottom:0">
+                                <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                                <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                                原单
+                            </h3>
+                            <div class="ui-collapse-content">
+                                <div class="purchaseList">
+                                    <ui-grid params='options:$root.gridRefHOption,vm:$root'>
+                                    </ui-grid>
+                                    <div class="pagination-right">
+                                        <div class='pagination u-pagination pagination-sm'
+                                            u-meta='{"type":"pagination","data":"salesrefOrderList","pageChange":"pageChangeRefer","sizeChange":"sizeChangeRefer"}'>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <h3 class="ui-collapse-title open" style="margin-bottom:0">
+                                <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                                <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                                对应商品信息
+                            </h3>
+                            <div class="ui-collapse-content">
+                                <div class="purchaseListItem">
+                                    <ui-grid params='options:$root.gridRefBOption,vm:$root'>
+                                    </ui-grid>
+                                </div>
+                            </div> -->
+                            <div class="u-tabs__tab-bar">
+                                <a id="tab7" href="#tab-panel-7" class="u-tabs__tab is-active"
+                                    data-bind="click:itemFun">商品信息</a>
+                                <a id="tab8" href="#tab-panel-8" class="u-tabs__tab"
+                                    data-bind="click:itemBomFun">BOM结构信息</a>
+                            </div>
+                            <!--商品信息开始-->
+                            <div class=" is-active" id="tab-panel-7" style="display: block;">
+                                <div class="ui-collapse-content">
+                                    <div class="ui-table-container margin-bottom-30">
+                                        <ui-grid params='options:$root.gridRefBOption,vm:$root'>
+                                        </ui-grid>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--商品信息结束-->
+                            <!-- BOM结构开始-->
+                            <div class="u-tabs__panel" id="tab-panel-8">
+                                <div class="ui-table-container margin-bottom-30">
+                                    <ui-grid params='options:$root.gridRefBomOption,vm:$root'>
+                                    </ui-grid>
+                                </div>
+                            </div>
+                            <!-- BOM结构结束-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="u-msg-footer">
+        <a class="ui-btn ui-btn-primary J-cancel margin-right-5">取消
+        </a>
+        <a class="ui-btn ui-btn-green  J-ok">确认
+        </a>
+    </div>
+</div>
+<!-- 参照原单退货 -->
+
+<!-- 附件上传-->
+<div id="fileiptwrap">
+    <input class="u-input" type="file" name="addfile" id="attachuploadbatch_id" multiple="multiple"
+        style="display:none;" />
+</div>
+
+<div id="fileDetailsdialog">
+
+</div>
+
+<!-- 选配 -->
+<div id="dialog_goodsOptional" style="display:none;">
+
+</div>
+<!-- 选配 -->
+
+<!-- 选配查看 -->
+<div id="dialog_goodsOptDetails" style="display:none;">
+
+</div>

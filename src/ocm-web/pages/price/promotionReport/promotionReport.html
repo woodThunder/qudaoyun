@@ -1,0 +1,123 @@
+<div class="ui-panel ui-list-panel">
+    <div>
+        <div class="page-title">
+            <span>促销提货报表</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="title-seperator"></div>
+    <div class="ui-searchbox">
+        <div id="purchasereport-searchcontent" class="ui-searchbox-content">
+
+        </div>
+        <div class="clearfix">
+
+        </div>
+        <div class="ui-searchbox-footer">
+            <div class="ui-search-more hidden">
+                <a>更多<i class="uifont icon-down"></i></a>
+            </div>
+
+            <div class="ui-search-btn">
+                <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:cleanSearch">清空
+                </a>
+                <a class="ui-btn ui-btn-green" data-bind="click:search.bind($data,true)">搜索
+                </a>
+                <a class="ui-btn ui-btn-green"
+                   data-bind="click:show2dimensional.bind($data,true)">二维展示
+                </a>
+            </div>
+            <div class="clearfix">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="ui-panel-body">
+        <div class="ui-panel-body-head">
+            <div class="ui-panel-body-head-left">
+                <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+                    <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click: exportHandle">
+                        <i class="uifont icon-export margin-right-5"></i> 导出
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        <div class="ui-table-container">
+            <div id="promotionList" u-meta='{"id":"grid_promotionList","data":"promotionList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true,"nullField":"poProductStrucs"}'>
+                <div options='{"field":"activityCode","dataType":"String","title":"活动编码"}'></div>
+                <div options='{"field":"activityName","dataType":"String","title":"活动名称"}'></div>
+                <div options='{"field":"showCode","dataType":"String","title":"产品（组合）编码"}'></div>
+                <div options='{"field":"showName","dataType":"String","title":"产品名称"}'></div>
+                <div options='{"field":"pickAccountCode","dataType":"String","title":"业务账户编码"}'></div>
+                <div options='{"field":"pickAccountName","dataType":"String","title":"业务账户名称"}'></div>
+                <div options='{"field":"customerCode","dataType":"String","title":"经销商编码"}'></div>
+                <div options='{"field":"customerName","dataType":"String","title":"经销商名称"}'></div>
+                <div options='{"field":"officeCode","dataType":"String","title":"所属办事处编码"}'></div>
+                <div options='{"field":"officeName","dataType":"String","title":"所属办事处名称"}'></div>
+                <div options='{"field":"actualTakeNum","dataType":"Float","title":"采购量","renderType":"precision2Render"}'></div>
+                <div options='{"field":"saleBillingNum","dataType":"Float","title":"销售开单量","renderType":"precision2Render"}'></div>
+                <div options='{"field":"preSaleOrderNum","dataType":"Float","title":"预销售订单量","renderType":"precision2Render"}'></div>
+            </div>
+            <div class="ui-statistics margin-top-10">
+                已选择<span class="font-c-blue" data-bind="text:promotionList.selectedIndices().length"></span>项数据
+            </div>
+            <div class="pagination-right">
+                <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"promotionList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--导入导出弹窗-->
+<div id="exportFiel"></div>
+<!--导入导出弹窗-->
+
+<!--二维展示弹窗-->
+<div id="dialog_content_2dimensional" style="display:none;">
+    <div class="u-msg-title">
+        <h4>二维展示</h4>
+    </div>
+    <div class="u-msg-content">
+        <div class="ui-btn-group margin-bottom-10">
+        </div>
+        <div id="summary-table-container" class="ui-table-container" style="position:relative; width: 100%; overflow:hidden; padding-bottom:20px;">
+            <table class="ui-table ui-table-multihead">
+                <thead>
+                <tr>
+                    <td rowspan="2">产品名称</td>
+                    <!-- ko foreach: {data: officeList, as: 'office'} -->
+                    <td colspan="3" data-bind='text: office["2"]' style="text-align: center;"></td>
+                    <!-- /ko -->
+                </tr>
+                <tr>
+                    <!-- ko foreach:{data: officeList, as: 'office'} -->
+                    <td>采购量</td>
+                    <td>销售开单量</td>
+                    <td>预销售订单量</td>
+                    <!-- /ko -->
+                </tr>
+                </thead>
+                <tbody data-bind="foreach: {data: summaryDatas, as: 'record'}">
+                <tr>
+                    <td nowrap data-bind='text: record.productName'></td>
+                    <!-- ko foreach:{data: record.dataInfo, as: 'officeKeys'} -->
+                    <!-- ko foreach:{data: officeKeys, as: 'keyNum'} -->
+                    <td data-bind="text: keyNum"></td>
+                    <!-- /ko -->
+                    <!-- /ko -->
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="u-msg-footer">
+        <a data-bind="click: summaryConfirm" class="u-msg-ok ui-btn ui-btn-green">确定</a>
+    </div>
+</div>
+<!--二维展示弹窗 end-->

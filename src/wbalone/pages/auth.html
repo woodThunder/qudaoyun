@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="../trd/jquery/jquery-1.11.2.min.js"></script>
+<body>
+<script type="text/javascript">
+    function check() {
+        if($("#activeCode").val()==''&&$("#distribution").val()=='') {
+            alert("公司激活码和渠道商激活码至少一个不可以为空!");
+            return false;
+        }
+
+        if($("#resCode").val()=='') {
+            alert("商品资源码不可以为空!");
+            return false;
+        }
+        if($("#userId").val()=='') {
+            alert("用户ID不可以为空!");
+            return false;
+        }
+        if($("#companyId").val()=='') {
+            alert("企业账号ID不可以为空!");
+            return false;
+        }
+        var classPath = window.document.location.href;
+        var pathName = window.document.location.pathname;
+        var pos = classPath.indexOf(pathName);
+        var url = classPath.substring(0, pos);
+        //如果全部校验通过则进行提交
+
+            $.ajax({
+                url: url+"/occ-cmpt/cmpt/soft-controls/open-app",
+                type: 'POST',
+                async:false,
+                data: {
+                    "activeId":$("#activeCode").val(),
+                    "resCode":$("#resCode").val(),
+                    "userId":$("#userId").val(),
+                    "companyId":$("#companyId").val(),
+                    "distribution":$("#distribution").val()
+                },
+                success: function (res) {
+                    var centerFlag = res.centerflag;
+                    var distributeFlag = res.distributflag;
+                    var centermsg = res.centermasg;
+                    var distributemsg = res.distributmsg;
+                    if (centerFlag!=undefined&&distributeFlag!=undefined){
+                        if (centerFlag==true&&distributeFlag==true) {
+                            alert("激活成功");
+                        } else if (centerFlag==false&&distributeFlag==true) {
+                            alert("中台激活失败，渠道激活成功,中台失败信息："+centermsg);
+                        } else if (centerFlag==true&&distributeFlag==false) {
+                            alert("中台激活成功，渠道激活失败,渠道失败信息："+distributemsg);
+                        } else {
+                            alert("激活失败,中台失败信息："+centermsg+",渠道失败信息："+distributemsg);
+                        }
+                    } else if (centerFlag==undefined&&distributeFlag!=undefined){
+                            if (distributeFlag==true){
+                                alert("渠道激活成功");
+                            } else {
+                                alert("渠道激活失败,渠道失败信息："+distributemsg);
+                            }
+                    } else if (centerFlag!=undefined&&distributeFlag==undefined){
+                            if (centerFlag==true){
+                                alert("中台激活成功");
+                            } else {
+                                alert("中台激活失败,中台失败信息："+centermsg);
+                            }
+                    }
+                }
+            });
+
+    }
+</script>
+<form id="form1">
+    <table>
+        <tr>
+            <th>渠道云激活页面</th>
+        </tr>
+        <tr>
+            <td>中台激活码：</td>
+            <td>
+                <input type=text id="activeCode" name="activeCode" size="18" value="" >
+            </td>
+        </tr>
+        <tr>
+            <td>渠道商激活码：</td>
+            <td>
+                <input type=text id="distribution" name="distribution" size="18" value="" >
+            </td>
+        </tr>
+        <tr>
+            <td>商品资源码：</td>
+            <td>
+                <input type=text id="resCode" name="resCode" size="18" value="" >
+            </td>
+        </tr>
+        <tr>
+            <td>用户ID：</td>
+            <td>
+                <input type=text id="userId" name="userId" size="18" value="" >
+            </td>
+        </tr>
+        <tr>
+            <td>企业账号ID：</td>
+            <td>
+                <input type=text id="companyId" name="companyId" size="18" value="" >
+            </td>
+        </tr>
+    </table>
+    <input type=button value="激活" onclick="check()">
+</form>
+</body>
+</html>

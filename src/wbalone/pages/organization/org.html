@@ -1,0 +1,68 @@
+<div class="main-wrap list-panel" id="org">
+ <!--   <link href="/uui/libs/uui/css/font-awesome.min.css" rel="stylesheet">-->
+    <link href="/uitemplate_web/static/css/ref/ref.css" rel="stylesheet">
+    <link href="/uitemplate_web/static/css/ref/jquery.scrollbar.css" rel="stylesheet">
+    <div class="wrapper">
+        <div class="wrap-body">
+            <!--页面功能名字-->
+            <div class="apptitle">
+                组织结构
+                <span class="btn btn-default btn-sm backbutton" data-bind="click:events.goback">返回</span>
+            </div>
+            <div class="u-row">
+                <div class="u-col-xs-12 u-col-md-4" style="min-height: 200px">
+                    <!--组织树 -->
+
+                    <div id="orgTree">
+                        <div class="sub-head">
+                            <span class="head-title">组织结构</span>
+                            <button class="u-button  head-btn" id="org_add" data-bind="click:events.add,disable:(!addflag)">
+                                <i class="iconfont icon-plus"></i>
+                            </button>
+                        </div>
+                        <div id="no_org" data-bind="visible:noorgflag">无组织信息！</div>
+                        <div id="tree2"  class="ztree" u-meta='{"id":"tree2","data":"treeData","type":"tree","idField":"id","pidField":"pid","nameField":"name","setting":"treeSetting"}'></div>
+                    </div>
+                </div>
+                <div class="u-col-xs-12 u-col-md-8" style="min-height: 200px">
+                    <!--组织内容列表-->
+                    <div id="orgCont">
+                        <div class="sub-head ">
+                            <span class="head-title" data-bind="">组织详细</span>
+                            <button class="u-button  head-btn" data-bind="click:events.delete,disable:buttonflag(),css:{disable:buttonflag()}">
+                                <i class="iconfont icon-delete"></i>
+                            </button>
+                            <button class="u-button  head-btn" id="org_editor" data-bind="click:events.edit,disable:buttonflag(),css:{disable:buttonflag()}">
+                                <i class="iconfont icon-pencil"></i>
+                            </button>
+                        </div>
+                        <div id="no_orgdtl" data-bind="visible:noorgflag">无组织详情！</div>
+                        <div id="template-organization"></div>
+                        <div class="sub-footer" data-bind="visible:footflag">
+                            <div class="u-form-group">
+                                <button class="savebtn" id="savebtn" data-bind="click:events.save">保存</button>
+                            </div>
+                            <div class="u-form-group">
+                                <button class="cancelbtn" id="cancelbtn" data-bind="click:events.cancel">取消</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="delete-dialog" style="display:none;">
+            <div class="u-msg-title">
+                <h4>提示</h4>
+            </div>
+            <div class="u-msg-content">
+                <p>确定删除选中项？</p>
+            </div>
+            <div class="u-msg-footer">
+                <button type="button" class="u-msg-cancel u-button">取消<span class="u-button-container"><span class="u-ripple"></span></span></button>
+                <button type="button" class="u-msg-ok u-button">确定<span class="u-button-container"><span class="u-ripple"></span></span></button>
+
+            </div>
+        </div>
+    </div>
+</div>

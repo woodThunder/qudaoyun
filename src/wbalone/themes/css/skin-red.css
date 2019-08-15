@@ -1,0 +1,38 @@
+.skin-red .sidebar .sidebar-wrapper .sidebar-nav li:hover > a {
+    background-color: #c0392b;
+    color: white;
+}
+.skin-red .sidebar .sidebar-wrapper .sidebar-nav li.active > a {
+    background-color: #e74c3c;
+}
+.skin-red .sidebar .sidebar-wrapper .sidebar-nav li.active:hover > a {
+    background-color: #c0392b;
+}
+.skin-red .sidebar .sidebar-wrapper .sidebar-nav li > ul li:hover > a {
+    color: #c0392b;
+    background-color: transparent;
+}
+.skin-red .sidebar .sidebar-wrapper .sidebar-nav li > ul li.active:hover > a {
+    color: white;
+}
+.skin-red header {
+    background-color: rgba(231, 76, 60, 0.8);
+    border-color: #e74c3c;
+    color: white;
+}
+.skin-red header .logo {
+    color: white;
+    border-color: #e74c3c;
+}
+.skin-red header .navbar-main .button-container > .item > a {
+    color: white;
+}
+.skin-red header .navbar-main .button-container > .item.chat-search {
+    border-color: #e74c3c;
+}
+.skin-red header .navbar-main .button-container > .item.chat-search.collapse.in {
+    border-color: #e74c3c;
+}
+.skin-red header .navbar-main .nav-content .page-title {
+    color: white;
+}

@@ -1,0 +1,193 @@
+<div class="ui-panel ui-bill-detail">
+  <div class="u-row">
+    <div class="u-col-4  page-title">
+      <span>设计产品</span>
+    </div>
+  </div>
+  <div class="u-row">
+    <div class="u-col-4">
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+  <div class="ui-searchbox">
+    <div id="DesignProduct-searchcontent" class="ui-searchbox-content">
+
+    </div>
+    <div class="clearfix">
+
+    </div>
+    <div class="ui-searchbox-footer">
+      <div class="ui-search-more hidden">
+          <a>更多<i class="uifont icon-down"></i></a>
+      </div>
+
+      <div class="ui-search-btn">
+        
+        <a class="ui-btn ui-btn-primary margin-right-5"
+        data-bind="click:cleanSearch">清空
+        </a>
+        <a class="ui-btn ui-btn-green"
+        data-bind="click:search.bind($data,true)">搜索
+        </a>
+      </div>
+      <div class="clearfix">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-panel-body">
+      <div class="ui-panel-body-head">
+        <div class="ui-panel-body-head-left">
+            <a class="ui-btn ui-btn-orange margin-right-5" id="user-action-add"
+            data-bind="click: beforeEdit.bind($data,-1),visible:buttonShowGroup['add']"><i class="uifont icon-plus margin-right-5"></i>新增
+          </a>
+          <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+            data-bind="click: del,visible:buttonShowGroup['del']">
+            <i class="uifont icon-shanchu1 margin-right-5"></i>删除
+          </a>
+          <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+            <a class="ui-button-item" 
+              data-bind="click:enable,visible:buttonShowGroup['enable']">
+              <i class="uifont icon-qiyong margin-right-5"></i>启用
+            </a>
+            <a class="ui-button-item"
+              data-bind="click:disable,visible:buttonShowGroup['disable']">
+              <i class="uifont icon-tingyong margin-right-5"></i>停用
+            </a>
+          </div>
+          <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+              <a class="ui-button-item" data-bind="click: importHandle,visible:buttonShowGroup['import']"><i class="uifont  icon-import margin-right-5"></i>导入</a>
+						  <a class="ui-button-item" data-bind="click: exportHandle"><i class="uifont icon-export margin-right-5"></i>导出</a>
+          </div>
+          
+        </div>  
+       
+      </div>
+
+      <div class="ui-table-container">
+          <div id="DesignProduct"
+               u-meta='{"id":"grid_DesignProduct","data":"designProductList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+                      <div options='{"field":"code","dataType":"String","title":"产品编码"}'></div>
+                      <div options='{"field":"description","dataType":"String","title":"产品描述"}'></div>
+                      <div options='{"field":"productModelName","dataType":"String","title":"型号"}'></div>
+                      <div options='{"field":"productCategoryName","dataType":"String","title":"品类"}'></div>
+                      <div options='{"field":"productRadSeriesName","dataType":"String","title":"研发系列"}'></div>
+                      <div options='{"field":"productSaleSeriesName","dataType":"String","title":"销售系列"}'></div>
+                      <div options='{"field":"proStateName","dataType":"String","title":"启用状态"}'></div>
+                      <div options='{"field":"statusCode","dataType":"String","title":"状态","renderType":"enableRender"}'></div>
+                      <div options='{"field":"creator","dataType":"String","title":"创建人","visible":false}'></div>
+                      <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":false}'></div>
+                      <div options='{"field":"creationTime","dataType":"Date","title":"创建时间","visible":false}'></div>
+                      <div options='{"field":"modifiedTime","dataType":"Date","title":"修改时间","visible":true}'></div>
+                      <div options='{"field":"operation","dataType":"String","title":"上传图片","renderType":"picUploadList","fixed":true,"width":"110px"}'></div>
+                      <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation4single","fixed":true,"width":"110px"}'></div>
+          </div>
+          <div class="ui-statistics margin-top-10">
+            <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择<span class="font-c-blue" data-bind="text:designProductList.selectedIndices().length"></span>项数据
+          </div>
+          <div class="pagination-right">
+            <div id='pagination' class='pagination u-pagination pagination-sm'
+            u-meta='{"type":"pagination","data":"designProductList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+          </div>
+      </div>
+    </div>
+</div>
+<div id="dialog_layer" style="display:none;"></div>
+<!--导入导出弹窗-->
+<div id="exportFiel"></div>
+<div id="importFiel"></div>
+<!--导入导出弹窗-->
+<!-- 图片维护页 -->
+<div class="ui-bill-pic ui-panel" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span>图片维护</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-green" data-bind="click: goPicPanelbill">返回</a>
+    </div>
+  </div>
+  <div class="ui-bill-body">
+        <div class="ui-panel-body-head margin-top-15">
+					  <div class="ui-panel-body-head-left">
+			        <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-add" data-bind="click: showFileDialog"><i class="uifont icon-plus margin-right-5"></i>上传图片</a>
+						  <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click: delRow.bind($data,'ProdInfoAndPhotoInfoList')"><i class="uifont icon-shanchu1 margin-right-5"></i>删行</a>
+	        		<a class="ui-btn ui-btn-primary margin-right-5" id="user-action-add" data-bind="click: saveParse"><i class="uifont icon-tubiao-baocun margin-right-5"></i>保存</a>
+			      </div>
+        </div>
+			  <div class="ui-table-container">
+			      <div u-meta='{"id":"grid_ProdInfoAndPhotoInfo","data":"ProdInfoAndPhotoInfoList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+	              <div options='{"field":"prodPhotoInfoUrl","dataType":"String","title":"图片预览","renderType":"picShow"}'></div>
+	              <div options='{"field":"prodPhotoInfoCode","dataType":"String","title":"图片名称"}'></div>
+	              <div options='{"field":"isMainPhoto","dataType":"String","title":"是否主图","renderType":"mainPhoto"}'></div>
+	              <div options='{"field":"operationMain","dataType":"String","title":"设为主图","renderType":"operationMain"}'></div>
+			      </div>
+  </div>
+  <div class="ui-bill-footer"></div>
+</div>
+<!-- 图片维护页 end-->
+<!-- 模态框(附件上传)start-->	
+<div id="fileiptwrap">
+  <input class="u-input" type="file" name="addfile" id = "uploadbatch_id" multiple="multiple" style="display:none;"/>
+</div>
+<div id="file-dialog" style="display:none;">
+  <div class="u-msg-title">
+    <h4>附件</h4>
+  </div>
+  <div class="u-msg-content">
+	  <div class="margin-bottom-10" style="color: #f00;">
+	  		*支持图片格式jpg，bmp，gif，png，jpeg；每次上传图片大小总和不得超过500MB。
+	  </div>
+    <div class="ui-file-btns">
+      <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+        data-bind='click: onOpenUploadWin'><i class="uifont icon-tubiao-shangchuan margin-right-5"></i>上传
+      </a>
+      <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+        data-bind='click: fileDelete'><i class="uifont icon-shanchu1 margin-right-5"></i>删除
+      </a>
+      <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+        data-bind='click: fileView'><i class="uifont icon-tubiao-chakan margin-right-5"></i>查看
+      </a>
+      <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-add" data-bind="click: savePic">保存</a>
+    </div>
+    <div class="ui-file-list">
+      <div class="ui-table-container">
+          <div u-meta='{"id":"grid_attach","data":"FileList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true,"columnMenu":false}'>
+              <div options='{"field":"filename","dataType":"String","title":"文件名称"}'></div>
+              <div options='{"field":"filesize","dataType":"String","title":"文件大小"}'></div>
+              <div options='{"field":"uploadtime","dataType":"Datetime","title":"上传时间"}'></div>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="u-msg-footer">
+    <!-- <a class="ui-btn ui-btn-green J-ok">确定</a> -->
+  </div>
+  </div>
+	<!-- 模态框(附件上传)end-->	
+	<!--大图浏览模态框开始-->
+  <div id="picBig-dialog" style="display:none;">
+		  <div class="u-msg-title">
+		    <h4>图片预览</h4>
+		  </div>
+		  <div class="u-msg-content text-center img-big-content">
+		  	  <img src="" id="picBig" style="max-width: 600px;"/>
+		  		<a class="btn-img-switch prev" id="prev" data-bind="click: prev">上一张</a>
+			  	<a class="btn-img-switch next" id="next" data-bind="click: next">下一张</a>
+			  	<div class="btn-img-tip" id="imgTip"></div>
+		  </div>
+	    <div class="u-msg-footer">
+	    </div>
+  </div>
+	<!--大图浏览模态框结束-->

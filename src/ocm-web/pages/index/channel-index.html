@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="renderer" content="webkit">
+    <!--360 使用Google Chrome Frame-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <!--优先使用 IE 最新版本和 Chrome-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="bootstrap admin template">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="/wbalone/images/favicon.ico" type="images/x-icon" />
+    <link rel="Bookmark" href="/wbalone/images/favicon.ico">
+    <link rel="icon" href="/wbalone/images/favicon.png" type="images/png" />
+    <link rel="stylesheet" type="text/css" href="/wbalone/trd/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/ocm-web/vendor/antd/antd.css">
+    <link rel="stylesheet" type="text/css" href="/ocm-web/fonts/qyfont/iconfont.css">
+    <script src="/wbalone/apworkbench/trd/echarts/echarts.js"></script>
+    <script src="/wbalone/apworkbench/trd/echarts/custom.js"></script>
+
+    <title>渠道商首页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        a:visited {
+            text-decoration: none;
+            color: #333;
+        }
+
+        a:hover {
+            text-decoration: none;
+            color: #333;
+        }
+
+        #calendar {
+            width: 390px;
+            margin: 20px auto;
+            overflow: hidden;
+            /* border: 1px solid #000; */
+            padding: 20px;
+            position: relative
+        }
+
+        #calendar h4 {
+            text-align: center;
+            margin-bottom: 10px
+        }
+
+        #calendar .a1 {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        #calendar .a2 {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        #calendar .week {
+            height: 30px;
+            line-height: 20px;
+            /* border-bottom: 1px solid #000; */
+            /* margin-bottom: 10px */
+        }
+
+        #calendar .week li {
+            float: left;
+            width: 50px;
+            height: 30px;
+            text-align: center;
+            list-style: none;
+            font-family: PingFangSC-Medium;
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.65);
+            text-align: left;
+            line-height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        #calendar .dateList {
+            overflow: hidden;
+            clear: both
+        }
+
+        #calendar .dateList li {
+            float: left;
+            width: 50px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            list-style: none;
+            font-family: HelveticaNeue;
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.65);
+            text-align: left;
+            line-height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        #calendar .dateList .ccc {
+            color: #ccc;
+        }
+
+        #calendar .dateList .red {
+            background: #F90;
+            color: #fff;
+        }
+
+        #calendar .dateList .sun {
+            color: #f00;
+        }
+    </style>
+    <style type="text/css">
+        html,
+        body {
+            margin: 0;
+            background-color: #fafafa;
+        }
+
+        .top-panel {
+            height: 100px;
+            display: flex;
+        }
+
+        .top-panel-item {
+            margin-right: 1%;
+            background-color: #fff;
+            width: 15.5%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            line-height: 40px;
+        }
+
+        .top-panel-item-last {
+            background-color: #fff;
+            width: 15.5%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center
+        }
+
+        .top-panel-item-text {
+            font-family: PingFangSC-Regular;
+            font-size: 14px;
+            color: #333333;
+            text-align: center;
+        }
+
+        .top-panel-item-num {
+            font-family: PingFangSC-Regular;
+            font-size: 20px;
+            color: #E70013;
+            text-align: center;
+        }
+
+        .content-panel {
+            height: 674px;
+            width: 100%;
+            display: flex;
+        }
+
+        .left-panel {
+            height: 674px;
+            width: 65%;
+
+        }
+
+        .middle-panel {
+            height: 404px;
+            width: 100%;
+            margin-top: 16px;
+            display: flex;
+        }
+
+
+        .middle-half-panel {
+            background-color: #fff;
+
+            height: 100%;
+            width: 50%;
+        }
+
+        .middle-half-panel-title {
+            height: 102px;
+            width: 100%;
+        }
+
+        .middle-half-panel-title-line1 {
+
+            height: 51px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            margin-left: 16px;
+            font-family: PingFangSC-Medium;
+            font-size: 16px;
+            color: #333333;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .middle-half-panel-title-line2 {
+            padding-right: 10px;
+            height: 48px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .middle-half-panel-title-line2-menu {
+            width: 28px;
+            margin-right: 10px;
+            height: 20px;
+            font-family: PingFangSC-Regular;
+            font-size: 14px;
+            color: #333333;
+            text-align: left;
+        }
+
+        .e-charts-panel {
+            width: 95%;
+            height: 300px;
+        }
+
+        .margin-left16 {
+            margin-left: 16px;
+        }
+
+        .bottom-panel {
+            width: 100%;
+            height: 254px;
+            margin-top: 16px;
+            background: #fff;
+        }
+
+        .bottom-panel-title {
+            height: 102px;
+            width: 100%;
+            border-bottom: 1px solid #EEEEEE;
+        }
+
+        .bottom-panel-title-line1 {
+            height: 51px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            margin-left: 16px;
+            font-family: PingFangSC-Medium;
+            font-size: 16px;
+            color: #333333;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .bottom-panel-title-line2 {
+            height: 51px;
+            width: 100%;
+            display: flex;
+        }
+
+        .bottom-panel-title-line2-left {
+            height: 51px;
+            width: 60%;
+            display: flex;
+            align-items: center;
+        }
+
+        .bottom-panel-title-line2-left-tab {
+            display: flex;
+            align-items: center;
+            height: 51px;
+            margin-left: 20px;
+            margin-right: 20px;
+            font-family: MicrosoftYaHei;
+            font-size: 12px;
+            color: #333333;
+            text-align: center;
+        }
+
+        .bottom-panel-title-line2-right {
+            height: 51px;
+            width: 40%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-right: 16px;
+        }
+
+
+        .bottom-panel-content {
+            height: 265px;
+            width: 100%;
+            padding: 8px;
+        }
+
+        .bottom-panel-content-line {
+            height: 24px;
+            width: 100%;
+            display: flex;
+            align-items: center
+        }
+
+        .bottom-panel-content-line-point {
+            margin-right: 5px;
+            height: 24px;
+            width: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6px;
+        }
+
+        .bottom-panel-content-line-text {
+            height: 24px;
+            width: 70%;
+            display: flex;
+            align-items: center;
+            font-family: PingFangSC-Regular;
+            font-size: 12px;
+            color: #333333;
+            letter-spacing: 0;
+        }
+
+        .bottom-panel-content-line-date {
+            margin-right: 16px;
+            height: 24px;
+            width: 30%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            font-family: PingFangSC-Regular;
+            font-size: 12px;
+            color: #999999;
+            letter-spacing: 0;
+            text-align: right;
+        }
+
+        .right-panel {
+            margin-top: 16px;
+            margin-left: 1%;
+            width: 32%;
+            height: 674px;
+            background: #fff
+        }
+
+        .right-panel-title {
+            height: 51px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            margin-left: 16px;
+            font-family: PingFangSC-Medium;
+            font-size: 16px;
+            color: #333333;
+            border-bottom: 1px solid #EEEEEE;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .right-panel-calendar {
+            width: 406px;
+            height: 310px;
+            border-bottom: 1px solid #EEEEEE;
+        }
+
+        .ant-calendar-picker {
+            width: 224px !important;
+        }
+
+        #calendar2 .ant-calendar-picker-container .ant-calendar {
+            position: relative;
+            /* left: 66%; */
+            outline: none;
+            margin-left: 10px;
+            margin-top: 20px;
+            width: 360px;
+            border: 0;
+            list-style: none;
+            background-color: #fff;
+            border-radius: 0;
+            box-shadow: 0 0 0 rgba(92, 65, 65, 0.2);
+            background-clip: padding-box;
+            font-family: HelveticaNeue;
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.65);
+            text-align: left;
+            line-height: 22px;
+        }
+
+        #calendar2 .ant-calendar .ant-calendar-input-wrap {
+            height: 0px;
+            width: 0px;
+            display: none;
+        }
+
+
+        #calendar2 .ant-calendar .ant-calendar-header {
+            border-bottom: 0;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+
+        #calendar2 .ant-calendar .ant-calendar-footer {
+            height: 0px;
+            width: 0px;
+            display: none;
+        }
+
+        #calendar1 {
+            height: 0px;
+            width: 0px;
+            visibility: hidden
+            /* display: none会导致面板全部消失 */
+            /* display: none; */
+        }
+
+        .right-panel-bottom {
+            height: 316px;
+            width: 100%;
+            padding-top: 20px;
+        }
+
+        .right-panel-bottom-item {
+            margin-top: 20px;
+            margin-left: 45px;
+        }
+
+        .right-panel-bottom-item-line1 {
+            display: flex;
+            font-family: PingFangSC-Regular;
+            font-size: 14px;
+            color: #333333;
+        }
+
+        .right-panel-bottom-item-line1-point {
+            font-size: 6px;
+            color: #E70013;
+            width: 20px;
+        }
+
+        .right-panel-bottom-item-line2 {
+            padding-left: 20px;
+            font-family: PingFangSC-Regular;
+            font-size: 14px;
+            color: #333333;
+        }
+
+
+        .cursor-hand {
+            cursor: pointer;
+        }
+
+        .v-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center
+        }
+
+        .ant-calendar-selected-day .ant-calendar-date {
+            background: #E70013;
+            color: #fff;
+            border: 1px solid transparent;
+            /* border-radius: 20px; */
+        }
+
+        .ant-calendar-selected-day .ant-calendar-date:hover {
+            background: #E70013;
+        }
+
+        .color-red {
+            color: #E70013;
+        }
+
+        .bottom-red {
+            border-bottom: 2px solid #E70013;
+        }
+    </style>
+</head>
+
+
+<body>
+<div class="content1">
+    <div class="top-panel">
+        <div class="top-panel-item">
+            <a class="route cursor-hand v-center" href="index-view.html#/saleorder" value="saleorder" name="销售订单">
+                    <span class="top-panel-item-text">
+                        <img alt="image" src="../../images/channel-index/icon-channel-1.png" width="30px" height="30px" />待订单审核</span>
+                <div class="top-panel-item-num">0</div>
+            </a>
+        </div>
+        <div class="top-panel-item">
+            <a class="route cursor-hand v-center" href="index-view.html#/saleoutorder-terminal" value="saleoutorder-terminal" name="销售出库单">
+                    <span class="top-panel-item-text">
+                        <img alt="image" src="../../images/channel-index/icon-channel-2.png" width="30px" height="30px" />待出库安排</span>
+                <div class="top-panel-item-num">0</div>
+            </a>
+        </div>
+        <div class="top-panel-item">
+            <a class="route cursor-hand v-center" href="index-view.html#/purchasein-terminal" value="purchasein-terminal" name="采购入库">
+                    <span class="top-panel-item-text">
+                        <img alt="image" src="../../images/channel-index/icon-channel-3.png" width="30px" height="30px" />待入库安排</span>
+                <div class="top-panel-item-num">0</div>
+            </a>
+        </div>
+        <div class="top-panel-item">
+                <span class="top-panel-item-text">
+                    <img alt="image" src="../../images/channel-index/icon-channel-4.png" width="30px" height="30px" />账户余额</span>
+            <div class="top-panel-item-num">0</div>
+        </div>
+        <div class="top-panel-item">
+                <span class="top-panel-item-text">
+                    <img alt="image" src="../../images/channel-index/icon-channel-5.png" width="30px" height="30px" />信用余额（元）</span>
+            <div class="top-panel-item-num">0</div>
+        </div>
+        <div class="top-panel-item-last">
+                <span class="top-panel-item-text">
+                    <img alt="image" src="../../images/channel-index/icon-channel-6.png" width="30px" height="30px" />费用余额（元）</span>
+            <div class="top-panel-item-num">0</div>
+        </div>
+    </div>
+    <div class="content-panel">
+        <div class="left-panel">
+            <div class="middle-panel">
+                <div class="middle-half-panel">
+                    <div class="middle-half-panel-title">
+                        <div class="middle-half-panel-title-line1">
+                            订单完成状态统计
+                        </div>
+                        <div class="middle-half-panel-title-line2">
+                            <div class="middle-half-panel-title-line2-menu cursor-hand">今日</div>
+                            <div class="middle-half-panel-title-line2-menu cursor-hand">本周</div>
+                            <div class="middle-half-panel-title-line2-menu cursor-hand color-red">本月</div>
+                            <div id="antd-input1">
+                                <input/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="middle-half-panel-content">
+                        <div id="main1" class="e-charts-panel">
+                        </div>
+                    </div>
+                </div>
+                <div class="middle-half-panel margin-left16">
+                    <div class="middle-half-panel-title">
+                        <div class="middle-half-panel-title-line1">
+                            商品销售统计
+                        </div>
+                        <div class="middle-half-panel-title-line2">
+                            <div class="middle-half-panel-title-line2-menu cursor-hand">今日</div>
+                            <div class="middle-half-panel-title-line2-menu cursor-hand">本周</div>
+                            <div class="middle-half-panel-title-line2-menu cursor-hand color-red">本月</div>
+                            <div id="antd-input2">
+                                <input/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="middle-half-panel-content">
+                        <div id="main2" class="e-charts-panel">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-panel">
+                <div class="bottom-panel-title">
+                    <div class="bottom-panel-title-line1">
+                        公告通知
+                    </div>
+                    <div class="bottom-panel-title-line2">
+                        <div class="bottom-panel-title-line2-left">
+                            <!-- <div class="bottom-panel-title-line2-left-tab">全部</div>
+                            <div class="bottom-panel-title-line2-left-tab">促销</div>
+                            <div class="bottom-panel-title-line2-left-tab">新品</div>
+                            <div class="bottom-panel-title-line2-left-tab">企业动态</div>
+                            <div class="bottom-panel-title-line2-left-tab">物流</div> -->
+                        </div>
+                        <div class="bottom-panel-title-line2-right">
+                            更多 >
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bottom-panel-content">
+                    <div class="bottom-panel-content-line">
+                        <div class="bottom-panel-content-line-point color-red"></div>
+                        <div class="bottom-panel-content-line-text"></div>
+                        <div class="bottom-panel-content-line-date"></div>
+                    </div>
+                    <div class="bottom-panel-content-line">
+                        <div class="bottom-panel-content-line-point color-red"></div>
+                        <div class="bottom-panel-content-line-text"></div>
+                        <div class="bottom-panel-content-line-date"></div>
+                    </div>
+                    <div class="bottom-panel-content-line">
+                        <div class="bottom-panel-content-line-point color-red"></div>
+                        <div class="bottom-panel-content-line-text"></div>
+                        <div class="bottom-panel-content-line-date"></div>
+                    </div>
+                    <div class="bottom-panel-content-line">
+                        <div class="bottom-panel-content-line-point"></div>
+                        <div class="bottom-panel-content-line-text"></div>
+                        <div class="bottom-panel-content-line-date"></div>
+                    </div>
+                    <div class="bottom-panel-content-line">
+                        <div class="bottom-panel-content-line-point"></div>
+                        <div class="bottom-panel-content-line-text"></div>
+                        <div class="bottom-panel-content-line-date"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="right-panel">
+            <div class="right-panel-title">
+                促销活动日历
+            </div>
+            <div class="right-panel-calendar">
+                <div id="calendar1">
+                </div>
+                <div id="calendar2">
+                </div>
+            </div>
+            <div class="right-panel-bottom">
+                <div class="right-panel-bottom-item">
+                    <div class="right-panel-bottom-item-line1">
+                        <div class="right-panel-bottom-item-line1-point">●</div>活动：满减促销
+                    </div>
+                    <div class="right-panel-bottom-item-line2">
+                        时间：2018-06-27~2018-06-30
+                    </div>
+                </div>
+                <div class="right-panel-bottom-item">
+                    <div class="right-panel-bottom-item-line1">
+                        <div class="right-panel-bottom-item-line1-point">●</div>活动：满减促销
+                    </div>
+                    <div class="right-panel-bottom-item-line2">
+                        时间：2018-06-27~2018-06-30
+                    </div>
+                </div>
+                <div class="right-panel-bottom-item">
+                    <div class="right-panel-bottom-item-line1">
+                        <div class="right-panel-bottom-item-line1-point">●</div>活动：满减促销
+                    </div>
+                    <div class="right-panel-bottom-item-line2">
+                        时间：2018-06-27~2018-06-30
+                    </div>
+                </div>
+                <div class="right-panel-bottom-item">
+                    <div class="right-panel-bottom-item-line1">
+                        <div class="right-panel-bottom-item-line1-point">●</div>活动：满减促销
+                    </div>
+                    <div class="right-panel-bottom-item-line2">
+                        时间：2018-06-27~2018-06-30
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/wbalone/trd/jquery/jquery-1.11.2.js"></script>
+<script src="/wbalone/trd/react/react.js"></script>
+<script src="/wbalone/trd/react/react-dom.min.js"></script>
+<script type="text/javascript">
+    window.u = {
+        DateTimeAdapter: function () {
+
+        }
+    }
+</script>
+
+<script src="/ocm-web/vendor/antd/antd.js"></script>
+
+<script type="text/javascript">
+    var routes = $(".route");
+    for (var i = 0; i < routes.length; i++) {
+        routes.eq(i).on("click", function (e) {
+            e.preventDefault();
+            var menuCode = e.target.parentElement.getAttribute("value");
+            if (!menuCode) {
+                e.target.parentElement.parentElement.getAttribute("value");
+            }
+            var menu = parent.parent.getCurrentMenu(menuCode)
+            // if (!menu.id) {
+            //     return;
+            // }
+            parent.parent.handleClick(e, 1);
+        })
+    }
+    function onChange() {
+    }
+    function onChange1(dateRange) {
+        var startTime = new Date(dateRange[0].format('YYYY-MM-DD') + " 00:00:00");
+        var endTime = new Date(dateRange[1].format('YYYY-MM-DD') + " 00:00:00");
+        $(".middle-half-panel-title-line2-menu").eq(0).removeClass("color-red")
+        $(".middle-half-panel-title-line2-menu").eq(1).removeClass("color-red")
+        $(".middle-half-panel-title-line2-menu").eq(2).removeClass("color-red")
+        queryOrderstatus(startTime, endTime);
+    }
+    function onChange2(dateRange) {
+        var startTime = new Date(dateRange[0].format('YYYY-MM-DD') + " 00:00:00");
+        var endTime = new Date(dateRange[1].format('YYYY-MM-DD') + " 00:00:00");
+        $(".middle-half-panel-title-line2-menu").eq(4).removeClass("color-red")
+        $(".middle-half-panel-title-line2-menu").eq(5).removeClass("color-red")
+        $(".middle-half-panel-title-line2-menu").eq(3).removeClass("color-red")
+        queryGoodsstatistics(startTime, endTime);
+    }
+    function returnFather(e, aaa) {
+        return $("#calendar2")[0]
+    }
+
+    // 基于准备好的dom，初始化echarts实例
+    comp = ReactDOM.render(React.createElement(DatePicker.RangePicker, {
+        placeholder: ["开始日期", "结束日期"],
+        showTime: true,
+        format: "YYYY-MM-DD",
+        onOk: onChange1,
+        disabled: false
+    }), $("#antd-input1")[0]);
+    comp1 = ReactDOM.render(React.createElement(DatePicker.RangePicker, {
+        placeholder: ["开始日期", "结束日期"],
+        showTime: true,
+        format: "YYYY-MM-DD",
+        onOk: onChange2,
+        disabled: false
+    }), $("#antd-input2")[0]);
+
+
+    ReactDOM.render(React.createElement(DatePicker, {
+        // placeholder: ["开始日期"],
+        // showTime: true,
+        format: "YYYY-MM-DD",
+        open: true,
+        onOk: onChange,
+        getCalendarContainer: returnFather,
+        disabled: false
+    }), $("#calendar1")[0]);
+
+</script>
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart1 = echarts.init(document.getElementById("main1"), "custom");
+    var myChart2 = echarts.init(document.getElementById("main2"), "custom");
+
+    option1 = {
+
+        title: {
+            // text: "已审核未配车各办事处占比",
+            textStyle: {
+                color: "#a3b3af",
+                fontSize: 14
+            },
+            padding: [5, 0, 0, 20]
+        },
+        tooltip: {
+            trigger: "item",
+            formatter: "{a} <br/>{b}: {c} ({d}%)"
+        },
+        series: [
+            {
+                name: "订单完成状态统计",
+                type: "pie",
+                radius: ["35%", "60%"],
+                avoidLabelOverlap: false,
+                label: {
+                    normal: {
+                        formatter: function (params) {
+                            return params.name + ":" + parseInt(params.percent) + "%";
+                        }
+                    },
+                    emphasis: {
+                        textStyle: {
+                            fontWeight: "bold"
+                        }
+                    }
+                },
+                data: [
+
+                ]
+            }
+        ]
+    };
+
+    option2 = {
+
+        title: {
+            // text: "已审核未配车各办事处占比",
+            textStyle: {
+                color: "#a3b3af",
+                fontSize: 14
+            },
+            padding: [5, 0, 0, 20]
+        },
+        tooltip: {
+            trigger: "item",
+            formatter: "{a} <br/>{b}: {c} ({d}%)"
+        },
+        series: [
+            {
+                name: "商品销售统计",
+                type: "pie",
+                radius: ["35%", "60%"],
+                avoidLabelOverlap: false,
+                label: {
+                    normal: {
+                        formatter: function (params) {
+                            return params.name + ":" + parseInt(params.percent) + "%";
+                        }
+                    },
+                    emphasis: {
+                        textStyle: {
+                            fontWeight: "bold"
+                        }
+                    }
+                },
+                data: [
+
+                ]
+            }
+        ]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart1.setOption(option1);
+    myChart2.setOption(option2);
+    // myChart2.showLoading();
+    var customerStr = localStorage.getItem('_A_P_customer');
+    var customer = JSON.parse(customerStr);
+
+    var today = new Date();
+    var today0 = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    var tomorrow = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
+    var day = today.getDay() || 7;
+    var sunday = new Date(today.getFullYear(), today.getMonth(), today.getDate() - day);
+    var monthFirst = new Date(today.getFullYear(), today.getMonth(), 1);
+
+    //公告
+    var noticeData = [];
+
+    //公告查询
+    $.ajax({
+        type: "get",
+        url: "/occ-b2b-buyer/buyer/notices/queryNoticeSomeInfo",
+        dataType: "json",
+        success: function (data) {
+            noticeData = data
+            spellNotice(0)
+        }
+    });
+
+
+    function spellNotice(index) {
+        var str = ""
+        for (var i = 0; i < noticeData.length; i++) {
+            str += '<div class="bottom-panel-title-line2-left-tab cursor-hand">' + noticeData[i].noticeTypeName + '</div>'
+        }
+        $(".bottom-panel-title-line2-left")[0].innerHTML = str;
+        $(".bottom-panel-title-line2-left-tab").eq(index).addClass("color-red")
+        $(".bottom-panel-title-line2-left-tab").eq(index).addClass("bottom-red")
+        for (var i = 0; i < noticeData.length; i++) {
+            (function (i) {
+                $(".bottom-panel-title-line2-left-tab").eq(i).click(function () {
+                    spellNotice(i)
+                });
+            })(i);
+        }
+
+        var noticeItem = noticeData[index].noticeInfoMap;
+        for (var i = 0; i < noticeItem.length; i++) {
+            var dateStr = ""
+            if (noticeItem[i].pubdate) {
+                var date = new Date(noticeItem[i].pubdate);
+                dateStr = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+            }
+
+            $(".bottom-panel-content-line-point")[i].innerHTML = "●";
+            $(".bottom-panel-content-line-text")[i].innerHTML = noticeItem[i].title;
+            $(".bottom-panel-content-line-date")[i].innerHTML = dateStr;
+        }
+    }
+    noticeData = [{ "noticeType": "1daf497d-d7c6-4e56-85a5-50c63c1dce71", "noticeTypeName": "广告促销", "noticeInfoMap": [{ "title": "618大促", "noticeId": "0bfc612c-307e-4d11-a4e1-c0dfe594daad", "pubdate": null }] }, { "noticeType": "a8bc7ec4-0ba5-4208-a71f-c313099db64f", "noticeTypeName": "集团新闻", "noticeInfoMap": [{ "title": "端午节放假通知", "noticeId": "6577c6cd-168f-4a32-b5a8-31fe2c57c19f", "pubdate": 1530115200000 }] }]
+    spellNotice(0)
+
+
+
+    //终端待订单审核数量
+    $.ajax({
+        type: "get",
+        url: "/occ-b2b-order/b2b/home/query-ordercheckpend",
+        dataType: "json",
+        data: {
+            supplier: customer.id
+        },
+        success: function (data) {
+            if(typeof data == "number") {
+              $(".top-panel-item-num")[0].innerHTML = data;
+            }
+        }
+    });
+
+
+    //终端待出库安排数量
+    $.ajax({
+        type: "get",
+        url: "/occ-b2b-order/b2b/home/query-deliveryoutbount",
+        dataType: "json",
+        data: {
+            supplier: customer.id
+        },
+        success: function (data) {
+            if(typeof data == "number") {
+              $(".top-panel-item-num")[1].innerHTML = data;
+            }
+        }
+    });
+
+    //终端待入库安排数量
+    $.ajax({
+        type: "get",
+        url: "/occ-b2b-order/b2b/home/query-orderstorage",
+        dataType: "json",
+        data: {
+            supplier: customer.id
+        },
+        success: function (data) {
+            if(typeof data == "number") {
+              $(".top-panel-item-num")[2].innerHTML = data;
+            }
+        }
+    });
+    //账户余额
+    $.ajax({
+        type: "get",
+        url: "/occ-settlement/api/settlement/query-prepaymentbalance",
+        dataType: "json",
+        data: {
+            customerId: customer.id,
+            financeOrgId: ''
+        },
+        success: function (data) {
+            if(typeof data == "number") {
+              $(".top-panel-item-num")[3].innerHTML = data;
+            }
+        }
+    });
+
+    //费用余额
+    $.ajax({
+        type: "get",
+        url: "/occ-fee/customer-casts/query-castBalance",
+        dataType: "json",
+        data: {
+            supplier: customer.id
+        },
+        success: function (data) {
+            if(typeof data == "number") {
+              $(".top-panel-item-num")[5].innerHTML = data;
+            }
+        }
+    });
+
+    //信用余额
+    $.ajax({
+        type: "get",
+        url: "/occ-cr/cr/credit-limits/findBalance",
+        dataType: "json",
+        data: {
+            customerId: customer.id
+        },
+        success: function (data) {
+            if(typeof data == "number") {
+              $(".top-panel-item-num")[4].innerHTML = data;
+            }
+        }
+    });
+
+    function queryOrderstatus(startTime, endTime) {
+        //订单完成状态统计
+        $.ajax({
+            type: "get",
+            url: "/occ-b2b-order/b2b/home/query-orderstatus",
+            dataType: "json",
+            data: {
+                supplier: customer.id,
+                startTime: startTime.getTime(),
+                endTime: endTime.getTime()
+            },
+            success: function (data) {
+                var arr = [];
+                for (var i = 0; i < data.length; i++) {
+                    var value = data[i][1]
+                    var name = data[i][0]
+                    var str = ""
+                    switch (name) {
+                        case "01":
+                            str = "待处理"
+                            break;
+                        case "02":
+                            str = "已提交"
+                            break;
+                        case "03":
+                            str = "审批中"
+                            break;
+                        case "04":
+                            str = "审批通过"
+                            break;
+                        case "05":
+                            str = "审批不通过"
+                            break;
+                        case "06":
+                            str = "已驳回"
+                            break;
+                        case "07":
+                            str = "部分出库"
+                            break;
+                        case "08":
+                            str = "全部出库"
+                            break;
+                        case "09":
+                            str = "部分入库"
+                            break;
+                        default:
+                            str = "";
+                            break;
+                    }
+                    arr.push({ value: value, name: str })
+                }
+                option1.series[0].data = arr
+                myChart1.setOption(option1);
+
+            }
+        });
+    }
+
+    queryOrderstatus(monthFirst, today);
+
+    function queryGoodsstatistics(startTime, endTime) {
+        //商品销售统计
+        $.ajax({
+            type: "get",
+            url: "/occ-b2b-order/b2b/home/query-goodsstatistics",
+            dataType: "json",
+            data: {
+                supplier: customer.id,
+                startTime: startTime.getTime(),
+                endTime: endTime.getTime()
+            },
+            success: function (data) {
+                var arr = []
+                for (var i = 0; i < data.length; i++) {
+                    arr.push({ name: data[i][0], value: data[i][1] })
+                }
+                option2.series[0].data = arr
+                myChart2.setOption(option2);
+            }
+        });
+    }
+    queryGoodsstatistics(monthFirst, today);
+
+    $(".middle-half-panel-title-line2-menu").eq(0).click(function () {
+        $(".middle-half-panel-title-line2-menu").eq(0).addClass("color-red")
+        $(".middle-half-panel-title-line2-menu").eq(1).removeClass("color-red")
+        $(".middle-half-panel-title-line2-menu").eq(2).removeClass("color-red")
+        queryOrderstatus(today0, tomorrow)
+    });
+    $(".middle-half-panel-title-line2-menu").eq(1).click(function () {
+        $(".middle-half-panel-title-line2-menu").eq(1).addClass("color-red")
+        $(".middle-half-panel-title-line2-menu").eq(0).removeClass("color-red")
+        $(".middle-half-panel-title-line2-menu").eq(2).removeClass("color-red")
+        queryOrderstatus(sunday, today)
+    });
+    $(".middle-half-panel-title-line2-menu").eq(2).click(function () {
+        $(".middle-half-panel-title-line2-menu").eq(2).addClass("color-red")
+        $(".middle-half-panel-title-line2-menu").eq(0).removeClass("color-red")
+        $(".middle-half-panel-title-line2-menu").eq(1).removeClass("color-red")
+        queryOrderstatus(monthFirst, today)
+    });
+    $(".middle-half-panel-title-line2-menu").eq(3).click(function () {
+        $(".middle-half-panel-title-line2-menu").eq(3).addClass("color-red")
+        $(".middle-half-panel-title-line2-menu").eq(4).removeClass("color-red")
+        $(".middle-half-panel-title-line2-menu").eq(5).removeClass("color-red")
+        queryGoodsstatistics(today0, tomorrow)
+    });
+    $(".middle-half-panel-title-line2-menu").eq(4).click(function () {
+        $(".middle-half-panel-title-line2-menu").eq(4).addClass("color-red")
+        $(".middle-half-panel-title-line2-menu").eq(3).removeClass("color-red")
+        $(".middle-half-panel-title-line2-menu").eq(5).removeClass("color-red")
+        queryGoodsstatistics(sunday, today)
+    });
+    $(".middle-half-panel-title-line2-menu").eq(5).click(function () {
+        $(".middle-half-panel-title-line2-menu").eq(5).addClass("color-red")
+        $(".middle-half-panel-title-line2-menu").eq(3).removeClass("color-red")
+        $(".middle-half-panel-title-line2-menu").eq(4).removeClass("color-red")
+        queryGoodsstatistics(monthFirst, today)
+    });
+
+
+    $.ajax({
+        type: "get",
+        url: "/occ-b2b/b2b/order-reports/product-unmet-sum",
+        data: {
+            count: 50
+        },
+        dataType: "json",
+        success: function (data) {
+            if (data && data.length > 0) {
+                var htmlStr = "";
+                for (var i = 0; i < data.length; i++) {
+                    var className = "";
+                    var text = data[i].productCode + "-" + data[i].productDesc;
+                    if (i == 0 || i == 1 || i == 2) {
+                        className = "s-number" + (i + 1);
+                    }
+                    var tpl = "<li class=\"udm-li\">" +
+                        "<span class=\"udm-s-number " + className + "\">" + (i + 1) +
+                        "</span><a class=\"udm-a-txt\" title=" + text + ">" + text +
+                        "</a></li>";
+                    htmlStr += tpl;
+                }
+                if (htmlStr) {
+                    $(".J-unmetTop").html(htmlStr);
+                }
+            }
+        }
+    });
+
+    function handlePercentPie(data, name, value) {
+        var result = [];
+        for (var i = 0; i < data.length; i++) {
+            result.push({
+                name: data[i][name],
+                value: data[i][value]
+            });
+        }
+        result[0].selected = true;
+        return result;
+
+    }
+
+    function handleUnmetColumn(data) {
+        var xAxis1 = {
+            type: "category",
+            data: []
+        };
+        var series = [{
+            name: "方量",
+            type: "bar",
+            data: []
+        },
+            {
+                name: "重量",
+                type: "bar",
+                data: []
+            },
+            {
+                name: "金额",
+                type: "bar",
+                data: []
+            }];
+        for (var i = 0; i < data.length; i++) {
+            xAxis1.data.push(data[i].businessAgencyName);
+            series[0].data.push(data[i].unmetVolume);
+            series[1].data.push(data[i].unmetWeight);
+            series[2].data.push(data[i].unmetAmount);
+        }
+        return {
+            xAxis: [xAxis1],
+            series: series
+        };
+    }
+</script>
+
+<script>
+    $(function () {
+
+        //必要的数据
+        //今天的年 月 日 ；本月的总天数；本月第一天是周几？？？
+        var iNow = 0;
+
+        function run(n) {
+
+            var oDate = new Date(); //定义时间
+            oDate.setMonth(oDate.getMonth() + n);//设置月份
+            var year = oDate.getFullYear(); //年
+            var month = oDate.getMonth(); //月
+            var today = oDate.getDate(); //日
+
+            //计算本月有多少天
+            var allDay = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month];
+
+            //判断闰年
+            if (month == 1) {
+                if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+                    allDay = 29;
+                }
+            }
+
+            //判断本月第一天是星期几
+            oDate.setDate(1); //时间调整到本月第一天
+            var week = oDate.getDay(); //读取本月第一天是星期几
+
+            //console.log(week);
+            $(".dateList").empty();//每次清空
+            //插入空白
+
+            for (var i = 0; i < week; i++) {
+                $(".dateList").append("<li></li>");
+            }
+
+            //日期插入到dateList
+            for (var i = 1; i <= allDay; i++) {
+                $(".dateList").append("<li>" + i + "</li>")
+            }
+            //标记颜色=====================
+            $(".dateList li").each(function (i, elm) {
+                //console.log(index,elm);
+                var val = $(this).text();
+                //console.log(val);
+                if (n == 0) {
+                    if (val < today) {
+                        $(this).addClass('ccc')
+                    } else if (val == today) {
+                        $(this).addClass('red')
+                    } else if (i % 7 == 0 || i % 7 == 6) {
+                        $(this).addClass('sun')
+                    }
+                } else if (n < 0) {
+                    $(this).addClass('ccc')
+                } else if (i % 7 == 0 || i % 7 == 6) {
+                    $(this).addClass('sun')
+                }
+            });
+
+            //定义标题日期
+            $("#calendar h4").text(year + "年" + (month + 1) + "月");
+        };
+        run(0);
+
+        $(".a1").click(function () {
+            iNow--;
+            run(iNow);
+        });
+
+        $(".a2").click(function () {
+            iNow++;
+            run(iNow);
+        })
+
+        //促销活动
+        // debugger
+        // $.ajax({
+        //     type: "get",
+        //     url: "/occ-prom/api/prom/findActivityByCustomer",
+        //     dataType: "json",
+        //     data: {
+        //         customerId: customer.id,
+        //         date:today
+        //     },
+        //     success: function (data) {
+        //         $(".top-panel-item-num")[5].innerHTML = data
+        //     }
+        // });
+
+
+
+    });
+</script>
+</body>
+
+</html>

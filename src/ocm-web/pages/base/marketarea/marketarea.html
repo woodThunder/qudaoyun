@@ -1,0 +1,220 @@
+<div class="u-row ui-treegrid-panel base-tree-grid">
+  <div class="u-col-3">
+    <div style="height:40px;margin-top: 20px;">
+      <div style="display:flex; justify-content:center;align-items:center;height:40px ">
+        <div class="u-input-group treeSearch">
+          <input id="tree-searchKey" type="text" class="u-form-control" placeholder="请输入编码/全称/简称">
+          <span class="u-input-group-addon" data-bind="click: positionTree">定位</span>
+        </div>
+      </div>
+    </div>
+    <div class="treeTitle">市场区域:</div>
+    <div id="treeTest" class="ztree" style="overflow:unset" data-bind="click: clickTree" u-meta='{"id":"tree1","data":"simpleListTree","type":"tree","idField":"id","pidField":"parentId","nameField":"name","setting":"treeSetting"}'>
+    </div>
+  </div>
+  <div class="u-col-9">
+    <div class="ui-panel ui-list-panel">
+      <div>
+        <div class="page-title">
+          <span data-bind="text:title"></span>
+        </div>
+      </div>
+      <div>
+        <div>
+          <div class="oc-breadcrumb">
+          </div>
+        </div>
+      </div>
+      <div class="title-seperator"></div>
+      <ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+      </ui-searchbox>
+      <div class="ui-panel-body">
+        <div class="ui-panel-body-head">
+          <div class="ui-panel-body-head-left">
+            <ui-buttons params='datasource:$root.button1Source'>
+            </ui-buttons>
+          </div>
+        </div>
+        <div class="u-container-fluid">
+
+          <div class="ui-table-container">
+            <ui-grid params='options:$root.grid1Option,vm:$root'>
+            </ui-grid>
+            <div class="ui-statistics margin-top-10">
+              已选择
+              <span class="font-c-blue" data-bind="text:simpleList.selectedIndices().length"></span>项数据
+            </div>
+            <div class="pagination-right">
+              <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"simpleList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--新增编辑面板-->
+<div class="ui-panel ui-bill-panel" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span>市场区域</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <ui-buttons params='datasource:$root.button2Source'>
+      </ui-buttons>
+    </div>
+  </div>
+  <div class="ui-panel-body">
+    <div class="u-tabs  ui-tabs margin-top-10">
+      <div class="u-tabs__tab-bar">
+        <a href="#tab-panel-1" class="u-tabs__tab is-active" data-bind="">基本信息</a>
+      </div>
+      <!--基本信息开始-->
+      <div class="u-tabs__panel is-active" id="tab-panel-1">
+        <div class="ui-bill-body">
+          <div class="ui-collapse-group">
+
+            <ui-buttons params='datasource:$root.button3Source'>
+            </ui-buttons>
+            <div id="marketareaBase">
+              <div class="ui-collapse-group border">
+                <div id="default-example" data-collapse>
+                  <!--市场区域开始-->
+                  <h3 class="ui-collapse-title  clearfix  margin-top-10 open">
+                    <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                    <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                    市场区域
+                  </h3>
+                  <div class="ui-collapse-content clearfix" id="baseInfo">
+                    <ui-card params='datasource:$root.card1Source,vm:$root,dt:$root.simpleList,billstatus:$root.billPanelStatus'>
+                    </ui-card>
+                  </div>
+                  <!--市场区域结束-->
+                  <!--市场区域管辖条目开始-->
+                  <h3 class="ui-collapse-title  clearfix  margin-top-10 open">
+                    <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                    <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                    市场区域管辖条目
+                  </h3>
+                  <div class="ui-collapse-content clearfix" id="baseInfo2">
+                    <!-- <ui-card params='datasource:$root.card2Source,vm:$root,dt:$root.simpleList,billstatus:$root.billPanelStatus'>
+                    </ui-card> -->
+                    <ui-buttons params='datasource:$root.button4Source'>
+                    </ui-buttons>
+                    <div class="margin-top-10" id="baseItemInfo">
+
+                      <ui-grid params='options:$root.grid2Option,vm:$root'>
+                      </ui-grid>
+                    </div>
+                  </div>
+                  <!--市场区域管辖条目结束-->
+                </div>
+              </div>
+            </div>
+
+            <!-- 保存后 -->
+            <div style="display: none;" id="marketareaBase_show">
+
+              <div class="ui-collapse-group border">
+                <div id="default-example_show" data-collapse>
+                  <!--人员信息开始-->
+                  <h3 class="ui-collapse-title  clearfix  margin-top-10 open">
+                    <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                    <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                    人员信息
+                  </h3>
+                  <div class="ui-collapse-content clearfix" id="baseInfo_show">
+                    <ui-detail params='datasource:$root.detail1Source,dt:$root.simpleList,vm:$root'>
+                    </ui-detail>
+                  </div>
+                  <!--人员信息结束-->
+
+                  <!--任职信息开始-->
+                  <h3 class="ui-collapse-title  clearfix  margin-top-10 open">
+                    <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                    <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                    任职信息
+                  </h3>
+                  <div class="ui-collapse-content clearfix" id="baseInfo_show2">
+                    <ui-detail params='datasource:$root.detail2Source,dt:$root.simpleList,vm:$root'>
+                    </ui-detail>
+                  </div>
+                  <!--任职信息结束-->
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<ui-dialogcard params='datasource:$root.dialogcardSource,ref:$root.dialogcardcomp,dt:$root.simpleList'>
+</ui-dialogcard>
+<div class="ui-bill-detail ui-panel" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span data-bind="text:title"></span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-primary" data-bind="click: retListPanel">返回
+      </a>
+    </div>
+  </div>
+  <div class="ui-panel-head">
+
+
+    <div class="ui-collapse-group border">
+      <div id="default-example_detail" data-collapse>
+        <!--市场区域开始-->
+        <h3 class="ui-collapse-title  clearfix  margin-top-10 open">
+          <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+          <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+          市场区域
+        </h3>
+        <div class="ui-collapse-content clearfix" id="baseInfo_detail">
+          <ui-detail params='datasource:$root.detailSource,dt:$root.simpleList,vm:$root'>
+          </ui-detail>
+        </div>
+        <!--市场区域结束-->
+
+        <!--市场区域管辖条目开始-->
+        <h3 class="ui-collapse-title  clearfix  margin-top-10 open">
+          <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+          <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+          市场区域管辖条目
+        </h3>
+        <div class="margin-top-10" id="baseItemInfo_detail">
+
+          <ui-grid params='options:$root.grid3Option,vm:$root'>
+          </ui-grid>
+        </div>
+        <!--市场区域管辖条目结束-->
+      </div>
+    </div>
+
+
+  </div>
+</div>
+<div id="exportFiel"></div>
+<div id="importFiel"></div>

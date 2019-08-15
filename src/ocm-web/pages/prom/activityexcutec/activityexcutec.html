@@ -1,0 +1,67 @@
+<div class="ui-list-panel ui-panel">
+  <div>
+    <div class="page-title">
+      <span>活动执行结果</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+
+  <div class="ui-searchbox">
+    <div id="PromoActivity-searchcontent" class="ui-searchbox-content">
+
+    </div>
+    <div class="clearfix">
+
+    </div>
+    <div class="ui-searchbox-footer">
+      <div class="ui-search-more hidden">
+          <a>更多<i class="uifont icon-down"></i></a>
+      </div>
+
+      <div class="ui-search-btn">
+        <a class="ui-btn ui-btn-primary margin-right-5"
+        data-bind="click:cleanSearch">清空
+        </a>
+        <a class="ui-btn ui-btn-green"
+        data-bind="click:search.bind($data,true)">搜索
+        </a>
+      </div>
+      <div class="clearfix">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-panel-body">
+    <div class="ui-panel-body-head">
+      <div class="ui-panel-body-head-left">
+      </div>
+    </div>
+      <div class="ui-table-container">
+        <div u-meta='{"id":"grid_PromoActivity","data":"PromoActivityExcuteList","type":"grid","editable":false,"showNumCol":true}'>
+          <div options='{"field":"code","dataType":"String","title":"活动编码"}'></div>
+          <div options='{"field":"name","dataType":"String","title":"活动名称"}'></div>
+          <div options='{"field":"agencyName","dataType":"String","title":"所属办事处"}'></div>
+          <div options='{"field":"terminalStartDate","dataType":"Date","title":"活动开始日期"}'></div>
+          <div options='{"field":"terminalEndDate","dataType":"Date","title":"活动截至日期"}'></div>
+          <div options='{"field":"goalMny","dataType":"String","title":"活动目标总额"}'></div>
+          <div options='{"field":"actualMny","dataType":"String","title":"实际零售总额"}'></div>
+          <div options='{"field":"completionRate","dataType":"Float","title":"目标完成率","renderType":"percentRender"}'></div>
+          <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"officeOperation","fixed":true,"width":"110px"}'></div>
+        </div>
+        <div class="ui-statistics margin-top-10 line-height-27">
+          </div>
+          <div class="pagination-right">
+            <div id='pagination' class='pagination u-pagination pagination-sm'
+            u-meta='{"type":"pagination","data":"PromoActivityExcuteList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+          </div>
+      </div>
+    </div>
+</div>
+

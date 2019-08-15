@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Organization Chart Plugin</title>
+  <link rel="icon" href="img/logo.png">
+
+  <link rel="stylesheet" href="/ocm-web/vendor/jquery.orgchart/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/ocm-web/vendor/jquery.orgchart/css/jquery.orgchart.css">
+  <link rel="stylesheet" href="/ocm-web/vendor/jquery.orgchart/css/style.css">
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  <!-- <script src="/ocm-web/js/orgchart.min.js"></script> -->
+  <style type="text/css">
+      #echarts1{
+          width: 100%;
+          height: 100%;
+          min-height: 500px;
+      }
+      </style>
+</head>
+
+<body>
+  <style type="text/css">
+    .orgchart {
+      background: #fff;
+    }
+  
+    .orgchart td.left,
+    .orgchart td.right,
+    .orgchart td.top {
+      border-color: #aaa;
+    }
+  
+    .orgchart td>.down {
+      background-color: #aaa;
+    }
+  
+    .orgchart .color0 .title-titleOnly {
+      background-color: #D50000;
+    }
+  
+    .orgchart .color0 .content {
+      border-color: #D50000;
+    }
+  
+    .orgchart .color1 .title-titleOnly {
+      background-color: #6200EA;
+    }
+  
+    .orgchart .color1 .content {
+      border-color: #6200EA;
+    }
+  
+    .orgchart .color2 .title-titleOnly {
+      background-color: #0091EA;
+    }
+  
+    .orgchart .color2 .content {
+      border-color: #0091EA;
+    }
+  
+    .orgchart .color3 .title-titleOnly {
+      background-color: #00C853;
+    }
+  
+    .orgchart .color3 .content {
+      border-color: #00C853;
+    }
+  
+    .orgchart .color4 .title-titleOnly {
+      background-color: #FFD600;
+    }
+  
+    .orgchart .color4 .content {
+      border-color: #FFD600;
+    }
+  
+    .orgchart .color5 .title-titleOnly {
+      background-color: #FF3D00;
+    }
+  
+    .orgchart .color5 .content {
+      border-color: #FF3D00;
+    }
+  
+    .orgchart .color6 .title-titleOnly {
+      background-color: #37474F;
+    }
+  
+    .orgchart .color6 .content {
+      border-color: #37474F;
+    }
+  
+    .orgchart .color7 .title-titleOnly {
+      background-color: #C51162;
+    }
+  
+    .orgchart .color7 .content {
+      border-color: #C51162;
+    }
+  
+    .orgchart .color8 .title-titleOnly {
+      background-color: #8C9EFF;
+    }
+  
+    .orgchart .color8 .content {
+      border-color: #8C9EFF;
+    }
+  
+    .orgchart .color9 .title-titleOnly {
+      background-color: #BA68C8;
+    }
+  
+    .orgchart .color9 .content {
+      border-color: #BA68C8;
+    }
+  
+    .orgchart .defaultColor .title-titleOnly {
+      background-color: #C6FF00;
+    }
+  
+    .orgchart .defaultColor .content {
+      border-color: #C6FF00;
+    }
+  
+    #chart-container {
+      top: 0px;
+      left: 0px;
+      position: relative;
+      display: inline-block;
+      /* height: 100%;
+      width: 100%; */
+      border: 0px solid #fff;
+      border-radius: 0px;
+      overflow: auto;
+      text-align: center;
+      background: #fff;
+    }
+  
+    /* .orgchart .node:hover {
+      background-color: #fff;
+      transition: .5s;
+      cursor: default;
+      z-index: 20;
+    } */
+  
+    /* .orgchart .node.focused {
+      background-color: #fff;
+    } */
+  
+    /* .edge {
+      display: none;
+    } */
+  </style>
+ 
+  <script type="text/javascript">
+
+  </script>
+
+<div class="ui-panel ui-list-panel">
+        <div>
+          <div class="page-title">
+            <span data-bind="text:title"></span>
+          </div>
+        </div>
+        <div>
+          <div>
+            <div class="oc-breadcrumb">
+            </div>
+          </div>
+        </div>
+        <div class="title-seperator"></div>
+        <ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+        </ui-searchbox>
+        <div class="ui-panel-body">
+          <div class="ui-panel-body-head">
+            <!-- <div class="ui-panel-body-head-left">
+              <ui-buttons params='datasource:$root.buttonSource'>
+              </ui-buttons>
+            </div> -->
+          </div>
+          <div class="ui-table-container">
+            <div id="chart-container"></div>
+    
+          </div>
+        </div>
+      </div>
+</body>
+
+</html>
+
+
+
+
+

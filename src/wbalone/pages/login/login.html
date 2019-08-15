@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>登录</title>
+		<link rel="stylesheet" href="../../apworkbench/trd/uui/css/u.css" media="screen" title="no title" charset="utf-8">
+		<link rel="stylesheet" href="../../apworkbench/trd/uui/css/tree.css" media="screen" title="no title" charset="utf-8">
+		<link rel="stylesheet" href="../../apworkbench/trd/uui/css/grid.css" media="screen" title="no title" charset="utf-8">
+
+		<link rel="stylesheet" href="../../apworkbench/font/localfont/iconfont.css"/>
+		<link rel="stylesheet" type="text/css" href="login.css"/>
+		<link rel="stylesheet" type="text/css" href="fonts/qyfont/iconfont.css"/>
+	</head>
+	<body>
+		<div class="wrap-box" id="loginBox">
+			<div class="login-top-bg">
+				<div class="login-top-con clearfix">
+					<a href="#" class="logo-img"></a>
+					<div class="logo-txt">用友渠道云协同工作台</div>
+				</div>
+			</div>
+			<div class="login-con-box">
+				<div class="login-bg">
+					<div class="login-con">
+						<h2 class="login-con-title">欢迎登录</h2>
+						<div class="login-item-box">
+							<div class="login-item" id="usernamebox"> <!--四状态：c-green（成功）、c-orange(警告)、c-red(错误), focus是输入状态-->
+								<i class="icon-img uifont icon-yonghu"></i>
+								<!--<input class="ipt" placeholder="用户名"/>-->
+								<input type="text" class="u-form-control ipt" u-meta='{"id":"account","type":"string","data":"DataTables.login","field":"account"}' placeholder="用户名" name="account" >
+								<!--提示-->
+								<i class="tip-icon uifont icon-tubiao-jingshi c-orange"></i>
+								<i class="tip-icon uifont icon-tubiao-shibai c-red"></i>
+								<i class="tip-icon uifont icon-tubiao-zhengque c-green"></i>
+								<span class="tip-txt c-orange">请输入用户名</span>
+								<span class="tip-txt c-red">请输入正确用户名</span>
+							</div>
+							<div class="login-item" id="userpassword">
+								<i class="icon-img uifont icon-mima"></i>
+								<!--<input class="ipt" placeholder="登录密码"/>-->
+								<input  class="u-form-control ipt" u-meta='{"id":"password","type":"password","data":"DataTables.login","field":"password"}' placeholder="登录密码" name="password" type="text" onfocus="this.type='password'">
+								<!--提示-->
+								<i class="tip-icon uifont icon-tubiao-jingshi c-orange"></i>
+								<i class="tip-icon uifont icon-tubiao-shibai c-red"></i>
+								<i class="tip-icon uifont icon-tubiao-zhengque c-green"></i>
+								<span class="tip-txt c-orange">请输入密码</span>
+								<span class="tip-txt c-red">请输入正确密码</span>
+							</div>
+
+							<div class="login-item" id="verifyCodeBox" style="display:none">
+								<div>
+									<input class="u-form-control ipt" id="verifyCode" placeholder="请输入验证码" />
+									<!--提示-->
+									<i class="tip-icon uifont icon-tubiao-jingshi c-orange"></i>
+									<i class="tip-icon uifont icon-tubiao-shibai c-red"></i>
+									<i class="tip-icon uifont icon-tubiao-zhengque c-green hide"></i>
+									<span class="tip-txt c-red"><span class="i18n" name="验证码不正确，请重新输入"></span></span>
+								</div>
+	
+							</div>
+
+							<!--<a class="login-btn success" data-bind="click:Events.login" id="loginBtn">登录</a>--> <!--success输入成功-->
+							<button class="login-btn" data-bind="click:Events.login" id="loginBtn">登 录</button>
+							<div class="forget-check">
+								<a class="check-icon" id="remember" data-bind="click: Events.toggleRememberPassword"></a>
+								<span class="forget-txt">记住用户名</span>
+								<a href="../forgetpassword/index.html" target="_blank" class="login-forgetpassword">忘记密码</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--重置/修改密码-->
+		<div id="dialog_content" style="display:none;">
+		    <div class="u-msg-title u-border-bottom">
+		        <span class="">修改默认密码</span>
+		    </div>
+		    <div class="u-msg-content">
+		        <div class="u-row">
+		            <div class="u-col-12 " >
+		                <div class="u-form-group">
+		                    <label class="u-col-4 u-form-label text-right">新密码 :</label>
+		                    <div class="u-col-8 ipt-item">
+		                        <input type="text" class="u-form-control ipt"
+		                               u-meta='{"id":"modifyPassword","type":"string","data":"DataTables.modifyPassword","field":"newpassword"}'
+		                               name='modifyPassword'    onfocus="this.type='password'"
+		                               placeholder="请输入新密码">
+		                               <!--空文本-->
+		                        <span  class="tip-txt c-red" id="noId"></span>
+		                    </div>
+		                </div>
+		            </div>
+		            <div class="u-col-12  " >
+		                <div class="u-form-group last">
+		                    <label class="u-col-4 u-form-label text-right">确认密码 :</label>
+		                    <div class="u-col-8 ipt-item">
+		                        <input type="text" class="u-form-control ipt"
+		                               u-meta='{"id":"confirmPassword","type":"string","data":"DataTables.modifyPassword","field":"confirmPassword"}'
+		                               name="confirmPassword"   onfocus="this.type='password'"
+		                               placeholder="请再确认新密码">
+		                        <!--提示状态-->
+		                        <i class="tip-icon uifont icon-tubiao-zhengque c-green" id="tip-success"></i>
+		                        <span class="tip-txt c-red" id="tip-red">与新密码不一致，请重新输入</span>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		    <div class="u-msg-footer">
+		        <a class="u-msg-cance btn" data-bind="click:Events.cancel">取消
+		        </a>
+		        <a class="u-msg-ok btn" data-bind="click:Events.confirm">确定
+		        </a>
+		    </div>
+		</div>
+		<script>
+          if(window.sessionStorage){
+            sessionStorage.clear();
+          }
+		</script>
+		<!--重置/修改密码 end-->
+		<script src="../../trd/jquery/jquery-1.11.2.min.js"></script>
+		<!--[if lt IE 9]>
+		<script type="text/javascript" charset="utf-8" src="../../../vendor/html5shiv.min.js"></script>
+		<script src="../../../vendor/es5-shim.min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="../../apworkbench/trd/uui/js/u-polyfill.js"></script>
+		<script src="../../../vendor/es5-sham.min.js"></script>
+		<![endif]-->
+		<script type="text/javascript">
+			$.ajaxSetup({
+				contentType : "application/x-www-form-urlencoded; charset=utf-8"
+			});
+
+			$(function(){
+				var h = $(".login-bg").height();
+				// $(".login-con").css("top",(h-400)/2);
+				$(".login-con").css("top",(h-400)/2);
+			})
+		</script>
+		<script src="../../trd/knockout/knockout-3.2.0-min.js"></script>
+		<!-- 静态资源链接 -->
+		<script src="../../apworkbench/trd/uui/js/u.js"></script>
+		<script type="text/javascript" src="jqeury.cookie.js"></script>
+		<script type="text/javascript" src="login.js"></script>
+	</body>
+</html>

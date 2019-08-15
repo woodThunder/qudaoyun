@@ -1,0 +1,642 @@
+<div class="ui-list-panel ui-panel">
+	<div>
+		<div class="page-title">
+			<span>订单处理及审核</span>
+		</div>
+	</div>
+	<div>
+		<div>
+			<div class="oc-breadcrumb">
+			</div>
+		</div>
+	</div>
+	<div class="title-seperator"></div>
+			<ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+  			</ui-searchbox>
+	<div class="ui-panel-body">
+		<div class="ui-panel-body-head">
+			<div class="ui-panel-body-head-left" style="line-height: 30px;">
+				 <ui-buttons-menu params='datasource:$root.button1Source,vm:$root'>
+	        	</ui-buttons-menu>
+        		 <div id="changedLogisticsRef" u-meta='{"type":"uiRefer","data":"changedLogisticsList","field":"changedlogisticsref"}' style="display:none;">
+		        <input readonly="readonly" />
+		        <span class="ui-icon uifont icon-bar refer"></span>
+		      </div>
+			</div>
+		</div>
+		<div class="ui-table-container">
+			<ui-grid params='options:$root.grid1Option,vm:$root'>
+      		</ui-grid>
+			<div class="ui-statistics margin-top-10">
+				<i class="uifont icon-i font-c-blue margin-right-10"></i>已选择
+				<span class="font-c-blue" data-bind="text:processOrderList.selectedIndices().length"></span>项数据
+			</div>
+			<div class="pagination-right">
+				<div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"processOrderList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 查看详情-start -->
+	<div class="u-tabs ui-tabs">
+		<div class="u-tabs__tab-bar margin-top-10 margin-bottom-10">
+			<a href="#tab-panel-1" class="u-tabs__tab">订单详情</a>
+			<a href="#tab-panel-2" class="u-tabs__tab is-active">商品信息</a>
+			<!-- <a href="#tab-panel-5" class="u-tabs__tab">发货商品</a> -->
+			 <a href="#tab-panel-3" class="u-tabs__tab">促销明细</a> 
+			<a href="#tab-panel-4" class="u-tabs__tab">关联订单</a>
+			<a href="#tab-panel-6" class="u-tabs__tab">操作日志</a>
+			<a href="#tab-panel-7" class="u-tabs__tab">备注信息</a>
+			<a href="#tab-panel-8" class="u-tabs__tab">订单跟踪</a>
+		</div>
+		<!-- 订单信息-start -->
+		<div class="u-tabs__panel" id="tab-panel-1">
+			<div class="ui-panel-head clearfix">
+				<h3 class="ui-collapse-title orderCenter clearfix open margin-top-10">
+		            <a href="javascript:;" class="click-btn inline-block">
+		              <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+		              <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+		              平台信息
+		            </a>
+		        </h3>
+				<ui-detail params='datasource:$root.details1Source,vm:$root,dt:$root.orderDetail'>
+    			</ui-detail>
+    			<h3 class="ui-collapse-title orderCenter clearfix open margin-top-10">
+		            <a href="javascript:;" class="click-btn inline-block">
+		              <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+		              <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+		              订单信息
+		            </a>
+		        </h3>
+				<ui-detail params='datasource:$root.details2Source,vm:$root,dt:$root.orderDetail'>
+    			</ui-detail>
+    			<h3 class="ui-collapse-title orderCenter clearfix open margin-top-10">
+		            <a href="javascript:;" class="click-btn inline-block">
+		              <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+		              <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+		              顾客信息
+		            </a>
+		        </h3>
+				<ui-detail params='datasource:$root.details3Source,vm:$root,dt:$root.orderDetail'>
+    			</ui-detail>
+    			<h3 class="ui-collapse-title orderCenter clearfix open margin-top-10">
+		            <a href="javascript:;" class="click-btn inline-block">
+		              <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+		              <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+		              金额信息
+		            </a>
+		        </h3>
+				<ui-detail params='datasource:$root.details4Source,vm:$root,dt:$root.orderDetail'>
+    			</ui-detail>
+			</div>
+			<!--head end-->
+		</div>
+		<!-- 订单信息-end -->
+		<!-- 商品信息-start -->
+		<div class="u-tabs__panel is-active" id="tab-panel-2">
+			<ui-grid params='options:$root.grid2Option,vm:$root'>
+      		</ui-grid>
+		</div>
+		<!-- 商品信息-end -->
+		<!-- 所有产品信息-start -->
+		<!-- <div class="u-tabs__panel" id="tab-panel-5">
+			<ui-grid params='options:$root.grid3Option,vm:$root'>
+      		</ui-grid>
+		</div> -->
+		<!-- 所有产品信息-end -->
+		<!-- 促销信息-start -->
+		<div class="u-tabs__panel" id="tab-panel-3">
+			<ui-grid params='options:$root.grid4Option,vm:$root'>
+      		</ui-grid>
+		</div>
+		<!-- 促销信息-end -->
+
+		<!-- 关联订单信息-start -->
+		<div class="u-tabs__panel" id="tab-panel-4">
+			<ui-grid params='options:$root.grid5Option,vm:$root'>
+      		</ui-grid>
+		</div>
+		<!-- 关联订单信息-end -->
+		<!-- 操作日志-start -->
+		<div class="u-tabs__panel" id="tab-panel-6">
+			<ui-grid params='options:$root.grid6Option,vm:$root'>
+      		</ui-grid>
+			<div class="pagination-right margin-top-20">
+				<div id='pagination_log' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"logList","pageChange":"pageChangeLog","sizeChange":"sizeChangeLog"}'></div>
+			</div>
+		</div>
+		<!-- 操作日志-end -->
+		<!-- 备注信息-start -->
+		<div class="u-tabs__panel" id="tab-panel-7">
+			<div class="u-msg-content">
+				<div class="ui-collapse-group border orderCenter">
+					<div id="default-example-1" data-collapse>
+						<!--买家备注开始-->
+						<h3 class="ui-collapse-title orderCenter clearfix open margin-top-10">
+							<a href="javascript:;" class="click-btn inline-block">
+								<i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+								<i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+								买家备注
+							</a>
+						</h3>
+						<div class="ui-collapse-content  clearfix">
+							<div class="margin-10"></div>
+							<ui-grid params='options:$root.grid8Option,vm:$root'>
+      						</ui-grid>
+						</div>
+						<!--买家备注结束-->
+						<!--卖家备注开始-->
+						<h3 class="ui-collapse-title orderCenter  clearfix product-choose-result margin-top-10 open">
+							<a href="javascript:;" class="click-btn inline-block">
+								<i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+								<i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+								卖家备注
+							</a>
+						</h3>
+						<div class="ui-collapse-content product-choose-content clearfix">
+							<div class="margin-10"></div>
+							<ui-grid params='options:$root.grid9Option,vm:$root'>
+      						</ui-grid>
+						</div>
+						<!--卖家备注结束-->
+
+						<!--订单备注开始-->
+						<h3 class="ui-collapse-title orderCenter  clearfix product-choose-result margin-top-10 open">
+							<a href="javascript:;" class="click-btn inline-block">
+								<i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+								<i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+								订单备注
+							</a>
+						</h3>
+						<div class="ui-collapse-content product-choose-content clearfix">
+							<div class="margin-10"></div>
+							<ui-grid params='options:$root.grid10Option,vm:$root'>
+      						</ui-grid>
+						</div>
+						<!--订单备注结束-->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 备注信息-end -->
+		<!-- 订单跟踪-start -->
+		<div class="u-tabs__panel" id="tab-panel-8">
+			<div class="u-msg-content" id="orderTrackContent"></div>
+		</div>
+		<!-- 订单跟踪-end -->
+	</div>
+	<!-- 查看详情-end -->
+
+</div>
+<!--订单变更-->
+<div id="dialog_content_orderChange" style="display:none;">
+	<div class="u-msg-title">
+		<h4>订单变更</h4>
+	</div>
+	<div class="u-msg-content">
+		<div class="ui-collapse-group border orderCenter">
+			<div id="default-example" data-collapse>
+				<!--订单信息开始-->
+				<h3 class="ui-collapse-title orderCenter clearfix open margin-top-10">
+					<a href="javascript:;" class="click-btn inline-block">
+						<i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+						<i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+						订单信息
+					</a>
+				</h3>
+				<div class="ui-collapse-content  clearfix" id="orderInfo">
+					<ui-card params='datasource:$root.card1Source,vm:$root,dt:$root.orderDetail,billstatus:$root.billPanelStatus'>
+   					</ui-card>
+				</div>
+				<!--订单信息结束-->
+				<!--商品信息开始-->
+				<h3 class="ui-collapse-title orderCenter  clearfix product-choose-result margin-top-10 open">
+					<a href="javascript:;" class="click-btn inline-block">
+						<i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+						<i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+						商品详情
+					</a>
+				</h3>
+				<div class="ui-collapse-content product-choose-content clearfix">
+					<div class="margin-10">
+						<ui-buttons params='datasource:$root.button2Source'>
+       					</ui-buttons>
+					</div>
+					<ui-grid params='options:$root.grid11Option,vm:$root'>
+      				</ui-grid>
+				</div>
+				<!--商品信息结束-->
+
+				<!--变更暂存开始-->
+				<h3 class="ui-collapse-title orderCenter  clearfix product-choose-result margin-top-10 open">
+					<a href="javascript:;" class="click-btn inline-block">
+						<i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+						<i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+						变更暂存
+					</a>
+				</h3>
+				<div class="ui-collapse-content product-choose-content clearfix">
+					<div class="margin-10"></div>
+					<ui-grid params='options:$root.grid12Option,vm:$root'>
+      				</ui-grid>
+				</div>
+				<!--变更暂存结束-->
+			</div>
+		</div>
+	</div>
+	<div class="u-msg-footer">
+		<a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+		<a class="u-msg-ok ui-btn ui-btn-green">确定</a>
+	</div>
+</div>
+<!--订单变更  end-->
+
+<!--关联运费-->
+<div id="dialog_content_freight" style="display:none;">
+	<div class="u-msg-title">
+		<h4>关联运费</h4>
+	</div>
+	<div class="u-msg-content">
+		<ui-grid params='options:$root.grid13Option,vm:$root'>
+      	</ui-grid>
+	</div>
+	<div class="u-msg-footer">
+		<a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+		<a class="u-msg-ok ui-btn ui-btn-green">确定</a>
+	</div>
+</div>
+<!--关联运费  end-->
+
+<!--商品换购-->
+<div id="dialog_content_productBuy" style="display:none;">
+	<div class="u-msg-title">
+		<h4>商品换购</h4>
+	</div>
+	<div class="u-msg-content">
+		<h4 style="font-size: 13px; color: #666;margin: 15px 0;">换购订单</h4>
+		<ui-grid params='options:$root.grid14Option,vm:$root'>
+      	</ui-grid>
+		<h4 style="font-size: 13px; color: #666;margin: 15px 0;">换购商品</h4>
+		<ui-grid params='options:$root.grid15Option,vm:$root'>
+      	</ui-grid>
+	</div>
+	<div class="u-msg-footer">
+		<a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+		<a class="u-msg-ok ui-btn ui-btn-green">确定</a>
+	</div>
+</div>
+<!--商品换购 end-->
+
+<!--冻结原因-->
+<div id="dialog_content_freezReason" style="display:none;">
+	<div class="u-msg-title">
+		<h4>冻结原因</h4>
+	</div>
+	<div class="u-msg-content clearfix">
+		<div class="ui-item">
+			<div class="ui-name">冻结原因: </div>
+			<div class="ui-inputarea">
+				<div u-meta='{"type":"u-text","data":"processOrderList","field":"lockReason"}'>
+					<input />
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="u-msg-footer">
+		<a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+		<a class="u-msg-ok ui-btn ui-btn-green">确定</a>
+	</div>
+</div>
+<!--冻结原因 --end-->
+
+<!--变更商品-->
+<div id="dialog_content_changeProduct" style="display:none;">
+	<div class="u-msg-title">
+		<h4>请选择</h4>
+	</div>
+	<div class="u-msg-content">
+		<h4 style="font-size: 13px; color: #666;margin: 15px 0;">待变更商品</h4>
+		<ui-grid params='options:$root.grid16Option,vm:$root'>
+      	</ui-grid>
+		<h4 style="font-size: 13px; color: #666;margin: 15px 0;">补差链接</h4>
+		<ui-grid params='options:$root.grid17Option,vm:$root'>
+      	</ui-grid>
+		<h4 style="font-size: 13px; color: #666;margin: 15px 0;">待选商品</h4>
+		<div class="margin-bottom-10">
+			<ui-buttons params='datasource:$root.button3Source'>
+       		</ui-buttons>
+		</div>
+		<ui-grid params='options:$root.grid18Option,vm:$root'>
+      	</ui-grid>
+	</div>
+	<div class="u-msg-footer">
+		<a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+		<a class="u-msg-ok ui-btn ui-btn-green">确定</a>
+	</div>
+</div>
+<!--变更商品 --end-->
+<!--变更赠品-->
+<div id="dialog_content_changeGift" style="display:none;">
+	<div class="u-msg-title">
+		<h4>请选择</h4>
+	</div>
+	<div class="u-msg-content">
+		<h4 style="font-size: 13px; color: #666;margin: 15px 0;">待变更赠品</h4>
+		<ui-grid params='options:$root.grid19Option,vm:$root'>
+      	</ui-grid>
+		<h4 style="font-size: 13px; color: #666;margin: 15px 0;">待选赠品</h4>
+		<div class="margin-bottom-10">
+			<ui-buttons params='datasource:$root.button5Source'>
+       		</ui-buttons>
+		</div>
+		<ui-grid params='options:$root.grid20Option,vm:$root'>
+      	</ui-grid>
+	</div>
+	<div class="u-msg-footer">
+		<a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+		<a class="u-msg-ok ui-btn ui-btn-green">确定</a>
+	</div>
+</div>
+<!--变更赠品 --end-->
+
+<!--售后退货-->
+<div id="dialog_content_returnGoods" style="display:none;">
+	<div class="u-msg-title">
+		<h4>请选择</h4>
+	</div>
+	<div class="u-msg-content">
+		<h4 style="font-size: 13px; color: #666;margin: 15px 0;">待选商品</h4>
+		<ui-grid params='options:$root.grid21Option,vm:$root'>
+      	</ui-grid>
+		<h4 style="font-size: 13px; color: #666;margin: 15px 0;">已选商品</h4>
+		<ui-grid params='options:$root.grid22Option,vm:$root'>
+      	</ui-grid>
+	</div>
+	<div class="u-msg-footer">
+		<a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+		<a class="u-msg-ok ui-btn ui-btn-green">确定</a>
+	</div>
+</div>
+<!--售后退货 end-->
+
+<!--导出弹框 end-->
+<div id="exportFiel"></div>
+<div id="importFiel"></div>
+
+<!--退款退货-->
+<div id="dialog_content_salingRefundGoods" style="display:none;">
+	<div class="u-msg-title">
+		<h4>请选择</h4>
+	</div>
+	<div class="u-msg-content">
+		<h4 style="font-size: 13px; color: #666;margin: 15px 0;">待选商品</h4>
+		<ui-grid params='options:$root.grid23Option,vm:$root'>
+      	</ui-grid>
+		<h4 style="font-size: 13px; color: #666;margin: 15px 0;">已选商品</h4>
+		<ui-grid params='options:$root.grid24Option,vm:$root'>
+      	</ui-grid>
+	</div>
+	<div class="u-msg-footer">
+		<a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+		<a class="u-msg-ok ui-btn ui-btn-green">确定</a>
+	</div>
+</div>
+<!--退款退货 end-->
+<!--售后换货-->
+<div id="dialog_content_exchangeGoods" style="display:none;">
+	<div class="u-msg-title">
+		<h4>请选择</h4>
+	</div>
+	<div class="u-msg-content">
+		<h4 style="font-size: 13px; color: #666;margin: 15px 0;">待选商品</h4>
+		<ui-grid params='options:$root.gridchangemainOption,vm:$root'>
+      	</ui-grid>		
+		<div class="margin-bottom-10">
+	      <ui-buttons params='datasource:$root.button6Source'>
+	      </ui-buttons>
+	      <div id="addProductItemsRef" u-meta='{"type":"uiRefer","data":"ProductRef","field":"productRefer"}' style="display:none;">
+	        <input readonly="readonly" />
+	        <span class="ui-icon uifont icon-bar refer"></span>
+	      </div>
+	    </div>
+		<ui-grid params='options:$root.gridchangesubOption,vm:$root'>
+      	</ui-grid>
+	</div>
+	<div class="u-msg-footer">
+		<a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+		<a class="u-msg-ok ui-btn ui-btn-green">确定</a>
+	</div>
+</div>
+<!--售后换货 end-->
+<!--延期收货-->
+<div id="dialog_content_delayShip" style="display:none;">
+	<div class="u-msg-title">
+		<h4>请选择</h4>
+	</div>
+	<div class="u-msg-content clearfix">
+		<div class="ui-item">
+			<div class="ui-name">
+				<i class="strong">*</i>延期时间：</div>
+			<div class="ui-inputarea">
+				<div u-meta='{"type":"u-combobox","data":"delayShipData","field":"days","datasource":"delayShipDataSrc"}'>
+					<input class="u-input" />
+					<span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="u-msg-footer">
+		<a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+		<a class="u-msg-ok ui-btn ui-btn-green">确定</a>
+	</div>
+</div>
+<!--延期收货 end-->
+
+<!--延期收货2-->
+<div id="dialog_content_delayShip2" style="display:none;">
+	<div class="u-msg-title">
+		<h4>请选择</h4>
+	</div>
+	<div class="u-msg-content clearfix">
+		<div class="ui-item">
+			<div class="ui-name">
+				<i class="strong">*</i>延期时间：</div>
+			<div class="ui-inputarea">
+				<div u-meta='{"type":"u-combobox","data":"delayShipData2","field":"days","datasource":"delayShipDataSrc"}'>
+					<input class="u-input" />
+					<span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="u-msg-footer">
+		<a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+		<a class="u-msg-ok ui-btn ui-btn-green">再次尝试</a>
+	</div>
+</div>
+<!--延期收货2 end-->
+
+<!--订单备注-->
+<div id="dialog_content_remarkDialog" style="display:none;">
+	<div class="u-msg-title">
+		<h4>订单备注</h4>
+	</div>
+	<div class="u-msg-content clearfix" style="padding-bottom: 13px;">
+		<div class="ui-item ui-textarea-item" >
+			<div class="ui-inputarea" style="width: 100%;margin-top: -7px;">
+				<!--style="width: 495px;margin-top: -8px;"-->
+	          <textarea   u-meta='{"id":"processOrderList","data":"processOrderList","field":"comment","type":"textarea"}'>
+	                <input class="u-input"/>
+	            </textarea>
+	        </div>
+		</div>
+	</div>
+	<div class="u-msg-footer">
+		<a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+		<a class="u-msg-ok ui-btn ui-btn-green">确定</a>
+	</div>
+</div>
+<!--订单备注 end-->
+<ui-dialogcard params='datasource:$root.dialogcardSource,ref:$root.dialogcardcomp,dt:$root.irList'>
+</ui-dialogcard>
+<!--订单分拨 start-->
+<!--订单分拨-->
+<div id="complimentary-popup" style="display: none;">
+	<div class="u-msg-title">
+		<h4>订单分拨</h4>
+	</div>
+	<div class="u-msg-content" style="margin-top:0;">
+
+		<div class=" margin-bottom-20 " style="margin-top:5px;">
+			<ui-searchbox params='datasource:$root.searchSplit,ref:$root.complimentaryPopupSearch,search:$root.searchComplimentary,clean:$root.cleanSearchComplimentary'>
+  			</ui-searchbox>
+
+		</div>
+
+		<div class="">
+			<div class="ui-table-container">
+				<ui-grid params='options:$root.gridsplitorderOption,vm:$root'>
+      			</ui-grid>
+			</div>
+			<div class="ui-table-container">
+				<ui-grid params='options:$root.gridsplitorderSubOption,vm:$root'>
+      			</ui-grid>
+			</div>
+		</div>
+
+	</div>
+	<div class="u-msg-footer">
+		<a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+		<a class="u-msg-ok ui-btn ui-btn-green">保存</a>
+	</div>
+</div>
+<!-- 采购  -->
+<div id="pushpurchasesub-popup" style="display: none;">
+	<div class="u-msg-title">
+		<h4>采购</h4>
+	</div>
+	<div class="u-msg-content" style="margin-top:0;">
+		<div class=" margin-bottom-20 " style="margin-top:5px;">
+			<ui-card params='datasource:$root.cardPPSource,vm:$root,dt:$root.pushPurchaseList,billstatus:$root.billPanelStatus'>
+   			</ui-card>
+		</div>
+		<div class="">
+			<div class="margin-bottom-10">
+			  </div>
+			<div class="ui-table-container">
+				<ui-grid params='options:$root.gridPpSubOption,vm:$root'>
+      			</ui-grid>
+			</div>
+		</div>
+
+	</div>
+	<div class="u-msg-footer">
+		<a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+		<a class="u-msg-ok ui-btn ui-btn-green">保存</a>
+	</div>
+</div>
+<!-- 物流方式为经销商  -->
+<div id="customersub-popup" style="display: none;">
+	<div class="u-msg-title">
+		<h4>订单分拨</h4>
+	</div>
+	<div class="u-msg-content" style="margin-top:0;">
+		<div class=" margin-bottom-20 " style="margin-top:5px;">
+		</div>
+		<div class="">
+			<div class="ui-table-container">
+				<ui-grid params='options:$root.gridcustomersubOption,vm:$root'>
+      			</ui-grid>
+			</div>
+		</div>
+
+	</div>
+	<div class="u-msg-footer">
+		<a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+		<a class="u-msg-ok ui-btn ui-btn-green">保存</a>
+	</div>
+</div>
+<!-- 物流方式为供应商  -->
+<div id="supplier-sub-popup" style="display: none;">
+	<div class="u-msg-title">
+		<h4>订单分拨</h4>
+	</div>
+	<div class="u-msg-content" style="margin-top:0;">
+		<div class=" margin-bottom-20 " style="margin-top:5px;">
+		</div>
+		<div class="">
+			<div class="ui-table-container">
+				<ui-grid params='options:$root.gridsuppliersubOption,vm:$root'>
+      			</ui-grid>
+			</div>
+		</div>
+
+	</div>
+	<div class="u-msg-footer">
+		<a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+		<a class="u-msg-ok ui-btn ui-btn-green">保存</a>
+	</div>
+</div>
+<!--描述：快递配送的物流方式，分配仓库-->
+<div id="orderproductsub-popup" style="display: none;">
+	<div class="u-msg-title">
+		<h4>订单分拨</h4>
+	</div>
+	<div class="u-msg-content" style="margin-top:0;">
+		<div class=" margin-bottom-20 " style="margin-top:5px;">
+		</div>
+		<div class="">
+			<div class="ui-table-container">
+				<ui-grid params='options:$root.productOrderSplitOption,vm:$root'>
+      			</ui-grid>
+			</div>
+		</div>
+
+	</div>
+	<div class="u-msg-footer">
+		<a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+		<a class="u-msg-ok ui-btn ui-btn-green">保存</a>
+	</div>
+</div>
+<!--订单分拨 end-->
+<!--补贴 start-->
+<div id="subsidies-popup" style="display: none;">
+	<div class="u-msg-title">
+		<h4>补贴金额</h4>
+	</div>
+	<div class="u-msg-content" style="margin-top:0;">
+		<div class=" margin-bottom-20 " style="margin-top:5px;">
+		</div>
+		<div class="">
+			<div class="ui-table-container">
+				<ui-grid params='options:$root.grid3Option,vm:$root'>
+      			</ui-grid>
+			</div>
+		</div>
+
+	</div>
+	<div class="u-msg-footer">
+		<a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+		<a class="u-msg-ok ui-btn ui-btn-green">保存</a>
+	</div>
+</div>

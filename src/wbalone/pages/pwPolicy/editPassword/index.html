@@ -1,0 +1,181 @@
+<div class="u-container-fluid u-widget-bg" id="editPassword">
+    <div class="u-row">
+        <!--<span class="i18n" name="ht.pag.edi.0004"></span>-->
+        <div class="u-col-12" data-bind="visible:step">
+            <div class="u-widget  u-widget-right" style="margin-right: 0px;">
+                <div class="u-widget-heading headingcss">
+                    <h4><span class="i18n" name="ht.pag.edi.0001"></span></h4>
+                </div>
+                <div class="u-widget-body" style="padding-top: 100px;">
+                    <div class="u-row">
+                        <div class="u-col-12">
+                            <div class="u-form-group">
+                                <label class="u-col-4 u-form-label text-right"><span class="i18n" name="ht.pag.edi.0002"></span></label>
+
+                                <div class="u-col-4" style="padding-left: 0px;">
+                                    <div class="u-input-group  must-in u-col-12" style="padding-left: 0px;">
+                                        <input type="tel" class="u-form-control" name="phone" disabled data-bind="value:phone" placeholder="ht.pag.edi.0003">
+                                        <span class="red-A700" data-bind="text:errmsg"></span>
+                                    </div>
+                                </div>
+                                <div class="u-col-4" style="margin-left: -30px;">
+                                    <button class="u-button  u-button-success greenbtn" data-bind="click:sendMsg,text:sendBtntext,enable:sendBtnable"><span class="i18n" name="ht.pag.edi.0004"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="u-col-12">
+                            <div class="u-form-group">
+                                <label class="u-col-4 u-form-label text-right"><span class="i18n" name="ht.pag.edi.0005"></span></label>
+
+                                <div class="u-col-4" style="padding-left: 0px;">
+                                    <div class="u-input-group  must-in u-col-12" style="padding-left: 0px;margin-bottom: 0px;">
+                                        <input type="text" class="u-form-control" name="valiCode" data-bind="value:valiCode" placeholder="ht.pag.edi.0006">
+                                        <span></span>
+                                    </div>
+                                    <span class="red" id='msgValiCode' style="margin-top: 15px;display: none"><span class="i18n" name="ht.pag.edi.0007"></span></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="u-col-12">
+                            <div class="u-form-group">
+                                <label class="u-col-4 u-form-label text-right"></label>
+
+                                <div class="u-col-4" style="padding-left: 0px;">
+                                    <div class="u-input-group  must-in u-col-12" style="padding-left: 0px;">
+                                        <button class="u-button u-button-block  u-button-info" data-bind="click:nextStep"><span class="i18n" name="ht.pag.edi.0008"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="u-col-4">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--修改密码-->
+        <div class="u-col-12" id="editPSwordForm" data-bind="visible:!step()">
+            <div class="u-widget  u-widget-right" style="margin-right: 0px;">
+                <div class="u-widget-heading headingcss">
+                    <h4><span class="i18n" name="ht.pag.edi.0009"></span></h4>
+                </div>
+                <div class="u-widget-body" style="padding-top: 100px;">
+                    <div class="u-row" id='editSuccess'>
+                        <!-- <div class="u-col-12">
+                             <div class="u-form-group">
+                                 <label class="u-col-3 u-form-label text-right"><span class="i18n" name="ht.pag.edi.0010"></span></label>
+
+                                 <div class="u-col-4">
+                                     <div class="u-input-group  must-in u-col-12">
+                                         <input type="text" class="u-form-control" name="name"
+                                                placeholder="ht.pag.edi.0011">
+                                         <span class=""></span>
+                                     </div>
+                                 </div>
+                                 <div class="u-col-5">
+                                     <span></span>
+                                 </div>
+                             </div>
+                         </div>-->
+
+                        <div class="u-col-12">
+                            <div class="u-form-group">
+                                <label class="u-col-4 u-form-label text-right"><span class="i18n" name="ht.pag.edi.0012"></span></label>
+
+                                <div class="u-col-4 oldpass" style="padding: 0px;">
+                                    <div class="u-input-group  must-in u-col-12" style="padding-left: 0px;">
+                                        <input type="password" class="u-form-control" data-bind="value:oldpsd" name="name" placeholder="ht.pag.edi.0013">
+                                        <span class=""></span>
+                                        <div class="warnsign hide"><i class="uf uf-exc-c-2"></i><span class="i18n" name="ht.pag.edi.0014"></span></div>
+                                    </div>
+                                </div>
+                                <div class="u-col-4 local-uclo5css">
+                                    <span class=""><span data-bind="text:passwordruler"></span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="u-col-12">
+                            <div class="u-form-group">
+                                <label class="u-col-4 u-form-label text-right"><span class="i18n" name="ht.pag.edi.0016"></span></label>
+
+                                <div class="u-col-4 newpass" style="padding: 0px;">
+                                    <div class="u-input-group  must-in u-col-12" style="padding-left: 0px;">
+                                        <input type="password" class="u-form-control" data-bind="value:newpsd" name="name" placeholder="ht.pag.edi.0017">
+                                        <span class=""></span>
+                                        <div class="warnsign hide"><i class="uf uf-exc-c-2"></i><span class="i18n" name="ht.pag.edi.0014"></span></div>
+                                    </div>
+                                </div>
+                                <div class="u-col-4 local-uclo5css">
+                                    <span class=""><span data-bind="text:passwordruler"></span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="u-col-12">
+                            <div class="u-form-group">
+                                <label class="u-col-4 u-form-label text-right"><span class="i18n" name="ht.pag.edi.0018"></span></label>
+
+                                <div class="u-col-4 comfirmpass" style="padding: 0px;">
+                                    <div class="u-input-group  must-in u-col-12" style="padding-left: 0px;">
+                                        <input type="password" class="u-form-control" name="name" data-bind="value:confirmnewpsd" placeholder="ht.pag.edi.0019">
+                                        <span class=""></span>
+                                        <div class="warnsign hide"><i class="uf uf-exc-c-2"></i><span class="i18n" name="ht.pag.edi.0020"></span></div>
+                                    </div>
+                                </div>
+                                <div class="u-col-4 local-uclo5css">
+                                    <span class=""><span class="i18n" name="ht.pag.edi.0021"></span></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="u-col-12">
+                            <div class="u-form-group">
+                                <label class="u-col-4 u-form-label text-right"></label>
+
+                                <div class="u-col-4" style="padding: 0px;">
+                                    <div class="u-input-group  must-in u-col-12" style="padding-left: 0px;">
+                                        <button class="u-button u-button-block  u-button-info" data-bind="click:editFinish"><span class="i18n" name="ht.pag.edi.0022"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="u-col-4">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--修改成功-->
+        <div class="u-col-12" id="step-suc">
+            <div class="u-widget  u-widget-right">
+                <div class="u-widget-heading" style="padding: 8px 15px">
+                    <h4><span class="i18n" name="ht.pag.edi.0009"></span></h4>
+                </div>
+                <div class="u-widget-body">
+                    <div class="u-row">
+                        <div class="u-row">
+                            <div class="u-col-12 u-text-center">
+                                <div class=" step-suc">
+                                    <div class="uf uf-smile"></div>
+                                    <div class="msg">
+                                        <h4><span class="i18n" name="ht.pag.edi.0023"></span></h4>
+                                        <h5>
+                                            <span class="i18n" name="ht.pag.edi.0024"></span>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

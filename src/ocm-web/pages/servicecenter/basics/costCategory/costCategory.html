@@ -1,0 +1,165 @@
+<div class="ui-panel">
+	<div class="u-row">
+		<div class="page-title u-col-4 ">
+			<span>费用项目</span>
+		</div>
+	</div>
+	<div class="u-row">
+		<div class="oc-breadcrumb u-col-4"></div>
+	</div>
+	<div class="title-seperator"></div>
+
+	<!--searchbox-->
+	<div class="ui-searchbox">
+		<div id="mainData-searchcontent" class="ui-searchbox-content clearfix"></div>
+
+		<div class="ui-searchbox-footer clearfix">
+			<div class="ui-search-more hidden">
+				<a>更多
+					<i class="uifont icon-down"></i>
+				</a>
+			</div>
+			<div class="ui-search-btn">
+				<a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:cleanSearch">清空
+				</a>
+				<a class="ui-btn ui-btn-green margin-right-5" data-bind="click:search.bind($data,true)">搜索
+				</a>
+			</div>
+		</div>
+
+	</div>
+	<!--searchbox end-->
+
+	<div class="ui-panel-body">
+		<div class="margin-bottom-10">
+			<a class="ui-btn ui-btn-orange margin-right-5" id="user-action-add" data-bind="click: beforeEdit.bind($data,-1)">
+				<i class="uifont icon-plus margin-right-5"></i>新增
+			</a>
+			<a class="ui-btn ui-btn-orange margin-right-5" data-bind="click:delData ">
+				<i class="uifont icon-shanchu1 margin-right-5"></i>删除
+			</a>
+			<a class="ui-btn ui-btn-orange margin-right-5" data-bind="click:Enable">
+				<i class="uifont icon-qiyong margin-right-5"></i>启用
+			</a>
+			<a class="ui-btn ui-btn-orange margin-right-5" data-bind="click:Disable">
+				<i class="uifont icon-tingyong margin-right-5"></i>停用
+			</a>
+			<a class="ui-btn ui-btn-orange margin-right-5" data-bind="click:defaultFun">
+				<i class="uifont icon-tingyong margin-right-5"></i>设为默认项目
+			</a>
+		</div>
+
+		<!-- <div class="ui-button-group clearfix vertical-align-middle margin-right-5 margin-left-5">
+				<a class="ui-button-item" data-bind="click:importHandle">
+					<i class="uifont icon-import  margin-right-5"></i>
+					导入
+				</a>
+				<a class="ui-button-item" data-bind="click:exportHandle">
+					<i class="uifont icon-export  margin-right-5"></i>
+					导出
+				</a>
+			</div> -->
+
+		
+
+		<div class="ui-table-container">
+			<div id="mainDataList" u-meta='{"id":"grid_mainDataList","data":"mainDataList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+
+				<div options='{"field":"code","dataType":"String","title":"编码" }'></div>
+				<div options='{"field":"name","dataType":"String","title":"名称"}'></div>
+				<div options='{"field":"parentId","dataType":"String","title":"上级费用项目"}'></div>
+				<div options='{"field":"mnemonic","dataType":"String","title":"助记码"}'></div>
+				<div options='{"field":"isEnable","dataType":"String","title":"启用状态","editOptions":{"type":"combo","datasource":"isEnable"},"renderType":"comboRender"}'></div>
+				<div options='{"field":"costType","dataType":"String","title":"费用类型","visible":true}'></div>
+				<div options='{"field":"isDefault","dataType":"String","title":"默认","editOptions":{"type":"combo","datasource":"isDefaultSrc"},"renderType":"comboRender"}'></div>
+				<div options='{"field":"description","dataType":"String","title":"描述"}'></div>
+				<div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation","fixed":true,"width":"190px"}'></div>
+			</div>
+			<div class="ui-statistics margin-top-10">
+				<i class="uifont icon-i font-c-blue margin-right-10"></i>已选择
+				<span class="font-c-blue" data-bind="text:mainDataList.selectedIndices().length"></span>项数据
+			</div>
+			<div class="pagination-right">
+				<div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"mainDataList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+			</div>
+		</div>
+
+	</div>
+</div>
+	
+
+
+<!--新增弹窗-->
+<div id="dialog_layer-popup" style="display:none;">
+	<div class="u-msg-title">
+		<h4>新增</h4>
+	</div>
+	<div class="u-msg-content  clearfix margin-bottom-20" id="validate">
+		<div class="clearfix ui-editbox">
+			<div class="ui-item">
+				<div class="ui-name">
+					<i class="strong">*</i>编码：</div>
+				<div class="ui-inputarea" u-meta='{"type":"u-text","data":"mainDataList","field":"code"}'>
+					<input />
+				</div>
+			</div>
+			<div class="ui-item">
+				<div class="ui-name">
+					<i class="strong">*</i>名称：</div>
+				<div class="ui-inputarea" u-meta='{"type":"u-text","data":"mainDataList","field":"name"}'>
+					<input />
+				</div>
+			</div>
+			<div class="ui-item">
+				<div class="ui-name">
+					<i class="strong"></i>助记码：</div>
+				<div class="ui-inputarea" u-meta='{"type":"u-text","data":"mainDataList","field":"mnemonic"}'>
+					<input />
+				</div>
+			</div>
+			<div class="ui-item">
+				<div class="ui-name">
+					<i class="strong"></i>上级费用项目：</div>
+					<div class="ui-inputarea" u-meta='{"type":"uiRefer","data":"mainDataList","field":"parentId","showField":"parentName"}'>
+						<input   readonly="readonly" autocomplete="off" />
+						<span class="ui-icon uifont icon-bar refer"></span>
+					</div>
+				<!-- <div class="ui-inputarea" u-meta='{"type":"u-text","data":"mainDataList","field":"parentId"}'>
+					<input />
+				</div> -->
+			</div>
+			<div class="ui-item">
+				<div class="ui-name">
+					<i class="strong">*</i>费用类型：</div>
+				<div class="ui-inputarea" u-meta='{"type":"u-text","data":"mainDataList","field":"costType"}'>
+					<input />
+				</div>
+			</div>
+			<div class="ui-item">
+				<div class="ui-name">
+					<i class="strong"></i>描述：</div>
+				<div class="ui-inputarea" u-meta='{"type":"u-text","data":"mainDataList","field":"description"}'>
+					<input />
+				</div>
+			</div>
+			<div class="ui-item">
+				<div class="ui-name">
+					<i class="strong"></i>启用状态：</div>
+				<div class="ui-inputarea" u-meta='{"id":"r1","type":"u-radio","data":"mainDataList","field":"isEnable","datasource":"radiodata"}'>
+					<label  class="u-radio" >
+						<input type="radio" class="u-radio-button" name="options">
+						<span class="u-radio-label"></span>
+					</label>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="u-msg-footer">
+		<a class="ui-btn ui-btn-primary u-msg-cancel margin-right-5">取消</a>
+		<a class="ui-btn ui-btn-green  u-msg-ok">保存</a>
+	</div>
+</div>
+
+<!--导入弹框 end-->
+<div id="exportFiel"></div>
+<div id="importFiel"></div>

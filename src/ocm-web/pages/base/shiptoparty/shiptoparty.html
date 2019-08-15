@@ -1,0 +1,553 @@
+
+
+<div class="ui-panel ui-list-panel">
+  <div >
+    <div class="page-title">送达方信息</div>
+  </div>
+  <div >
+    <div >
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+  <div class="ui-searchbox ui-panel-head">
+    <div id="buoyancyfactorlist-searchcontent" class="ui-searchbox-content">
+
+    </div>
+    <div class="clearfix">
+
+    </div>
+    <div class="ui-searchbox-footer">
+      <div class="ui-search-more hidden">
+          <a>更多<i class="uifont icon-down"></i></a>
+      </div>
+
+      <div class="ui-search-btn">
+        
+        <a class="ui-btn ui-btn-primary margin-right-5"
+        data-bind="click:cleanSearch">清空
+        </a>
+        <a class="ui-btn ui-btn-green margin-right-5"
+        data-bind="click:search.bind($data,true)">搜索
+        </a>
+      </div>
+      <div class="clearfix">
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-panel-body">
+    <div class="ui-panel-body-head">
+      <div class="ui-panel-body-head-left">
+        <a class="ui-btn ui-btn-orange margin-right-5" id="user-action-add"
+          data-bind="click: beforeEdit.bind($data,-1),visible:buttonShowGroup['add']"><i class="uifont icon-plus margin-right-5"></i>新增
+        </a>
+        <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+          data-bind="click: del,visible:buttonShowGroup['del']"><i class="uifont icon-shanchu1 margin-right-5"></i>删除
+        </a>
+        <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+            <a class="ui-button-item"  data-bind="click:enable,visible:buttonShowGroup['enable']">
+              <i class="uifont icon-qiyong margin-right-5"></i>启用
+            </a>
+            <a class="ui-button-item" data-bind="click:disable,visible:buttonShowGroup['disable']">
+              <i class="uifont icon-tingyong margin-right-5"></i>停用
+            </a>
+          </div>
+        <!--<div class="ui-button-group clearfix vertical-align-middle">
+          <a class="ui-button-item"> <i class="uifont icon-import margin-right-5"></i>导入</a>
+          <a class="ui-button-item"> <i class="uifont icon-export margin-right-5"></i>导出</a>
+        </div>-->
+        <div class="ui-button-group clearfix vertical-align-middle margin-right-5">   
+            <button class="ui-button-item" id="shopImport" style="background: #fff">
+                <i class="uifont  icon-import margin-right-5"></i>导入
+            </button>
+            <ul class="u-menu u-menu-info2" for="shopImport">
+                <li class="u-menu-item"><a data-bind="click: importHandle,visible:buttonShowGroup['importHandle']">导入主表信息</a></li>
+                <li class="u-menu-item"><a data-bind="click: importaccountMgOrg,visible:buttonShowGroup['importaccountMgOrg']">导入送达方所属组织</a></li>
+            </ul>
+
+            <button class="ui-button-item" id="shopExport" style="background: #fff">
+                <i class="uifont icon-export margin-right-5"></i>导出
+            </button>
+            <ul class="u-menu u-menu-info2" for="shopExport">
+                <li class="u-menu-item "><a data-bind="click: exportHandle,visible:buttonShowGroup['exportHandle']">导出主表信息</a></li>
+                <li class="u-menu-item"><a data-bind="click: exportaccountMgOrg,visible:buttonShowGroup['exportaccountMgOrg']">导出送达方所属组织</a></li>
+            </ul>
+         </div>
+         <!--<a class="ui-btn ui-btn-primary margin-left-5" data-bind="">打印</a>-->
+      </div>
+      <!-- <div class="ui-panel-body-head-right">
+        <i class="uifont icon-i font-c-blue margin-right-5"></i>共搜索到<span data-bind="text:ShiptopartyList.totalRow"></span>条数据
+      </div> -->
+    </div>
+      <div class="ui-table-container">
+        <div u-meta='{"id":"grid_Shop","data":"ShiptopartyList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+
+          <div options='{"field":"customerAddresCode","dataType":"String","title":"送达方编码","renderType":"detailRender"}'></div>
+          <div options='{"field":"customerAddresName","dataType":"String","title":"送达方名称"}'></div>
+          <div options='{"field":"simpleName","dataType":"String","title":"送达方简称","visible":false}'></div>
+           <div options='{"field":"customerOneCategoryName","dataType":"String","title":"客户一级分类","renderType":"detailRender"}'></div>
+            <div options='{"field":"customerTwoCategoryName","dataType":"String","title":"客户二级分类","renderType":"detailRender"}'></div>
+          <div options='{"field":"status","dataType":"String","title":"启用状态","renderType":"stateGrid"}'></div>
+          <div options='{"field":"creator","dataType":"String","title":"创建人","visible":false}'></div>
+          <div options='{"field":"creationTime","dataType":"Datetime","title":"创建时间","visible":false}'></div>
+          <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":false}'></div>
+          <div options='{"field":"modifiedTime","dataType":"Datetime","title":"修改时间","visible":false}'></div>
+          <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation4single","fixed":true,"width":"110px"}'></div>
+        </div>
+          <div class="ui-statistics margin-top-10">
+            <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择<span class="font-c-blue" data-bind="text:ShiptopartyList.selectedIndices().length"></span>项数据
+          </div>
+          <div class="pagination-right">
+            <div id='pagination' class='pagination u-pagination pagination-sm'
+            u-meta='{"type":"pagination","data":"ShiptopartyList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+          </div>
+      </div>
+    </div>
+</div>
+
+
+
+<div class="ui-panel ui-bill-panel" style="display: none;">
+  <div >
+    <div class="page-title">
+      <span>送达方信息</span>
+    </div>
+  </div>
+  <div >
+    <div >
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-green" data-bind="click:backPanle">返回</a>
+    </div>
+  </div>
+  <div class="ui-panel-body">
+       <div class="u-tabs  ui-tabs margin-top-10">
+          <div class="u-tabs__tab-bar">
+              <a href="#tab-panel-1" class="u-tabs__tab is-active" data-bind="">基本信息</a>
+              <a href="#tab-panel-2" class="u-tabs__tab" data-bind="">送达方联系人</a>
+              <a href="#tab-panel-3" class="u-tabs__tab" data-bind="click:tabShop">送达方所属组织</a>
+          </div>
+          <!--基本信息开始-->
+          <div class="u-tabs__panel is-active" id="tab-panel-1">
+            
+            <div class="ui-bill-body">
+                <div class="ui-collapse-group">
+                  <div class="ui-panel-body-head-left">
+                    <a class="ui-btn ui-btn-primary  margin-right-5" data-bind="click:cancelHandle">取消</a>
+                    <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:saveHandle">保存</a>
+                  </div>
+                    <div id="productBase">
+                        <div class="ui-item">
+                        
+                          <div class="ui-name"><span class="ui-redstar">*</span>送达方编码：</div>
+                          <div class="ui-inputarea">
+                            <div id="customerAddres" u-meta='{"id":"customerAddresId","type":"uiRefer","data":"ShiptopartyList","field":"customerAddresId","disableInEdit":"true","referId":"customerAddresId","showField":"customerAddresCode"}'>
+                              <input id="code-input" class="u-input" />
+                              <span id="code-refer" class="ui-icon uifont icon-bar refer"></span>
+                              <span id="code-text" style="display: none;"></span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="ui-item">
+                          <div class="ui-name">送达方名称：</div>
+                          <div class="ui-inputarea">
+                            <div u-meta='{"type":"u-text","data":"ShiptopartyList","field":"customerAddresName","enable":"false"}'>
+                              <input class="u-input" />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="ui-item">
+                          <div class="ui-name">送达方简称：</div>
+                          <div class="ui-inputarea">
+                            <div u-meta='{"type":"u-text","data":"ShiptopartyList","field":"simpleName","enable":"false"}'>
+                              <input class="u-input" />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="ui-item">
+                          <div class="ui-name"><span class="ui-redstar">*</span>客户一级分类：</div>
+                          <div class="ui-inputarea">
+                            <div id="OneCategory" u-meta='{"id":"OneCategory","type":"uiRefer","data":"ShiptopartyList","field":"customerOneCategoryId"}'>
+                              <input class="u-input" />
+                              <span class="ui-icon uifont icon-bar refer"></span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="ui-item">
+                          <div class="ui-name">客户二级分类：</div>
+                          <div class="ui-inputarea">
+                            <div u-meta='{"type":"uiRefer","data":"ShiptopartyList","field":"customerTwoCategoryId"}'>
+                              <input class="u-input" />
+                              <span class="ui-icon uifont icon-bar refer"></span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="ui-item">
+                          <div class="ui-name">所在国别：</div>
+                          <div class="ui-inputarea">
+                            <div u-meta='{"type":"u-text","data":"ShiptopartyList","field":"countryName","enable":"false"}'>
+                              <input class="u-input" />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="ui-item">
+                          <div class="ui-name">所在省份：</div>
+                          <div class="ui-inputarea">
+                            <div u-meta='{"type":"u-text","data":"ShiptopartyList","field":"provinceName","enable":"false"}'>
+                              <input class="u-input" />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="ui-item">
+                          <div class="ui-name">所在城市：</div>
+                          <div class="ui-inputarea">
+                            <div u-meta='{"type":"u-text","data":"ShiptopartyList","field":"cityName","enable":"false"}'>
+                              <input class="u-input" />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="ui-item">
+                          <div class="ui-name">所在区/县：</div>
+                          <div class="ui-inputarea">
+                            <div u-meta='{"type":"u-text","data":"ShiptopartyList","field":"countyName","enable":"false"}'>
+                              <input class="u-input" />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="ui-item">
+                          <div class="ui-name">所在街道/镇：</div>
+                          <div class="ui-inputarea">
+                            <div u-meta='{"type":"u-text","data":"ShiptopartyList","field":"townName","enable":"false"}'>
+                              <input class="u-input" />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="ui-item">
+                          <div class="ui-name">详细地址：</div>
+                          <div class="ui-inputarea">
+                            <div u-meta='{"type":"u-text","data":"ShiptopartyList","field":"address","enable":"false"}'>
+                              <input class="u-input" />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="ui-item">
+                          <div class="ui-name">标准物流周期：</div>
+                          <div class="ui-inputarea">
+                            <div u-meta='{"type":"u-text","data":"ShiptopartyList","field":"logisticPeriod","enable":"false"}'>
+                              <input class="u-input" />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="ui-item">
+                          <div class="ui-name">启用状态：</div>
+                          <div class="ui-inputarea">
+                            <div u-meta='{"type":"u-label","data":"ShiptopartyList","field":"status"}'>
+                              <label>启用</label>
+                            </div>
+                          </div>
+                        </div>
+                      
+
+                    </div>
+
+                    <!-- 保存后 -->
+                    <div style="display: none;" id="productBase_show">
+                      <div class="ui-item">
+                        <span class="ui-name">送达方编码：</span>
+                        <div class="ui-inputarea">
+                          <div data-bind='text: ShiptopartyList.ref("customerAddresCode")'></div>
+                        </div>
+                      </div>
+                      <div class="ui-item">
+                        <span class="ui-name">送达方名称：</span>
+                        <div class="ui-inputarea">
+                          <div data-bind='text: ShiptopartyList.ref("customerAddresName")'></div>
+                        </div>
+                      </div>
+                      <div class="ui-item">
+                        <span class="ui-name">送达方简称：</span>
+                        <div class="ui-inputarea">
+                          <div data-bind='text: ShiptopartyList.ref("simpleName")'></div>
+                        </div>
+                      </div>
+                      <div class="ui-item">
+                        <span class="ui-name">客户一级分类：</span>
+                        <div class="ui-inputarea">
+                          <div data-bind='text: ShiptopartyList.ref("customerOneCategoryName")'></div>
+                        </div>
+                      </div>
+                      <div class="ui-item">
+                        <span class="ui-name">客户二级分类：</span>
+                        <div class="ui-inputarea">
+                          <div data-bind='text: ShiptopartyList.ref("customerTwoCategoryName")'></div>
+                        </div>
+                      </div>
+                      <div class="ui-item">
+                        <span class="ui-name">所在国别：</span>
+                        <div class="ui-inputarea">
+                          <div data-bind='text: ShiptopartyList.ref("countryName")'></div>
+                        </div>
+                      </div>
+                      <div class="ui-item">
+                        <span class="ui-name">所在省份：</span>
+                        <div class="ui-inputarea">
+                          <div data-bind='text: ShiptopartyList.ref("provinceName")'></div>
+                        </div>
+                      </div>
+                      <div class="ui-item">
+                        <span class="ui-name">所在城市：</span>
+                        <div class="ui-inputarea">
+                          <div data-bind='text: ShiptopartyList.ref("cityName")'></div>
+                        </div>
+                      </div>
+                      <div class="ui-item">
+                        <span class="ui-name">所在区/县：</span>
+                        <div class="ui-inputarea">
+                          <div data-bind='text: ShiptopartyList.ref("countyName")'></div>
+                        </div>
+                      </div>
+                      <div class="ui-item">
+                        <span class="ui-name">所在街道/镇：</span>
+                        <div class="ui-inputarea">
+                          <div data-bind='text: ShiptopartyList.ref("townName")'></div>
+                        </div>
+                      </div>
+                      <div class="ui-item">
+                        <span class="ui-name">详细地址：</span>
+                        <div class="ui-inputarea">
+                          <div data-bind='text: ShiptopartyList.ref("address")'></div>
+                        </div>
+                      </div>
+                      <div class="ui-item">
+                        <span class="ui-name">标准物流周期：</span>
+                        <div class="ui-inputarea">
+                          <div data-bind='text: ShiptopartyList.ref("logisticPeriod")'></div>
+                        </div>
+                      </div>
+                      <div class="ui-item">
+                        <div class="ui-name">启用状态：</div>
+                        <div class="ui-inputarea">
+                          <div data-bind='text: enableFmt'>
+                          </div>
+                        </div>
+                      </div>
+                      
+
+                    </div>
+          
+                </div>
+            </div>
+          </div>
+          <!--基本信息结束-->
+          <!-- 联系人开始-->
+          <div class="u-tabs__panel" id="tab-panel-2">
+              <div class="margin-top-15">
+                     <!-- <a class="ui-btn ui-btn-orange margin-right-5 margin-left-15"  data-bind="click: addRow.bind($data,'ContactList')"><i class="uifont icon-plus margin-right-5"></i>增行</a>
+                     <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click: delChild.bind($data,'ContactList')">删行</a>
+                     <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:saveContact">保存</a> -->
+                     <a class="ui-btn ui-btn-primary  margin-right-5" data-bind="click:backPanle">返回列表页</a>
+              </div>
+              <div class="ui-table-container margin-top-20">
+                  <div u-meta='{"id":"grid_Contact","data":"ContactList","type":"grid","editable":true,"showNumCol":true}'>
+                     
+                      <div options='{"field":"name","dataType":"String","title":"联系人姓名","editable":false}'></div>
+                      <div options='{"field":"tel","dataType":"String","title":"联系人电话","editable":false}'></div>
+                      <div options='{"field":"phone","dataType":"String","title":"联系人手机","editable":false}'></div>
+                    
+                  </div>
+                </div>
+          </div>
+           <!-- 联系人结束-->
+          <!-- 市场区域开始-->
+          <div class="u-tabs__panel" id="tab-panel-3">
+            <div class="margin-top-15">
+               <a class="ui-btn ui-btn-orange margin-right-5 margin-left-15"   data-bind="click: addRow.bind($data,'MarketAreaList')"><i class="uifont icon-plus margin-right-5"></i>增行</a>
+               <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click: delChild.bind($data,'MarketAreaList')">删行</a>
+               <a class="ui-btn ui-btn-primary  margin-right-5" data-bind="click:organization">取消</a>
+               <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:saveMarket">保存</a>
+            </div>
+            <div class="ui-table-container margin-top-20">
+              <div u-meta='{"id":"grid_MarketArea","data":"MarketAreaList","type":"grid","editable":true,"multiSelect":true,"showNumCol":true}'>
+                
+                <div options='{"field":"organizationId","dataType":"String","title":"销售组织编码","renderType":"ncReferRender","editType":"ncReferEditType","showField":"organizationCode","editOptions":{"validType":"string","rel":{"refpk":"organizationId","refcode":"organizationCode","refname":"organizationName"}}}'></div>
+                <div options='{"field":"channelId","dataType":"String","title":"分销渠道编码","renderType":"ncReferRender","editType":"ncReferEditType","showField":"channelCode","editOptions":{"validType":"string","rel":{"refpk":"channelId","refcode":"channelCode","refname":"channelName"}}}'></div>
+                <div options='{"field":"productGroupId","dataType":"String","title":"产品组","renderType":"ncReferRender","editType":"ncReferEditType","showField":"productGroupCode","editOptions":{"validType":"string","rel":{"refpk":"productGroupId","refcode":"productGroupCode","refname":"productGroupName"}}}'></div>
+                <div options='{"field":"soState","dataType":"String","title":"销售订单冻结","editOptions":{ "type":"radio","datasource":"radiodata"},"editType":"radio","renderType":"radioRender","soState":"0"}'></div>
+                <div options='{"field":"deliveryState","dataType":"integer","title":"交货冻结","editOptions":{ "type":"radio","datasource":"radiodata"},"editType":"radio","renderType":"radioRender"}'></div>
+                <div options='{"field":"invoiceState","dataType":"integer","title":"出具发票冻结","editOptions":{ "type":"radio","datasource":"radiodata"},"editType":"radio","renderType":"radioRender"}'></div>
+                <div options='{"field":"supportState","dataType":"integer","title":"冻结销售支持","editOptions":{ "type":"radio","datasource":"radiodata"},"editType":"radio","renderType":"radioRender"}'></div>
+               <!--  <div options='{"field":"accountState","dataType":"integer","title":"记账冻结","editOptions":{ "type":"radio","datasource":"radiodata"},"editType":"radio","renderType":"radioRender"}'></div> -->
+              </div>
+                <!-- <div options='{"field":"stopTime","dataType":"date","title":"是否启用"}'></div> -->
+                <!-- <div options='{"field":"statusCode","dataType":"String","title":"启用状态","editable":false}'></div> -->
+              </div>
+            </div>
+          </div>  
+
+           <!-- 市场区域结束-->
+         
+      </div>
+  </div>
+
+  
+</div>
+<!-- 详情页 -->
+<div class="ui-panel ui-bill-detail" style="display: none;">
+  <div >
+    <div class="page-title">
+      <span>送达方详情</span>
+    </div>
+  </div>
+  <div >
+    <div >
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-green" data-bind="click:cancelHandle">返回
+     </a>
+    </div>
+  </div>
+  <div class="ui-panel-body">
+      <div class="u-tabs  ui-tabs margin-top-10">
+        <div class="u-tabs__tab-bar">
+           <a href="#tab-panel-4" class="u-tabs__tab is-active" data-bind="">基本信息</a>
+           <a href="#tab-panel-5" class="u-tabs__tab" data-bind="">联系人</a>
+           <a href="#tab-panel-6" class="u-tabs__tab" data-bind="">送达方所属组织</a>
+        </div>
+        <div class="u-tabs__panel is-active" id="tab-panel-4">
+            <div class="ui-item">
+              <span class="ui-name">送达方编码：</span>
+              <div class="ui-inputarea">
+                <div data-bind='text: ShiptopartyList.ref("customerAddresCode")'></div>
+              </div>
+            </div>
+            <div class="ui-item">
+              <span class="ui-name">送达方名称：</span>
+              <div class="ui-inputarea">
+                <div data-bind='text: ShiptopartyList.ref("customerAddresName")'></div>
+              </div>
+            </div>
+            <div class="ui-item">
+              <span class="ui-name">送达方简称：</span>
+              <div class="ui-inputarea">
+                <div data-bind='text: ShiptopartyList.ref("simpleName")'></div>
+              </div>
+            </div>
+            <div class="ui-item">
+              <span class="ui-name">客户一级分类：</span>
+              <div class="ui-inputarea">
+                <div data-bind='text: ShiptopartyList.ref("customerOneCategoryName")'></div>
+              </div>
+            </div>
+            <div class="ui-item">
+              <span class="ui-name">客户二级分类：</span>
+              <div class="ui-inputarea">
+                <div data-bind='text: ShiptopartyList.ref("customerTwoCategoryName")'></div>
+              </div>
+            </div>
+            <div class="ui-item">
+              <span class="ui-name">所在国别：</span>
+              <div class="ui-inputarea">
+                <div data-bind='text: ShiptopartyList.ref("countryName")'></div>
+              </div>
+            </div>
+            <div class="ui-item">
+              <span class="ui-name">所在省份：</span>
+              <div class="ui-inputarea">
+                <div data-bind='text: ShiptopartyList.ref("provinceName")'></div>
+              </div>
+            </div>
+            <div class="ui-item">
+              <span class="ui-name">所在城市：</span>
+              <div class="ui-inputarea">
+                <div data-bind='text: ShiptopartyList.ref("cityName")'></div>
+              </div>
+            </div>
+            <div class="ui-item">
+              <span class="ui-name">所在区县：</span>
+              <div class="ui-inputarea">
+                <div data-bind='text: ShiptopartyList.ref("countyName")'></div>
+              </div>
+            </div>
+            <div class="ui-item">
+              <span class="ui-name">所在街道/镇：</span>
+              <div class="ui-inputarea">
+                <div data-bind='text: ShiptopartyList.ref("townName")'></div>
+              </div>
+            </div>
+            <div class="ui-item">
+              <span class="ui-name">详细地址：</span>
+              <div class="ui-inputarea">
+                <div data-bind='text: ShiptopartyList.ref("address")'></div>
+              </div>
+            </div>
+            <div class="ui-item">
+              <span class="ui-name">标准物流周期：</span>
+              <div class="ui-inputarea">
+                <div data-bind='text: ShiptopartyList.ref("logisticPeriod")'></div>
+              </div>
+            </div>
+
+            <div class="ui-item">
+              <div class="ui-name">启用状态：</div>
+              <div class="ui-inputarea">
+                <div data-bind='text: enableFmt'>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="u-tabs__panel" id="tab-panel-5">
+            <div u-meta='{"id":"grid_Contact1","data":"ContactList","type":"grid","editable":true,"showNumCol":true}'>
+                     
+                      <div options='{"field":"name","dataType":"String","title":"联系人姓名","editable":false}'></div>
+                      <!-- <div options='{"field":"contactTypeId","dataType":"String","title":"联系人类别","renderType":"ncReferRender","editType":"ncReferEditType","showField":"productCode","editOptions":{"validType":"string","rel":{"refpk":"contactTypeId","refcode":"contactTypeCode","refname":"contactTypeName"}}}'></div> -->
+                      <div options='{"field":"tel","dataType":"String","title":"联系人电话","editable":false}'></div>
+                      <div options='{"field":"phone","dataType":"String","title":"联系人手机","editable":false}'></div>
+                     
+                      <!-- <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation4single","fixed":true,"width":"110px"}'></div> -->
+                      <!-- <div options='{"field":"contactFax","dataType":"String","title":"传真"}'></div>
+                      <div options='{"field":"address","dataType":"String","title":"联系人地址"}'></div>
+                      <div options='{"field":"email","dataType":"String","title":"联系人邮箱"}'></div>
+                       -->
+                   <!--    <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation"}'></div> -->
+                  </div>
+        </div>
+        <div class="u-tabs__panel" id="tab-panel-6">
+            <div u-meta='{"id":"grid_MarketArea1","data":"MarketAreaList","type":"grid","editable":true,"showNumCol":true}'>
+                
+                <div options='{"field":"organizationId","dataType":"String","title":"销售组织编码","renderType":"ncReferRender","editType":"ncReferEditType","showField":"organizationCode","editOptions":{"validType":"string","rel":{"refpk":"organizationId","refcode":"organizationCode","refname":"organizationName"}},"editable":false}'></div>
+                <div options='{"field":"channelId","dataType":"String","title":"分销渠道编码","renderType":"ncReferRender","editType":"ncReferEditType","showField":"channelCode","editOptions":{"validType":"string","rel":{"refpk":"channelId","refcode":"channelCode","refname":"channelName"}},"editable":false}'></div>
+                <div options='{"field":"productGroupId","dataType":"String","title":"产品组","renderType":"ncReferRender","editType":"ncReferEditType","showField":"productGroupCode","editOptions":{"validType":"string","rel":{"refpk":"productGroupId","refcode":"productGroupCode","refname":"productGroupName"}},"editable":false}'></div>
+                <div options='{"field":"soState","dataType":"String","title":"销售订单冻结","editable":false,"renderType":"whetherRender"}'></div>
+                <div options='{"field":"deliveryState","dataType":"String","title":"交货冻结","editable":false,"renderType":"whetherRender"}'></div>
+                <div options='{"field":"invoiceState","dataType":"String","title":"出具发票冻结","editable":false,"renderType":"whetherRender"}'></div>
+                <div options='{"field":"supportState","dataType":"String","title":"冻结销售支持","editable":false,"renderType":"whetherRender"}'></div>
+               <!--  <div options='{"field":"accountState","dataType":"String","title":"记账冻结","editable":false,"renderType":"whetherRender"}'></div> -->
+                
+              </div>
+        </div>
+      </div> 
+    
+
+    
+      
+  </div>
+
+  
+</div>
+
+<!--导入弹框 end-->
+<div id="exportFiel"></div>
+<div id="importFiel"></div>
+

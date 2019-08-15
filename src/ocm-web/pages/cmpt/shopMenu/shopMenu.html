@@ -1,0 +1,83 @@
+<div class="u-row ui-treegrid-panel base-tree-grid">
+
+  <div class="u-col-3">
+    <div style="height:40px;margin-top: 20px">
+      <div style="display:flex; justify-content:center;align-items:center;height:40px ">
+        <div class="u-input-group treeSearch">
+          <input id="tree-searchKey" type="text" class="u-form-control" placeholder="请输入编码/全称/简称">
+          <span class="u-input-group-addon" data-bind="click: positionTree">定位</span>
+        </div>
+      </div>
+    </div>
+    <div class="treeTitle">门户菜单管理: </div>
+    <div id="treeTest" class="ztree" style="overflow:unset" data-bind="click: clickTree" u-meta='{"id":"tree1","data":"simpleListTree","type":"tree","idField":"id","pidField":"parentId","nameField":"name","setting":"treeSetting"}'>
+    </div>
+  </div>
+  <div class="u-col-9">
+    <div class="ui-panel ui-list-panel">
+      <div>
+        <div class="page-title">
+          <span data-bind="text:title"></span>
+        </div>
+      </div>
+      <div>
+        <div>
+          <div class="oc-breadcrumb">
+          </div>
+        </div>
+      </div>
+      <div class="title-seperator"></div>
+      <ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+      </ui-searchbox>
+      <div class="ui-panel-body">
+        <div class="ui-panel-body-head">
+          <div class="ui-panel-body-head-left">
+            <ui-buttons params='datasource:$root.buttonSource'>
+            </ui-buttons>
+          </div>
+        </div>
+        <div class="u-container-fluid">
+
+          <div class="ui-table-container">
+            <ui-grid params='options:$root.gridOption,vm:$root'>
+            </ui-grid>
+            <div class="ui-statistics margin-top-10">
+              已选择
+              <span class="font-c-blue" data-bind="text:simpleList.selectedIndices().length"></span>项数据
+            </div>
+            <div class="pagination-right">
+              <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"simpleList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ui-dialogcard params='datasource:$root.dialogcardSource,ref:$root.dialogcardcomp,dt:$root.simpleList'>
+</ui-dialogcard>
+<div class="ui-bill-detail ui-panel" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span data-bind="text:title"></span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-primary" data-bind="click: retListPanel">返回
+      </a>
+    </div>
+  </div>
+  <div class="ui-panel-head">
+    <ui-detail params='datasource:$root.detailSource,dt:$root.simpleList,vm:$root'>
+    </ui-detail>
+  </div>
+</div>
+<div id="exportFiel"></div>
+<div id="importFiel"></div>

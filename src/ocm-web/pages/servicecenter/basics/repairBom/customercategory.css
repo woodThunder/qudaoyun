@@ -1,0 +1,19 @@
+.ztree li span.button.ico_close{
+    display: none
+}
+.ztree li span.button.ico_open{
+    display: none
+}
+
+.ztree li span.button.ico_docu{
+    display: none
+}
+.ztree li a.curSelectedNode span{
+    color:#41a6fb;
+    background-color: #ebf5fe;
+    border-radius: 5px;
+}
+
+.ztree li.focusNode>span.button.switch{
+    color:#000;
+}

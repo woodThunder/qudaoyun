@@ -1,0 +1,323 @@
+<div class="main-wrap list-panel" id="sideMenu">
+        <!-- 参照 第一步：引入参照的css和js-->
+        <link href="/uitemplate_web/static/css/ref/ref.css" rel="stylesheet">
+        <link href="/uitemplate_web/static/css/ref/jquery.scrollbar.css" rel="stylesheet">
+        <link href="/uitemplate_web/static/trd/bootstrap-table/src/bootstrap-table.css" rel="stylesheet">
+    <!--页面功能名字-->
+   <!--iuap 前端升级同步更改 wt 20190123
+    <div class="apptitle">
+        <span class="i18n" name="ht.wor.sid.0001"></span>
+        <span class="btn btn-default btn-sm backbutton" data-bind="click:goback"><span class="i18n" name="ht.wor.sid.0002"></span></span>
+    </div>
+     -->
+    <!--tale列表展现区域-->
+    <div class="u-row" style="margin-left: 0;margin-right: 0">
+    <div class="u-col-xs-12 u-col-md-4">
+        <!--角色列表 -->
+        <div class="menu">
+            <div class="sub-head">
+                <span class="head-title"><span class="i18n" name="ht.wor.sid.0003"></span></span>
+                <button type="button" class="u-button  head-btn" data-bind="click:Events.add" title="ht.wor.sid.0004">
+                <i class="iconfont icon-plus"></i>
+                </button>
+            </div>
+            <div class="menu-body" data-bind="foreach:menus" id="menuDl">
+                <ul>
+                    <li class="m-one">
+                        <div class="m-cont cur" data-bind="click:$root.Events.showContent">
+                            <i class="iconfont icon-arrow-down" data-bind="visible:childmenu.length>0"></i>
+                            <span class="m-name" data-bind="text:premenu.name"></span>
+                            <span
+                                    class="iconfont icon-plus pull-right"
+                                    title="ht.wor.sid.0005"
+                                    data-bind="click:$root.Events.add,visible:premenu.isVirtualNode=='Y'"></span>
+                        </div>
+                        <ul data-bind="foreach:childmenu" style="display:none;">
+                            <li class="m-two">
+                                <div class="m-cont" data-bind="click:$root.Events.showContent">
+                                    <i class="iconfont icon-arrow-down" data-bind="visible:childmenu.length>0"></i>
+                                    <span class="m-name"  data-bind="text:name"></span>
+                                    <span
+                                            class="iconfont icon-plus pull-right"
+                                            title="ht.wor.sid.0006"
+                                            data-bind="click:$root.Events.add,visible:isVirtualNode=='Y'"></span>
+                                </div>
+                                <ul data-bind="foreach:childmenu">
+                                    <li class="m-three">
+                                        <div class="m-cont" data-bind="click:$root.Events.showContent">
+                                            <span class="m-name"  data-bind="text:name"></span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="u-col-xs-12 u-col-md-8">
+        <div class="menu-content">
+            <!--data-bind="with:CurMenu"-->
+            <div class="sub-head ">
+                <span class="head-title" data-bind="text:appDomtitle"></span>
+                <button type="button" class="u-button  head-btn" title="ht.wor.sid.0007" data-bind="visible:appDomType,click:Events.delete">
+                    <i class="iconfont icon-delete"></i>
+                </button>
+                <button class="u-button  head-btn" title="ht.wor.sid.0008" data-bind="visible:appDomType,click:Events.edit">
+                    <i class="iconfont icon-pencil"></i>
+                </button>
+            </div>
+            <ul class="u-form-browse" data-bind="with:CurMenu,visible:$root.appDomType">
+                <li class="m-v hide">
+                    <label class="u-control-label w-sm">id:</label>
+                    <span data-bind="text:id">id</span>
+                </li>
+                <li class="m-v">
+                    <label class="u-control-label w-sm"><span class="i18n" name="ht.wor.sid.0009"></span></label>
+                    <span data-bind="text:name"><span class="i18n" name="ht.wor.sid.0010"></span></span>
+                </li>
+                <li class="m-v">
+                    <label class="u-control-label w-sm"><span class="i18n" name="ht.wor.sid.0011"></span></label>
+                    <span data-bind="text:funcId"><span class="i18n" name="ht.wor.sid.0012"></span></span>
+                </li>
+                <li class="m-v">
+                    <label class="u-control-label w-sm"><span class="i18n" name="ht.wor.sid.0013"></span></label>
+                    <span> <i data-bind="attr:{class:icon}"> </i></span>
+                </li>
+                <li class="m-v hide">
+                    <label class="u-control-label w-sm"><span class="i18n" name="ht.wor.sid.0014"></span></label>
+                    <span data-bind="text:isenable=='Y'?'Yes':'No'"><span class="i18n" name="ht.wor.sid.0015"></span></span>
+                </li>
+                <li class="m-v hide">
+                    <label class="u-control-label w-sm"><span class="i18n" name="ht.wor.sid.0016"></span></label>
+                    <span data-bind="text:isvisible=='Y'?'Yes':'No'"><span class="i18n" name="ht.wor.sid.0017"></span></span>
+                </li>
+                <li class="m-v">
+                    <label class="u-control-label w-sm"><span class="i18n" name="ht.wor.sid.0018"></span></label>
+                    <span data-bind="text:isVirtualNode=='Y'?'Yes':'No'"><span class="i18n" name="ht.wor.sid.0019"></span></span>
+                </li>
+                <li class="m-v">
+                    <label class="u-control-label w-sm"><span class="i18n" name="ht.wor.sid.0020"></span></label>
+                    <span data-bind="text:layoutId"><span class="i18n" name="ht.wor.sid.0021"></span></span>
+                </li>
+                <li class="m-v ">
+                    <label class="u-control-label w-sm"><span class="i18n" name="ht.wor.sid.0022"></span></label>
+                    <span data-bind="text:openview=='newpage'?$root.newWindow:$root.currentPage"><span class="i18n" name="ht.wor.sid.0025"></span></span>
+                </li>
+                <li class="m-v">
+                    <label class="u-control-label w-sm"><span class="i18n" name="ht.wor.sid.0026"></span></label>
+                    <span data-bind="text:sort"><span class="i18n" name="ht.wor.sid.0027"></span></span>
+                </li>
+                <li class="m-v hide">
+                    <label class="u-control-label w-sm"><span class="i18n" name="ht.wor.sid.0028"></span></label>
+                    <span data-bind="text:(new Date(parseInt(createTime)).toLocaleString().replace(/年|月/g, '-').replace(/日/g, ' '))"><span class="i18n" name="ht.wor.sid.0031"></span></span>
+                </li>
+                <li class="m-v hide">
+                    <label class="u-control-label w-sm"><span class="i18n" name="ht.wor.sid.0032"></span></label>
+                    <span data-bind="text:tenantId"><span class="i18n" name="ht.wor.sid.0033"></span></span>
+                </li>
+            </ul>
+            <div class="form-horizontal medit " data-bind="visible:!appDomType()">
+                <div class="u-col-lg-6 u-col-md-6 u-col-sm-12">
+                    <div class="u-row">
+                        <div class="u-col-12 u-col-sm-12">
+                            <div class="u-form-group">
+                                <label class="u-col-5 u-col-sm-2  margin-top-8 text-right u-form-label"><span class="i18n" name="ht.wor.sid.0009"></span></label>
+
+                                <div class="u-col-7 u-col-sm-4 " style="position: relative;">
+                                        <div class="u-text multi-input" id='default-value' data-bind="attr:{default:$root.mutlilang.sysLocale}"> 
+                                                <input data-bind="value: $root.mutlilang.defaultLocaleValue,event: {blur: $root.mutlilang.changeDTValue }" type="text" class="form-control nc-required" placeholder="*"
+                                                u-meta='{"data":"menuData","field":"showName"}'/>
+                                                <div class="input-icon" data-bind='click:$root.mutlilang.showMul'></div>
+                                            </div>
+                                             <div class='multi-form' data-bind="css:{show:$root.mutlilang.show}">
+                                                <div class='arrow'>
+                                                </div>
+                                                 <div data-bind="foreach: $root.mutlilang.locale">
+                                                    <div class="item">
+                                                    
+                                                    <label data-bind="text:label" class="multi-label" ></label>
+                                                    <span class="field" style="position:inherit" data-bind="style:{visibility:serial==$root.mutlilang.sysDefaultLanguageSerial()|| serial==$root.mutlilang.currentSerial || serial==''?'visible':'hidden'}">*</span>
+                                                        <div class="u-text input-par" data-bind='attr:{"field":"name" + serial}'  u-meta='{"data":"menuData","field":"name"}'>
+                                                            <input class="" />
+                                                        </div>
+                                                    </div>
+                                                </div>  
+                                                <div class='btn-groups'>
+                                                      <button class="u-button u-button-border margin-left-10" data-bind='click:mutlilang.closeMul'><span class="i18n" name="ht.wor.sid.0041"></span></button>
+                                                      <button class="u-button u-button-primary btn-noborder" data-bind='click:mutlilang.saveValue'><span class="i18n" name="ht.wor.sid.0040"></span></button> 
+                                                </div>
+                                            </div>
+                                    <!-- <input type="text" class="form-control nc-required" placeholder="*"
+                                           u-meta='{"data":"menuData","field":"name"}'> -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="u-col-12 u-col-sm-12">
+                            <div class="u-form-group">
+                                <label class="u-col-5 u-col-sm-2  margin-top-8 text-right u-form-label"><span class="i18n" name="ht.wor.sid.0011"></span></label>
+
+                                <div class="u-col-7 u-col-sm-4">
+                                    <input type="text" class="form-control nc-required" placeholder="*"
+                                           u-meta='{"data":"menuData","field":"funcId"}'>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="u-col-12 u-col-sm-12" >
+                            <div class="u-form-group">
+                                <label class="u-col-5 u-col-sm-2  margin-top-8 text-right u-form-label"><span class="i18n" name="ht.wor.sid.0034"></span></label>
+
+                                <div class="u-col-7 u-col-sm-4">
+                                    <div class="u-input-group u-has-feedback"
+                                         id="menuRef"
+                                         u-meta='{"type":"uiRefer", "data":"headform", "field":"menuRef"}'>
+                                        <input class="u-form-control"/>
+                                        <span class="refer u-form-control-feedback uf uf uf-listwithdots"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="u-col-12 u-col-sm-12">
+                            <div class="u-form-group">
+                                <label class="u-col-5 u-col-sm-2  margin-top-8 text-right u-form-label"><span class="i18n" name="ht.wor.sid.0035"></span></label>
+
+                                <div class="u-col-7 u-col-sm-4">
+
+                                    <div class="checkbox">
+                                        <label for="isVirtualNode">
+                                            <input type="checkbox"
+                                                   data-bind="checked:isVirtualNode"
+                                                   id="isVirtualNode">
+                                            (<span class="i18n" name="ht.wor.sid.0036"></span>)
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="u-col-12 u-col-sm-12" data-bind="visible:!isVirtualNode()">
+                            <div class="u-form-group">
+                                <label class="u-col-5 u-col-sm-2  margin-top-8 text-right u-form-label"><span class="i18n" name="ht.wor.sid.0037"></span></label>
+
+                                <div class="u-col-7 u-col-sm-4">
+                                        <div class="u-input-group u-has-feedback"
+                                             id="appRef"
+                                             u-meta='{"type":"uiRefer", "data":"headform", "field":"dataSourceId"}'>
+                                            <input class="u-form-control" />
+                                            <span class="refer u-form-control-feedback uf uf uf-listwithdots"></span>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<div class="u-col-12 hide" data-bind="visible:!isVirtualNode()">
+                            <div class="u-form-group">
+                                <label class="u-col-5  margin-top-8 text-right u-form-label"><span class="i18n" name="ht.wor.sid.0020"></span></label>
+
+                                <div class="u-col-7">
+                                    <div class="u-combo" id="combo3">
+                                        <div class="u-input-group u-has-feedback">
+                                            <input class="u-form-control"/>
+                                    <span class="u-form-control-feedback uf uf-anglearrowdown"
+                                          data-role="combo-button"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
+                        <div class="u-col-12 u-col-sm-12 ">
+                            <div class="u-form-group">
+                                <label class="u-col-5 u-col-sm-2  margin-top-8 text-right u-form-label"><span class="i18n" name="ht.wor.sid.0022"></span></label>
+
+                                <div class="u-col-7 u-col-sm-4">
+                                    <div class="u-combo" id="combo5">
+                                        <div class="u-input-group u-has-feedback">
+                                            <input class="u-form-control"
+
+                                            />
+                                    <span class="u-form-control-feedback uf uf-anglearrowdown"
+                                          data-role="combo-button"></span>
+                                        </div>
+                                        <span style="color: red;font-size: 12px;"><span class="i18n" name="ht.wor.sid.0038"></span></span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="u-col-12 u-col-sm-12">
+                            <div class="u-form-group">
+                                <label class="u-col-5 u-col-sm-2  margin-top-8 text-right u-form-label"><span class="i18n" name="ht.wor.sid.0026"></span></label>
+
+                                <div class="u-col-7 u-col-sm-4">
+                                    <input type="text" class="form-control nc-required" placeholder="*"
+                                           u-meta='{"data":"menuData","field":"sort"}'>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="u-col-lg-6 u-col-md-6 u-col-sm-12">
+                    <div class="" id="iconpicker">
+                        <div class="icon-show">
+                            <i data-bind="attr:{class:$root.iconFont.selVal}"></i>
+                        </div>
+                        <p class=""><span class="i18n" name="ht.wor.sid.0039"></span></p>
+
+                        <div id="sIcon">
+                            <ul class="tab" data-bind="foreach:$root.iconFont.icons">
+                                <li data-bind="text:name,click:$root.iconFont.tabShow"></li>
+                            </ul>
+                            <div>
+                                <div class="icon-list" data-bind="foreach:$root.iconFont.iconClassList">
+                                    <span data-bind="attr:{class:fontClass},click:$root.iconFont.selIcon"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="colors">
+                            <div class="primaries" data-bind="foreach:$root.iconFont.colors">
+                                <div data-bind="attr:{class:colorclass} ,click:$root.iconFont.selColor"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="u-col-lg-12 u-col-md-12 u-col-sm-12">
+                    <div class="btnBox text-right">
+                            <button class="u-button u-button-info queren" data-bind="click:$root.Events.confirmForm"><span class="i18n" name="ht.wor.sid.0040"></span>
+                                </button>
+                        <button class="u-button quxiao" data-bind="click:$root.Events.cancelForm"><span class="i18n" name="ht.wor.sid.0041"></span>
+                    </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+        <!--删除提示-->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true" class="iconfont icon-cancel02"></span></button>
+                    <h4 class="modal-title"><span class="i18n" name="ht.wor.sid.0042"></span></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="cc">
+                        <div class="error">
+                            <b></b>
+                            <span class="i18n" name="ht.wor.sid.0043"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                        <button class="u-msg-ok u-button u-button-info" style="height:30px;background: #039BE5;color:#fff;" data-bind="click:Events.remove"><span class="i18n" name="ht.wor.sid.0044"></span><span class="u-button-container"><span class="u-ripple"></span></span></button>
+                        <button class="u-msg-cancel u-button pap-cancel" style="height:30px" data-dismiss="modal"><span class="i18n" name="ht.wor.sid.0045"></span><span class="u-button-container"><span class="u-ripple"></span></span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>

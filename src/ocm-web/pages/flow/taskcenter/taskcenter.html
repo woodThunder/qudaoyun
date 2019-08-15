@@ -1,0 +1,131 @@
+<!-- 内容 -->
+<div class="u-mdlayout" id="taskecenter-mdlayout">
+	<div class="u-row">
+		<h1 id="task-h">任务中心</h1>
+		<!-- <button class="goback u-button u-button-primary"  data-bind="click:goBack">返回</button> -->
+	</div>
+	<div id="test" class="container sidebar sidebar-left bpmsearch" data-status="opened">
+	<div class="u-mdlayout-master form-search" style=" ">
+		    <div class="xy-search-title">
+		    	<span>快速查询 </span>
+		    </div>
+			<div class="u-widget form-group xy-form-group"> 
+				<label>单据号</label>
+				<input class="u-form-control input_search" id="bpm_search_billno" name="search_EQ_code" />
+			</div>
+			<div class="u-widget form-group xy-form-group"> 
+				<label>流程分类</label>
+				<input class="u-form-control input_search" id="bpm_search_processDefinitionName" />
+			</div>
+			<div class="u_form_button_success_new bpmsearch-btn">
+				<button class="u-button_success_new" data-bind="click: bpmQuickSearch">搜  索</button>
+				<button class="u-button_success_new" data-bind="click:  ">重  置</button>
+			</div>
+	</div>
+	<!-- 左侧列表缩放  By lsy 2016-10-19 Start-->
+		<div class="toggler">
+			<span class="glyphicon glyphicon-chevron-right" style="display: none;">&nbsp;</span>
+			<span class="glyphicon glyphicon-chevron-left" style="display: none;">&nbsp;</span>
+		</div>
+	</div>
+	<!--End-->
+	
+	<!-- end  u-mdlayout-master -->
+	<div class="u-mdlayout-detail bpm-detail">
+		<!-- <div class="u-mdlayout-page  current" id="list_taskconter123"> -->
+		<div class="u-mdlayout-page  current" id="list">	
+			<!-- <div class="u-mdlayout-page-header">
+				<span class="content-title"> </span>
+			</div> -->
+			<div class="u-mdlayout-page-section bpmSection" style="width:98%;">
+				<div class="demoe-page-content" style="margin-top: 5px;">
+					<div class="demo-actions" style="margin-bottom: 5px;">
+						<div class="u-row">
+				    		<div class="u-col-md-9 task-btn-allow">
+				    			<button id="approveBtn" class="u-button raised accent u-button-pa" id="org-table-add"  data-bind="click: approve" >审批</button>	
+				    			<button class="u-button raised accent u-button-pa" id="org-table-add" data-bind="click: openBill" >打开单据</button>	
+							</div>
+							<div class="u-col-md-3">
+								<div u-meta='{"id":"vstatus","type":"u-radio","data":"entityStatusDt","field":"vstatus","datasource":"radiodata"}'>
+								    <label  class="u-radio" >
+								        <input type="radio" class="u-radio-button" name="options">
+								        <span class="u-radio-label"></span>
+								    </label>						
+								</div>
+							</div>
+				        </div>			 
+					</div>
+					
+					<div type="text" style="margin-left:5px"
+						u-meta='{"id":"gridundotask","data":"entityUndoDt","type":"grid","editable":false,"multiSelect":true,"editType":"default"}'>
+								<div options='{"field":"name","dataType":"String","title":"标题","width":"500px","editType":"string","editable":false}'></div>
+								<div options='{"field":"createTime","dataType":"String","title":"创建时间","editType":"date","editable":false}'></div>
+								<!-- <div options='{"field":"","dataType":"String","title":"流程实例 ","renderType":"renderHtml","editType":"string","editable":false}'></div> -->
+								<div options='{"field":"processDefinitionName","dataType":"String","title":"流程分类","editType":"string","editable":false}'></div>
+							    <!-- <div options='{"field":"formKey","dataType":"String","title":"单据详情","editType":"string","editable":false}'></div> -->
+
+					</div>
+				   <div type="text" style="margin-left:5px;display:none"
+						u-meta='{"id":"griddonetask","data":"entityDoneDt","type":"grid","editable":false,"multiSelect":true,"editType":"default"}'>
+								<div options='{"field":"name","dataType":"String","title":"标题","width":"500px","editType":"string","editable":false}'></div>
+								<div options='{"field":"endTime","dataType":"String","title":"结束时间","editType":"date","editable":false}'></div>
+								<!-- <div options='{"field":"","dataType":"String","title":"流程实例 ","renderType":"renderHtml","editType":"string","editable":false}'></div> -->
+								<div options='{"field":"processDefinitionName","dataType":"String","title":"流程分类","editType":"string","editable":false}'></div>
+							    <!-- <div options='{"field":"formKey","dataType":"String","title":"单据详情","editType":"string","editable":false}'></div>						   -->
+				   </div>
+					
+					<!--
+				                        描述：开启分页
+                    -->
+					<div id='pagination' class='u-pagination pagination-sm '></div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+	
+
+<!-- 审批的弹出层  -->
+<div class="modal fade" id="tree-modal" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="treetitle" id="tree-title" >审批提示框</h4>
+			</div>
+			<div class="modal-body">
+				<div class="u-row">
+					<div class="u-col-8">
+						<div><label><input name='approvetype' type='radio' checked='true' value="agree"/><span class='text'></span></label>&nbsp;&nbsp;同意&nbsp;&nbsp;&nbsp;&nbsp;<label>
+							<input name='approvetype' type='radio' value="unagree"/>&nbsp;&nbsp;<span class='text'>不同意</span></label></div><br><div style='margin-bottom:10px;'>审批意见：</div>
+							<textarea id='dialog_approve_text' style='width:100%;height:100px;'></textarea>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-bind="click:approveSubmit">确定</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 审批的弹出层  -->
+
+<!-- 单据弹出层-->
+
+<div class="modal fade" id="bpmDisplayBill" tabindex="-1" role="dialog">
+	<div class="modal-dialog" style="width:100%;">
+		<div class="modal-content" style=" ">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">任务审批</h4>
+			</div>
+			<div class="modal-body" style="height:600px;">
+				<div  id="billBody" style="height:580px;"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--单据弹出层-->

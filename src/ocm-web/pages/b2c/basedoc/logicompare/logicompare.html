@@ -1,0 +1,132 @@
+<div class="ui-panel">
+    <div class="u-row">
+      <div class="u-col-4  page-title">
+        <span>物流公司对照</span>
+      </div>
+    </div>
+    <div class="u-row">
+      <div class="u-col-4">
+        <div class="oc-breadcrumb">
+        </div>
+      </div>
+    </div>
+    <div class="title-seperator"></div>
+  
+    <div class="ui-searchbox">
+        <div id="logicompare-searchcontent" class="ui-searchbox-content">
+    
+        </div>
+        <div class="clearfix">
+    
+        </div>
+        <div class="ui-searchbox-footer">
+          <div class="ui-search-more hidden">
+              <a>更多<i class="uifont icon-down"></i></a>
+          </div>
+    
+          <div class="ui-search-btn">
+            <a class="ui-btn ui-btn-primary margin-right-5"
+            data-bind="click:cleanSearch">清空
+            </a>
+            <a class="ui-btn ui-btn-green"
+            data-bind="click:search.bind($data,true)">搜索
+            </a>
+          </div>
+          <div class="clearfix">
+    
+          </div>
+        </div>
+      </div>
+  
+    <div class="ui-panel-body">
+        <div class="ui-panel-body-head">
+          <div class="ui-panel-body-head-left">
+              <a class="ui-btn ui-btn-orange margin-right-5" id="user-action-add"
+              data-bind="click: beforeEdit.bind($data,-1)"><i class="uifont icon-plus margin-right-5"></i>新增
+            </a>
+            <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+              data-bind="click: del">
+              <i class="uifont icon-shanchu1 margin-right-5"></i>删除
+            </a>
+            <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-findtc"
+              data-bind="click: findtc">
+              <i class="uifont icon-bar margin-right-5"></i>查询物流公司
+            </a>
+            <!--<div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+              <a class="ui-button-item" id="user-action-del"
+                data-bind="">
+                <i class="uifont icon-import margin-right-5"></i>导入
+              </a>
+              <a class="ui-button-item" id="user-action-del"
+                data-bind="">
+                <i class="uifont icon-export margin-right-5"></i>导出
+              </a>
+            </div>-->
+            
+          </div>  
+        </div>
+        <div class="ui-table-container">
+            <div id="logicompare"
+                 u-meta='{"id":"grid_logicompare","data":"logiCompareList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+                 <div options='{"field":"logiComName","dataType":"String","title":"物流公司"}'></div>
+                 <div options='{"field":"platformName","dataType":"String","title":"所属平台"}'></div>
+                 <div options='{"field":"pcode","dataType":"String","title":"平台物流公司编码"}'></div>
+                 <div options='{"field":"pname","dataType":"String","title":"平台物流公司名称"}'></div>
+                 <div options='{"field":"creator","dataType":"String","title":"创建人","visible":false}'></div>
+                 <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":false}'></div>
+                 <div options='{"field":"creationTime","dataType":"Datetime","title":"创建时间","visible":false}'></div>
+                 <div options='{"field":"modifiedTime","dataType":"Datetime","title":"修改时间","visible":false}'></div>
+                 <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation4single","fixed":true,"width":"110px"}'></div>
+            </div>
+            <div class="ui-statistics margin-top-10">
+              <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择<span class="font-c-blue" data-bind="text:logiCompareList.selectedIndices().length"></span>项数据
+            </div>
+            <div class="pagination-right">
+              <div id='pagination' class='pagination u-pagination pagination-sm'
+              u-meta='{"type":"pagination","data":"logiCompareList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+            </div>
+        </div>
+      </div>
+  </div>
+  <div id="dialog_layer" style="display:none;">
+  
+  </div>
+  <div id="findtcPopup" style="display:none;" id="validate">
+    <div class="u-msg-title">
+        <h4>查询物流公司</h4>
+    </div>
+    <div class="u-msg-content clearfix">
+         <div class="ui-item" id="newServiceProviderId">
+            <div class="ui-name">
+                <i class="strong">*</i>店铺名称：</div>
+            <div class="ui-inputarea" id="storeName" u-meta='{"id":"storeNameRefer","type":"uiRefer","data":"storeList","field":"storeName"}'>
+                <input readonly="readonly" id="storeNameInput" />
+                <span class="ui-icon uifont icon-bar refer"></span>
+
+            </div>
+        </div>
+        <div class="ui-item" style="display:block;height:100%;width:100%;">
+            <div class="ui-name" style="vertical-align:top;">
+                <i class="strong">*</i>物流公司名称：</div>
+            <div class="ui-inputarea" style="width:600px;">
+                <textarea class="ui-textonly u-input" style="width:580px;
+                line-height: 2;
+                overflow:visible;
+                overflow-y:auto;
+                height: 200px;
+                border: 1px solid #DDDDDD;
+                border-radius: 4px;
+                padding:10px;" u-meta='{"type":"textarea","data":"storeList","field":"tcname"}'>
+                   
+                </textarea>
+
+            </div>
+        </div>
+    </div>
+    <div class="u-msg-footer">
+        <a class="ui-btn ui-btn-primary J-cancel margin-right-5">取消
+        </a>
+       <!--  <a class="ui-btn ui-btn-green  J-ok">确定
+        </a> -->
+    </div>
+</div>

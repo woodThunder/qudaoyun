@@ -1,0 +1,280 @@
+<div class="ui-panel ui-list-panel">
+    <div>
+        <div class="page-title">
+            <span>平台店铺管理</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="title-seperator"></div>
+
+    <div class="u-tabs ui-tabs">
+        <div class="u-tabs__tab-bar margin-top-10 margin-bottom-10">
+            <a href="#tab-panel-1" class="u-tabs__tab is-active" data-bind="click:search">核销匹配</a>
+            <a href="#tab-panel-2" class="u-tabs__tab" data-bind="click:searchMergedResult">核销结果</a>
+        </div>
+
+        <!-- 核销匹配页面start-->
+        <div class="u-tabs__panel is-active" id="tab-panel-1">
+            
+            <!-- 核销匹配搜索，清空按钮start-->
+            <div class="ui-searchbox ui-panel-head">
+                <div id="platformBill-searchcontent" class="ui-searchbox-content">
+                </div>
+                <div id="orderList-searchcontent" class="ui-searchbox-content">
+                </div>                
+
+                <div class="clearfix">
+        
+                </div>
+                <div class="ui-searchbox-footer">
+                    <div class="ui-search-more hidden">
+                        <a>更多
+                            <i class="uifont icon-down"></i>
+                        </a>
+                    </div>
+        
+                    <div class="ui-search-btn">
+                        <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:cleanSearch">清空
+                        </a>
+                        <a class="ui-btn ui-btn-green" data-bind="click:search.bind($data,true)," data-bind="">搜索
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- 核销匹配搜索，清空按钮end-->
+
+            <div class="ui-panel-body">
+                <!-- 核销匹配按钮start-->
+                <div class="ui-panel-body-head">
+                    <div class="ui-panel-body-head-left">
+                        <!-- <a class="ui-btn ui-btn-orange margin-right-5" data-bind="click: showAddBillPanel">
+                            <i class="uifont icon-plus margin-right-5"></i>新增
+                        </a>
+                        <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click: del">
+                            <i class="uifont icon-shanchu1 margin-right-5"></i>删除
+                        </a> -->
+                        <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:autoDiffMoney"><i class="uifont icon-tubiao-huangou margin-right-5"></i>自动对账
+                        </a>
+                        <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:personDiffMoney"><i class="uifont icon-tubiao-zhuanhua margin-right-5"></i>手动对账
+                        </a>                
+                        <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:getDefferenceAdjust"><i class="uifont icon-tubiao-shenhe margin-right-5"></i>差异调整单
+                        </a>
+                    </div>
+
+                    <div class="u-tabs__tab-bar margin-top-10 margin-bottom-10">
+                        <a class="u-tabs__tab">平台账单数据</a>
+                    </div>
+                    <!--<div class="ui-panel-body-head-right">
+                        <i class="uifont icon-i font-c-blue margin-right-5"></i>共搜索到<span data-bind="text:platformBillData.totalRow"></span>条数据
+                    </div>-->
+                </div>
+                <!-- 核销匹配按钮end-->
+
+                <!-- 平台账单start-->
+                <div class="ui-table-container">
+                    <div id="platstorelist" u-meta='{"id":"grid_platstorelist","data":"platformBillData","type":"grid","editable":false,"multiSelect":true,"showNumCol":true,"onBeforeClickFun": "detail","onRowSelected":"referSelectItemHandle",
+                    "onRowUnSelected": "referUnSelectItemHandle"}'>
+                        <div options='{"field":"platformBillId","dataType":"String","title":"平台账单"}'></div>
+                        <div options='{"field":"platformName","dataType":"String","title":"平台名称"}'></div>
+                        <div options='{"field":"storeName","dataType":"String","title":"店铺名称"}'></div>
+                        <div options='{"field":"accountRunningNumber","dataType":"String","title":"账务流水号"}'></div>
+                        <div options='{"field":"businessRunningNumber","dataType":"String","title":"业务流水号"}'></div>
+                        <div options='{"field":"merchantOrderNumber","dataType":"String","title":"商户订单号"}'></div>
+                        <div options='{"field":"platformNumber","dataType":"String","title":"平台单号"}'></div>
+                        <div options='{"field":"revenueExpenditureTime","dataType":"Date","title":"收支日期"}'></div>
+                        <div options='{"field":"reciprocalAccount","dataType":"String","title":"对方账号"}'></div>
+                        <div options='{"field":"revenueExpenditureTypeName","dataType":"String","title":"收支类型"}'></div>
+                        <div options='{"field":"revenueExpenditureMoney","dataType":"String","title":"收支金额"}'></div>
+                        <div options='{"field":"remark","dataType":"String","title":"备注"}'></div>
+                        <div options='{"field":"accountMark","dataType":"String","title":"对账状态","editOptions":{"type":"combo","datasource":"diffBillStatusSrc"},"renderType":"comboRender"}'></div>
+                        <div options='{"field":"exceptionalMark","dataType":"String","title":"异常标识","editOptions":{"type":"combo","datasource":"exceptionFlagSrc"},"renderType":"comboRender"}'></div>
+                        <div options='{"field":"accountMoney","dataType":"String","title":"对账金额"}'></div>
+                        <div options='{"field":"nonAccountMoney","dataType":"String","title":"未对账金额"}'></div>
+                        <div options='{"field":"businessType","dataType":"String","title":"业务类型"}'></div>
+                        <div options='{"field":"goodsName","dataType":"String","title":"商品名称"}'></div>
+                        <div options='{"field":"blendingTime","dataType":"Date","title":"勾兑时间"}'></div>
+                        <div options='{"field":"checkMan","dataType":"String","title":"对账人"}'></div>
+                        <div options='{"field":"creator","dataType":"String","title":"创建人","visible":false}'></div>
+                        <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":false}'></div>
+                        <div options='{"field":"creationTime","dataType":"Date","title":"创建时间","visible":false}'></div>
+                        <div options='{"field":"modifiedTime","dataType":"Date","title":"修改时间","visible":false}'></div>
+                        <!-- <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation","width":"110px","fixed":true}'></div> -->
+                    </div>
+                    <div class="ui-statistics margin-top-10">
+                        <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择
+                        <span class="font-c-blue" data-bind="text:platformBillData.selectedIndices().length"></span>项数据
+                    </div>
+                    <div class="pagination-right">
+                        <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"platformBillData","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+                    </div>
+                </div>
+                <!--  平台账单end-->
+            </div>
+            
+            <!-- 订单信息-start -->
+            <div class="u-tabs ui-tabs">
+                <div class="u-tabs__tab-bar margin-top-10 margin-bottom-10">
+                    <a class="u-tabs__tab">订单列表数据</a>
+                </div>
+                
+                <div class="ui-panel-body">
+                    <div class="ui-table-container">
+                        <div u-meta='{"id":"grid_storeListParam_list_change","data":"orderListData","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+                            <div options='{"field":"platformName","dataType":"String","title":"平台名称"}'></div>
+                            <div options='{"field":"storeName","dataType":"String","title":"店铺名称"}'></div>
+                            <div options='{"field":"platformNumber","dataType":"String","title":"平台单号"}'></div>
+                            <div options='{"field":"commerceNumber","dataType":"String","title":"电商单号"}'></div>
+                            <div options='{"field":"orderType","dataType":"String","title":"订单类型"}'></div>
+                            <div options='{"field":"orderStatus","dataType":"String","title":"订单状态"}'></div>
+                            <div options='{"field":"platformStatus","dataType":"String","title":"平台状态"}'></div>
+                            <div options='{"field":"logisticsMode","dataType":"String","title":"物流方式"}'></div>                
+                            <div options='{"field":"buyerName","dataType":"String","title":"买家名称"}'></div>
+                            <div options='{"field":"totalTransactionAmount","dataType":"String","title":"总成交金额"}'></div>
+                            <div options='{"field":"totalClosingAmount","dataType":"String","title":"总关闭金额"}'></div>
+                            <div options='{"field":"totalDiffBillAmount","dataType":"String","title":"总对账金额"}'></div>
+                            <div options='{"field":"totalNoDiffBillAmount","dataType":"String","title":"总未对账金额"}'></div>
+                            <div options='{"field":"totalAlreadyDiffBillAmount","dataType":"String","title":"总已对账金额"}'></div>
+                            <div options='{"field":"diffBillStatus","dataType":"String","title":"对账状态","editOptions":{"type":"combo","datasource":"diffBillStatusSrc"},"renderType":"comboRender"}'></div>
+                            <div options='{"field":"exceptionFlag","dataType":"String","title":"异常标识","editOptions":{"type":"combo","datasource":"exceptionFlagSrc"},"renderType":"comboRender"}'></div>
+                            <div options='{"field":"verifyTime","dataType":"Date","title":"勾兑时间"}'></div>
+                            <div options='{"field":"orderTime","dataType":"Date","title":"下单时间"}'></div>
+                            <div options='{"field":"paymentTime","dataType":"Date","title":"付款时间"}'></div>
+                            <div options='{"field":"checkPeople","dataType":"Date","title":"对账人"}'></div>
+                            <div options='{"field":"creator","dataType":"String","title":"创建人","visible":false}'></div>
+                            <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":false}'></div>
+                            <div options='{"field":"creationTime","dataType":"Date","title":"创建时间","visible":false}'></div>
+                            <div options='{"field":"modifiedTime","dataType":"Date","title":"修改时间","visible":false}'></div>
+                        </div>
+
+                        <div class="ui-statistics margin-top-10">
+                            <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择
+                            <span class="font-c-blue" data-bind="text:orderListData.selectedIndices().length"></span>项数据
+                        </div>
+                        <div class="pagination-right">
+                            <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"orderListData","pageChange":"pageChangeChild","sizeChange":"sizeChangeChild"}'></div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <!-- 订单信息-end -->
+        </div>
+        <!-- 核销匹配页面end-->
+
+
+        <!-- 核销结果页面start-->
+        <div class="u-tabs__panel" id="tab-panel-2">
+            
+            <!-- 核销结果页面搜索，清空按钮start-->            
+            <div class="ui-searchbox ui-panel-head">
+                   <div id="mergedResul-searchcontent" class="ui-searchbox-content">
+                    </div>
+                    <div class="ui-searchbox-footer">
+                        <div class="ui-search-more ">
+                            <a>更多
+                                <i class="uifont icon-down"></i>
+                            </a>
+                        </div>
+            
+                        <div class="ui-search-btn">
+                            <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:cleanMergedResultSearch">清空
+                            </a>
+                            <a class="ui-btn ui-btn-green" data-bind="click:searchMergedResult.bind($data,true)">搜索
+                            </a>
+                        </div>
+                    </div>
+            </div>
+            <!-- 核销结果页面搜索，清空按钮end-->
+    
+            <div class="ui-table-container">
+                <!-- 核销结果页面操作按钮start--> 
+                <div class="ui-panel-body-head">
+                    <div class="ui-panel-body-head-left">
+                        <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:cancelDiff"><i class="uifont icon-tubiao-quxiaoshenhe margin-right-5"></i>取消核销
+                        </a>                
+                    </div>
+                </div>    
+                <!-- 核销结果页面操作按钮end--> 
+
+                <!-- 核销结果信息start--> 
+                <div id="platstorelist2" u-meta='{"id":"grid_platstorelist2","data":"mergedResultData","type":"grid","editable":false,"multiSelect":true,"showNumCol":true,"onRowSelected":"referSelectItemHandle",
+                "onRowUnSelected": "referUnSelectItemHandle"}'>
+                    <div options='{"field":"platformName","dataType":"String","title":"平台名称"}'></div>
+                    <div options='{"field":"storeName","dataType":"String","title":"店铺名称"}'></div>
+                    <div options='{"field":"platformNumber","dataType":"String","title":"平台单号"}'></div>
+                    <div options='{"field":"documentsNumber","dataType":"String","title":"单据号"}'></div>
+                    <div options='{"field":"documentsType","dataType":"String","title":"单据类型","editOptions":{"type":"combo","datasource":"documentsTypeSrc"},"renderType":"comboRender"}'></div>
+                    <div options='{"field":"diffDocumentsNumber","dataType":"String","title":"对应单据号"}'></div>
+                    <div options='{"field":"diffDocumentsType","dataType":"String","title":"对应单据类型","editOptions":{"type":"combo","datasource":"documentsTypeSrc"},"renderType":"comboRender"}'></div>
+                    <div options='{"field":"diffMoney","dataType":"String","title":"对账金额"}'></div>
+                    <div options='{"field":"verifyTime","dataType":"Date","title":"勾兑时间"}'></div>
+                    <div options='{"field":"checkPeoplo","dataType":"String","title":"对账人"}'></div>
+                    <div options='{"field":"diffMoneyStatus","dataType":"String","title":"对账状态","editOptions":{"type":"combo","datasource":"diffBillStatusSrc"},"renderType":"comboRender"}'></div>
+                    <div options='{"field":"creator","dataType":"String","title":"创建人","visible":false}'></div>
+                    <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":false}'></div>
+                    <div options='{"field":"creationTime","dataType":"Date","title":"创建时间","visible":false}'></div>
+                    <div options='{"field":"modifiedTime","dataType":"Date","title":"修改时间","visible":false}'></div>
+                    <!-- <div options='{"field":"cancelDiffMoney","dataType":"String","title":"操作","renderType":"cancelDiffMoney","width":"110px","fixed":true}'></div> -->
+                </div>
+                <div class="ui-statistics margin-top-10">
+                    <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择
+                    <span class="font-c-blue" data-bind="text:mergedResultData.selectedIndices().length"></span>项数据
+                </div>
+                <div class="pagination-right">
+                    <div id='pagination1' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"mergedResultData","pageChange":"pageChangeMergedResult","sizeChange":"sizeChangeMergedResult"}'></div>
+                </div>
+                <!-- 核销结果信息end--> 
+            </div>
+        </div>          
+        <!-- 核销结果页面end-->
+    </div>
+</div>
+
+<!-- 差异调整单页面start-->
+<div id="dialog_layer-popup-actual" style="display:none;" id="validate">
+    <div class="u-msg-title">
+        <h4>差异调整单</h4>
+    </div>
+    <div class="u-msg-content  clearfix margin-bottom-20">
+        <div class="clearfix ui-editbox">
+                <div class="ui-table-container">
+                        <div id="platstorelist5" u-meta='{"id":"grid_platstorelist5","data":"defferenceAdjustData","type":"grid","editable":false,"multiSelect":true,"showNumCol":true,"onBeforeClickFun": "detail","onRowSelected":"referSelectItemHandle",
+                        "onRowUnSelected": "referUnSelectItemHandle"}'>
+                            <div options='{"field":"adjustCode","dataType":"String","title":"差异单编号"}'></div>
+                            <div options='{"field":"platformNumber","dataType":"String","title":"平台单号"}'></div>
+                            <div options='{"field":"commerceNumber","dataType":"String","title":"电商单号"}'></div>
+                            <div options='{"field":"platformName","dataType":"String","title":"平台名称"}'></div>
+                            <div options='{"field":"storeName","dataType":"String","title":"店铺名称"}'></div>                            
+                            <div options='{"field":"status","dataType":"String","title":"单据状态"}'></div>
+                            <div options='{"field":"defferenceTypeName","dataType":"String","title":"对账差异类型"}'></div>
+                            <div options='{"field":"defferenceMoney","dataType":"String","title":"差异金额"}'></div>
+                            <div options='{"field":"adjustType","dataType":"String","title":"调整类型"}'></div>
+                            <div options='{"field":"creator","dataType":"String","title":"创建人","visible":false}'></div>
+                            <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":false}'></div>
+                            <div options='{"field":"creationTime","dataType":"Date","title":"创建时间","visible":false}'></div>
+                            <div options='{"field":"modifiedTime","dataType":"Date","title":"修改时间","visible":false}'></div>
+                            <!-- <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation","width":"110px","fixed":true}'></div> -->
+                        </div>
+                        <div class="ui-statistics margin-top-10">
+                            <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择
+                            <span class="font-c-blue" data-bind="text:defferenceAdjustData.selectedIndices().length"></span>项数据
+                        </div>
+                        <div class="pagination-right">
+                            <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"defferenceAdjustData","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+                        </div>
+                    </div>
+
+        </div>
+    </div>
+    <div class="u-msg-footer">
+        <a class="ui-btn ui-btn-primary u-msg-cancel margin-right-5">取消</a>
+        <a class="ui-btn ui-btn-green u-msg-ok">确认</a>
+    </div>
+</div>
+<!-- 差异调整单页面end-->

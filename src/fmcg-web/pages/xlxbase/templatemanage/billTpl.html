@@ -1,0 +1,532 @@
+<div class="ui-bill-panel-main">
+  <div class="ui-bill-panel-left">
+    <div class="ui-template-head clearfix" data-bind="css: {novisible: BillHeadConf.ref('visible')()=='0'}">
+      <div class="ui-template-head-title">
+        <span class="ui-template-head-titletext">行信息</span>
+        <a class="ui-btn ui-template-head-addbtn margin-left-20" data-bind="click: showFieldSelector.bind($root, '{{headObjectKey}}', 'BillParentItems')"><i class="uifont icon-plus"></i></a>
+        <a class="ui-btn ui-template-head-settingbtn" style="z-index:9;" data-bind="click: setHeadConf"><i class="uifont icon-setting"></i></a>
+        <a class="ui-btn ui-template-head-collapse" data-bind="click: collapseHead"><i class="uifont icon-tubiao-zhishiqishang"></i></a>
+        <a class="ui-btn ui-template-head-expand" data-bind="click: expandHead"><i class="uifont icon-tubiao-zhishiqixia"></i></a>
+        <a class="ui-btn ui-template-head-attach" data-bind="click: attachConf"><i class="uifont icon-guanlianfujian"></i></a>
+      </div>
+      <div class="ui-template-overlay"></div>
+      <div data-bind="foreach: {data: BillParentItems.rows(), as: 'busiTemplateHeadItem'}">
+        <div class="ui-item" data-bind="attr: {'data-field': busiTemplateHeadItem.ref('key')}, css: {required: busiTemplateHeadItem.ref('required')()=='1'}">
+          <i class="uifont icon-tubiao-guanbi-xiao ui-template-head-delbtn" data-bind="click: $root.delHeadField.bind($root, busiTemplateHeadItem.ref('key')())"></i>
+          <span class="ui-name" data-bind="text: busiTemplateHeadItem.ref('label')"></span>
+          <div class="ui-inputarea">
+            <div>
+              <input readonly="readonly" disabled="disabled" style="color:#999;" data-bind="value: '显示顺序' + busiTemplateHeadItem.ref('order')()"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ui-template-body margin-top-20">
+      <div class="ui-template-body-title">子行信息</div>
+      <div id="bodyTabsWrap">
+        <div class="u-tabs  ui-tabs">
+          <div class="u-tabs__tab-bar margin-bottom-10" data-bind="foreach: {data: BillTabsConf.rows(), as: 'busiTemplateTab'}">
+            <a class="u-tabs__tab" data-bind="click: $root.setTabConf.bind($root, busiTemplateTab.ref('tabName')()), attr: {href: '#tab-panel-'+ ($index()+1), 'data-order': busiTemplateTab.ref('order')()}, css: {novisible: busiTemplateTab.ref('visible')()=='0'}">
+              <span data-bind="text: busiTemplateTab.ref('tabName')"></span>
+            </a>
+          </div>
+          <!-- ko foreach: {data: BillTabsConf.rows(), as: 'busiTemplateTab'} -->
+          <div class="u-tabs__panel"  data-bind="attr: {id: 'tab-panel-'+($index()+1)}, css: {novisible: busiTemplateTab.ref('visible')()=='0'}">
+            <div class="ui-template-overlay"></div>
+            <div data-bind="foreach: {data: busiTemplateTab.getValue('comps').rows(), as: 'comp'}">
+              <div class="ui-template-table-container">
+                <a class="ui-btn ui-template-table-addbtn" data-bind="click: $root.showFieldSelector.bind($root, comp.ref('objectKey')(), 'BillChildsItems.' + comp.ref('objectKey')())"><i class="uifont icon-plus"></i></a>
+                <div class="ui-template-table margin-top-10" data-bind="foreach: {data: $root.BillChildsItems[comp.ref('objectKey')()].rows(), as: 'compItem'}">
+                  <div class="ui-template-table-th" data-bind="attr: {'data-field': compItem.ref('key'), 'data-objectkey': comp.ref('objectKey')}, css: {'required': compItem.ref('required')()=='1'}">
+                    <i class="uifont icon-tubiao-guanbi-xiao ui-template-body-delbtn" data-bind="click: $root.delBodyField.bind($root, comp.ref('objectKey')(), compItem.ref('key')())"></i>
+                    <span data-bind="text: compItem.ref('label')"></span>
+                    <span class="ui-template-table-order" data-bind="text: compItem.ref('order')"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /ko -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ui-bill-panel-right">
+    <div class="ui-template-property ui-template-headitem-property clearfix">
+      <div class="ui-item">
+        <span class="ui-name">类型：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"u-combobox","data":"BillParentItems","field":"type","datasource":"itemTypeSrc"}' style="display:none;">
+              <input class="u-input" />
+              <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+            </div>
+            <div u-meta='{"type":"u-combobox","data":"BillParentItems","field":"type","datasource":"itemTypeSrc","enable":false}'>
+              <input class="u-input" disabled="disabled" />
+              <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+            </div>
+        </div>
+      </div>
+      <div class="ui-item" data-bind="visible: BillParentItems.ref('type')()=='float'">
+        <span class="ui-name">精度：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"integer","data":"BillParentItems","field":"precision"}'>
+              <input class="u-input"/>
+            </div>
+        </div>
+      </div>
+      <div class="ui-item">
+        <span class="ui-name">显示名称：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"u-text","data":"BillParentItems","field":"label"}'>
+              <input class="u-input"/>
+            </div>
+        </div>
+      </div>
+      <div class="ui-item">
+        <span class="ui-name">对应字段：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"u-text","data":"BillParentItems","field":"key","enable":"false"}'>
+              <input class="u-input" disabled="disabled"/>
+            </div>
+        </div>
+      </div>
+      <div class="ui-item">
+        <span class="ui-name">是否可编辑：</span>
+        <div class="ui-inputarea">
+            <label class="u-checkbox margin-right-20" u-meta='{"type":"u-checkbox","data":"BillParentItems","field":"editable","checkedValue":"1","unCheckedValue":"0"}'>
+              <input type="checkbox" class="u-checkbox-input">
+            </label>
+        </div>
+      </div>
+      <div class="ui-item">
+        <span class="ui-name">是否必填：</span>
+        <div class="ui-inputarea">
+            <label class="u-checkbox margin-right-20" u-meta='{"type":"u-checkbox","data":"BillParentItems","field":"required","checkedValue":"1","unCheckedValue":"0"}'>
+              <input type="checkbox" class="u-checkbox-input">
+            </label>
+        </div>
+      </div>
+      <div class="ui-item" data-bind="visible: showInputItemTypes.indexOf(BillParentItems.ref('type')()) > -1">
+        <span class="ui-name">默认值：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"u-text","data":"BillParentItems","field":"defaultValue"}'>
+              <input class="u-input"/>
+            </div>
+        </div>
+      </div>
+      <div class="ui-item" data-bind="visible: BillParentItems.ref('type')() === 'boolean'">
+        <span class="ui-name">默认值：</span>
+        <div class="ui-inputarea">
+          <label class="u-checkbox margin-right-20" u-meta='{"type":"u-checkbox","data":"BillParentItems","field":"defaultValue","checkedValue":"1","unCheckedValue":"0"}'>
+            <input type="checkbox" class="u-checkbox-input">
+          </label>
+        </div>
+      </div>
+      <div class="ui-item" data-bind="visible: BillParentItems.ref('type')() === 'combo'">
+        <span class="ui-name">默认值：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"u-combobox","data":"BillParentItems","field":"defaultValue","datasource":"comboDefaultSrc"}'>
+              <input class="u-input" />
+              <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+            </div>
+        </div>
+      </div>
+      <div class="ui-item" data-bind="visible: BillParentItems.ref('type')() === 'refer' || BillParentItems.ref('type')() === 'docrefer'">
+        <span class="ui-name">默认值：</span>
+        <div class="ui-inputarea" id="defaultValueReferWrap">
+        </div>
+      </div>
+      <div class="ui-item">
+        <span class="ui-name">显示顺序：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"integer","data":"BillParentItems","field":"order"}'>
+              <input class="u-input"/>
+            </div>
+        </div>
+      </div>
+      <div class="ui-item">
+        <span class="ui-name">最大长度或数量：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"integer","data":"BillParentItems","field":"maxLength"}'>
+              <input class="u-input" />
+            </div>
+        </div>
+      </div>
+      <div class="ui-item">
+        <span class="ui-name">业务说明：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"u-text","data":"BillParentItems","field":"busiTip"}'>
+              <input class="u-input"/>
+            </div>
+        </div>
+      </div>
+      <div class="ui-item" data-bind="visible: BusiTemplateParent.ref('templateType')()=='mob-list'">
+        <span class="ui-name">字体大小：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"u-text","data":"BillParentItems","field":"font-size"}'>
+              <input class="u-input"/>
+            </div>
+        </div>
+      </div>
+      <div class="ui-item"  data-bind="visible: BusiTemplateParent.ref('templateType')()=='mob-list'">
+        <span class="ui-name">字体颜色：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"u-text","data":"BillParentItems","field":"color"}'>
+              <input class="u-input"/>
+            </div>
+        </div>
+      </div>
+      <div data-bind="visible: BillParentItems.ref('type')()=='refer'" style="float: left;margin-top: 10px;">
+        <div class="ui-item">
+          <span class="ui-name">参照标识：</span>
+          <div class="ui-inputarea">
+            <!-- <div u-meta='{"type":"uiRefer","data":"BillParentItems","field":"refkey"}' style="display:none;">
+              <input id="headRefkeyRefer" class="u-input"/>
+              <span class="ui-icon uifont icon-bar refer"></span>
+            </div> -->
+            <div u-meta='{"type":"uiRefer","data":"BillParentItems","field":"refkey","enable":false}'>
+              <input id="headRefkeyRefer" class="u-input" disabled="disabled" />
+              <!-- <span class="ui-icon uifont icon-bar refer"></span> -->
+            </div>
+            <!-- <div u-meta='{"type":"u-text","data":"BillParentItems","field":"refkey","enable":false}'>
+              <input class="u-input" disabled="disabled"/>
+            </div> -->
+          </div>
+        </div>
+        <div class="ui-item">
+          <span class="ui-name">是否多选：</span>
+          <div class="ui-inputarea">
+              <label class="u-checkbox margin-right-20" u-meta='{"type":"u-checkbox","data":"BillParentItems","field":"multi","checkedValue":"1","unCheckedValue":"0"}'>
+                <input type="checkbox" class="u-checkbox-input">
+              </label>
+          </div>
+        </div>
+        <div class="ui-item">
+          <span class="ui-name">参照显示内容：</span>
+          <div class="ui-inputarea">
+              <div u-meta='{"type":"u-combobox","data":"BillParentItems","field":"refshowcontent","datasource":"refshowcontentSrc"}'>
+                <input class="u-input" />
+                <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="ui-item" data-bind="visible: BillParentItems.ref('type')()=='docrefer'">
+        <span class="ui-name">自定义档案参照名称：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"uiRefer","data":"BillParentItems","field":"refid"}' style="display:none;">
+              <input id="headCustdocRefer" class="u-input"/>
+              <span class="ui-icon uifont icon-bar refer"></span>
+            </div>
+            <div u-meta='{"type":"u-text","data":"BillParentItems","field":"refname","enable":false}'>
+              <input class="u-input" disabled="disabled"/>
+            </div>
+        </div>
+      </div>
+      <div class="ui-item" data-bind="visible: BillParentItems.ref('type')()=='docrefer'">
+        <span class="ui-name">自定义档案参照编码：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"u-text","data":"BillParentItems","field":"refcode","enable":false}'>
+              <input class="u-input" disabled="disabled"/>
+            </div>
+        </div>
+      </div>
+      <div class="ui-item" data-bind="visible: BillParentItems.ref('type')()=='docrefer'">
+        <span class="ui-name">是否多选：</span>
+        <div class="ui-inputarea">
+            <label class="u-checkbox margin-right-20" u-meta='{"type":"u-checkbox","data":"BillParentItems","field":"multi","checkedValue":"1","unCheckedValue":"0"}'>
+              <input type="checkbox" class="u-checkbox-input">
+            </label>
+        </div>
+      </div>
+      <div class="ui-item" data-bind="visible: BillParentItems.ref('type')()=='combo'">
+        <span class="ui-name">枚举标识：</span>
+        <div class="ui-inputarea">
+          <div u-meta='{"type":"u-combobox","data":"BillParentItems","field":"enumkey","datasource":"enumSrc"}'>
+            <input class="u-input" />
+            <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+          </div>
+            <!-- <div u-meta='{"type":"u-text","data":"BillParentItems","field":"enumkey","enable":false}'>
+              <input class="u-input" disabled="disabled"/>
+            </div> -->
+        </div>
+      </div>
+      <div class="ui-item" data-bind="visible: BillParentItems.ref('type')()=='image'">
+        <span class="ui-name">图片是否加水印：</span>
+        <div class="ui-inputarea">
+            <label class="u-checkbox margin-right-20" u-meta='{"type":"u-checkbox","data":"BillParentItems","field":"needWatermark","checkedValue":"1","unCheckedValue":"0"}'>
+              <input type="checkbox" class="u-checkbox-input">
+            </label>
+        </div>
+      </div>
+    </div>
+    <div class="ui-template-property ui-template-tab-property clearfix" style="display:none;">
+      <div class="ui-item">
+        <span class="ui-name">是否显示：</span>
+        <div class="ui-inputarea">
+            <label class="u-checkbox margin-right-20" u-meta='{"type":"u-checkbox","data":"BillTabsConf","field":"visible","checkedValue":"1","unCheckedValue":"0"}'>
+              <input type="checkbox" class="u-checkbox-input">
+            </label>
+        </div>
+      </div>
+      <div class="ui-item">
+        <span class="ui-name">显示名称：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"u-text","data":"BillTabsConf","field":"tabName"}'>
+              <input class="u-input"/>
+            </div>
+        </div>
+      </div>
+      <div class="ui-item">
+        <span class="ui-name">显示顺序：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"integer","data":"BillTabsConf","field":"order"}'>
+              <input class="u-input"/>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="ui-template-property ui-template-headconf-property clearfix" style="display:none;">
+      <div class="ui-item">
+        <span class="ui-name">是否显示：</span>
+        <div class="ui-inputarea">
+            <label class="u-checkbox margin-right-20" u-meta='{"type":"u-checkbox","data":"BillHeadConf","field":"visible","checkedValue":"1","unCheckedValue":"0"}'>
+              <input type="checkbox" class="u-checkbox-input">
+            </label>
+        </div>
+      </div>
+    </div>
+    <div class="ui-template-property ui-template-attachconf-property clearfix" style="display:none;">
+      <div class="ui-item">
+        <span class="ui-name">是否显示附件：</span>
+        <div class="ui-inputarea">
+            <label class="u-checkbox margin-right-20" u-meta='{"type":"u-checkbox","data":"BillAttachConf","field":"visible","checkedValue":"1","unCheckedValue":"0"}'>
+              <input type="checkbox" class="u-checkbox-input">
+            </label>
+        </div>
+      </div>
+      <div class="ui-item">
+        <span class="ui-name">是否可下载：</span>
+        <div class="ui-inputarea">
+            <label class="u-checkbox margin-right-20" u-meta='{"type":"u-checkbox","data":"BillAttachConf","field":"canDownload","checkedValue":"1","unCheckedValue":"0"}'>
+              <input type="checkbox" class="u-checkbox-input">
+            </label>
+        </div>
+      </div>
+      <div class="ui-item">
+        <span class="ui-name">是否可上传：</span>
+        <div class="ui-inputarea">
+            <label class="u-checkbox margin-right-20" u-meta='{"type":"u-checkbox","data":"BillAttachConf","field":"canUpload","checkedValue":"1","unCheckedValue":"0"}'>
+              <input type="checkbox" class="u-checkbox-input">
+            </label>
+        </div>
+      </div>
+      <div class="ui-item">
+        <span class="ui-name">是否可删除：</span>
+        <div class="ui-inputarea">
+            <label class="u-checkbox margin-right-20" u-meta='{"type":"u-checkbox","data":"BillAttachConf","field":"canDelete","checkedValue":"1","unCheckedValue":"0"}'>
+              <input type="checkbox" class="u-checkbox-input">
+            </label>
+        </div>
+      </div>
+    </div>
+    {{#each childs}}
+    <div class="ui-template-property clearfix" data-objectkey="{{this}}" style="display:none;">
+      <div class="ui-item">
+        <span class="ui-name">类型：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"u-combobox","data":"BillChildsItems.{{this}}","field":"type","datasource":"itemTypeSrc"}' style="display:none;">
+              <input class="u-input"/>
+              <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+            </div>
+            <div u-meta='{"type":"u-combobox","data":"BillChildsItems.{{this}}","field":"type","datasource":"itemTypeSrc","showFix":true,"onlySelect":true,"enable":false}'>
+              <input class="u-input" disabled="disabled" />
+              <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+            </div>
+        </div>
+      </div>
+      <div class="ui-item" data-bind="visible: BillChildsItems.{{this}}.ref('type')()=='float'">
+        <span class="ui-name">精度：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"integer","data":"BillChildsItems.{{this}}","field":"precision"}'>
+              <input class="u-input"/>
+            </div>
+        </div>
+      </div>
+      <div class="ui-item">
+        <span class="ui-name">显示名称：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"u-text","data":"BillChildsItems.{{this}}","field":"label"}'>
+              <input class="u-input"/>
+            </div>
+        </div>
+      </div>
+      <div class="ui-item">
+        <span class="ui-name">对应字段：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"u-text","data":"BillChildsItems.{{this}}","field":"key","enable":"false"}'>
+              <input class="u-input" disabled="disabled"/>
+            </div>
+        </div>
+      </div>
+      <div class="ui-item">
+        <span class="ui-name">是否可编辑：</span>
+        <div class="ui-inputarea">
+            <label class="u-checkbox margin-right-20" u-meta='{"type":"u-checkbox","data":"BillChildsItems.{{this}}","field":"editable","checkedValue":"1","unCheckedValue":"0"}'>
+              <input type="checkbox" class="u-checkbox-input">
+            </label>
+        </div>
+      </div>
+      <div class="ui-item">
+        <span class="ui-name">是否必填：</span>
+        <div class="ui-inputarea">
+            <label class="u-checkbox margin-right-20" u-meta='{"type":"u-checkbox","data":"BillChildsItems.{{this}}","field":"required","checkedValue":"1","unCheckedValue":"0"}'>
+              <input type="checkbox" class="u-checkbox-input">
+            </label>
+        </div>
+      </div>
+      <div class="ui-item" data-bind="visible: showInputItemTypes.indexOf(BillChildsItems.{{this}}.ref('type')()) > -1">
+        <span class="ui-name">默认值：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"u-text","data":"BillChildsItems.{{this}}","field":"defaultValue"}'>
+              <input class="u-input"/>
+            </div>
+        </div>
+      </div>
+      <div class="ui-item" data-bind="visible: BillChildsItems.{{this}}.ref('type')() === 'boolean'">
+        <span class="ui-name">默认值：</span>
+        <div class="ui-inputarea">
+          <label class="u-checkbox margin-right-20" u-meta='{"type":"u-checkbox","data":"BillChildsItems.{{this}}","field":"defaultValue","checkedValue":"1","unCheckedValue":"0"}'>
+            <input type="checkbox" class="u-checkbox-input">
+          </label>
+        </div>
+      </div>
+      <div class="ui-item" data-bind="visible: BillChildsItems.{{this}}.ref('type')() === 'combo'">
+        <span class="ui-name">默认值：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"u-combobox","data":"BillChildsItems.{{this}}","field":"defaultValue","datasource":"comboDefaultSrc"}'>
+              <input class="u-input" />
+              <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+            </div>
+        </div>
+      </div>
+      <div class="ui-item" data-bind="visible: BillChildsItems.{{this}}.ref('type')() === 'refer' || BillChildsItems.{{this}}.ref('type')() === 'docrefer'">
+        <span class="ui-name">默认值：</span>
+        <div class="ui-inputarea J-child-defaultValueRefer">
+        </div>
+      </div>
+      <div class="ui-item">
+        <span class="ui-name">显示顺序：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"integer","data":"BillChildsItems.{{this}}","field":"order"}'>
+              <input class="u-input"/>
+            </div>
+        </div>
+      </div>
+      <div class="ui-item">
+        <span class="ui-name">最大长度或数量：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"integer","data":"BillChildsItems.{{this}}","field":"maxLength"}'>
+              <input class="u-input" />
+            </div>
+        </div>
+      </div>
+      <div class="ui-item">
+        <span class="ui-name">业务说明：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"u-text","data":"BillChildsItems.{{this}}","field":"busiTip"}'>
+              <input class="u-input"/>
+            </div>
+        </div>
+      </div>
+      <div data-bind="visible: BillChildsItems.{{this}}.ref('type')()=='refer'" style="float: left;margin-top: 10px;">
+        <div class="ui-item">
+          <span class="ui-name">参照标识：</span>
+          <div class="ui-inputarea">
+            <div u-meta='{"type":"uiRefer","data":"BillChildsItems.{{this}}","field":"refkey","enable":false}'>
+              <input id="refkeyRefer{{@index}}" class="u-input" disabled="disabled" />
+            </div>
+          </div>
+        </div>
+        <div class="ui-item">
+          <span class="ui-name">是否多选：</span>
+          <div class="ui-inputarea">
+              <label class="u-checkbox margin-right-20" u-meta='{"type":"u-checkbox","data":"BillChildsItems.{{this}}","field":"multi","checkedValue":"1","unCheckedValue":"0"}'>
+                <input type="checkbox" class="u-checkbox-input">
+              </label>
+          </div>
+        </div>
+        <div class="ui-item">
+          <span class="ui-name">参照显示内容：</span>
+          <div class="ui-inputarea">
+              <div u-meta='{"type":"u-combobox","data":"BillChildsItems.{{this}}","field":"refshowcontent","datasource":"refshowcontentSrc"}'>
+                <input class="u-input" />
+                <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="ui-item" data-bind="visible: BillChildsItems.{{this}}.ref('type')()=='docrefer'">
+        <span class="ui-name">自定义档案参照名称：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"uiRefer","data":"BillChildsItems.{{this}}","field":"refid"}' style="display:none;">
+              <input id="childDocreferRefer{{@index}}" class="u-input"/>
+              <span class="ui-icon uifont icon-bar refer"></span>
+            </div>
+            <div u-meta='{"type":"u-text","data":"BillChildsItems.{{this}}","field":"refname","enable":false}'>
+              <input class="u-input" disabled="disabled"/>
+            </div>
+        </div>
+      </div>
+      <div class="ui-item" data-bind="visible: BillChildsItems.{{this}}.ref('type')()=='docrefer'">
+        <span class="ui-name">自定义档案参照编码：</span>
+        <div class="ui-inputarea">
+            <div u-meta='{"type":"u-text","data":"BillChildsItems.{{this}}","field":"refcode","enable":false}'>
+              <input class="u-input" disabled="disabled"/>
+            </div>
+        </div>
+      </div>
+      <div class="ui-item" data-bind="visible: BillChildsItems.{{this}}.ref('type')()=='docrefer'">
+        <span class="ui-name">是否多选：</span>
+        <div class="ui-inputarea">
+            <label class="u-checkbox margin-right-20" u-meta='{"type":"u-checkbox","data":"BillChildsItems.{{this}}","field":"multi","checkedValue":"1","unCheckedValue":"0"}'>
+              <input type="checkbox" class="u-checkbox-input">
+            </label>
+        </div>
+      </div>
+      <div class="ui-item" data-bind="visible: BillChildsItems.{{this}}.ref('type')()=='combo'">
+        <span class="ui-name">枚举标识：</span>
+        <div class="ui-inputarea">
+          <div u-meta='{"type":"u-combobox","data":"BillChildsItems.{{this}}","field":"enumkey","datasource":"enumSrc"}'>
+            <input class="u-input" />
+            <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+          </div>
+        </div>
+      </div>
+      <div class="ui-item" data-bind="visible: BillChildsItems.{{this}}.ref('type')()=='image'">
+        <span class="ui-name">图片是否加水印：</span>
+        <div class="ui-inputarea">
+            <label class="u-checkbox margin-right-20" u-meta='{"type":"u-checkbox","data":"BillChildsItems.{{this}}","field":"needWatermark","checkedValue":"1","unCheckedValue":"0"}'>
+              <input type="checkbox" class="u-checkbox-input">
+            </label>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+    <div class="ui-template-property-refrel ui-template-property clearfix"
+      style="display:none; border-top: none; position: relative; top: -1px; z-index: 9; background: #fff;">
+      <div class="ui-item">
+        <span class="ui-name">参照关联字段：</span>
+      </div>
+      <div class="ui-table-container" style="float:left; width: 100%;">
+          <div id="grid_BillRefrel"
+               u-meta='{"id":"grid_BillRefrelmeta","data":"AllRefrel","type":"grid","editable":false,"multiSelect":true,"showNumCol":false,"columnMenu":false,"sortable":false,"canDrag":false,"canSwap":false}'>
+               <div options='{"field":"label","dataType":"String","title":"字段名称"}'></div>
+               <div options='{"field":"showLabel","dataType":"String","title":"显示名称","renderType":"editTypeText","width":"100px"}'></div>
+               <div options='{"field":"order","dataType":"String","title":"显示顺序","renderType":"editTypeText","width":"80px"}'></div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

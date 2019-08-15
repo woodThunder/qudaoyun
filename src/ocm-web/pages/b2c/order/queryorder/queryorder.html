@@ -1,0 +1,188 @@
+<div class="ui-list-panel ui-panel">
+	<div>
+		<div class="page-title">
+			<span>订单查询</span>
+		</div>
+	</div>
+	<div>
+		<div>
+			<div class="oc-breadcrumb">
+			</div>
+		</div>
+	</div>
+	<div class="title-seperator"></div>
+			<ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+  			</ui-searchbox>
+	<div class="ui-panel-body">
+		<div class="ui-panel-body-head">
+			<div class="ui-panel-body-head-left">
+        		<ui-buttons-menu params='datasource:$root.button1Source,vm:$root'>
+	        	</ui-buttons-menu>
+        		<div id="orderSignRef" u-meta='{"type":"uiRefer","data":"orderSignfList","field":"ordersignref"}' style="display:none;">
+        <input readonly="readonly" />
+        <span class="ui-icon uifont icon-bar refer"></span>
+      </div>
+			</div>
+		</div>
+		<div class="ui-table-container">
+			<ui-grid params='options:$root.grid1Option,vm:$root'>
+      		</ui-grid>
+			<div class="ui-statistics margin-top-10">
+				<i class="uifont icon-i font-c-blue margin-right-10"></i>已选择
+				<span class="font-c-blue" data-bind="text:processOrderList.selectedIndices().length"></span>项数据
+			</div>
+			<div class="pagination-right">
+				<div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"processOrderList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 查看详情-start -->
+	<div class="u-tabs ui-tabs">
+		<div class="u-tabs__tab-bar margin-top-10 margin-bottom-10">
+			<a href="#tab-panel-1" class="u-tabs__tab">订单详情</a>
+			<a href="#tab-panel-2" class="u-tabs__tab is-active">商品信息</a>
+			 <a href="#tab-panel-3" class="u-tabs__tab">促销明细</a> 
+			<a href="#tab-panel-4" class="u-tabs__tab">关联订单</a>
+			<a href="#tab-panel-6" class="u-tabs__tab">操作日志</a>
+			<a href="#tab-panel-7" class="u-tabs__tab">备注信息</a>
+			<a href="#tab-panel-8" class="u-tabs__tab">订单跟踪</a>
+		</div>
+		<!-- 订单信息-start -->
+		<div class="u-tabs__panel" id="tab-panel-1">
+			<div class="ui-panel-head clearfix">
+				<h3 class="ui-collapse-title orderCenter clearfix open margin-top-10">
+		            <a href="javascript:;" class="click-btn inline-block">
+		              <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+		              <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+		              平台信息
+		            </a>
+		        </h3>
+				<ui-detail params='datasource:$root.details1Source,vm:$root,dt:$root.orderDetail'>
+    			</ui-detail>
+    			<h3 class="ui-collapse-title orderCenter clearfix open margin-top-10">
+		            <a href="javascript:;" class="click-btn inline-block">
+		              <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+		              <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+		              订单信息
+		            </a>
+		        </h3>
+				<ui-detail params='datasource:$root.details2Source,vm:$root,dt:$root.orderDetail'>
+    			</ui-detail>
+    			<h3 class="ui-collapse-title orderCenter clearfix open margin-top-10">
+		            <a href="javascript:;" class="click-btn inline-block">
+		              <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+		              <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+		              顾客信息
+		            </a>
+		        </h3>
+				<ui-detail params='datasource:$root.details3Source,vm:$root,dt:$root.orderDetail'>
+    			</ui-detail>
+    			<h3 class="ui-collapse-title orderCenter clearfix open margin-top-10">
+		            <a href="javascript:;" class="click-btn inline-block">
+		              <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+		              <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+		              金额信息
+		            </a>
+		        </h3>
+				<ui-detail params='datasource:$root.details4Source,vm:$root,dt:$root.orderDetail'>
+    			</ui-detail>
+			</div>
+			<!--head end-->
+		</div>
+		<!-- 订单信息-end -->
+		<!-- 商品信息-start -->
+		<div class="u-tabs__panel is-active" id="tab-panel-2">
+			<ui-grid params='options:$root.grid2Option,vm:$root'>
+      		</ui-grid>
+		</div>
+		<!-- 商品信息-end -->
+		<!-- 促销信息-start -->
+		<div class="u-tabs__panel" id="tab-panel-3">
+			<ui-grid params='options:$root.grid4Option,vm:$root'>
+      		</ui-grid>
+		</div>
+		<!-- 促销信息-end -->
+
+		<!-- 关联订单信息-start -->
+		<div class="u-tabs__panel" id="tab-panel-4">
+			<ui-grid params='options:$root.grid5Option,vm:$root'>
+      		</ui-grid>
+		</div>
+		<!-- 关联订单信息-end -->
+		<!-- 操作日志-start -->
+		<div class="u-tabs__panel" id="tab-panel-6">
+			<ui-grid params='options:$root.grid6Option,vm:$root'>
+      		</ui-grid>
+			<div class="pagination-right margin-top-20">
+				<div id='pagination_log' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"logList","pageChange":"pageChangeLog","sizeChange":"sizeChangeLog"}'></div>
+			</div>
+		</div>
+		<!-- 操作日志-end -->
+		<!-- 备注信息-start -->
+		<div class="u-tabs__panel" id="tab-panel-7">
+			<div class="u-msg-content">
+				<div class="ui-collapse-group border orderCenter">
+					<div id="default-example-1" data-collapse>
+						<!--买家备注开始-->
+						<h3 class="ui-collapse-title orderCenter clearfix open margin-top-10">
+							<a href="javascript:;" class="click-btn inline-block">
+								<i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+								<i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+								买家备注
+							</a>
+						</h3>
+						<div class="ui-collapse-content  clearfix">
+							<div class="margin-10"></div>
+							<ui-grid params='options:$root.grid8Option,vm:$root'>
+      						</ui-grid>
+						</div>
+						<!--买家备注结束-->
+						<!--卖家备注开始-->
+						<h3 class="ui-collapse-title orderCenter  clearfix product-choose-result margin-top-10 open">
+							<a href="javascript:;" class="click-btn inline-block">
+								<i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+								<i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+								卖家备注
+							</a>
+						</h3>
+						<div class="ui-collapse-content product-choose-content clearfix">
+							<div class="margin-10"></div>
+							<ui-grid params='options:$root.grid9Option,vm:$root'>
+      						</ui-grid>
+						</div>
+						<!--卖家备注结束-->
+
+						<!--订单备注开始-->
+						<h3 class="ui-collapse-title orderCenter  clearfix product-choose-result margin-top-10 open">
+							<a href="javascript:;" class="click-btn inline-block">
+								<i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+								<i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+								订单备注
+							</a>
+						</h3>
+						<div class="ui-collapse-content product-choose-content clearfix">
+							<div class="margin-10"></div>
+							<ui-grid params='options:$root.grid10Option,vm:$root'>
+      						</ui-grid>
+						</div>
+						<!--订单备注结束-->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 备注信息-end -->
+		<!-- 订单跟踪-start -->
+		<div class="u-tabs__panel" id="tab-panel-8">
+			<div class="u-msg-content" id="orderTrackContent"></div>
+		</div>
+		<!-- 订单跟踪-end -->
+	</div>
+	<!-- 查看详情-end -->
+
+</div>
+
+
+<!--导入导出弹窗-->
+<div id="exportFiel"></div>
+<!--导入导出弹窗-->

@@ -1,0 +1,24 @@
+    <div class="main_conc re_con useradd">
+        <div class="mic userAddtext">
+            <div class="tel rowm">
+                <span class="m_left">账户:</span>
+                <div class="userAddInput"><i class="must">*</i><input id="userAddTest_Code" type="text" class="tenant_name" data-bind="value: dataAdd().userCode" placeholder="请输入账号" maxlength="18" ></div>
+                <em class="tips" style="display: block">6~18个字符，可使用字母、数字、下划线，需以字母开头</em>
+            </div>
+            <div class=" rowm">
+                <span class="m_left">手机号:</span>
+                <div class="userAddInput"> <i class="must">*</i><input id="userAddTest_Tel" type="text"  class="tenant_tel" maxlength="11" data-bind="value: dataAdd().userMobile" placeholder="请输入手机号" onkeyup="this.value=this.value.replace(/\D/g,'')"  onafterpaste="this.value=this.value.replace(/\D/g,'')" ></div>
+                <em class="tips"></em>
+            </div>
+            <div class="tel rowm">
+                <span class="m_left">用户名:</span>
+                <div class="userAddInput"><i class="must">*</i><input id="userAddTest_Name" type="text"  class="tenant_name" data-bind="value: dataAdd().name" placeholder="请输入用户名"></div>
+                <em class="tips">不能为空</em>
+            </div>
+            <div class=" rowm">
+                <span class="m_left">邮箱:</span>
+                <div class="userAddInput"><input id="userAddTest_Email" type="text"  class="tenant_email" data-bind="value: dataAdd().userEmail" placeholder="请输入邮箱"></div>
+                <em class="tips" ></em>
+            </div>
+        </div>
+    </div>

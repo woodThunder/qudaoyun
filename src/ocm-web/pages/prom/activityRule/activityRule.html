@@ -1,0 +1,361 @@
+<!-- 列表页 -->
+<div class="ui-list-panel ui-panel">
+  <div>
+    <div class="page-title">
+      <span>促销规则设置</span></div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb"></div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+  <div class="ui-searchbox">
+    <div id="ProductCombine-searchcontent" class="ui-searchbox-content"></div>
+    <div class="clearfix"></div>
+    <div class="ui-searchbox-footer">
+      <div class="ui-search-more hidden">
+        <a>更多
+          <i class="uifont icon-down"></i></a>
+      </div>
+      <div class="ui-search-btn">
+        <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:cleanSearch">清空</a>
+        <a class="ui-btn ui-btn-green margin-right-5" data-bind="click:search.bind($data,true)">搜索</a></div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <div class="ui-panel-body">
+    <div class="ui-panel-body-head">
+      <div class="ui-panel-body-head-left">
+        <a class="ui-btn ui-btn-orange margin-right-5" id="user-action-add" data-bind="click: showAddBillPanel.bind($data)">
+          <i class="uifont icon-plus margin-right-5"></i>新增</a>
+        <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del" data-bind="click: del">
+          <i class="uifont icon-shanchu1 margin-right-5"></i>删除</a>
+        <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+          <a class="ui-button-item" data-bind="click: enable">
+            <i class="uifont icon-qiyong margin-right-5"></i>启用</a>
+          <a class="ui-button-item" data-bind="click: disable">
+            <i class="uifont icon-tingyong margin-right-5"></i>停用</a>
+        </div>
+        <div class="ui-button-group clearfix vertical-align-middle">
+          <a class="ui-button-item" data-bind="click: importHandle">
+            <i class="uifont icon-import margin-right-5"></i>导入</a>
+          <a class="ui-button-item" data-bind="click: exportHandle">
+            <i class="uifont icon-export margin-right-5"></i>导出</a>
+        </div>
+      </div>
+      <!-- <div class="ui-panel-body-head-right">
+      <i class="uifont icon-i font-c-blue margin-right-5"></i>共搜索到<span data-bind="text:ProductCombineList.totalRow"></span>条数据
+      </div> -->
+    </div>
+    <div class="ui-table-container">
+      <div u-meta='{"id":"grid_productCombine","data":"ProductCombineList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true,"onValueChange":"ruleValueChange"}'>
+        <!-- <div options='{"field":"pkOrgName","dataType":"String","title":"所属组织"}'></div> -->
+        <div options='{"field":"code","dataType":"String","title":"规则编码","renderType":"detailRender"}'></div>
+        <div options='{"field":"name","dataType":"String","title":"规则名称"}'></div>
+        <div options='{"field":"enableStatus","dataType":"String","title":"促销方式","renderType":"enableStatusRender"}'></div>
+        <div options='{"field":"enableStatus","dataType":"String","title":"促销基准","renderType":"enableStatusRender"}'></div>
+        <div options='{"field":"creator","dataType":"String","title":"创建人"}'></div>
+        <div options='{"field":"creationTime","dataType":"Datetime","title":"创建时间"}'></div>
+        <div options='{"field":"modifier","dataType":"String","title":"修改人"}'></div>
+        <div options='{"field":"modifiedTime","dataType":"Datetime","title":"修改时间"}'></div>
+        <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation","fixed":true,"width":"100px"}'></div>
+      </div>
+      <div class="ui-statistics margin-top-10">已选择
+        <span class="font-c-blue" data-bind="text:ProductCombineList.selectedIndices().length"></span>项数据</div>
+      <div class="pagination-right">
+        <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"ProductCombineList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 单据页 -->
+<div class="ui-bill-panel ui-panel" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span>产品组合</span></div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb"></div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-primary" data-bind="click: cancelBill.bind($data)">取消</a>
+      <a class="ui-btn ui-btn-green margin-right-5" data-bind="click: saveBill.bind($data)">保存</a></div>
+  </div>
+  <div class="ui-panel-head ui-bill-head">
+    <div class="ui-item margin-bottom-20" style="float: none;">
+      <div class="ui-name">
+        <i class="strong">*</i>规则编码：</div>
+      <div class="ui-inputarea">
+        <div u-meta='{"type":"u-text","data":"ProductCombineList","field":"code"}'>
+          <input class="u-input" /></div>
+      </div>
+    </div>
+    <div class="ui-item margin-bottom-20" style="float: none;">
+      <div class="ui-name">
+        <i class="strong">*</i>规则名称：</div>
+      <div class="ui-inputarea">
+        <div u-meta='{"type":"u-text","data":"ProductCombineList","field":"code"}'>
+          <input class="u-input" /></div>
+      </div>
+    </div>
+    <div class="ui-item margin-bottom-20" style="float: none;">
+      <div class="ui-name">
+        <i class="strong">*</i>促销方式：</div>
+      <div class="ui-inputarea">
+        <div u-meta='{"type":"u-radio","data":"ProductCombineList","field":"promotions","datasource":"promotionsSrc"}'>
+          <label class="u-radio">
+            <input type="radio" class="u-radio-button" name="promotions">
+            <span class="u-radio-label"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item margin-bottom-20" style="float: none;">
+      <div class="ui-name">
+        <i class="strong">*</i>促销基准：</div>
+      <div class="ui-inputarea" style="width: 260px!important;">
+        <div u-meta='{"type":"u-radio","data":"ProductCombineList","field":"promotionBench","datasource":"promotionBenchSrc"}'>
+          <label class="u-radio">
+            <input type="radio" class="u-radio-button" name="promotionBench">
+            <span class="u-radio-label"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item margin-bottom-20" style="float: none;" id="totalMny">
+      <div class="ui-name">
+        <i class="strong">*</i>订单累计金额：</div>
+      <div class="ui-inputarea">
+        <div u-meta='{"type":"float","data":"ProductCombineList","field":"totalMny"}'>
+          <input class="u-input" /></div>
+      </div>
+    </div>
+    <div class="ui-item margin-bottom-20" style="float: none;">
+      <div class="ui-name">阶梯方式：</div>
+      <div class="ui-inputarea">
+        <div u-meta='{"type":"u-checkbox","data":"ProductCombineList","field":"ladderWay","datasource":"ladderWaySrc"}'>
+          <label class="u-checkbox">
+            <input type="checkbox" class="u-checkbox-input">
+            <span class="u-checkbox-label" data-role="name"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item margin-bottom-20" style="float: none;">
+      <div class="ui-name">赠品基准：</div>
+      <div class="ui-inputarea">
+        <div u-meta='{"type":"u-checkbox","data":"ProductCombineList","field":"giftBench","datasource":"giftBenchSrc"}'>
+          <label class="u-checkbox">
+            <input type="checkbox" class="u-checkbox-input">
+            <span class="u-checkbox-label" data-role="name"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item margin-bottom-20" style="float: none;">
+      <div class="ui-name">
+        <i class="strong">*</i>前置条件：</div>
+      <div class="ui-inputarea" >
+        <div u-meta='{"type":"u-radio","data":"ProductCombineList","field":"precondition","datasource":"preconditionSrc"}'>
+          <label class="u-radio">
+            <input type="radio" class="u-radio-button" name="options">
+            <span class="u-radio-label"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="ui-bill-body">
+  <div id="fullcutDiv">
+    <div class="margin-bottom-10">
+      <a class="ui-btn ui-btn-orange margin-right-5" id="user-action-additem" data-bind="click: showAddItemsRef.bind($data)">
+        <i class="uifont icon-plus margin-right-5"></i>增行</a>
+    </div>
+    <!-- 商品数量（或者金额）-降价规则 -->
+    <div id="proStandDepreciateDiv">
+      <h3 class="ui-collapse-title  clearfix product-choose-result margin-top-10 open">
+        <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+        <i class="uifont icon-tubiao-xiaosanjiao-you"></i>降价规则</h3>
+      <div class="rule-grid-box">
+        <div class="rule-grid-table">
+          <!-- title -->
+          <div class="table-head">
+            <div class="table-title flex2">
+              <span>商品</span></div>
+            <div class="table-title flex2">
+              <span id="priceConditionLabel">降价条件(数量)</span></div>
+            <div class="table-title flex2">
+              <span>单价减</span></div>
+            <div class="table-title flex2">
+              <span>打折</span></div>
+            <div class="table-title flex2">
+              <span>一口价</span></div>
+            <div class="table-title flex2">
+              <span>累计优惠</span></div>
+          </div>
+          <!-- title end -->
+          <!-- con -->
+          <div class="table-con" data-bind="foreach: {data: priceItems.rows(), as:'row'}">
+            <div class="item-first">
+              <div class="con-first flex2">
+                <div class="content-box">
+                  <div class="content">
+                    <p class="" data-bind="text: row.ref('proId')" style="display:none"></p>
+                    <p class="" data-bind="text: row.ref('proType')" style="display:none"></p>
+                    <p class="" data-bind="text: row.ref('showCode')"></p>
+                  </div>
+                  <i class="delicon uifont icon-tubiao-shibai" data-bind="click: $root.priceDelRow.bind($data, row)"></i>
+                </div>
+              </div>
+              <div class="item-second-box-no flex8" data-bind="visible: row.ref('conditionInfos')().length == 0">
+                <i class="addicon uifont icon-plus icon" data-bind="click: $root.addPriceConditionInfos.bind($data, row)"></i>
+              </div>
+              <div class="item-second-box flex8" data-bind="foreach: {data: row.ref('conditionInfos')(), as: 'childRow'}">
+                <div class="item-second">
+                  <div class="con-second flex8">
+                    <div class="content-box">
+                      <div class="content">
+                        <div class="ui-inputarea">
+                          <div>
+                            <input class="u-input" data-bind="value:childRow.ref('higherLimit')" /></div>
+                        </div>
+                        <span>至</span>
+                        <div class="ui-inputarea">
+                          <div>
+                            <input class="u-input" data-bind="value: childRow.ref('lowerLimit')" /></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="con-second flex7">
+                    <div class="content-box">
+                      <div class="content">
+                        <div class="ui-inputarea">
+                          <div>
+                            <input class="u-input discountInput" data-bind="value: childRow.ref('discount'),click: $root.priceVlalueChange" /></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="con-second flex7">
+                    <div class="content-box">
+                      <div class="content">
+                        <div class="ui-inputarea">
+                          <div>
+                            <input class="u-input priceInput" data-bind="value: childRow.ref('price')" /></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="con-second flex3">
+                    <div class="content-box">
+                      <div class="content">
+                        <div class="ui-inputarea">
+                          <div>
+                            <input class="u-input fullcutInput" data-bind="value: childRow.ref('fullcut')" /></div>
+                        </div>
+                      </div>
+                      <i class="addicon uifont icon-plus icon" data-bind="click: $root.addPriceConditionInfos.bind($data, row)"></i>
+                      <i class="delicon uifont icon-tubiao-shibai icon" data-bind="click: $root.delPriceConditionInfos.bind($data, row, childRow)"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="con-second flex3">
+                <div class="content-box">
+                  <div class="content">
+                    <div class="ui-inputarea">
+                      <div>
+                        <input class="u-input" data-bind="value: row.ref('totalDiscount')" /></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- con end --></div>
+      </div>
+    </div>
+    <!-- 商品数量（或者金额）-降价规则 -->
+    <div>
+      <!-- 订单金额降价规则开始 -->
+      <div id="orderStandDepreciateDiv">
+        <h3 class="ui-collapse-title  clearfix product-choose-result margin-top-10 open">
+          <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+          <i class="uifont icon-tubiao-xiaosanjiao-you"></i>订单金额-降价规则</h3>
+        <div class="margin-bottom-10">
+          <a class="ui-btn ui-btn-orange margin-right-5" id="user-action-additem" data-bind="click: addOrderStandDepreciateItems.bind($data)">
+            <i class="uifont icon-plus margin-right-5"></i>增行</a>
+          <a class="ui-btn ui-btn-primary" id="user-action-del" data-bind="click: delOrderStandDepreciateItems.bind($data)">
+            <i class="uifont icon-shanchu1 margin-right-5"></i>删行</a>
+        </div>
+        <div class="ui-table-container ">
+          <div u-meta='{"data":"orderStandDepreciateItems","type":"grid","editable":true,"multiSelect":true,"showNumCol":true}'>
+            <div options='{"field":"higherLimit","dataType":"float","title":"上限"}'></div>
+            <div options='{"field":"lowerLimit","dataType":"float","title":"下限"}'></div>
+            <div options='{"field":"discount","dataType":"float","title":"折扣率"}'></div>
+            <div options='{"field":"fullcut","dataType":"float","title":"满减"}'></div>
+          </div>
+        </div>
+      </div>
+      <!-- 订单金额降价规则结束 -->
+      <!-- 赠品商品选择 -->
+      <div style="display:none">
+        <div id="dialog_content_product">
+          <div class="u-msg-title">
+            <h4>商品选择</h4></div>
+          <div class="u-msg-content">
+            <div class="ui-item">
+              <div class="ui-name">商品类型选择：</div>
+              <div class="ui-inputarea">
+                <div u-meta='{"type":"u-combobox","data":"chooseProductList","field":"proType","datasource":"proTypeSrc"}'>
+                  <input class="u-input" />
+                  <span class="ui-icon uf uf-arrow-down" data-role="combo-button"></span>
+                </div>
+              </div>
+            </div>
+            <div class="ui-item">
+              <div class="ui-name">商品组合</div>
+              <div class="ui-inputarea">
+                <div u-meta='{"type":"uiRefer","data":"chooseProductList","field":"proId","rel":{"refcode":"proCode"}}'>
+                  <input readonly="readonly" />
+                  <span class="ui-icon uifont icon-bar refer"></span>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="u-msg-footer">
+            <a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+            <a class="u-msg-ok ui-btn ui-btn-green">保存</a></div>
+        </div>
+      </div>
+      <!-- 赠品商品选择 end-->
+      <!-- 部分商品范围开始 -->
+      <div>
+        <h3 class="ui-collapse-title  clearfix product-choose-result margin-top-10 open">
+          <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+          <i class="uifont icon-tubiao-xiaosanjiao-you"></i>商品范围</h3>
+        <div class="margin-bottom-10">
+          <a class="ui-btn ui-btn-orange margin-right-5" id="user-action-additem" data-bind="click: addProRangeItems.bind($data)">
+            <i class="uifont icon-plus margin-right-5"></i>增行</a>
+          <a class="ui-btn ui-btn-primary" id="user-action-del" data-bind="click: delProRangeItems.bind($data)">
+            <i class="uifont icon-shanchu1 margin-right-5"></i>删行</a>
+        </div>
+        <div class="ui-table-container ">
+          <div u-meta='{"id":"grid_productCombineItem","data":"proRangeList","type":"grid","editable":true,"multiSelect":true,"showNumCol":true}'>
+            <div options='{"field":"proSpuId","dataType":"String","title":"产品编码","renderType":"ncReferRender","editType":"ncReferEditType","showField":"proSpuName","editOptions":{"validType":"string"}}'></div>
+            <div options='{"field":"proSkuId","dataType":"String","title":"商品编码","renderType":"ncReferRender","editType":"ncReferEditType","showField":"proSkuName","editOptions":{"validType":"string"}}'></div>
+            <div options='{"field":"isExclude","type":"u-checkbox","datasource":"giftBenchSrc","dataType":"String","title":"是否排除","editable":true}'></div>
+          </div>
+        </div>
+        <!-- 部分商品范围结束 --></div>
+    </div>
+  </div>
+  </div>
+    <div id="exportFiel"></div>
+    <div id="importFiel"></div>

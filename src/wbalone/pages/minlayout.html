@@ -1,0 +1,33 @@
+{{each list as item i}}
+<div class="col-md-3">
+    <div class="widget ">
+        <div class="widget-content padding-35 bg-white clearfix">
+            <div class="pull-left white">
+                <i aria-hidden="true" class="icon icon-circle icon-2x wb-clipboard bg-red-600"></i>
+            </div>
+            <div class="counter counter-md counter text-right pull-right">
+                <div class="counter-number-group">
+                    <span class="counter-number-related text-capitalize">{{item.name}}</span>
+                </div>
+                <div class="counter-label text-capitalize font-size-16"></div>
+            </div>
+        </div>
+        <div class="padding-10 text-right">
+            <a href="javascript:;" class="add-to-sidebar">
+                <button  type="button" class="btn btn-sm btn-outline btn-default btn-round">
+                    <span class="text hidden-xs">设为首页</span>
+                </button>
+            </a>
+            <a href="#/layout/{{item.id}}">
+                <button type="button" class="btn btn-sm btn-outline btn-default btn-round">
+                    <span class="text hidden-xs">设计</span>
+                </button>
+            </a>
+            <button type="button" data-id="{{item.id}}" class="btn btn-sm btn-outline btn-default btn-round layout-del">
+                <span class="text hidden-xs" >删除</span>
+                <i class="icon wb-chevron-right" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+</div>
+{{/each}}

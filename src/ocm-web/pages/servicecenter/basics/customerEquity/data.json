@@ -1,0 +1,391 @@
+﻿
+{
+	"customerList":{
+		"content": [
+			{
+				"id": "1",
+				"dr": 0,
+				"ts": 1525104000000,
+				"creator": "测试",
+				"creationTime": 1525276800000,
+				"modifier": null,
+				"modifiedTime": 1525276800000,
+
+				"code": "590680",
+				"name": "李磊",
+				"customerName": "李磊",
+				"customerCode": "KH009",
+				"customerId": "GD301882",
+				"idTypeName": "GD301882",
+				"idNo": "GD301882",
+				"phone": "13900281021",
+				"homeTel": "010-856243319",
+				"companyTel": "010-856243319",
+				"email": "907576241@qq.com",
+				"country": "中国",
+				"city": "石家庄",
+				"province": "河北",
+				"district": "裕华",
+				"postcode": "053321",
+				"address": "天怡家园2号楼3单元701",
+				"shop": "裕华路一店",
+				"shopingPerson": "黄鑫",
+				"dealerName": "北京海淀区域经销商"
+					
+			},
+			{
+				"id": "1",
+				"dr": 0,
+				"ts": 1525104000000,
+				"creator": "测试",
+				"creationTime": 1525276800000,
+				"modifier": null,
+				"modifiedTime": 1525276800000,
+
+				"code": "256900",
+				"name": "李磊",
+				"customerName": "李磊",
+				"customerCode": "KH009",
+				"customerId": "GD301882",
+				"idTypeName": "GD301882",
+				"idNo": "GD301882",
+				"phone": "13192010221",
+				"homeTel": "010-856243319",
+				"companyTel": "010-856243319",
+				"email": "907576241@qq.com",
+				"country": "中国",
+				"city": "北京",
+				"province": "北京",
+				"district": "海淀",
+				"postcode": "053321",
+				"address": "天怡家园2号楼3单元701",
+				"shop": "西北旺二店",
+				"shopingPerson": "黄鑫",
+				"dealerName": "北京海淀区域经销商"
+					
+			},
+			{
+				"id": "1",
+				"dr": 0,
+				"ts": 1525104000000,
+				"creator": "测试",
+				"creationTime": 1525276800000,
+				"modifier": null,
+				"modifiedTime": 1525276800000,
+
+				"code": "679080",
+				"name": "赵康勇",
+				"customerName": "赵康勇",
+				"customerCode": "KH00101",
+				"customerId": "GD301882",
+				"idTypeName": "GD301882",
+				"idNo": "GD301882",
+				"phone": "13877291091",
+				"homeTel": "010-856243319",
+				"companyTel": "010-856243319",
+				"email": "907576241@qq.com",
+				"country": "中国",
+				"city": "上海",
+				"province": "上海",
+				"district": "嘉定",
+				"postcode": "053321",
+				"address": "天怡家园2号楼3单元701",
+				"shop": "嘉定区新区店",
+				"shopingPerson": "杜磊",
+				"dealerName": "上海嘉定区域经销商"
+				
+					
+			},
+			{
+				"id": "1",
+				"dr": 0,
+				"ts": 1525104000000,
+				"creator": "测试",
+				"creationTime": 1525276800000,
+				"modifier": null,
+				"modifiedTime": 1525276800000,
+
+				"code": "689002",
+				"name": "李磊",
+				"customerName": "李磊",
+				"customerCode": "KH00103",
+				"customerId": "GD301882",
+				"idTypeName": "GD301882",
+				"idNo": "GD301882",
+				"phone": "15122738099",
+				"homeTel": "010-856243319",
+				"companyTel": "010-856243319",
+				"email": "907576241@qq.com",
+				"country": "中国",
+				"city": "石家庄",
+				"province": "河北",
+				"district": "南焦",
+				"postcode": "053321",
+				"address": "天怡家园2号楼3单元701",
+				"shop": "石家庄科大店",
+				"shopingPerson": "刘灿",
+				"dealerName": "北京海淀区域经销商"
+				
+					
+			},
+			{
+				"id": "1",
+				"dr": 0,
+				"ts": 1525104000000,
+				"creator": "测试",
+				"creationTime": 1525276800000,
+				"modifier": null,
+				"modifiedTime": 1525276800000,
+
+				"code": "232900",
+				"name": "张亮",
+				"customerName": "张亮",
+				"customerCode": "KH00158",
+				"customerId": "GD301882",
+				"idTypeName": "GD301882",
+				"idNo": "GD301882",
+				"phone": "15677290221",
+				"homeTel": "010-856243319",
+				"companyTel": "010-856243319",
+				"email": "907576241@qq.com",
+				"country": "中国",
+				"city": "北京",
+				"province": "北京",
+				"district": "裕华",
+				"postcode": "053321",
+				"address": "天怡家园2号楼3单元701",
+				"shop": "西北旺二店",
+				"shopingPerson": "赵雷",
+				"dealerName": "北京海淀区域经销商"
+					
+			}
+		],
+		"totalElements": 1,
+		"last": true,
+		"totalPages": 1,
+		"size": 10,
+		"number": 0,
+		"sort": [{
+			"direction": "DESC",
+			"property": "creationTime",
+			"ignoreCase": false,
+			"nullHandling": "NATIVE",
+			"ascending": false,
+			"descending": true
+		}],
+		"first": true,
+		"numberOfElements": 1
+	},
+	"goodsList":{
+		"content": [
+			{
+				"id": "1",
+				"dr": 0,
+				"ts": 1525104000000,
+				"creator": "测试",
+				"creationTime": 1525276800000,
+				"modifier": null,
+				"modifiedTime": 1525276800000,
+
+				"goodsId": "900",
+				"goodsCode": "GD301882",
+				"goodsName":"恒洁节水花洒淋雨喷头",
+				"warranty":"5",
+				"buyDate": 1526745600000,
+				"warrantyStartDate": 1526745600000,
+				"warrantyEndDate": 1684425600000,
+				"remark": "可以质量不错"
+			},
+			{
+				"id": "1",
+				"dr": 0,
+				"ts": 1526400000000,
+				"creator": "测试",
+				"creationTime": 1526400000000,
+				"modifier": null,
+				"modifiedTime": 1526400000000,
+
+				"goodsId": "890900",
+				"goodsCode": "GD291201032",
+				"goodsName":"马桶坐便器虹吸式座便器抽水节水静音防臭一体式坐厕",
+				"warranty":"5",
+				"buyDate": 1526400000000,
+				"warrantyStartDate": 1526400000000,
+				"warrantyEndDate": 1684080000000,
+				"remark": ""
+			},
+			{
+				"id": "1",
+				"dr": 0,
+				"ts": 1526400000000,
+				"creator": "测试",
+				"creationTime": 1526572800000,
+				"modifier": null,
+				"modifiedTime": 1526572800000,
+
+				"goodsId": "900",
+				"goodsCode": "GD291201021",
+				"goodsName":"恒洁卫浴（Hegii） 浴室手持花洒头",
+				"warranty":"5",
+				"buyDate": 1526572800000,
+				"warrantyStartDate": 1526572800000,
+				"warrantyEndDate": 1684252800000,
+				"remark": "洗刷刷洗刷刷"
+			}
+		],
+		"totalElements": 1,
+		"last": true,
+		"totalPages": 1,
+		"size": 10,
+		"number": 0,
+		"sort": [{
+			"direction": "DESC",
+			"property": "creationTime",
+			"ignoreCase": false,
+			"nullHandling": "NATIVE",
+			"ascending": false,
+			"descending": true
+		}],
+		"first": true,
+		"numberOfElements": 1
+	},
+	"installList":{
+		"content": [
+			{
+				"id": "1",
+				"dr": 0,
+				"ts": 1525104000000,
+				"creator": "测试",
+				"creationTime": 1525276800000,
+				"modifier": null,
+				"modifiedTime": 1525276800000,
+				"code": "688900",
+				
+				"providerId": "10000",
+				"providerCode": "B0091021",
+				"providerName":"北京永旺",
+				"installCode":"AZ20180203030",
+				"installedDate": 1525881600000,
+				"installPerson": "张磊"
+			},
+			{
+				"id": "1",
+				"dr": 0,
+				"ts": 1525104000000,
+				"creator": "测试",
+				"creationTime": 1525276800000,
+				"modifier": null,
+				"modifiedTime": 1525276800000,
+				"code": "688900",
+				
+				"providerId": "10000",
+				"providerCode": "B0021921",
+				"providerName":"石家庄科大店",
+				"installCode":"AZ20180203030",
+				"installedDate": 1525881600000,
+				"installPerson": "赵欣"
+			}
+		],
+		"totalElements": 1,
+		"last": true,
+		"totalPages": 1,
+		"size": 10,
+		"number": 0,
+		"sort": [{
+			"direction": "DESC",
+			"property": "creationTime",
+			"ignoreCase": false,
+			"nullHandling": "NATIVE",
+			"ascending": false,
+			"descending": true
+		}],
+		"first": true,
+		"numberOfElements": 1
+	},
+	"consultList":{
+		"content": [
+			{
+				"id": "1",
+				"dr": 0,
+				"ts": 1525104000000,
+				"creator": "测试",
+				"creationTime": 1525276800000,
+				"modifier": "黄亮",
+				"modifiedTime": 1525276800000,
+
+				"code": "WX201839932000",
+				"consultContent":"安装咨询",
+				"consultDate": 1525881600000,
+				"consultPerson": "李小璐"
+			}
+		],
+		"totalElements": 1,
+		"last": true,
+		"totalPages": 1,
+		"size": 10,
+		"number": 0,
+		"sort": [{
+			"direction": "DESC",
+			"property": "creationTime",
+			"ignoreCase": false,
+			"nullHandling": "NATIVE",
+			"ascending": false,
+			"descending": true
+		}],
+		"first": true,
+		"numberOfElements": 1
+	},
+	"repairList":{
+		"content": [
+			{
+				"id": "1",
+				"dr": 0,
+				"ts": 1525104000000,
+				"creator": "测试",
+				"creationTime": 1525276800000,
+				"modifier": null,
+				"modifiedTime": 1525276800000,
+				"repairCode": "WX201877379193",
+				"faultClassify":"安装异常",
+				"repairDate": 1525881600000,
+				"repairPerson": "李小璐",
+				"repairGoods": "HEGII恒洁超旋风节水马桶",
+				"repairType": "保内",
+				"providerName": "北京办事处杨可可"
+				
+			},
+			{
+				"id": "1",
+				"dr": 0,
+				"ts": 1525104000000,
+				"creator": "测试",
+				"creationTime": 1525276800000,
+				"modifier": null,
+				"modifiedTime": 1525276800000,
+				"repairCode": "WX201870392323",
+				"faultClassify":"出水口堵塞",
+				"repairDate": 1525881600000,
+				"repairPerson": "黄志民",
+				"repairGoods": "浴室手持花洒头",
+				"repairType": "保外",
+				"providerName": "北京办事处杨可可"
+				
+			}
+		],
+		"totalElements": 1,
+		"last": true,
+		"totalPages": 1,
+		"size": 10,
+		"number": 0,
+		"sort": [{
+			"direction": "DESC",
+			"property": "creationTime",
+			"ignoreCase": false,
+			"nullHandling": "NATIVE",
+			"ascending": false,
+			"descending": true
+		}],
+		"first": true,
+		"numberOfElements": 1
+	}
+}

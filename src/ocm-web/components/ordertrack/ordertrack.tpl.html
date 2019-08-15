@@ -1,0 +1,115 @@
+<div class="ordertrackbox">
+  <!--head进度条-->
+  <div class="ordertrackbox-head">
+    <div class="head-border"> </div>
+    <div class="track-box1">
+      <!-- 经销商/三方物流 进度条  -->
+      <div class="border-t01 clearfix" style="display:none;">
+        <ul>
+          <li class="b-li b-li-first">
+            <i class="i-c"></i>
+            <span class="s-bt">付款</span>
+          </li>
+          <li class="b-li ">
+            <p class="b-p"></p>
+            <i class="i-c"></i>
+            <span class="s-bt">审核</span>
+          </li>
+          <li class="b-li ">
+            <p class="b-p"></p>
+            <i class="i-c"></i>
+            <span class="s-bt">分拨</span>
+          </li>
+          <li class="b-li">
+            <p class="b-p"></p>
+            <i class="i-c"></i>
+            <span class="s-bt">公司发货</span>
+          </li>
+          <li class="b-li">
+            <p class="b-p"></p>
+            <i class="i-c"></i>
+            <span class="s-bt">商家签收</span>
+          </li>
+          <li class="b-li">
+            <p class="b-p"></p>
+            <i class="i-c"></i>
+            <span class="s-bt">商家送货</span>
+          </li>
+          <li class="b-li">
+            <p class="b-p"></p>
+            <i class="i-c"></i>
+            <span class="s-bt">送装完毕</span>
+          </li>
+          <li class="b-li">
+            <p class="b-p"></p>
+            <i class="i-c"></i>
+            <span class="s-bt">回执上传</span>
+          </li>
+          <li class="b-li">
+            <p class="b-p"></p>
+            <i class="i-c"></i>
+            <span class="s-bt">完成</span>
+          </li>
+          <li class="b-li" style="display:none;">
+            <p class="b-p"></p>
+            <i class="i-c"></i>
+            <span class="s-bt">关闭</span>
+          </li>
+        </ul>
+      </div>
+      <!-- 经销商/三方物流 进度条  end -->
+      <!-- 供应商直发/供应商直发 进度条  -->
+      <div class="border-t01 clearfix" style="display:none;">
+        <ul>
+          <li class="b-li b-li-first">
+            <i class="i-c"></i>
+            <span class="s-bt">付款</span>
+          </li>
+          <li class="b-li ">
+            <p class="b-p"></p>
+            <i class="i-c"></i>
+            <span class="s-bt">审核</span>
+          </li>
+          <li class="b-li ">
+            <p class="b-p"></p>
+            <i class="i-c"></i>
+            <span class="s-bt">分拨</span>
+          </li>
+          <li class="b-li">
+            <p class="b-p"></p>
+            <i class="i-c"></i>
+            <span class="s-bt">公司发货</span>
+          </li>
+          <li class="b-li">
+            <p class="b-p"></p>
+            <i class="i-c"></i>
+            <span class="s-bt" style="right:-10px;">完成</span>
+          </li>
+          <li class="b-li" style="display:none;">
+            <p class="b-p"></p>
+            <i class="i-c"></i>
+            <span class="s-bt">关闭</span>
+          </li>
+        </ul>
+      </div>
+      <!-- 供应商直发/供应商直发 进度条 end   -->
+    </div>
+  </div>
+  <!--head进度条 end-->
+  <div class="ordertrackbox-content" data-bind="foreach: {data:nodeDataArr, as: 'data'}">
+    <!-- node box -->
+    <div class="ordertrack-node clearfix">
+      <div class="d-bt">
+        <p class="li-sb sb01" data-bind="text:data.title">title</p>
+      </div>
+      <ul class="ul01" data-bind="foreach: {data: data.list, as:'datalist'}">
+        <li class="node-li ">
+          <p class="li-sb sb-time" data-bind="text:datalist.operateTime">2018-10-13 21:29:54</p>
+          <p class="li-sb sb-content" data-bind="text:datalist.content">排工账号：PG1001 排工送人员：曹宽宽 排工送装人员电话：13698098766</p>
+        </li>
+      </ul>
+    </div>
+    <!-- node box end -->
+
+  </div>
+</div>

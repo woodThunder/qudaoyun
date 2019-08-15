@@ -1,0 +1,82 @@
+<style>
+  .ui-item {
+    width: 100%;
+  }
+
+
+  .ui-panel-body .ui-inputarea input {
+    width: 600px;
+  }
+
+  .ui-panel-body .ui-item.ui-textarea-item .ui-inputarea textarea {
+    width: 600px;
+  }
+
+  .content-box{
+    padding-top:20px;
+    padding-bottom:20px;
+    border-bottom: 1px solid #eee
+  }
+
+  .content-box:last-child{
+    padding-top:20px;
+    padding-bottom:20px;
+    border-bottom: 0
+  }
+
+  p{
+    font-size: 16px;
+    font-weight: bold
+  }
+.content-button{
+  padding:40px;
+}
+
+
+</style>
+
+<div class="ui-panel ui-list-panel">
+  <div>
+    <div class="page-title">
+      <span data-bind="text:title"></span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+  <ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+  </ui-searchbox>
+  <div class="ui-panel-body">
+    <div class="ui-panel-body-head">
+      <div class="ui-panel-body-head-left">
+        <!-- <ui-buttons params='datasource:$root.buttonSource'>
+        </ui-buttons> -->
+      </div>
+    </div>
+    <div class="ui-table-container">
+      <div class="content-box">
+        <p>畅捷支付设置</p>
+        <ui-card params='datasource:$root.card1Source,dt:$root.simpleList,vm:$root'>
+        </ui-card>
+      </div>
+      <div class="content-box">
+        <p>支付宝支付设置</p>
+        <ui-card params='datasource:$root.card2Source,dt:$root.simpleList,vm:$root'>
+        </ui-card>
+      </div>
+      <div class="content-box">
+        <p>微信支付设置</p>
+        <ui-card params='datasource:$root.card3Source,dt:$root.simpleList,vm:$root'>
+        </ui-card>
+        <div class="content-button">
+           <ui-buttons style="float:right;" params='datasource:$root.buttonSource'>
+        </ui-buttons>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

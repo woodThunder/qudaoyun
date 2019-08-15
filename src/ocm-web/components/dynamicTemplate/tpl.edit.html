@@ -1,0 +1,69 @@
+<!-- 编辑模板start -->
+<div class="u-tabs ui-tabs">
+	<div class="tab-content" style="margin-bottom: 20px; padding: 0 16px;">
+		{{#each head.comps }}
+		{{#if emptyGroup.length}}
+		<ui-card params='{{stringifyObject emptyGroup.uicomp.params}}'>
+		</ui-card>
+		{{/if}}
+		{{#if groups.length}}
+		<div class="ui-collapse-group border">
+			<div id="default-example" data-collapse>
+				{{#each groups}}
+				<h3 class="ui-collapse-title  clearfix  margin-top-10 open">
+					<i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+					<i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+					{{label}}
+				</h3>
+				<div class="ui-collapse-content clearfix" id="baseInfo">
+					<ui-card params='{{stringifyObject uicomp.params}}'>
+					</ui-card>
+				</div>
+				{{/each}}
+			</div>
+		</div>
+		{{/if}}
+		{{/each}}
+	</div>
+	<div class="u-tabs__tab-bar margin-bottom-10">
+		{{#each tabs}}
+		<a href="#tab-panel-{{addOne @index}}" class="u-tabs__tab {{#if @first}}is-active{{/if}}">{{tabName}}</a>
+		{{/each}}
+		{{#if hasImage}}<a href="#tab-panel-imageItems" class="u-tabs__tab">图片</a> {{/if}}
+	</div>
+	{{#each tabs}}
+	<div class="u-tabs__panel clearfix {{#if @first}}is-active{{/if}}" id="tab-panel-{{addOne @index}}">
+		{{#each comps}}
+		<div style="margin-bottom: 10px;">
+			<ui-buttons params='{{stringifyObject uibuttons.params}}'>
+			</ui-buttons>
+		</div>
+		<div class="ui-table-container">
+			<div style="margin-bottom: 10px;">
+				<ui-buttons params='{{stringifyObject uiTabButtons.params}}'>
+				</ui-buttons>
+			</div>
+			<ui-grid params='{{stringifyObject uicomp.params}}'>
+			</ui-grid>
+		</div>
+		{{/each}}
+	</div>
+	{{/each}}
+	{{#if hasImage}}
+	<div class="u-tabs__panel clearfix" id="tab-panel-imageItems">
+		{{#each imageItems}}
+		<div class="ui-card">
+			<div class="ui-card-head">{{label}}</div>
+			<div class="ui-card-content padding-bottom-0">
+				<div class="ui-imglist">
+					{{#each imageUrls}}
+					<div class="ui-imgitem"><img src="{{this}}" width="50" height="50"></div>
+					{{/each}}
+				</div>
+			</div>
+		</div>
+		{{/each}}
+	</div>
+	{{/if}}
+</div>
+<!-- 详情模板end -->

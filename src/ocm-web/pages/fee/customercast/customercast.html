@@ -1,0 +1,352 @@
+<!-- 列表页 -->
+<div class="ui-list-panel ui-panel">
+  <div>
+    <div class="page-title">
+      <span>客户费用单</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+  <ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+  </ui-searchbox>
+
+  <div class="ui-panel-body">
+    <div class="ui-panel-body-head">
+      <div class="ui-panel-body-head-left">
+        <ui-buttons-menu params='datasource:$root.button1Source,vm:$root'>
+                </ui-buttons-menu>
+      </div>
+    </div>
+    <div class="ui-table-container">
+      <ui-grid params='options:$root.grid1Option,vm:$root'>
+      </ui-grid>
+      <div class="ui-statistics margin-top-10">
+        已选择
+        <span class="font-c-blue" data-bind="text:complexList.selectedIndices().length"></span>项数据
+      </div>
+      <div class="pagination-right">
+        <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"complexList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 单据页 -->
+<div class="ui-bill-panel ui-panel" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span>产品组合</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-pagination">
+        <label class="billtitle" style="float: left" data-bind="visible:pageVisble">待处理申请单：</label>
+        <div id='pagination2' style="float: left" data-bind="visible:pageVisble" class='u-pagination pagination-sm' u-meta='{"type":"pagination","data":"pageModel","pageChange":"pageChange4Add","showState": false,"beforePageChange":"beforPageChangeFun"}'></div>
+    </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <ui-buttons params='datasource:$root.button2Source'>
+      </ui-buttons>
+    </div>
+  </div>
+  <div class="ui-panel-head ui-bill-head">
+    <ui-card params='datasource:$root.card1Source,vm:$root,dt:$root.mainCard,billstatus:$root.billPanelStatus'>
+    </ui-card>
+  </div>
+  <div class="ui-bill-body">
+    <div class="margin-bottom-10">
+      <ui-buttons params='datasource:$root.button3Source'>
+      </ui-buttons>
+    </div>
+    <div class="ui-table-container margin-bottom-30">
+      <ui-grid params='options:$root.grid2Option,vm:$root'>
+      </ui-grid>
+    </div>
+    <!--附件开始-->
+    <h3 class="ui-collapse-title  clearfix goods-choose-result9 open margin-top-20">
+      <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+      <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+      附件
+    </h3>
+    <div class="ui-collapse-content goods-choose-content9 clearfix">
+      <div id="file-form"></div>
+      <div id="goods-card-attach"></div>
+      <ui-buttons params='datasource:$root.button6Source'>
+      </ui-buttons>
+    </div>
+    <!--附件结束-->
+  </div>
+</div>
+
+<!-- 详情页 -->
+<div class="ui-bill-detail ui-panel" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span>产品组合</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <ui-buttons params='datasource:$root.button4Source'>
+        </ui-buttons>
+    </div>
+  </div>
+  <div id="bpmhead"></div>
+<div id="bpmfoot"></div>
+  <div class="ui-panel-head">
+    <ui-detail params='datasource:$root.detail11Source,dt:$root.complexList,vm:$root'>
+
+    </ui-detail>
+  </div>
+  <div class="ui-bill-body">
+    <div class="ui-table-container margin-bottom-30">
+      <ui-grid params='options:$root.grid3Option,vm:$root'>
+      </ui-grid>
+    </div>
+  </div>
+  <div class="ui-bill-footer">
+    <!--附件开始-->
+      <h3 class="ui-collapse-title  clearfix goods-choose-result9 open margin-top-20">
+        <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+        <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+        附件
+      </h3>
+      <div class="ui-collapse-content goods-choose-content9 clearfix">
+        <div id="file-form"></div>
+        <div id="goods-detail-attach"></div>
+        <ui-buttons params='datasource:$root.button7Source'>
+        </ui-buttons>
+        <!-- <ui-buttons params='datasource:$root.button4Source'>
+      </ui-buttons> -->
+      </div>
+      <!--附件结束-->
+  </div>
+</div>
+<!-- 应收单生成 -->
+<div class="ui-bill-should ui-panel" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span>应收单</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <ui-buttons params='datasource:$root.button5Source'>
+      </ui-buttons>
+    </div>
+  </div>
+  <div class="ui-panel-head ui-bill-head">
+    <ui-card params='datasource:$root.card2Source,vm:$root,dt:$root.shBilllList'>
+    </ui-card>
+  </div>
+  <div class="ui-bill-body">
+    <div class="margin-bottom-10">
+      <ui-buttons params='datasource:$root.button8Source'>
+      </ui-buttons>
+    </div>
+    <div class="ui-table-container margin-bottom-30">
+      <ui-grid params='options:$root.grid5Option,vm:$root'>
+      </ui-grid>
+    </div>
+  </div>
+</div>
+<!--参照费用申请单生成 -->
+<div id="refeebil-popup" style="display: none;">
+    <div class="u-msg-title">
+      <h4>参照费用申请单生成</h4>
+    </div>
+    <div class="u-tabs ui-tabs u-msg-content">
+        <div class="special-product">
+            <div class="u-tabs__tab-bar">
+                <a id="tab1" href="#tab-panel-1" class="u-tabs__tab is-active" data-bind="">选单</a>
+                <a id="tab2" href="#tab-panel-2" class="u-tabs__tab" data-bind="">已选</a>
+            </div>
+            <div id="tab-panel-1" class="u-tabs__panel is-active">
+                <ui-searchbox style="position: relative ;top:-12px;" params='datasource:$root.searchSource2,ref:$root.searchcomp2,search:$root.search2,clean:$root.cleanSearch2'></ui-searchbox>
+                <div class="product-content margin-top-10">
+                    <div class="ui-table-container">
+                        <div class="ui-collapse-group">
+                            <div data-collapse>
+                                <h3 class="ui-collapse-title open" style="margin-bottom:0">
+                                    <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                                    <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                                    费用申请单
+                                </h3>
+                                <div class="ui-collapse-content">
+                                    <div class="purchaseList">
+                                        <ui-grid params='options:$root.grid6Option,vm:$root'>
+                                        </ui-grid>
+                                        <div class="pagination-right">
+                                            <div class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"applaybillList","pageChange":"pageChangeRefer","sizeChange":"sizeChangeRefer"}'></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h3 class="ui-collapse-title open" style="margin-bottom:0">
+                                    <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                                    <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                                    对应申请单信息
+                                </h3>
+                                <div class="ui-collapse-content">
+                                    <div class="purchaseListItem">
+                                        <ui-grid params='options:$root.grid6ItemOption,vm:$root'>
+                                        </ui-grid>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="tab-panel-2" class="u-tabs__panel">
+                <div class="ui-table-container">
+                    <div class="ui-collapse-group">
+                        <div data-collapse>
+                            <h3 class="ui-collapse-title open" style="margin-bottom:0">
+                                <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                                <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                                费用申请单
+                            </h3>
+                            <div class="ui-collapse-content">
+                                <div class="purchaseList_Sel">
+                                    <ui-grid params='options:$root.grid6referOption,vm:$root'>
+                                    </ui-grid>
+                                </div>
+                            </div>
+                            <h3 class="ui-collapse-title open" style="margin-bottom:0">
+                                <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                                <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                                对应申请单信息
+                            </h3>
+                            <div class="ui-collapse-content">
+                                <div class="purchaseListItem_Sel">
+                                    <ui-grid params='options:$root.grid6ItemreferOption,vm:$root'>
+                                    </ui-grid>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="u-msg-footer">
+        <a class="ui-btn ui-btn-primary u-msg-cancel margin-right-5">取消
+        </a>
+        <a class="ui-btn ui-btn-green  u-msg-ok">确认
+        </a>
+    </div>
+  </div>
+<!--参照返利生成 -->
+<div id="resalebill-popup" style="display: none;">
+    <div class="u-msg-title">
+      <h4>参照返利结算单</h4>
+    </div>
+    <div class="u-tabs ui-tabs u-msg-content">
+        <div class="special-product">
+            <div class="u-tabs__tab-bar">
+                <a id="tab3" href="#tab-panel-3" class="u-tabs__tab is-active" data-bind="">选单</a>
+                <a id="tab4" href="#tab-panel-4" class="u-tabs__tab" data-bind="">已选</a>
+            </div>
+            <div id="tab-panel-3" class="u-tabs__panel is-active">
+                <ui-searchbox style="position: relative ;top:-12px;" params='datasource:$root.searchSource3,ref:$root.searchcomp3,search:$root.search3,clean:$root.cleanSearch3'></ui-searchbox>
+                <div class="product-content margin-top-10">
+                    <div class="ui-table-container">
+                        <div class="ui-collapse-group">
+                            <div data-collapse>
+                                <h3 class="ui-collapse-title open" style="margin-bottom:0">
+                                    <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                                    <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                                    返利结算单
+                                </h3>
+                                <div class="ui-collapse-content">
+                                    <div class="purchaseList">
+                                        <ui-grid params='options:$root.grid7Option,vm:$root'>
+                                        </ui-grid>
+                                        <div class="pagination-right">
+                                            <div class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"resalebillListOp","pageChange":"pageChangeRefer","sizeChange":"sizeChangeRefer"}'></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h3 class="ui-collapse-title open" style="margin-bottom:0">
+                                    <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                                    <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                                    对应返利结算单信息
+                                </h3>
+                                <div class="ui-collapse-content">
+                                    <div class="purchaseListItem">
+                                        <ui-grid params='options:$root.grid7ItemOption,vm:$root'>
+                                        </ui-grid>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="tab-panel-4" class="u-tabs__panel">
+                <div class="ui-table-container">
+                    <div class="ui-collapse-group">
+                        <div data-collapse>
+                            <h3 class="ui-collapse-title open" style="margin-bottom:0">
+                                <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                                <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                                返利结算单
+                            </h3>
+                            <div class="ui-collapse-content">
+                                <div class="purchaseList_Sel">
+                                    <ui-grid params='options:$root.grid7referOption,vm:$root'>
+                                    </ui-grid>
+                                </div>
+                            </div>
+                            <h3 class="ui-collapse-title open" style="margin-bottom:0">
+                                <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                                <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                                对应返利结算单信息
+                            </h3>
+                            <div class="ui-collapse-content">
+                                <div class="purchaseListItem_Sel">
+                                    <ui-grid params='options:$root.grid7ItemreferOption,vm:$root'>
+                                    </ui-grid>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="u-msg-footer">
+        <a class="ui-btn ui-btn-primary u-msg-cancel margin-right-5">取消
+        </a>
+        <a class="ui-btn ui-btn-green  u-msg-ok">确认
+        </a>
+    </div>
+  </div>
+  </div>
+<div id="exportFiel"></div>
+<div id="importFiel"></div>
+<!-- 附件上传-->
+<div id="fileiptwrap">
+  <input class="u-input" type="file" name="addfile" id="attachuploadbatch_id" multiple="multiple" style="display:none;" />
+</div>

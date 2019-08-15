@@ -1,0 +1,101 @@
+<!-- 列表页 -->
+<div class="ui-list-panel ui-panel">
+  <div>
+    <div class="page-title">
+      <span>样品申请</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+  <ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+  </ui-searchbox>
+
+  <div class="ui-panel-body">
+    <div class="ui-panel-body-head">
+      <div class="ui-panel-body-head-left">
+        <ui-buttons params='datasource:$root.button1Source'>
+        </ui-buttons>
+      </div>
+    </div>
+    <div class="ui-table-container">
+      <ui-grid params='options:$root.grid1Option,vm:$root'>
+      </ui-grid>
+      <div class="ui-statistics margin-top-10">
+        已选择
+        <span class="font-c-blue" data-bind="text:complexList.selectedIndices().length"></span>项数据
+      </div>
+      <div class="pagination-right">
+        <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"complexList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+      </div>
+    </div>
+  </div>
+  <!-- 查看详情-start -->
+  <div class="u-tabs ui-tabs">
+    <div class="u-tabs__tab-bar margin-top-10 margin-bottom-10">
+      <a href="#tab-panel-1" class="u-tabs__tab">订单详情</a>
+      <a href="#tab-panel-2" class="u-tabs__tab is-active">商品信息</a>
+    </div>
+    <div class="u-tabs__panel" id="tab-panel-1">
+    	<div id="bpmhead"></div>
+  		<div id="bpmfoot"></div>
+      <div class="ui-panel-head clearfix">
+        <ui-detail params='datasource:$root.detail11Source,dt:$root.complexList,vm:$root'>
+        </ui-detail>
+      </div>
+      <!--head end-->
+    </div>
+    <!-- 订单信息-end -->
+    <!-- 商品信息-start -->
+    <div class="u-tabs__panel is-active" id="tab-panel-2">
+      <ui-grid params='options:$root.grid3Option,vm:$root'>
+      </ui-grid>
+    </div>
+  </div>
+</div>
+<!-- 新增订单信息 -->
+<div class="ui-panel ui-bill-panel" style="display: none;" id="validate">
+    <div>
+        <div class="page-title">
+            <span>新增门店要货单</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="ui-panel-btn-bg">
+        <div class="ui-operate-btn">
+            <ui-buttons params='datasource:$root.button2Source'></ui-buttons>
+        </div>
+    </div>
+    <div class="ui-panel-head ui-bill-head">
+        <ui-card params='datasource:$root.purchaseCardSource,vm:$root,dt:$root.complexList,billstatus:$root.billPanelStatus'>
+        </ui-card>
+    </div>
+    <div class="ui-bill-body">
+        <div class="ui-panel-body-head">
+            <div class="ui-panel-body-head-left">
+                <ui-buttons params='datasource:$root.button3Source'></ui-buttons>
+            </div>
+        </div>
+        <div class="ui-table-container margin-bottom-30">
+            <ui-grid params='options:$root.grid2Option,vm:$root'></ui-grid>
+        </div>
+        <div id="productRefer" u-meta='{"type":"uiRefer","data":"ProductRef","field":"productRefer"}' style="display:none;">
+            <input readonly="readonly" />
+            <span class="ui-icon uifont icon-bar refer"></span>
+        </div>
+         <!-- <div id="combineProductRefer" u-meta='{"type":"uiRefer","data":"CombineProductRef","field":"combineProductRefer"}' style="display:none;">
+            <input readonly="readonly" />
+            <span class="ui-icon uifont icon-bar refer"></span>
+        </div> -->
+        
+    </div>
+</div>

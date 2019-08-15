@@ -1,0 +1,122 @@
+<div class="ui-list-panel ui-panel">
+  <div>
+    <div class="page-title">
+      <span>公告</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+
+  <ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+  </ui-searchbox>
+
+  <div class="ui-panel-body">
+    <div class="ui-panel-body-head">
+      <div class="ui-panel-body-head-left">
+        <ui-buttons params='datasource:$root.button1Source'>
+        </ui-buttons>
+      </div>
+    </div>
+    <div class="ui-table-container">
+      <ui-grid params='options:$root.grid1Option,vm:$root'>
+      </ui-grid>
+      <div class="ui-statistics margin-top-10">
+        已选择
+        <span class="font-c-blue" data-bind="text:NoticeList.selectedIndices().length"></span>项数据
+      </div>
+      <div class="pagination-right">
+        <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"NoticeList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 单据页 -->
+<div class="ui-bill-panel ui-panel" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span>公告信息</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <ui-buttons params='datasource:$root.button2Source'>
+      </ui-buttons>
+    </div>
+  </div>
+  <div class="ui-panel-head ui-bill-head" id="noticeBase">
+    <ui-card params='datasource:$root.card1Source,vm:$root,dt:$root.NoticeList,billstatus:$root.billPanelStatus'>
+    </ui-card>
+  </div>
+  <div id="custRangeBase" class="ui-bill-body J-custRange margin-bottom-30" style="display: none;padding-left:105px;">
+    <div class="ui-bill-body-btns">
+      <ui-buttons params='datasource:$root.button3Source'>
+      </ui-buttons>
+    </div>
+    <div class="ui-table-container">
+      <ui-grid params='options:$root.grid2Option,vm:$root'>
+      </ui-grid>
+    </div>
+  </div>
+  <div class="ui-panel-head ui-bill-head margin-bottom-30">
+    <div class="ui-item  ui-textarea-item">
+      <div class="ui-name">内容：</div>
+      <div class="ui-inputarea">
+        <div name="editEditor" id="editEditor" rows="30" cols="80">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- 详情页 -->
+<div class="ui-bill-detail ui-panel" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span>公告信息</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <ui-buttons params='datasource:$root.button4Source'>
+      </ui-buttons>
+    </div>
+  </div>
+  <div class="ui-panel-head">
+    <ui-detail params='datasource:$root.detail1Source,dt:$root.NoticeList,vm:$root'>
+    </ui-detail>
+  </div>
+  <div class="ui-bill-body J-custRange margin-bottom-30" style="display: none;padding-left:105px;">
+    <div class="ui-table-container">
+      <ui-grid params='options:$root.grid3Option,vm:$root'>
+      </ui-grid>
+    </div>
+  </div>
+  <div class="ui-panel-head ui-bill-head margin-bottom-30">
+    <div class="ui-item  ui-textarea-item">
+      <div class="ui-name">内容：</div>
+      <div class="ui-inputarea">
+        <div name="detailEditor" id="detailEditor" rows="30" cols="80">
+        </div>
+      </div>
+    </div>
+    <div class="ui-bill-footer">
+    </div>
+  </div>

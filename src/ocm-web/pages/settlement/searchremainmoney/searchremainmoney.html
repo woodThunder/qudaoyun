@@ -1,0 +1,55 @@
+<!-- 列表页 -->
+<div class="ui-list-panel ui-panel">
+  <div>
+    <div class="page-title">
+      <span>应收余额查询</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+  <ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+  </ui-searchbox>
+  <div class="ui-panel-body">
+    <div class="ui-panel-body-head">
+      <div class="ui-panel-body-head-left">
+        <!-- <ui-buttons params='datasource:$root.button1Source'>
+        </ui-buttons> -->
+      </div>
+    </div>
+    <div class="ui-table-container">
+      <ui-grid params='options:$root.grid1Option,vm:$root'>
+      </ui-grid>
+      <div class="ui-statistics margin-top-10">
+        已选择
+        <span class="font-c-blue" data-bind="text:complexList.selectedIndices().length"></span>项数据
+      </div>
+      <div class="pagination-right">
+        <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"complexList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+      </div>
+    </div>
+    <div class="u-tabs ui-tabs">
+      <div class="u-tabs__tab-bar margin-top-10 margin-bottom-10">
+        <!-- <a href="#tab-panel-1" class="u-tabs__tab">主表信息</a> -->
+        <a href="#tab-panel-2" class="u-tabs__tab is-active">子表信息</a>
+      </div>
+     <!--  <div class="u-tabs__panel" id="tab-panel-1">
+        <ui-detail params='datasource:$root.detail11Source,dt:$root.complexList,vm:$root'>
+        </ui-detail>
+      </div> -->
+      <div class="u-tabs__panel is-active" id="tab-panel-2">
+        <div class="ui-table-container margin-bottom-30">
+          <ui-grid params='options:$root.grid2Option,vm:$root'>
+          </ui-grid>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="exportFiel"></div>

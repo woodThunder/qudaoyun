@@ -1,0 +1,80 @@
+.cloud {
+    background: #3f51b5;
+}
+
+.navbar-portal .navbar-toggle .icon-bar {
+    background-color: #ffffff;
+}
+
+.navbar-portal .navbar-toggle:hover, .navbar-portal .navbar-toggle:focus {
+    color: #fff;
+    background-color: #3f51b5;
+}
+
+.navbar-toggle-button.collapse.in {
+    background: #3f51b5;
+}
+#username span {
+    color: #fff;
+}
+.site-menubar {
+    background: #fff;
+}
+.menubar > li.active {
+    background: #f4f4f4;
+    border-left: 2px solid #f4f4f4;
+    border-top: 1px solid #f4f4f4;
+    border-bottom: 1px solid #f4f4f4;
+    padding: 7px 0;
+}
+
+.menubar li i, .icon-name, .menubar li.active .wb-chevron-right-mini {
+    color: #757575;
+}
+.menubar-hover {
+    background: #f4f4f4;
+}
+
+.menubar li.active i, .menubar li.active .icon-name, .menubar li.active .wb-chevron-right-mini {
+    color: #424242;
+}
+
+.menubar li.menubar-hover i, .menubar-hover .icon-name, .menubar li.menubar-hover .wb-chevron-right-mini {
+    color: #424242;
+}
+
+.menubar-menu {
+    background: #f4f4f4;
+}
+
+.menubar-menu a:hover {
+    background: #d3d3d3;
+}
+
+.menubar-menu a {
+    color: #757575;
+}
+
+.menubar-hover a {
+    color: #424242;
+}
+
+.site-menubar.sidebar-left.collapse {
+    box-shadow: 5px 0 5px 0 rgba(117,117,117,0.4);
+}
+
+.site-menubar.sidebar-left.collapse.in{
+    box-shadow: 0 0 0 0;
+}
+.navbar-portal .navbar-nav li a i {
+    color: #757575;
+}
+.navbar-portal .navbar-nav li a {
+    color: #333333;
+}
+.navbar-portal .navbar-nav li a>.u-badge-info.u-badge[data-badge]:after{
+    background-color: rgb(244,67,54);
+}
+.navbar-portal .navbar-nav li a>.u-badge-info>i{
+    color: #fff;
+}

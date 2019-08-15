@@ -1,0 +1,154 @@
+<div class="ui-panel ui-list-panel">
+        <div>
+            <div class="page-title">
+                <span data-bind="text:title"></span>
+            </div>
+        </div>
+        <div>
+            <div>
+                <div class="oc-breadcrumb">
+                </div>
+            </div>
+        </div>
+        <div class="title-seperator"></div>
+        <ui-searchbox
+            params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+        </ui-searchbox>
+        <div class="ui-panel-body">
+            <div class="ui-panel-body-head">
+                <div class="ui-panel-body-head-left">
+                    <ui-buttons params='datasource:$root.button1Source'>
+                    </ui-buttons>
+                </div>
+            </div>
+            <div class="ui-table-container">
+                <ui-grid params='options:$root.grid1Option,vm:$root'>
+                </ui-grid>
+                <div class="ui-statistics margin-top-10">
+                    已选择
+                    <span class="font-c-blue" data-bind="text:simpleList.selectedIndices().length"></span>项数据
+                </div>
+                <div class="pagination-right">
+                    <div id='pagination' class='pagination u-pagination pagination-sm'
+                        u-meta='{"type":"pagination","data":"simpleList","pageChange":"pageChange","sizeChange":"sizeChange"}'>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ui-dialogcard params='datasource:$root.dialogcardSource,ref:$root.dialogcardcomp,dt:$root.simpleList'>
+    </ui-dialogcard>
+    
+    <div class="ui-panel ui-bill-panel" style="display: none;">
+        <div>
+            <div class="page-title">
+                <span>整单规则</span>
+            </div>
+        </div>
+        <div>
+            <div>
+                <div class="oc-breadcrumb">
+                </div>
+            </div>
+        </div>
+        <div class="ui-panel-btn-bg">
+            <div class="ui-operate-btn">
+                <ui-buttons params='datasource:$root.button2Source'>
+                </ui-buttons>
+            </div>
+        </div>
+        <div class="ui-panel-body">
+            <div class="u-tabs  ui-tabs margin-top-10">
+                <!--基本信息开始-->
+                <div class="u-tabs__panel is-active" id="tab-panel-1">
+                    <div class="ui-bill-body">
+                        <div class="ui-collapse-group">
+                            <!-- <ui-buttons params='datasource:$root.button3Source'>
+                            </ui-buttons> -->
+                            <div id="allRUleBase">
+                                <div class="ui-collapse-group border">
+                                    <div id="default-example" data-collapse>
+                                        <!--账户信息开始-->
+                                        <h3 class="ui-collapse-title  clearfix  margin-top-10 open">
+                                            <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                                            <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                                            账户信息
+                                        </h3>
+                                        <div class="ui-collapse-content clearfix" id="baseInfo">
+                                            <div id="gridOptionInfo1">
+                                                <ui-buttons params='datasource:$root.button4Source'>
+                                                </ui-buttons>
+                                                <div class="margin-top-10">
+                                                    <ui-grid params='options:$root.grid2Option,vm:$root'>
+                                                    </ui-grid>
+                                                </div>
+                                            </div>
+                                            <div id="gridOptionInfo2">
+                                                <ui-buttons params='datasource:$root.button5Source'>
+                                                </ui-buttons>
+                                                <div class="margin-top-10">
+                                                    <ui-grid params='options:$root.grid3Option,vm:$root'>
+                                                    </ui-grid>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--账户信息结束-->
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <!-- 保存后 -->
+                            <div style="display: none;" id="allRUleBase_show">
+                                <div class="ui-collapse-group border">
+                                    <div id="default-example_show" data-collapse>
+                                        <!--账户信息开始-->
+                                        <h3 class="ui-collapse-title  clearfix  margin-top-10 open">
+                                            <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                                            <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                                            账户信息
+                                        </h3>
+                                        <div class="ui-collapse-content clearfix" id="baseInfo_show">
+                                            <div class="margin-top-10">
+                                                <!-- <ui-grid params='options:$root.grid3Option,vm:$root'>
+                                                </ui-grid> -->
+                                            </div>
+                                        </div>
+                                        <!--账户信息结束-->
+                                    </div>
+                                </div>
+    
+                            </div>
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 详情 -->
+    <div class="ui-bill-detail ui-panel" style="display: none;">
+        <div>
+            <div class="page-title">
+                <span data-bind="text:title"></span>
+            </div>
+        </div>
+        <div>
+            <div>
+                <div class="oc-breadcrumb">
+                </div>
+            </div>
+        </div>
+        <div class="ui-panel-btn-bg">
+            <div class="ui-operate-btn">
+                <a class="ui-btn ui-btn-primary" data-bind="click: retListPanel">返回
+                </a>
+            </div>
+        </div>
+        <div class="ui-panel-head">
+            <ui-detail params='datasource:$root.detailSource,dt:$root.simpleList,vm:$root'>
+            </ui-detail>
+        </div>
+    </div>
+    <div id="exportFiel"></div>
+    <div id="importFiel"></div>

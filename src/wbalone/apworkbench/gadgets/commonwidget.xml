@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+	<ModulePrefs title="我的项目" description="MyProject"> 
+	</ModulePrefs>
+	<Content type="html" inline="true">
+	<![CDATA[
+	<div id="widgetpanel">
+	
+	</div>
+	
+	
+	
+	<script>
+	debugger;
+		var url = '${tt}';
+		var $curWidgetId='${widgetId}';
+		var content = $('#content');
+		var widgetPref = getWidgetAttr($curWidgetId);
+ 		var url = widgetPref.url;
+ 		var urltype = widgetPref.urltype;
+     	var name = widgetPref.name;
+		if(urltype=='url'){
+<!-- 			var widgetiframe = "<iframe id=\"iframe_"+$curWidgetId+"\"" src=\""+url+\"" />" -->
+<!-- 			content.html($(widgetiframe)); -->
+<!--             var autodiv = $('#iframe_'+$curWidgetId); -->
+
+<!--             function autoH() { -->
+<!--                 var addh = $(window).height() - 163; -->
+<!--                 autodiv.height(addh); -->
+<!--             } -->
+
+<!--             autoH(); -->
+<!--             if (autodiv) { -->
+<!--                 autodiv.css({ -->
+<!--                     overflow: "auto" -->
+<!--                 }); -->
+<!--                 $(window).resize(function () { -->
+<!--                     autoH(); -->
+<!--                 }) -->
+<!--             } -->
+	
+		}else if(urltype=='plugin'){
+			reu
+		}else if(urltype=='view'){
+		
+		}
+	</script>
+	]]></Content>
+</Module>

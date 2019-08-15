@@ -1,0 +1,525 @@
+#userGroups {
+    width: 96%;
+    margin: 20px auto;
+    background-color: initial;
+    padding-bottom: 40px;
+    font: 14px/18px "Microsoft YaHei"
+}
+
+#userGroups .padlft60 {
+    padding-left: 60px
+}
+
+/*
+
+#userGroups .tooltip.active .tooltip-inner {
+    background-color: #e33c37 !important
+}
+
+#userGroups .tooltip.top .tooltip-arrow {
+    border-top-color: #e33c37 !important
+}
+
+#userGroups .u-form-group {
+    margin-left: 10px;
+    margin-right: 10px
+}
+
+#userGroups .u-form-group .u-form-control {
+    border: 1px solid #d7d7d7;
+    border-radius: initial
+}
+
+#userGroups .queren {
+    font-size: 14px;
+    background-color: #1baede;
+    min-width: 65px;
+    border-radius: inherit;
+    margin-right: 15px
+}
+
+#userGroups .apptitle, #userGroups .ecmi-input {
+    background-color: transparent;
+    color: #333;
+    font-family: "Microsoft YaHei"
+}
+
+#userGroups .quxiao {
+    border: 1px solid #cecece;
+    font-size: 14px;
+    min-width: 65px;
+    border-radius: inherit
+}
+
+#userGroups .margin-top-8 {
+    margin-top: 8px
+}
+
+#userGroups input {
+    outline: 0
+}
+
+#userGroups .ecmi-input {
+    font-size: 13px;
+    width: 170px;
+    height: 29px;
+    line-height: 29px;
+    border: 1px solid #d7d7d7;
+    outline: 0;
+    margin: 0;
+    padding: 0 0 0 5px;
+    border-radius: initial
+}
+
+#userGroups .ecmi-input:focus {
+    border: 1px solid #6bcaea
+}
+
+#userGroups .apptitle {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+    margin-bottom: 20px
+}
+
+#userGroups #iconpicker .icon-show {
+    margin-top: 15px;
+    height: 50px
+}
+
+#userGroups #iconpicker .icon-show i {
+    font-size: 50px
+}
+
+#userGroups #iconpicker > p {
+    margin: 10px 0
+}
+
+#userGroups #iconpicker .colors .primaries > div {
+    cursor: pointer;
+    display: inline-block;
+    width: 30px;
+    height: 25px;
+    margin-left: 10px;
+    margin-top: 10px;
+    line-height: 25px;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 12px !important;
+    overflow: hidden
+}
+
+#userGroups .menu .sub-head .head-btn, #userGroups .menu-content .sub-head .head-btn {
+    float: right;
+    margin-top: 8px
+}
+
+#userGroups #iconpicker #sIcon {
+    border: 1px solid #eee
+}
+
+#userGroups #iconpicker #sIcon .tab {
+    background-color: #eee
+}
+
+#userGroups #iconpicker #sIcon .tab li {
+    cursor: pointer;
+    min-width: 70px;
+    display: inline-block;
+    text-align: center;
+    padding: 3px 5px;
+    background: #eee
+}
+
+#userGroups #iconpicker #sIcon .tab li.cur {
+    background-color: #fff;
+    color: #1baede
+}
+
+#userGroups #iconpicker #sIcon .icon-list {
+    padding: 10px;
+    height: 180px;
+    overflow-y: auto
+}
+
+#userGroups #iconpicker #sIcon .icon-list span {
+    cursor: pointer;
+    line-height: 24px;
+    width: 24px;
+    font-size: 22px;
+    display: inline-block;
+    overflow: hidden
+}
+
+#userGroups #iconpicker #sIcon .icon-list span:hover {
+    color: #1baede
+}
+
+#userGroups .menu {
+    width: 100%;
+    min-width: 270px;
+    overflow: hidden;
+    background-color: #fff
+}
+
+#userGroups .menu .sub-head .u-button, #userGroups .menu-content .sub-head .u-button {
+    min-width: initial
+}
+
+#userGroups .menu .sub-head {
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    border-bottom: 1px solid #d7d7d7;
+    height: 45px;
+    line-height: 45px;
+    overflow: hidden;
+    padding-left: 20px
+}
+
+#userGroups .menu .sub-head .iconfont {
+    color: #1baede;
+    padding: 0;
+    font-size: 16px
+}
+
+#userGroups .menu .sub-head .u-button:hover {
+    background-color: transparent
+}
+
+#userGroups .menu .menu-body dl {
+    margin-bottom: 0
+}
+
+#userGroups .menu .menu-body dl.cur dt, #userGroups .menu .menu-body dl.cur dt:hover {
+    position: relative;
+    background-color: #c4eaf6
+}
+
+#userGroups .menu .menu-body dl dd:hover, #userGroups .menu .menu-body dl dt:hover, #userGroups .menu .menu-body dl.cur dd.cur, #userGroups .menu .menu-body dl.cur dd:hover {
+    background-color: #e9f7fc
+}
+
+#userGroups .menu .menu-body dl.cur dt i, #userGroups .menu .menu-body dl.cur dt:hover i {
+    position: absolute;
+    left: 10px;
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
+    -moz-transform: rotate(0);
+    -o-transform: rotate(0);
+    -webkit-transform: rotate(0);
+    transform: rotate(0)
+}
+
+#userGroups .menu .menu-body dl.cur dd {
+    display: block;
+    height: 40px;
+    -webkit-transition: 1s height ease;
+    -moz-transition: 1s height ease;
+    -o-transition: 1s height ease;
+    transition: 1s height ease
+}
+
+#userGroups .menu .menu-body dl dt {
+    position: relative
+}
+
+#userGroups .menu .menu-body dl dt span.ext-truncate {
+    display: inline-block;
+    width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+#userGroups .menu .menu-body dl dt span.pull-right {
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 18px;
+    color: #1baede
+}
+
+#userGroups .menu .menu-body dl dt i {
+    font-weight: 100;
+    font-size: 12px;
+    color: #7A7777;
+    position: absolute;
+    left: 9px;
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=-1);
+    -moz-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg)
+}
+
+#userGroups .menu .menu-body dl dd, #userGroups .menu .menu-body dl dt {
+    height: 40px;
+    line-height: 40px;
+    padding-left: 25px;
+    font-weight: 500;
+    border-bottom: 1px solid #eee
+}
+
+#userGroups .menu .menu-body dl dd {
+    height: 0;
+    display: none;
+    padding-left: 35px
+}
+
+#userGroups .menu .menu-body dl dd:hover {
+    background-color: #c4eaf6
+}
+
+#userGroups .u-form-control:focus, #userGroups .u-form-control:hover {
+    border-color: #6bcaea
+}
+
+#userGroups .menu-content {
+    width: 100%;
+    overflow: hidden;
+    background-color: #fff;
+    padding-bottom: 20px
+}
+
+#userGroups .menu-content .sub-head {
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    border-bottom: 1px solid #d7d7d7;
+    height: 45px;
+    line-height: 45px;
+    overflow: hidden;
+    padding-left: 20px
+}
+
+#userGroups .menu-content .sub-head .iconfont {
+    color: #1baede;
+    padding: 0;
+    font-size: 16px
+}
+
+#userGroups .menu-content .sub-head .u-button:hover {
+    background-color: transparent
+}
+
+#userGroups .menu-content .medit {
+    padding-top: 10px
+}
+
+*/
+
+#userGroups .apptitle {
+    background-color: transparent;
+    color: #333;
+    font-family: "Microsoft YaHei";
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+    margin-bottom: 20px;
+}
+
+#userGroups .u-widget-title .u-button {
+    margin-top: -10px;
+    color: #1baede;
+    padding: 0;
+    font-size: 16px;
+}
+
+#userGroups .u-widget-bg {
+    padding: 0 !important;
+}
+#userGroups .u-widget{
+    min-height: 400px;
+}
+#userGroups  .ztree {
+    padding: 10px 20px;
+    width: 100%;
+    margin: 0 auto
+}
+
+#userGroups  .ztree a,#userGroups  .ztree span:after {
+    color: #666
+}
+
+#userGroups  .ztree li span.button.switch:after {
+    left: 0
+}
+
+#userGroups  .ztree li a:hover {
+    color: #3949AB!important;
+    background-color: #e9f7fc!important
+}
+
+#userGroups  .ztree li a.focusNode {
+    background-color: #e9f7fc!important;
+    color: #333!important
+}
+
+#userGroups  .ztree li a.activenode,#userGroups  .ztree li a.activenode:hover {
+    background-color: #e9f7fc!important;
+    color: #666!important
+}
+
+
+#userGroups #cancelLinkModal a,#userGroups #deleteModal a {
+    font-family: "Microsoft YaHei";
+    outline: 0
+}
+
+#userGroups #deleteModal .modal-content {
+    width: 100%
+}
+
+#userGroups #deleteModal .modal-dialog {
+    width: 25%;
+    margin: 150px auto
+}
+
+#userGroups #deleteModal a {
+    color: #333;
+    text-decoration: none
+}
+
+#userGroups #deleteModal .modal-header {
+    padding: 0 5px 0 28px
+}
+
+#userGroups #deleteModal .modal-header h4 {
+    color: #333;
+    font-size: 14px;
+    height: 50px;
+    line-height: 50px;
+    font-weight: 700
+}
+
+#userGroups #deleteModal .modal-header .close:active {
+    border: none
+}
+
+#userGroups #deleteModal .modal-header .close {
+    color: #fff;
+    float: right;
+    font-size: 30px;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 6px;
+    text-align: center;
+    width: 30px;
+    opacity: 1;
+    font-weight: lighter;
+    text-shadow: none
+}
+
+#userGroups #deleteModal .modal-header .close .icon-cancel02 {
+    font-size: 20px;
+    font-weight: lighter;
+    color: #ccc
+}
+
+#userGroups #deleteModal .modal-header .close .icon-cancel02:hover {
+    color: #333
+}
+
+#userGroups #deleteModal .modal-body {
+    padding: 30px 0 0
+}
+
+#userGroups #deleteModal .modal-body .head-xx {
+    color: #333;
+    font-size: 14px;
+    font-weight: 700
+}
+
+#userGroups #deleteModal .modal-body .cc {
+    padding: 0 35px
+}
+
+#userGroups #deleteModal .error {
+    font-size: 14px
+}
+
+#userGroups #deleteModal .d-txt-box {
+    float: left
+}
+
+#userGroups #deleteModal .d-txt-box .txt-p {
+    color: #00bcd4;
+    font-size: 18px;
+    line-height: 50px
+}
+
+#userGroups #deleteModal .d-txt-box .txt-p1 {
+    color: #333;
+    font-size: 14px;
+    line-height: 20px
+}
+
+#userGroups #deleteModal .d-txt-box .txt-p1 a {
+    color: #00bcd4;
+    text-decoration: underline
+}
+
+#userGroups #deleteModal .modal-footer {
+    padding: 30px 20px 20px 0;
+    border-top: none;
+    height: 90px
+}
+
+#userGroups #deleteModal .modal-footer .btnBox {
+    text-align: right
+}
+
+#userGroups #deleteModal .modal-footer .btnBox .btnBox,#userGroups #deleteModal .modal-footer .btnBox .u-form-group {
+    height: 40px;
+    display: inline-block;
+    margin-bottom: 0;
+    margin-right: 0
+}
+
+#userGroups #deleteModal .modal-footer .btnBox .u-form-group:nth-of-type(2) {
+    padding-left: 10px
+}
+
+#userGroups #deleteModal .modal-footer .btnBox .cancelbtn,#userGroups #deleteModal .modal-footer .btnBox .savebtn {
+    cursor: pointer;
+    background-color: #26c1d7;
+    font-size: 14px;
+    padding: 0 10px 0 7px;
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    outline: 0;
+    -webkit-border-radius: 0;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-radius: 1px;
+    text-decoration: none;
+    color: #fff;
+    margin-left: 0;
+    border: none;
+    min-width: 72px
+}
+
+#userGroups #deleteModal .modal-footer .btnBox .cancelbtn {
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding-left: 10px
+}
+#userGroups .queren {
+    font-size: 14px;
+    background-color: #1baede;
+    min-width: 65px;
+    border-radius: inherit;
+    margin-right: 15px
+}

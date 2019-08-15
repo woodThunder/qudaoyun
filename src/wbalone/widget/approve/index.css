@@ -1,0 +1,83 @@
+.approve .u-panel-heading{
+    background: #eeeeef;
+    border-radius: 10px!important;
+    height: 40px;
+    line-height: 40px;
+}
+.approve .u-panel{
+    border: none;
+    border-radius: 10px;
+    min-height: 240px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+}
+.approve .u-panel span{
+    padding-left: 15px;
+}
+.approve ul,li{
+    list-style: none;
+}
+.approve ul{
+    padding-right: 5px;
+    height: 40px;
+    line-height: 40px;
+    margin: 0;
+}
+.approve li{
+    cursor: pointer;
+    font-size: 12px;
+}
+.approve .title a,.title a:hover{
+    text-decoration: none;
+    color: #179DE9;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 12px;
+}
+.approve .title:not(:nth-of-type(1)) a{
+    border-left: 1px solid #C9C9CA;
+}
+.approve .u-panel-body{
+    padding: 0;
+}
+.approve .u-panel span{
+    padding-left: 15px;
+    color: #717071;
+}
+.approve .u-grid-header{
+    display: none;
+}
+.approve .u-grid-move-bg,.approve .u-grid-content-sel-row,.approve .u-grid-content-focus-row{
+    background-color: #fff!important;
+}
+.approve .u-grid{
+    border:none;
+}
+.approve .u-grid-content table{
+    display: block;
+}
+.approve .u-grid-content table td{
+    height: 30px;
+    line-height: 30px;
+}
+.approve .u-grid-content  tr > td:nth-of-type(1){
+    padding-left: 15px!important;
+}
+.approve .u-grid-content  tr > td:last-of-type{
+    text-align: right;
+}
+.approve .u-grid-content-td-div{
+    color: #595757;
+    max-width: 300px;
+}
+.approve .u-grid-content  tr > td:nth-of-type(1) div{
+    cursor: pointer;
+}
+.approve .u-grid-content  tr > td:nth-of-type(1) div:hover{
+    color: #000;
+}
+.approve .u-grid-content  tr:last-of-type td{
+    border-bottom: 0!important;
+}
+.approve .u-grid-noRowsDiv,.approve .u-grid-content table{
+    width:100%!important;
+}

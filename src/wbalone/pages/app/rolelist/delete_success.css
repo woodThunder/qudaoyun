@@ -1,0 +1,309 @@
+#roleList #cancelLinkModal a,
+#roleList #deleteModal a {
+    font-family: "Microsoft YaHei";
+    outline: 0
+}
+
+#roleList #deleteModal .modal-content {
+    width: 100%
+}
+
+#roleList #deleteModal .modal-dialog {
+    width: 25%;
+    margin: 150px auto
+}
+
+#roleList #deleteModal a {
+    color: #333;
+    text-decoration: none
+}
+
+#roleList #deleteModal .modal-header {
+    padding: 0 5px 0 28px
+}
+
+#roleList #deleteModal .modal-header h4 {
+    color: #333;
+    font-size: 14px;
+    height: 50px;
+    line-height: 50px;
+    font-weight: 700
+}
+
+#roleList #deleteModal .modal-header .close:active {
+    border: none
+}
+
+#roleList #deleteModal .modal-header .close {
+    color: #fff;
+    float: right;
+    font-size: 30px;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 6px;
+    text-align: center;
+    width: 30px;
+    opacity: 1;
+    font-weight: lighter;
+    text-shadow: none
+}
+
+#roleList #deleteModal .modal-header .close .icon-cancel02 {
+    font-size: 20px;
+    font-weight: lighter;
+    color: #ccc
+}
+
+#roleList #deleteModal .modal-header .close .icon-cancel02:hover {
+    color: #333
+}
+
+#roleList #deleteModal .modal-body {
+    padding: 30px 0 0
+}
+
+#roleList #deleteModal .modal-body .head-xx {
+    color: #333;
+    font-size: 14px;
+    font-weight: 700
+}
+
+#roleList #deleteModal .modal-body .cc {
+    padding: 0 35px
+}
+
+#roleList #deleteModal .error {
+    font-size: 14px
+}
+
+#roleList #deleteModal .d-txt-box {
+    float: left
+}
+
+#roleList #deleteModal .d-txt-box .txt-p {
+    color: #00bcd4;
+    font-size: 18px;
+    line-height: 50px
+}
+
+#roleList #deleteModal .d-txt-box .txt-p1 {
+    color: #333;
+    font-size: 14px;
+    line-height: 20px
+}
+
+#roleList #deleteModal .d-txt-box .txt-p1 a {
+    color: #00bcd4;
+    text-decoration: underline
+}
+
+#roleList #deleteModal .modal-footer {
+    padding: 30px 20px 20px 0;
+    border-top: none;
+    height: 90px
+}
+
+#roleList #deleteModal .modal-footer .btnBox {
+    text-align: right
+}
+
+#roleList #deleteModal .modal-footer .btnBox .btnBox,
+#roleList #deleteModal .modal-footer .btnBox .u-form-group {
+    height: 40px;
+    display: inline-block;
+    margin-bottom: 0;
+    margin-right: 0
+}
+
+#roleList #deleteModal .modal-footer .btnBox .u-form-group:nth-of-type(2) {
+    padding-left: 10px
+}
+
+#roleList #deleteModal .modal-footer .btnBox .cancelbtn{
+    line-height: 30px;
+    height: 30px;
+    padding: 0 5px;
+    border: 1px solid #039BE5;
+    color: #039BE5;
+    font-size: 12px;
+    border-radius: 4px;
+    background: #fff;
+    cursor: pointer;
+    float: left;
+    outline: 0;
+    -webkit-border-radius: 0;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-decoration: none;
+    min-width: 72px;
+    border-radius: 4px;
+}
+#roleList #deleteModal .modal-footer .btnBox .savebtn {
+    cursor: pointer;
+    float: left;
+    outline: 0;
+    -webkit-border-radius: 0;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-decoration: none;
+    min-width: 72px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 5px;
+    font-size: 12px;
+    color: #fff;
+    background-color: #039BE5;
+    border-radius: 4px;
+}
+
+
+
+#roleList #cancelLinkModal .modal-content {
+    width: 100%
+}
+
+#roleList #cancelLinkModal .modal-dialog {
+    width: 25%;
+    margin: 150px auto
+}
+
+#roleList #cancelLinkModal a {
+    color: #333;
+    text-decoration: none
+}
+
+#roleList #cancelLinkModal .modal-header {
+    padding: 0 5px 0 28px
+}
+
+#roleList #cancelLinkModal .modal-header h4 {
+    color: #333;
+    font-size: 14px;
+    height: 50px;
+    line-height: 50px;
+    font-weight: 700
+}
+
+#roleList #cancelLinkModal .modal-header .close:active {
+    border: none
+}
+
+#roleList #cancelLinkModal .modal-header .close {
+    color: #fff;
+    float: right;
+    font-size: 30px;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 6px;
+    text-align: center;
+    width: 30px;
+    opacity: 1;
+    font-weight: lighter;
+    text-shadow: none
+}
+
+#roleList #cancelLinkModal .modal-header .close .icon-cancel02 {
+    font-size: 20px;
+    font-weight: lighter;
+    color: #ccc
+}
+
+#roleList #cancelLinkModal .modal-header .close .icon-cancel02:hover {
+    color: #333
+}
+
+#roleList #cancelLinkModal .modal-body {
+    padding: 30px 0 0
+}
+
+#roleList #cancelLinkModal .modal-body .head-xx {
+    color: #333;
+    font-size: 14px;
+    font-weight: 700
+}
+
+#roleList #cancelLinkModal .modal-body .cc {
+    padding: 0 35px
+}
+
+#roleList #cancelLinkModal .error {
+    width: 620px;
+    font-size: 18px;
+    line-height: 84px
+}
+
+#roleList #cancelLinkModal .d-txt-box {
+    float: left;
+    height: 84px;
+    width: 400px
+}
+
+#roleList #cancelLinkModal .d-txt-box .txt-p {
+    color: #00bcd4;
+    font-size: 18px;
+    line-height: 50px
+}
+
+#roleList #cancelLinkModal .d-txt-box .txt-p1 {
+    color: #333;
+    font-size: 14px;
+    line-height: 20px
+}
+
+#roleList #cancelLinkModal .d-txt-box .txt-p1 a {
+    color: #00bcd4;
+    text-decoration: underline
+}
+
+#roleList #cancelLinkModal .modal-footer {
+    padding: 0;
+    text-align: right;
+    border-top: none
+}
+
+#roleList #cancelLinkModal .modal-footer .btnBox {
+    border-top: 1px solid #ccc;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 30px
+}
+
+#roleList #cancelLinkModal .modal-footer a.btn {
+    border-radius: 6px;
+    color: #fff !important;
+    display: inline-block;
+    height: 40px;
+    line-height: 28px;
+    margin: 0 5px;
+    text-align: center;
+    width: 110px;
+    font-size: 15px
+}
+
+#roleList #cancelLinkModal .modal-footer .btnBox a.green {
+    background-color: #84c351
+}
+
+#roleList #cancelLinkModal .modal-footer .btnBox a.blue {
+    background-color: #00bcd4
+}

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html class="no-js css-menubar" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="bootstrap admin template">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="favicon.ico" type="images/x-icon"/>
+    <link rel="Bookmark" href="favicon.ico">
+    <link rel="icon" href="favicon.png" type="images/png"/>
+
+    <link rel="stylesheet" href="trd/vendor/skintools/skintools.css">
+    <title>portal</title>
+    <script type="text/javascript">
+        (function (a, c) {
+            var e = function () {
+                var b = a.cookie.match(/u_logints=\d*/g);
+                if (b.length != 1 || b[0].length != 23) {
+                    a.location.href = "./home/index";
+                }
+            };
+            c.onpageshow = e;
+            e();
+        })(document, window)
+    </script>
+
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="trd/bootstrap/css/bootstrap.min.css">
+    <link href="index.css" rel="stylesheet">
+    <link href="marketing.css" rel="stylesheet">
+    <link href="apworkbench/css/assets/workbench_common.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="apworkbench/trd/uui/css/u.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="apworkbench/trd/uui/css/tree.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="apworkbench/trd/uui/css/grid.css" media="screen" title="no title" charset="utf-8">
+
+    <!-- <link rel="stylesheet" href="//design.yyuap.com/static/uui/3.0.6/css/u.css"> -->
+    <!--[if lt IE 9]>
+    <script src="./trd/vendor/html5shiv/html5shiv.min.js"></script>
+    <script src="./trd/es5-shim/4.5.7/es5-shim.min.js"></script>
+    <script src="./trd/es5-shim/4.5.7/es5-sham.min.js"></script>
+    <script src="./trd/vendor/respond/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Scripts -->
+    <script src="/wbalone/trd/vendor/modernizr/modernizr.min.js"></script>
+    <script>
+        window.$ctx = '/wbalone';
+    </script>
+    <script>
+        window.baseUrl = '/wbalone';
+        window.contextRoot = '/wbalone';
+    </script>
+    <script src="apworkbench/trd/eventBus/sockjs-0.3.4.min.js"></script>
+
+    <script src="apworkbench/trd/eventBus/vertx-eventbus.js"></script>
+    <script src="apworkbench/trd/eventBus/vertx-client-sdk.js"></script>
+    <style>
+        .active {
+            background: initial;
+        }
+
+        .widget-home .add-to-sidebar {
+            display: none;
+        }
+
+        .widget-home {
+            border: 1px solid #2788cc;
+            border-radius: 5px;
+            height: 168px;
+        }
+
+        .widget {
+            height: 170px;
+        }
+
+        .add-to-sidebar {
+            display: inline-block;
+        }
+
+        .page-header-actions .dropdown-menu {
+            width: 300px;
+        }
+
+        #widgetList .counter-number-group, #layoutList .counter-number-group {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body class="dashboard site-navbar-small site-menubar-fd">
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div class="topBar">
+    <div class="topBg ">
+        <div class="logo_personal ">
+            <div class="personal">
+                <ul>
+                    <li class="tip"><a href="#messageCenter" id="messageCount"><b>1</b></a></li>
+                    <li class="msg"><a href="#"><b>3</b></a></li>
+                    <li class="user">
+                        <div class="userHead"><a href="#"><img src="bg_topbar.png"></a></div>
+                        <div class="userName" id="dropdownMenu"><a href="javaScript:;">我是神仙大人<span
+                                class="triangle-down"></span></a></div>
+                        <ul role="menu" class="dropdown-menu head-drop">
+                            <li role="presentation" class="hd1"><a role="menuitem" href="#sysmgr"><i aria-hidden="true"
+                                                                                                     class="iconfont icon-usermanagement"></i>
+                                管理中心</a></li>
+                            <li role="presentation" class="hd1"><a role="menuitem" href="#"><i
+                                    class="iconfont icon-setting" aria-hidden="true"></i>&nbsp;个人设置</a></li>
+                            <li role="presentation" class="divider"></li>
+                            <li role="presentation" class="hd2"><a role="menuitem" href="user/beflogout"><i
+                                    aria-hidden="true" class="iconfont  icon-logout"></i> 注销</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="logo">
+                <h1><a href="#" title="用友"><img src="logo_mt.png" alt="用友商家门户"></a></h1>
+            </div>
+        </div>
+        <div class="site-menubar-new ">
+            <div class="mainNav ">
+                <div class="drop-down f-fr"><b class="row1"></b></div>
+                <!--<div class="dotLink"><a href="#"></a><a href="#"></a><a href="#"></a></div>-->
+                <ul class="menubar-new ">
+                    <!--<li><a href="#">首页</a></li>
+					<li><a href="#" class="current">商品管理</a></li>
+					<li><a href="#">交易管理</a></li>
+					<li><a href="#">店铺管理</a></li>
+					<li><a href="#">结算管理</a></li>
+					<li><a href="#">库存管理</a></li>
+					<li><a href="#">系统管理</a></li>
+					<li><a href="#">常用</a></li>-->
+                </ul>
+            </div>
+            <div class="bgsubNav">
+                <div class="subNav">
+                    <div class="selectedIco f-fr"><a href="javaScript:void (0)" class="on"></a></div>
+                    <!--<div class="cardDiv">-->
+                    <!--<ul>-->
+                    <!--<li>&nbsp;</li>-->
+                    <!--</ul>-->
+                    <!--</div>-->
+                    <!--<div class="cardDiv">-->
+                    <!--<ul>-->
+                    <!--<li><a href="#" class="on"><b class="subNav_ico1"></b>自建商品</a></li>-->
+                    <!--<li><a href="#"><b class="subNav_ico2"></b>商品SKU</a></li>-->
+                    <!--<li><a href="#"><b class="subNav_ico3"></b>商品上架</a></li>-->
+                    <!--<li><a href="#"><b class="subNav_ico4"></b>商品分类</a></li>-->
+                    <!--<li><a href="#"><b class="subNav_ico5"></b>商品属性</a></li>-->
+                    <!--<li><a href="#"><b class="subNav_ico6"></b>商品规格</a></li>-->
+                    <!--</ul>-->
+                    <!--</div>-->
+                    <!--<div class="cardDiv dpn">-->
+                    <!--<ul>-->
+                    <!--<li><a href="#"><b class="subNav_ico7"></b>订单处理</a></li>-->
+                    <!--<li><a href="#"><b class="subNav_ico8"></b>退货审核</a></li>-->
+                    <!--<li><a href="#"><b class="subNav_ico9"></b>补货签收</a></li>-->
+                    <!--<li><a href="#"><b class="subNav_ico10"></b>销售排名</a></li>-->
+                    <!--<li><a href="#"><b class="subNav_ico11"></b>缺货排名</a></li>-->
+                    <!--</ul>-->
+                    <!--</div>-->
+                    <!--<div class="cardDiv dpn">-->
+                    <!--<ul>-->
+                    <!--<li><a href="#"><b class="subNav_ico12"></b>店铺设置</a></li>-->
+                    <!--<li><a href="#"><b class="subNav_ico13"></b>栏目管理</a></li>-->
+                    <!--<li><a href="#"><b class="subNav_ico14"></b>友情连接</a></li>-->
+                    <!--<li><a href="#"><b class="subNav_ico15"></b>留言管理</a></li>-->
+                    <!--<li><a href="#"><b class="subNav_ico16"></b>账户设置</a></li>-->
+                    <!--</ul>-->
+                    <!--</div>-->
+                    <!--<div class="cardDiv dpn">-->
+                    <!--<ul>-->
+                    <!--<li><a href="#"><b class="subNav_ico17"></b>发起结算</a></li>-->
+                    <!--</ul>-->
+                    <!--</div>-->
+                    <!--<div class="cardDiv dpn">-->
+                    <!--<ul>-->
+                    <!--<li><a href="#"><b class="subNav_ico18"></b>商品入库</a></li>-->
+                    <!--<li><a href="#"><b class="subNav_ico19"></b>入库单列表</a></li>-->
+                    <!--<li><a href="#"><b class="subNav_ico20"></b>商品出库</a></li>-->
+                    <!--<li><a href="#"><b class="subNav_ico21"></b>出库单列表</a></li>-->
+                    <!--<li><a href="#"><b class="subNav_ico22"></b>结存维护</a></li>-->
+                    <!--<li><a href="#"><b class="subNav_ico23"></b>出入库明细</a></li>-->
+                    <!--<li><a href="#"><b class="subNav_ico24"></b>存量查询</a></li>-->
+                    <!--</ul>-->
+                    <!--</div>-->
+                    <!--<div class="cardDiv dpn">-->
+                    <!--<ul>-->
+                    <!--<li><a href="#"><b class="subNav_ico25"></b>角色管理</a></li>-->
+                    <!--<li><a href="#"><b class="subNav_ico26"></b>用户管理</a></li>-->
+                    <!--<li><a href="#"><b class="subNav_ico27"></b>菜单管理</a></li>-->
+                    <!--<li><a href="#"><b class="subNav_ico28"></b>模板设置</a></li>-->
+                    <!--</ul>-->
+                    <!--</div>-->
+                    <!--<div class="cardDiv">-->
+                    <!--<ul>-->
+                    <!--<li>&nbsp;</li>-->
+                    <!--</ul>-->
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Page -->
+<div class="page side-page collapse in">
+    <div class="container-fluid">
+        <div data-plugin="matchHeight" data-by-row="true">
+            <div id="content" class="clearfix"></div>
+        </div>
+    </div>
+    <div id="toolbar" style="display: none"></div>
+</div>
+<!-- End Page -->
+
+
+<script src="/wbalone/trd/jquery/jquery-1.11.2.min.js"></script>
+
+<script src="trd/knockout/knockout-3.2.0.debug.js"></script>
+
+<!-- uui 静态资源引入 -->
+<!-- 
+<script src="/workbench/trd/uui/js/u-polyfill.js" charset="utf-8"></script>
+<script src="/workbench/trd/uui/js/u.js"      charset="utf-8"></script>
+<script src="/workbench/trd/uui/js/u-grid.js" charset="utf-8"></script>
+<script src="/workbench/trd/uui/js/u-tree.js" charset="utf-8"></script>
+ -->
+<!-- 核心js 必须引入 -->
+
+<script src="apworkbench/trd/uui/js/u.js"></script>
+<script src="apworkbench/trd/uui/js/u-polyfill.js"></script>
+<script src="apworkbench/trd/uui/js/u-grid.js"></script>
+<script src="apworkbench/trd/uui/js/u-tree.js"></script>
+
+
+<script src="trd/jquery-mousewheel/jquery.mousewheel.min.js"></script>
+<script src="/wbalone/apworkbench/trd/webuploader/webuploader.js"></script>
+<script src="trd/common.js"></script>
+<script src="marketing.js"></script>
+
+
+<script src="/wbalone/apworkbench/js/requireConfig.js"></script>
+<script src="/wbalone/apworkbench/js/index.js"></script>
+<script src="trd/vendor/skintools/skintools.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,172 @@
+<div class="ui-panel ui-list-panel">
+    <div>
+        <div class="page-title">
+            <span>商品对照</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="oc-breadcrumb">
+            </div>
+        </div>
+    </div>
+    <div class="title-seperator"></div>
+
+    <div class="ui-searchbox ui-panel-head clearfix">
+        <div id="searchcontent1" class="ui-searchbox-content clearfix">
+
+        </div>
+        <div class="ui-searchbox-footer clearfix">
+            <div class="ui-search-more hidden">
+                <a>更多<i class="uifont icon-down"></i></a>
+            </div>
+            <div class="ui-search-btn clearfix">
+                <a class="ui-btn ui-btn-primary margin-right-5" data-bind="click:cleanSearch">清空</a>
+                <a class="ui-btn ui-btn-green" data-bind="click:search.bind($data,true)">搜索</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui-panel-body">
+        <div class="ui-panel-body-head">
+            <div class="ui-panel-body-head-left">
+                <a class="ui-btn ui-btn-orange margin-right-5" data-bind="click: beforeEdit"><i class="uifont icon-plus margin-right-5"></i>新增</a>
+                <a class="ui-btn ui-btn-orange margin-right-5" data-bind="click: del"><i class="uifont icon-shanchu1 margin-right-5"></i>删除</a>
+                <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+                    <a class="ui-button-item" data-bind="click:importHandle">
+                    <i class="uifont icon-import  margin-right-5"></i>
+                    导入
+                    </a>
+                    <a class="ui-button-item" data-bind="click:exportHandle">
+                    <i class="uifont icon-export  margin-right-5"></i>
+                    导出
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="ui-table-container">
+            <div id="mainDataList" u-meta='{"id":"grid_mainDataList","data":"mainDataList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+                <div options='{"field":"platformName","dataType":"String","title":"平台"}'></div>
+                <div options='{"field":"storeName","dataType":"String","title":"店铺"}'></div>
+                <div options='{"field":"goodsCode","dataType":"String","title":"商品编码"}'></div>
+                <div options='{"field":"goodsName","dataType":"String","title":"商品名称"}'></div>
+                <div options='{"field":"combineGoodsCode","dataType":"String","title":"商品组合编码"}'></div>
+                <div options='{"field":"combineGoodsName","dataType":"String","title":"商品组合名称"}'></div>
+                <div options='{"field":"outSkuCode","dataType":"String","title":"平台商品编码"}'></div>
+
+
+                <div options='{"field":"creator","dataType":"String","title":"创建人","visible":false}'></div>
+                <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":false}'></div>
+                <div options='{"field":"creationTime","dataType":"Date","title":"创建时间","visible":false}'></div>
+                <div options='{"field":"modifiedTime","dataType":"Date","title":"修改时间","visible":false}'></div>
+                <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation","width":"110px","fixed":true}'></div>
+            </div>
+            <div class="ui-statistics margin-top-10">
+                <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择<span class="font-c-blue" data-bind="text:mainDataList.selectedIndices().length"></span>项数据
+            </div>
+            <div class="pagination-right">
+                <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"mainDataList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--新增 弹框 end-->
+<div id="dialog_content_addListFun" style="display:none;">
+    <div class="u-msg-title">
+        <h4>新增</h4>
+    </div>
+    <div class="u-msg-content ui-editbox" id="addContent">        
+        <div class="clearfix margin-bottom-10" style="padding: 10px 0 0 16px;">
+            <a class="ui-btn ui-btn-orange margin-right-5" data-bind="click:addDelChild.bind($data,-1) "><i class="uifont icon-plus margin-right-5"></i>增行</a>
+            <a class="ui-btn ui-btn-orange margin-right-5" data-bind="click:addDelChild.bind($data,0)"><i class="uifont icon-shanchu1 margin-right-5"></i>删行</a>
+        </div>  
+                    
+        <div u-meta='{"id":"grid_demoproductCombineItem_list_change2","data":"addList","type":"grid","editable":true,"multiSelect":true,"showNumCol":true,"columnMenu":false }'>    
+               
+                <div options='{"required":true,"field":"platformId","dataType":"String","title":"平台","renderType":"ncReferRender",
+                    "editType":"ncReferEditType","showField":"platformName","editOptions":{"validType":"string",
+                    "rel":{"refpk":"platformId","refname":"platformName"}}}'></div>
+				<div options='{"required":false,"field":"storeId","dataType":"String","title":"店铺","renderType":"ncReferRender",
+                    "editType":"ncReferEditType","showField":"storeName","editOptions":{"validType":"string",
+                    "rel":{"refpk":"storeId","refname":"storeName"}}}'></div>
+                    
+                <div options='{"required":false,"field":"goodsId","dataType":"String","title":"商品","renderType":"ncReferRender",
+                    "editType":"ncReferEditType","showField":"goodsName","editOptions":{"validType":"string",
+                    "rel":{"refpk":"goodsId","refname":"goodsName"}}}'></div>
+                <div options='{"required":false,"field":"combineGoodsId","dataType":"String","title":"商品组合","renderType":"ncReferRender",
+                    "editType":"ncReferEditType","showField":"combineGoodsName","editOptions":{"validType":"string",
+                    "rel":{"refpk":"combineGoodsId","refname":"combineGoodsName"}}}'></div>
+                <div options='{"required":true,"field":"outSkuCode","dataType":"String","title":"平台商品编码"}'></div>
+        </div>
+    </div>
+    <div class="u-msg-footer">
+        <a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+        <a class="u-msg-ok ui-btn ui-btn-green">保存</a>
+    </div>
+</div>
+<!--新增 弹框 end-->
+
+
+<!-- 编辑-start -->
+<div id="dialog_content_list_editListFun"  class="" style="display: none;">
+    <div class="u-msg-title">
+        <h4>编辑</h4>
+    </div>
+    <div id="validate" class="u-msg-content">
+         <!--head-->
+        <div class="ui-panel-head clearfix"  style="margin:0 20px 0 60px;">
+            
+            <div class="ui-item margin-bottom-20" style="clear:both;display:block;width:100%;">
+                <div class="ui-name"><i class="strong">*</i>平台：</div>
+                <div id="platformId"  class="ui-inputarea" u-meta='{"type":"uiRefer","data":"mainDataList","field":"platformId"}'>
+                    <input readonly="readonly" autocomplete="off"/>
+                    <span class="ui-icon uifont icon-bar refer"></span>
+                </div>
+            </div>
+            <div class="ui-item margin-bottom-20" style="clear:both;display:block;width:100%;">
+                <div class="ui-name">店铺：</div>
+                <div id="storeId"  class="ui-inputarea" u-meta='{"type":"uiRefer","data":"mainDataList","field":"storeId"}'>
+                    <input readonly="readonly" autocomplete="off"/>
+                    <span class="ui-icon uifont icon-bar refer"></span>
+                </div>
+            </div>
+            <div class="ui-item margin-bottom-20" style="clear:both;display:block;width:100%;">
+                <div class="ui-name">商品：</div>
+                <div id="goodsId"  class="ui-inputarea" u-meta='{"type":"uiRefer","data":"mainDataList","field":"goodsId"}'>
+                    <input readonly="readonly" autocomplete="off"/>
+                    <span class="ui-icon uifont icon-bar refer"></span>
+                </div>
+            </div>
+            <div class="ui-item margin-bottom-20" style="clear:both;display:block;width:100%;">
+                <div class="ui-name">商品组合：</div>
+                <div id="combineGoodsId"  class="ui-inputarea" u-meta='{"type":"uiRefer","data":"mainDataList","field":"combineGoodsId"}'>
+                    <input readonly="readonly" autocomplete="off"/>
+                    <span class="ui-icon uifont icon-bar refer"></span>
+                </div>
+            </div>
+            <div class="ui-item">
+                    <div class="ui-name"><i class="strong">*</i>平台商品编码：</div>
+                    <div class="ui-inputarea" u-meta='{"type":"u-text","data":"mainDataList","field":"outSkuCode"}'>
+                        <input   />                                      
+                    </div>
+           </div>
+                
+            
+        </div>
+        <!--head end--> 
+        <div class="ui-container clearfix">
+        </div> 
+    </div>
+    <div class="u-msg-footer">
+        <a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+        <a class="u-msg-ok ui-btn ui-btn-green">保存</a>
+    </div>
+</div>
+<!-- 编辑-end -->
+
+
+<!--导入弹框 end-->
+<div id="exportFiel"></div>
+<div id="importFiel"></div>

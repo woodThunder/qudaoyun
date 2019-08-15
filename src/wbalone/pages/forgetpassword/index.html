@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title key="ht.pag.for.0001"></title>
+
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="wbalone" />
+    <!--uui js-->
+    <link rel="stylesheet" href="../../apworkbench/trd/uui/css/u.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="../../apworkbench/trd/uui/css/tree.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="../../apworkbench/trd/uui/css/grid.css" media="screen" title="no title" charset="utf-8">
+
+    <link rel="stylesheet" href="./index.css" />
+</head>
+
+<body class="page">
+    <header>
+        <div class="nav-btn">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </div>
+        <div class="logo">
+            <img id="logoId" src="../../images/logo.svg" alt=<span class="i18n" name="ht.pag.for.0002"></span>
+        </div>
+    </header>
+    <div class="u-container-fluid u-widget-bg">
+        <div class="u-row">
+            <div class="u-col-md-12">
+                <div class="u-widget-heading" style="border: none;">
+                    <h3 class="u-widget-title"><span class="i18n" name="ht.pag.for.0003"></span></h3>
+                </div>
+                <div class="u-widget u-widget-left" style="margin-left: 0px;">
+                    <div class="u-widget-body" style="padding: 20px;">
+                        <div class="step-box">
+                            <div class="step-head">
+                                <div class="step-h-title " data-bind="css:{' current-step':(curStep()==0)?true:false}">
+                                    <div class="step-title">
+                                        <div class="border-radius">
+                                            <div class="radius"></div>
+                                            <span class="num">1</span>
+                                        </div>
+                                        <span><span class="i18n" name="ht.pag.for.0004"></span></span>
+                                    </div>
+                                </div>
+                                <div class="step-h-title" data-bind="css:{' current-step':(curStep()==1)?true:false}">
+                                    <div class="step-title">
+                                        <div class="border-radius">
+                                            <div class="radius"></div>
+                                            <span class="num">2</span>
+                                        </div>
+                                        <span><span class="i18n" name="ht.pag.for.0005"></span></span>
+                                    </div>
+                                </div>
+                                <div class="step-h-title" data-bind="css:{' current-step':(curStep()==2)?true:false}">
+                                    <div class="step-title">
+                                        <div class="border-radius">
+                                            <div class="radius"></div>
+                                            <span class="num">3</span>
+                                        </div>
+                                        <span><span class="i18n" name="ht.pag.for.0006"></span></span>
+                                    </div>
+                                </div>
+                                <div class="step-h-title" data-bind="css:{' current-step':(curStep()==3)?true:false}">
+                                    <div class="step-title">
+                                        <div class="border-radius">
+                                            <div class="radius"></div>
+                                            <span class="num">4</span>
+                                        </div>
+                                        <span><span class="i18n" name="ht.pag.for.0007"></span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="step-body">
+                                <!--step1-->
+                                <div class="step step1 " data-bind="visible:curStep()==0,css:{' cur-active':curStep()==0}">
+                                    <div class="u-row">
+                                        <div class="u-col-12">
+                                            <div class="u-form-group">
+                                                <label class="u-col-4 u-form-label text-right"><span class="i18n" name="ht.pag.for.0008"></span></label>
+
+                                                <div class="u-col-4" style="padding-left: 0px;">
+                                                    <div class="u-input-group  must-in u-col-12" style="padding-left: 0px;">
+                                                        <input type="tel" class="u-form-control" name="account" u-meta='{"id":"account","type":"string","data":"DataTables.step1","field":"account"}' placeholder="ht.pag.for.0009">
+                                                        <span class="red-A700"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="u-col-4">
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="u-col-12">
+                                            <div class="u-form-group">
+                                                <label class="u-col-4 u-form-label text-right"><span class="i18n" name="ht.pag.for.0010"></span></label>
+                                                <div class="u-col-4" style="padding-left: 0px;">
+                                                    <div class="u-input-group  must-in u-col-12" style="padding-left: 0px;">
+                                                        <input type="text" class="u-form-control" name="verificationCode" u-meta='{"id":"verificationCode","type":"string","data":"DataTables.step1","field":"verificationCode"}' placeholder="ht.pag.for.0011">
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                                <div class="u-col-4">
+                                                    <div data-bind="click:Events.getvaliImage,html:imgHtml" class="v-img">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="u-col-12">
+                                            <div class="u-form-group">
+                                                <label class="u-col-4 u-form-label text-right"></label>
+                                                <div class="u-col-4" style="padding-left: 0px;">
+                                                    <div class="u-input-group  must-in u-col-12" style="padding-left: 0px;">
+                                                        <button class="u-button u-button-block  u-button-info" data-bind="click:Events.nextStep"><span class="i18n" name="ht.pag.for.0012"></span>
+                            </button>
+                                                    </div>
+                                                </div>
+                                                <div class="u-col-4">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--step2-->
+                                <div class="step step2" data-bind="visible:curStep()==1,css:{' cur-active':curStep()==1}">
+                                    <div class="u-row">
+                                        <div class="u-col-12">
+                                            <div class="u-form-group">
+                                                <label class="u-col-4 u-form-label text-right"><span data-bind="visible:msgType()=='email'" class="i18n" name="ht.pag.for.0029"></span>  <span data-bind="visible:msgType()=='phone'"  class="i18n" name="ht.pag.for.0013"></span></label>
+
+                                                <div class="u-col-4" style="padding-left: 0px;">
+                                                    <div class="u-input-group  must-in u-col-12" style="padding-left: 0px;">
+                                                        <input data-bind="visible:msgType()=='phone'" type="tel" class="u-form-control" name="phone" disabled u-meta='{"id":"phone","type":"string","data":"DataTables.step2","field":"phone"}' placeholder="ht.pag.for.0014">
+                                                        <input data-bind="visible:msgType()=='email'" type="text" class="u-form-control" name="phone" disabled u-meta='{"id":"phone","type":"string","data":"DataTables.step2","field":"email"}' placeholder="ht.pag.for.0030">
+                                                        <span class="red-A700"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="u-col-4" style="margin-left: -30px;">
+                                                    <button class="u-button  u-button-success greenbtn" data-bind="click:Events.sendMsg,text:sendBtntext,enable:sendBtnable"><span data-bind="visible:msgType()=='email'" class="i18n" name="ht.pag.for.0027"></span> <span data-bind="visible:msgType()=='phone'" class="i18n" name="ht.pag.for.0015"></span>
+                        </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="u-col-12">
+                                            <div class="u-form-group">
+                                                <label class="u-col-4 u-form-label text-right"><span class="i18n" data-bind="visible:msgType()=='email'" name="ht.pag.for.0028"></span> <span data-bind="visible:msgType()=='phone'" class="i18n" name="ht.pag.for.0016"></span> </label>
+
+                                                <div class="u-col-4" style="padding-left: 0px;">
+                                                    <div class="u-input-group  must-in u-col-12" style="padding-left: 0px;">
+                                                        <input type="text" class="u-form-control" name="valiCode" style="border-radius: 0;" u-meta='{"id":"valiCode","type":"string","data":"DataTables.step2","field":"valiCode"}' placeholder="ht.pag.for.0017">
+                                                        <span></span>
+                                                    </div>
+                                                </div>
+                                                <div class="u-col-4">
+                                                    <span class="red" id='msgValiCode' style="margin-top: 15px;display: none"><span class="i18n" name="ht.pag.for.0018"></span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="u-col-12">
+                                            <div class="u-form-group">
+                                                <label class="u-col-4 u-form-label text-right"></label>
+
+                                                <div class="u-col-4" style="padding-left: 0px;">
+                                                    <div class="u-input-group  must-in u-col-12" style="padding-left: 0px;">
+                                                        <button class="u-button u-button-block  u-button-info" data-bind="click:Events.nextStep"><span class="i18n" name="ht.pag.for.0012"></span>
+                            </button>
+                                                    </div>
+                                                </div>
+                                                <div class="u-col-4">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--step3-->
+                                <div class="step step3" data-bind="visible:curStep()==2,css:{' cur-active':curStep()==2}">
+                                    <div class="u-row">
+                                        <div class="u-col-12">
+                                            <div class="u-form-group">
+                                                <label class="u-col-4 u-form-label text-right"><span class="i18n" name="ht.pag.for.0019"></span></label>
+
+                                                <div class="u-col-4" style="padding-left: 0px;">
+                                                    <div class="u-input-group  must-in u-col-12" style="padding-left: 0px;">
+                                                        <input type="password" class="u-form-control" name="newpsd" u-meta='{"id":"newpsd","type":"string","data":"DataTables.step3","field":"newpsd"}'>
+                                                        <span class=""></span>
+                                                    </div>
+                                                </div>
+                                                <div class="u-col-4">
+                                                    <span class="" data-bind="text:DataTables.step3.ref('passwordPolicy')"><span class="i18n" name="ht.pag.for.0020"></span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="u-col-12">
+                                            <div class="u-form-group">
+                                                <label class="u-col-4 u-form-label text-right"><span class="i18n" name="ht.pag.for.0021"></span></label>
+
+                                                <div class="u-col-4" style="padding-left: 0px;">
+                                                    <div class="u-input-group  must-in u-col-12" style="padding-left: 0px;">
+                                                        <input type="password" class="u-form-control" name="confirmnewpsd" u-meta='{"id":"confirmnewpsd","type":"string","data":"DataTables.step3","field":"confirmnewpsd"}' placeholder="ht.pag.for.0022">
+                                                        <span class=""></span>
+                                                    </div>
+                                                </div>
+                                                <div class="u-col-4">
+                                                    <span class=""><span class="i18n" name="ht.pag.for.0023"></span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="u-col-12">
+                                            <div class="u-form-group">
+                                                <label class="u-col-4 u-form-label text-right"></label>
+                                                <div class="u-col-4" style="padding-left: 0px;">
+                                                    <div class="u-input-group  must-in u-col-12" style="padding-left: 0px;">
+                                                        <button class="u-button u-button-block  u-button-info" data-bind="click:Events.nextStep"><span class="i18n" name="ht.pag.for.0024"></span>
+                            </button>
+                                                    </div>
+                                                </div>
+                                                <div class="u-col-4">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--step4-->
+                                <div class="step step4" data-bind="visible:curStep()==3,css:{' cur-active':curStep()==3}">
+                                    <div class="u-row">
+                                        <div class="u-col-12 u-text-center">
+                                            <div class=" suc-content">
+                                                <div class="uf uf-smile"></div>
+                                                <div class="msg">
+                                                    <h4><span class="i18n" name="ht.pag.for.0025"></span></h4>
+                                                    <h5>
+                                                        3s<span class="i18n" name="ht.pag.for.0026"></span>
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../trd/jquery/jquery-1.11.2.min.js"></script>
+    <script src="../../trd/knockout/knockout-3.2.0.debug.js"></script>
+    <!-- 静态资源链接 -->
+    <script src="../../apworkbench/trd/uui/js/u.js"></script>
+    <script src="../../apworkbench/trd/uui/js/u-polyfill.js"></script>
+    <!--[if lte IE 8 ]>
+<script src="../../apworkbench/trd/uui/js/u-polyfill.js"></script>
+<![endif]-->
+    <script type="text/javascript" src="jqeury.cookie.js"></script>
+    <script type="text/javascript" src="../../i18n/jquery.i18n.properties.js"></script>
+    <script type="text/javascript" src="../../i18n/i18n.iuap.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+
+</body>
+
+</html>

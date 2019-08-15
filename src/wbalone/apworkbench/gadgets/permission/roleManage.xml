@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+	<ModulePrefs title="msgFlow" description="我的动态" thumbnail="http://localhost:8080/" icon="http://localhost:8080/images/icon.png">
+		<Require feature="osapi"></Require>
+		<Require feature="settitle"/>
+		<Require feature="shindig-container"/>
+		<Require feature="dynamic-height"></Require>
+	</ModulePrefs>
+	<Content  type="html" inline="true">
+	<![CDATA[
+	<div id="roleManage" >
+	</div>
+	<script src="${context}/apworkbench/js/roleManageNew/index.js">
+</script>
+	
+	]]>
+	</Content>
+</Module>

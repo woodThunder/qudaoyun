@@ -1,0 +1,165 @@
+<html>
+<head>
+  <title></title>
+  <meta http-equiv="Access-Control-Allow-Origin" content="*">
+  <!--<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+  <script src="//cdn.jsdelivr.net/sockjs/0.3.4/sockjs.min.js"></script>-->
+  <script src="jquery-1.11.2.min.js"></script>
+  <script src="sockjs-0.3.4.min.js"></script>
+  <script src="vertx-eventbus.js"></script>
+  <script src="vertx-client-sdk.js"></script>
+</head>
+
+<style>
+  .news {
+    font-size: 20pt;
+  }
+</style>
+
+<body>
+
+<div style="position:absolute">
+	<div style="position: relative; float: left; width: 200px">
+		<button type="button" onclick="unregister();" id="unregister" name="unregister">unregister Me!</button>
+	</div>
+	<div style="position: relative; float: left; width: 100px">
+		<button type="button" onclick="connect1_click();" id="connect1" name="connect1">connect1</button>
+	</div>
+	<div style="position: relative; float: left; width: 100px;">
+		<button type="button" onclick="connect100_click();" id="connect100" name="connect100">connect100</button>
+	</div>
+	<div style="position: relative; float: left; width: 200px;">
+		<button type="button" onclick="connect300_click();" id="connect300" name="connect300">connect300</button>
+	</div>
+	<div style="position: relative; float: left; width: 300px;">
+		<button type="button" onclick="connect500_click();" id="connect500" name="connect500">connect500</button>
+	</div>
+</div>
+<br>
+<div class="news">Latest news:</div>
+<br>
+
+<div id="status" class="news"></div>
+
+<script>
+function unregister(){
+	var receiveUri="1001-127.0.0.1-fjz";
+	//alert("test");
+	//Message.unregister(receiveUri);
+}
+
+function callbackfn(err,msg){
+	alert("test un start");
+}
+
+/*====================================
+ *客户端接口使用实例
+ *
+ */
+/**
+*回调函数
+*err：错误对象
+*msg:消息对象
+**/
+var count=1;
+function fn(err,msg){
+	if(err){
+		alert(err);
+	}
+	//var str = "<code>" + msg + "</code><br>";
+	//console.log(msg);
+	//$('#status').prepend(str);
+	count++;
+	//if(count%100000==0)
+		$('#status').prepend(1);
+}
+
+//连接一个用户
+connect1_click = function(){
+	//传入参数
+	//租户id，应用id，登录账户，接收消息的uri
+	var json = {"identity":"server1001","userkey":"fjz"};
+	//第一种直接调用方式
+	//receive("","",serverUri,"1001-127.0.0.1-fjz",json,fn);
+	//第二种对象方法调用方式
+	Message.subscribe(json,fn);
+	//alert("ok");
+	// json1={"identity":"server1001","userkeys":[]};
+	//alert(json1.userkeys);
+	/*=====================================*/
+}
+
+//连接100个用户
+connect100_click = function(){
+	//传入参数
+	//租户id，应用id，登录账户，接收消息的uri
+	//var json = {"identity":"server1001","userkey":"fjz"};
+	var json = function () {
+		this.identity = "server1001";
+		this.userkey="fjz";
+	}
+	//第二种对象方法调用方式
+	var tmpUser=new json().userkey;
+	//alert(tmpUser);
+	for(var i=1;i<=100;i++){
+		var json1 = new json()
+		json1.userkey=tmpUser+i;
+		//console.log(json1);
+		Message.subscribe(json1,fn);
+	}
+	/*var json1 = new json()
+	json1.userkey=tmpUser+1;
+	Message.subscribe(json1,fn);
+	
+	var json2 = new json()
+	json2.userkey=tmpUser+2;
+	Message.subscribe(json2,fn);*/
+	//alert("ok");
+	/*=====================================*/
+}
+
+//连接300个用户
+connect300_click = function(){
+	//传入参数
+	//租户id，应用id，登录账户，接收消息的uri
+	var json = function () {
+		this.identity = "server1001";
+		this.userkey="fjz";
+	}
+	//第二种对象方法调用方式
+	var tmpUser=new json().userkey;
+	//alert(tmpUser);
+	for(var i=1;i<=300;i++){
+		var json1 = new json()
+		json1.userkey=tmpUser+i;
+		//console.log(json1);
+		Message.subscribe(json1,fn);
+	}
+	/*=====================================*/
+	//alert("ok");
+}
+
+//连接300个用户
+connect500_click = function(){
+	//传入参数
+	//租户id，应用id，登录账户，接收消息的uri
+	var json = function () {
+		this.identity = "server1001";
+		this.userkey="fjz";
+	}
+	//第二种对象方法调用方式
+	var tmpUser=new json().userkey;
+	//alert(tmpUser);
+	for(var i=1;i<=500;i++){
+		var json1 = new json()
+		json1.userkey=tmpUser+i;
+		//console.log(json1);
+		Message.subscribe(json1,fn);
+	}
+	//alert("ok");
+	/*=====================================*/
+}
+</script>
+
+</body>
+</html>

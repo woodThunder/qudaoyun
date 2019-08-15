@@ -1,0 +1,271 @@
+<div class="ui-panel ui-list-panel">
+  <div class="u-row">
+    <div class="u-col-4  page-title">
+      <span>投资单位</span>
+    </div>
+  </div>
+  <div class="u-row">
+    <div class="u-col-4">
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+  <div class="ui-searchbox">
+    <div id="ChanInveUnit-searchcontent" class="ui-searchbox-content">
+
+    </div>
+    <div class="clearfix">
+
+    </div>
+    <div class="ui-searchbox-footer">
+      <div class="ui-search-more hidden">
+          <a>更多<i class="uifont icon-down"></i></a>
+      </div>
+
+      <div class="ui-search-btn">
+        <a class="ui-btn ui-btn-primary margin-right-5"
+        data-bind="click:cleanSearch">清空
+        </a>
+        <a class="ui-btn ui-btn-green "
+        data-bind="click:search.bind($data,true)">搜索
+        </a>
+      </div>
+      <div class="clearfix">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-panel-body">
+      
+      <div class="ui-panel-body-head">
+        <div class="ui-panel-body-head-left">
+            <a class="ui-btn ui-btn-orange margin-right-5" id="user-action-add"
+              data-bind="click: beforeEdit.bind($data,-1),visible:buttonShowGroup['add']"><i class="uifont icon-plus margin-right-5"></i>新增
+            </a>
+            <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+              data-bind="click: del,visible:buttonShowGroup['del']"><i class="uifont icon-shanchu1 margin-right-5"></i>删除
+            </a>
+          <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+            <a class="ui-button-item" id="user-action-del"
+              data-bind="click:enable,visible:buttonShowGroup['enable']">
+              <i class="uifont icon-qiyong margin-right-5"></i>启用
+            </a>
+            <a class="ui-button-item" id="user-action-del"
+              data-bind="click:disable,visible:buttonShowGroup['disable']">
+              <i class="uifont icon-tingyong margin-right-5"></i>停用
+            </a>
+          </div>
+          <div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+            <a class="ui-button-item" data-bind="click: importHandle,visible:buttonShowGroup['importHandle']"><i class="uifont  icon-import margin-right-5"></i>导入</a>
+            <a class="ui-button-item" data-bind="click: exportHandle,visible:buttonShowGroup['exportHandle']"><i class="uifont icon-export margin-right-5"></i>导出</a>
+          </div>
+          <!--<div class="ui-button-group clearfix vertical-align-middle margin-right-5">
+            <a class="ui-button-item" id="user-action-del"
+              data-bind="">
+              <i class="uifont icon-import margin-right-5"></i>导入
+            </a>
+            <a class="ui-button-item" id="user-action-del"
+              data-bind="">
+              <i class="uifont icon-export margin-right-5"></i>导出
+            </a>
+          </div>
+          -->
+        </div>  
+        
+      </div>
+
+      <div class="ui-table-container">
+          <div id="ChanInveUnit"
+               u-meta='{"id":"grid_ChanInveUnit","data":"ChanInveUnitList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+                      <div options='{"field":"code","dataType":"String","title":"投资单位编码","renderType":"detailRender"}'></div>
+                      <div options='{"field":"name","dataType":"String","title":"投资单位名称"}'></div>
+                      <div options='{"field":"description","dataType":"String","title":"投资单位描述","visible":false}'></div>
+                      <div options='{"field":"unitState","dataType":"String","title":"合作状态","renderType":"enableRender"}'></div>
+                       <div options='{"field":"status","dataType":"String","title":"状态","renderType":"enableRender"}'></div>
+                          <div options='{"field":"creator","dataType":"String","title":"创建人","visible":false}'></div>
+                        <div options='{"field":"modifier","dataType":"String","title":"修改人","visible":false}'></div>
+                        <div options='{"field":"creationTime","dataType":"Date","title":"创建时间","visible":false}'></div>
+                        <div options='{"field":"modifiedTime","dataType":"Date","title":"修改时间","visible":false}'></div>
+                        <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"operation4single","fixed":true,"width":"110px"}'></div>
+          </div>
+          <div class="ui-statistics margin-top-10">
+            <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择<span class="font-c-blue" data-bind="text:ChanInveUnitList.selectedIndices().length"></span>项数据
+          </div>
+          <div class="pagination-right">
+            <div id='pagination' class='pagination u-pagination pagination-sm'
+            u-meta='{"type":"pagination","data":"ChanInveUnitList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+          </div>
+      </div>
+  </div>
+</div>
+<div id="dialog_layer" style="display:none;">
+
+</div>
+
+<!-- 详情 -->
+<div class="ui-bill-detail ui-panel" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span>投资单位</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-primary" data-bind="click: retListPanel">返回
+      </a>
+    </div>
+  </div>
+  <div class="ui-panel-head">
+    <div class="ui-item">
+      <div class="ui-name">投资单位编码：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: ChanInveUnitList.ref("code")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">投资单位姓名：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: ChanInveUnitList.ref("name")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">注册类型:</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: ChanInveUnitList.ref("registTypeName")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">法人代表:</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: ChanInveUnitList.ref("legalPerson")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">证件类型:</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: ChanInveUnitList.ref("credentialsTypeName")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">证件号码:</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: ChanInveUnitList.ref("credentialsNo")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">税务登记证号:</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: ChanInveUnitList.ref("taxRegistryNo")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">组织机构代码:</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: ChanInveUnitList.ref("organizationCode")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">国别:</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: ChanInveUnitList.ref("countryName")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">具体地址:</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: ChanInveUnitList.ref("address")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">经营范围:</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: ChanInveUnitList.ref("businessScope")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">邮政编码:</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: ChanInveUnitList.ref("zipecode")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">经度:</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: ChanInveUnitList.ref("longitude")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">纬度:</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: ChanInveUnitList.ref("lattitude")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">开户银行:</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: ChanInveUnitList.ref("bank")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">银行账号:</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: ChanInveUnitList.ref("bankAccount")'>
+        </div>
+      </div>
+    </div>
+    <div class="ui-item">
+      <div class="ui-name">合作状态:</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: unitStateFmt'>
+        </div>
+      </div>
+    </div>
+    
+    <div class="ui-item">
+      <div class="ui-name">描述：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: ChanInveUnitList.ref("description")'>
+        </div>
+      </div>
+    </div>
+
+   
+  <div class="ui-item">
+      <div class="ui-name">启用状态：</div>
+      <div class="ui-inputarea">
+        <div data-bind='text: enableFmt'>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+
+  <div class="ui-bill-footer">
+  </div>
+</div>
+<!--导入弹框 end-->
+<div id="exportFiel"></div>
+<div id="importFiel"></div>

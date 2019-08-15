@@ -1,0 +1,420 @@
+
+<link rel="icon" href="img/logo.png">
+
+<link rel="stylesheet" href="/ocm-web/vendor/jquery.orgchart/css/font-awesome.min.css">
+<link rel="stylesheet" href="/ocm-web/vendor/jquery.orgchart/css/jquery.orgchart.css">
+<link rel="stylesheet" href="/ocm-web/vendor/jquery.orgchart/css/style.css">
+<!-- <link rel="stylesheet" href="style.css"> -->
+<!-- <script src="/ocm-web/js/orgchart.min.js"></script> -->
+
+
+<style type="text/css">
+  .orgchart {
+    background: #fff;
+  }
+
+  .orgchart td.left,
+  .orgchart td.right,
+  .orgchart td.top {
+    border-color: #aaa;
+  }
+
+  .orgchart td>.down {
+    background-color: #aaa;
+  }
+
+  .orgchart .color0 .title {
+    background-color: #D50000;
+  }
+
+  .orgchart .color0 .content {
+    border-color: #D50000;
+  }
+
+    .orgchart .color0 .content-middle {
+    border-color: #D50000;
+  }
+
+  .orgchart .color1 .title {
+    background-color: #6200EA;
+  }
+
+  .orgchart .color1 .content {
+    border-color: #6200EA;
+  }
+
+   .orgchart .color1 .content-middle {
+    border-color: #6200EA;
+  }
+
+  .orgchart .color2 .title {
+    background-color: #0091EA;
+  }
+
+  .orgchart .color2 .content {
+    border-color: #0091EA;
+  }
+
+  .orgchart .color2 .content-middle {
+    border-color: #0091EA;
+  }
+
+  .orgchart .color3 .title {
+    background-color: #00C853;
+  }
+
+  .orgchart .color3 .content {
+    border-color: #00C853;
+  }
+
+
+.orgchart .color3 .content-middle {
+    border-color: #00C853;
+  }
+  .orgchart .color4 .title {
+    background-color: #FFD600;
+  }
+
+  .orgchart .color4 .content {
+    border-color: #FFD600;
+  }
+
+  .orgchart .color4 .content-middle {
+    border-color: #FFD600;
+  }
+
+  .orgchart .color5 .title {
+    background-color: #FF3D00;
+  }
+
+  .orgchart .color5 .content {
+    border-color: #FF3D00;
+  }
+
+   .orgchart .color5 .content-middle {
+    border-color: #FF3D00;
+  }
+
+  .orgchart .color6 .title {
+    background-color: #37474F;
+  }
+
+  .orgchart .color6 .content {
+    border-color: #37474F;
+  }
+
+  .orgchart .color6 .content-middle {
+    border-color: #37474F;
+  }
+
+  .orgchart .color7 .title {
+    background-color: #C51162;
+  }
+
+  .orgchart .color7 .content {
+    border-color: #C51162;
+  }
+
+
+.orgchart .color7 .content-middle {
+    border-color: #C51162;
+  }
+  .orgchart .color8 .title {
+    background-color: #8C9EFF;
+  }
+
+  .orgchart .color8 .content {
+    border-color: #8C9EFF;
+  }
+
+.orgchart .color8 .content-middle {
+    border-color: #8C9EFF;
+  }
+
+  .orgchart .color9 .title {
+    background-color: #BA68C8;
+  }
+
+  .orgchart .color9 .content {
+    border-color: #BA68C8;
+  }
+
+   .orgchart .color9 .content-middle {
+    border-color: #BA68C8;
+  }
+
+  .orgchart .defaultColor .title {
+    background-color: #C6FF00;
+  }
+
+  .orgchart .defaultColor .content {
+    border-color: #C6FF00;
+  }
+  .orgchart .defaultColor .content-middle {
+    border-color: #C6FF00;
+  }
+
+
+  #chart-container {
+    top: 0px;
+    left: 0px;
+    position: relative;
+    display: inline-block;
+    /* height: 100%;
+    width: 100%; */
+    border: 0px solid #fff;
+    border-radius: 0px;
+    overflow: auto;
+    text-align: left;
+    background: #fff;
+  }
+
+  #goodsbom-title {
+    padding-top: 25px;
+    font-size: 28px;
+    height: 60px;
+    background: #fff;
+    text-align: center;
+  }
+
+  .orgchart .node:hover {
+    background-color: #fff;
+    transition: .5s;
+    cursor: default;
+    z-index: 20;
+  }
+
+  .orgchart .node.focused {
+    background-color: #fff;
+  }
+
+  .edge {
+    display: none;
+  }
+</style>
+
+
+<div class="ui-panel ui-list-panel">
+  <div>
+    <div class="page-title">
+      <span data-bind="text:title"></span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="title-seperator"></div>
+  <ui-searchbox params='datasource:$root.searchSource,ref:$root.searchcomp,search:$root.search,clean:$root.cleanSearch'>
+  </ui-searchbox>
+  <div class="ui-panel-body">
+    <div class="ui-panel-body-head">
+      <div class="ui-panel-body-head-left">
+        <!-- style="float:left;" -->
+        <ui-buttons params='datasource:$root.button1Source'>
+        </ui-buttons>
+        <!--
+		  <ui-buttons-menu params='datasource:$root.buttonMenu1Source,vm:$root'>
+		  </ui-buttons-menu>
+		  -->
+      </div>
+    </div>
+    <div class="ui-table-container">
+      <ui-grid params='options:$root.grid1Option,vm:$root'>
+      </ui-grid>
+      <div class="ui-statistics margin-top-10">
+        已选择
+        <span class="font-c-blue" data-bind="text:simpleList.selectedIndices().length"></span>项数据
+      </div>
+      <div class="pagination-right">
+        <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"simpleList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="ui-panel ui-bill-panel" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span>基本信息</span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <ui-buttons params='datasource:$root.button2Source'>
+      </ui-buttons>
+    </div>
+  </div>
+  <div class="ui-panel-body">
+    <div class="u-tabs  ui-tabs margin-top-10">
+      <div class="u-tabs__tab-bar">
+        <a href="#tab-panel-1" class="u-tabs__tab is-active" data-bind="">基本信息</a>
+      </div>
+      <!--基本信息开始-->
+      <div class="u-tabs__panel is-active" id="tab-panel-1">
+        <div class="ui-bill-body">
+          <div class="ui-collapse-group">
+
+            <ui-buttons params='datasource:$root.button3Source'>
+            </ui-buttons>
+            <div id="personBase">
+              <div class="ui-collapse-group border">
+                <div id="default-example" data-collapse>
+                  <!--基本信息开始-->
+                  <h3 class="ui-collapse-title  clearfix  margin-top-10 open">
+                    <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                    <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                    基本信息
+                  </h3>
+                  <div class="ui-collapse-content clearfix" id="baseInfo">
+                    <ui-card params='datasource:$root.card1Source,vm:$root,dt:$root.simpleList,billstatus:$root.billPanelStatus'>
+                    </ui-card>
+                  </div>
+                  <!--基本信息结束-->
+                  <!--子件信息开始-->
+                  <h3 class="ui-collapse-title  clearfix  margin-top-10 open">
+                    <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                    <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                    子件信息
+                  </h3>
+                  <div class="ui-collapse-content clearfix" id="basechildInfo">
+                    <!-- <ui-card params='datasource:$root.card2Source,vm:$root,dt:$root.simpleList,billstatus:$root.billPanelStatus'>
+                    </ui-card> -->
+                    <ui-buttons params='datasource:$root.button4Source'>
+                    </ui-buttons>
+                    <div class="margin-top-10">
+                      <ui-grid params='options:$root.grid2Option,vm:$root'>
+                      </ui-grid>
+                    </div>
+                  </div>
+                  <!--子件信息结束-->
+                </div>
+              </div>
+            </div>
+
+            <!-- 保存后 -->
+            <div style="display: none;" id="personBase_show">
+
+              <div class="ui-collapse-group border">
+                <div id="default-example_show" data-collapse>
+                  <!--基本信息开始-->
+                  <h3 class="ui-collapse-title  clearfix  margin-top-10 open">
+                    <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                    <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                    基本信息
+                  </h3>
+                  <div class="ui-collapse-content clearfix" id="baseInfo_show">
+                    <ui-detail params='datasource:$root.detail1Source,dt:$root.simpleList,vm:$root'>
+                    </ui-detail>
+                  </div>
+                  <!--基本信息结束-->
+
+                  <!--子件信息开始-->
+                  <h3 class="ui-collapse-title  clearfix  margin-top-10 open">
+                    <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+                    <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+                    子件信息
+                  </h3>
+                  <!-- <div class="ui-collapse-content clearfix" id="baseInfo_show">
+                    <ui-grid params='options:$root.grid3Option,vm:$root'>
+                    </ui-grid>
+                  </div> -->
+                  <!--子件信息结束-->
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<ui-dialogcard params='datasource:$root.dialog2cardSource,ref:$root.dialogcardcomp,dt:$root.postList'>
+</ui-dialogcard>
+<!-- <ui-dialogcard params='datasource:$root.dialogcardSource,ref:$root.dialogcardcomp,dt:$root.simpleList'>
+</ui-dialogcard> -->
+<!-- 详情 -->
+<div class="ui-bill-detail ui-panel" style="display: none;">
+  <div>
+    <div class="page-title">
+      <span data-bind="text:title"></span>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-primary" data-bind="click: retListPanel">返回
+      </a>
+    </div>
+  </div>
+  <div class="ui-panel-head">
+    <!--基本信息开始-->
+    <h3 class="ui-collapse-title  clearfix  margin-top-10 open">
+      <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+      <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+      基本信息
+    </h3>
+    <div class="ui-collapse-content clearfix">
+      <ui-detail params='datasource:$root.detail1Source,dt:$root.simpleList,vm:$root'>
+      </ui-detail>
+    </div>
+    <!--基本信息结束-->
+
+    <!--子件信息开始-->
+    <h3 class="ui-collapse-title  clearfix  margin-top-10 open">
+      <i class="uifont icon-tubiao-xiaosanjiao-xia"></i>
+      <i class="uifont icon-tubiao-xiaosanjiao-you"></i>
+      子件信息
+    </h3>
+    <ui-grid params='options:$root.grid3Option,vm:$root'>
+    </ui-grid>
+    <!--子件信息结束-->
+  </div>
+</div>
+
+<div id="dialog_goodsbom" style="display:none;">
+  <div class="u-msg-title">
+    <h4>商品结构</h4>
+  </div>
+  <div class="u-msg-content">
+      <div id="goodsbom-title"></div>
+    <div id="chart-container"></div>
+  </div>
+  <!-- <div class="u-msg-footer">
+    <a class="ui-btn ui-btn-primary J-cancel margin-right-5">取消
+    </a>
+    <a class="ui-btn ui-btn-green  J-ok" data-bind="click:confirmgoodsbom">确认
+    </a>
+  </div> -->
+</div>
+
+<!-- <div id="dialog_goods_detail" style="display:none;">
+  <div class="u-msg-title">
+    <h4>商品详情</h4>
+  </div>
+  <div class="u-msg-content">
+      lalalalalalala
+  </div>
+</div> -->
+
+<div id="exportFiel"></div>
+<div id="importFiel"></div>

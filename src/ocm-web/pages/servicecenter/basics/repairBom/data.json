@@ -1,0 +1,258 @@
+
+{
+	"repairBomList":{
+		"content": [
+			{
+				"id": "001",
+				"parentId":null,
+				"dr": 0,
+				"ts": 1525104000000,
+				"creator": "测试",
+				"creationTime": 1525276800000,
+				"modifier": null,
+				"modifiedTime": 1525276800000,
+				"code": "99988",
+				"version": "p998",
+				
+				"goodsCode": "GD301872",
+				"name":"高级智能马桶",
+				"goodsName":"高级智能马桶",
+				"warranty":"6",
+				"buyDate": 1525881600000,
+				"warrantyStartDate": 1526400000000,
+				"warrantyEndDate": 1526486400000,
+				"remark": "可以质量不错"
+			},
+			{
+				"id": "002",
+				"parentId":"001",
+				"dr": 0,
+				"ts": 1525104000000,
+				"creator": "测试",
+				"creationTime": 1525276800000,
+				"modifier": null,
+				"modifiedTime": 1525276800000,
+				"name":"全陶高档浴缸",
+				"version": "a888",
+
+				"code": "88966",
+				"goodsCode": "GD301862",
+				"goodsName":"全陶高档浴缸",
+				"warranty":"6",
+				"buyDate": 1525881600000,
+				"warrantyStartDate": 1526400000000,
+				"warrantyEndDate": 1526486400000,
+				"remark": "可以质量不错"
+			},
+			{
+				"id": "003",
+				"parentId":"002",
+				"dr": 0,
+				"ts": 1525104000000,
+				"creator": "测试",
+				"creationTime": 1525276800000,
+				"modifier": null,
+				"modifiedTime": 1525276800000,
+
+				"code": "66966",
+				"goodsCode": "GD301892",
+				"name":"高档浴缸新品",
+				"version": "h968",
+				
+				
+				"goodsName":"高档浴缸新品",
+				"warranty":"6",
+				"buyDate": 1525881600000,
+				"warrantyStartDate": 1526400000000,
+				"warrantyEndDate": 1526486400000,
+				"remark": "可以质量不错"
+			}
+		],
+		"totalElements": 1,
+		"last": true,
+		"totalPages": 1,
+		"size": 10,
+		"number": 0,
+		"sort": [{
+			"direction": "DESC",
+			"property": "creationTime",
+			"ignoreCase": false,
+			"nullHandling": "NATIVE",
+			"ascending": false,
+			"descending": true
+		}],
+		"first": true,
+		"numberOfElements": 1
+	},
+	"partsList":{
+		"content": [
+			{
+				"id": "a001",
+				"parentId":"a001",
+				"dr": 0,
+				"ts": 1525104000000,
+				"creator": "测试",
+				"creationTime": 1525276800000,
+				"modifier": null,
+				"modifiedTime": 1525276800000,
+
+				"partsCode": "GD301882",
+				"partsName":"W010水疗智能马桶",
+				"unit":"个",
+				"model": "9003",
+				"description": "可以质量不错"
+			},
+			{
+				"id": "a002",
+				"parentId":"a001",
+				"dr": 0,
+				"ts": 1525104000000,
+				"creator": "测试",
+				"creationTime": 1525276800000,
+				"modifier": null,
+				"modifiedTime": 1525276800000,
+
+				"partsCode": "M301899",
+				"partsName":"马桶盖",
+				"unit":"个",
+				"model": "9003",
+				"description": "可以质量不错"
+			},
+			{
+				"id": "a003",
+				"parentId":"a001",
+				"dr": 0,
+				"ts": 1525104000000,
+				"creator": "测试",
+				"creationTime": 1525276800000,
+				"modifier": null,
+				"modifiedTime": 1525276800000,
+
+				"partsCode": "S3016872",
+				"partsName":"水箱",
+				"unit":"个",
+				"model": "9003",
+				"description": "可以质量不错"
+			},
+			{
+				"id": "a004",
+				"parentId":"002",
+				"dr": 0,
+				"ts": 1525104000000,
+				"creator": "测试",
+				"creationTime": 1525276800000,
+				"modifier": null,
+				"modifiedTime": 1525276800000,
+
+				"partsCode": "Y301998",
+				"partsName":"全陶高档浴缸",
+				"unit":"个",
+				"model": "9003",
+				"description": "可以质量不错"
+			},
+			{
+				"id": "a005",
+				"parentId":"a002",
+				"dr": 0,
+				"ts": 1525104000000,
+				"creator": "测试",
+				"creationTime": 1525276800000,
+				"modifier": null,
+				"modifiedTime": 1525276800000,
+
+				"partsCode": "MT301892",
+				"partsName":"马桶圈",
+				"unit":"个",
+				"model": "9003",
+				"description": "可以质量不错"
+			},
+			{
+				"id": "a0052",
+				"parentId":"a002",
+				"dr": 0,
+				"ts": 1525104000000,
+				"creator": "测试",
+				"creationTime": 1525276800000,
+				"modifier": null,
+				"modifiedTime": 1525276800000,
+
+				"partsCode": "LD301868",
+				"partsName":"螺钉",
+				"unit":"个",
+				"model": "9003",
+				"description": "可以质量不错"
+			},
+			{
+				"id": "a0051",
+				"parentId":"a002",
+				"dr": 0,
+				"ts": 1525104000000,
+				"creator": "测试",
+				"creationTime": 1525276800000,
+				"modifier": null,
+				"modifiedTime": 1525276800000,
+
+				"partsCode": "LD301825",
+				"partsName":"螺母",
+				"unit":"个",
+				"model": "9563",
+				"description": "可以质量不错"
+			},
+			{
+				"id": "a006",
+				"parentId":"a001",
+				"dr": 0,
+				"ts": 1525104000000,
+				"creator": "测试",
+				"creationTime": 1525276800000,
+				"modifier": null,
+				"modifiedTime": 1525276800000,
+
+				"partsCode": "T301996",
+				"partsName":"桶身",
+				"unit":"个",
+				"model": "9593",
+				"description": "可以质量不错"
+			},
+			{
+				"id": "a007",
+				"parentId":"a004",
+				"dr": 0,
+				"ts": 1525104000000,
+				"creator": "测试",
+				"creationTime": 1525276800000,
+				"modifier": null,
+				"modifiedTime": 1525276800000,
+
+				"partsCode": "GD301862",
+				"partsName":"缸体",
+				"unit":"个",
+				"model": "998003",
+				"description": "可以质量不错"
+			},
+			{
+				"id": "a008",
+				"parentId":"a004",
+				"dr": 0,
+				"ts": 1525104000000,
+				"creator": "测试",
+				"creationTime": 1525276800000,
+				"modifier": null,
+				"modifiedTime": 1525276800000,
+
+				"partsCode": "GD301689",
+				"partsName":"花洒",
+				"unit":"个",
+				"model": "90088",
+				"description": "可以质量不错"
+			}
+		],
+		"totalElements": 1,
+		"last": true,
+		"totalPages": 1,
+		"size": 10,
+		"number": 0,
+		"first": true,
+		"numberOfElements": 1
+	}
+}

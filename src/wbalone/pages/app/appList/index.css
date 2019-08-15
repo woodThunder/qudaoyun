@@ -1,0 +1,459 @@
+#appManager {
+    background-color: initial;
+    padding-bottom: 40px;
+    font: 14px/18px "Microsoft YaHei"
+}
+
+#appManager .padlft60 {
+    padding-left: 60px
+}
+
+#appManager .tooltip.active .tooltip-inner {
+    background-color: #e33c37 !important
+}
+
+#appManager .tooltip.top .tooltip-arrow {
+    border-top-color: #e33c37 !important
+}
+
+#appManager .u-form-group {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 30px;
+    height: 34px;
+}
+#appManager .u-combo-name-par {
+    top:5px;
+    z-index: 3;
+}
+
+#appManager .u-form-group .u-form-control {
+    position: unset;
+    ;
+    background: #fff;
+    border: 1px solid #d7d7d7;
+    border-radius: initial
+}
+
+#appManager .queren {
+    font-size: 12px;
+    height: 30px;
+    background-color: #039BE5;
+    min-width: 65px;
+    border-radius: 4px;
+    line-height: 30px;
+}
+
+#appManager .apptitle,
+#appManager .ecmi-input {
+    background-color: transparent;
+    color: #333;
+    font-family: "Microsoft YaHei"
+}
+
+#appManager .quxiao {
+    margin-right: 5px;
+    font-size: 12px;
+    min-width: 65px;
+    border-radius: inherit;
+    color: #039BE5;
+    border: 1px solid #039BE5 !important;
+    background: #fff !important;
+    height: 30px;
+    border-radius: 4px;
+    padding: 0;
+    line-height: 30px;
+}
+
+#appManager .margin-top-8 {
+    margin-top: 8px
+}
+
+#appManager input {
+    outline: 0;
+    border:1px solid #cecece;
+}
+
+#appManager .ecmi-input {
+    font-size: 13px;
+    /*width: 150px;*/
+    height: 32px;
+    line-height: 32px;
+    border: 1px solid #d7d7d7;
+    outline: 0;
+    margin: 0;
+    padding: 0 0 0 5px;
+    border-radius: initial
+}
+
+#appManager .ecmi-input:focus {
+    border: 1px solid #6bcaea
+}
+
+#appManager .apptitle {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+    z-index: 1541;
+}
+
+#appManager .funbar {
+    margin-bottom: 10px
+}
+
+#appManager .funbar .Y_sarch_style {
+    position: relative;
+    height: 50px;
+    border-bottom: #eeeff1 1px solid;
+    background-color: #fff;
+    padding-right: 20px
+}
+
+#appManager .funbar .Y_sarch_style .condsearch {
+    display: inline-block;
+    height: 50px;
+    line-height: 50px
+}
+
+#appManager .funbar .Y_sarch_style .condsearch .styled-select {
+    position: relative;
+    display: inline-block;
+    width: 170px;
+    height: 36px;
+    line-height: 36px;
+    margin-top: 7px
+}
+
+#appManager .funbar .Y_sarch_style .condsearch .styled-select select {
+    padding-left: 5px;
+    width: 170px;
+    height: 36px;
+    line-height: 36px;
+    font-family: "microsoft yahei";
+    background: 0 0;
+    border: 1px solid #ccc;
+    outline: 0;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none
+}
+
+#appManager .funbar .Y_sarch_style .condsearch .styled-select select:focus {
+    border: 1px solid #6bcaea
+}
+
+#appManager .funbar .Y_sarch_style .condsearch .styled-select .icon-arrow-down {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    color: #ccc;
+    font-size: 24px
+}
+
+#appManager .funbar .Y_sarch_style .condsearch .nc-search {
+    border: 1px solid #cecece;
+    font-size: 14px;
+    text-indent: 10px;
+    height: 36px;
+    line-height: 36px;
+    outline: 0;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    -o-border-radius: 1px;
+    border-radius: 1px
+}
+
+#appManager .funbar .Y_sarch_style .condsearch .nc-searchbtn {
+    font-size: 20px;
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    color: #ccc
+}
+
+#appManager .funbar .Y_sarch_style .condsearch .nc-searchbtn:hover {
+    color: #1baede
+}
+
+#appManager .funbar .Y_sarch_style .condsearch .nc-search:focus {
+    border: 1px solid #6bcaea
+}
+
+#appManager .funbar .Y_sarch_style .u-input-group {
+    display: inline-block;
+    margin-bottom: 0;
+    height: 40px;
+    line-height: 40px
+}
+
+#appManager .funbar .Y_sarch_style #condionSearch {
+    padding: 0 20px;
+    font-size: 13px;
+    color: #039BE5;
+    cursor: pointer;
+    display: inline-block
+}
+
+#appManager .funbar .Y_sarch_style #condionSearch .iconfont {
+    padding-left: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 20px
+}
+
+#appManager .funbar .Y_sarch_style #condionSearch .icon-arrow-down {
+    display: none
+}
+
+#appManager .funbar .Y_sarch_style .quickoper {
+    position: absolute;
+    top: 16px;
+    right: -5px;
+    height: 36px;
+    background-color: #00bcd4;
+    border-radius: 2px;
+    padding-right: 15px;
+    padding-left: 10px
+}
+
+#appManager .funbar .Y_sarch_style .quickoper s.bg_quickoper {
+    position: absolute;
+    right: 0;
+    bottom: -5px;
+    display: block;
+    width: 5px;
+    height: 5px
+}
+
+#appManager .funbar .Y_sarch_style .quickoper span {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin: 8px 6px 0;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer
+}
+
+#appManager .funbar .Y_sarch_style .guideTit {
+    padding-left: 20px;
+    line-height: 50px;
+    height: 50px
+}
+
+#appManager .funbar .Y_sarch_style .guideTit .u-form-group {
+    height: 50px;
+    display: inline-block;
+    padding-top: 10px;
+    margin-bottom: 0;
+    margin-right: 0
+}
+
+#appManager .funbar .Y_sarch_style .guideTit .addbtn {
+    cursor: pointer;
+    background-color: #039BE5;
+    font-size: 12px;
+    padding: 0;
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    outline: 0;
+    -webkit-border-radius: 0;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #fff;
+    margin-left: 0;
+    border: none;
+    min-width: 72px
+}
+
+#appManager #condition-row {
+    position: relative;
+    display: none;
+    background-color: #fff
+}
+
+#appManager #condition-row dl {
+    padding: 0 60px;
+    margin-bottom: 0
+}
+
+#appManager #condition-row dl .u-row {
+    margin: 0;
+    height: 50px
+}
+
+#appManager #condition-row dl .outSel {
+    float: left;
+    padding-top: 10px;
+    padding-right: 60px;
+    padding-left: 0
+}
+
+#appManager #condition-row dl .outSel label {
+    float: left;
+    font-size: 13px;
+    font-weight: 700;
+    color: #666;
+    line-height: 29px;
+    padding-right: 10px
+}
+
+#appManager #condition-row dl .outSel .styled-select {
+    position: relative;
+    display: inline-block;
+    width: 170px;
+    height: 29px;
+    line-height: 29px;
+    overflow: hidden
+}
+
+#appManager #condition-row dl .outSel .styled-select select {
+    padding-left: 5px;
+    width: 170px;
+    height: 29px;
+    line-height: 29px;
+    -webkit-appearance: none;
+    font-family: "microsoft yahei";
+    background: 0 0;
+    border: 1px solid #ccc;
+    outline: 0
+}
+
+#appManager #condition-row dl .outSel .styled-select select:focus {
+    border: 1px solid #6bcaea
+}
+
+#appManager #condition-row dl .outSel .styled-select .icon-arrow-down {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    color: #ccc;
+    font-size: 24px
+}
+
+#appManager #condition-row dl .btns-search {
+    padding-left: 45px
+}
+
+#appManager .table-list {
+    width: 100%;
+    overflow: hidden;
+    background-color: #fff
+}
+
+#appManager .table-list .table-body {
+    padding: 20px;
+    background-color: #fff
+}
+
+#appManager .add-app {
+    background-color: #fff
+}
+
+#appManager .add-app .styled-select {
+    position: relative;
+    display: inline-block;
+    width: 170px;
+    height: 36px;
+    line-height: 36px;
+    margin-top: 7px
+}
+
+#appManager .add-app .styled-select select {
+    padding-left: 5px;
+    width: 170px;
+    height: 36px;
+    line-height: 36px;
+    font-family: "microsoft yahei";
+    background: 0 0;
+    border: 1px solid #ccc;
+    outline: 0;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none
+}
+
+#appManager .add-app .styled-select select:focus {
+    border: 1px solid #6bcaea
+}
+
+#appManager .add-app .styled-select .icon-arrow-down {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    color: #ccc;
+    font-size: 24px
+}
+
+#appManager .add-app .u-form-control:focus,
+#appManager .add-app .u-form-control:hover {
+    border-color: #6bcaea
+}
+
+#LoadingImage,
+#emptyImage {
+    text-align: center;
+    padding: 9%;
+    background-color: #fff
+}
+
+#appManager .u-menu-button {
+    width: 100%;
+    text-align: left;
+    border: 1px solid #d7d7d7;
+    padding-right: 4px;
+}
+
+#appManager .u-menu-button:hover {
+    border-color: #6bcaea;
+    background: #fff;
+}
+
+#appManager .u-menu-button i.uf {
+    float: right
+}
+
+#appManager .u-menu-container {
+    width: calc(100% - 30px) !important;
+}
+
+#appManager .u-menu-container .u-menu-outline,
+#appManager .u-menu-container ul {
+    width: 100% !important;
+}
+
+#appManager .u-combo-li,
+#appManager .u-menu-container.is-visible .u-menu-item {
+    line-height: 30px;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+#appManager .u-combo-li:hover,
+#appManager .u-combo-li,
+#appManager .u-menu-container.is-visible .u-menu-item:hover {
+    background-color: #e9f7fc;
+}
+#appManager .u-form-control{
+    height: 34px;
+}
+#appManager .mustLabel{
+    color: red;
+    top: 4px;
+  
+    display: inline-block;
+    position: absolute;
+}

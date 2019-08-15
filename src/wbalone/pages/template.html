@@ -1,0 +1,105 @@
+
+<div class="page-header">
+    <h1 class="page-title">布局模板管理</h1>
+    <ol class="breadcrumb">
+        <li><a href="index.html">首页</a></li>
+        <li class="active">布局模板</li>
+    </ol>
+    <div class="page-header-actions dropdown" style="z-index: 1">
+        <a href="javascript:void(0)" role="button" data-animation="scale-up" aria-expanded="false" data-toggle="dropdown">
+            <button class="btn btn-sm btn-outline btn-default btn-round" type="button">
+                <span class="text hidden-xs">导入布局模板</span>
+                <i aria-hidden="true" class="icon wb-chevron-right"></i>
+            </button>
+        </a>
+        <ul role="menu" class="dropdown-menu dropdown-menu-right dropdown-menu-media">
+            <li role="presentation" class="dropdown-menu-header">
+                <h5>导入一个新的布局模板</h5>
+            </li>
+            <li role="presentation" class="scrollable is-enabled scrollable-vertical" style="position: relative">
+                <div data-role="container" class="scrollable-container" >
+                    <div data-role="content" class="scrollable-content" >
+                        <div id="widget-list" class="site-items list-unstyled">
+                            <div class="col-md-12 widget-create">
+                                <div class="panel-body" id="widget-body">
+                                    <form action="layout/tpl/import" method="post" enctype="multipart/form-data" id="upload-form"  target="hidden_frame">
+                                        <div class="form-group">
+                                            <h4 class="example-title">名称</h4>
+                                            <input type="text" name="name" placeholder="名称" id="inputRounded" name="name" class="form-control round">
+                                        </div>
+                                        <div class="form-group">
+                                            <h4 class="example-title">标识</h4>
+                                            <input type="text" name="id" placeholder="标识" id="" class="form-control round">
+                                        </div>
+                                        <div class="form-group">
+                                            <h4 class="example-title">模板上传</h4>
+                                            <div class="form-group">
+                                                <div class="input-group input-group-file">
+                                                    <input type="text" readonly="" class="form-control">
+                                                    <span class="input-group-btn">
+                                                      <span class="btn btn-outline btn-file">
+                                                        <i aria-hidden="true" class="icon wb-upload"></i>
+                                                        <input type="file" multiple="" name="tpl">
+                                                      </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group text-left">
+                                            <div id="errorMessage"></div>
+                                        </div>
+                                        <div class="form-group text-right">
+                                            <button type="submit" id="file-upload" class="btn-blue btn-block btn-xs">上传</button>
+                                        </div>
+                                    </form>
+                                    <iframe name='hidden_frame' id="hidden_frame" style='display:none'></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </li>
+            <li role="presentation" class="dropdown-menu-footer">
+                <a role="button" href="javascript:void(0)" class="dropdown-menu-footer-btn">
+                    <i aria-hidden="true" class="icon wb-settings"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="page-content container-fluid">
+    <div class="row">
+        {{each list as item i}}
+        <div class="col-md-3">
+            <div class="widget">
+                <div class="widget-content padding-35 bg-white clearfix">
+                    <div class="pull-left white">
+                        <i aria-hidden="true" class="icon icon-circle icon-2x wb-image bg-blue-600"></i>
+                    </div>
+                    <div class="counter counter-md counter text-right pull-right">
+                        <div class="counter-number-group">
+                            <span class="counter-number-related text-capitalize">{{item.name}}</span>
+                        </div>
+                        <div class="counter-label text-capitalize font-size-16"></div>
+                    </div>
+                </div>
+                <div class="layout-template">
+                    <!--
+                    {{echo item.tpl}}
+                    -->
+                </div>
+                <div class="padding-10 text-right">
+                    <button type="button" data-id="{{item.pkWidget}}" class="btn btn-sm btn-outline btn-default btn-round widget-edit">
+                        <span class="text hidden-xs">编辑</span>
+                    </button>
+                    <button type="button" data-id="{{item.pkWidget}}" class="btn btn-sm btn-outline btn-default btn-round widget-del">
+                        <span class="text hidden-xs" >删除</span>
+                        <i class="icon wb-chevron-right" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>

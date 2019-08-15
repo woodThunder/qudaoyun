@@ -1,0 +1,268 @@
+<style type="text/css">
+  .my-textonly {
+    width: 100%;
+    word-break: break-all;
+    white-space: normal;
+  }
+
+  .my-item .ui-inputarea {
+    width: 90%
+  }
+
+  .my-item {
+    margin-top: 5px;
+    min-height: 24px;
+    margin-left: 10px;
+    width: 100%
+  }
+
+.ui-inputarea{
+  height: 24px;
+}
+
+</style>
+
+<div class="ui-panel">
+  <div class="ui-searchbox">
+    <div id="MessageCenter-searchcontent" class="ui-searchbox-content" style="height:auto"></div>
+    <div class="ui-searchbox-footer">
+      <!-- <div class="ui-search-more hidden">
+        <a>更多<i class="uifont icon-down"></i></a>
+      </div> -->
+    </div>
+  </div>
+
+  <div class="ui-panel-body">
+    <div class="margin-bottom-10">
+      <a class="ui-btn ui-btn-orange margin-right-5" id="user-action-add" data-bind="click: beforeEdit.bind($data,-1)">
+        <i class="uifont icon-plus margin-right-5"></i>新建
+      </a>
+      <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del" data-bind="click: del">
+        <i class="uifont icon-shanchu1 margin-right-5"></i>删除
+      </a>
+    </div>
+    <div class="ui-table-container">
+      <div class="receive-box" id="MessageList" u-meta='{"id":"grid_MessageList","data":"MessageList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+        <div options='{"field":"sender","dataType":"String","title":"发送人"}'></div>
+        <div options='{"field":"subject","dataType":"String","title":"主题","renderType":"detailRender"}'></div>
+        <div options='{"field":"receiveTime","dataType":"Datetime","title":"接收时间"}'></div>
+        <div options='{"field":"typeName","dataType":"String","title":"分类"}'></div>
+        <div options='{"field":"readStatus","dataType":"String","title":"状态","editOptions":{"type":"combo","datasource":"readStatusSrc"},"renderType":"comboRender"}'></div>
+      </div>
+      <div class="send-box" id="MessageList0" u-meta='{"id":"grid_MessageList0","data":"MessageList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true}'>
+        <div options='{"field":"receiver","dataType":"String","title":"接收人"}'></div>
+        <div options='{"field":"subject","dataType":"String","title":"主题","renderType":"detailRender"}'></div>
+        <div options='{"field":"sendTime","dataType":"Datetime","title":"发送时间"}'></div>
+      </div>
+
+      <div class="ui-statistics margin-top-10">
+        <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择
+        <span class="font-c-blue" data-bind="text:MessageList.selectedIndices().length"></span>项数据
+      </div>
+      <div class="pagination-right">
+        <div id='pagination' class='pagination u-pagination pagination-sm' u-meta='{"type":"pagination","data":"MessageList","pageChange":"pageChange","sizeChange":"sizeChange"}'></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--新增 弹框 start-->
+<div id="dialog_content_newMessageFun" style="display:none;">
+  <div class="u-msg-title">
+    <h4>新建消息</h4>
+  </div>
+  <div class="u-msg-content" id="addContent">
+    <h3 class="ui-collapse-title open">接收人</h3>
+    <div class="clearfix margin-top-5 margin-bottom-5">
+      <a class="ui-btn ui-btn-orange margin-right-5" data-bind="click:messageCreationHandler.bind($data,-1) ">
+        <i class="uifont icon-plus margin-right-5"></i>添加</a>
+      <a class="ui-btn ui-btn-orange margin-right-5" data-bind="click:messageCreationHandler.bind($data,0)">
+        <i class="uifont icon-shanchu1 margin-right-5"></i>移除</a>
+    </div>
+    <div id="AuthorizedUserRefer" u-meta='{"type":"uiRefer","data":"AuthorizedUserRef","field":"AuthorizedUserRefer"}' style="display:none;">
+      <input readonly="readonly" />
+      <span class="ui-icon uifont icon-bar refer"></span>
+    </div>
+    <div u-meta='{"id":"grid_messageUser","data":"MessageUserCreation","type":"grid","editable":true,"multiSelect":"true","showNumCol":true, "onBeforeEditFun":"bomTreeBeforeEdit"}'>
+      <div options='{"field":"code","dataType":"String","title":"用户编码","editable":false,"renderType":"ncReferRender","editType":"ncReferEditType","showField":"code","editOptions":{"validType":"string","rel":{"refpk":"productId","refname":"productName","refcode":"productCode","proStateCode":"proState"}}}'></div>
+      <div options='{"field":"name","dataType":"String","title":"用户名称","editable":false}'></div>
+    </div>
+    <div class="ui-panel-content clearfix" id="infoBase">
+      <div class="clearfix"></div>
+      <div class="my-item">
+        <div class="ui-name" style="width: 45px;"><i class="strong">*</i>主题：</div>
+        <div class="ui-inputarea">
+          <div class="my-textonly" u-meta='{"id":"subject0","type":"u-text","data":"MessageContentCreation","field":"subject0"}'>
+            <input class="u-input" id="subject" />
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="my-item ui-textarea-item">
+        <div class="ui-name" style="width: 45px;">
+          <i class="strong">*</i>内容：</div>
+        <div class="ui-inputarea">
+          <textarea u-meta='{"id":"content","data":"MessageContentCreation","field":"content","type":"textarea"}'>
+                <input class="u-input"/>
+            </textarea>
+        </div>
+      </div>
+    </div>
+    <div class="ui-panel-content clearfix">
+      <div class="my-item ui-textarea-item">
+        <div class="ui-name" style="width: 45px;">附件：</div>
+        <a class="ui-btn ui-btn-orange" data-bind="click: showFileDialog"><i class="uifont icon-plus"></i></a>
+        <div class="ui-inputarea">
+          <div class="my-textonly attacheAdd" style="line-height: 26px;">
+          </div>
+          <!--<div class="my-textonly" u-meta='{"id":"attacheName","type":"u-text","data":"MessageContentCreation","field":"attacheName"}'>
+              <input class="u-input" />
+            </div>-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="u-msg-footer">
+    <a class="u-msg-ok ui-btn ui-btn-green">发送</a>
+    <a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+  </div>
+</div>
+<!--新增 弹框 end-->
+<!--详情弹框 start-->
+<div id="dialog_content_detailMessageFun" style="display:none;">
+  <div class="u-msg-title">
+    <h4>
+      <span data-bind="visible:direction()=='receive'">查看已接收的消息</span>
+      <span data-bind="visible:direction()=='send'">查看已发送的消息</span>
+
+    </h4>
+  </div>
+  <div class="u-msg-content" id="">
+    <div style="margin-top: -5px;">
+      <span data-bind="visible:direction()=='send' || detailFlag()==1 || detailFlag()==2">接收人</span>
+      <span data-bind="visible:direction()=='receive' && detailFlag()==0">发送人</span>
+    </div>
+    <div class="clearfix margin-top-5 margin-bottom-5">
+      <a class="ui-btn ui-btn-orange margin-right-5" data-bind="click:messageCreationHandler.bind($data,-1),visible:detailFlag()==1 || detailFlag()==2 ">
+        <i class="uifont icon-plus margin-right-5"></i>添加</a>
+      <a class="ui-btn ui-btn-orange margin-right-5" data-bind="click:messageCreationHandler.bind($data,0),visible:detailFlag()==1 || detailFlag()==2">
+        <i class="uifont icon-shanchu1 margin-right-5"></i>移除</a>
+    </div>
+    <div id="AuthorizedUserRefer" u-meta='{"type":"uiRefer","data":"AuthorizedUserRef","field":"AuthorizedUserRefer"}' style="display:none;">
+      <input readonly="readonly" />
+      <span class="ui-icon uifont icon-bar refer"></span>
+    </div>
+    <div data-bind="visible:direction()=='send' && detailFlag()==0">
+      <div u-meta='{"id":"grid_messageUser_detail_send","data":"MessageUserCreation","type":"grid","editable":true,"multiSelect":"true","showNumCol":true, "onBeforeEditFun":"bomTreeBeforeEdit"}'>
+        <div options='{"field":"code","dataType":"String","title":"用户编码","editable":false,"renderType":"ncReferRender","editType":"ncReferEditType","showField":"code","editOptions":{"validType":"string","rel":{"refpk":"productId","refname":"productName","refcode":"productCode","proStateCode":"proState"}}}'></div>
+        <div options='{"field":"name","dataType":"String","title":"用户名称","editable":false}'></div>
+        <div options='{"field":"readStatusName","dataType":"String","title":"阅读状态","editable":false,"editOptions":{"type":"combo","datasource":"sendStatusSrc"},"renderType":"comboRender"}'></div>
+        <div options='{"field":"readTime","dataType":"date","title":"阅读时间","editable":false}'></div>
+      </div>
+    </div>
+    <div data-bind="visible:direction()=='receive' || detailFlag()!=0">
+      <div u-meta='{"id":"grid_messageUser_detail","data":"MessageUserCreation","type":"grid","editable":true,"multiSelect":"true","showNumCol":true, "onBeforeEditFun":"bomTreeBeforeEdit"}'>
+        <div options='{"field":"code","dataType":"String","title":"用户编码","editable":false,"renderType":"ncReferRender","editType":"ncReferEditType","showField":"code","editOptions":{"validType":"string","rel":{"refpk":"productId","refname":"productName","refcode":"productCode","proStateCode":"proState"}}}'></div>
+        <div options='{"field":"name","dataType":"String","title":"用户名称","editable":false}'></div>
+      </div>
+    </div>
+
+    <div class="ui-panel-content clearfix" id="infoBase">
+      <div class="clearfix"></div>
+      <div class="my-item detail-text" data-bind="visible:detailFlag() == 0">
+        <div class="ui-name" style="width: 45px;">主题：</div>
+        <div class="ui-inputarea">
+          <div class="my-textonly" data-bind='text: MessageContentCreation.ref("subject")'></div>
+        </div>
+      </div>
+      <div class="my-item detail-add" data-bind="visible:detailFlag() == 1 || detailFlag() == 2">
+        <div class="ui-name" style="width: 45px;"><i class="strong">*</i>主题：</div>
+        <div class="ui-inputarea">
+          <div class="my-textonly" u-meta='{"id":"subject","type":"u-text","data":"MessageContentCreation","field":"subject"}'>
+            <input class="u-input" id="subjectDetail" />
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="my-item detail-text" data-bind="visible:detailFlag() == 0">
+        <div class="ui-name" style="width: 45px;">内容：</div>
+        <div class="ui-inputarea">
+          <div class="my-textonly" data-bind='text: MessageContentCreation.ref("content")'></div>
+        </div>
+      </div>
+      <div class="my-item ui-textarea-item detail-add" data-bind="visible:detailFlag() == 1 || detailFlag() == 2">
+        <div class="ui-name" style="width: 45px;">
+          <i class="strong">*</i>内容：</div>
+        <div class="ui-inputarea">
+          <textarea u-meta='{"id":"content","data":"MessageContentCreation","field":"content","type":"textarea"}'>
+                <input class="u-input"/>
+            </textarea>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="my-item ui-textarea-detail detail-text" data-bind="visible:detailFlag()==0">
+        <div class="ui-name" style="width: 45px;">附件：</div>
+        <div class="ui-inputarea" style="margin-left: 50px;">
+          <div class="my-textonly" id="attacheNameDown"></div>
+        </div>
+      </div>
+      <!--<div class="my-item detail-add ui-textarea-detail" data-bind="visible:detailFlag()==1 || detailFlag() == 2">
+	      <div class="ui-name"  style="width: 45px;">附件：</div>
+	      <a class="ui-btn ui-btn-orange" data-bind="click: showFileDialog"><i class="uifont icon-plus"></i></a>
+	      <div class="ui-inputarea">
+					<div class="my-textonly attacheAdd" style="line-height: 26px;"></div>
+	      </div>
+	    </div>-->
+      <div class="my-item ui-textarea-item" data-bind="visible:detailFlag()==1 || detailFlag() == 2">
+        <div class="ui-name" style="width: 45px;">附件：</div>
+        <a class="ui-btn ui-btn-orange" data-bind="click: showFileDialog"><i class="uifont icon-plus"></i></a>
+        <div class="ui-inputarea">
+          <div class="my-textonly attacheAdd" style="line-height: 26px;">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="u-msg-footer">
+    <a class="u-msg-reply ui-btn ui-btn-green" data-bind="visible:detailFlag()== 0" style="float: left;">答复</a>
+    <a class="u-msg-forward ui-btn ui-btn-green" data-bind="visible:detailFlag()== 0" style="float: left;margin-left: 15px;">转发</a>
+    <a class="u-msg-ok ui-btn ui-btn-green" data-bind="visible:detailFlag()==1 || detailFlag() == 2">发送</a>
+    <a class="u-msg-cancel-detail ui-btn ui-btn-primary margin-right-5" data-bind="visible:detailFlag()==1 || detailFlag() == 2">取消</a>
+    <a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5" data-bind="visible:detailFlag()== 0">取消</a>
+  </div>
+</div>
+<!-- 详情弹框 end-->
+<!--detailMessageFun-->
+<!-- 模态框(附件上传)start-->
+<div id="fileiptwrap">
+  <input class="u-input" type="file" name="addfile" id="uploadbatch_id" multiple="multiple" style="display:none;" />
+</div>
+<div id="file-dialog" style="display:none;">
+  <div class="u-msg-title">
+    <h4>附件</h4>
+  </div>
+  <div class="u-msg-content">
+    <div class="ui-file-btns">
+      <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del" data-bind='click: onOpenUploadWin'><i class="uifont icon-tubiao-shangchuan margin-right-5"></i>上传
+      </a>
+      <!--<a class="ui-btn ui-btn-primary margin-right-5" id="user-action-del"
+        data-bind='click: fileDelete'><i class="uifont icon-shanchu1 margin-right-5"></i>删除
+      </a>-->
+      <a class="ui-btn ui-btn-primary margin-right-5" id="user-action-add" data-bind="click: savePic">确定</a>
+    </div>
+    <div class="ui-file-list">
+      <div class="ui-table-container">
+        <div u-meta='{"id":"grid_attach","data":"FileList","type":"grid","editable":false,"multiSelect":true,"showNumCol":true,"columnMenu":false}'>
+          <div options='{"field":"filename","dataType":"String","title":"文件名称"}'></div>
+          <div options='{"field":"filesize","dataType":"String","title":"文件大小"}'></div>
+          <div options='{"field":"uploadtime","dataType":"Datetime","title":"上传时间"}'></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="u-msg-footer">
+    <!-- <a class="ui-btn ui-btn-green J-ok">确定</a> -->
+  </div>
+</div>
+<!-- 模态框(附件上传)end-->

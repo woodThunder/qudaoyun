@@ -1,0 +1,138 @@
+<div class="ui-panel ui-list-panel" style="display: none;">
+  <div class="u-row">
+    <div class="u-col-4  page-title">
+      <span>零售活动价因子组合设置</span>
+    </div>
+  </div>
+  <div class="u-row">
+    <div class="u-col-4">
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+	<div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <!--<a class="ui-btn ui-btn-primary ui-btn-disabled">编辑
+      </a>-->
+      <a class="ui-btn ui-btn-primary margin-right-5"
+	      data-bind="click: cancelHandle">取消
+	    </a>
+      <a class="ui-btn ui-btn-green" data-bind="click: saveList">保存
+      </a>
+    </div>
+  </div>
+  <div class="ui-panel-body margin-top-20">
+    	<div class="ui-panel-body-head">
+    		<div class="ui-panel-body-head-left">
+    			<a class="ui-btn ui-btn-primary margin-right-5 ui-btn-disabled"
+	        ><i class="uifont icon-tubiao-yinzishezhi margin-right-5"></i>因子设置
+	        </a>
+	        <a class="ui-btn ui-btn-primary margin-right-5"
+	          data-bind="click: addRow"><i class="uifont icon-plus margin-right-5"></i>增行
+	        </a>
+	         <a class="ui-btn ui-btn-primary margin-right-5"
+	          data-bind="click: delList"><i class="uifont icon-shanchu1 margin-right-5"></i>删行
+	        </a>
+	        <!--<a class="ui-btn ui-btn-primary margin-right-5"
+	          data-bind="click: cancelHandle"><i class="uifont icon-tubiao-guanbi-xianxing margin-right-5"></i>取消
+	        </a>-->
+    		</div>
+    	</div>
+      <div class="ui-table-container">
+          <div id="SaleActiveFactor"
+               u-meta='{"id":"grid_SaleActiveFactor","data":"saleActiveFactorList","type":"grid","editable":true,"multiSelect":true,"showNumCol":true}'>
+                      <div options='{"field":"product","dataType":"checkbox","renderType":"booleanRender","title":"产品","width":"130px"}'></div>
+                      <div options='{"field":"distributor","dataType":"checkbox","renderType":"booleanRender","title":"经销商","width":"130px"}'></div>
+                      <div options='{"field":"store","dataType":"checkbox","renderType":"booleanRender","title":"门店","width":"130px"}'></div>
+                      <div options='{"field":"assembleName","dataType":"string","title":"因子组合名称","editable":false,"renderType":"factorCombination","width":"200px"}'></div>
+                      <div options='{"field":"assemblePriority","dataType":"integer","title":"组合优先级","editable":false,"width":"130px"}'></div>
+                      <div options='{"field":"creator","dataType":"string","title":"创建人","visible":"false","editable":false,"width":"130px"}'></div>
+                      <div options='{"field":"creationTime","dataType":"datetime","title":"创建时间","visible":"false","editable":false}'></div>
+                      <div options='{"field":"modifier","dataType":"string","title":"修改人","visible":"false","editable":false}'></div>
+                      <div options='{"field":"modifiedTime","dataType":"datetime","title":"修改时间","visible":"false","editable":false}'></div>
+          </div>
+          <div class="ui-statistics margin-top-10">
+            <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择<span class="font-c-blue" data-bind="text:saleActiveFactorList.selectedIndices().length"></span>项数据
+          </div>
+      </div>
+    </div>
+</div>
+<!--详情浏览状态-->
+<div class="ui-panel ui-bill-detail">
+  <div class="u-row">
+    <div class="u-col-4  page-title">
+      <span>零售活动价因子组合设置</span>
+    </div>
+  </div>
+  <div class="u-row">
+    <div class="u-col-4">
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+	<div class="ui-panel-btn-bg">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-green" data-bind="click: editClick">编辑
+      </a>
+      <!--<a class="ui-btn ui-btn-green ui-btn-disabled">保存
+      </a>-->
+    </div>
+  </div>
+  <div class="ui-panel-body margin-top-20">
+    	<div class="ui-panel-body-head">
+    		<div class="ui-panel-body-head-left">
+    			<a class="ui-btn ui-btn-primary margin-right-5"
+	          data-bind="click: setClick"><i class="uifont icon-tubiao-yinzishezhi margin-right-5"></i>因子设置
+	        </a>
+	        <a class="ui-btn ui-btn-primary margin-right-5 ui-btn-disabled"
+	          ><i class="uifont icon-plus margin-right-5"></i>增行
+	        </a>
+	         <a class="ui-btn ui-btn-primary margin-right-5 ui-btn-disabled"
+	         ><i class="uifont icon-shanchu1 margin-right-5"></i>删行
+	        </a>
+	        <!--<a class="ui-btn ui-btn-primary margin-right-5 ui-btn-disabled"
+	          ><i class="uifont icon-tubiao-guanbi-xianxing margin-right-5"></i>取消
+	        </a>-->
+    		</div>
+    	</div>
+      <div class="ui-table-container">
+          <div id="SaleActiveFactor"
+               u-meta='{"id":"grid_SaleActiveFactor_detaile","data":"saleActiveFactorList","type":"grid","editable":false,"multiSelect":false,"showNumCol":true}'>
+                      <div options='{"field":"product","dataType":"checkbox","renderType":"disableBooleanRender","title":"产品","width":"130px"}'></div>
+                      <div options='{"field":"distributor","dataType":"checkbox","renderType":"disableBooleanRender","title":"经销商","width":"130px"}'></div>
+                      <div options='{"field":"store","dataType":"checkbox","renderType":"disableBooleanRender","title":"门店","width":"130px"}'></div>
+                      <div options='{"field":"assembleName","dataType":"string","title":"因子组合名称","editable":false,"renderType":"factorCombination","width":"200px"}'></div>
+                      <div options='{"field":"assemblePriority","dataType":"integer","title":"组合优先级","editable":false,"width":"130px"}'></div>
+                      <div options='{"field":"creator","dataType":"string","title":"创建人","visible":"false","width":"130px"}'></div>
+                      <div options='{"field":"creationTime","dataType":"datetime","title":"创建时间","visible":"false"}'></div>
+                      <div options='{"field":"modifier","dataType":"string","title":"修改人","visible":"false"}'></div>
+                      <div options='{"field":"modifiedTime","dataType":"datetime","title":"修改时间","visible":"false"}'></div>
+          </div>
+          <div class="ui-statistics margin-top-10">
+            <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择<span class="font-c-blue" data-bind="text:saleActiveFactorList.selectedIndices().length"></span>项数据
+          </div>
+      </div>
+    </div>
+</div>
+<!--详情浏览状态  end-->
+<div id="dialog_layer" style="display:none;">
+
+</div>
+
+<!--因子设置弹框-->
+<div id="dialog_content_set" style="display:none;">
+	<div class="u-msg-title">
+		<h4>设置</h4>
+	</div>
+	<div class="u-msg-content">
+		<div u-meta='{"id":"grid_SaleActiveFactor_set","data":"saleActiveSetItems","type":"grid","editable":true,"multiSelect":false,"showNumCol":true}'>
+        <div options='{"field":"name","dataType":"String","title":"因子名称","editable":false}'></div> 
+        <div options='{"field":"priority","dataType":"Int","title":"优先级","editType":"integer"}'></div>
+   	</div>
+	</div>
+	<div class="u-msg-footer">
+		<a class="u-msg-cancel ui-btn ui-btn-primary margin-right-5">取消</a>
+		<a class="u-msg-ok ui-btn ui-btn-green">保存</a>
+	</div>
+</div>
+<!--因子设置弹框 end-->

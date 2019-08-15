@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Organization Chart Plugin</title>
+  <link rel="icon" href="img/logo.png">
+
+  <link rel="stylesheet" href="/ocm-web/vendor/jquery.orgchart/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/ocm-web/vendor/jquery.orgchart/css/jquery.orgchart.css">
+  <link rel="stylesheet" href="/ocm-web/vendor/jquery.orgchart/css/style.css">
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  <!-- <script src="/ocm-web/js/orgchart.min.js"></script> -->
+  <style type="text/css">
+    .orgchart {
+      background: #fff;
+    }
+
+    .orgchart td.left,
+    .orgchart td.right,
+    .orgchart td.top {
+      border-color: #aaa;
+    }
+
+    .orgchart td>.down {
+      background-color: #aaa;
+    }
+
+    .orgchart .color0 .title {
+      background-color: #D50000;
+    }
+
+    .orgchart .color0 .content {
+      border-color: #D50000;
+    }
+
+    .orgchart .color1 .title {
+      background-color: #6200EA;
+    }
+
+    .orgchart .color1 .content {
+      border-color: #6200EA;
+    }
+
+    .orgchart .color2 .title {
+      background-color: #0091EA;
+    }
+
+    .orgchart .color2 .content {
+      border-color: #0091EA;
+    }
+
+    .orgchart .color3 .title {
+      background-color: #00C853;
+    }
+
+    .orgchart .color3 .content {
+      border-color: #00C853;
+    }
+
+    .orgchart .color4 .title {
+      background-color: #FFD600;
+    }
+
+    .orgchart .color4 .content {
+      border-color: #FFD600;
+    }
+
+    .orgchart .color5 .title {
+      background-color: #FF3D00;
+    }
+
+    .orgchart .color5 .content {
+      border-color: #FF3D00;
+    }
+
+    .orgchart .color6 .title {
+      background-color: #37474F;
+    }
+
+    .orgchart .color6 .content {
+      border-color: #37474F;
+    }
+
+    .orgchart .color7 .title {
+      background-color: #C51162;
+    }
+
+    .orgchart .color7 .content {
+      border-color: #C51162;
+    }
+
+    .orgchart .color8 .title {
+      background-color: #8C9EFF;
+    }
+
+    .orgchart .color8 .content {
+      border-color: #8C9EFF;
+    }
+
+    .orgchart .color9 .title {
+      background-color: #BA68C8;
+    }
+
+    .orgchart .color9 .content {
+      border-color: #BA68C8;
+    }
+
+    .orgchart .defaultColor .title {
+      background-color: #C6FF00;
+    }
+
+    .orgchart .defaultColor .content {
+      border-color: #C6FF00;
+    }
+
+    #chart-container {
+      top: 0px;
+      left: 0px;
+      position: relative;
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      border: 0px solid #fff;
+      border-radius: 0px;
+      overflow: auto;
+      text-align: center;
+      background: #fff;
+    }
+
+    #goodsbom-title {
+      padding-top: 25px;
+      font-size: 28px;
+      height: 60px;
+      background: #fff;
+      text-align: center;
+    }
+
+    .orgchart .node:hover {
+      background-color: #fff;
+      transition: .5s;
+      cursor: default;
+      z-index: 20;
+    }
+
+    .orgchart .node.focused {
+      background-color: #fff;
+    }
+
+    .edge {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="goodsbom-title"></div>
+  <div id="chart-container"></div>
+  <script type="text/javascript">
+
+  </script>
+</body>
+
+</html>

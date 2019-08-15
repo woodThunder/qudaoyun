@@ -1,0 +1,380 @@
+<div class="main-wrap list-panel" id="appManager">
+    <div class="wrapper">
+        <div class="wrap-body" data-bind="visible:appDomType">
+            <!--页面功能名字-->
+            <!-- iuap前端升级同步更改 wt20190123
+            <div class="apptitle">
+                <span class="i18n" name="ht.app.app.0001"></span>
+                <span class="btn btn-default btn-sm backbutton" data-bind="click:goback"><span class="i18n" name="ht.app.app.0002"></span></span>
+            </div>
+            -->
+            <!--页面头部功能条-->
+            <div class="funbar">
+                <!--页面头部功能条-->
+                <div class="Y_sarch_style">
+                    <div class="pull-right condsearch" id="condsearch">
+                        <div class="u-input-group u-has-feedback" style="display: none;">
+                            <input type="text" class="nc-search" placeholder="ht.app.app.0003">
+                            <span class="u-form-control-feedback iconfont icon-search nc-searchbtn"></span>
+                        </div>
+                        <div id="condionSearch">
+                            <span class="i18n" name="ht.app.app.0004"></span><span class="iconfont icon-arrow-up"></span><span class="iconfont icon-arrow-down"></span>
+                        </div>
+                    </div>
+                    <div class="guideTit">
+                        <div class="u-form-group">
+                            <button class="addbtn" type="button" data-bind="click:addUser"><span class="i18n" name="ht.app.app.0005"></span></button>
+                        </div>
+                    </div>
+                </div>
+                <!--按条件查询区域-->
+                <div class="Y_selector" id="condition-row">
+                    <dl class="sort">
+                        <dd>
+                            <div class="outSel u-col-lg-4 u-col-md-4 u-col-sm-6">
+                                <label class="seLab"><span class="i18n" name="ht.app.app.0006"></span></label>
+                                <div class=" u-col-8 u-col-sm-8 u-input-group u-form-group-sm" style="">
+                                    <select id="s-area" class="area u-form-control ecmi-input hide" data-bind="
+                                     options: search.appAreas,
+                                      optionsText: function(data){ return  data.area.areaName},
+                                        optionsValue:function(data){ return  data.area.id},
+                                       optionsCaption: $.i18n.prop('ht.app.app.0007')
+                                        value:search.area">
+                                    </select>
+                                    <button class="u-button  u-menu-button " id="demo-menu-lower-right3">
+                                        <span data-bind="text:searchareaName"></span><i class="uf uf-anglearrowdown"></i>
+                                    </button>
+                                    <ul class="u-menu " data-bind="foreach:search.appAreas" for="demo-menu-lower-right3">
+                                        <li class="u-menu-item" data-bind="click: $parent.searchAreaClick">
+                                            <span data-bind="text:area.areaName"> </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="outSel u-col-lg-4 u-col-md-4 u-col-sm-6">
+                                <label class="seLab"><span class="i18n" name="ht.app.app.0008"></span></label>
+                                <div class=" u-col-8 u-col-sm-8 u-input-group u-form-group-sm" style="">
+                                    <select id="s-group" class="group u-form-control ecmi-input hide" data-bind='options: search.groups,
+                                             optionsText: "name", optionsValue:"id",
+                                             optionsCaption: $.i18n.prop("ht.app.app.0009"),
+                                             value: search.group'>
+                                    </select>
+                                    <button class="u-button  u-menu-button " id="demo-menu-lower-right4">
+                                        <span data-bind="text:searchgroupName"></span><i class="uf uf-anglearrowdown"></i>
+                                    </button>
+                                    <ul class="u-menu " data-bind="foreach:search.groups" for="demo-menu-lower-right4">
+                                        <li class="u-menu-item" data-bind="click: $parent.searchGroupClick">
+                                            <span data-bind="text:name"> </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="outSel u-col-lg-4 u-col-md-4 u-col-sm-6">
+                                <label class="seLab"><span class="i18n" name="ht.app.app.0010"></span></label>
+                                <div class=" u-col-8 u-col-sm-8">
+                                    <input type="text" id="s-keyword" class="ecmi-input u-form-control" placeholder="ht.app.app.0011">
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+            <!--tale列表展现区域-->
+            <div class="table-list table-responsive">
+                <div class="table-body">
+                    <table class="u-table u-table-striped u-table-hover tabOne">
+                        <thead>
+                            <tr>
+                                <th width="6%"><span class="i18n" name="ht.app.app.0012"></span></th>
+                                <th width="6%"><span class="i18n" name="ht.app.app.0013"></span></th>
+                                <th width="12%"><span class="i18n" name="ht.app.app.0014"></span></th>
+                                <th width="12%"><span class="i18n" name="ht.app.app.0015"></span></th>
+                                <th width="10%"><span class="i18n" name="ht.app.app.0016"></span></th>
+                                <th width="12%"><span class="i18n" name="ht.app.app.0017"></span></th>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="foreach:{data:listData.rows(), as: 'row',afterAdd: afterAdd}">
+                            <tr>
+                                <td data-bind="text: $index()">1</td>
+                                <td data-bind="text: row.ref('areaName')"></td>
+                                <td data-bind="text: row.ref('goupName')">
+                                    <a href="#"> </a>
+                                </td>
+                                <td data-bind="text: row.ref('appName')"></td>
+                                <td data-bind="text: row.ref('appCode')"></td>
+                                <td>
+                                    <div class="pro_oper">
+                                        <span class="uf uf-pencil" title="ht.app.app.0018" data-bind="click:$parent.useredit.bind($data, $index())"></span>
+                                        <span class="uf uf-del" title="ht.app.app.0019" data-bind="click:$parent.delete.bind($data, $index())"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="LoadingImage">
+                    <img src="./images/loading.gif" />
+                    <span><span class="i18n" name="ht.app.app.0020"></span></span>
+                </div>
+                <div id="emptyImage">
+                    <img src="./images/empty.png" />
+                    <span><span class="i18n" name="ht.app.app.0021"></span></span>
+                </div>
+                <!--分页区域-->
+                <div class="paginate-box" data-bind="visible: pagination.count() > 10">
+                    <div id="pagination" class="u-pagination  "></div>
+                </div>
+            </div>
+        </div>
+        <div class="wrap-body" data-bind="visible:!appDomType()">
+            <!--页面功能名字-->
+            <!--<div class="apptitle">
+                <div class="pap-title">
+                    <button class="u-button backbutton" data-bind="click:cancelAdd" id="papHeader">
+                            <i class="uf uf-arrow-left"></i><span class="i18n" name="ht.app.app.0022"></span><span class="u-button-container">
+                                <span class="u-ripple"></span></span>
+                            </button>
+                    <h1 data-bind="text:modal.title"><span class="i18n" name="ht.app.app.0023"></span></h1>
+                </div>
+            </div>-->
+            <div class="add-app">
+                <div class="row ">
+                    <div class="u-col-lg-6 u-col-md-6 u-col-sm-8">
+                        <div class="u-form-group">
+                            <label class="u-col-4 u-col-md-6 u-col-sm-3 padding-none margin-top-8 text-right u-form-label"><span class="i18n" name="ht.app.app.0024"></span> <span class="mustLabel">*</span> </label>
+
+                            <div class="u-col-8 u-col-md-6 u-col-sm-9">
+                                <!-- <select class="area nc-sel form-control" data-bind="
+                                     options: search.appAreas,
+                                      optionsText: function(data){ return  data.area.areaName},
+                                        optionsValue:function(data){ return  data.area.id},
+                                       optionsCaption: <span class="i18n" name="ht.app.app.0007"></span>,
+                                        value: app.area
+                                        ">
+                                </select> -->
+                                <button class="u-button  u-menu-button " id="demo-menu-lower-right2">
+                                    <span data-bind="text:areaName"></span><i class="uf uf-anglearrowdown"></i>
+                                </button>
+                                <ul class="u-menu " data-bind="foreach:search.appAreas" for="demo-menu-lower-right2">
+                                    <li class="u-menu-item" data-bind="click: $parent.areaClick">
+                                        <span data-bind="text:area.areaName"> </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="u-form-group">
+                            <label class="u-col-4 u-col-md-6 u-col-sm-3  padding-none margin-top-8 text-right u-form-label">  <span class="i18n" name="ht.app.app.0025"></span> <span class="mustLabel">*</span> </label>
+                            <div class="u-col-8 u-col-md-6 u-col-sm-9">
+                                <!-- <select class="group nc-sel form-control"
+                                        data-bind='options: search.groups,
+                                             optionsValue:"id",
+                                             optionsText: "name",
+                                             optionsCaption: <span class="i18n" name="ht.app.app.0009"></span>,
+                                             value: app.group'>
+                                </select> -->
+                                <button class="u-button  u-menu-button " id="demo-menu-lower-right1">
+                                    <span data-bind="text:groupName"></span><i class="uf uf-anglearrowdown"></i>
+                                </button>
+                                <ul class="u-menu " data-bind="foreach:search.groups" for="demo-menu-lower-right1">
+                                    <li class="u-menu-item" data-bind="click: $parent.groupClick">
+                                        <span data-bind="text:name"> </span>
+                                    </li>
+                                </ul>
+                            </div>
+
+
+                        </div>
+
+                        <div class="u-form-group">
+                            <label class="u-col-4 u-col-md-6 u-col-sm-3  padding-none margin-top-8 text-right u-form-label"><span class="i18n" name="ht.app.app.0026"></span> <span class="mustLabel">*</span> </label>
+
+                            <div class="u-col-8 u-col-md-6 u-col-sm-9">
+                                <div class="u-combo mutil-select" id="combo3">
+                                    <div class="u-input-group u-has-feedback" u-meta='{"id":"appLabel","type":"u-combobox","data":"appLabel.appLabelData","field":"name","datasource":"appLabel.Datasource2","mutil":true}'>
+                                        <input class="u-form-control" />
+                                        <span class="u-form-control-feedback uf uf-anglearrowdown" data-role="combo-button"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="u-form-group">
+                            <label class="u-col-4 u-col-md-6 u-col-sm-3  padding-none margin-top-8 text-right u-form-label"><span class="i18n" name="ht.app.app.0027"></span></label>
+
+                            <div class="u-col-8 u-col-md-6 u-col-sm-9">
+                                <div class="u-combo" id="combo5">
+                                    <div class="u-input-group u-has-feedback">
+                                        <input class="u-form-control" />
+                                        <span class="u-form-control-feedback uf uf-anglearrowdown" data-role="combo-button"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="u-form-group">
+                            <label class="u-col-4 u-col-md-6 u-col-sm-3  padding-none margin-top-8 text-right u-form-label"> <span class="i18n" name="ht.app.app.0028"></span> <span class="mustLabel">*</span></label>
+
+                            <div class="u-col-8 u-col-md-6 u-col-sm-9" style="position: relative;">
+                                <div class="u-text multi-input" id='default-value'> 
+                                    <input data-bind="value: $root.mutlilang.defaultLocaleValue,event: {blur: $root.mutlilang.changeDTValue }" type="text" class="form-control nc-required"
+                                    u-meta='{"data":"app.appeditData","field":"appShowName"}'/>
+                                    <div class="input-icon" data-bind='click:$root.mutlilang.showMul'></div>
+                                </div>
+                                 <div class='multi-form' data-bind="css:{show:$root.mutlilang.show}">
+                                    <div class='arrow'>
+                                    </div>
+                                     <div data-bind="foreach: $root.mutlilang.locale">
+                                        <div class="item">
+                                           
+                                            <label data-bind="text:label" class="multi-label" ></label>
+                                            <span class="field" style="position:inherit" data-bind="style:{visibility:serial==$root.mutlilang.sysDefaultLanguageSerial()|| serial==$root.mutlilang.currentSerial  || serial==''?'visible':'hidden'}">*</span>
+                                            <div class="u-text input-par" data-bind='attr:{"field":"appName" + serial}'  u-meta='{"data":"app.appeditData","field":"appShowName"}'>
+                                                <input class="" />
+                                            </div>
+                                        </div>
+                                    </div>  
+                                    <div class='btn-groups'>
+                                          <button class="u-button u-button-border margin-left-10" data-bind='click:mutlilang.closeMul'><span class="i18n" name="ht.app.app.0042"></span></button>
+                                          <button class="u-button u-button-primary btn-noborder" data-bind='click:mutlilang.saveValue'><span class="i18n" name="ht.app.app.0041"></span></button> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="u-form-group">
+                            <label class="u-col-4 u-col-md-6 u-col-sm-3  padding-none margin-top-8 text-right u-form-label">
+
+                                <span class="i18n" name="ht.app.app.0029"></span>  <span class="mustLabel">*</span></label>
+
+                            <div class="u-col-8 u-col-md-6 u-col-sm-9">
+                                <input type="text" class="form-control nc-required appcode" u-meta='{"data":"app.appeditData","field":"appCode"}' >
+                            </div>
+                        </div>
+
+                        <div class="u-form-group">
+                            <label class="u-col-4 u-col-md-6 u-col-sm-3  padding-none margin-top-8 text-right u-form-label"><span class="i18n" name="ht.app.app.0030"></span>  <span class="mustLabel">*</span></label>
+
+                            <div class="u-col-8 u-col-md-6 u-col-sm-9">
+                               <select class="nc-sel form-control" name="linktype" id="linkType" data-bind='options: linkType,
+                                             optionsValue:"value",
+                                             optionsText: "name",
+                                             optionsCaption: $.i18n.prop("ht.app.app.0009"),
+                                             value: linkTypeValue'>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="u-form-group" data-bind="visible: (linkTypeValue()=='view'?false:true)">
+                            <label class="u-col-4 u-col-md-6 u-col-sm-3  padding-none margin-top-8 text-right u-form-label"><span class="i18n" name="ht.app.app.0031"></span> <span class="mustLabel">*</span> </label>
+
+                            <div class="u-col-8 u-col-md-6 u-col-sm-9 ">
+                                <input type="text" class="form-control" u-meta='{"data":"app.appeditData","field":"url"}' placeholder="ht.app.app.0032">
+                            </div>
+                        </div>
+                        <div class="u-form-group" data-bind="visible: (linkTypeValue()=='view'?true:false)">
+                            <label class="u-col-4 u-col-md-6 u-col-sm-3  padding-none margin-top-8 text-right u-form-label"><span class="i18n" name="ht.app.app.0033"></span>  <span class="mustLabel">*</span></label>
+                            <div class="u-col-8 u-col-md-6 u-col-sm-9 ">
+                                <div class="u-combo" id="comboRef">
+                                    <div class="u-input-group u-has-feedback">
+                                        <input class="u-form-control" />
+                                        <span class="u-form-control-feedback uf uf-anglearrowdown" data-role="combo-button"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="u-form-group">
+                            <label class="u-col-4 u-col-md-6 u-col-sm-3  padding-none margin-top-8 text-right u-form-label"><span class="i18n" name="ht.app.app.0034"></span></label>
+
+                            <div class="u-col-8 u-col-md-6 u-col-sm-9">
+                                <label class="u-switch" u-meta='{"id":"isControl","type":"u-switch","data":"app.appeditData","field":"isControl","checkedValue":"Y","unCheckedValue":"N"}'>
+                                    <input type="checkbox" class="u-switch-input"/>
+                                    <span class="u-switch-label"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="u-form-group">
+                            <label class="u-col-4 u-col-md-6 u-col-sm-3  padding-none margin-top-8 text-right u-form-label"><span class="i18n" name="ht.app.app.0035"></span></label>
+
+                            <div class="u-col-8 u-col-md-6 u-col-sm-9">
+
+                                <label class="u-switch" u-meta='{"id":"enableAction","type":"u-switch","data":"app.appeditData","field":"enableAction","checkedValue":"Y","unCheckedValue":"N"}'>
+                                    <input type="checkbox" class="u-switch-input"/>
+                                    <span class="u-switch-label"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="u-form-group">
+                            <label class="u-col-4 u-col-md-6 u-col-sm-3 padding-none margin-top-8 text-right u-form-label"><span class="i18n" name="ht.app.app.0036"></span></label>
+
+                            <div class="u-col-8 u-col-md-6 u-col-sm-9">
+                                <input type="text" class="form-control" u-meta='{"data":"app.appeditData","field":"funcUrl"}' placeholder="ht.app.app.0037">
+                            </div>
+                        </div>
+                        <div class="u-form-group">
+                            <label class="u-col-4 u-col-md-6 u-col-sm-3  padding-none margin-top-8 text-right u-form-label"><span class="i18n" name="ht.app.app.0038"></span></label>
+
+                            <div class="u-col-8 u-col-md-6 u-col-sm-9">
+                                <input type="text" class="form-control" u-meta='{"data":"app.appeditData","field":"appDesc"}' placeholder="ht.app.app.0039">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="u-col-lg-6 u-col-md-6 u-col-sm-8" style="margin-top: 20px">
+                        <div class="" id="iconpicker">
+                            <div class="icon-show">
+                                <i data-bind="attr:{class:iconFont.selVal}"></i>
+                            </div>
+                            <p class=""><span class="i18n" name="ht.app.app.0040"></span></p>
+
+                            <div id="sIcon">
+                                <ul class="tab" data-bind="foreach:iconFont.icons">
+                                    <li data-bind="text:name,click:$parent.iconFont.tabShow"></li>
+                                </ul>
+                                <div>
+                                    <div class="icon-list" data-bind="foreach:iconFont.iconClassList">
+                                        <span data-bind="attr:{class:fontClass},click:$parent.iconFont.selIcon"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="colors">
+                                <div class="primaries" data-bind="foreach:iconFont.colors">
+                                    <div data-bind="attr:{class:colorclass} ,click:$parent.iconFont.selColor"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="u-col-lg-12 u-col-md-12 u-col-sm-12">
+                        <div class="btnBox text-right">
+                            <button class="u-button u-button-info u-button-squared queren" type="button" data-bind="click:addsave"><span class="i18n" name="ht.app.app.0041"></span>
+                        </button>
+                            <button class="u-button u-button-squared quxiao" style="border: 1px solid #cecece;" type="button" data-bind="click:cancelAdd"><span class="i18n" name="ht.app.app.0042"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--删除提示-->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true" class="iconfont icon-cancel02"></span></button>
+                    <h4 class="modal-title"><span class="i18n" name="ht.app.app.0043"></span></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="cc">
+                        <div class="error">
+                            <b></b> <span class="i18n" name="ht.app.app.0044"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="u-msg-cancel u-button pap-cancel" style="height:30px;color: #039BE5;border: 1px solid #039BE5;line-height:30px;background:#fff;padding:0" data-dismiss="modal"><span class="i18n" name="ht.app.app.0045"></span><span class="u-button-container"><span class="u-ripple"></span></span></button>
+                    <button class="u-msg-ok u-button u-button-info" style="height:30px;background: #039BE5;color:#fff;" data-bind="click:deleteconfirm"><span class="i18n" name="ht.app.app.0046"></span><span class="u-button-container"><span class="u-ripple"></span></span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

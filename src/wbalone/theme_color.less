@@ -1,0 +1,190 @@
+@import "../ocm-web/css/core.less";
+
+@color-menu-f:#E70013;
+@color-menu-bg-hover:#F4F5F8;
+
+// 左上角图标区域
+.portal-logo-ui{
+  // background-color: #e14c46;
+  // color:  #FFF;
+}
+.portal-logo-ui img{
+  width: 160px;
+}
+#portal .u-navbar {
+  background-color: #fff;
+}
+#portal .u-navbar-header {
+  background: @color-base;
+}
+// 收缩bar
+.ui-collapse-sidebar {
+	color: #8c949f;
+}
+
+.ui-collapse-sidebar:hover {
+	color: #ddd;
+}
+
+// 页签区域
+.tabs-list li {
+  background-color: #fff;
+  color: #333;
+}
+.tabs-list li a {
+	color: #333;
+}
+.tabs-list li.selected,
+.tabs-list li:hover {
+  // background: @color-base;
+}
+.tabs-list li.selected a,
+.tabs-list li:hover a {
+  border-bottom: 3px solid @color-base;
+}
+.tabs-list li:hover i.x-close {
+  color: #999;
+}
+.tabs-list li i.x-close:hover {
+  color: #333;
+}
+
+
+// 左侧菜单栏区域
+#portal .u-navbar-side-container .u-menu-item.u-menu-item-active,
+.u-menu-submenu-title:hover {
+  border-left: 4px solid @color-base;
+}
+#portal
+  .u-navbar-side-container
+  .u-menu-submenu-inline
+  .u-menu-item.u-menu-item-active {
+  border-left: 4px solid @color-base;
+}
+#portal .u-menu-submenu-active > .u-menu-submenu-title {
+  border-left: 4px solid @color-base;
+}
+#portal .u-navbar-side-container .u-menu-item.u-menu-item-active,
+.u-menu-submenu-title:hover {
+	background-color: @color-menu-bg-hover;
+	/* border: none; */
+}
+
+#portal .u-navbar-side-container .u-menu-submenu-inline .u-menu-item.u-menu-item-active {
+	 background-color: @color-menu-bg-hover; 
+	/* border: none; */
+}
+#portal .u-navbar-side-container .u-menu-submenu-inline .u-menu-item-selected {
+  background-color: @color-menu-bg-hover;
+  border: none;
+}
+#portal .u-menu-submenu-selected {
+	background: @color-menu-bg-hover;
+}
+.portal-expand .u-menu-inline>.u-menu-item:hover {
+	background: #f2f2f2;
+}
+
+#portal .u-menu-submenu-open .u-menu,
+#portal .u-menu-submenu-open {
+	background: @color-menu-bg-hover;
+}
+
+#portal .u-menu-submenu-open .u-menu,
+#portal .u-menu-submenu-open .first-child {
+	color: @color-menu-f;
+}
+
+#portal .u-menu-submenu-active>.u-menu-submenu-title {
+	background: @color-menu-bg-hover;
+}
+
+#portal .u-menu-submenu-active>.u-menu-submenu-title .first-child {
+	color: @color-menu-f;
+}
+
+#portal .u-menu .second-menu .u-menu-vertical.u-menu-sub {
+	background: #fff;
+}
+
+.u-navbar-side-container .u-menu .u-menu-item-active.u-menu-item>a {
+	color: @color-menu-f;
+}
+
+.portal-expand.expanded .u-menu li:hover span {
+  background: @color-base;
+}
+.portal-expand.expanded .u-menu li:hover span label {
+  color: @color-base;
+}
+.portal-expand.expanded .u-menu li:hover a {
+  background: @color-grid-head-th;
+}
+.no-second-menu .u-menu-vertical .menu-popup > a.child-title {
+  color: @color-base;
+}
+.no-second-menu .u-menu-vertical .menu-popup > a.child-title:hover {
+  color: @color-base;
+}
+.u-menu-vertical .menu-popup > a:hover {
+  color: @color-base;
+}
+.menu-popup .third-menu-content a:hover {
+  color: @color-base;
+}
+
+// 右上角个人信息区域
+.user-menu li a.account-logout {
+  color: @color-base;
+}
+.avatar-icon img {
+  border: 2px solid @color-grid-head-th;
+}
+.avatar-name {
+  // color: @color-grid-head-th;
+  color: #999;
+}
+.u-navbar-toggle.show .uf {
+  color: @color-grid-head-th;
+}
+.navbar-nav #username .iconfont {
+  color: #999;
+}
+.navbar-nav li .uf {
+  color: @color-base-light;
+  font-size: 20px;
+}
+#bs-example-navbar-collapse-9 > .u-menu a {
+  color: #999;
+}
+#bs-example-navbar-collapse-9 > .u-menu a:hover {
+  color: #333;
+}
+#bs-example-navbar-collapse-9 li.dropdown:hover span {
+  color: #333;
+}
+#bs-example-navbar-collapse-9 li.dropdown:hover .avatar-icon img {
+  border: 2px solid #fff;
+}
+
+
+// 控制左侧菜单上下滚动区域
+.more-bar .arrow-up:hover,
+.more-bar .arrow-down:hover {
+  color: @color-base;
+}
+
+
+.active {
+  color: @color-base;
+}
+.fix-wrap ul li a {
+  border: 1px solid @color-base;
+}
+.fix-wrap ul li a.hide-a {
+  background-color: @color-base;
+}
+.fix-wrap ul li a.hide-a-spec,
+.fix-wrap ul li a.hide-a-spec.active {
+  background-color: @color-base;
+}

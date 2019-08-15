@@ -1,0 +1,270 @@
+<div class="ui-panel">
+  <div class="u-row">
+    <div class="u-col-4  page-title">
+      <span>门店装修系列</span>
+    </div>
+  </div>
+  <div class="u-row">
+    <div class="u-col-4">
+      <div class="oc-breadcrumb">
+      </div>
+    </div>
+  </div>
+  <div class="u-row margin-top-20" style="background:#fafdfc;height:60px">
+    <div class="ui-operate-btn">
+      <a class="ui-btn ui-btn-green margin-right-5">导出
+      </a>
+      <a class="ui-btn ui-btn-primary">导入
+      </a>
+    </div>
+  </div>
+
+  <div class="ui-searchbox">
+    <div id="shopDecorationSeries-searchcontent" class="ui-searchbox-content">
+
+    </div>
+    <div class="clearfix">
+
+    </div>
+    <div class="ui-searchbox-footer">
+      <div class="ui-search-more hidden">
+          <a>更多<i class="uifont icon-down"></i></a>
+      </div>
+
+      <div class="ui-search-btn">
+        <a class="ui-btn ui-btn-green margin-right-5"
+        data-bind="click: event.search">搜索
+        </a>
+        <a class="ui-btn ui-btn-primary"
+        data-bind="click: event.cleanSearch">清空
+        </a>
+      </div>
+      <div class="clearfix">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-panel-body">
+      <div class="margin-top-20">
+        共搜索到<span data-bind="text:shopDecorationSeriesList.totalRow"></span>条数据
+      </div>
+      <div class="margin-bottom-10">
+          <a class="ui-btn ui-btn-orange margin-right-5" id="user-action-add"
+          data-bind="click: event.beforeEdit.bind($data,-1)"><i class="uifont icon-plus margin-right-5"></i>新增
+        </a>
+        <a class="ui-btn ui-btn-primary" id="user-action-del"
+          data-bind="click: event.delRow">批量删除
+        </a>
+      </div>
+      <div class="ui-table-container">
+          <div id="shopDecorationSeries"
+               u-meta='{"id":"grid_shopDecorationSeries","data":"shopDecorationSeriesList","type":"grid","editable":false,"multiSelect":true,"showNumCol":false}'>
+                      <div options='{"field":"code","dataType":"String","title":"编码"}'></div>
+                      <div options='{"field":"name","dataType":"String","title":"名称"}'></div>
+                      <div options='{"field":"description","dataType":"String","title":"描述"}'></div>
+                      <div options='{"field":"status","dataType":"integer","title":"状态"}'></div>
+                      <div options='{"field":"shopId","dataType":"String","title":"门店id"}'></div>
+                      <div options='{"field":"decorationAreaId","dataType":"String","title":"装修区域id"}'></div>
+                      <div options='{"field":"reportImgArea","dataType":"float","title":"报图面积"}'></div>
+                      <div options='{"field":"reportImgTime","dataType":"datetime","title":"报图时间"}'></div>
+                      <div options='{"field":"plotImgArea","dataType":"float","title":"出图面积"}'></div>
+                      <div options='{"field":"plotImgTime","dataType":"datetime","title":"出图时间"}'></div>
+                      <div options='{"field":"decorStartTime","dataType":"datetime","title":"进场装修时间"}'></div>
+                      <div options='{"field":"decorEndTime","dataType":"datetime","title":"出场装修时间"}'></div>
+                      <div options='{"field":"acceptanceArea","dataType":"float","title":"验收合格面积"}'></div>
+                      <div options='{"field":"acceptanceTime","dataType":"datetime","title":"验收合格时间"}'></div>
+                      <div options='{"field":"operation","dataType":"String","title":"操作","renderType":"rendertype.operation"}'></div>
+          </div>
+          <div class="ui-statistics margin-top-10">
+            <i class="uifont icon-i font-c-blue margin-right-10"></i>已选择<span class="font-c-blue" data-bind="text:shopDecorationSeriesList.selectedIndices().length"></span>项数据
+          </div>
+          <div class="pagination-right">
+            <div id='pagination' class='pagination u-pagination pagination-sm'
+            u-meta='{"type":"pagination","data":"shopDecorationSeriesList","pageChange":"event.pageChange","sizeChange":"event.sizeChange"}'></div>
+          </div>
+      </div>
+    </div>
+</div>
+<div id="dialog_content" style="display:none;">
+    <div class="u-msg-title">
+        <h4>基本信息</h4>
+    </div>
+    <div class="u-msg-content">
+      <div class=" u-row ">
+        <div class="u-col-4 ">
+          <label for="code" class="u-input-label right">编码:</label>
+        </div>
+        <div class="u-col-6 ">
+          <div class="u-input-group-before padding-left-10 " style="color: red;">*
+          </div>
+          <div u-meta='{"id":"code","type":"u-text","data":"shopDecorationSeriesCard","field":"code"}'>
+            <input type="text" class="u-form-control padding-left-20" placeholder="编码不能为空">
+          </div>
+        </div>
+      </div>
+      <div class=" u-row margin-top-20">
+        <div class="u-col-4 ">
+          <label for="code" class="u-input-label right">名称:</label>
+        </div>
+        <div class="u-col-6 ">
+          <div class="u-input-group-before padding-left-10 " style="color: red;">*
+          </div>
+          <div u-meta='{"id":"name","type":"u-text","data":"shopDecorationSeriesCard","field":"name"}'>
+            <input type="text" class="u-form-control padding-left-20" placeholder="名称不能为空">
+          </div>
+        </div>
+      </div>
+      <div class=" u-row margin-top-20">
+        <div class="u-col-4 ">
+          <label for="code" class="u-input-label right">描述:</label>
+        </div>
+        <div class="u-col-6 ">
+          <div class="u-input-group-before padding-left-10 ">
+          </div>
+          <div u-meta='{"id":"description","type":"u-text","data":"shopDecorationSeriesCard","field":"description"}'>
+            <input type="text" class="u-form-control padding-left-20" placeholder="">
+          </div>
+        </div>
+      </div>
+      <div class=" u-row margin-top-20">
+        <div class="u-col-4 ">
+          <label for="code" class="u-input-label right">状态:</label>
+        </div>
+        <div class="u-col-6 ">
+          <div class="u-input-group-before padding-left-10 ">
+          </div>
+          <div u-meta='{"id":"status","type":"u-text","data":"shopDecorationSeriesCard","field":"status"}'>
+            <input type="text" class="u-form-control padding-left-20" placeholder="">
+          </div>
+        </div>
+      </div>
+      <div class=" u-row margin-top-20">
+        <div class="u-col-4 ">
+          <label for="code" class="u-input-label right">门店ID:</label>
+        </div>
+        <div class="u-col-6 ">
+          <div class="u-input-group-before padding-left-10 ">
+          </div>
+          <div u-meta='{"id":"shopId","type":"u-text","data":"shopDecorationSeriesCard","field":"shopId"}'>
+            <input type="text" class="u-form-control padding-left-20" placeholder="门店ID不能为空">
+          </div>
+        </div>
+      </div>
+     <div class=" u-row margin-top-20">
+        <div class="u-col-4 ">
+          <label for="code" class="u-input-label right">装修区域ID:</label>
+        </div>
+        <div class="u-col-6 ">
+          <div class="u-input-group-before padding-left-10 ">
+          </div>
+          <div u-meta='{"id":"decorationAreaId","type":"u-text","data":"shopDecorationSeriesCard","field":"decorationAreaId"}'>
+            <input type="text" class="u-form-control padding-left-20" placeholder="">
+          </div>
+        </div>
+      </div>
+     <div class=" u-row margin-top-20">
+        <div class="u-col-4 ">
+          <label for="code" class="u-input-label right">报图面积:</label>
+        </div>
+        <div class="u-col-6 ">
+          <div class="u-input-group-before padding-left-10 ">
+          </div>
+          <div u-meta='{"id":"reportImgArea","type":"u-text","data":"shopDecorationSeriesCard","field":"reportImgArea"}'>
+            <input type="text" class="u-form-control padding-left-20" placeholder="">
+          </div>
+        </div>
+      </div>
+     <div class=" u-row margin-top-20">
+        <div class="u-col-4 ">
+          <label for="code" class="u-input-label right">报图时间:</label>
+        </div>
+        <div class="u-col-6 ">
+          <div class="u-input-group-before padding-left-10 ">
+          </div>
+          <div u-meta='{"id":"reportImgTime","type":"u-text","data":"shopDecorationSeriesCard","field":"reportImgTime"}'>
+            <input type="text" class="u-form-control padding-left-20" placeholder="">
+          </div>
+        </div>
+      </div>
+     <div class=" u-row margin-top-20">
+        <div class="u-col-4 ">
+          <label for="code" class="u-input-label right">出图面积:</label>
+        </div>
+        <div class="u-col-6 ">
+          <div class="u-input-group-before padding-left-10 ">
+          </div>
+          <div u-meta='{"id":"plotImgArea","type":"u-text","data":"shopDecorationSeriesCard","field":"plotImgArea"}'>
+            <input type="text" class="u-form-control padding-left-20" placeholder="">
+          </div>
+        </div>
+      </div>
+     <div class=" u-row margin-top-20">
+        <div class="u-col-4 ">
+          <label for="code" class="u-input-label right">出图时间:</label>
+        </div>
+        <div class="u-col-6 ">
+          <div class="u-input-group-before padding-left-10 ">
+          </div>
+          <div u-meta='{"id":"plotImgTime","type":"u-text","data":"shopDecorationSeriesCard","field":"plotImgTime"}'>
+            <input type="text" class="u-form-control padding-left-20" placeholder="">
+          </div>
+        </div>
+      </div>
+     <div class=" u-row margin-top-20">
+        <div class="u-col-4 ">
+          <label for="code" class="u-input-label right">进场装修时间:</label>
+        </div>
+        <div class="u-col-6 ">
+          <div class="u-input-group-before padding-left-10 ">
+          </div>
+          <div u-meta='{"id":"decorStartTime","type":"u-text","data":"shopDecorationSeriesCard","field":"decorStartTime"}'>
+            <input type="text" class="u-form-control padding-left-20" placeholder="">
+          </div>
+        </div>
+      </div>
+     <div class=" u-row margin-top-20">
+        <div class="u-col-4 ">
+          <label for="code" class="u-input-label right">出场装修时间:</label>
+        </div>
+        <div class="u-col-6 ">
+          <div class="u-input-group-before padding-left-10 ">
+          </div>
+          <div u-meta='{"id":"decorEndTime","type":"u-text","data":"shopDecorationSeriesCard","field":"decorEndTime"}'>
+            <input type="text" class="u-form-control padding-left-20" placeholder="">
+          </div>
+        </div>
+      </div>
+     <div class=" u-row margin-top-20">
+        <div class="u-col-4 ">
+          <label for="code" class="u-input-label right">验收合格面积:</label>
+        </div>
+        <div class="u-col-6 ">
+          <div class="u-input-group-before padding-left-10 ">
+          </div>
+          <div u-meta='{"id":"acceptanceArea","type":"u-text","data":"shopDecorationSeriesCard","field":"acceptanceArea"}'>
+            <input type="text" class="u-form-control padding-left-20" placeholder="">
+          </div>
+        </div>
+      </div>
+     <div class=" u-row margin-top-20">
+        <div class="u-col-4 ">
+          <label for="code" class="u-input-label right">验收合格时间:</label>
+        </div>
+        <div class="u-col-6 ">
+          <div class="u-input-group-before padding-left-10 ">
+          </div>
+          <div u-meta='{"id":"acceptanceTime","type":"u-text","data":"shopDecorationSeriesCard","field":"acceptanceTime"}'>
+            <input type="text" class="u-form-control padding-left-20" placeholder="">
+          </div>
+        </div>
+      </div>
+     
+    </div>
+    <div class="u-msg-footer">
+      <a class="ui-btn ui-btn-green margin-right-5 J-ok">保存
+      </a>
+      <a class="ui-btn ui-btn-primary J-cancel">取消
+      </a>
+    </div>
+</div>
