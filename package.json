@@ -17,7 +17,7 @@
     "co-request": "^0.2.0",
     "del": "^3.0.0",
     "gulp": "^4.0.0",
-    "gulp-babel": "^6.1.2",
+    "gulp-babel": "^8.0.0",
     "gulp-clean": "^0.3.2",
     "gulp-clean-css": "^3.2.0",
     "gulp-concat": "^2.6.0",
